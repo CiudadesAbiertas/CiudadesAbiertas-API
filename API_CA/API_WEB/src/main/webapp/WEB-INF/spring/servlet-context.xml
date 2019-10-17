@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/mvc
+    	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    	http://www.springframework.org/schema/util 
+    	http://www.springframework.org/schema/util/spring-util.xsd
+    	http://www.springframework.org/schema/cache
+    	http://www.springframework.org/schema/cache/spring-cache.xsd
+    	http://www.springframework.org/schema/webflow-config
+		http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
+
+	<import resource="bean-thymeleaf.xml" />
+	<import resource="bean-I18n.xml" />
+	
+	<import resource="participacion-persistence.xml"/>
+	
+	<!--
+	<import resource="noticias-persistence.xml"/>
+	
+	<import resource="intra-persistence.xml"/>
+	<import resource="actividades-persistence.xml"/>
+	<import resource="movil-persistence.xml"/>
+	<import resource="turismo-persistence.xml"/>
+	<import resource="ticketing-persistence.xml"/>
+	<import resource="perfilcontratante-persistence.xml"/>
+	<import resource="oferta-persistence.xml"/>
+	<import resource="reglic-persistence.xml"/>
+	<import resource="siu-persistence.xml"/>
+	
+	-->
+	
+	<!-- 
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" 
+  		p:cacheManager-ref="ehcache"/>
+ 	
+
+ 	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" 
+   		p:configLocation="classpath:ehcache.xml"  
+     	p:shared="true"/> 
+    
+
+	<context:component-scan base-package="org.sede,org.ciudadesabiertas" />
+	-->
+	
+	
+	<bean id="sessionFactory"
+  		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    		<property name="dataSource" ref="dataSource" />
+    		<property name="packagesToScan" value="org.ciudadesabiertas.model" />
+    		<property name="hibernateProperties">
+        	<props>            
+            	<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+        	</props>
+    </property>
+	</bean>
+ 
+	<bean id="dataSource"	
+	  class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+	    <property name="url" value="jdbc:oracle:thin:@//localhost:1521/xe" />
+	    <property name="username" value="ciudadesAbiertas" />
+	    <property name="password" value="ciudadesAbiertas" />
+	</bean>
+ 
+	<bean id="transactionManager"
+	  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+ 
+<bean id="persistenceExceptionTranslationPostProcessor"
+  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	
+	<bean id="searchFiql"
+		class="org.sede.core.dao.SearchFiql" scope="request"/>
+	
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="true" />
+		<property name="ignoreAcceptHeader" value="false" />
+		<property name="defaultContentType" value="text/html; charset=utf-8" />
+		<property name="useJaf" value="false" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html; charset=utf-8" />
+				<entry key="json" value="application/json; charset=utf-8" />
+				<entry key="jsonld" value="application/ld+json; charset=utf-8" />
+				<entry key="xml" value="application/xml; charset=utf-8" />
+				<entry key="geojson" value="application/geo+json; charset=utf-8" />
+				<entry key="georss" value="text/xml+georss; charset=utf-8" />
+				<entry key="rss" value="application/rss+xml; charset=utf-8" />
+				<entry key="csv" value="text/csv; charset=utf-8" />
+				<entry key="rdf" value="application/rdf+xml; charset=utf-8" />
+				<entry key="ttl" value="application/x-turtle; charset=utf-8" />
+				<entry key="n3" value="text/rdf+n3; charset=utf-8" />
+				<entry key="sparqlxml" value="application/sparql-results+xml; charset=utf-8" />
+				<entry key="sparqljson" value="application/sparql-results+json; charset=utf-8" />
+				<entry key="solrjson" value="application/solr-results+json; charset=utf-8" />
+				<entry key="solrxml" value="application/solr-results+xml; charset=utf-8" />
+				<entry key="ics" value="text/calendar; charset=utf-8" />
+			</map>
+		</property>
+	</bean>
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+        <!-- max size of file in memory (in bytes) -->
+        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+    </bean>
+    
+	<mvc:annotation-driven
+		content-negotiation-manager="contentNegotiationManager">
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver" />
+		</mvc:argument-resolvers>
+
+		<mvc:message-converters register-defaults="false">
+			<bean class="org.sede.core.rest.view.Transformador" />
+		</mvc:message-converters>
+
+	</mvc:annotation-driven>
+
+	<mvc:interceptors>
+		<bean
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="locale" />
+		</bean>
+		<bean class="org.sede.core.filter.InterceptorPeticion" />
+		<bean
+			class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+
+		<bean class="org.sede.core.plantilla.LayoutInterceptor"></bean>
+ 		<bean id="osNoticias" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="NOTICIAS" />  
+	    </bean>
+	    <bean id="osIntra" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="INTRA" />  
+	    </bean>
+	    <bean id="osActividades" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="ACTIVIDADES" />  
+	    </bean>
+	    <bean id="osParticipacion" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="PARTICIPACION" />  
+	    </bean>
+	    <bean id="osMovil" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="MOVIL" />  
+	    </bean>
+	    <bean id="osTurismo" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="TURISMO" />  
+	    </bean>
+	    <bean id="osTicketing" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="TICKETING" />  
+	    </bean>
+	    <bean id="osPerfilContratante" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="PERFILCONTRATANTE" />  
+	    </bean>
+	    <bean id="osOferta" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="OFERTA" />  
+	    </bean>
+	    <bean id="osRegLic" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="REGLIC" />  
+	    </bean>
+	    <bean id="osSiu" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">  
+	        <property name="entityManagerFactory" ref="SIU" />  
+	    </bean>
+
+	</mvc:interceptors>
+</beans>

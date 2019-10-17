@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+    <parent>
+    <groupId>API_CA</groupId>
+    <artifactId>org.ciudadesabiertas</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  
+  <artifactId>org.ciudadesabiertas.avisoquejasug</artifactId>
+  
+  <name>API_AVISOQUEJASUGERENCIA</name>
+  <url>http://maven.apache.org</url>
+ <dependencies>
+  
+  <!--  Dependencia CORE  -->
+  	<dependency>
+			<groupId>API_CA</groupId>
+  			<artifactId>org.ciudadesabiertas.core</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+		
+
+		
+  </dependencies> 
+  
+  <build>
+		<finalName>API_AVISOQUEJASUGERENCIA</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<!-- Borrado de properties -->
+			<plugin>
+	           <artifactId>maven-antrun-plugin</artifactId>
+	           <executions>
+	             <execution>
+	               <phase>clean</phase>
+	               <goals>
+	                 <goal>run</goal>
+	               </goals>
+	               <configuration>
+	                 <tasks>
+	                   <delete>
+				               <fileset dir="${project.basedir}/src/test/resources" includes="*.properties" />
+				               <fileset dir="${project.basedir}" includes="*.log" />
+				        </delete>
+	                 </tasks>
+	               </configuration>
+	             </execution>
+	           </executions>
+	         </plugin>
+			<plugin>
+			    <artifactId>maven-resources-plugin</artifactId>
+			    <executions>			    	
+			        <execution>
+			            <id>copy-config</id>
+			            <phase>generate-resources</phase>
+			            <goals>
+			                <goal>copy-resources</goal>
+			            </goals>
+			            <configuration>
+							<outputDirectory>${project.basedir}/src/test/resources</outputDirectory>
+			                <overwrite>true</overwrite>
+			                <resources>
+			                    <resource>
+			                        <directory>../API_WEB/src/main/resources</directory>
+			                        <includes>
+			                            <include>config.properties</include>
+			                        </includes>
+			                    </resource>		
+			                    <resource>
+			                        <directory>../API_WEB/src/main/resources</directory>
+			                        <includes>
+			                            <include>avisoQuejaSug.properties</include>
+			                        </includes>
+			                    </resource>  	                  
+			                    <resource>
+			                        <directory>../API_WEB/src/main/resources</directory>
+			                        <includes>
+			                            <include>logback.xml</include>
+			                        </includes>
+			                    </resource>
+			                </resources>
+			            </configuration>
+			            
+			        </execution>
+			    </executions>
+			</plugin>
+		</plugins>
+  </build>
+  <reporting>
+		<plugins>
+
+			<plugin>
+				<!-- Ejecutar con mvn compile site -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.9.0</version>
+				<configuration>
+					<rulesets>
+						  
+						<ruleset>/category/java/bestpractices.xml</ruleset>	 					
+						<ruleset>/category/java/codestyle.xml</ruleset>	 					
+						<ruleset>/category/java/errorprone.xml</ruleset> 
+						<ruleset>/category/java/performance.xml</ruleset> 
+						
+					</rulesets>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</reporting>
+</project>
+

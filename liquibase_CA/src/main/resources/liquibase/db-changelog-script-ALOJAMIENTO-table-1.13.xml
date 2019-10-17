@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="table-alojamiento">
+        <createTable tableName="alojamiento">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="municipio_id" type="VARCHAR(10)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>
+            <column name="barrio" type="VARCHAR(200)"/>
+            <column name="distrito" type="VARCHAR(200)"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+            <column defaultValueNumeric="0" name="accesible" type="BIT"/>
+            <column name="tipo_accesibilidad" type="VARCHAR(200)"/>
+            <column name="email" type="VARCHAR(200)"/>
+            <column name="telephone" type="VARCHAR(200)"/>
+            <column name="faxNumber" type="VARCHAR(200)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="numHabitaciones" type="INT"/>
+            <column name="numCamas" type="INT"/>
+            <column name="categoria" type="VARCHAR(400)"/>
+            <column name="modified" type="datetime(6)"/>
+            <column name="image" type="VARCHAR(200)"/>
+        </createTable>
+        <rollback/>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="PK-alojamiento">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_alojamiento" tableName="alojamiento"/>   
+        <rollback/>     
+    </changeSet>
+	
+	<changeSet author="Localidata" id="Index-alojamiento">
+        <createIndex indexName="index_id_alojamiento" tableName="alojamiento">
+            <column name="id"/>
+        </createIndex>
+        <rollback/>
+    </changeSet>
+    
+    <changeSet id="TABLA-ALOJAMIENTO-tag-1.13" author="Localidata">
+    	<tagDatabase tag="1.13" />
+  	</changeSet> 
+	
+
+</databaseChangeLog>

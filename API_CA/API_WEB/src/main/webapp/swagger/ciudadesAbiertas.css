@@ -1,0 +1,137 @@
+/**
+ * Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+ * 
+ * This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+ * 
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and limitations under the Licence.
+ */
+
+html
+ {
+   box-sizing: border-box;
+   overflow: -moz-scrollbars-vertical;
+   overflow-y: scroll;
+ }
+
+ *,
+ *:before,
+ *:after
+ {
+   box-sizing: inherit;
+ }
+
+ body
+ {
+   margin:0;
+   background: #fafafa;
+ }
+ 
+ .download-url-input, .download-url-button{
+ 	display: none;
+ }
+
+
+.swagger-ui .topbar {    	
+ 		background-color: #FAFAFA;
+ 		display:none;
+ }
+	   
+	   
+/* Estilos capa de logos */
+	   
+
+.capaLogos {
+ padding:4.286rem 1.786rem 1.786rem 1.786rem;
+ background-color:#FAFAFA;
+ font-size:0.8rem; 
+ width:100%;
+ bottom:0
+}
+.capaLogos__content {
+ max-width:1280px;
+ margin:auto
+}
+.capaLogos__logos-box {
+ margin-bottom:0;
+ text-align:center
+}
+.capaLogos__logos {
+ display:inline-block;
+ margin-left:44px
+}
+.capaLogos__logos:first-child {
+ margin:0
+}
+.capaLogos__logos-bottom {
+ margin-top:35px
+}
+.capaLogos__logoGobEspaña {
+ width:204px
+}
+.capaLogos__logoRed {
+ width:70px;
+ margin-left:10px;
+ line-height:50px;
+ vertical-align:text-bottom
+}
+.capaLogos__logoAcoruña {
+ width:263px
+}
+.capaLogos__logoMadrid {
+ width:147px
+}
+.capaLogos__logoSantiago {
+ width:312px
+}
+.capaLogos__logoZaragoza {
+ width:264px
+}
+.capaLogos__logoCiudadesInteligentes {
+ width:141px
+}
+.capaLogos__logoUnionEuropea {
+ width:355px;
+ margin-left:88px
+}
+.capaLogos__logoCiudadesAbiertas {
+ width:156px
+}
+.capaLogos__bottom {
+ margin-top:3.571rem;
+ position:relative
+}
+.capaLogos__navbar {
+ position:absolute;
+ right:0;
+ bottom:0;
+ color:#5F6F82;
+ font-size:14px
+}
+.capaLogos__navbar__items {
+ list-style:none;
+ display:inline-block
+}
+.capaLogos__navbar__items a {
+ color:#5F6F82;
+ vertical-align:middle
+}
+.capaLogos__navbar__items::after {
+ content:' ';
+ margin:0 10px;
+ display:inline-block;
+ vertical-align:middle;
+ width:2px;
+ height:14px;
+ background-color:#5F6F82
+}
+.capaLogos__navbar__items:last-child::after {
+ content:none
+}

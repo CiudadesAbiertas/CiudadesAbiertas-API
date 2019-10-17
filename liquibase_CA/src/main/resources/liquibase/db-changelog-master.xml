@@ -1,0 +1,103 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 
+<!--   Version 1.0 CORE -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-CORE-table-1.0.xml"/> 
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-CORE-data-1.0.xml"/>  
+  
+    <!-- SQLSERVER FUNCTION TRASLATE PARA SQLSERVER 2012 -->  
+  <include file="liquibase/db-changelog-script-SQLSERVER-FUNCIONES-1.0.1.xml"/>
+  
+  <!--   Version 1.1 SUBVENCION -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-SUBVENCION-table-1.1.xml"/>
+   <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-SUBVENCION-data-1.1.xml"/>
+   
+    <!--   Version 1.2  EQUIPAMIENTO-->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-EQUIPAMIENTO-table-1.2.xml"/>
+   <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-EQUIPAMIENTO-data-1.2.xml"/>
+  
+  <!--   Version 1.3 AGENDA -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-AGENDA-table-1.3.xml"/>
+   <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-AGENDA-data-1.3.xml"/>
+  
+
+  <!--   Version 1.4  LOCAL-COMERCIAL -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-LOCAL-COMERCIAL-table-1.4.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-LOCAL-COMERCIAL-data-1.4.xml"/>
+  
+  
+  <!--   Version 1.5   PUNTOS WIFI SIN TABLA USA EQUIPAMINTO -->
+  <include file="liquibase/db-changelog-script-EQUIPAMIENTO-PUNTOWIFI-data-1.5.xml"/>
+  
+  <!--   Version 1.6  APARCAMIENTOS SIN TABLA USA EQUIPAMINTO -->
+  <include file="liquibase/db-changelog-script-EQUIPAMIENTO-APARCAMIENTOS-data-1.6.xml"/>
+  
+   <!--   Version 1.7  INSTALACIONES DEPORTIVAS SIN TABLA USA EQUIPAMINTO -->
+  <include file="liquibase/db-changelog-script-EQUIPAMIENTO-INSTAL-DEPORTIVAS-data-1.7.xml"/> 
+  
+  <!--   Version 1.8  AVISO_QUEJA_SUG -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-AVISO_QUEJA_SUG-table-1.8.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-AVISO_QUEJA_SUG-data-1.8.xml"/>
+  
+  
+  <!--   Version 1.9  CALIDAD_AIRE -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-CALIDAD_AIRE-table-1.9.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-CALIDAD_AIRE-data-1.9.xml"/>
+  
+  <!--   Version 1.10  ORGANIGRAMA -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-ORGANIGRAMA-table-1.10.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-ORGANIGRAMA-data-1.10.xml"/> 
+  
+    <!--   Version 1.11  PUNTO_INTERES_TURISTICO -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-PUNTO-INTERES-TURISTICO-table-1.11.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-PUNTO-INTERES-TURISTICO-data-1.11.xml"/> 
+  
+  <!--   Version 1.12  MONUMENTOS -->
+ 	<!-- DATOS -->
+  <include file="liquibase/db-changelog-script-MONUMENTOS-data-1.12.xml"/> 
+  
+  <!--   Version 1.13  ALOJAMIENTOS -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-ALOJAMIENTO-table-1.13.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-ALOJAMIENTO-data-1.13.xml"/>
+  
+  <!--   Version 1.14  CALLEJERO -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-CALLEJERO-table-1.14.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-CALLEJERO-data-1.14.xml"/>
+  
+   <!--   Version 1.15  TRAMITE -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-TRAMITE-table-1.15.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-TRAMITE-data-1.15.xml"/>
+  
+   <!--   Version 1.16  PLANTILLA -->
+  <!--  TABLAS -->
+  <include file="liquibase/db-changelog-script-PLANTILLA-table-1.16.xml"/>
+  <!-- DATOS -->
+  <include file="liquibase/db-changelog-script-PLANTILLA-data-1.16.xml"/> 
+   
+</databaseChangeLog>

@@ -1,0 +1,103 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ciudades Abiertas - API</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+    <link rel="stylesheet" type="text/css" href="./ciudadesAbiertas.css" >
+    <link rel="icon" type="image/png" href="./favicon.ico" />    
+    <style>
+     
+      
+    </style>
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+    
+    <div class="capaLogos">
+		<div class="capaLogos__content">
+			<div class="capaLogos__logos-container">
+				<div class="capaLogos__logos-box">
+				     <ul class="capaLogos__logos-top">
+				          <li class="capaLogos__logos capaLogos__logoGobEspaña">
+				               <a href="http://www.mineco.gob.es/portal/site/mineco/" target="_blank">
+				                    <img title="Logo Gobierno de España. Abre una ventana nueva" src="logos//gobEspana-logo.svg" alt="Logo gobierno de España y Red.es. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoRed">
+				               <a href="https://www.red.es/redes/" target="_blank">
+				                    <img title="Logo Red.es. Abre una ventana nueva" src="logos//red-logo.svg" alt="Logo gobierno de España y Red.es. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoCiudadesInteligentes">
+				               <a href="http://www.red.es/redes/es/que-hacemos/ciudades-inteligentes" target="_blank">
+				                    <img title="Logo del portal Ciudades e Islas Inteligentes. Abre una ventana nueva" src="logos//ciudadesInteligentes-logo.svg" alt="Logo del portal Ciudades e Islas Inteligentes. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoUnionEuropea">
+				               <a href="http://ec.europa.eu/regional_policy/es/funding/erdf/" target="_blank">
+				                    <img title="Logo de la Unión Europea. Abre una ventana nueva" src="logos//unionEuropea-logo.svg" alt="Logo de la Unión Europea. Abre una ventana nueva">
+				               </a>
+				          </li>
+				     </ul>
+				     <ul class="capaLogos__logos-bottom">
+				          <li class="capaLogos__logos capaLogos__logoAcoruña">
+				               <a href="https://www.coruna.gal" target="_blank">
+				                    <img title="Logo del Ayuntamiento de A Coruña. Abre una ventana nueva" src="logos//ayuntAcoruna-logo.svg" alt="Logo del Ayuntamiento de A coruña. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoMadrid">
+				               <a href="https://www.madrid.es/" target="_blank">
+				                    <img title="Logo del Ayuntamiento de Madrid. Abre una ventana nueva" src="logos//ayuntMadrid-logo.svg" alt="Logo del Ayuntamiento de Madrid. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoSantiago">
+				               <a href="http://santiagodecompostela.gal/" target="_blank">
+				                    <img title="Logo del Ayuntamiento de Santiago de Compostela. Abre una ventana nueva" src="logos//ayuntSantiagoCompostela-logo.svg" alt="Logo del Ayuntamiento de Santiago de Compostela. Abre una ventana nueva">
+				               </a>
+				          </li>
+				          <li class="capaLogos__logos capaLogos__logoZaragoza">
+				               <a href="https://www.zaragoza.es/sedeelectronica/" target="_blank">
+				                    <img title="Logo del Ayuntamiento de Zaragoza. Abre una ventana nueva" src="logos//ayuntZaragoza-logo.svg" alt="Logo del Ayuntamiento de Zaragoza. Abre una ventana nueva">
+				               </a>
+				          </li>  
+				     </ul>       
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="./swagger-ui-bundle.js"> </script>
+    <script src="./swagger-ui-standalone-preset.js"> </script>
+    <script src="./../resources/js/jquery/jquery.min.js"></script> 
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "./../api.json",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        docExpansion: "none",
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      })
+      // End Swagger UI call region
+
+      window.ui = ui
+      
+      $('.topbar-wrapper a:first-child img').attr('src','logos/CiudadesAbiertas-logo.svg');
+      $('.topbar-wrapper a:first-child span').text('Ciudades Abiertas');      
+      $('.topbar').show();
+      //document.getElementsByClassName('topbar-wrapper')[0].getElementsByTagName('img')[0].src = "CiudadesAbiertas-logo.svg";
+    }
+  </script>
+  </body>
+</html>

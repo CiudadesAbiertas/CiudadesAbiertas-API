@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>API_CA</groupId>
+    <artifactId>org.ciudadesabiertas</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.ciudadesabiertas.web</artifactId>
+  
+  <packaging>war</packaging>
+  <name>API_WEB</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    
+    <!--  Dependencia CORE  -->
+	  	<dependency>
+				<groupId>API_CA</groupId>
+	  			<artifactId>org.ciudadesabiertas.core</artifactId>
+	  			<version>0.0.1-SNAPSHOT</version>
+ 	  	</dependency>
+		
+		  
+  </dependencies>
+  <profiles>
+		<profile>
+			<id>all</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>				
+			  	<!--  Dependencia SUBVENCION  -->
+			  	<dependency>
+					<groupId>API_CA</groupId>
+  					<artifactId>org.ciudadesabiertas.subvencion</artifactId>
+  			 		<version>0.0.1-SNAPSHOT</version> 
+  				</dependency>
+  				
+  				<!--  Dependencia Equipamiento -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.equipamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia Equipamiento -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.agenda</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia localcomercial -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.localcomercial</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia puntowifi -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.puntowifi</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia aparcamiento -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.aparcamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia busquedaindexada -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.busquedaindexada</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	 
+			  	 <!--  Dependencia instalaciones deportivas -->
+			  	 <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.instalacionesdep</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia calidad aire -->
+			  	 <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.calidadaire</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+
+			  	<!--  Dependencia avisos quejas sugerencias -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.avisoquejasug</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	
+			  	<!--  Dependencia organigrama -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.organigrama</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia interes turisticos -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.interesturistico</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia monumentos -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.monumento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia alojamiento -->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.alojamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	 <!--  Dependencia callejero-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.callejero</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia tramite-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.tramite</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia para el conjunto de datos plantilla-->
+			  	<!-- 
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.plantilla</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	 -->
+			  	
+			  	
+			  	
+			 </dependencies>
+		</profile>		
+		
+		<profile>
+			<id>subvencion</id>			
+			<dependencies>				
+			  	<dependency>
+					<groupId>API_CA</groupId>
+  					<artifactId>org.ciudadesabiertas.subvencion</artifactId>
+  			 		<version>0.0.1-SNAPSHOT</version> 
+  				</dependency>
+			 </dependencies>
+		</profile>
+		
+		
+		<profile>
+			<id>equipamiento</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.equipamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>agenda</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.agenda</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		
+		
+		<profile>
+			<id>localComercial</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.localcomercial</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>puntoWifi</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.puntowifi</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>aparcamiento</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.aparcamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>busquedaindexada</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.busquedaindexada</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>instalacionDep</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.instalacionesdep</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+
+			<id>calidadAire</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.calidadaire</artifactId>
+			  			<version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>avisoquejasugerencia</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.avisoquejasug</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		
+		<profile>
+			<id>organigrama</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.organigrama</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		
+		<profile>
+			<id>interesturistico</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.interesturistico</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>monumento</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.monumento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>alojamiento</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.alojamiento</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>callejero</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.callejero</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>tramite</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.tramite</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<!-- Perfil para el conjunto de datos plantilla --> 
+		<!-- 
+		<profile>
+			<id>plantilla</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.plantilla</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		 -->
+		
+
+</profiles>
+  
+  
+ 
+  <build>
+    <finalName>${api.warName}</finalName>
+    <plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>					
+				</configuration>
+			</plugin>
+			<!-- Borrado de log, en web no podemos borrar los .properties porque son los definitivos -->
+			<plugin>
+	           <artifactId>maven-antrun-plugin</artifactId>
+	           <executions>
+	             <execution>
+	               <phase>clean</phase>
+	               <goals>
+	                 <goal>run</goal>
+	               </goals>
+	               <configuration>
+	                 <tasks>
+	                   <delete>
+				               <fileset dir="${project.basedir}" includes="*.log" />
+				        </delete>
+	                 </tasks>
+	               </configuration>
+	             </execution>
+	           </executions>
+	         </plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+           	    <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+		        <configuration>
+	          		<webResources>
+			            <webResource>
+			              <directory>${basedir}/src/main/resources/META-INF</directory>
+			              <includes>
+			                <include>context.xml</include>
+			              </includes>
+			              <targetPath>META-INF</targetPath>
+			              <filtering>true</filtering>
+	           			 </webResource>
+	           			  <!-- <webResource>
+				              <directory>${basedir}/src/main/resources</directory>
+				              override the destination directory for this resource
+				              <targetPath>WEB-INF</targetPath>
+				              enable filtering
+				              <filtering>true</filtering>
+				              <excludes>
+				                <exclude>META-INF</exclude>
+				              </excludes>
+				            </webResource> -->
+	           		</webResources>
+		        </configuration>
+		      </plugin>
+		</plugins>
+  </build>
+</project>

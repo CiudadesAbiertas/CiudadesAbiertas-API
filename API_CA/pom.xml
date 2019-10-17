@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>API_CA</groupId>
+	<artifactId>org.ciudadesabiertas</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<api.warName>OpenCitiesAPI</api.warName>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springframework.version>4.3.11.RELEASE</springframework.version>
+		<spring.security.version>4.0.1.RELEASE</spring.security.version>
+		<jackson.version>2.9.2</jackson.version>
+		<slf4j.version>1.7.6</slf4j.version>
+		<logback.version>1.1.2</logback.version>
+		<jdk.version>1.8</jdk.version>
+		<!-- <hibernate.version>4.2.11.Final</hibernate.version> -->
+		<hibernate.version>5.3.7.Final</hibernate.version>
+		<dbcp.version>1.4</dbcp.version>
+		<junit-version>4.12</junit-version>
+		<pmdVersion>6.8.0</pmdVersion>
+		<oracleDriverVersion>11.2.0.3</oracleDriverVersion>
+		<mysqlDriverVersion>5.1.47</mysqlDriverVersion>
+		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>
+	</properties>
+
+
+	<profiles>
+		<profile>
+			<id>all</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_SUBVENCION</module>
+				<module>API_EQUIPAMIENTO</module>
+				<module>API_AGENDA</module>
+				<module>API_LOCALCOMERCIAL</module>
+				<module>API_PUNTOWIFI</module>
+				<module>API_APARCAMIENTO</module>
+				<module>API_BUSQUEDAINDEXADA</module>
+				<module>API_INSTALACIONESDEP</module>
+				<module>API_CALIDADAIRE</module>
+				<module>API_AVISOQUEJASUGERENCIA</module>
+				<module>API_ORGANIGRAMA</module>
+				<module>API_INTERESTURISTICOS</module>
+				<module>API_MONUMENTO</module>
+				<module>API_ALOJAMIENTO</module>
+				<module>API_CALLEJERO</module>
+				<module>API_TRAMITE</module>
+				<!-- 
+				<module>API_PLANTILLA</module>
+				 -->
+				<module>API_WEB</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>subvencion</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_SUBVENCION</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>equipamiento</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_EQUIPAMIENTO</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>agenda</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_AGENDA</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>localComercial</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_LOCALCOMERCIAL</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>puntoWifi</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_PUNTOWIFI</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>aparcamiento</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_APARCAMIENTO</module>
+			</modules>
+		</profile>
+
+
+		<profile>
+			<id>busquedaIndexada</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_BUSQUEDAINDEXADA</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>instalacionDeportiva</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_INSTALACIONESDEP</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>calidadAire</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_CALIDADAIRE</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>avisoQuejaSugerencia</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_AVISOQUEJASUGERENCIA</module>
+			</modules>
+		</profile>
+		
+		
+		<profile>
+			<id>organigrama</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_ORGANIGRAMA</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>interesTuristico</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_INTERESTURISTICOS</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>monumento</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_MONUMENTO</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>alojamiento</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_ALOJAMIENTO</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>callejero</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_CALLEJERO</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>tramite</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_TRAMITE</module>
+			</modules>
+		</profile>
+		
+		<!-- Perfil para el conjunto de datos Plantilla -->
+		<!-- 
+		<profile>
+			<id>plantilla</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_PLANTILLA</module>
+			</modules>
+		</profile>
+		 -->
+		
+		
+		
+		
+	</profiles>
+
+
+	<modules>		
+		<module>rdfGeneratorZ</module>    
+  </modules>
+  
+  	<build>	
+		<plugins>
+			<!-- 
+				Plugin para añadir el copyright en todos los ficheros, se ejecuta con:
+				mvn license:format
+			 -->
+			<plugin>
+		        <groupId>com.google.code.maven-license-plugin</groupId>
+		        <artifactId>maven-license-plugin</artifactId>
+		        <configuration>
+		            <header>copyrightNotice.txt</header>
+		        </configuration>
+		    </plugin>		
+		</plugins>		
+	</build>
+
+
+</project>

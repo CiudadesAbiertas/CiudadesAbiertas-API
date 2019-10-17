@@ -1,0 +1,231 @@
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${T(org.ciudadesabiertas.utils.StartVariables).HTML_TITLE} + ' - Búsqueda indexada'"></title>
+  </head>
+  <body>
+  
+  <div class="container-fluid">
+	  <div class="row">
+	  	<h1>Búsqueda</h1>
+	  </div>	  	  
+	  <div class="row">
+	  	<div class="col-md-8">
+	  		<h2><span id="numResultados"></span>&nbsp;Resultados</h2>
+	  	</div>
+	  	<div class="col-md-4">	  
+		  <nav aria-label="Page navigation paginacionSuperior">
+			  <ul class="pagination">
+			  	<li class="page-item"><a class="page-link" href="#" id="enlaceFirst1">Primera</a></li>
+			    <li class="page-item"><a class="page-link" href="#" id="enlacePrevious1">Anterior</a></li>		    
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceActual1">1</a></li>		    
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceNext1">Siguiente</a></li>
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceLast1">Última</a></li>
+			  </ul>
+			</nav>
+		</div>
+		</div>
+	  
+	  <div id="resultados"></div>
+	  
+	  <div class="row">	  	
+	  	<div class="col-md-4 offset-md-8">	  
+		  <nav aria-label="Page navigation paginacionInferior">
+			  <ul class="pagination">
+			  	<li class="page-item"><a class="page-link" href="#" id="enlaceFirst2">Primera</a></li>
+			    <li class="page-item"><a class="page-link" href="#" id="enlacePrevious2">Anterior</a></li>		    
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceActual2">1</a></li>		    
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceNext2">Siguiente</a></li>
+			    <li class="page-item"><a class="page-link" href="#" id="enlaceLast2">Última</a></li>
+			  </ul>
+			</nav>
+		</div>
+		</div>
+	  	
+   </div>
+        
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap/bootstrap.min.css}">
+    
+    <script th:src="@{/resources/js/jquery/jquery.min.js}"></script>    
+    <script th:src="@{/resources/js/bootstrap/popper.min.js}"></script>
+    <script th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/datatables/datatables.min.css}"/>
+    
+    <script th:src="@{/resources/js/datejs/date.js}"></script>
+    <script th:src="@{/resources/js/datatables/datatables.min.js}"></script>
+    <script th:src="@{/resources/js/numeral/numeral.min.js}"></script>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/ciudadesAbiertas.css}"/>
+    <a id="dataTablesLangLink" th:href="@{/resources/js/datatables/spanish.js}"></a>
+    
+    <script th:src="@{/resources/js/common.js}"></script>   
+    
+    <script>
+    var urlIdioma;
+    var urlSearch="[[${theURL}]]";
+    var recordURL="[[${recordURL}]]";
+    var pageSize="[[${pageSize}]]";
+    var page="[[${page}]]";
+    var sort="[[${sort}]]";
+    
+    //console.log(page)
+    
+    urlSearch=encodeURI(urlSearch);
+    while (urlSearch.indexOf("&amp;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&amp;","&");
+    }
+    while (urlSearch.indexOf("&lt;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&lt;","<");
+    }
+    while (urlSearch.indexOf("&gt;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&gt;",">");
+    }
+    
+    //console.log(urlSearch)
+    
+    </script>
+    
+    
+    
+    
+	
+	<script>	
+	
+var fieldsName=["id","title","tipoEquipamiento","latitud","longitud"];
+var fieldsPosition=[0,1,2,3,4];
+var enableXY=false;	
+var maxDescriptionLength=400;
+
+$(document).ready(function() {
+	
+	
+	var jqxhr = $.getJSON( urlSearch)
+		  .done(function(data) {
+			console.log(data);
+			if ((data!=null)&&(data.records!=null)&&(data.records.length>0))
+			{			 
+			 $("#enlaceActual").html(data.page);
+			 if (data.totalRecords!=null)
+			 {
+			 	$("#numResultados").html(data.totalRecords.toLocaleString('es-ES')+" ");
+			 }
+			 if (data.next!=null)
+			 {				 
+				 $("#enlaceNext1,#enlaceNext2").show();
+				 $("#enlaceNext1,#enlaceNext2").attr("href",data.next.replace(".json",".html")); 
+			 }
+			 else
+			 {
+				 $("#enlaceNext1,#enlaceNext2").hide(); 
+			 }
+			 
+			 if (data.prev!=null)
+			 {				 
+				 $("#enlacePrevious1,#enlacePrevious2").show();
+				 $("#enlacePrevious1,#enlacePrevious2").attr("href",data.prev.replace(".json",".html")); 
+			 }
+			 else
+			 {
+				 $("#enlacePrevious1,#enlacePrevious2").hide(); 
+			 }
+			 if (data.first!=null)				 
+			 {	 
+				 $("#enlaceFirst1,#enlaceFirst2").attr("href",data.first.replace(".json",".html")); 
+			 }
+			 if (data.last!=null)
+			 {	 
+				 $("#enlaceLast1,#enlaceLast2").attr("href",data.last.replace(".json",".html")); 
+			 }
+			 
+			 
+			 for (var i = 0; i < data.records.length; i++) 
+				{
+				
+					var resultadoHTML="";
+					resultadoHTML+="<div class='aResult'>";
+					resultadoHTML+="	<div class='row'>";
+					resultadoHTML+="		<div class='col-md-8'>";
+					resultadoHTML+="			<p class='tituloBusqueda'><a href='"+data.records[i].objectURI+"'>Ficha "+data.records[i].datasetName+" "+data.records[i].id+ "</a></p>";
+					resultadoHTML+="		</div>";
+					if (data.records[i].image!=null)
+					{
+						resultadoHTML+="		<div class='col-md-4'>";
+						resultadoHTML+="			<img class='imagenBusqueda' id='imagenItem'"+i+" src='"+data.records[i].image+"' alt='"+data.records[i].title+"'>";
+						resultadoHTML+="		</div>";
+					}
+					resultadoHTML+="	</div>";
+					resultadoHTML+="	<div class='row'>";
+					resultadoHTML+="		<div class='col-md-8'>";
+					resultadoHTML+="			<p><a href='"+data.records[i].objectURI+"'>"+data.records[i].objectURI+ "</a></p>";
+					resultadoHTML+="		</div>";
+					resultadoHTML+="	</div>";
+					resultadoHTML+="	<div class='row'>";
+					resultadoHTML+="		<div class='col-md-8'>";
+					resultadoHTML+="			<p>"+data.records[i].title+ "</p>";
+					resultadoHTML+="		</div>";
+					resultadoHTML+="	</div>";
+					if (data.records[i].description!=null)
+					{
+						resultadoHTML+="	<div class='row'>";					
+						resultadoHTML+="		<div class='col-md-8'>";
+						var size=data.records[i].description[0].length;
+						console.log(size)
+						if (size<maxDescriptionLength)
+						{
+							resultadoHTML+="			<p>"+data.records[i].description+ "</p>";
+						}
+						else
+						{
+							resultadoHTML+="			<p>"+data.records[i].description[0].substring(0,maxDescriptionLength)+ "...</p>";
+						}
+						resultadoHTML+="		</div>";					
+						resultadoHTML+="	</div>";
+					}
+					
+					resultadoHTML+="</div>";
+					$("#resultados").append(resultadoHTML);
+				}
+			}
+		  })
+		  .fail(function() {
+		    console.log( "Error" );
+		  }) ;
+	
+  
+} );
+
+
+
+
+
+
+</script>
+	
+	
+    
+  </body>
+</html>
