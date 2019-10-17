@@ -72,6 +72,7 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 	@JsonIgnore
 	private static final long serialVersionUID = 508564003699317657L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

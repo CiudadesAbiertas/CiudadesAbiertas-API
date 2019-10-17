@@ -52,6 +52,7 @@ import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 
@@ -77,8 +78,9 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	@JsonIgnore	
 	private static final long serialVersionUID = -975372110060557710L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore	
-	 private String ikey;
+	private String ikey;
 	 	 	
 	 @CsvBindByPosition(position=1)
 	 @CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)

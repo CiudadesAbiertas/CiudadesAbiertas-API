@@ -155,9 +155,8 @@ public class TramiteController extends GenericController implements CiudadesAbie
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
-			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort			
+			)
 	{
 				
 		log.info("[listHTML][" + LIST+Constants.EXT_HTML + "]");
@@ -170,7 +169,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 			params+=search.toUrlParam();
 		}
 				
-		return listHTML(mv, request, srId, page, pageSize, sort, params, MODEL_VIEW_LIST);
+		return listHTML(mv, request, NO_HAY_SRID, page, pageSize, sort, params, MODEL_VIEW_LIST);
 	
 	}
 	
@@ -183,11 +182,13 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public ModelAndView recordHTML(ModelAndView mv, 
+									@PathVariable String id, 
+									HttpServletRequest request)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 				
-		return recordHTML(mv, request, srId, id, MODEL_VIEW_ID);
+		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
 				
 	}
 
@@ -207,20 +208,18 @@ public class TramiteController extends GenericController implements CiudadesAbie
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,			
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[list][" + LIST + "]");
 
-		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [rsqlQ:" + rsqlQ + "] [sort:" + sort + "] [srId:" + srId + "]");
+		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [rsqlQ:" + rsqlQ + "] [sort:" + sort + "]" );
 		
 				
 		RSQLVisitor<CriteriaQuery<Tramite>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Tramite>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new Tramite(), new TramiteResult(), 
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Tramite(), new TramiteResult(), 
 					availableFields, getKey(), visitor, dsService);
 		
 	}
@@ -239,14 +238,12 @@ public class TramiteController extends GenericController implements CiudadesAbie
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listHead][" + LIST + "]");	
-		return list(request, search, fields, rsqlQ, page, pageSize, sort,srId, headersRequest);
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
 
 	}
 	
@@ -332,14 +329,15 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
+													@PathVariable String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
-		log.debug("[parmam][id:" + id + "] [srId:" + srId + "]");
+		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Tramite(), srId, nameController, RECORD, dsService,getKey());
+		return record(request, id, new Tramite(), NO_HAY_SRID, nameController, RECORD, dsService,getKey());
 		
 	}	
 	
@@ -357,7 +355,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 
 		log.info("[recordHead][" + RECORD + "]");
 		
-		return record(request, id, srId);
+		return record(request, id);
 		
 	}
 

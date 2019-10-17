@@ -74,6 +74,7 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 	@JsonIgnore
 	private static final long serialVersionUID = 3254116450000749613L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 

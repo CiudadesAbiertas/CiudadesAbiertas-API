@@ -277,7 +277,7 @@ public class OrganigramaDataRSQLTest
 	public void test_Busqueda_image() throws Exception
 	{
 		String paramField = "q";
-		String value = "image=='https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/vicepte_2.jpg'";
+		String value = "image=='https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/jose_luis_martinez_guijarro.jpg'";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		assertTrue(total == 990);
 	}

@@ -75,6 +75,7 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 	@JsonIgnore
 	private static final long serialVersionUID = -1138933398801266235L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

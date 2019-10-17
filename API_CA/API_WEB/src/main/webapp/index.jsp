@@ -15,10 +15,11 @@
     See the Licence for the specific language governing permissions and limitations under the Licence.
 
 --%>
-
+<%@ page import="org.ciudadesabiertas.utils.StartVariables"%>
+<%@ page session="false" %>
 <html>
  <head>
-  <meta http-equiv="Refresh" content="0;url=swagger/index.html">
+    <meta http-equiv="Refresh" content="0;url=<%=StartVariables.uriBase%><%=StartVariables.context%>/swagger/index.html">
  </head>
  <body>
  </body>

@@ -52,6 +52,7 @@ import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -75,6 +76,7 @@ public class Agenda implements java.io.Serializable,RDFModel {
 	@JsonIgnore
 	private static final long serialVersionUID = -5080412527095370127L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

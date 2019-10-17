@@ -17,6 +17,7 @@
 package org.ciudadesabiertas.config;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -147,7 +148,6 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	// Funcion formatear el JSON que devolvemos
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters)
 	{
-
 		for (HttpMessageConverter<?> converter : converters)
 		{
 			// System.out.println(("Converter: "+converter.getClass().getName()));
@@ -187,26 +187,26 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			}
 		}
 
-		String contextForRDF = applicationContext.getApplicationName();
+		StartVariables.context = applicationContext.getApplicationName();
 		if (Util.validValue(env.getProperty(Constants.STR_CONTEXTO).trim()))
 		{
-			contextForRDF = env.getProperty(Constants.STR_CONTEXTO).trim();
+			StartVariables.context = env.getProperty(Constants.STR_CONTEXTO).trim();
 		}
 
 		// Añadimos el CSV
 		converters.add(new CSVConverter<>());
 
 		// Añadimos el RDF/XML
-		converters.add(new RDFConverter<>(RDFConverter.RDF_XML, env.getProperty(Constants.URI_BASE), contextForRDF));
+		converters.add(new RDFConverter<>(RDFConverter.RDF_XML, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
 		// Añadimos el ttl
-		converters.add(new RDFConverter<>(RDFConverter.TURTLE, env.getProperty(Constants.URI_BASE), contextForRDF));
+		converters.add(new RDFConverter<>(RDFConverter.TURTLE, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
 		// Añadimos N3
-		converters.add(new RDFConverter<>(RDFConverter.N3, env.getProperty(Constants.URI_BASE), contextForRDF));
+		converters.add(new RDFConverter<>(RDFConverter.N3, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
 		// Añadimos JSONLD
-		converters.add(new RDFConverter<>(RDFConverter.JSONLD, env.getProperty(Constants.URI_BASE), contextForRDF));
+		converters.add(new RDFConverter<>(RDFConverter.JSONLD, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
 	}
 
@@ -407,7 +407,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 
 	// Metodo para realizar tareas depués de cargar
 	@PostConstruct
-	public void postConstruct()
+	public void postConstruct() throws MalformedURLException
 	{
 		String maxSize = env.getProperty(Constants.STR_PAGE_MAX);
 		String defaultSize = env.getProperty(Constants.STR_PAGE_DEFAULT);
@@ -418,6 +418,20 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		String srId_LATLON_App = env.getProperty(Constants.STR_LAT_LON_ETRS89_EPSG);
 		String str_pathTemplate = env.getProperty(Constants.STR_PATH_TEMPLATE);
 		String str_rsql_log_active = env.getProperty(Constants.STR_RSQL_LOG_ACTIVE);
+		
+		if (Util.validValue(env.getProperty(Constants.URI_BASE)))
+		{
+			if (Util.validateURL(env.getProperty(Constants.URI_BASE)))
+			{
+				StartVariables.uriBase=env.getProperty(Constants.URI_BASE);
+				StartVariables.serverPort=StartVariables.uriBase.substring(StartVariables.uriBase.indexOf("//")+2);
+				StartVariables.schema=StartVariables.uriBase.substring(0,StartVariables.uriBase.indexOf("://")+3);
+			}else{
+				throw new MalformedURLException(Constants.URI_BASE);
+			}
+			
+		}
+		
 		
 		if (Util.validValue(env.getProperty(Constants.STR_HTML_TITLE)))
 		{

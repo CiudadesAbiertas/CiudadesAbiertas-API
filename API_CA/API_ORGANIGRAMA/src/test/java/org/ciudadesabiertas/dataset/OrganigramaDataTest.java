@@ -490,7 +490,7 @@ public class OrganigramaDataTest
 	{		
 		
 		String paramField= "image";
-		String value = "https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/vicepte_2.jpg";
+		String value = "https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/jose_luis_martinez_guijarro.jpg";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		assertTrue(total == 990);
 	}

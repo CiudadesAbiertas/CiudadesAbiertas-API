@@ -169,9 +169,7 @@ public class CallejeroViaController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
-			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId)
+			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort)
 			
 	{
 		log.info("[listHTML][" + LIST + ".html]");
@@ -183,7 +181,7 @@ public class CallejeroViaController extends GenericController implements Ciudade
 			params+=search.toUrlParam();
 		}		
 		
-		return listHTML(mv, request, srId, page, pageSize, sort, params, MODEL_VIEW_LIST);
+		return listHTML(mv, request, NO_HAY_SRID, page, pageSize, sort, params, MODEL_VIEW_LIST);
 	}
 	
 	@ApiIgnore
@@ -195,7 +193,7 @@ public class CallejeroViaController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
@@ -217,10 +215,7 @@ public class CallejeroViaController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,		
-						
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,	
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -249,13 +244,11 @@ public class CallejeroViaController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listHead][" + LIST + "]");		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, headersRequest);
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
 
 	}
 	
@@ -377,14 +370,14 @@ public class CallejeroViaController extends GenericController implements Ciudade
 	            
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new CallejeroVia(), srId, nameController, RECORD, service,getKey());
+		return record(request, id, new CallejeroVia(), NO_HAY_SRID, nameController, RECORD, service,getKey());
 
 	}
 	
@@ -397,11 +390,11 @@ public class CallejeroViaController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
-		return record(request, id,srId);
+		return record(request, id);
 		
 	}
 	

@@ -76,6 +76,7 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	@JsonIgnore
 	private static final long serialVersionUID = -4486812743090306716L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

@@ -37,6 +37,7 @@ import org.ciudadesabiertas.utils.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -82,6 +83,9 @@ public class UserController implements CiudadesAbiertasController
 	
 	@Autowired
 	protected MultipleConf mConf;
+	
+	@Autowired
+	protected Environment env;
 	
 	private static List<RequestType> listRequestType = new ArrayList<RequestType>();
 	
@@ -317,7 +321,7 @@ public class UserController implements CiudadesAbiertasController
 		
 		Result<User> obj = new Result<User>();
 		
-		Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request, listado.size(), 1);
+		Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request, listado.size(), 1,env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
 
 		// Pagina actual
 		((Result<User>) obj).setSelf(pageMetadataCalculation.get(Constants.SELF));

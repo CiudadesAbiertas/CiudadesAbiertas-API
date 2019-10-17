@@ -35,6 +35,7 @@ import org.ciudadesabiertas.utils.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -74,6 +75,9 @@ public class BusquedaIndexadaController implements CiudadesAbiertasController
 
 	@Autowired
 	private BusquedaIndexadaService solrService;	
+	
+	@Autowired
+	protected Environment env;
 	
 	
 	//http://localhost:8080/API/solr.json?query=madrid
@@ -135,7 +139,7 @@ public class BusquedaIndexadaController implements CiudadesAbiertasController
 			{
 				BusquedaIndexadaResult solrResult = solrService.query(dataset, query, numPage, numPageSize);
 			
-				Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request,solrResult.getTotalRecords(),numPageSize);
+				Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request,solrResult.getTotalRecords(),numPageSize,env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
 				
 				//Pagina actual
 				solrResult.setSelf(pageMetadataCalculation.get(Constants.SELF));				

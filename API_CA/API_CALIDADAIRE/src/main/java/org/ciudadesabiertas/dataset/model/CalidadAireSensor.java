@@ -48,6 +48,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -70,6 +71,7 @@ public class CalidadAireSensor implements java.io.Serializable, RDFModel, PathId
 	@JsonIgnore
 	private static final long serialVersionUID = 3834643563854471365L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

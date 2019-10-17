@@ -84,7 +84,7 @@ public class GenericController<T> {
 	
 	
 	/**
-	 * Para generar el registoro HTML
+	 * Para generar el registro HTML
 	 * @param mv
 	 * @param request
 	 * @param srId
@@ -498,6 +498,8 @@ public class GenericController<T> {
 			if (objP!=null)
 			{	
 				listado.add(objP);
+				resultObj.setPage(1);
+				resultObj.setPageRecords(1);
 				resultObj.setPageSize(1);
 				resultObj.setTotalRecords(1);
 				resultObj.setRecords((List<Object>) listado);
@@ -1055,8 +1057,7 @@ public class GenericController<T> {
 		Util.generaCoordenadasAll(StartVariables.SRID_XY_APP, srId, listado);		
 				
 		
-		Map<String, String> pMCalculation = Util.pageMetadataCalculation(request, result.getTotalRecords(),
-				numPageSize);
+		Map<String, String> pMCalculation = Util.pageMetadataCalculation(request,  result.getTotalRecords(), numPageSize, env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
 
 		// Pagina actual
 		((Result<?>) obj).setSelf(pMCalculation.get(Constants.SELF));
@@ -1104,9 +1105,9 @@ public class GenericController<T> {
 		//Control de coordenadas
 		Util.generaCoordenadasAll( srId, listado);		
 		
+		
 
-
-		Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request, total, numPageSize);
+		Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request, total, numPageSize,env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
 
 		// Pagina actual
 		((Result<?>) obj).setSelf(pageMetadataCalculation.get(Constants.SELF));
@@ -1204,6 +1205,14 @@ public class GenericController<T> {
 	public void setNumPageSize(int numPageSize) {
 		this.numPageSize = numPageSize;
 	}
+	
+	
+
+		
+
+	
+	
+	
 }
 
 

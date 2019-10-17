@@ -66,6 +66,10 @@ public class SwaggerConstants
 	public static final String FORMATOS_CONSULTA_HEAD = "Solo valores de la cabeceras de la petición (Header)";
 	public static final String TRANSFORMACION="Transformación de un registro externo";
 	public static final String DESCRIPCION_TRANSFORMACION = "Permite generar un recurso externo en los diferentes formatos de la API";
+	public static final String LISTADO_CUBO_POR_DIMENSION = "Búsqueda de cubos de datos que tienen una derminada dimensión";
+	public static final String CONSULTA_CUBO = "Consulta a un cubo de datos";
+	public static final String DESCRIPCION_CONSULTA_CUBO = "Permite obtener los datos de un cubo fijando una dimensión, una medida y aplicando una operación de agregación";
+	public static final String LISTADO_CUBO_POR_MEDIDA = "Búsqueda de cubos de datos que tienen una derminada medida";
 	
 	//Parametros a Documentar
 	public static final String PARAM_ID_TEXT= "id del Objeto necesario para ejecutar la operación";
@@ -86,7 +90,8 @@ public class SwaggerConstants
 	public static final String PARAM_LICENCIAACTIVIDAD_TEXT= "Objeto (LicenciaActividad) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_TERRAZA_TEXT= "Objeto (Terraza) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_ORGANIGRAMA_TEXT= "Objeto (Organigrama) en formato json necesario para poder realizar la operación";
-	public static final String PARAM_PLANTILLA_TEXT= "Objeto (Plantilla) en formato json necesario para poder realizar la operación";	
+	public static final String PARAM_PLANTILLA_TEXT= "Objeto (Plantilla) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CUBO_PADRON_DISTRITO_EDAD_TEXT= "Objeto (Observación del Cubo de Datos de Padron: Distrito y Edad) en formato json necesario para poder realizar la operación";	
 	
 	
 	public static final String PARAM_OBSERVES_ID_TEXT= "Código del elemento que se está obervando";

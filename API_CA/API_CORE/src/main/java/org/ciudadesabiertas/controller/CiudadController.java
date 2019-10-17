@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.ciudadesabiertas.model.Ciudad;
@@ -31,12 +32,14 @@ import org.ciudadesabiertas.service.CiudadService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.HttpUtil;
 import org.ciudadesabiertas.utils.SecurityURL;
+import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Util;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -67,6 +70,9 @@ public class CiudadController implements CiudadesAbiertasController
 
 	@Autowired
 	private Environment env;
+	
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	@Autowired
 	private CiudadService ciudadService;
@@ -80,9 +86,8 @@ public class CiudadController implements CiudadesAbiertasController
 	@RequestMapping(value = Constants.API_JSON, method = RequestMethod.GET, produces = Constants.CONTENT_TYPE_JSON_UTF8)
 	public @ResponseBody String API_JSON(HttpServletRequest request)
 	{
-
 		log.info(Constants.API_JSON);
-
+				
 		if (apiJsonResponse == null)
 		{
 			String json = "";
@@ -107,11 +112,28 @@ public class CiudadController implements CiudadesAbiertasController
 			try
 			{
 				json = HttpUtil.getPetition(path, headers);
+				
 			} catch (Exception e)
 			{
 				log.error("Error reading documentation", e);
 			}
-
+			
+			String tomcatHost=request.getServerName()+":"+request.getServerPort();
+			String actualHost=StartVariables.serverPort;			
+			
+			String tomcatContext = applicationContext.getApplicationName();
+			String newContext=StartVariables.context; 
+			
+			
+			if (tomcatHost.equals(actualHost)==false)
+			{
+				json=json.replace(tomcatHost, actualHost);
+			}
+			if (Util.validValue(newContext))
+			{
+				json=json.replace(tomcatContext, newContext);
+			}
+			
 			if (escritura)
 			{
 				json = Util.jsonPrettyPrint(json);

@@ -31,6 +31,8 @@ public class Constants
 	
 	public static final String ENCODING_UTF8 = "UTF-8";
 	
+	public static final int defaultNumberValue = -1;
+	
 	public static final String API_JSON = "/api.json";
 	public static final String SWAGGER="/swagger/";
 	public static final String RESOURCES = "/resources/";

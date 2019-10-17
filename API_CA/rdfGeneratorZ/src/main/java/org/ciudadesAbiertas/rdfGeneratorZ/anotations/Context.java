@@ -31,6 +31,14 @@ public class Context {
 	public static final String ESCJR_URI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#";
 	public static final String GEOCORE_URI="http://datos.ign.es/def/geo_core#";
 	public static final String ESSRVC_URI = "http://vocab.linkeddata.es/datosabiertos/def/sector-publico/servicio#";
+	public static final String QB_URI = "http://purl.org/linked-data/cube#";
+	public static final String SKOS_URI = "http://www.w3.org/2004/02/skos/core#";
+	public static final String ESPADMEDIDA_URI = "http://vocab.linkeddata.es/def/demografia/padron-municipal/medida#";	                                              
+	public static final String IAESTDIMENSION_URI = "https://opendata.aragon.es/def/iaest/dimension#";
+	public static final String SDMXDIMENSION_URI = "http://purl.org/linked-data/sdmx/2009/dimension#";
+	
+	
+	
 	
 	
 	
@@ -85,6 +93,13 @@ public class Context {
 	public static final String DUL = "dul";
 	public static final String ESAIR = "esair";
 	public static final String GEOCORE = "geo_core";
+	public static final String QB = "qb";
+	public static final String ESPADMEDIDA = "espad-medida";
+	public static final String IAESTDIMENSION = "iaest-dimension";
+	public static final String SDMXTDIMENSION = "sdmx-dimension";
+	
+	
+	
 	
 	
 	
@@ -124,7 +139,7 @@ public class Context {
         listado.put(MAPEOSEM,new Context("https://www.zaragoza.es/sede/portal/def/urbanismo-infraestructuras/mapeo-semantico-calle#", MAPEOSEM));
         listado.put(ORGES, new Context(ORGES_URI,ORGES));
         listado.put(SCHEMA, new Context(SCHEMA_URI,SCHEMA));        
-        listado.put(SKOS, new Context("http://www.w3.org/2004/02/skos/core#",SKOS));
+        listado.put(SKOS, new Context(SKOS_URI,SKOS));
         listado.put(EVENT, new Context("http://purl.org/NET/c4dm/event.owl#",EVENT));        
         listado.put(LOCN, new Context("http://www.w3.org/ns/locn#",LOCN));
         listado.put(OWL, new Context(OWL_URI,OWL));
@@ -142,6 +157,13 @@ public class Context {
         listado.put(DUL, new Context(DUL_URI,DUL));
         listado.put(ESAIR, new Context(ESAIR_URI,ESAIR));
         listado.put(GEOCORE, new Context(GEOCORE_URI,GEOCORE));
+        listado.put(QB, new Context(QB_URI,QB));
+        listado.put(ESPADMEDIDA, new Context(ESPADMEDIDA_URI,ESPADMEDIDA));
+        listado.put(IAESTDIMENSION, new Context(IAESTDIMENSION_URI,IAESTDIMENSION));
+        listado.put(SDMXTDIMENSION, new Context(SDMXDIMENSION_URI,SDMXTDIMENSION));
+        
+        
+        
         
     }
 	

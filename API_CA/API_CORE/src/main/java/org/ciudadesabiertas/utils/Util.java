@@ -356,11 +356,11 @@ public class Util
 	        {
 	            requestURL.append("?").append(request.getQueryString());
 	        }
-	        String completeURL = requestURL.toString();
+	        String completeURL = requestURL.toString();	        
 	        return completeURL;
 	 }
 	
-	public static PageInfo getPageInfoFromURL(HttpServletRequest request, int pageSize) {
+	public static PageInfo getPageInfoFromURL(HttpServletRequest request, int pageSize, String uriBase, String context) {
 	    
 		PageInfo info=new PageInfo();
 		if (Util.validValue(pageSize))
@@ -369,7 +369,19 @@ public class Util
 		}
 		String extraParams="";
 		
-		info.setRequestURL(request.getRequestURL().toString());
+		String serverData=request.getServerName()+":"+request.getServerPort();		
+		String tomcatContex=request.getContextPath();
+		
+		String tomcatURI=request.getRequestURL().toString();
+		
+		tomcatURI=tomcatURI.replace(serverData, StartVariables.serverPort);
+		tomcatURI=tomcatURI.replace(tomcatContex, StartVariables.context);
+		
+		int cutPosition=tomcatURI.indexOf("://")+3;		
+		String prefix=StartVariables.schema;
+		tomcatURI=prefix+tomcatURI.substring(cutPosition).replace("//", "/");
+		
+		info.setRequestURL(tomcatURI);
 		
 		 Map<String, String[]> parameterNames = request.getParameterMap(); 
 		 
@@ -424,9 +436,9 @@ public class Util
 	}
 	
 	
-	public static Map<String,String> pageMetadataCalculation(HttpServletRequest request, long total, int pageSize )
+	public static Map<String,String> pageMetadataCalculation(HttpServletRequest request, long total, int pageSize, String uriBase, String context )
 	{
-		PageInfo info=Util.getPageInfoFromURL(request,pageSize);
+		PageInfo info=Util.getPageInfoFromURL(request,pageSize, uriBase, context);
 		log.debug(info.toString());
 		//Numero de paginas
 		long numPages=total/pageSize;
@@ -990,6 +1002,8 @@ public class Util
 	}
 	
 	
+	
+	
 	/* Private Method Auxiliar */
 	
 	private static List<RequestType> verifyRequestByParamAuth(String listService, String key,
@@ -1239,6 +1253,9 @@ public class Util
 		}
 	}
 	
+	
+	
+	
 	/**
 	 * Metodo para ver si los objetos de un listado extienden de Geomodel.
 	 * @param listado
@@ -1257,6 +1274,12 @@ public class Util
 		}
 		return result;
 	}
+	
+	
+
+	
+	
+
 	
 	public static String getExtensionUri(String uri) {
 		//String uri = "http://www.google.com/support/enterprise/static/gsa/docs/admin/70/gsa_doc_set/integrating_apps/images/google_logo.png";
@@ -1378,6 +1401,17 @@ public class Util
         }
         return true;
 	                
+	}
+	
+	
+	public static boolean validateURL(String URL) {
+		try {
+	        new URL(URL);	        
+	    } catch (MalformedURLException malformedURLException) {
+	        malformedURLException.printStackTrace();
+	        return false;
+	    }
+		return true;
 	}
 	
 	public static String prepareStringToCompare(String text)

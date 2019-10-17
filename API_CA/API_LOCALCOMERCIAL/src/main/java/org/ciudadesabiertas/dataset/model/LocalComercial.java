@@ -76,6 +76,7 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 	@JsonIgnore
 	private static final long serialVersionUID = 8909539156599176499L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 		

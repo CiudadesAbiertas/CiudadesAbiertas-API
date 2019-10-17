@@ -47,4 +47,9 @@ public class StartVariables
 		public static String PATH_TEMPLATE = Constants.DEFAUL_PATH_TEMPLATE;
 		
 		public static boolean RSQL_LOG_ACTIVE = false;
+		
+		public static String context = "";
+		public static String uriBase = "";
+		public static String serverPort = "";
+		public static String schema = "";
 }

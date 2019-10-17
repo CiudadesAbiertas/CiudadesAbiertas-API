@@ -123,3 +123,5 @@ liquibase_CA/.gitignore
 liquibase_CA/.project
 liquibase_CA/.settings/
 API_CA/.project
+/.metadata/
+*.log

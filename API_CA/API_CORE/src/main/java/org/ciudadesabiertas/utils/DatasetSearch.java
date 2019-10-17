@@ -37,12 +37,22 @@ public interface DatasetSearch<T>  {
 
 	static final Logger log = LoggerFactory.getLogger(DatasetSearch.class);
 
+	static List<String> numbers=new ArrayList<String>(); 
 	
 	default List<Criterion> obtenerCriterios (String driver) {
 		
 		List<Criterion> condiciones = new ArrayList<Criterion>();
 		
 		List<BeanUtil> listData = Util.obtenerBeanUtil(this);
+		
+		if (numbers.size()==0)
+		{
+			numbers.add("int");
+			numbers.add("double");
+			numbers.add("long");
+			numbers.add("long");	
+		}
+		
 		
 		if (listData!=null && !listData.isEmpty()) {
 			
@@ -61,9 +71,15 @@ public interface DatasetSearch<T>  {
 						condiciones.add(c1);
 					}else if (Constants.TYPE_CLASS_CLASS.equals(obj.getTypeName())) {
 						//No hacemos nada
-						log.debug("propertyName: "+obj.getFieldName()+ " / typeName: "+obj.getTypeName() + " / valor: "+obj.getValue());
-					}
-					else {
+						log.debug("propertyName: "+obj.getFieldName()+ " / typeName: "+obj.getTypeName() + " / valor: "+obj.getValue());					
+					}else if (numbers.contains(obj.getTypeName())) {
+						//Si es un numero y es distinto de -1 es cuando contemplamos la condicion
+						if (!obj.getValue().toString().contentEquals(Constants.defaultNumberValue+""))
+						{
+							Criterion c1 = Restrictions.eq(obj.getFieldName(),obj.getValue());
+							condiciones.add(c1);
+						}						
+					}else {						
 						Criterion c1 = Restrictions.eq(obj.getFieldName(),obj.getValue());
 						condiciones.add(c1);
 					}

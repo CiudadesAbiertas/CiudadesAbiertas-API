@@ -4,9 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RdfBlankNode {	
-	
-	String nodoId() default "";	
-	String propiedad() default "";
-	String tipo() default "";
+public @interface RdfList {	
+	String propiedad() default "";	
+
 }

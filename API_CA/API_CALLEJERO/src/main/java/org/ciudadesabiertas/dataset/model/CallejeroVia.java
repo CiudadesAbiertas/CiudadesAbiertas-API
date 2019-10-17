@@ -42,6 +42,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -63,6 +64,7 @@ public class CallejeroVia implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private static final long serialVersionUID = 3254116450110749613L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 

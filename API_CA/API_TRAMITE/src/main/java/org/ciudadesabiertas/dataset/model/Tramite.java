@@ -47,6 +47,7 @@ import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -70,6 +71,7 @@ public class Tramite implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private static final long serialVersionUID = 1359450167129002564L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

@@ -16,7 +16,7 @@
 
 function generateSize(pageSize)
 {	
-	var size=10
+	var size=100;
 	if (pageSize==''){
 		return size;
 	}else{
@@ -34,7 +34,7 @@ function generateOffset(page, pageSize)
 	}
 	if (pageSize=='')
 	{
-		pageSize=10;
+		pageSize=100;
 	}
 	//console.log("page: "+page+" pageSize: "+pageSize)
 	var n=(page-1)*pageSize

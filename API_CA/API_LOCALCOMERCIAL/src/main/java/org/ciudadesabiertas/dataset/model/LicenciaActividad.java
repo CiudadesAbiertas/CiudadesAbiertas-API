@@ -49,6 +49,7 @@ import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 
@@ -71,6 +72,7 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 {	
 	private static final long serialVersionUID = -6739471497337390438L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 		

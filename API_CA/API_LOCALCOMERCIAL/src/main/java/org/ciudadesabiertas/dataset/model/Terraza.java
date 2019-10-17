@@ -46,6 +46,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -68,6 +69,7 @@ public class Terraza implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private static final long serialVersionUID = -5961893412810181397L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

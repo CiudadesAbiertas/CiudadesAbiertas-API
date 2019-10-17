@@ -40,7 +40,9 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfDinamico;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfList;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfType;
 import org.ciudadesAbiertas.rdfGeneratorZ.geo.Geometria;
@@ -372,9 +374,11 @@ public class TransformadorBasicoRdf {
 			boolean transformarCampo = transformarCampo(retorno, peticion, prefijo, field);
 
 			if (transformarCampo
-					&& (field.isAnnotationPresent(Rdf.class) ||
+					&& (field.isAnnotationPresent(Rdf.class) || 
 							field.isAnnotationPresent(IsPropiedadSemanticaCentro.class) ||
 							field.isAnnotationPresent(RdfMultiple.class)) && !field.isAnnotationPresent(Interno.class)) {
+				
+				
 				Object valor = Funciones.retrieveObjectValue(retorno, field
 						.getName());
 
@@ -478,6 +482,13 @@ public class TransformadorBasicoRdf {
 							//Modificación JCBH
 							if (field.isAnnotationPresent(RdfExternalURI.class)) {
 								
+								boolean isValorURI=false;
+								
+								if ((valor.toString().startsWith("/"))||(valor.toString().startsWith("http")))
+								{
+									isValorURI=true;
+								}
+								
 								
 								String separador=obtenerSeparadorAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
 								ArrayList<String> theURIs=new ArrayList<String>();
@@ -556,7 +567,23 @@ public class TransformadorBasicoRdf {
 											{
 												model.add(externalResourceURI, RDF.type, model.createResource(tipo));
 											}
-											model.add(externalResourceURI, entityProp, valor.toString());
+											
+											if (isValorURI)
+											{
+												String valorURI="";
+												if (valor.toString().startsWith("/"))
+												{
+													valorURI=uriBase+context+valor.toString();
+												}else {
+													valorURI=valor.toString();
+												}
+												
+												model.add(externalResourceURI, entityProp, model.createResource(valorURI));
+											}
+											else 
+											{											
+												model.add(externalResourceURI, entityProp, valor.toString());
+											}
 										}									
 									}
 									
@@ -641,9 +668,60 @@ public class TransformadorBasicoRdf {
 								}
 							}
 							output = true;
-						}
+						} 
 
 				}
+			}else if (transformarCampo && field.isAnnotationPresent(RdfDinamico.class)) {							
+								
+				
+				String inicioURI=obtenerInicioURIAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
+				
+				if (inicioURI.startsWith("/"))
+				{
+					inicioURI=uriBase+context+inicioURI;
+				}
+				String finURI=obtenerFinURIKeyAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
+				String propiedad=obtenerPropiedadAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));																		
+				String valorURI=mapaValores.get(finURI);
+						
+			
+				model.add(resource, model.createProperty(propiedad), model.createResource(inicioURI+valorURI));
+				
+				output = true;
+			}else if (transformarCampo && field.isAnnotationPresent(RdfList.class)) {
+				
+				Object valor = Funciones.retrieveObjectValue(retorno, field.getName());
+				String propiedad=obtenerPropiedadAnotacionRdfList(field.getAnnotation(RdfList.class));	
+				
+				
+				List<String> valueList = (List)valor;
+				
+				for (String actualValue:valueList)
+				{
+					actualValue=actualValue.trim();
+					
+					if (actualValue.startsWith("/"))
+					{
+						actualValue=uriBase+context+actualValue;
+					}
+				
+					if( field.isAnnotationPresent(RdfBlankNode.class) )
+					{
+						String propiedadNodoEnBlanco=obtenerPropiedadNodoBlanco(field.getAnnotation(RdfBlankNode.class));	
+						
+						Resource blankNodeResource=model.createResource();
+						
+						model.add(resource, model.createProperty(propiedad), blankNodeResource);
+						
+						model.add(blankNodeResource, model.createProperty(propiedadNodoEnBlanco), actualValue);
+					}
+					else {
+						model.add(resource, model.createProperty(propiedad), actualValue);
+					}
+					
+				}
+				
+				
 			}
 		}
 		
@@ -1091,12 +1169,21 @@ public class TransformadorBasicoRdf {
 		return ann.inicioURI();
 	}
 	
+	private String obtenerInicioURIAnotacionDinamicRDF(RdfDinamico ann) {
+		
+		return ann.inicioURI();
+	}
+	
 	private String obtenerSeparadorAnotacionExternalRDF(RdfExternalURI ann) {
 		
 		return ann.separador();
 	}
 	
 	private String obtenerFinURIKeyAnotacionExternalRDF(RdfExternalURI ann) {
+		return ann.finURI();
+	}
+	
+	private String obtenerFinURIKeyAnotacionDinamicRDF(RdfDinamico ann) {
 		return ann.finURI();
 	}
 	
@@ -1113,6 +1200,15 @@ public class TransformadorBasicoRdf {
 	private String obtenerPropiedadAnotacionExternalRDF(RdfExternalURI ann) {
 		return ann.propiedad();
 	}
+	
+	private String obtenerPropiedadAnotacionDinamicRDF(RdfDinamico ann) {
+		return ann.propiedad();
+	}
+	
+	private String obtenerPropiedadAnotacionRdfList(RdfList ann) {
+		return ann.propiedad();
+	}
+	
 	
 		
 	private String obtenerTipoAnotacionExternalRDF(RdfExternalURI ann) {

@@ -24,6 +24,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
+
 import org.ciudadesabiertas.dao.DatasetDao;
 import org.ciudadesabiertas.dao.DatasetDistinctDao;
 import org.ciudadesabiertas.dao.DatasetGroupDao;
@@ -72,6 +73,7 @@ public class DatasetService<T>  {
 	@Autowired
 	private DatasetDistinctDao<T> datasetDistinctDao;
 	
+
 	
 	@Autowired
 	private RSQLDao rsqlDao;
@@ -225,6 +227,8 @@ public class DatasetService<T>  {
 	}
 
 	 
+   
+ 
  
 	 
 }

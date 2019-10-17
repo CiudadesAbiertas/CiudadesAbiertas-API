@@ -45,6 +45,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -67,6 +68,7 @@ public class AgrupacionComercial implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private static final long serialVersionUID = -7859043075442172899L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 		

@@ -75,6 +75,7 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 	@JsonIgnore
 	private static final long serialVersionUID = -5896570841942655495L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

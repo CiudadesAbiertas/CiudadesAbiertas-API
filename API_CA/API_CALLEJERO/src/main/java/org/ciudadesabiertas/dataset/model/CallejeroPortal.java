@@ -72,6 +72,7 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	@JsonIgnore
 	private static final long serialVersionUID = 7914312089246811989L;	
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	

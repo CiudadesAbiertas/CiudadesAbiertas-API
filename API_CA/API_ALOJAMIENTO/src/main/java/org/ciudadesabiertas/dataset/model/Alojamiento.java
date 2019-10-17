@@ -78,6 +78,7 @@ public class Alojamiento implements java.io.Serializable, GeoModel, RDFModel {
 	@JsonIgnore
 	private static final long serialVersionUID = 1359450199129002564L;
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	
