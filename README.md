@@ -9,11 +9,14 @@ A continuacion se muestran las distintos directorios que existen en el repositor
 
 Dentro de cada uno de estos directorios, se encuentra más documentación.
 
-
 # Autores
  - Juan Carlos Ballesteros (Localidata)
  - Carlos Martínez de la Casa (Localidata)
  - Oscar Corcho (UPM, Localidata)
+ 
+# Commits Anteriores
+
+Este proyecto parte de un repositorio privado anterior, todos los commits de este repositorio se encuentran listados en el fichero: commits.csv
 
 # Licencia
 Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
