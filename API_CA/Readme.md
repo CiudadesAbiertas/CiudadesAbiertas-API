@@ -32,14 +32,14 @@ Para empezar debemos descargar el repositorio a través de la herramienta git.
 
 El repositorio se encuentra en la URL: 
 
-[https://bitbucket.org/zaragoza/sede_ciudadesabiertas_localidata](https://bitbucket.org/zaragoza/sede_ciudadesabiertas_localidata)
+[https://github.com/CiudadesAbiertas/CiudadesAbiertas-API](https://github.com/CiudadesAbiertas/CiudadesAbiertas-API)
 
 Para descargarlo se utilizaran los siguientes comandos: 
 
 ```sh
 $ mkdir ciudadesAbiertas
 $ cd ciudadesAbiertas
-$ git clone https://bitbucket.org/zaragoza/sede_ciudadesabiertas_localidata
+$ git clone https://github.com/CiudadesAbiertas/CiudadesAbiertas-API
 ```
 
 
@@ -95,21 +95,21 @@ El IDE utilizado es Eclipse (Photon Release 4.8.0) configurado con Oracle Java 8
 
 En el árbol de proyectos se pulsa botón derecho con el ratón y se pulsa "import", y nuevamente "import":
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/import1.PNG "Importando el proyecto paso 1")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/import1.PNG "Importando el proyecto paso 1")
 
 A continuación se selecciona "Existing Maven Projects":
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/import2.PNG "Importando el proyecto paso 2")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/import2.PNG "Importando el proyecto paso 2")
 
 Se pulsa en la esquina superior derecha en el botón "browse", se selecciona la ruta donde esta el proyecto.
 
 En unos segundos aparecerán todos los módulos desarrollados dentro del repositorio, se debe marcar todo los que aparecen dentro de API_CA: 
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/import3.PNG "Importando el proyecto paso 3")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/import3.PNG "Importando el proyecto paso 3")
 
 Se pulsa el botón "Finish" y en unos segundos se debe ver el siguiente arbol de proyectos:
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/imported.PNG "solución importada")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/imported.PNG "solución importada")
 
 Se le debe dar unos minutos para que Eclipse termine de descargarse todas las librerias que necesite.
 
@@ -298,15 +298,15 @@ db.validationQuery=Select 1
 
 Para esto se debe ir a la pestaña "Servers" y pulsar botón derecho de ratón encima del servidor, se selecciona "Add and Remove":
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/running1.PNG "Arrancando la solución paso 1")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/running1.PNG "Arrancando la solución paso 1")
 
 Debe aparecer a la izquieda el proyecto "org.ciudadesabiertas.web":
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/running2.PNG "Arrancando la solución paso 2")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/running2.PNG "Arrancando la solución paso 2")
 
 Ahora se debe pasar a la derecha seleccionandolo y pulsando el botón "Add"
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/running3.PNG "Arrancando la solución paso 3")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/running3.PNG "Arrancando la solución paso 3")
 
 Para acabar se pulsa el botón "Finish".
 
@@ -534,26 +534,26 @@ La documentación de la API esta disponible en la URL <http://localhost:8080/Ope
 
 Para realizar la autenticación y realizar pruebas debemos pulsar en el botón "Autorize"
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/swaggerAuth1.PNG "Botón autorizar en swagger")
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/swaggerAuth1.PNG "Botón autorizar en swagger")
 
 Ahora solicita introducir el token:
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/swaggerAuth2.PNG "Solicitud de token").
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/swaggerAuth2.PNG "Solicitud de token").
 
 Es el momento de generar un token (a través de 'curl', por ejemplo). Ahora que ya se tiene un token, debemos escribir "Bearer " y a continuación su valor:
 
  
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/swaggerAuth3.PNG "Escribimos el token").
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/swaggerAuth3.PNG "Escribimos el token").
 
 Se pulsa en el boton "autorize", y a continuación veremos la siguiente pantalla:
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/swaggerAuth4.PNG "Token configurado").
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/swaggerAuth4.PNG "Token configurado").
 
 Se pulsa el botón close, y ya se puede probar cualquier llamada de la API.
 
 Al pulsar "execute" se puede ver en la llamada realizada que la  autenticación se incluye:
 
-![alt text](https://www.localidata.com/temp/ciudadesAbiertas/doc/swaggerAuth5.PNG "Llamada con token bearer").
+![alt text](https://raw.githubusercontent.com/CiudadesAbiertas/CiudadesAbiertas-API/master/API_CA/Doc/swaggerAuth5.PNG "Llamada con token bearer").
 
 
 ## Parámetros en las operaciones
