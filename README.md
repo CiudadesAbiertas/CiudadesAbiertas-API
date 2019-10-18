@@ -16,7 +16,8 @@ Dentro de cada uno de estos directorios, se encuentra más documentación.
  
 # Commits Anteriores
 
-Este proyecto parte de un repositorio privado anterior, todos los commits de este repositorio se encuentran listados en el fichero: commits.csv
+Este proyecto parte de un repositorio privado anterior, todos los commits de este repositorio se encuentran listados en el fichero: previous_commits.csv (https://github.com/CiudadesAbiertas/CiudadesAbiertas-API/blob/master/previous_commits.csv)
+
 
 # Licencia
 Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
