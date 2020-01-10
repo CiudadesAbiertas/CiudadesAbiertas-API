@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="Localidata" id="table_padron_cube1">
+		<createTable tableName="padron_edad">
+			<column name="ikey" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ref_period" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="edad_grupos_quinquenales" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sex" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="numero_personas" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="padron_edad" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet author="Localidata" id="PK-table-padron_cube_edad">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Edad" tableName="padron_edad" />
+	</changeSet>
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_edad">
+		<createIndex indexName="cubo-padron1-id"
+			tableName="padron_edad">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+
+	<changeSet author="Localidata" id="table_padron_cube2">
+		<createTable tableName="padron_estudios">
+			<column name="ikey" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ref_period" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="tipo_nivel_estudio" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="numero_personas" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+            <dropTable tableName="padron_estudios"/>            
+       </rollback> 
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="PK-table-padron_cube_estudios">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Estudios" tableName="padron_estudios" />
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_estudios">
+		<createIndex indexName="cubo-padron2-id"
+			tableName="padron_estudios">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+
+	<changeSet author="Localidata" id="table_padron_cube3">
+		<createTable tableName="padron_nacionalidad">
+			<column name="ikey" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ref_period" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="edad_grupos_quinquenales" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sex" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="nacionalidad" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="numero_personas" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="padron_nacionalidad" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet author="Localidata"
+		id="PK-table-padron_cube_nacionalidad">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Nacionalidad"
+			tableName="padron_nacionalidad" />
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_nacionalidad">
+		<createIndex indexName="cubo-padron3-id"
+			tableName="padron_nacionalidad">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+    
+    <changeSet author="Localidata" id="table_padron_cube4">
+    <createTable tableName="padron_procedencia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_period" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="edad_grupos_quinquenales" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo_nivel_estudio" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provincia_procedencia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_procedencia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barrio_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barrio_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seccion_censal_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seccion_censal_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_personas" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+			<dropTable tableName="padron_procedencia" />
+		</rollback>
+    </changeSet>
+    
+    <changeSet author="Localidata"
+		id="PK-table-padron_cube_procedencia">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Procedencia"
+			tableName="padron_procedencia" />
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_procedencia">
+		<createIndex indexName="cubo-padron4-id"
+			tableName="padron_procedencia">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table_padron_cube5">
+	<createTable tableName="padron_indicadores">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_period" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barrio_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="barrio_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seccion_censal_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seccion_censal_title" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_dependencia" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_feminidad" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_infancia" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_juventud" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_maternidad" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_poblacion_activa" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_reemplazo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_sobreenvejecimiento" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indice_tendencia" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tasa_mortalidad" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tasa_natalidad" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="edad_media_poblacion" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="porcentaje_poblacion_joven" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="porcentaje_poblacion_adulta" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="porcentaje_poblacion_envejec" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="porcentaje_poblacion_ext_inf" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_personas" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="padron_indicadores"/>            
+       </rollback> 
+    </changeSet>
+           
+
+    
+    <changeSet author="Localidata"
+		id="PK-table-padron_cube_indicadores">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Indicadores"
+			tableName="padron_indicadores" />
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_indicadores">
+		<createIndex indexName="cubo-padron5-id"
+			tableName="padron_indicadores">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+	
+	  
+
+
+</databaseChangeLog>

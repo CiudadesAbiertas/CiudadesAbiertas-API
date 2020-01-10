@@ -1,0 +1,1886 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+        <changeSet author="Localidata" id="data-cube-padron1">
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1"/>
+            <column name="id" value="obs1"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="56647"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs10"/>
+            <column name="id" value="obs10"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601015"/>
+            <column name="seccion_censal_title" value="Sección Censal 15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="37498"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs100"/>
+            <column name="id" value="obs100"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601009"/>
+            <column name="seccion_censal_title" value="Sección Censal 9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="05-a-09"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="90073"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1000"/>
+            <column name="id" value="obs1000"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601009"/>
+            <column name="seccion_censal_title" value="Sección Censal 9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="95-y-mas"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="80726"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1001"/>
+            <column name="id" value="obs1001"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="24006"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1002"/>
+            <column name="id" value="obs1002"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="62073"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1003"/>
+            <column name="id" value="obs1003"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601021"/>
+            <column name="seccion_censal_title" value="Sección Censal 21"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="47608"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1004"/>
+            <column name="id" value="obs1004"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601017"/>
+            <column name="seccion_censal_title" value="Sección Censal 17"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="22543"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1005"/>
+            <column name="id" value="obs1005"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601016"/>
+            <column name="seccion_censal_title" value="Sección Censal 16"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="87232"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1006"/>
+            <column name="id" value="obs1006"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601019"/>
+            <column name="seccion_censal_title" value="Sección Censal 19"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="95623"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1007"/>
+            <column name="id" value="obs1007"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601018"/>
+            <column name="seccion_censal_title" value="Sección Censal 18"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="59313"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1008"/>
+            <column name="id" value="obs1008"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601013"/>
+            <column name="seccion_censal_title" value="Sección Censal 13"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="19701"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1009"/>
+            <column name="id" value="obs1009"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601012"/>
+            <column name="seccion_censal_title" value="Sección Censal 12"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="69195"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs101"/>
+            <column name="id" value="obs101"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="10-a-14"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="97813"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1010"/>
+            <column name="id" value="obs1010"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601015"/>
+            <column name="seccion_censal_title" value="Sección Censal 15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="38043"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1011"/>
+            <column name="id" value="obs1011"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601014"/>
+            <column name="seccion_censal_title" value="Sección Censal 14"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="15118"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1012"/>
+            <column name="id" value="obs1012"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601011"/>
+            <column name="seccion_censal_title" value="Sección Censal 11"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="88788"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1013"/>
+            <column name="id" value="obs1013"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601006"/>
+            <column name="seccion_censal_title" value="Sección Censal 6"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="25046"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1014"/>
+            <column name="id" value="obs1014"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601005"/>
+            <column name="seccion_censal_title" value="Sección Censal 5"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="57956"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1015"/>
+            <column name="id" value="obs1015"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601007"/>
+            <column name="seccion_censal_title" value="Sección Censal 7"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="27901"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1016"/>
+            <column name="id" value="obs1016"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601002"/>
+            <column name="seccion_censal_title" value="Sección Censal 2"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="9147"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1017"/>
+            <column name="id" value="obs1017"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601024"/>
+            <column name="seccion_censal_title" value="Sección Censal 24"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="27579"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1018"/>
+            <column name="id" value="obs1018"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601001"/>
+            <column name="seccion_censal_title" value="Sección Censal 1"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="49617"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1019"/>
+            <column name="id" value="obs1019"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601023"/>
+            <column name="seccion_censal_title" value="Sección Censal 23"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="85645"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs102"/>
+            <column name="id" value="obs102"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="10-a-14"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="38856"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1020"/>
+            <column name="id" value="obs1020"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601004"/>
+            <column name="seccion_censal_title" value="Sección Censal 4"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="74148"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1021"/>
+            <column name="id" value="obs1021"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601026"/>
+            <column name="seccion_censal_title" value="Sección Censal 26"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="94707"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1022"/>
+            <column name="id" value="obs1022"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601003"/>
+            <column name="seccion_censal_title" value="Sección Censal 3"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="19711"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1023"/>
+            <column name="id" value="obs1023"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601025"/>
+            <column name="seccion_censal_title" value="Sección Censal 25"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="71951"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1024"/>
+            <column name="id" value="obs1024"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601008"/>
+            <column name="seccion_censal_title" value="Sección Censal 8"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="69611"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1025"/>
+            <column name="id" value="obs1025"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601009"/>
+            <column name="seccion_censal_title" value="Sección Censal 9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-F"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="18449"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1026"/>
+            <column name="id" value="obs1026"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="42525"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1027"/>
+            <column name="id" value="obs1027"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="88298"/>
+        </insert>
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs1028"/>
+            <column name="id" value="obs1028"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601021"/>
+            <column name="seccion_censal_title" value="Sección Censal 21"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="sin-clasificar"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="92420"/>
+        </insert>                
+        <insert tableName="padron_edad">
+            <column name="ikey" value="obs999"/>
+            <column name="id" value="obs999"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601008"/>
+            <column name="seccion_censal_title" value="Sección Censal 8"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="95-y-mas"/>
+            <column name="sex" value="sex-M"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="numero_personas" valueNumeric="96384"/>
+        </insert>
+		<rollback>
+           delete from padron_edad;
+       </rollback>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="data-cube-padron2">
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs1"/>
+            <column name="id" value="obs1"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="numero_personas" valueNumeric="90108"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs10"/>
+            <column name="id" value="obs10"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="41"/>
+            <column name="numero_personas" valueNumeric="87763"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs11"/>
+            <column name="id" value="obs11"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="42"/>
+            <column name="numero_personas" valueNumeric="41438"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs12"/>
+            <column name="id" value="obs12"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="43"/>
+            <column name="numero_personas" valueNumeric="63053"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs13"/>
+            <column name="id" value="obs13"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="44"/>
+            <column name="numero_personas" valueNumeric="83485"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs14"/>
+            <column name="id" value="obs14"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="45"/>
+            <column name="numero_personas" valueNumeric="83350"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs15"/>
+            <column name="id" value="obs15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="46"/>
+            <column name="numero_personas" valueNumeric="42020"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs16"/>
+            <column name="id" value="obs16"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="47"/>
+            <column name="numero_personas" valueNumeric="76449"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs17"/>
+            <column name="id" value="obs17"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="48"/>
+            <column name="numero_personas" valueNumeric="60896"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs18"/>
+            <column name="id" value="obs18"/>
+            <column name="ref_period" value="2016"/>
+            <column name="tipo_nivel_estudio" value="99"/>
+            <column name="numero_personas" valueNumeric="2375"/>
+        </insert>
+        <insert tableName="padron_estudios">
+            <column name="ikey" value="obs19"/>
+            <column name="id" value="obs19"/>
+            <column name="ref_period" value="2017"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="numero_personas" valueNumeric="77526"/>
+        </insert>    
+		<rollback>
+           delete from padron_estudios;
+       </rollback>		
+    </changeSet>
+    
+    <changeSet author="Localidata" id="data-cube-padron3">
+    <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs1"/>
+            <column name="id" value="obs1"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="numero_personas" valueNumeric="75321"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs2"/>
+            <column name="id" value="obs2"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="numero_personas" valueNumeric="43428"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs3"/>
+            <column name="id" value="obs3"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601021"/>
+            <column name="seccion_censal_title" value="Sección Censal 21"/>
+            <column name="numero_personas" valueNumeric="56806"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs4"/>
+            <column name="id" value="obs4"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601017"/>
+            <column name="seccion_censal_title" value="Sección Censal 17"/>
+            <column name="numero_personas" valueNumeric="76362"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs5"/>
+            <column name="id" value="obs5"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601016"/>
+            <column name="seccion_censal_title" value="Sección Censal 16"/>
+            <column name="numero_personas" valueNumeric="50825"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs6"/>
+            <column name="id" value="obs6"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601019"/>
+            <column name="seccion_censal_title" value="Sección Censal 19"/>
+            <column name="numero_personas" valueNumeric="46829"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs7"/>
+            <column name="id" value="obs7"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601018"/>
+            <column name="seccion_censal_title" value="Sección Censal 18"/>
+            <column name="numero_personas" valueNumeric="65307"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs8"/>
+            <column name="id" value="obs8"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601013"/>
+            <column name="seccion_censal_title" value="Sección Censal 13"/>
+            <column name="numero_personas" valueNumeric="7055"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs9"/>
+            <column name="id" value="obs9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601012"/>
+            <column name="seccion_censal_title" value="Sección Censal 12"/>
+            <column name="numero_personas" valueNumeric="35293"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs10"/>
+            <column name="id" value="obs10"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601015"/>
+            <column name="seccion_censal_title" value="Sección Censal 15"/>
+            <column name="numero_personas" valueNumeric="31290"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs11"/>
+            <column name="id" value="obs11"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601014"/>
+            <column name="seccion_censal_title" value="Sección Censal 14"/>
+            <column name="numero_personas" valueNumeric="20897"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs12"/>
+            <column name="id" value="obs12"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601011"/>
+            <column name="seccion_censal_title" value="Sección Censal 11"/>
+            <column name="numero_personas" valueNumeric="36415"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs13"/>
+            <column name="id" value="obs13"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601006"/>
+            <column name="seccion_censal_title" value="Sección Censal 6"/>
+            <column name="numero_personas" valueNumeric="74845"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs14"/>
+            <column name="id" value="obs14"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601005"/>
+            <column name="seccion_censal_title" value="Sección Censal 5"/>
+            <column name="numero_personas" valueNumeric="67027"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs15"/>
+            <column name="id" value="obs15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601007"/>
+            <column name="seccion_censal_title" value="Sección Censal 7"/>
+            <column name="numero_personas" valueNumeric="1536"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs16"/>
+            <column name="id" value="obs16"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601002"/>
+            <column name="seccion_censal_title" value="Sección Censal 2"/>
+            <column name="numero_personas" valueNumeric="97210"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs17"/>
+            <column name="id" value="obs17"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601024"/>
+            <column name="seccion_censal_title" value="Sección Censal 24"/>
+            <column name="numero_personas" valueNumeric="84199"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs18"/>
+            <column name="id" value="obs18"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601001"/>
+            <column name="seccion_censal_title" value="Sección Censal 1"/>
+            <column name="numero_personas" valueNumeric="59219"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs19"/>
+            <column name="id" value="obs19"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601023"/>
+            <column name="seccion_censal_title" value="Sección Censal 23"/>
+            <column name="numero_personas" valueNumeric="38361"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs20"/>
+            <column name="id" value="obs20"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601004"/>
+            <column name="seccion_censal_title" value="Sección Censal 4"/>
+            <column name="numero_personas" valueNumeric="2613"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs21"/>
+            <column name="id" value="obs21"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601026"/>
+            <column name="seccion_censal_title" value="Sección Censal 26"/>
+            <column name="numero_personas" valueNumeric="4884"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs22"/>
+            <column name="id" value="obs22"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601003"/>
+            <column name="seccion_censal_title" value="Sección Censal 3"/>
+            <column name="numero_personas" valueNumeric="40445"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs23"/>
+            <column name="id" value="obs23"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601025"/>
+            <column name="seccion_censal_title" value="Sección Censal 25"/>
+            <column name="numero_personas" valueNumeric="10641"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs24"/>
+            <column name="id" value="obs24"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601008"/>
+            <column name="seccion_censal_title" value="Sección Censal 8"/>
+            <column name="numero_personas" valueNumeric="25651"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs25"/>
+            <column name="id" value="obs25"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="espanoles"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601009"/>
+            <column name="seccion_censal_title" value="Sección Censal 9"/>
+            <column name="numero_personas" valueNumeric="1232"/>
+        </insert>
+        <insert tableName="padron_nacionalidad">
+            <column name="ikey" value="obs26"/>
+            <column name="id" value="obs26"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="sex" value="sex-F"/>
+            <column name="nacionalidad" value="extranjeros-comunitarios-ue-27"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="numero_personas" valueNumeric="55854"/>
+        </insert>        
+		<rollback>
+           delete from padron_nacionalidad;
+       </rollback>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="data-cube-padron4">
+    <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs1"/>
+            <column name="id" value="obs1"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="numero_personas" valueNumeric="19076"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs2"/>
+            <column name="id" value="obs2"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="numero_personas" valueNumeric="10707"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs3"/>
+            <column name="id" value="obs3"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601021"/>
+            <column name="seccion_censal_title" value="Sección Censal 21"/>
+            <column name="numero_personas" valueNumeric="68781"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs4"/>
+            <column name="id" value="obs4"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601017"/>
+            <column name="seccion_censal_title" value="Sección Censal 17"/>
+            <column name="numero_personas" valueNumeric="3387"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs5"/>
+            <column name="id" value="obs5"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601016"/>
+            <column name="seccion_censal_title" value="Sección Censal 16"/>
+            <column name="numero_personas" valueNumeric="62519"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs6"/>
+            <column name="id" value="obs6"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601019"/>
+            <column name="seccion_censal_title" value="Sección Censal 19"/>
+            <column name="numero_personas" valueNumeric="5093"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs7"/>
+            <column name="id" value="obs7"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601018"/>
+            <column name="seccion_censal_title" value="Sección Censal 18"/>
+            <column name="numero_personas" valueNumeric="27584"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs8"/>
+            <column name="id" value="obs8"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601013"/>
+            <column name="seccion_censal_title" value="Sección Censal 13"/>
+            <column name="numero_personas" valueNumeric="62465"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs9"/>
+            <column name="id" value="obs9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601012"/>
+            <column name="seccion_censal_title" value="Sección Censal 12"/>
+            <column name="numero_personas" valueNumeric="55519"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs10"/>
+            <column name="id" value="obs10"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601015"/>
+            <column name="seccion_censal_title" value="Sección Censal 15"/>
+            <column name="numero_personas" valueNumeric="41255"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs11"/>
+            <column name="id" value="obs11"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601014"/>
+            <column name="seccion_censal_title" value="Sección Censal 14"/>
+            <column name="numero_personas" valueNumeric="84997"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs12"/>
+            <column name="id" value="obs12"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601011"/>
+            <column name="seccion_censal_title" value="Sección Censal 11"/>
+            <column name="numero_personas" valueNumeric="61942"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs13"/>
+            <column name="id" value="obs13"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601006"/>
+            <column name="seccion_censal_title" value="Sección Censal 6"/>
+            <column name="numero_personas" valueNumeric="35161"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs14"/>
+            <column name="id" value="obs14"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601005"/>
+            <column name="seccion_censal_title" value="Sección Censal 5"/>
+            <column name="numero_personas" valueNumeric="72587"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs15"/>
+            <column name="id" value="obs15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601007"/>
+            <column name="seccion_censal_title" value="Sección Censal 7"/>
+            <column name="numero_personas" valueNumeric="15302"/>
+        </insert>
+        <insert tableName="padron_procedencia">
+            <column name="ikey" value="obs16"/>
+            <column name="id" value="obs16"/>
+            <column name="ref_period" value="2016"/>
+            <column name="edad_grupos_quinquenales" value="00-a-04"/>
+            <column name="tipo_nivel_estudio" value="00"/>
+            <column name="provincia_procedencia" value="a-coruna"/>
+            <column name="municipio_procedencia" value="15030"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601002"/>
+            <column name="seccion_censal_title" value="Sección Censal 2"/>
+            <column name="numero_personas" valueNumeric="92675"/>
+        </insert>
+		<rollback>
+           delete from padron_procedencia;
+       </rollback>
+    </changeSet>
+    
+ <changeSet author="Localidata" id="data-cube-padron5">
+   <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs1"/>
+            <column name="id" value="obs1"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601020"/>
+            <column name="seccion_censal_title" value="Sección Censal 20"/>
+            <column name="indice_dependencia" valueNumeric="25"/>
+            <column name="indice_feminidad" valueNumeric="116"/>
+            <column name="indice_infancia" valueNumeric="97"/>
+            <column name="indice_juventud" valueNumeric="29"/>
+            <column name="indice_maternidad" valueNumeric="29"/>
+            <column name="indice_poblacion_activa" valueNumeric="36"/>
+            <column name="indice_reemplazo" valueNumeric="26"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="9"/>
+            <column name="indice_tendencia" valueNumeric="24"/>
+            <column name="tasa_mortalidad" valueNumeric="369"/>
+            <column name="tasa_natalidad" valueNumeric="225"/>
+            <column name="edad_media_poblacion" valueNumeric="82"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="21"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="40"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="73"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="63"/>
+            <column name="numero_personas" valueNumeric="82665"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs2"/>
+            <column name="id" value="obs2"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601022"/>
+            <column name="seccion_censal_title" value="Sección Censal 22"/>
+            <column name="indice_dependencia" valueNumeric="53"/>
+            <column name="indice_feminidad" valueNumeric="112"/>
+            <column name="indice_infancia" valueNumeric="11"/>
+            <column name="indice_juventud" valueNumeric="97"/>
+            <column name="indice_maternidad" valueNumeric="4"/>
+            <column name="indice_poblacion_activa" valueNumeric="88"/>
+            <column name="indice_reemplazo" valueNumeric="44"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="13"/>
+            <column name="indice_tendencia" valueNumeric="88"/>
+            <column name="tasa_mortalidad" valueNumeric="982"/>
+            <column name="tasa_natalidad" valueNumeric="505"/>
+            <column name="edad_media_poblacion" valueNumeric="0"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="79"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="35"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="1"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="27"/>
+            <column name="numero_personas" valueNumeric="2767"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs3"/>
+            <column name="id" value="obs3"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601021"/>
+            <column name="seccion_censal_title" value="Sección Censal 21"/>
+            <column name="indice_dependencia" valueNumeric="9"/>
+            <column name="indice_feminidad" valueNumeric="100"/>
+            <column name="indice_infancia" valueNumeric="23"/>
+            <column name="indice_juventud" valueNumeric="43"/>
+            <column name="indice_maternidad" valueNumeric="6"/>
+            <column name="indice_poblacion_activa" valueNumeric="15"/>
+            <column name="indice_reemplazo" valueNumeric="1"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="44"/>
+            <column name="indice_tendencia" valueNumeric="7"/>
+            <column name="tasa_mortalidad" valueNumeric="388"/>
+            <column name="tasa_natalidad" valueNumeric="45"/>
+            <column name="edad_media_poblacion" valueNumeric="4"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="99"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="58"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="79"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="95"/>
+            <column name="numero_personas" valueNumeric="43294"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs4"/>
+            <column name="id" value="obs4"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601017"/>
+            <column name="seccion_censal_title" value="Sección Censal 17"/>
+            <column name="indice_dependencia" valueNumeric="42"/>
+            <column name="indice_feminidad" valueNumeric="104"/>
+            <column name="indice_infancia" valueNumeric="24"/>
+            <column name="indice_juventud" valueNumeric="54"/>
+            <column name="indice_maternidad" valueNumeric="65"/>
+            <column name="indice_poblacion_activa" valueNumeric="99"/>
+            <column name="indice_reemplazo" valueNumeric="32"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="94"/>
+            <column name="indice_tendencia" valueNumeric="77"/>
+            <column name="tasa_mortalidad" valueNumeric="163"/>
+            <column name="tasa_natalidad" valueNumeric="195"/>
+            <column name="edad_media_poblacion" valueNumeric="46"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="59"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="87"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="64"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="64"/>
+            <column name="numero_personas" valueNumeric="31653"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs5"/>
+            <column name="id" value="obs5"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601016"/>
+            <column name="seccion_censal_title" value="Sección Censal 16"/>
+            <column name="indice_dependencia" valueNumeric="49"/>
+            <column name="indice_feminidad" valueNumeric="101"/>
+            <column name="indice_infancia" valueNumeric="7"/>
+            <column name="indice_juventud" valueNumeric="88"/>
+            <column name="indice_maternidad" valueNumeric="49"/>
+            <column name="indice_poblacion_activa" valueNumeric="72"/>
+            <column name="indice_reemplazo" valueNumeric="19"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="48"/>
+            <column name="indice_tendencia" valueNumeric="69"/>
+            <column name="tasa_mortalidad" valueNumeric="898"/>
+            <column name="tasa_natalidad" valueNumeric="914"/>
+            <column name="edad_media_poblacion" valueNumeric="37"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="55"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="44"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="76"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="9"/>
+            <column name="numero_personas" valueNumeric="79904"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs6"/>
+            <column name="id" value="obs6"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601019"/>
+            <column name="seccion_censal_title" value="Sección Censal 19"/>
+            <column name="indice_dependencia" valueNumeric="88"/>
+            <column name="indice_feminidad" valueNumeric="114"/>
+            <column name="indice_infancia" valueNumeric="49"/>
+            <column name="indice_juventud" valueNumeric="21"/>
+            <column name="indice_maternidad" valueNumeric="36"/>
+            <column name="indice_poblacion_activa" valueNumeric="72"/>
+            <column name="indice_reemplazo" valueNumeric="33"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="58"/>
+            <column name="indice_tendencia" valueNumeric="3"/>
+            <column name="tasa_mortalidad" valueNumeric="918"/>
+            <column name="tasa_natalidad" valueNumeric="46"/>
+            <column name="edad_media_poblacion" valueNumeric="23"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="93"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="90"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="45"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="15"/>
+            <column name="numero_personas" valueNumeric="21531"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs7"/>
+            <column name="id" value="obs7"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601018"/>
+            <column name="seccion_censal_title" value="Sección Censal 18"/>
+            <column name="indice_dependencia" valueNumeric="68"/>
+            <column name="indice_feminidad" valueNumeric="101"/>
+            <column name="indice_infancia" valueNumeric="8"/>
+            <column name="indice_juventud" valueNumeric="46"/>
+            <column name="indice_maternidad" valueNumeric="11"/>
+            <column name="indice_poblacion_activa" valueNumeric="31"/>
+            <column name="indice_reemplazo" valueNumeric="22"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="47"/>
+            <column name="indice_tendencia" valueNumeric="77"/>
+            <column name="tasa_mortalidad" valueNumeric="917"/>
+            <column name="tasa_natalidad" valueNumeric="79"/>
+            <column name="edad_media_poblacion" valueNumeric="5"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="76"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="81"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="74"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="57"/>
+            <column name="numero_personas" valueNumeric="70095"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs8"/>
+            <column name="id" value="obs8"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601013"/>
+            <column name="seccion_censal_title" value="Sección Censal 13"/>
+            <column name="indice_dependencia" valueNumeric="87"/>
+            <column name="indice_feminidad" valueNumeric="101"/>
+            <column name="indice_infancia" valueNumeric="66"/>
+            <column name="indice_juventud" valueNumeric="38"/>
+            <column name="indice_maternidad" valueNumeric="34"/>
+            <column name="indice_poblacion_activa" valueNumeric="13"/>
+            <column name="indice_reemplazo" valueNumeric="96"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="9"/>
+            <column name="indice_tendencia" valueNumeric="30"/>
+            <column name="tasa_mortalidad" valueNumeric="0"/>
+            <column name="tasa_natalidad" valueNumeric="387"/>
+            <column name="edad_media_poblacion" valueNumeric="17"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="57"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="84"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="82"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="33"/>
+            <column name="numero_personas" valueNumeric="89339"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs9"/>
+            <column name="id" value="obs9"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601012"/>
+            <column name="seccion_censal_title" value="Sección Censal 12"/>
+            <column name="indice_dependencia" valueNumeric="82"/>
+            <column name="indice_feminidad" valueNumeric="119"/>
+            <column name="indice_infancia" valueNumeric="26"/>
+            <column name="indice_juventud" valueNumeric="4"/>
+            <column name="indice_maternidad" valueNumeric="13"/>
+            <column name="indice_poblacion_activa" valueNumeric="63"/>
+            <column name="indice_reemplazo" valueNumeric="59"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="68"/>
+            <column name="indice_tendencia" valueNumeric="29"/>
+            <column name="tasa_mortalidad" valueNumeric="829"/>
+            <column name="tasa_natalidad" valueNumeric="156"/>
+            <column name="edad_media_poblacion" valueNumeric="76"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="82"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="98"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="85"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="60"/>
+            <column name="numero_personas" valueNumeric="72873"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs10"/>
+            <column name="id" value="obs10"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601015"/>
+            <column name="seccion_censal_title" value="Sección Censal 15"/>
+            <column name="indice_dependencia" valueNumeric="16"/>
+            <column name="indice_feminidad" valueNumeric="128"/>
+            <column name="indice_infancia" valueNumeric="7"/>
+            <column name="indice_juventud" valueNumeric="32"/>
+            <column name="indice_maternidad" valueNumeric="34"/>
+            <column name="indice_poblacion_activa" valueNumeric="90"/>
+            <column name="indice_reemplazo" valueNumeric="17"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="54"/>
+            <column name="indice_tendencia" valueNumeric="77"/>
+            <column name="tasa_mortalidad" valueNumeric="35"/>
+            <column name="tasa_natalidad" valueNumeric="761"/>
+            <column name="edad_media_poblacion" valueNumeric="80"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="26"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="11"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="62"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="3"/>
+            <column name="numero_personas" valueNumeric="65044"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs11"/>
+            <column name="id" value="obs11"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601014"/>
+            <column name="seccion_censal_title" value="Sección Censal 14"/>
+            <column name="indice_dependencia" valueNumeric="80"/>
+            <column name="indice_feminidad" valueNumeric="119"/>
+            <column name="indice_infancia" valueNumeric="35"/>
+            <column name="indice_juventud" valueNumeric="97"/>
+            <column name="indice_maternidad" valueNumeric="9"/>
+            <column name="indice_poblacion_activa" valueNumeric="91"/>
+            <column name="indice_reemplazo" valueNumeric="13"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="20"/>
+            <column name="indice_tendencia" valueNumeric="97"/>
+            <column name="tasa_mortalidad" valueNumeric="991"/>
+            <column name="tasa_natalidad" valueNumeric="378"/>
+            <column name="edad_media_poblacion" valueNumeric="75"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="17"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="90"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="8"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="10"/>
+            <column name="numero_personas" valueNumeric="20623"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs12"/>
+            <column name="id" value="obs12"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601011"/>
+            <column name="seccion_censal_title" value="Sección Censal 11"/>
+            <column name="indice_dependencia" valueNumeric="48"/>
+            <column name="indice_feminidad" valueNumeric="105"/>
+            <column name="indice_infancia" valueNumeric="64"/>
+            <column name="indice_juventud" valueNumeric="55"/>
+            <column name="indice_maternidad" valueNumeric="86"/>
+            <column name="indice_poblacion_activa" valueNumeric="28"/>
+            <column name="indice_reemplazo" valueNumeric="85"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="96"/>
+            <column name="indice_tendencia" valueNumeric="4"/>
+            <column name="tasa_mortalidad" valueNumeric="218"/>
+            <column name="tasa_natalidad" valueNumeric="78"/>
+            <column name="edad_media_poblacion" valueNumeric="65"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="20"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="72"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="57"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="77"/>
+            <column name="numero_personas" valueNumeric="23672"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs13"/>
+            <column name="id" value="obs13"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601006"/>
+            <column name="seccion_censal_title" value="Sección Censal 6"/>
+            <column name="indice_dependencia" valueNumeric="53"/>
+            <column name="indice_feminidad" valueNumeric="118"/>
+            <column name="indice_infancia" valueNumeric="49"/>
+            <column name="indice_juventud" valueNumeric="53"/>
+            <column name="indice_maternidad" valueNumeric="45"/>
+            <column name="indice_poblacion_activa" valueNumeric="10"/>
+            <column name="indice_reemplazo" valueNumeric="8"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="78"/>
+            <column name="indice_tendencia" valueNumeric="37"/>
+            <column name="tasa_mortalidad" valueNumeric="945"/>
+            <column name="tasa_natalidad" valueNumeric="861"/>
+            <column name="edad_media_poblacion" valueNumeric="30"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="64"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="45"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="46"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="63"/>
+            <column name="numero_personas" valueNumeric="98029"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs14"/>
+            <column name="id" value="obs14"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601005"/>
+            <column name="seccion_censal_title" value="Sección Censal 5"/>
+            <column name="indice_dependencia" valueNumeric="95"/>
+            <column name="indice_feminidad" valueNumeric="127"/>
+            <column name="indice_infancia" valueNumeric="0"/>
+            <column name="indice_juventud" valueNumeric="59"/>
+            <column name="indice_maternidad" valueNumeric="17"/>
+            <column name="indice_poblacion_activa" valueNumeric="77"/>
+            <column name="indice_reemplazo" valueNumeric="0"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="42"/>
+            <column name="indice_tendencia" valueNumeric="10"/>
+            <column name="tasa_mortalidad" valueNumeric="598"/>
+            <column name="tasa_natalidad" valueNumeric="495"/>
+            <column name="edad_media_poblacion" valueNumeric="58"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="93"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="50"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="74"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="24"/>
+            <column name="numero_personas" valueNumeric="445"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs15"/>
+            <column name="id" value="obs15"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601007"/>
+            <column name="seccion_censal_title" value="Sección Censal 7"/>
+            <column name="indice_dependencia" valueNumeric="81"/>
+            <column name="indice_feminidad" valueNumeric="112"/>
+            <column name="indice_infancia" valueNumeric="7"/>
+            <column name="indice_juventud" valueNumeric="96"/>
+            <column name="indice_maternidad" valueNumeric="14"/>
+            <column name="indice_poblacion_activa" valueNumeric="33"/>
+            <column name="indice_reemplazo" valueNumeric="59"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="1"/>
+            <column name="indice_tendencia" valueNumeric="63"/>
+            <column name="tasa_mortalidad" valueNumeric="711"/>
+            <column name="tasa_natalidad" valueNumeric="822"/>
+            <column name="edad_media_poblacion" valueNumeric="64"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="7"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="87"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="51"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="52"/>
+            <column name="numero_personas" valueNumeric="99244"/>
+        </insert>
+        <insert tableName="padron_indicadores">
+            <column name="ikey" value="obs16"/>
+            <column name="id" value="obs16"/>
+            <column name="ref_period" value="2016"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="barrio_title" value="Barrio 1"/>
+            <column name="seccion_censal_id" value="2800601002"/>
+            <column name="seccion_censal_title" value="Sección Censal 2"/>
+            <column name="indice_dependencia" valueNumeric="25"/>
+            <column name="indice_feminidad" valueNumeric="120"/>
+            <column name="indice_infancia" valueNumeric="2"/>
+            <column name="indice_juventud" valueNumeric="45"/>
+            <column name="indice_maternidad" valueNumeric="17"/>
+            <column name="indice_poblacion_activa" valueNumeric="47"/>
+            <column name="indice_reemplazo" valueNumeric="10"/>
+            <column name="indice_sobreenvejecimiento" valueNumeric="7"/>
+            <column name="indice_tendencia" valueNumeric="90"/>
+            <column name="tasa_mortalidad" valueNumeric="952"/>
+            <column name="tasa_natalidad" valueNumeric="746"/>
+            <column name="edad_media_poblacion" valueNumeric="18"/>
+            <column name="porcentaje_poblacion_joven" valueNumeric="7"/>
+            <column name="porcentaje_poblacion_adulta" valueNumeric="39"/>
+            <column name="porcentaje_poblacion_envejec" valueNumeric="98"/>
+            <column name="porcentaje_poblacion_ext_inf" valueNumeric="37"/>
+            <column name="numero_personas" valueNumeric="40382"/>
+        </insert>
+		<rollback>
+           delete from padron_indicadores;
+       </rollback>
+        </changeSet>
+    
+    <changeSet id="TablesPadron-tag-1.17" author="Localidata">
+    	<tagDatabase tag="1.17" />
+  	</changeSet> 
+    
+</databaseChangeLog>

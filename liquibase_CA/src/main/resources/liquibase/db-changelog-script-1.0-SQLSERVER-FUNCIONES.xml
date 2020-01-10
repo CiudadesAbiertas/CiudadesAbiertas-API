@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 	<!-- Exclusivo de SQL Server 2012 -->
+	 <changeSet author="Localidata" id="function-TRANSLAT" dbms="mssql">
+		<sqlFile encoding="utf8"
+	            path="sql/function_check_translate.sql"
+	            relativeToChangelogFile="true"
+	            splitStatements="false"
+	            stripComments="false"
+	            endDelimiter="\nGO"
+	   />
+	   <sqlFile encoding="utf8"
+	            path="sql/function_translate.sql"
+	            relativeToChangelogFile="true"
+	            splitStatements="false"
+	            stripComments="false"
+	            endDelimiter="\nGO"
+	   />
+	   <rollback/>  
+	</changeSet>
+	
+    
+    
+</databaseChangeLog>

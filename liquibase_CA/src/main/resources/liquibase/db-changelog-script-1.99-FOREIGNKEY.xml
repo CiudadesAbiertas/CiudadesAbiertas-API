@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<!-- No incluimos user, territorio y dsd que son maestras en la carga de fk -->
+
+<!-- LOCAL COMERCIAL -->
+	<changeSet author="Localidata" id="FK-agrupacion_comercial">
+        <addForeignKeyConstraint 
+			baseColumnNames="agrupacion_comercial" 
+			baseTableName="local_comercial" 
+			constraintName="fk_local_comercial_agrupacion" 
+			referencedColumnNames="id" 
+			referencedTableName="local_comercial_agrupacion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="FK-tiene_terraza">
+        <addForeignKeyConstraint 
+			baseColumnNames="tiene_terraza" 
+			baseTableName="local_comercial" 
+			constraintName="fk_local_comercial_terraza" 
+			referencedColumnNames="id" 
+			referencedTableName="local_comercial_terraza"/>
+    </changeSet>
+    <changeSet author="Localidata" id="FK-tiene_licencia_apertura">
+        <addForeignKeyConstraint 
+			baseColumnNames="tiene_licencia_apertura" 
+			baseTableName="local_comercial" 
+			constraintName="fk_local_comercial_licencia"  
+			referencedColumnNames="id" 
+			referencedTableName="local_comercial_licencia"/>
+    </changeSet>
+	
+	<!-- CALIDAD DEL AIRE -->
+	<changeSet author="Localidata" id="FK-made-by-sensor-table-calidad-aire-observacion">
+        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="calidad_aire_observacion" constraintName="fk_estacion"  referencedColumnNames="id" referencedTableName="calidad_aire_estacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-made-by-sensor-table-calidad-aire-sensor">
+        <addForeignKeyConstraint baseColumnNames="is_hosted_by" baseTableName="calidad_aire_sensor" constraintName="fk_estacion_sensor"  referencedColumnNames="id" referencedTableName="calidad_aire_estacion"/>
+    </changeSet>
+	
+	
+	<!-- Organigrama -->
+	<changeSet author="Localidata" id="FK-UNIDAD-RAIZ">
+        <addForeignKeyConstraint baseColumnNames="unidad_raiz" baseTableName="organigrama" constraintName="fk_unidad_raiz" referencedColumnNames="id" referencedTableName="organigrama"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-UNIT-Of">
+        <addForeignKeyConstraint baseColumnNames="unit_of" baseTableName="organigrama" constraintName="fk_unit_of"  referencedColumnNames="id" referencedTableName="organigrama"/>
+    </changeSet>
+	
+	<!-- Callejero -->
+	   <changeSet author="Localidata" id="FK-Index-table-callejero_tramo_via-via">
+        <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_tramo_via" constraintName="callejero_tramo_via_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
+    </changeSet>
+    
+     <changeSet author="Localidata" id="FK-Index-table-portal_via-via">
+        <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_portal" constraintName="callejero_portal_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
+    </changeSet>
+		
+	<!-- DSD -->
+	<changeSet author="Localidata" id="DSD_Tables-20">
+        <addForeignKeyConstraint baseColumnNames="cube_key" baseTableName="cube_dsd_rel_dimension" constraintName="cube_dsd_rel_dim_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-21">
+        <addForeignKeyConstraint baseColumnNames="cube_key" baseTableName="cube_dsd_rel_measure" constraintName="cube_dsd_rel_mea_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-22">
+        <addForeignKeyConstraint baseColumnNames="measure_key" baseTableName="cube_dsd_rel_measure" constraintName="cube_dsd_rel_mea_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_measure"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-23">
+        <addForeignKeyConstraint baseColumnNames="dimension_key" baseTableName="cube_dsd_dimension_value" constraintName="dsd_dim_value_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_dimension"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-24">
+        <addForeignKeyConstraint baseColumnNames="dimension_key" baseTableName="cube_dsd_rel_dimension" constraintName="dsd_rel_dim_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_dimension"/>
+    </changeSet>
+	
+	<!-- Territorio -->
+	<changeSet author="Localidata" id="TablasTerritorio-42">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_autonomia" constraintName="t_autonomia_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-43">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-44">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-45">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-46">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-47">
+        <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-48">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-49">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-50">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-51">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-52">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-53">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-54">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-55">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_provincia" constraintName="t_provincia_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-56">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_provincia" constraintName="t_provincia_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-57">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-58">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-59">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-60">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-61">
+        <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 
+     <changeSet author="Localidata" id="datos-tramite">
+         <insert tableName="tramite">
+            <column name="ikey" value="0001"/>
+            <column name="id" value="TR0001"/>
+            <column name="title" value="Apoyo a la Formación en las Asociaciones juveniles"/>
+            <column name="description" value="&lt;p&gt;Se pretende ayudar a grupos promotores de asociaciones o a entidades ya constituidas a mejorar su funcionamiento y sus resultados.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/5503"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0002"/>
+            <column name="id" value="TR0002"/>
+            <column name="title" value="Certificado de Nacimiento (Ministerio de Justicia)"/>
+            <column name="description"/>
+            <column name="url" value="https://sede.mjusticia.gob.es/cs/Satellite/Sede/es/tramites/certificado-nacimiento"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/22041"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0003"/>
+            <column name="id" value="TR0003"/>
+            <column name="title" value="Biblioteca Municipal : Consulta a los fondos"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Los servicios de consulta y de reproducci&amp;oacute;n de fondos est&amp;aacute;n sujetos a la normativa vigente sobre propiedad intelectual.&lt;/li&gt;    &lt;li&gt;&lt;a href=&quot;http://www.zaragoza.es/ciudad/usic/biblioteca/servicios.htm&quot;&gt;M&amp;aacute;s Informaci&amp;oacute;n &lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/3724"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0004"/>
+            <column name="id" value="TR0004"/>
+            <column name="title" value="Inscripción de Matrimonio (Ministerio de Justicia)"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/22060"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0005"/>
+            <column name="id" value="TR0005"/>
+            <column name="title" value="Padrón Municipal de Habitantes: Modificación de Datos"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/36,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/38"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;&lt;strong&gt;Presentar original y copia.&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;Por el interesado:&lt;/strong&gt; documento de identidad (DNI / NIE / tarjeta de residencia / pasaporte).&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;Por el representante:&lt;/strong&gt; documento de identidad (DNI / NIE / tarjeta de residencia / pasaporte) del interesado y del representante, junto con escrito de autorizaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;Documentos acreditativos de los datos que se quieren variar.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;Por el interesado:&lt;/strong&gt; documento de identidad (DNI / NIE / tarjeta de residencia / pasaporte).&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;Por el representante:&lt;/strong&gt; documento de identidad (DNI / NIE / tarjeta de residencia / pasaporte) del interesado y del representante, junto con escrito de autorizaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;Documentos acreditativos de los datos que se quieren variar.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Estar inscrito en el Padr&amp;oacute;n Municipal de Habitantes.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/16901"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0006"/>
+            <column name="id" value="TR0006"/>
+            <column name="title" value="Albergue Municipal: Viviendas Tuteladas"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/145"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;El acceso&lt;/strong&gt; a estas Viviendas o Miniresidencia requiere siempre la estancia previa en el Albergue, desde donde se inicia un proceso con aquellas personas o familias en las que se aprecia voluntad y compromiso en un proceso de inserci&amp;oacute;n. Se valora entonces si este proceso ha de continuar en estos alojamientos que son un paso intermedio a vivienda normalizada&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;El tiempo m&amp;aacute;ximo &lt;/strong&gt;de estancia en las Viviendas Tuteladas es de &lt;strong&gt;12 meses&lt;/strong&gt;.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;No &lt;/strong&gt;incluye la &lt;strong&gt;manutenci&amp;oacute;n&lt;/strong&gt;, que es asumida por las propias persona o familias con sus propios recursos, as&amp;iacute; como todo lo relacionado con la limpieza de la vivienda y el resto de gastos cotidiano.&lt;/li&gt;    &lt;li&gt;En todos los casos de lleva a cabo una labor de seguimiento y apoyo social&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/18802"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0007"/>
+            <column name="id" value="TR0007"/>
+            <column name="title" value="Agua. Alta Fuentes de Abastecimiento No Municipal"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono" value="&lt;p&gt;Los datos se dan por tel&amp;eacute;fono bajo la responsabilidad del solicitante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos obligatorios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Fecha del t&amp;iacute;tulo de ocupaci&amp;oacute;n (escritura propiedad o contrato de alquiler).&lt;/li&gt;    &lt;li&gt;En caso de ser inquilino, nombre y apellidos del propietario&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;Fuente de abastecimiento y sus caracter&amp;iacute;sticas t&amp;eacute;cnicas.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN de la cuenta de domiciliaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo).&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a)Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b)Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros datos necesarios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Se exigir&amp;aacute; la presentaci&amp;oacute;n de los documentos acreditativos de los datos solicitados.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos obligatorios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Si el titular es &lt;em&gt;propietario&lt;/em&gt;: Escritura propiedad o justificante del Notario si se encuentra en tramitaci&amp;oacute;n.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Si el titular es &lt;em&gt;inquilino&lt;/em&gt;: contrato de alquiler o autorizaci&amp;oacute;n escrita del propietario.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;Fuente de abastecimiento y sus caracter&amp;iacute;sticas t&amp;eacute;cnicas.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN, si se van a domiciliar los recibos. Consulte las ventajas de la domiciliaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo.&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a)Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para&lt;/li&gt;        &lt;li&gt;b)Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros datos necesarios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago" value="&lt;p&gt;El alta en el servicio lleva consigo la exigencia de las tasas por &amp;quot;establecimiento de puntos de suministro&amp;quot; y de &amp;quot;contrataci&amp;oacute;n&amp;quot;.  Se har&amp;aacute; efectiva mediante cargo en la primera facturaci&amp;oacute;n que se efect&amp;uacute;e.&lt;br /&gt;Consulte las Tarifas vigentes en la Ordenanza por la que se fijan las tarifas de saneamiento.&lt;/p&gt;"/>
+            <column name="requisitos" value="&lt;p&gt;&lt;strong&gt;Si el consumo es alto &lt;/strong&gt;y el volumen de agua vertido es manifiestamente menor al agua consumida, puede interesar la instalaci&amp;oacute;n de un &lt;strong&gt;caudal&amp;iacute;metro de vertido&lt;/strong&gt; en el punto de conexi&amp;oacute;n a la red. En ese caso los tr&amp;aacute;mites y gestiones son:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;a) Los vertidos han de estar centralizados en un punto. De existir m&amp;aacute;s puntos de vertido, deber&amp;iacute;a instalarse en cada uno de ellos un caudal&amp;iacute;metro, lo que podr&amp;iacute;a hacer antiecon&amp;oacute;mica su instalaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;b) Requiere autorizaci&amp;oacute;n previa municipal, mediante solicitud del interesado.&lt;/li&gt;    &lt;li&gt;c) Tras su instalaci&amp;oacute;n, el Instituto Municipal de Salud P&amp;uacute;blica supervisa la correcta instalaci&amp;oacute;n y calibrado.&lt;/li&gt;    &lt;li&gt;d) Ha de prepararse arqueta para la instalaci&amp;oacute;n de caudal&amp;iacute;metro y toma de muestras.&lt;/li&gt;    &lt;li&gt;e) El solicitante deber&amp;aacute; adquirir, instalar y mantener a su costa el caudal&amp;iacute;metro.&lt;/li&gt;    &lt;li&gt;f) Una vez correctamente instalado y calibrado el caudal&amp;iacute;metro, debe solicitarse el alta en el &amp;oacute;rgano gestor.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Si se desea instalar un contador convencional&lt;/strong&gt;, los tr&amp;aacute;mites y gestiones son:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;a) Ha de prepararse la instalaci&amp;oacute;n para su colocaci&amp;oacute;n de acuerdo a la normativa municipal aplicable.&lt;/li&gt;    &lt;li&gt;b) Se ha de remitir al Ayuntamiento el &amp;quot;Certificado de instalaci&amp;oacute;n individual&amp;quot; emitido por instalador autorizado.&lt;/li&gt;    &lt;li&gt;c) El ayuntamiento inspecciona la instalaci&amp;oacute;n y comprueba su adecuaci&amp;oacute;n t&amp;eacute;cnica a la normativa vigente.&lt;/li&gt;    &lt;li&gt;d) Se han de cumplir por parte del promotor e instalador las obligaciones t&amp;eacute;cnicas, administrativas y fiscales exigidas en la normativa aplicable.&lt;/li&gt;    &lt;li&gt;e) Posteriormente ha de solicitarse el alta en el &amp;oacute;rgano gestor.  En este caso, el contador de agua se coloca en los dos d&amp;iacute;as laborables siguientes a la solicitud de alta, salvo que corresponda a un calibre no disponible en existencias, lo que retrasar&amp;iacute;a su instalaci&amp;oacute;n, en funci&amp;oacute;n de los plazos de suministro.&lt;/li&gt;    &lt;li&gt;f) Cita previa: Si es necesario acceder a instalaciones particulares para colocar el contador, el usuario debe facilitar la entrada.  Para ello deber&amp;aacute; concretar una fecha y hora en el momento de realizar el tr&amp;aacute;mite.  El plazo de espera m&amp;aacute;ximo es de 2 horas&lt;/li&gt;    &lt;li&gt;g) Si la instalaci&amp;oacute;n del contador convencional requiere la paralizaci&amp;oacute;n del proceso productivo, puede coordinarse la instalaci&amp;oacute;n en el momento que menor afecci&amp;oacute;n tenga para la din&amp;aacute;mica habitual del abonado.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/21"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0008"/>
+            <column name="id" value="TR0008"/>
+            <column name="title" value="Procedimiento de Denuncias y Reclamaciones ante la Unidad de Policía Urbana"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/6502"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;Instancia general.&lt;/li&gt;    &lt;li&gt;Documentaci&amp;oacute;n       que    se    estime                conveniente.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ul&gt;    &lt;li&gt;Instancia general. Puede descargarla del apartado Impresos relacionados, a final de p&amp;aacute;gina.&lt;/li&gt;    &lt;li&gt;Documentaci&amp;oacute;n que se estime conveniente.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/6550,https://www.zaragoza.es/sede/servicio/normativa/154,https://www.zaragoza.es/sede/servicio/normativa/6374,https://www.zaragoza.es/sede/servicio/normativa/6378"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/23980"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo" value="NEGATIVO"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0009"/>
+            <column name="id" value="TR0009"/>
+            <column name="title" value="Informe de inserción social por arraigo"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;Pasaporte en vigor&lt;/li&gt;    &lt;li&gt;Pruebas de permanencia continuada durante los &amp;uacute;ltimos tres a&amp;ntilde;os en Espa&amp;ntilde;a (empadronamiento)&lt;/li&gt;    &lt;li&gt;Oferta de empleo o en su caso, el interesado puede estar exento de presentar dicha oferta de empleo siempre que pueda acreditar la vinculaci&amp;oacute;n familiar con un residente que pueda aportar los medios econ&amp;oacute;micos suficientes para que el solicitante dependa econ&amp;oacute;micamente del mismo.  Para lo cual se adjuntar&amp;aacute;n los documentos pertinentes que acrediten la vinculaci&amp;oacute;n familiar (certificado de nacimiento, matrimonio, ...etc) as&amp;iacute; como la autorizaci&amp;oacute;n de residencia y la acreditaci&amp;oacute;n de medios econ&amp;oacute;micos del familiar en cuesti&amp;oacute;n ( nominas, contrato de trabajo, alta en aut&amp;oacute;nomos,...etc)&lt;/li&gt;    &lt;li&gt;Tarjeta sanitaria&lt;/li&gt;    &lt;li&gt;Cursos de formaci&amp;oacute;n&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;p&gt;Ser&amp;aacute;n solicitados en la entrevista a mantener con la Trabajadora  social haciendo referencia a aqu&amp;eacute;lla que acredite, de forma objetiva, la  secuencia de una permanencia en Espa&amp;ntilde;a durante un periodo m&amp;iacute;nimo de  tres a&amp;ntilde;os, cualquiera que hubiera sido la situaci&amp;oacute;n administrativa del  solicitante.Se otorgar&amp;aacute; preferencia a la acreditaci&amp;oacute;n de esta  permanencia mediante aquellos documentos que re&amp;uacute;nan los siguientes  requisitos:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Haber sido emitidos y/o registrados por una Administraci&amp;oacute;n P&amp;uacute;blica Espa&amp;ntilde;ola,&lt;/li&gt;    &lt;li&gt;Ser documentos originales o copias debidamente compulsadas, y&lt;/li&gt;    &lt;li&gt;Contener los datos de identificaci&amp;oacute;n del interesado.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/6284,https://www.zaragoza.es/sede/servicio/normativa/6562"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Carecer de antecedentes penales en Espa&amp;ntilde;a y en su pa&amp;iacute;s de origen.&lt;/li&gt;    &lt;li&gt;No tener prohibida la entrada en Espa&amp;ntilde;a.&lt;/li&gt;    &lt;li&gt;Contar con un contrato de trabajo.&lt;/li&gt;    &lt;li&gt;Acreditar v&amp;iacute;nculos familiares con otros extranjeros residentes, o presentar un informe que acredite su inserci&amp;oacute;n social emitido por el Ayuntamiento en el que tenga su domicilio habitual.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/14901"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0010"/>
+            <column name="id" value="TR0010"/>
+            <column name="title" value="Agua. Alta a Tanto Alzado (sin contador)"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Para solicitar el alta en el servicio es imprescindible que el solicitante se identifique con el D.N.I. o con el carnet de conducir. Los datos y documentos obligatorios a facilitar son los siguientes:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Si el titular es propietario: Escritura propiedad o justificante del Notario si se encuentra en tramitaci&amp;oacute;n. Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Si el titular es inquilino: contrato de alquiler o autorizaci&amp;oacute;n escrita del propietario. Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN, si se van a domiciliar los recibos.&lt;a href=&quot;http://www.zaragoza.es/ciudad/encasa/agua/solicitudes/detalle_Tramite?id=3722&quot;&gt; Consulte las ventajas de la domiciliaci&amp;oacute;n.&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo.&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a) Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b) Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E.&lt;/li&gt;    &lt;li&gt;Informe justificativo de las dificultades objetivas que impidan la instalaci&amp;oacute;n de contador municipal.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono m&amp;oacute;vil en el caso de solicitar alta en el servicio de alertas por SMS.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago" value="&lt;p&gt;El alta en el servicio en la modalidad de &amp;quot;tanto alzado&amp;quot; lleva consigo la exigencia de la tasa de &amp;quot;contrataci&amp;oacute;n&amp;quot;. Se har&amp;aacute; efectiva mediante cargo en la primera facturaci&amp;oacute;n que se efect&amp;uacute;e.&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/20"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0011"/>
+            <column name="id" value="TR0011"/>
+            <column name="title" value="Solicitud de Autorización de Acampadas"/>
+            <column name="description" value="&lt;p&gt;Solicitud de permiso para realizar acampadas en suelo municipal.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/1101"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;Impreso normalizado (Ver apartado &lt;em&gt;Impresos&lt;/em&gt;)&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/189"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/213"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0012"/>
+            <column name="id" value="TR0012"/>
+            <column name="title" value="Incorporación al Servicio de Recogida de Basura"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/7244"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;Formulario de solicitud &lt;/strong&gt;de incorporaci&amp;oacute;n al servicio de recogida de basuras&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;Formulario de solicitud&lt;/strong&gt; de incorporaci&amp;oacute;n al servicio de recogida de basuras&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/3503,https://www.zaragoza.es/sede/servicio/normativa/6158,https://www.zaragoza.es/sede/servicio/normativa/250"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago" value="&lt;p&gt;Ordenanza Fiscal n&amp;ordm; 17:Tasa por prestaci&amp;oacute;n de servicios de Recogida de Basuras. &lt;br /&gt;Una vez resuelto el expediente se dar&amp;aacute; traslado a Gesti&amp;oacute;n Tributaria para que emita las correspondientes liquidaciones.&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/215"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo" value="NEGATIVO"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0013"/>
+            <column name="id" value="TR0013"/>
+            <column name="title" value="Agua. Devolución de Fianza cuando la Solicita cualquier Representante de la Entidad titular de la póliza,  sin desplazarse al Ayuntamiento"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/aytocasa/enlinea/fianzajuri.jsp"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/5301"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal" value="&lt;ul&gt;    &lt;li&gt;Escrito o instancia modelo general al efecto en el que figuren los datos identificativos de la entidad beneficiaria (C.I.F.; raz&amp;oacute;n social; y domicilio de notificaci&amp;oacute;n), as&amp;iacute; como el nombre de un representante y un tel&amp;eacute;fono de contacto, y el certificado  bancario del c&amp;oacute;digo IBAN de una cuenta bancaria donde efectuar el abono del importe de la fianza, en la que figure, obligatoriamente, la entidad titular de la p&amp;oacute;liza de agua. En caso contrario, el abono en cuenta no se efectuar&amp;aacute;.&lt;/li&gt;    &lt;li&gt;El justificante de pago de la fianza, consistente en el contrato que en su d&amp;iacute;a se suscribi&amp;oacute; mecanizado con el justificante de pago (es decir, con el sello de Tesorer&amp;iacute;a o Depositaria). En su defecto, un recibo de la p&amp;oacute;liza de la que se solicita la devoluci&amp;oacute;n de fianza.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;&lt;strong&gt;a) En Todos los casos&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Haber solicitado la baja y haber precintado el contador para impedir los consumos.&lt;/li&gt;    &lt;li&gt;Tener pagados todos los recibos.&lt;/li&gt;    &lt;li&gt;La devoluci&amp;oacute;n de la fianza no podr&amp;aacute; solicitarse en los siguientes casos:    &lt;ul&gt;        &lt;li&gt;a) Cuando corresponda a una p&amp;oacute;liza vinculante en un traslado de p&amp;oacute;liza.&lt;/li&gt;        &lt;li&gt;b) Cuando corresponda a una p&amp;oacute;liza subrogada.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;b) P&amp;oacute;lizas Domiciliadas:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Tener pagados todos los recibos, hasta el precinto del contador.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;c) &lt;/strong&gt;&lt;strong&gt;P&amp;oacute;lizas No Domiciliadas:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Se exige tener pagados todos los recibos, incluido el de liquidaci&amp;oacute;n&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/288"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0014"/>
+            <column name="id" value="TR0014"/>
+            <column name="title" value="Visita didáctica al Conservatorio Municipal Elemental de Música"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/aytocasa/enlinea/activ_educa.jsp?id=4"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Dirigido a alumnos de Educaci&amp;oacute;n Primaria. Participantes: m&amp;aacute;ximo 50.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/13710"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0015"/>
+            <column name="id" value="TR0015"/>
+            <column name="title" value="Espacios escolares: cesión de espacio fuera del horario lectivo"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;La utilizaci&amp;oacute;n deber&amp;aacute; tener como finalidad actividades educativas, culturales, deportivas u otras de car&amp;aacute;cter social, fuera del horario lectivo y en su caso, durante los fines de semana y per&amp;iacute;odos de vacaciones escolares, sin que interfieran en la propia programaci&amp;oacute;n del Centro, siendo prioritarias las actividades que organicen los Ayuntamientos.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/4501"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0016"/>
+            <column name="id" value="TR0016"/>
+            <column name="title" value="Gruas: Actividades complementarias (X445)"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/8126,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/8125"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ol&gt;    &lt;li&gt;Instancia-formulario normalizada (modelo 450)&lt;/li&gt;    &lt;li&gt;Fotocopia del NIF/DNI&lt;/li&gt;    &lt;li&gt;Acreditaci&amp;oacute;n de representaci&amp;oacute;n, en su caso, tanto a t&amp;iacute;tulo particular, legal o profesional.&lt;/li&gt;    &lt;li&gt;Justificaci&amp;oacute;n de pago electr&amp;oacute;nico o copia de Documento de ingreso de la Autoliquidaci&amp;oacute;n (Ordenanza Fiscal 13).&lt;/li&gt;    &lt;li&gt;Plano de ubicaci&amp;oacute;n de la gr&amp;uacute;a, con &amp;aacute;reas de barrido de brazos (en c&amp;iacute;rculos), firmado por t&amp;eacute;cnico competente (redactor del proyecto o director de la obra o coordinador de seguridad y salud).&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n de la compa&amp;ntilde;&amp;iacute;a aseguradora acreditativa de la vigencia de la p&amp;oacute;liza de seguro de la gr&amp;uacute;a sin franquicia.&lt;/li&gt;    &lt;li&gt;Proyecto de Seguridad correspondiente a la Licencia de Obras.&lt;/li&gt;    &lt;li&gt;Presupuesto de ejecuci&amp;oacute;n material; precio del montaje de la gr&amp;uacute;a, visado por Colegio Oficial Competente.&lt;/li&gt;&lt;/ol&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ol&gt;    &lt;li&gt;Instancia-formulario normalizada (modelo 450)&lt;/li&gt;    &lt;li&gt;Acreditaci&amp;oacute;n de representaci&amp;oacute;n, en su caso, tanto a t&amp;iacute;tulo particular, legal o profesional.&lt;/li&gt;    &lt;li&gt;Justificaci&amp;oacute;n de pago electr&amp;oacute;nico o copia de Documento de ingreso de la Autoliquidaci&amp;oacute;n (Ordenanza Fiscal 13).&lt;/li&gt;    &lt;li&gt;Plano de ubicaci&amp;oacute;n de la gr&amp;uacute;a, con &amp;aacute;reas de barrido de brazos (en c&amp;iacute;rculos), firmado por t&amp;eacute;cnico competente (redactor del proyecto o director de la obra o coordinador de seguridad y salud).&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n de la compa&amp;ntilde;&amp;iacute;a aseguradora acreditativa de la vigencia de la p&amp;oacute;liza de seguro de la gr&amp;uacute;a sin franquicia.&lt;/li&gt;    &lt;li&gt;Proyecto de Seguridad correspondiente a la Licencia de Obras.&lt;/li&gt;    &lt;li&gt;Presupuesto de ejecuci&amp;oacute;n material; precio del montaje de la gr&amp;uacute;a, visado por Colegio Oficial Competente.&lt;/li&gt;&lt;/ol&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/1622,https://www.zaragoza.es/sede/servicio/normativa/228"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago" value="&lt;p&gt;Tasa de Instalaci&amp;oacute;n o Traslado de Aparatos Industriales de. &lt;strong&gt;Ordenanza Fiscal n&amp;ordm; 13. &lt;/strong&gt;&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/8403"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo" value="POSITIVO"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0017"/>
+            <column name="id" value="TR0017"/>
+            <column name="title" value="Reproducción de Documentos"/>
+            <column name="description" value="&lt;p&gt;Fondos existentes en el Archivo, Biblioteca y Hemeroteca municipales.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Existe un impreso de solicitud de reproducci&amp;oacute;n de fondos en el que se incluye precios vigentes, as&amp;iacute; como las normas de las distintas modalidades de reproducci&amp;oacute;n.&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago" value="&lt;p&gt;Tasa seg&amp;uacute;n &lt;a href=&quot;http://www.zaragoza.es/ciudad/normativa/ordenanzas-fiscales/detalle_Normativa?id=3467&quot;&gt;Ordenanza Fiscal n&amp;ordm; 11&lt;/a&gt;&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/3727"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0018"/>
+            <column name="id" value="TR0018"/>
+            <column name="title" value="Registro Acreditaciones Documentales de Contratistas: modificación, actualización y complementación de datos."/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/13,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2803,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/12,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2802,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/15"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Impreso de modificaci&amp;oacute;n de la inscripci&amp;oacute;n.&lt;/p&gt;"/>
+            <column name="detalle_en_linea" value="&lt;p&gt;Impreso de modificaci&amp;oacute;n de la inscripci&amp;oacute;n.&lt;/p&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/83"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;El Servicio encargado del Registro podr&amp;aacute; requerir a los empresarios inscritos  cuantos documentos sean necesario para comprobar la vigencia de los datos que   figuren en el Registro.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/3728"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0019"/>
+            <column name="id" value="TR0019"/>
+            <column name="title" value="Registro de Acreditaciones Documentales de Contratistas: baja"/>
+            <column name="description" value="&lt;p&gt;Baja en el Registro  de Acreditaciones Documentales de Contratistas.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2803,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2802"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Instancia General&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/83"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/3801"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0020"/>
+            <column name="id" value="TR0020"/>
+            <column name="title" value="Agua. Aplicación coeficiente 'F' a Empresas"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Organo superior"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Es de aplicaci&amp;oacute;n a actividades comerciales e industriales. Si el abastecimiento se produce a trav&amp;eacute;s de contador totalizador, el valor del coeficiente &amp;quot;F&amp;quot; aplicable ser&amp;aacute; el que corresponda al efluente com&amp;uacute;n de todas las actividades abastecidas a trav&amp;eacute;s del totalizador.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/26"/>
+            <column name="materia" value="Salud"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-05-04 11:05:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-06-11 09:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de mayo de dos mil diecinueve a las nueve en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de abril de dos mil diecinueve a las once y cinco"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0021"/>
+            <column name="id" value="TR0021"/>
+            <column name="title" value="Agua. Aplicación coeficiente 'K2' a Empresas"/>
+            <column name="description" value="&lt;p&gt;Coeficiente en funci&amp;oacute;n de la eficiencia en el uso del agua. Su valor m&amp;aacute;ximo es 1 y el m&amp;iacute;nimo 0,35.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;&lt;strong&gt;a) &lt;/strong&gt;Habr&amp;aacute; de aportarse toda aquella &lt;strong&gt;documentaci&amp;oacute;n &lt;/strong&gt;que justifique los requisitos exigidos.&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;An&amp;aacute;lisis de los vertidos para determinar los valores de los coeficientes &amp;quot;K1&amp;quot; y &amp;quot;F&amp;quot;.&lt;/li&gt;    &lt;li&gt;Datos de est&amp;aacute;ndares de consumo para empresas del mismo sector productivo.&lt;/li&gt;    &lt;li&gt;Si procede, datos comparativos de costes del servicio de abastecimiento y saneamiento de agua en otros lugares d&amp;oacute;nde se ubiquen empresas de la competencia.&lt;/li&gt;    &lt;li&gt;Informe t&amp;eacute;cnico descriptivo del proceso productivo; los lugares d&amp;oacute;nde se consume agua; c&amp;oacute;mo se utiliza; y qu&amp;eacute; tratamiento se hace de los vertidos.&lt;/li&gt;    &lt;li&gt;Documentaci&amp;oacute;n sobre certificaciones de calidad medioambiental que disponga la empresa.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;b)&lt;/strong&gt; &lt;strong&gt;Solicitud &lt;/strong&gt;donde consten los datos siguientes:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o denominaci&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;Persona de contacto y tel&amp;eacute;fono.&lt;/li&gt;    &lt;li&gt;Fuentes de abastecimiento y/o saneamiento con indicaci&amp;oacute;n del n&amp;ordm; de p&amp;oacute;liza (agua de red general, pozo, canal superficial, etc.).&lt;/li&gt;    &lt;li&gt;Cual es la actividad que desarrolla la empresa, con indicaci&amp;oacute;n del ep&amp;iacute;grafe o ep&amp;iacute;grafes de IAE que le correspondan.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal" value="&lt;p&gt;&lt;strong&gt;a) &lt;/strong&gt;Habr&amp;aacute; de aportarse toda aquella &lt;strong&gt;documentaci&amp;oacute;n &lt;/strong&gt;que justifique los requisitos exigidos.&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;An&amp;aacute;lisis de los vertidos para determinar los valores de los coeficientes &amp;quot;K1&amp;quot; y &amp;quot;F&amp;quot;.&lt;/li&gt;    &lt;li&gt;Datos de est&amp;aacute;ndares de consumo para empresas del mismo sector productivo.&lt;/li&gt;    &lt;li&gt;Si  procede, datos comparativos de costes del servicio de abastecimiento y  saneamiento de agua en otros lugares d&amp;oacute;nde se ubiquen empresas de la  competencia.&lt;/li&gt;    &lt;li&gt;Informe t&amp;eacute;cnico descriptivo del proceso productivo;  los lugares d&amp;oacute;nde se consume agua; c&amp;oacute;mo se utiliza; y qu&amp;eacute; tratamiento  se hace de los vertidos.&lt;/li&gt;    &lt;li&gt;Documentaci&amp;oacute;n sobre certificaciones de calidad medioambiental que disponga la empresa.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;b)&lt;/strong&gt; &lt;strong&gt;Solicitud &lt;/strong&gt;donde consten los datos siguientes:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o denominaci&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;Persona de contacto y tel&amp;eacute;fono.&lt;/li&gt;    &lt;li&gt;Fuentes de abastecimiento y/o saneamiento con indicaci&amp;oacute;n del n&amp;ordm; de p&amp;oacute;liza (agua de red general, pozo, canal superficial, etc.).&lt;/li&gt;    &lt;li&gt;Cual es la actividad que desarrolla la empresa, con indicaci&amp;oacute;n del ep&amp;iacute;grafe o ep&amp;iacute;grafes de IAE que le correspondan.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Ser&amp;aacute; de aplicaci&amp;oacute;n exclusiva a &lt;strong&gt;actividades comerciales e industriales&lt;/strong&gt; que as&amp;iacute; lo soliciten por escrito y cumplan los requisitos que se indican a continuaci&amp;oacute;n:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;a)&lt;/strong&gt; Se aplicar&amp;aacute; a p&amp;oacute;lizas que correspondan a actividades econ&amp;oacute;micas individualizadas, con un consumo medio diario igual o superior a 2 m&amp;sup3;.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;b)&lt;/strong&gt; Los consumos deber&amp;aacute;n estar controlados a trav&amp;eacute;s de contador. En ning&amp;uacute;n caso ser&amp;aacute; aplicable a p&amp;oacute;lizas de agua a tanto alzado o con consumos estimados. Tampoco ser&amp;aacute; aplicable a contadores totalizadores.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;c)&lt;/strong&gt; El consumo deber&amp;aacute; ser el m&amp;iacute;nimo necesario por raz&amp;oacute;n de la actividad econ&amp;oacute;mica que se desarrolla, debiendo justificarse las medidas adoptadas para ello.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;d)&lt;/strong&gt; La calidad del vertido deber&amp;aacute; ser la mejor posible, a la vista de la problem&amp;aacute;tica del sector econ&amp;oacute;mico en cuesti&amp;oacute;n. Para ello, deber&amp;aacute;n aportarse an&amp;aacute;lisis de parte de los valores obtenidos para los coeficientes &lt;a href=&quot;detalle_Tramite?id=26&quot;&gt;&lt;span class=&quot;textonr&quot;&gt;&amp;quot;F&amp;quot;&lt;/span&gt;&lt;/a&gt; y &lt;a href=&quot;detalle_Tramite?id=24&quot;&gt;&lt;span class=&quot;textonr&quot;&gt;K1&amp;quot;&lt;/span&gt;&lt;/a&gt; .&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;e)&lt;/strong&gt; Caso de existir, habr&amp;aacute; de justificarse la situaci&amp;oacute;n de d&amp;eacute;ficit competencial de la actividad econ&amp;oacute;mica respecto a otras empresas del mismo sector productivo ubicadas fuera del t&amp;eacute;rmino municipal de Zaragoza.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;f)&lt;/strong&gt; El titular ha de tener domiciliados todos los tributos municipales de cobro peri&amp;oacute;dico de los que sea titular, as&amp;iacute; como estar al corriente de pago de cualquier exacci&amp;oacute;n municipal (art. 18.1.h de la Ordenanza Fiscal General Tributaria)&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;g)&lt;/strong&gt; La p&amp;oacute;liza ha de tener domiciliados los recibos.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/25"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0022"/>
+            <column name="id" value="TR0022"/>
+            <column name="title" value="Baja de Mercados Municipales Fijos"/>
+            <column name="description" value="&lt;p&gt;Procedimiento por el que se solicita la baja de actividad de un  puesto dentro de los denominados Mercados Fijos&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;Solicitud de Baja&lt;strong&gt; &lt;/strong&gt;de Mercados Fijos&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ul&gt;    &lt;li&gt;Solicitud de Baja&lt;strong&gt; &lt;/strong&gt;de Mercados Fijos&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/23020"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo" value="NEGATIVO"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0023"/>
+            <column name="id" value="TR0023"/>
+            <column name="title" value="Albergue Municipal: Servicio de Duchas y Ropero"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/145"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Documentaci&amp;oacute;n acreditativa de Identidad.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/105"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0024"/>
+            <column name="id" value="TR0024"/>
+            <column name="title" value="Agua. Devolución de la Fianza a cualquier Representante de la nueva Entidad, resultante de la Fusión o Absorción de la Entidad titular de la póliza, sin desplazarse al Ayuntamiento"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/5301"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal" value="&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;a)&lt;/strong&gt; Solicitud expresa mediante escrito o instancia modelo general. En cualquier caso, es imprescindible hacer constar direcci&amp;oacute;n de notificaci&amp;oacute;n y tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;b)&lt;/strong&gt; El justificante de pago de la fianza, consistente en el contrato que en su d&amp;iacute;a se suscribi&amp;oacute; mecanizado con el justificante de pago (es decir, con el sello de Tesorer&amp;iacute;a o Depositaria).&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;c)&lt;/strong&gt; En su defecto, un recibo de la p&amp;oacute;liza de la que se solicita la devoluci&amp;oacute;n de fianza.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;d)&lt;/strong&gt; Copia de la Escritura P&amp;uacute;blica o del documento privado en el que conste la fusi&amp;oacute;n o absorci&amp;oacute;n de la Sociedad.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;e)&lt;/strong&gt; El certificado bancario del c&amp;oacute;digo IBAN de la cuenta donde se desea que el Ayuntamiento ingrese los derechos de conexi&amp;oacute;n de acometida a devolver, en la que figure, obligatoriamente, la entidad resultante de la fusi&amp;oacute;n o absorci&amp;oacute;n. En caso contrario, el abono en cuenta no se efectuar&amp;aacute;.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;&lt;strong&gt;a) En Todos los casos&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Haber solicitado la baja y haber precintado el contador para impedir los consumos.&lt;/li&gt;    &lt;li&gt;Tener pagados todos los recibos.&lt;/li&gt;    &lt;li&gt;La devoluci&amp;oacute;n de la fianza no podr&amp;aacute; solicitarse en los siguientes casos:    &lt;ul&gt;        &lt;li&gt;a) Cuando corresponda a una p&amp;oacute;liza vinculante en un traslado de p&amp;oacute;liza.&lt;/li&gt;        &lt;li&gt;b) Cuando corresponda a una p&amp;oacute;liza subrogada.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;b) P&amp;oacute;lizas Domiciliadas:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Tener pagados todos los recibos, hasta el precinto del contador.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;c) &lt;/strong&gt;&lt;strong&gt;P&amp;oacute;lizas No Domiciliadas:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Se exige tener pagados todos los recibos, incluido el de liquidaci&amp;oacute;n.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/244"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0025"/>
+            <column name="id" value="TR0025"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua: Reparación en tomas de agua"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/246"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0026"/>
+            <column name="id" value="TR0026"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua: Reparaciones en llaves de paso"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/247"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0027"/>
+            <column name="id" value="TR0027"/>
+            <column name="title" value="Albergue Municipal: Espacios de Emergencia"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/145"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Documentaci&amp;oacute;n acreditativa de identidad&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/103"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0028"/>
+            <column name="id" value="TR0028"/>
+            <column name="title" value="Carné Internacional de Profesor/a"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;1. Hacer un ingreso, por el importe correspondiente al tipo de carn&amp;eacute;(s) que vas a realizar, a nombre de Instituto Aragon&amp;eacute;s de la Juventud, en el &lt;strong&gt;n&amp;uacute;mero de cuenta ES55 2085 5239 07 0330514141&lt;/strong&gt; de Grupo Ibercaja. (Este ingreso puede tener una comisi&amp;oacute;n de hasta 2,40 euros. Consulta con la entidad). Si vas a hacer m&amp;aacute;s de un carn&amp;eacute;, te recomendamos que lo hagas en un solo ingreso.&lt;/li&gt;    &lt;li&gt;2. Con el resguardo del pago en el banco, m&amp;aacute;s el resto de documentaci&amp;oacute;n que se necesite para cada carn&amp;eacute; (viene especificada en cada categor&amp;iacute;a), vienes al CIPAJ y te hacemos el carn&amp;eacute; en el momento.&lt;/li&gt;    &lt;li&gt;3. Tambi&amp;eacute;n puedes hacerle el carn&amp;eacute; a otra persona siempre y cuando dispongas de toda sus datos y documentos acreditativos.&lt;/li&gt;    &lt;li&gt;4. Est&amp;eacute; carn&amp;eacute; tiene una validez de un a&amp;ntilde;o desde el d&amp;iacute;a que se adquiere (365 d&amp;iacute;as).&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;9 euros&lt;/p&gt;"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Ser profesor a tiempo completo y acreditar su condici&amp;oacute;n mediante certificado del centro o n&amp;oacute;mina&lt;/li&gt;    &lt;li&gt;DNI, pasaporte o cualquier documento de identidad oficial.&lt;/li&gt;    &lt;li&gt;1 fotograf&amp;iacute;a tama&amp;ntilde;o carnet.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/7303"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0029"/>
+            <column name="id" value="TR0029"/>
+            <column name="title" value="Visita guiada a los Centros Municipales de Convivencia para Mayores"/>
+            <column name="description" value="&lt;p&gt;&amp;nbsp;Actividad              dirigida a escolares de educaci&amp;oacute;n primaria para que conozcan             el funcionamiento, instalaciones y actividades de los             Centros de Convivencia para personas mayores.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Solicitud por escrito al Jefe de Unidad del Centro.&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Alumnos de Educaci&amp;oacute;n Primaria.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/8701"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0030"/>
+            <column name="id" value="TR0030"/>
+            <column name="title" value="Obra Mayor: Tasa Urbanística"/>
+            <column name="description"/>
+            <column name="url" value="http://www.zaragoza.es/autoliqTasaUrbanistica/contribuyenteAutoliqTasa.faces?login=false"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/7320,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/17,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/19,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/21,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/8261,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/812"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;1. &lt;a href=&quot;/contenidos/tramites/impresos/450.pdf&quot;&gt;Modelo de Solicitud de Licencias Urban&amp;iacute;sticas y otras solicitudes&lt;/a&gt; (Modelo 450).&lt;br /&gt;2. Presupuesto de Ejecuci&amp;oacute;n Material (PEM)&lt;br /&gt;3. Ficha de Costes de Referencia: descargue los modelos en el apartado de &lt;em&gt;Impresos relacionados&lt;/em&gt;&lt;/p&gt;"/>
+            <column name="detalle_en_linea" value="&lt;p&gt;1. &lt;a href=&quot;/contenidos/tramites/impresos/450.pdf&quot;&gt;Modelo de Solicitud de Licencias Urban&amp;iacute;sticas y otras solicitudes&lt;/a&gt; (Modelo 450).&lt;br /&gt;2. Presupuesto de Ejecuci&amp;oacute;n Material (PEM)&lt;br /&gt;3. Ficha de Costes de Referencia: descargue los modelos en el apartado de &lt;em&gt;Impresos relacionados&lt;/em&gt;&lt;/p&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/3571"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;&lt;strong&gt;Base Imponible, tipo de gravamen y cuota:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La cuota tributaria o importe a pagar equivale al 1% del Presupuesto de Ejecuci&amp;oacute;n Material expresado en Proyecto T&amp;eacute;cnico (exclu&amp;iacute;da la partida &amp;quot;Seguridad y Salud&amp;quot;). Sin embargo, en aquellos casos en los que la cuant&amp;iacute;a de los Costes de Referencia sea mayor que el P.E.M., el 1% se calcular&amp;aacute; sobre dichos Costes y no sobre el Presupuesto.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Formas de Pago:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;En la &lt;em&gt;Caja del Servicio de Recaudaci&amp;oacute;n&lt;/em&gt;. Edificio Seminario, planta baja, horario 08:30 a 13:30 horas. Se admite dinero en efectivo, tarjeta de cr&amp;eacute;dito o d&amp;eacute;bito (VISA o MASTERCARD) o cheque conformado a nombre del Ayuntamiento de Zaragoza.&lt;/li&gt;    &lt;li&gt;En la siguientes &lt;em&gt;Entidades Bancarias: Ibercaja, Bantierra, BBVA, Banco Santander y Caixa Bank&lt;/em&gt;, tanto de Zaragoza capital como de cualquier otro municipio.&lt;/li&gt;    &lt;li&gt;No se admite la transferencia bancaria.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/13402"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0031"/>
+            <column name="id" value="TR0031"/>
+            <column name="title" value="Charla sobre la Casa de la Mujer en Centros Educativos"/>
+            <column name="description" value="&lt;p&gt;La Casa de la Mujer ofrece la posibilidad de desplazarse a los centros educativos para impartir charlas y colaboraciones  sobre temas relacionados con la mujer.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/13603"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0032"/>
+            <column name="id" value="TR0032"/>
+            <column name="title" value="Veladores: incidencias"/>
+            <column name="description" value="&lt;p&gt;Incidencias sobre veladores (anulaci&amp;oacute;n de recibos, bajas, renuncias, etc.).&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Prsentar una Instancia General.&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/3723"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/197"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0033"/>
+            <column name="id" value="TR0033"/>
+            <column name="title" value="Taxi: Duplicado de Licencias y/o Libros de Reclamaciones (por extravío, robo o deterioro)"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/6502"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;&lt;a href=&quot;http://www.zaragoza.es/contenidos/tramites/impresos/general.pdf&quot;&gt;Instancia General.&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;ul&gt;    &lt;li&gt;&lt;a href=&quot;http://www.zaragoza.es/contenidos/tramites/impresos/general.pdf&quot;&gt;Instancia General.&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/154,https://www.zaragoza.es/sede/servicio/normativa/6374,https://www.zaragoza.es/sede/servicio/normativa/6378"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;Ordenanza Fiscal n&amp;ordm; 11:Tasa por prestaci&amp;oacute;n de Servicios Generales&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/24000"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo" value="NEGATIVO"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0034"/>
+            <column name="id" value="TR0034"/>
+            <column name="title" value="Centro Documentación del Agua y Medio Ambiente: préstamo a domicilio"/>
+            <column name="description" value="&lt;p&gt;Pr&amp;eacute;stamo de los materiales incluidos en el fondo documental del Centro de Documentaci&amp;oacute;n del Agua y el Medio Ambiente.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Es necesario disponer de la &lt;strong&gt;&lt;a href=&quot;/ciudad/medioambiente/centrodocumentacion/tusuario.htm&quot;&gt;tarjeta de ususario&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;    &lt;li&gt;Podr&amp;aacute;n retirarse en pr&amp;eacute;stamo &lt;strong&gt;6 documentos&lt;/strong&gt; simult&amp;aacute;neamente y de cualquier formato, durante un per&amp;iacute;odo de &lt;strong&gt;15 d&amp;iacute;as&lt;/strong&gt;. Existe la posibilidad de prorrogar por 15 d&amp;iacute;as m&amp;aacute;s el pr&amp;eacute;stamo, previa solicitud del usuario. Cuando el documento solicitado est&amp;eacute; prestado, se podr&amp;aacute; realizar la &lt;strong&gt;reserva&lt;/strong&gt; del mismo (presencialmente, tel&amp;eacute;fono, email). Tambi&amp;eacute;n existe la posibilidad de hacer autorreservas a trav&amp;eacute;s del nuevo servicio de &lt;a href=&quot;http://www.zaragoza.es/ciudad/medioambiente/centrodocumentacion/catalogo.htm&quot;&gt;Mi cuenta de usuario&lt;/a&gt; (para ello, es necesario ser usuario del centro)&lt;/li&gt;    &lt;li&gt;Es necesario que para el correcto funcionamiento de este servicio, las devoluciones de documentos se realicen dentro de los plazos fijados&lt;/li&gt;    &lt;li&gt;Existen otras modalidades de pr&amp;eacute;stamo a domicilio para &lt;a href=&quot;http://www.zaragoza.es/contenidos/medioambiente/cda/tcolectivos.pdf&quot;&gt;&lt;strong&gt;usuarios colectivos&lt;/strong&gt;&lt;/a&gt; y &lt;a href=&quot;http://www.zaragoza.es/contenidos/medioambiente/cda/tinvestigador.pdf&quot;&gt;&lt;strong&gt;usuarios investigadores&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/15302"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0035"/>
+            <column name="id" value="TR0035"/>
+            <column name="title" value="Solicitud de Declaración de Interés Público Municipal"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/9204,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/9203"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;La entidad solicitante incorporar&amp;aacute; a tal solicitud una &lt;strong&gt;memoria &lt;/strong&gt;suscrita por el Presidente y el Secretario relativa a:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;N&amp;uacute;mero de socios, personas f&amp;iacute;sicas, que integran la Asociaci&amp;oacute;n o conjunto de asociaciones.&lt;/li&gt;    &lt;li&gt;Beneficiarios de los servicios o actividades que realiza la entidad y los requisitos establecidos para recibir sus atenciones o prestaciones.&lt;/li&gt;    &lt;li&gt;Medios personales y materiales de que dispone la entidad.&lt;/li&gt;    &lt;li&gt;Las actividades desarrolladas en los dos &amp;uacute;ltimos a&amp;ntilde;os.&lt;/li&gt;    &lt;li&gt;Resultados obtenidos.&lt;/li&gt;    &lt;li&gt;Nivel o grado de cumplimiento de los fines estatutarios.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;p&gt;La entidad solicitante incorporar&amp;aacute; a tal solicitud una &lt;strong&gt;memoria &lt;/strong&gt;suscrita por el Presidente y el Secretario relativa a:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;N&amp;uacute;mero de socios, personas f&amp;iacute;sicas, que integran la Asociaci&amp;oacute;n o conjunto de asociaciones.&lt;/li&gt;    &lt;li&gt;Beneficiarios de los servicios o actividades que realiza la entidad y los requisitos establecidos para recibir sus atenciones o prestaciones.&lt;/li&gt;    &lt;li&gt;Medios personales y materiales de que dispone la entidad.&lt;/li&gt;    &lt;li&gt;Las actividades desarrolladas en los dos &amp;uacute;ltimos a&amp;ntilde;os.&lt;/li&gt;    &lt;li&gt;Resultados obtenidos.&lt;/li&gt;    &lt;li&gt;Nivel o grado de cumplimiento de los fines estatutarios.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/3583"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Podr&amp;aacute;n solicitar la declaraci&amp;oacute;n de inter&amp;eacute;s p&amp;uacute;blico municipal las entidades que est&amp;eacute;n inscritas en el censo municipal de entidades ciudadanas y tengan la declaraci&amp;oacute;n supramunicipal de utilidad p&amp;uacute;blica o hayan mantenido la declaraci&amp;oacute;n de inter&amp;eacute;s ciudadano por un periodo de dos a&amp;ntilde;os consecutivos.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/14401"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0036"/>
+            <column name="id" value="TR0036"/>
+            <column name="title" value="Agua. Alta de nuevo punto de suministro"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/aytocasa/enlinea/alta_nueva.jsp"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/8040"/>
+            <column name="detalle_telefono" value="&lt;p&gt;Los datos se dan por tel&amp;eacute;fono bajo la responsabilidad del solicitante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos Obligatorios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Fecha del t&amp;iacute;tulo de ocupaci&amp;oacute;n (escritura propiedad o contrato de alquiler).&lt;/li&gt;    &lt;li&gt;En caso de ser inquilino, nombre y apellidos del propietario&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;N&amp;ordm; de viviendas (coeficiente colectivo) para totalizadores dom&amp;eacute;sticos de agua fr&amp;iacute;a y caliente.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN de la cuenta de domiciliaci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo.&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a) Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b) Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros Datos necesarios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Si es beneficiario de alguna tarifa bonificada o de la tarifa &amp;quot;per c&amp;aacute;pita&amp;quot;, deber&amp;aacute; hacerlo constar al solicitar el alta.&lt;/li&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono m&amp;oacute;vil en el caso de solicitar alta en el servicio de alertas por SMS.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Se exigir&amp;aacute; la presentaci&amp;oacute;n de los documentos acreditativos de los datos solicitados.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos Obligatorios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Si el titular es &lt;em&gt;propietario&lt;/em&gt;: Escritura propiedad o justificante del Notario si se encuentra en tramitaci&amp;oacute;n.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Si el titular es &lt;em&gt;inquilino&lt;/em&gt;: contrato de alquiler o autorizaci&amp;oacute;n escrita del propietario.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;N&amp;ordm; de viviendas (coeficiente colectivo) para totalizadores dom&amp;eacute;sticos de agua fr&amp;iacute;a y caliente.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN, si se van a domiciliar los recibos. &lt;a href=&quot;http://www.zaragoza.es/ciudad/encasa/agua/solicitudes/detalle_Tramite?id=3722&quot;&gt;Consulte las ventajas de la domiciliaci&amp;oacute;n.&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo.&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a) Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b) Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros Datos necesarios:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Si es beneficiario de alguna tarifa bonificada o de la tarifa &amp;quot;per c&amp;aacute;pita&amp;quot;, deber&amp;aacute; hacerlo constar al solicitar el alta.&lt;/li&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono m&amp;oacute;vil en el caso de solicitar alta en el servicio de alertas por SMS.&lt;/li&gt;    &lt;li&gt;Si no hay &amp;quot;Certificado de instalaci&amp;oacute;n conjunto&amp;quot;, es imprescindible la presentaci&amp;oacute;n de &amp;quot;Certificado de instalaci&amp;oacute;n individual&amp;quot; emitido por instalador autorizado.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;Seg&amp;uacute;n la Ordenanza Fiscal n&amp;ordm; 24.25&amp;nbsp; y la Ordenanza por la que se fijan las tarifas de saneamiento. (Consulte el apartado de Normativa).&lt;a href=&quot;http://www.zaragoza.es/contenidos/normativa/ordenanzas-fiscales/2012/Ord_24-25.pdf&quot;&gt;&lt;br /&gt;&lt;/a&gt;&lt;/p&gt;"/>
+            <column name="requisitos" value="&lt;p&gt;Para poder contratar una p&amp;oacute;liza en una finca de nueva construcci&amp;oacute;n, se han debido cumplir previamente los siguientes requisitos:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;a) &lt;/strong&gt;El Ayuntamiento ha recibido el &amp;quot;Certificado de instalaci&amp;oacute;n&amp;quot; emitido por instalador autorizado&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;b)&lt;/strong&gt; Se ha inspeccionado la instalaci&amp;oacute;n y se ha comprobado su adecuaci&amp;oacute;n t&amp;eacute;cnica a la normativa vigente.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;c)&lt;/strong&gt; Se han cumplido por parte del promotor e instalador las obligaciones t&amp;eacute;cnicas, administrativas y fiscales exigidas en la normativa aplicable.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/1"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0037"/>
+            <column name="id" value="TR0037"/>
+            <column name="title" value="Solicitud de Informe de la Policia Local (Excepto Parte de Accidente e Informe de Accidente)"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/6502"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;&lt;em&gt;Instancia General&lt;/em&gt;, en la que se har&amp;aacute; constar el lugar, dia y tipo de intervenci&amp;oacute;n del Servicio de Policia Local&lt;/li&gt;    &lt;li&gt;&lt;em&gt;Justificante del Pago de la tasa&lt;/em&gt;, seg&amp;uacute;n la Ordenanza Fiscal n&amp;ordm; 11, (ep&amp;iacute;grafe IV).&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/3467"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;Pago seg&amp;uacute;n tasa  que rige la Ordenanza Fiscal  n&amp;ordm; 11 (Ep&amp;iacute;grafe IV). (Consulte en al apartado de &lt;em&gt;Normativa&lt;/em&gt;)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Pago de la tasa, se podr&amp;aacute; obtener de manera presencial en:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;En el &lt;em&gt;Servicio de Gesti&amp;oacute;n Tributaria&lt;/em&gt; - Edificio Seminario (V&amp;iacute;a Hispanidad, 20, planta Baja) y proceder al pago en Caja del Edificio Seminario o en entidades colaboradoras Caixabank, Ibercaja, Bantierra, Banco Santander y BBVA.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;PAGO ELECTR&amp;Oacute;NICO&lt;/h3&gt;&lt;ul&gt;    &lt;li&gt;&lt;a href=&quot;http://www.zaragoza.es/autoliqTasaServiciosPublicos/contribuyenteAutoliqTasa.faces?login=false&amp;amp;epigrafe=1&quot;&gt;&lt;strong&gt;SIN &lt;/strong&gt;Certificado Electr&amp;oacute;nico&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;&lt;a href=&quot;http://www.zaragoza.es/autoliqTasaServiciosPublicos/contribuyenteAutoliqTasa.faces?login=true&amp;amp;epigrafe=1&quot;&gt;&lt;strong&gt;CON&amp;nbsp; &lt;/strong&gt;Certificado Electr&amp;oacute;nico&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="requisitos" value="&lt;ul&gt;    &lt;li&gt;Ser parte interesada en el informe.&lt;/li&gt;    &lt;li&gt;Se denegar&amp;aacute;n todas aquellas intervenciones policiales  en las que el solicitante no sea parte interesada de las mismas o est&amp;eacute;n  sujetas a disposici&amp;oacute;n judicial.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/19901"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0038"/>
+            <column name="id" value="TR0038"/>
+            <column name="title" value="Solicitud de Información sobre los Museos Municipales"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/ciudad/enlinea/peticion_informacion.xhtm"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/20001"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0039"/>
+            <column name="id" value="TR0039"/>
+            <column name="title" value="Agua. Alta de Vivienda o Local usado"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/aytocasa/enlinea/alta_piso.jsp"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/8040"/>
+            <column name="detalle_telefono" value="&lt;p&gt;Los datos se dan por tel&amp;eacute;fono bajo la responsabilidad del solicitante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos Obligatorios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Fecha del t&amp;iacute;tulo de ocupaci&amp;oacute;n (escritura propiedad o contrato de alquiler).&lt;/li&gt;    &lt;li&gt;En caso de ser inquilino, nombre y apellidos del propietario&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;N&amp;ordm; de viviendas (coeficiente colectivo) para totalizadores dom&amp;eacute;sticos de agua fr&amp;iacute;a y caliente.&lt;/li&gt;    &lt;li&gt;El codigo IBAN de la cuenta de domiciliaci&amp;oacute;n&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo).&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico&lt;/li&gt;    &lt;li&gt;Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a) Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b) Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de la anterior.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros Datos necesarios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Si es beneficiario de alguna tarifa bonificada o de la tarifa &amp;quot;per c&amp;aacute;pita&amp;quot;, deber&amp;aacute; hacerlo constar al solicitar el cambio de titular.&lt;/li&gt;    &lt;li&gt;En locales, nombre del titular anterior o n&amp;ordm; p&amp;oacute;liza anterior para localizar con exactitud la direcci&amp;oacute;n. Pueden darse casos en que sin esa informaci&amp;oacute;n complementaria no pueda utilizarse el servicio de solicitud a distancia.&lt;/li&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono m&amp;oacute;vil en el caso de solicitar alta en el servicio de alertas por SMS.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Se exigir&amp;aacute; la presentaci&amp;oacute;n de los documentos acreditativos de los datos solicitados.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Datos Obligatorios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Si el titular es propietario: Escritura propiedad o justificante del Notario si se encuentra en tramitaci&amp;oacute;n.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Si el titular es inquilino: contrato de alquiler o autorizaci&amp;oacute;n escrita del propietario.  Se exige la presentaci&amp;oacute;n del t&amp;iacute;tulo de ocupaci&amp;oacute;n, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;    &lt;li&gt;N&amp;ordm; de viviendas (coeficiente colectivo) para totalizadores dom&amp;eacute;sticos de agua fr&amp;iacute;a y caliente.&lt;/li&gt;    &lt;li&gt;El c&amp;oacute;digo IBAN, si se van a domiciliar los recibos. &lt;a href=&quot;detalle_Tramite?id=3722&quot;&gt;Consulte las ventajas de la  domiciliaci&amp;oacute;n.&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;N.I.F. del solicitante o raz&amp;oacute;n social a la que representa.&lt;/li&gt;    &lt;li&gt;Nombre y apellidos o raz&amp;oacute;n social del solicitante.&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono de contacto.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n del procedimiento de env&amp;iacute;o de factura: on-line (&amp;quot;pdf&amp;quot; y &amp;quot;XML&amp;quot;) o por correo.&lt;/li&gt;    &lt;li&gt;En su caso, direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;br /&gt;    Domicilio para notificaciones.  El solicitante deber&amp;aacute; declarar expresamente cu&amp;aacute;l de las siguientes opciones elige:    &lt;ul&gt;        &lt;li&gt;a)Si desea que la finca que da de alta sea su domicilio fiscal general, es decir, si quiere que todas las comunicaciones tributarias del Ayuntamiento para con &amp;eacute;l se remitan a esa direcci&amp;oacute;n.&lt;/li&gt;        &lt;li&gt;b)Si desea que las comunicaciones tributarias municipales se remitan a una direcci&amp;oacute;n distinta de las anteriores.&lt;/li&gt;    &lt;/ul&gt;    &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Otros Datos necesarios&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Si es beneficiario de alguna tarifa bonificada o de la tarifa &amp;quot;per c&amp;aacute;pita&amp;quot;, deber&amp;aacute; hacerlo constar al solicitar el alta.&lt;/li&gt;    &lt;li&gt;En locales: nombre del titular anterior o n&amp;ordm; p&amp;oacute;liza anterior para localizar con exactitud la direcci&amp;oacute;n. Pueden darse casos en que sin esa informaci&amp;oacute;n complementaria no pueda determinarse cu&amp;aacute;l es el local a dar de alta.&lt;/li&gt;    &lt;li&gt;En usos comerciales o industriales, ep&amp;iacute;grafes de I.A.E.&lt;/li&gt;    &lt;li&gt;Direcci&amp;oacute;n de correo electr&amp;oacute;nico.&lt;a href=&quot;detalle_Tramite?id=3722&quot;&gt;&lt;br /&gt;    &lt;/a&gt;&lt;/li&gt;    &lt;li&gt;Tel&amp;eacute;fono m&amp;oacute;vil en el caso de solicitar alta en el servicio de alertas por SMS.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;El alta en el servicio en vivienda o local usados, lleva consigo la exigencia de la tasa de &amp;quot;contrataci&amp;oacute;n&amp;quot;.  Se har&amp;aacute; efectiva mediante cargo en la primera facturaci&amp;oacute;n que se efect&amp;uacute;e.&lt;/p&gt;&lt;p&gt;Consulte las Tarifas vigentes en la Ordenanza Fiscal 24.25.&lt;strong&gt; &lt;/strong&gt;y la Ordenanza por la que se fijan las tarifas de saneamiento. (Consulte el apartado de Normativa).&lt;a href=&quot;http://www.zaragoza.es/contenidos/normativa/ordenanzas-fiscales/2012/Ord_24-25.pdf&quot;&gt;&lt;br /&gt;&lt;/a&gt;&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/2"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0040"/>
+            <column name="id" value="TR0040"/>
+            <column name="title" value="Agua. Alta Simple con Boletín de Instalación Individual"/>
+            <column name="description" value="&lt;p&gt;Consiste en la solicitud de alta en el servicio de abastecimiento de agua potable en alguno de los lugares establecidos al efecto.&lt;strong&gt;Plazos: &lt;/strong&gt;El contador del agua se coloca en los dos d&amp;iacute;as siguientes a la solicitud&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Para solicitar el alta en el servicio es imprescindible que el solicitante se identifique con el D.N.I. o con el carnet de conducir. Los datos y documentos a facilitar son los siguientes:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Nombre y apellidos o razón social del titular.&lt;/li&gt;    &lt;li&gt;N.I.F. o C.I.F. del titular.&lt;/li&gt;    &lt;li&gt;Dirección completa de la finca a dar de alta.&lt;/li&gt;    &lt;li&gt;Si el titular es propietario: Escritura propiedad o justificante del Notario si se encuentra en tramitación. Se exige la presentación del título de ocupación, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Si el titular es inquilino: contrato de alquiler o autorización escrita del propietario. Se exige la presentación del título de ocupación, que una vez comprobado se devuelve.&lt;/li&gt;    &lt;li&gt;Uso a que se destina el abastecimiento.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago" value="&lt;p&gt;Consulte las Tarifas vigentes en la Ordenanza Fiscal 24.25.&lt;/p&gt;"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/10"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0041"/>
+            <column name="id" value="TR0041"/>
+            <column name="title" value="Registro de Acreditaciones Documentales de Contratistas: alta"/>
+            <column name="description" value="&lt;p&gt;La inscripci&amp;oacute;n en el Registro es voluntaria para formular proposiciones en los procedimiento licitatorios que convoque el Ayuntamiento de Zaragoza.&lt;/p&gt;"/>
+            <column name="url"/>
+            <column name="impreso" value="https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/13,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2803,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/12,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/2802,https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/14"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;h4&gt;1.- Personalidad Jur&amp;iacute;dica y Capacidad de los Empresarios.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Escritura o documento de constituci&amp;oacute;n. Inscrita en Registro oficial.&lt;/li&gt;    &lt;li&gt;Escritura de Modificaci&amp;oacute;n. Inscrita en el correspondiente Registro oficial.&lt;/li&gt;    &lt;li&gt;Escritura de Adaptaci&amp;oacute;n. Inscrita en el correspondiente Registro oficial.&lt;/li&gt;    &lt;li&gt;Estatutos. Inscritos en el correspondiente Registro oficial.&lt;/li&gt;    &lt;li&gt;Acta fundacional. Inscrita en el correspondiente Registro oficial.&lt;/li&gt;    &lt;li&gt;C.I.F. o documento que legalmente lo sustituya, empresarios individuales.&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n inscripci&amp;oacute;n en Registro correspondiente empresarios no espa&amp;ntilde;oles U.E.&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n expedida por la representaci&amp;oacute;n diplom&amp;aacute;tica para otras empresas extranjeras.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;2.- Representaci&amp;oacute;n.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Poder legal, otorgado, o en su caso Estatutos inscritos en el Registro correspondiente.&lt;/li&gt;    &lt;li&gt;Bastanteo del poder efectuado por el Secretario General.&lt;/li&gt;    &lt;li&gt;D.N.I. o documento similar de los representantes.&lt;/li&gt;    &lt;li&gt;Escritura nombramiento Administradores.&lt;/li&gt;    &lt;li&gt;Escritura  apoderamiento.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;3.- Declaraci&amp;oacute;n Prohibici&amp;oacute;n Contratar.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Declaraci&amp;oacute;n de no hallarse incurso en prohibici&amp;oacute;n para contratar con el Ayuntamiento  .&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;4.- Obligaciones Tributarias.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Documento que acredite estar dado de alta en la fecha de la licitaci&amp;oacute;n en el I.A.E.&lt;/li&gt;    &lt;li&gt;Pago de las cotizaciones a la Seguridad Social.&lt;/li&gt;    &lt;li&gt;Cumplimiento obligaciones tributarias con la Administraci&amp;oacute;n del Estado.&lt;/li&gt;    &lt;li&gt;Cumplimiento con la Diputaci&amp;oacute;n Foral de r&amp;eacute;gimen econ&amp;oacute;mico especial.&lt;/li&gt;    &lt;li&gt;Cumplimiento con el Ayuntamiento de Zaragoza.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n de no estar  la empresa sujeta a tributaci&amp;oacute;n en otras Administraci&amp;oacute;n.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;5.- Clasificaci&amp;oacute;n como Contratista.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Certificado de clasificaci&amp;oacute;n para empresas espa&amp;ntilde;olas.&lt;/li&gt;    &lt;li&gt;Certificado o documento similar, empresas extranjeras.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n de pertenecer a Grupo Empresarial.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea" value="&lt;p class=&quot;info&quot;&gt;Los documentos que aparecen con &lt;strong&gt;asterisco (*)&lt;/strong&gt;, deber&amp;aacute;n presentarse de forma presencial, ya que es necesario disponer del documento original&lt;/p&gt;&lt;h4&gt;1. Personalidad Jur&amp;iacute;dica y Capacidad de los Empresarios.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Escritura o documento de constituci&amp;oacute;n. Inscrita en Registro oficial. (*)&lt;/li&gt;    &lt;li&gt;Escritura de Modificaci&amp;oacute;n. Inscrita en el correspondiente Registro oficial.(*)&lt;/li&gt;    &lt;li&gt;Escritura de Adaptaci&amp;oacute;n. Inscrita en el correspondiente Registro oficial.(*)&lt;/li&gt;    &lt;li&gt;Estatutos. Inscritos en el correspondiente Registro oficial.(*)&lt;/li&gt;    &lt;li&gt;Acta fundacional. Inscrita en el correspondiente Registro oficial.(*)&lt;/li&gt;    &lt;li&gt;C.I.F. o documento que legalmente lo sustituya, empresarios individuales.&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n inscripci&amp;oacute;n en Registro correspondiente empresarios no espa&amp;ntilde;oles U.E.(*)&lt;/li&gt;    &lt;li&gt;Certificaci&amp;oacute;n expedida por la representaci&amp;oacute;n diplom&amp;aacute;tica para otras empresas extranjeras.(*)&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;2. Representaci&amp;oacute;n.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Poder legal, otorgado, o en su caso Estatutos inscritos en el Registro correspondiente.(*)&lt;/li&gt;    &lt;li&gt;Bastanteo del poder efectuado por el Secretario General.(*)&lt;/li&gt;    &lt;li&gt;D.N.I. o documento similar de los representantes.&lt;/li&gt;    &lt;li&gt;Escritura nombramiento Administradores.(*)&lt;/li&gt;    &lt;li&gt;Escritura  apoderamiento.(*)&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;3. Declaraci&amp;oacute;n Prohibici&amp;oacute;n Contratar.(*)&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Declaraci&amp;oacute;n de no hallarse incurso en prohibici&amp;oacute;n para contratar con el Ayuntamiento.&lt;/li&gt;&lt;/ul&gt;&lt;h5&gt;4. Obligaciones Tributarias.&lt;/h5&gt;&lt;ul&gt;    &lt;li&gt;Documento que acredite estar dado de alta en la fecha de la licitaci&amp;oacute;n en el I.A.E.&lt;/li&gt;    &lt;li&gt;Pago de las cotizaciones a la Seguridad Social.&lt;/li&gt;    &lt;li&gt;Cumplimiento obligaciones tributarias con la Administraci&amp;oacute;n del Estado.&lt;/li&gt;    &lt;li&gt;Cumplimiento con la Diputaci&amp;oacute;n Foral de r&amp;eacute;gimen econ&amp;oacute;mico especial.&lt;/li&gt;    &lt;li&gt;Cumplimiento con el Ayuntamiento de Zaragoza.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n de no estar  la empresa sujeta a tributaci&amp;oacute;n en otras administraciones.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;5. Clasificaci&amp;oacute;n como Contratista.&lt;/h4&gt;&lt;ul&gt;    &lt;li&gt;Certificado de clasificaci&amp;oacute;n para empresas espa&amp;ntilde;olas.&lt;/li&gt;    &lt;li&gt;Certificado o documento similar, empresas extranjeras.&lt;/li&gt;    &lt;li&gt;Declaraci&amp;oacute;n de pertenecer a Grupo Empresarial.&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/83"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos" value="&lt;p&gt;Los requisitos que pueden tener acceso al Registro podr&amp;aacute;n ser acreditados mediante copia notarial legalizada o copia compulsada por el Servicio de Contrataci&amp;oacute;n y Patrimonio, salvo en los casos en que los contratistas opten por la aportaci&amp;oacute;n de documentos originales.&lt;/p&gt;"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/3707"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0042"/>
+            <column name="id" value="TR0042"/>
+            <column name="title" value="Albergue Municipal: Servicio de Desayuno y Comedor para Personas No Alojadas"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/145"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/106"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0043"/>
+            <column name="id" value="TR0043"/>
+            <column name="title" value="Impuesto de Vehículos de Tracción Mecánica (IVTM): Cambio de Domicilio"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;A efectos de poder tramitar la renovaci&amp;oacute;n del permiso o licencia de circulaci&amp;oacute;n por cambio de domicilio, debe presentarse ante la &lt;strong&gt;Jefatura Provincial de Tr&amp;aacute;fico  l&lt;/strong&gt;a documentaci&amp;oacute;n que se indica:&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;&lt;strong&gt;Justificante de cambio de domicilio&lt;/strong&gt;: DNI, certificado de empadronamiento, tarjeta censal, etc. Si no hay cambio de municipio bastar&amp;aacute; con un recibo de agua, luz, gas, etc.&lt;/li&gt;    &lt;li&gt;En el caso de cambio de domicilio de veh&amp;iacute;culos procedentes de Canarias, Ceuta y Melilla a la Pen&amp;iacute;nsula o Baleares, se aportar&amp;aacute; documento acreditativo de que se ha despachado el veh&amp;iacute;culo en la Aduana. Si no aporta dicho documento se pondr&amp;aacute; en conocimiento del departamento de Aduanas.&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;Documentaci&amp;oacute;n del veh&amp;iacute;culo:&lt;/strong&gt; Permiso de circulaci&amp;oacute;n (salvo en caso de extrav&amp;iacute;o o sustracci&amp;oacute;n) y Tarjeta de ITV&lt;/li&gt;    &lt;li&gt;&lt;strong&gt;Tr&amp;aacute;mite gratuito&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;M&amp;aacute;s informaci&amp;oacute;n&lt;/strong&gt; en la web de la &lt;a href=&quot;http://www.dgt.es/portal/es/oficina_virtual/vehiculos/&quot;&gt;Direcci&amp;oacute;n General de Tr&amp;aacute;fico.&lt;/a&gt;&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/109"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0044"/>
+            <column name="id" value="TR0044"/>
+            <column name="title" value="Agua. Actuaciones en acometidas de vertido: acometidas de vertido nuevas"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;ul&gt;    &lt;li&gt;Datos de identificaci&amp;oacute;n del solicitante.&lt;/li&gt;    &lt;li&gt;Referencia o fotocopia de la licencia de obras.&lt;/li&gt;    &lt;li&gt;Plano de situaci&amp;oacute;n de la finca o solar objeto de la solicitud, indicando en el mismo por d&amp;oacute;nde desean hacer la acometida de vertido.&lt;/li&gt;    &lt;li&gt;Plano de las instalaciones generales de agua y vertido en caso de edificios de nueva construcci&amp;oacute;n.&lt;/li&gt;    &lt;li&gt;Referencia o fotocopia del contrato de agua o recibo &amp;uacute;ltimo. Se har&amp;aacute; constar, as&amp;iacute; mismo, si disponen de otras fuentes de suministro de agua distintas de la red general municipal (pozos, canal superficial, etc.).&lt;/li&gt;&lt;/ul&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/263"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0045"/>
+            <column name="id" value="TR0045"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua: Tomas de agua nuevas"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/262"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0046"/>
+            <column name="id" value="TR0046"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua y acometidas de vertido: Apertura de zanja para remodelación de instalaciones"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/261"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0047"/>
+            <column name="id" value="TR0047"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua: hidrantes"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial" value="&lt;p&gt;Documentaci&amp;oacute;n que debe aportar: - Datos de identificaci&amp;oacute;n del solicitante. - Plano de situaci&amp;oacute;n indicando el punto donde se pretende ubicar el hidrante&lt;/p&gt;"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/265"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0048"/>
+            <column name="id" value="TR0048"/>
+            <column name="title" value="Agua. Actuaciones en tomas de agua y acometidas de vertido: Devoluciones de depósitos provisionales constituidos por apertura de zanja para las actuaciones"/>
+            <column name="description"/>
+            <column name="url"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="true"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa" value="https://www.zaragoza.es/sede/servicio/normativa/4703,https://www.zaragoza.es/sede/servicio/normativa/3564,https://www.zaragoza.es/sede/servicio/normativa/1542,https://www.zaragoza.es/sede/servicio/normativa/4783,https://www.zaragoza.es/sede/servicio/normativa/3565,https://www.zaragoza.es/sede/servicio/normativa/3566,https://www.zaragoza.es/sede/servicio/normativa/4043"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/266"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0049"/>
+            <column name="id" value="TR0049"/>
+            <column name="title" value="Museos Municipales. Petición de Información"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/ciudad/enlinea/peticion_informacion.xhtm"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="false"/>
+            <column name="permite_presencial" valueBoolean="true"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="false"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/13010"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <insert tableName="tramite">
+            <column name="ikey" value="0050"/>
+            <column name="id" value="TR0050"/>
+            <column name="title" value="Request information for Municipal Museums"/>
+            <column name="description"/>
+            <column name="url" value="https://www.zaragoza.es/aytocasa/enlinea/peticion_informacion_en.jsp"/>
+            <column name="impreso"/>
+            <column name="detalle_telefono"/>
+            <column name="detalle_presencial"/>
+            <column name="detalle_en_linea"/>
+            <column name="detalle_correo_postal"/>
+            <column name="permite_en_linea" valueBoolean="true"/>
+            <column name="permite_presencial" valueBoolean="false"/>
+            <column name="permite_telefono" valueBoolean="false"/>
+            <column name="permite_correo_postal" valueBoolean="true"/>
+            <column name="normativa"/>
+            <column name="organo" value="Departamento de Informática"/>
+            <column name="pago"/>
+            <column name="requisitos"/>
+            <column name="same_as" value="http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/13011"/>
+            <column name="materia" value="Tecnología, Investigación e Innovación"/>
+            <column name="fecha_plazo_inicio" valueDate="2019-01-08 23:59:59.0"/>
+            <column name="fecha_plazo_fin" valueDate="2019-12-08 23:59:59.0"/>
+            <column name="fecha_presentacion" valueDate="2019-04-04 14:15:00.0"/>
+            <column name="fecha_respuesta" valueDate="2019-07-11 10:00:00.0"/>
+            <column name="fecha_respuesta_texto" value="Once de junio de dos mil diecinueve a las diez en punto"/>
+            <column name="fecha_presentacion_texto" value="Cuatro de marzo de dos mil diecinueve a las catorce y cuarto"/>
+            <column name="efecto_silencio_administrativo"/>
+        </insert>
+        <rollback/>
+    </changeSet>   
+    
+
+
+
+    
+       <changeSet id="TABLE-TRAMITE-tag-1.15" author="Localidata">
+    	<tagDatabase tag="1.15" />
+  	</changeSet> 
+    
+</databaseChangeLog>

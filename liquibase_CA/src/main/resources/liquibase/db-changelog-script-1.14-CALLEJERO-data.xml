@@ -1,0 +1,2122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 
+     <changeSet author="Localidata" id="datos-callejero-via">
+        <insert tableName="callejero_via">
+            <column name="ikey" value="1"/>
+            <column name="id" value="114600"/>
+            <column name="title" value="BRAVO MURILLO"/>
+            <column name="tipo_via" value="CALLE"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+        </insert>
+        <insert tableName="callejero_via">
+            <column name="ikey" value="2"/>
+            <column name="id" value="496400"/>
+            <column name="title" value="MAUDES"/>
+            <column name="tipo_via" value="CALLE"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+        </insert>
+        <insert tableName="callejero_via">
+            <column name="ikey" value="3"/>
+            <column name="id" value="627700"/>
+            <column name="title" value="RAIMUNDO FERNÁNDEZ VILLAVERDE"/>
+            <column name="tipo_via" value="CALLE"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+        </insert>
+        <rollback/>	
+    </changeSet>   
+    <changeSet author="Localidata" id="datos-callejero-portal">
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="1"/>
+            <column name="id" value="PORTAL000001"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 1"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440242.56000"/>
+            <column name="y_etrs89" valueNumeric="4476174.20000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="10"/>
+            <column name="id" value="PORTAL000010"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 1"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440323.96000"/>
+            <column name="y_etrs89" valueNumeric="4477444.86000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="100"/>
+            <column name="id" value="PORTAL000100"/>
+            <column name="street_address" value="CALLE B DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 42 B"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440831.07000"/>
+            <column name="y_etrs89" valueNumeric="4477465.37000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="101"/>
+            <column name="id" value="PORTAL000101"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440801.19000"/>
+            <column name="y_etrs89" valueNumeric="4477579.16000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="102"/>
+            <column name="id" value="PORTAL000102"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 44"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440812.71000"/>
+            <column name="y_etrs89" valueNumeric="4477476.28000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="103"/>
+            <column name="id" value="PORTAL000103"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 45"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440843.79000"/>
+            <column name="y_etrs89" valueNumeric="4477576.01000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="104"/>
+            <column name="id" value="PORTAL000104"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 47"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440902.84000"/>
+            <column name="y_etrs89" valueNumeric="4477571.09000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="105"/>
+            <column name="id" value="PORTAL000105"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 49"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440929.42000"/>
+            <column name="y_etrs89" valueNumeric="4477579.19000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="106"/>
+            <column name="id" value="PORTAL000106"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 50"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440942.40000"/>
+            <column name="y_etrs89" valueNumeric="4477494.45000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="107"/>
+            <column name="id" value="PORTAL000107"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 51"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440958.44000"/>
+            <column name="y_etrs89" valueNumeric="4477577.06000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="108"/>
+            <column name="id" value="PORTAL000108"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 52"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441024.23000"/>
+            <column name="y_etrs89" valueNumeric="4477518.88000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="109"/>
+            <column name="id" value="PORTAL000109"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 53"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440973.63000"/>
+            <column name="y_etrs89" valueNumeric="4477610.57000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="11"/>
+            <column name="id" value="PORTAL000011"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 2"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440323.57000"/>
+            <column name="y_etrs89" valueNumeric="4477427.04000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="110"/>
+            <column name="id" value="PORTAL000110"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 54"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441121.98000"/>
+            <column name="y_etrs89" valueNumeric="4477510.95000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="111"/>
+            <column name="id" value="PORTAL000111"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 55"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440938.83000"/>
+            <column name="y_etrs89" valueNumeric="4477618.07000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="112"/>
+            <column name="id" value="PORTAL000112"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 57"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440977.29000"/>
+            <column name="y_etrs89" valueNumeric="4477652.06000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="113"/>
+            <column name="id" value="PORTAL000113"/>
+            <column name="street_address" value="CALLE B DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 57 B"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440975.32000"/>
+            <column name="y_etrs89" valueNumeric="4477677.64000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="114"/>
+            <column name="id" value="PORTAL000114"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 59"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440937.42000"/>
+            <column name="y_etrs89" valueNumeric="4477647.57000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="115"/>
+            <column name="id" value="PORTAL000115"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 61"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440991.78000"/>
+            <column name="y_etrs89" valueNumeric="4477564.42000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="116"/>
+            <column name="id" value="PORTAL000116"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 63"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441079.52000"/>
+            <column name="y_etrs89" valueNumeric="4477557.95000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="117"/>
+            <column name="id" value="PORTAL000117"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 65"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441122.66000"/>
+            <column name="y_etrs89" valueNumeric="4477554.59000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="118"/>
+            <column name="id" value="PORTAL000118"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 67"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441183.13000"/>
+            <column name="y_etrs89" valueNumeric="4477550.60000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="119"/>
+            <column name="id" value="PORTAL000119"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 69"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441302.72000"/>
+            <column name="y_etrs89" valueNumeric="4477555.43000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="12"/>
+            <column name="id" value="PORTAL000012"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 3"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440334.09000"/>
+            <column name="y_etrs89" valueNumeric="4477444.25000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="120"/>
+            <column name="id" value="PORTAL000120"/>
+            <column name="street_address" value="CALLE A DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 69 A"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28046"/>
+            <column name="x_etrs89" valueNumeric="441256.29000"/>
+            <column name="y_etrs89" valueNumeric="4477570.91000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="13"/>
+            <column name="id" value="PORTAL000013"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 4"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440338.08000"/>
+            <column name="y_etrs89" valueNumeric="4477425.95000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="14"/>
+            <column name="id" value="PORTAL000014"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 5"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440387.80000"/>
+            <column name="y_etrs89" valueNumeric="4477440.25000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="15"/>
+            <column name="id" value="PORTAL000015"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 6"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440399.75000"/>
+            <column name="y_etrs89" valueNumeric="4477421.02000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="16"/>
+            <column name="id" value="PORTAL000016"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 7"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440400.13000"/>
+            <column name="y_etrs89" valueNumeric="4477439.22000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="17"/>
+            <column name="id" value="PORTAL000017"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 8"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440419.06000"/>
+            <column name="y_etrs89" valueNumeric="4477419.47000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="18"/>
+            <column name="id" value="PORTAL000018"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 9"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440411.88000"/>
+            <column name="y_etrs89" valueNumeric="4477438.28000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="19"/>
+            <column name="id" value="PORTAL000019"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 10"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440438.86000"/>
+            <column name="y_etrs89" valueNumeric="4477417.87000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="2"/>
+            <column name="id" value="PORTAL000002"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 2"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440275.49000"/>
+            <column name="y_etrs89" valueNumeric="4476172.47000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="20"/>
+            <column name="id" value="PORTAL000020"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 11"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440419.20000"/>
+            <column name="y_etrs89" valueNumeric="4477437.71000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="21"/>
+            <column name="id" value="PORTAL000021"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 12"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440459.12000"/>
+            <column name="y_etrs89" valueNumeric="4477416.15000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="22"/>
+            <column name="id" value="PORTAL000022"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 13"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440430.12000"/>
+            <column name="y_etrs89" valueNumeric="4477436.87000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="23"/>
+            <column name="id" value="PORTAL000023"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 14"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440479.44000"/>
+            <column name="y_etrs89" valueNumeric="4477414.77000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="24"/>
+            <column name="id" value="PORTAL000024"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 15"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440443.40000"/>
+            <column name="y_etrs89" valueNumeric="4477435.86000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="25"/>
+            <column name="id" value="PORTAL000025"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 16"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440499.80000"/>
+            <column name="y_etrs89" valueNumeric="4477413.25000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="26"/>
+            <column name="id" value="PORTAL000026"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 17"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440536.45000"/>
+            <column name="y_etrs89" valueNumeric="4477429.34000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="27"/>
+            <column name="id" value="PORTAL000027"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 18"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440519.97000"/>
+            <column name="y_etrs89" valueNumeric="4477411.78000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="28"/>
+            <column name="id" value="PORTAL000028"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 20"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440540.31000"/>
+            <column name="y_etrs89" valueNumeric="4477410.28000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="29"/>
+            <column name="id" value="PORTAL000029"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 21"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440625.80000"/>
+            <column name="y_etrs89" valueNumeric="4477421.80000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="3"/>
+            <column name="id" value="PORTAL000003"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 3"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440243.06000"/>
+            <column name="y_etrs89" valueNumeric="4476190.15000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="30"/>
+            <column name="id" value="PORTAL000030"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 22"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440560.57000"/>
+            <column name="y_etrs89" valueNumeric="4477408.77000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="31"/>
+            <column name="id" value="PORTAL000031"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 23"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440669.76000"/>
+            <column name="y_etrs89" valueNumeric="4477418.42000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="32"/>
+            <column name="id" value="PORTAL000032"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 24"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440580.91000"/>
+            <column name="y_etrs89" valueNumeric="4477407.28000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="33"/>
+            <column name="id" value="PORTAL000033"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 26"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440624.45000"/>
+            <column name="y_etrs89" valueNumeric="4477403.49000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="34"/>
+            <column name="id" value="PORTAL000034"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 27"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440713.57000"/>
+            <column name="y_etrs89" valueNumeric="4477415.05000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="35"/>
+            <column name="id" value="PORTAL000035"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 28"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440661.62000"/>
+            <column name="y_etrs89" valueNumeric="4477400.96000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="36"/>
+            <column name="id" value="PORTAL000036"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 31"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440763.93000"/>
+            <column name="y_etrs89" valueNumeric="4477411.07000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="37"/>
+            <column name="id" value="PORTAL000037"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 32"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440674.04000"/>
+            <column name="y_etrs89" valueNumeric="4477400.12000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="38"/>
+            <column name="id" value="PORTAL000038"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 33"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440782.27000"/>
+            <column name="y_etrs89" valueNumeric="4477409.68000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="39"/>
+            <column name="id" value="PORTAL000039"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 34"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440690.30000"/>
+            <column name="y_etrs89" valueNumeric="4477398.81000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="4"/>
+            <column name="id" value="PORTAL000004"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 4"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440276.01000"/>
+            <column name="y_etrs89" valueNumeric="4476188.81000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="40"/>
+            <column name="id" value="PORTAL000040"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 36"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440706.71000"/>
+            <column name="y_etrs89" valueNumeric="4477397.55000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="41"/>
+            <column name="id" value="PORTAL000041"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 38"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440724.48000"/>
+            <column name="y_etrs89" valueNumeric="4477395.84000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="42"/>
+            <column name="id" value="PORTAL000042"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 40"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440750.07000"/>
+            <column name="y_etrs89" valueNumeric="4477393.38000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="43"/>
+            <column name="id" value="PORTAL000043"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 41"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440808.36000"/>
+            <column name="y_etrs89" valueNumeric="4477407.69000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="44"/>
+            <column name="id" value="PORTAL000044"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 42"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440775.60000"/>
+            <column name="y_etrs89" valueNumeric="4477392.24000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="45"/>
+            <column name="id" value="PORTAL000045"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 43"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440844.34000"/>
+            <column name="y_etrs89" valueNumeric="4477404.87000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="46"/>
+            <column name="id" value="PORTAL000046"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 44"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440781.87000"/>
+            <column name="y_etrs89" valueNumeric="4477391.76000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="47"/>
+            <column name="id" value="PORTAL000047"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 46"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440794.27000"/>
+            <column name="y_etrs89" valueNumeric="4477390.81000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="48"/>
+            <column name="id" value="PORTAL000048"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 48"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440813.17000"/>
+            <column name="y_etrs89" valueNumeric="4477389.36000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="49"/>
+            <column name="id" value="PORTAL000049"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 49"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440937.89000"/>
+            <column name="y_etrs89" valueNumeric="4477397.86000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="5"/>
+            <column name="id" value="PORTAL000005"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 5"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440243.55000"/>
+            <column name="y_etrs89" valueNumeric="4476205.47000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="50"/>
+            <column name="id" value="PORTAL000050"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 50"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440833.79000"/>
+            <column name="y_etrs89" valueNumeric="4477387.76000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="51"/>
+            <column name="id" value="PORTAL000051"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 51"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441019.11000"/>
+            <column name="y_etrs89" valueNumeric="4477369.39000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="52"/>
+            <column name="id" value="PORTAL000052"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 52"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440855.01000"/>
+            <column name="y_etrs89" valueNumeric="4477385.98000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="53"/>
+            <column name="id" value="PORTAL000053"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 54"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440893.25000"/>
+            <column name="y_etrs89" valueNumeric="4477383.24000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="54"/>
+            <column name="id" value="PORTAL000054"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 56"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440910.94000"/>
+            <column name="y_etrs89" valueNumeric="4477381.93000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="55"/>
+            <column name="id" value="PORTAL000055"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 58"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440922.10000"/>
+            <column name="y_etrs89" valueNumeric="4477381.09000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="56"/>
+            <column name="id" value="PORTAL000056"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 60"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440936.34000"/>
+            <column name="y_etrs89" valueNumeric="4477379.98000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="57"/>
+            <column name="id" value="PORTAL000057"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 62"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440949.20000"/>
+            <column name="y_etrs89" valueNumeric="4477378.97000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="58"/>
+            <column name="id" value="PORTAL000058"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 64"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440972.74000"/>
+            <column name="y_etrs89" valueNumeric="4477376.59000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="59"/>
+            <column name="id" value="PORTAL000059"/>
+            <column name="street_address" value="CALLE DE MAUDES NUMERO 66"/>
+            <column name="via" value="496400"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="441018.85000"/>
+            <column name="y_etrs89" valueNumeric="4477352.65000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="6"/>
+            <column name="id" value="PORTAL000006"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 6"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440276.68000"/>
+            <column name="y_etrs89" valueNumeric="4476209.93000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="60"/>
+            <column name="id" value="PORTAL000060"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 1"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440365.78000"/>
+            <column name="y_etrs89" valueNumeric="4477610.22000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="61"/>
+            <column name="id" value="PORTAL000061"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 2"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440346.26000"/>
+            <column name="y_etrs89" valueNumeric="4477568.43000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="62"/>
+            <column name="id" value="PORTAL000062"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 3"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440391.32000"/>
+            <column name="y_etrs89" valueNumeric="4477608.45000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="63"/>
+            <column name="id" value="PORTAL000063"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 4"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440376.43000"/>
+            <column name="y_etrs89" valueNumeric="4477566.16000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="64"/>
+            <column name="id" value="PORTAL000064"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 5"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440402.76000"/>
+            <column name="y_etrs89" valueNumeric="4477607.61000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="65"/>
+            <column name="id" value="PORTAL000065"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 6"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440394.94000"/>
+            <column name="y_etrs89" valueNumeric="4477564.85000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="66"/>
+            <column name="id" value="PORTAL000066"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 7"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440407.85000"/>
+            <column name="y_etrs89" valueNumeric="4477607.23000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="67"/>
+            <column name="id" value="PORTAL000067"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 8"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440407.28000"/>
+            <column name="y_etrs89" valueNumeric="4477564.32000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="68"/>
+            <column name="id" value="PORTAL000068"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 9"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440424.08000"/>
+            <column name="y_etrs89" valueNumeric="4477606.11000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="69"/>
+            <column name="id" value="PORTAL000069"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 10"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440428.34000"/>
+            <column name="y_etrs89" valueNumeric="4477562.48000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="7"/>
+            <column name="id" value="PORTAL000007"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 7"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440244.08000"/>
+            <column name="y_etrs89" valueNumeric="4476221.41000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="70"/>
+            <column name="id" value="PORTAL000070"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 11"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440433.34000"/>
+            <column name="y_etrs89" valueNumeric="4477605.45000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="71"/>
+            <column name="id" value="PORTAL000071"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 12"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440440.26000"/>
+            <column name="y_etrs89" valueNumeric="4477561.66000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="72"/>
+            <column name="id" value="PORTAL000072"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 13"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440457.95000"/>
+            <column name="y_etrs89" valueNumeric="4477603.68000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="73"/>
+            <column name="id" value="PORTAL000073"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 14"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440454.15000"/>
+            <column name="y_etrs89" valueNumeric="4477560.67000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="74"/>
+            <column name="id" value="PORTAL000074"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 15"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440471.17000"/>
+            <column name="y_etrs89" valueNumeric="4477602.74000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="75"/>
+            <column name="id" value="PORTAL000075"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 16"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440470.01000"/>
+            <column name="y_etrs89" valueNumeric="4477559.53000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="76"/>
+            <column name="id" value="PORTAL000076"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 17"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440483.84000"/>
+            <column name="y_etrs89" valueNumeric="4477601.84000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="77"/>
+            <column name="id" value="PORTAL000077"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 18"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440547.68000"/>
+            <column name="y_etrs89" valueNumeric="4477550.42000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="78"/>
+            <column name="id" value="PORTAL000078"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 19"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440502.47000"/>
+            <column name="y_etrs89" valueNumeric="4477600.51000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="79"/>
+            <column name="id" value="PORTAL000079"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 21"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440521.03000"/>
+            <column name="y_etrs89" valueNumeric="4477599.19000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="8"/>
+            <column name="id" value="PORTAL000008"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 8"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440276.89000"/>
+            <column name="y_etrs89" valueNumeric="4476217.04000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="80"/>
+            <column name="id" value="PORTAL000080"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 23"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440534.93000"/>
+            <column name="y_etrs89" valueNumeric="4477598.20000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="81"/>
+            <column name="id" value="PORTAL000081"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 25"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440548.01000"/>
+            <column name="y_etrs89" valueNumeric="4477597.27000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="82"/>
+            <column name="id" value="PORTAL000082"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 26"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440635.76000"/>
+            <column name="y_etrs89" valueNumeric="4477517.48000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="83"/>
+            <column name="id" value="PORTAL000083"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 27"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440570.48000"/>
+            <column name="y_etrs89" valueNumeric="4477595.59000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="84"/>
+            <column name="id" value="PORTAL000084"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 28"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440677.86000"/>
+            <column name="y_etrs89" valueNumeric="4477514.32000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="85"/>
+            <column name="id" value="PORTAL000085"/>
+            <column name="street_address" value="CALLE B DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 28 B"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440694.02000"/>
+            <column name="y_etrs89" valueNumeric="4477543.27000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="86"/>
+            <column name="id" value="PORTAL000086"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 29"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440587.39000"/>
+            <column name="y_etrs89" valueNumeric="4477594.30000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="87"/>
+            <column name="id" value="PORTAL000087"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 30"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440707.45000"/>
+            <column name="y_etrs89" valueNumeric="4477512.22000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="88"/>
+            <column name="id" value="PORTAL000088"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 31"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440597.68000"/>
+            <column name="y_etrs89" valueNumeric="4477593.56000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="89"/>
+            <column name="id" value="PORTAL000089"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 32"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440726.97000"/>
+            <column name="y_etrs89" valueNumeric="4477510.80000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="9"/>
+            <column name="id" value="PORTAL000009"/>
+            <column name="street_address" value="CALLE DE BRAVO MURILLO NUMERO 9"/>
+            <column name="via" value="114600"/>
+            <column name="postal_code" value="28015"/>
+            <column name="x_etrs89" valueNumeric="440244.64000"/>
+            <column name="y_etrs89" valueNumeric="4476237.10000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="90"/>
+            <column name="id" value="PORTAL000090"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 33"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440617.17000"/>
+            <column name="y_etrs89" valueNumeric="4477592.07000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="91"/>
+            <column name="id" value="PORTAL000091"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 34"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440782.97000"/>
+            <column name="y_etrs89" valueNumeric="4477472.23000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="92"/>
+            <column name="id" value="PORTAL000092"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 35"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440652.13000"/>
+            <column name="y_etrs89" valueNumeric="4477589.31000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="93"/>
+            <column name="id" value="PORTAL000093"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 36"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440780.92000"/>
+            <column name="y_etrs89" valueNumeric="4477444.28000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="94"/>
+            <column name="id" value="PORTAL000094"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 37"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440663.58000"/>
+            <column name="y_etrs89" valueNumeric="4477588.42000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="95"/>
+            <column name="id" value="PORTAL000095"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 38"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440808.41000"/>
+            <column name="y_etrs89" valueNumeric="4477435.77000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="96"/>
+            <column name="id" value="PORTAL000096"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 39"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440681.37000"/>
+            <column name="y_etrs89" valueNumeric="4477587.04000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="97"/>
+            <column name="id" value="PORTAL000097"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 40"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440838.14000"/>
+            <column name="y_etrs89" valueNumeric="4477439.92000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="98"/>
+            <column name="id" value="PORTAL000098"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 41"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440723.22000"/>
+            <column name="y_etrs89" valueNumeric="4477584.50000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <insert tableName="callejero_portal">
+            <column name="ikey" value="99"/>
+            <column name="id" value="PORTAL000099"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 42"/>
+            <column name="via" value="627700"/>
+            <column name="postal_code" value="28003"/>
+            <column name="x_etrs89" valueNumeric="440840.27000"/>
+            <column name="y_etrs89" valueNumeric="4477469.61000"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
+        </insert>
+        <rollback/>	
+    </changeSet>
+    <changeSet author="Localidata" id="datos-callejero-tramo-via">
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRA000001"/>
+            <column name="title" value="Tramo comprendido entre el número 1 hasta el 33 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="1"/>
+            <column name="numero_fin_tramo" value="33"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="10"/>
+            <column name="id" value="TRA000010"/>
+            <column name="title" value="Tramo comprendido entre el número 61 hasta el 99 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="61"/>
+            <column name="numero_fin_tramo" value="99"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="11"/>
+            <column name="id" value="TRA000011"/>
+            <column name="title" value="Tramo comprendido entre el número 1 hasta el 17 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="1"/>
+            <column name="numero_fin_tramo" value="17"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="12"/>
+            <column name="id" value="TRA000012"/>
+            <column name="title" value="Tramo comprendido entre el número 2 hasta el 28 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="2"/>
+            <column name="numero_fin_tramo" value="28"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="13"/>
+            <column name="id" value="TRA000013"/>
+            <column name="title" value="Tramo comprendido entre el número 21 hasta el 23 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="21"/>
+            <column name="numero_fin_tramo" value="23"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="14"/>
+            <column name="id" value="TRA000014"/>
+            <column name="title" value="Tramo comprendido entre el número 27 hasta el 27 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="27"/>
+            <column name="numero_fin_tramo" value="27"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="15"/>
+            <column name="id" value="TRA000015"/>
+            <column name="title" value="Tramo comprendido entre el número 31 hasta el 33 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="31"/>
+            <column name="numero_fin_tramo" value="33"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="16"/>
+            <column name="id" value="TRA000016"/>
+            <column name="title" value="Tramo comprendido entre el número 32 hasta el 66 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="32"/>
+            <column name="numero_fin_tramo" value="66"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="17"/>
+            <column name="id" value="TRA000017"/>
+            <column name="title" value="Tramo comprendido entre el número 41 hasta el 43 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="41"/>
+            <column name="numero_fin_tramo" value="43"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="18"/>
+            <column name="id" value="TRA000018"/>
+            <column name="title" value="Tramo comprendido entre el número 49 hasta el 51 de la/del Calle Maudes"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="496400"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="49"/>
+            <column name="numero_fin_tramo" value="51"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="19"/>
+            <column name="id" value="TRA000019"/>
+            <column name="title" value="Tramo comprendido entre el número 2 hasta el 18 de la/del Calle Raimundo Fernández Villaverde"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="627700"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="2"/>
+            <column name="numero_fin_tramo" value="18"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRA000002"/>
+            <column name="title" value="Tramo comprendido entre el número 2 hasta el 28 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="2"/>
+            <column name="numero_fin_tramo" value="28"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="20"/>
+            <column name="id" value="TRA000020"/>
+            <column name="title" value="Tramo comprendido entre el número 26 hasta el 42 de la/del Calle Raimundo Fernández Villaverde"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="627700"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="26"/>
+            <column name="numero_fin_tramo" value="42"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="21"/>
+            <column name="id" value="TRA000021"/>
+            <column name="title" value="Tramo comprendido entre el número 42B hasta el 44 de la/del Calle Raimundo Fernández Villaverde"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="627700"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="42"/>
+            <column name="numero_fin_tramo" value="44"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="22"/>
+            <column name="id" value="TRA000022"/>
+            <column name="title" value="Tramo comprendido entre el número 50 hasta el 54 de la/del Calle Raimundo Fernández Villaverde"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="627700"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="50"/>
+            <column name="numero_fin_tramo" value="54"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="3"/>
+            <column name="id" value="TRA000003"/>
+            <column name="title" value="Tramo comprendido entre el número 28B hasta el 36 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="28"/>
+            <column name="numero_fin_tramo" value="36"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="4"/>
+            <column name="id" value="TRA000004"/>
+            <column name="title" value="Tramo comprendido entre el número 36B hasta el 42 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="36"/>
+            <column name="numero_fin_tramo" value="42"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="5"/>
+            <column name="id" value="TRA000005"/>
+            <column name="title" value="Tramo comprendido entre el número 37 hasta el 37V de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="37"/>
+            <column name="numero_fin_tramo" value="37"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="6"/>
+            <column name="id" value="TRA000006"/>
+            <column name="title" value="Tramo comprendido entre el número 37X hasta el 41V de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="37"/>
+            <column name="numero_fin_tramo" value="41"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="7"/>
+            <column name="id" value="TRA000007"/>
+            <column name="title" value="Tramo comprendido entre el número 41X hasta el 53 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="41"/>
+            <column name="numero_fin_tramo" value="53"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="8"/>
+            <column name="id" value="TRA000008"/>
+            <column name="title" value="Tramo comprendido entre el número 46 hasta el 54 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="46"/>
+            <column name="numero_fin_tramo" value="54"/>
+        </insert>
+        <insert tableName="callejero_tramo_via">
+            <column name="ikey" value="9"/>
+            <column name="id" value="TRA000009"/>
+            <column name="title" value="Tramo comprendido entre el número 60 hasta el 94 de la/del Calle Bravo Murillo"/>
+            <column name="estado" value="vigente"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="via" value="114600"/>
+            <column name="junta_administrativa" value="Chamberí"/>
+            <column name="numero_inicio_tramo" value="60"/>
+            <column name="numero_fin_tramo" value="94"/>
+        </insert>
+        <rollback/>	
+    </changeSet>
+
+
+
+    <!-- eliminamos foreignKey
+    
+    <changeSet author="Localidata" id="FK-Index-table-callejero_tramo_via-via">
+        <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_tramo_via" constraintName="callejero_tramo_via_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
+    </changeSet>
+    
+     <changeSet author="Localidata" id="FK-Index-table-portal_via-via">
+        <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_portal" constraintName="callejero_portal_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
+    </changeSet>
+    -->
+    
+    <changeSet id="DATA-CALIDAD-AIRE-tag-1.14" author="Localidata">
+    	<tagDatabase tag="1.14" />
+  	</changeSet>
+    
+</databaseChangeLog>

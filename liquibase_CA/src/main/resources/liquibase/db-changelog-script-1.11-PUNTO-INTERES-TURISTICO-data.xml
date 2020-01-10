@@ -1,0 +1,1190 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="data-punto-interes-turistico">                               
+		<insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0001"/>
+            <column name="id" value="PIT0001"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Histohuellas"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Compuesta por un grupo de licenciados en Historia e Historia del Arte, especializados en docencia y gestión del patrimonio cultural y con experiencia en el sector turístico, esta empresa ofrece a los ciudadanos y turistas numerosas actividades histórico&amp;nbsp; - culturales con las que dar a conocer el importante patrimonio artístico y cultural de Madrid.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Entre sus propuestas se encuentran excursiones para colegios, compuestas de visitas, gymkanas y entradas a museos; visitas privadas exteriores o en museos y gymkanas culturales; y actividades culturales para empresas. Además, todos los fines de semana organizan visitas guiadas en grupos abiertos, para las que es preciso reservar entrada en su página web.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Mayor"/>
+            <column name="postal_code" value="28012"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440291.26773"/>
+            <column name="y_etrs89" valueNumeric="4474254.64478"/>
+            <column name="email" value="info@histohuellas.es"/>
+            <column name="telephone" value="(+34) 665 63 17 74"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/histohuellas"/>
+            <column name="siglo" value="XII"/>
+            <column name="estilo_artistico" value="Romanico"/>
+            <column name="coste_mantenimiento" valueNumeric="19800.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="126980.02"/>
+            <column name="afluencia_publico" value="Jovenes y Adultos"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-25 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="Autobuses, cernanias y Metro"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Compuesta por un grupo de licenciados en Historia e Historia del Arte, especializados en docencia y gestión del patrimonio cultural y con experiencia en el sector turístico, esta empresa ofrece a los ciudadanos y turistas numerosas actividades histórico&amp;nbsp; - culturales con las que dar a conocer el importante patrimonio artístico y cultural de Madrid.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Entre sus propuestas se encuentran excursiones para colegios, compuestas de visitas, gymkanas y entradas a museos; visitas privadas exteriores o en museos y gymkanas culturales; y actividades culturales para empresas. Además, todos los fines de semana organizan visitas guiadas en grupos abiertos, para las que es preciso reservar entrada en su página web.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; vier: 8:00 &amp;ndash; 20:00 h&lt;/p&gt;&lt;p&gt;Sábado: 10:00 &amp;ndash; 20:00 h&lt;/p&gt;&lt;p&gt;Domingo: 10:00 &amp;ndash; 15:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/histohuellas_5.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0002"/>
+            <column name="id" value="PIT0002"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Centro Cultural Flamenco de Madrid"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El barrio de Chueca acoge este espacio dedicado al mundo del flamenco, bajo la dirección de Rosana de Aza y con la bailaora Leilah Broukhim como directora artística.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En sus instalaciones se llevan a cabo exposiciones y actividades diversas relacionadas con el arte y la cultura flamenca. El centro permanece abierto a diario y desde las 19:30 ofrece un espectáculo flamenco íntimo, en el que se no hay micrófonos ni megafonía, en un auditorio con capacidad para 60 personas.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="del Conde de Xiquena, 6"/>
+            <column name="postal_code" value="28004"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441121.70870"/>
+            <column name="y_etrs89" valueNumeric="4474902.41555"/>
+            <column name="email" value="culturalflamenco@gmail.com"/>
+            <column name="telephone" value="(+34)91 137 34 08"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/centro-cultural-flamenco-madrid"/>
+            <column name="siglo" value="XIII"/>
+            <column name="estilo_artistico" value="Romanico"/>
+            <column name="coste_mantenimiento" valueNumeric="19830.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="1260980.02"/>
+            <column name="afluencia_publico" value="Jovenes y Adultos"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-25 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="Autobuses, cernanias y Metro"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El barrio de Chueca acoge este espacio dedicado al mundo del flamenco, bajo la dirección de Rosana de Aza y con la bailaora Leilah Broukhim como directora artística.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En sus instalaciones se llevan a cabo exposiciones y actividades diversas relacionadas con el arte y la cultura flamenca. El centro permanece abierto a diario y desde las 19:30 ofrece un espectáculo flamenco íntimo, en el que se no hay micrófonos ni megafonía, en un auditorio con capacidad para 60 personas.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; dom: 11:00 &amp;ndash; 21:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/centro_cultural_flamenco_de_madrid.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0003"/>
+            <column name="id" value="PIT0003"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Mirador Payaso Fof&amp;oacute;"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;En lo alto del Parque Payaso Fofó, situado en el barrio de Palomeras Bajas (Puente de Vallecas), se encuentra este mirador desde el que se puede disfrutar de unas vistas panorámicas de Madrid. Su nombre recuerda al emblemático payaso Fofó, que nació en Vallecas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Se trata de una balconada elevada de cemento situada entre las calles Puerto de Costabona y Puerto del Milagro, que está rodeada por el bloque de viviendas conocido como &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/torre-san-jose&quot;&gt;Torre de San José&lt;/a&gt;. Desde ella se puede disfrutar de la mejores vistas del &lt;em&gt;skyline&lt;/em&gt; madrileño.&lt;/p&gt;&lt;p&gt;&lt;iframe height=&quot;480&quot; src=&quot;https://www.google.com/maps/d/embed?mid=1vvsAgbaln7tF_QIbMlwfsEATYIA&amp;amp;hl=es&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Puerto de Costabona, 5"/>
+            <column name="postal_code" value="28018"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="444080.12014"/>
+            <column name="y_etrs89" valueNumeric="4470777.14716"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/mirador-payaso-fofo"/>
+            <column name="siglo" value="XX"/>
+            <column name="estilo_artistico" value="Renacentista"/>
+            <column name="coste_mantenimiento" valueNumeric="19830.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="1260980.02"/>
+            <column name="afluencia_publico" value="Jovenes y Adultos"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-28 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="Autobuses, cernanias y Metro"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;En lo alto del Parque Payaso Fofó, situado en el barrio de Palomeras Bajas (Puente de Vallecas), se encuentra este mirador desde el que se puede disfrutar de unas vistas panorámicas de Madrid. Su nombre recuerda al emblemático payaso Fofó, que nació en Vallecas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Se trata de una balconada elevada de cemento situada entre las calles Puerto de Costabona y Puerto del Milagro, que está rodeada por el bloque de viviendas conocido como &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/torre-san-jose&quot;&gt;Torre de San José&lt;/a&gt;. Desde ella se puede disfrutar de la mejores vistas del &lt;em&gt;skyline&lt;/em&gt; madrileño.&lt;/p&gt;&lt;p&gt;&lt;iframe height=&quot;480&quot; src=&quot;https://www.google.com/maps/d/embed?mid=1vvsAgbaln7tF_QIbMlwfsEATYIA&amp;amp;hl=es&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/mirador_payaso_fofo_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0004"/>
+            <column name="id" value="PIT0004"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Torre de San Jos&amp;eacute;"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Situado en la colina más alta de Vallecas, en la colonia de San José, se eleva este torreón hueco de 15 plantas que alberga 252 viviendas. Construido por los arquitectos Elías Torres y Juan Antonio Martínez Lapeña, fue ideado como vivienda social destinada al arrendamiento barato.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La torre, de forma circular, en espiral, aunque abierta en su parte noreste, mide 45 metros y cuenta con un patio interior. Desde su última planta (considerada el punto más alto de la ciudad) se puede observar la carretera de Colmenar, al norte, y el Cerro de los Ángeles, al sur, aunque las vistas de Madrid son increíbles desde cualquier piso dada la altura de la colina sobre la que se eleva.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Puerto del Milagro, 6"/>
+            <column name="postal_code" value="28018"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="444150.00911"/>
+            <column name="y_etrs89" valueNumeric="4470622.52857"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/torre-san-jose"/>
+            <column name="siglo" value="XX"/>
+            <column name="estilo_artistico" value="Renacentista"/>
+            <column name="coste_mantenimiento" valueNumeric="19830.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="1260980.02"/>
+            <column name="afluencia_publico" value="Jovenes y Adultos"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-28 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="Autobuses, cernanias y Metro"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Situado en la colina más alta de Vallecas, en la colonia de San José, se eleva este torreón hueco de 15 plantas que alberga 252 viviendas. Construido por los arquitectos Elías Torres y Juan Antonio Martínez Lapeña, fue ideado como vivienda social destinada al arrendamiento barato.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La torre, de forma circular, en espiral, aunque abierta en su parte noreste, mide 45 metros y cuenta con un patio interior. Desde su última planta (considerada el punto más alto de la ciudad) se puede observar la carretera de Colmenar, al norte, y el Cerro de los Ángeles, al sur, aunque las vistas de Madrid son increíbles desde cualquier piso dada la altura de la colina sobre la que se eleva.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;--&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/torre_de_san_jose.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0005"/>
+            <column name="id" value="PIT0005"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Nattivus"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Esta plataforma online ofrece una gran variedad de rutas y actividades en los principales destinos de Europa, entre los que se encuentra Madrid. Desde excursiones a lugares emblemáticos, visitas guiadas, espectáculos, entradas a museos, alquiler de bicicletas o tours gastronómicos, son muchas las opciones para poder conocer y disfrutar de la ciudad.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además de las rutas organizadas en Madrid, Nattivus propone también excursiones a destinos próximos como Aranjuez, Alcalá de Henares, Ávila, Toledo o Segovia, entre otros.&lt;br /&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="--"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440291.26773"/>
+            <column name="y_etrs89" valueNumeric="4474254.64478"/>
+            <column name="email" value=" info@nattivus.com"/>
+            <column name="telephone" value="(+34) 911 128 822"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/nattivus"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-13 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Esta plataforma online ofrece una gran variedad de rutas y actividades en los principales destinos de Europa, entre los que se encuentra Madrid. Desde excursiones a lugares emblemáticos, visitas guiadas, espectáculos, entradas a museos, alquiler de bicicletas o tours gastronómicos, son muchas las opciones para poder conocer y disfrutar de la ciudad.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además de las rutas organizadas en Madrid, Nattivus propone también excursiones a destinos próximos como Aranjuez, Alcalá de Henares, Ávila, Toledo o Segovia, entre otros.&lt;br /&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar web oficial&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/nattivus.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0006"/>
+            <column name="id" value="PIT0006"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Cool Tour Spain"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Esta empresa, pionera en Madrid en ofrecer rutas turísticas especializadas en arte urbano y grafiti, organiza unas originales visitas por la ciudad en español, francés e inglés. Su objetivo es mostrar el Madrid más alternativo y aquellas zonas que están fuera de los circuitos turísticos tradicionales, todo ello de la mano de artistas urbanos y guías turísticos con dilatada experiencia en el sector.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Cool Tour Spain cuenta con distintos servicios que van desde las Rutas de Arte Urbano diarias a Excursiones Escolares pasando por talleres de grafiti.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Carrión de los Condes, 77"/>
+            <column name="postal_code" value="28033"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="444277.77788"/>
+            <column name="y_etrs89" valueNumeric="4480780.03201"/>
+            <column name="email" value="info@colltourspain.com"/>
+            <column name="telephone" value="(+34) 638 399 784"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/cool-tour-spain"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-19 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Esta empresa, pionera en Madrid en ofrecer rutas turísticas especializadas en arte urbano y grafiti, organiza unas originales visitas por la ciudad en español, francés e inglés. Su objetivo es mostrar el Madrid más alternativo y aquellas zonas que están fuera de los circuitos turísticos tradicionales, todo ello de la mano de artistas urbanos y guías turísticos con dilatada experiencia en el sector.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Cool Tour Spain cuenta con distintos servicios que van desde las Rutas de Arte Urbano diarias a Excursiones Escolares pasando por talleres de grafiti.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar web oficial&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/cool_tour_spain.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0007"/>
+            <column name="id" value="PIT0007"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Madrid Culture Tour"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Con más de una década de experiencia, esta empresa de servicios turísticos especializada en visitas culturales guiadas en Madrid cuenta con varios historiadores del arte en su plantilla, encargados de presentar el arte y la cultura de la ciudad a turistas, aficionados, estudiantes y profesores.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Madrid Culture Tour oferta diversas visitas guiadas a diario por la ciudad, así como a&amp;nbsp;exposiciones temporales y museos. Como norma general las visitas&amp;nbsp;son en español, pero&amp;nbsp;las de carácter privado, solicitadas&amp;nbsp;con reserva previa, se pueden realizar en italiano, francés e inglés.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="del Hospital, 2"/>
+            <column name="postal_code" value="28012"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441003.77971"/>
+            <column name="y_etrs89" valueNumeric="4473360.96428"/>
+            <column name="email" value="info@madridculturetour.com"/>
+            <column name="telephone" value="(+34) 607 01 75 94"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/madrid-culture-tour"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-11 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Con más de una década de experiencia, esta empresa de servicios turísticos especializada en visitas culturales guiadas en Madrid cuenta con varios historiadores del arte en su plantilla, encargados de presentar el arte y la cultura de la ciudad a turistas, aficionados, estudiantes y profesores.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Madrid Culture Tour oferta diversas visitas guiadas a diario por la ciudad, así como a&amp;nbsp;exposiciones temporales y museos. Como norma general las visitas&amp;nbsp;son en español, pero&amp;nbsp;las de carácter privado, solicitadas&amp;nbsp;con reserva previa, se pueden realizar en italiano, francés e inglés.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar web oficial&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/madrid_culture_tour.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0008"/>
+            <column name="id" value="PIT0008"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="CSA La Tabacalera de Lavapi&amp;eacute;s"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;La antigua Fábrica de Tabacos de Embajadores acoge este centro social autogestionado, un lugar en el que se programa teatro, música, danza, pintura, conferencias, reuniones, talleres, audiovisuales, intervenciones en el barrio, así como cualquier tipo de actividad cultural que tienen, como común denominador, su carácter colectivo, público y de transformación social.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El Centro está abierto a la participación directa de todos los ciudadanos. Cualquier particular o grupo de personas puede solicitar el uso de un espacio para llevar a cabo un proyecto sin ánimo de lucro, siempre que se implique ayudando al mantenimiento y trabaje con espíritu solidario.&lt;/p&gt;&lt;p&gt;El CSA La Tabacalera se encuentra situado junto a &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/tabacalera-promocion-arte&quot;&gt;Tabacalera Promoción del Arte&lt;/a&gt;, espacio culturla gestionado por la Subdirección General de Promoción de las Bellas Artes del Ministerio de Cultura y Deporte, que&amp;nbsp;desarrolla un programa permanente de exposiciones temporales y de actividades en torno a la fotografía, el arte contemporáneo y las artes visuales.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Embajadores, 53"/>
+            <column name="postal_code" value="28012"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440350.87577"/>
+            <column name="y_etrs89" valueNumeric="4473077.61452"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/csa-tabacalera-lavapies"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-03-11 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;La antigua Fábrica de Tabacos de Embajadores acoge este centro social autogestionado, un lugar en el que se programa teatro, música, danza, pintura, conferencias, reuniones, talleres, audiovisuales, intervenciones en el barrio, así como cualquier tipo de actividad cultural que tienen, como común denominador, su carácter colectivo, público y de transformación social.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El Centro está abierto a la participación directa de todos los ciudadanos. Cualquier particular o grupo de personas puede solicitar el uso de un espacio para llevar a cabo un proyecto sin ánimo de lucro, siempre que se implique ayudando al mantenimiento y trabaje con espíritu solidario.&lt;/p&gt;&lt;p&gt;El CSA La Tabacalera se encuentra situado junto a &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/tabacalera-promocion-arte&quot;&gt;Tabacalera Promoción del Arte&lt;/a&gt;, espacio culturla gestionado por la Subdirección General de Promoción de las Bellas Artes del Ministerio de Cultura y Deporte, que&amp;nbsp;desarrolla un programa permanente de exposiciones temporales y de actividades en torno a la fotografía, el arte contemporáneo y las artes visuales.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Sáb &amp;ndash; dom:&amp;nbsp; 18:00 &amp;ndash; 22:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/csa_la_tacalera_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0009"/>
+            <column name="id" value="PIT0009"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Teatro Municipal de Vallecas"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Ubicada en el antiguo salón de actos de la Biblioteca Gerardo Diego, en Villa de Vallecas, se encuentra esta pequeña sala de teatro, con un aforo de cien butacas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Tras la rehabilitación de este espacio, que estaba en desuso, la sala cumple con el requisito de accesibilidad para las personas con movilidad y comunicación reducidas.&lt;/p&gt;&lt;p&gt;La sala alberga una escuela de teatro y una compañía, que se nutrirá del alumnado de la escuela.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Monte Aya, 12"/>
+            <column name="postal_code" value="28031"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="447143.04772"/>
+            <column name="y_etrs89" valueNumeric="4469885.64459"/>
+            <column name="email" value="bpgerardodiego@madrid.es"/>
+            <column name="telephone" value="(+34) 91 380 66 33"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/teatro-municipal-vallecas"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-02-27 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Ubicada en el antiguo salón de actos de la Biblioteca Gerardo Diego, en Villa de Vallecas, se encuentra esta pequeña sala de teatro, con un aforo de cien butacas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Tras la rehabilitación de este espacio, que estaba en desuso, la sala cumple con el requisito de accesibilidad para las personas con movilidad y comunicación reducidas.&lt;/p&gt;&lt;p&gt;La sala alberga una escuela de teatro y una compañía, que se nutrirá del alumnado de la escuela.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar programación.&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/teatro_municipal_de_vallecas_3.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0010"/>
+            <column name="id" value="PIT0010"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Galer&amp;iacute;a Montsequi"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Fundado en 2004, este espacio expositivo tiene por objetivo mostrar nuevos lenguajes de expresión artística en la disciplinas de pintura, fotografía y escultura, realizados por artistas nacionales e internacionales de reconocido prestigio, así como por valores emergentes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La galería, que fomenta la presencia del arte en el mundo empresarial e institucional, prestando especial atención al coleccionismo, se distribuye en dos salas, una a doble altura como espacio expositivo y una segunda sala independiente que aloja el fondo de galería.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Alonso Cano, 42"/>
+            <column name="postal_code" value="28003"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440848.75922"/>
+            <column name="y_etrs89" valueNumeric="4476936.24372"/>
+            <column name="email" value="galeriadearte@montesqui.com"/>
+            <column name="telephone" value="(+34) 915 35 85 93"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/galeria-montsequi"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-02-22 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Fundado en 2004, este espacio expositivo tiene por objetivo mostrar nuevos lenguajes de expresión artística en la disciplinas de pintura, fotografía y escultura, realizados por artistas nacionales e internacionales de reconocido prestigio, así como por valores emergentes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La galería, que fomenta la presencia del arte en el mundo empresarial e institucional, prestando especial atención al coleccionismo, se distribuye en dos salas, una a doble altura como espacio expositivo y una segunda sala independiente que aloja el fondo de galería.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lunes: 17:30 - 20:30 h&lt;/p&gt;&lt;p&gt;Mar - vier: 10:30 - 14:00 h/ 17:30 - 20:30 h&lt;/p&gt;&lt;p&gt;Sábado: 10:30 - 14:00 h&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/galeria_montsequi_-1.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0011"/>
+            <column name="id" value="PIT0011"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Edificio Castellana 81 (Torre BBVA)"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Situado en el &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/complejo-azca&quot;&gt;Complejo&amp;nbsp;Azca&lt;/a&gt;, este edificio de oficinas ha sido declarado por la Comunidad de Madrid en 2019 Bien de Interés Cultural (BIC), en la categoría de Monumento. Con sus 107 metros de altura se ha convertido en uno de los iconos del skyline madrileño.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Construido entre 1978 y 1981 por el arquitecto español Sáenz de Oiza, fue la sede social del Banco de Santander y hasta 2015 sede operativa principal de la entidad bancaria BBVA en Madrid. De 2014 a 2018 sufrió una gran reforma que le ha dotado de una amplia gama de servicios adicionales, lo que le ha llevado a obtener la certificación LEED otorgada por el US Green Building Council al alcanzar el máximo nivel de sostenibilidad.&lt;/p&gt;&lt;p&gt;El edificio cuenta con 28 plantas dedicadas a oficinas, de las cuales 5 son de doble altura, diáfanas y sin pilares. Además dispone de 390 plazas de garaje, incluidas algunas destinadas a vehículos eléctricos y de carpooling, así como de 58 aparcamientos para bicicletas.&lt;/p&gt;&lt;p&gt;Entre los galardones obtenidos se encuentra el Premio DIGA a la accesibilidad 2017 de la Fundación Shangri-La; el Premio Mejor Rehabilitación 2017 de la AEO; y el Premio&amp;nbsp;&amp;ldquo;Mejor Actuación Inmobiliaria No Residencial&amp;rdquo; de los Premio ASPRIMA-SIMA.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de la Castellana, 81"/>
+            <column name="postal_code" value="28002"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441315.02633"/>
+            <column name="y_etrs89" valueNumeric="4477674.50186"/>
+            <column name="email" value="info@castellana81.com"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/edificio-castellana-81-torre-bbva"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-01-29 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Situado en el &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/complejo-azca&quot;&gt;Complejo&amp;nbsp;Azca&lt;/a&gt;, este edificio de oficinas ha sido declarado por la Comunidad de Madrid en 2019 Bien de Interés Cultural (BIC), en la categoría de Monumento. Con sus 107 metros de altura se ha convertido en uno de los iconos del skyline madrileño.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Construido entre 1978 y 1981 por el arquitecto español Sáenz de Oiza, fue la sede social del Banco de Santander y hasta 2015 sede operativa principal de la entidad bancaria BBVA en Madrid. De 2014 a 2018 sufrió una gran reforma que le ha dotado de una amplia gama de servicios adicionales, lo que le ha llevado a obtener la certificación LEED otorgada por el US Green Building Council al alcanzar el máximo nivel de sostenibilidad.&lt;/p&gt;&lt;p&gt;El edificio cuenta con 28 plantas dedicadas a oficinas, de las cuales 5 son de doble altura, diáfanas y sin pilares. Además dispone de 390 plazas de garaje, incluidas algunas destinadas a vehículos eléctricos y de carpooling, así como de 58 aparcamientos para bicicletas.&lt;/p&gt;&lt;p&gt;Entre los galardones obtenidos se encuentra el Premio DIGA a la accesibilidad 2017 de la Fundación Shangri-La; el Premio Mejor Rehabilitación 2017 de la AEO; y el Premio&amp;nbsp;&amp;ldquo;Mejor Actuación Inmobiliaria No Residencial&amp;rdquo; de los Premio ASPRIMA-SIMA.&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/torre_bbva_0.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0012"/>
+            <column name="id" value="PIT0012"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="La Matritense"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este local, situado en la Plaza de Olavide, en pleno&amp;nbsp;barrio de Chamberí, es un&amp;nbsp;establecimiento dedicado íntegramente al mundo del vino. Se trata de una bodega urbana que produce el único vino que se elabora en la capital. Es además la escuela de vinos decana de Madrid y dispone de un enobar especializado en Manzanillas en rama.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además, el bar dispone de una barra, de algunas mesas en el interior y de una amplia terraza en la que sirven vinos y&amp;nbsp;cervezas, así como tortillas de patata y embutidos.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Olavide, 4"/>
+            <column name="postal_code" value="28010"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440492.89609"/>
+            <column name="y_etrs89" valueNumeric="4476000.85255"/>
+            <column name="email" value="info@vinomatritense.com"/>
+            <column name="telephone" value="(+34) 91 522 53 07"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/matritense"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-01-15 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este local, situado en la Plaza de Olavide, en pleno&amp;nbsp;barrio de Chamberí, es un&amp;nbsp;establecimiento dedicado íntegramente al mundo del vino. Se trata de una bodega urbana que produce el único vino que se elabora en la capital. Es además la escuela de vinos decana de Madrid y dispone de un enobar especializado en Manzanillas en rama.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además, el bar dispone de una barra, de algunas mesas en el interior y de una amplia terraza en la que sirven vinos y&amp;nbsp;cervezas, así como tortillas de patata y embutidos.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lunes, Mier - vier: 16:30 - 24:00 h&lt;/p&gt;&lt;p&gt;Sáb - dom: 12:30 - 24:00 h&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/la_matritense.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0013"/>
+            <column name="id" value="PIT0013"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Nickelodeon Adventure Madrid"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El &lt;a href=&quot;https://www.esmadrid.com/compras/centro-comercial-madrid-xanadu&quot;&gt;Centro Comercial y de Ocio&amp;nbsp;Intu Xanadú&lt;/a&gt;, en Arroyomolinos, cuenta con este espacio de diversión para toda la familia, en el que los más pequeños de la casa son los protagonistas. Se trata del primer centro de ocio interior de Nickleodeon en Madrid, en el que los niños pueden disfrutar de atracciones, juegos interactivos y salas temáticas con sus personajes favoritos. &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Sus 4.600 metros cuadrados se dividen en seis zonas temáticas: Fondo de Bikini, Padrinos Mágicos, 4D Cinema, Tortugas Ninja, Nickelodeon Central y Rugrats,&amp;nbsp;decoradas con algunos de los personajes más famosos&amp;nbsp;de Nickelodeon, como Bob Esponja, la Patrulla Canina, Tortugas Ninja o Dora la Exploradora.&lt;/p&gt;&lt;p&gt;También dispone de una zona de comida familiar, el Slime Café, y de una tienda en la que poder encontrar los productos oficiales de los personajes de Nickelodeon.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Puerto de Navacerrada"/>
+            <column name="postal_code" value="28939"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="421196.41439"/>
+            <column name="y_etrs89" valueNumeric="4461589.20652"/>
+            <column name="email"/>
+            <column name="telephone" value="(+34) 91 078 00 82"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/nickelodeon-adventure-madrid"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-01-16 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El &lt;a href=&quot;https://www.esmadrid.com/compras/centro-comercial-madrid-xanadu&quot;&gt;Centro Comercial y de Ocio&amp;nbsp;Intu Xanadú&lt;/a&gt;, en Arroyomolinos, cuenta con este espacio de diversión para toda la familia, en el que los más pequeños de la casa son los protagonistas. Se trata del primer centro de ocio interior de Nickleodeon en Madrid, en el que los niños pueden disfrutar de atracciones, juegos interactivos y salas temáticas con sus personajes favoritos. &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Sus 4.600 metros cuadrados se dividen en seis zonas temáticas: Fondo de Bikini, Padrinos Mágicos, 4D Cinema, Tortugas Ninja, Nickelodeon Central y Rugrats,&amp;nbsp;decoradas con algunos de los personajes más famosos&amp;nbsp;de Nickelodeon, como Bob Esponja, la Patrulla Canina, Tortugas Ninja o Dora la Exploradora.&lt;/p&gt;&lt;p&gt;También dispone de una zona de comida familiar, el Slime Café, y de una tienda en la que poder encontrar los productos oficiales de los personajes de Nickelodeon.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun - jue:&amp;nbsp;17:00 -&amp;nbsp;21:00 h&lt;/p&gt;&lt;p&gt;Viernes:&amp;nbsp;17:00 -&amp;nbsp;22:00 h&lt;/p&gt;&lt;p&gt;Sábados:&amp;nbsp;12:00 -&amp;nbsp;22:00 h&lt;/p&gt;&lt;p&gt;Domingos: 12:00 -&amp;nbsp;21:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/na_mec_mg_photo_034.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0014"/>
+            <column name="id" value="PIT0014"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Atlantis Aquarium Madrid"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Situado en el pueblo de Arroyomolinos, en el &lt;a href=&quot;/compras/centro-comercial-madrid-xanadu&quot;&gt;Centro Comercial Xanadú,&lt;/a&gt; Atlantis es un acuario de nueva generación en el que se puede disfrutar de más de 10.000 animales. Se trata del acuario más moderno de Europa en un centro comercial, con 2,3 millones de litros de agua, que tiene la intención de concienciar sobre la importancia de cuidar el Medio Ambiente y los ecosistemas acuáticos.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El acuario está diseñado con un formato de ruta &amp;ndash; aventura, donde los visitantes deben superar diversas pruebas para convertirse en Embajadores de Atlantis. En él se puede disfrutar de experiencias de realidad aumentada y virtual, con las que el visitante puede sentir que nada entre tiburones o que viaja al Polo Sur con los pingüinos.&lt;/p&gt;&lt;p&gt;Además, disponen de diversos programas y talleres educativos para padres y profesores para conocer los ecosistemas acuáticos y enseñar a los niños a cuidarlos.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Puerto de Navacerrada"/>
+            <column name="postal_code" value="28939"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="421196.41439"/>
+            <column name="y_etrs89" valueNumeric="4461589.20652"/>
+            <column name="email" value="Info.atlantis@atlantisaquarium-madrid.es"/>
+            <column name="telephone" value="(+34) 91 526 97 00"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/atlantis-aquarium-madrid"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-12-10 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Situado en el pueblo de Arroyomolinos, en el &lt;a href=&quot;/compras/centro-comercial-madrid-xanadu&quot;&gt;Centro Comercial Xanadú,&lt;/a&gt; Atlantis es un acuario de nueva generación en el que se puede disfrutar de más de 10.000 animales. Se trata del acuario más moderno de Europa en un centro comercial, con 2,3 millones de litros de agua, que tiene la intención de concienciar sobre la importancia de cuidar el Medio Ambiente y los ecosistemas acuáticos.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El acuario está diseñado con un formato de ruta &amp;ndash; aventura, donde los visitantes deben superar diversas pruebas para convertirse en Embajadores de Atlantis. En él se puede disfrutar de experiencias de realidad aumentada y virtual, con las que el visitante puede sentir que nada entre tiburones o que viaja al Polo Sur con los pingüinos.&lt;/p&gt;&lt;p&gt;Además, disponen de diversos programas y talleres educativos para padres y profesores para conocer los ecosistemas acuáticos y enseñar a los niños a cuidarlos.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar &lt;a href=&quot;https://www.atlantisaquarium-madrid.es/horarios&quot;&gt;web oficial&lt;/a&gt;.&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/atlantis_aquarius.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0015"/>
+            <column name="id" value="PIT0015"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Edificio LaMarca"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este pintoresco edificio, construido en 1902, alberga en su interior 26 viviendas de lujo, además de cuatro espacios exclusivos y novedosos: la tienda de moda multimarca Lab, el restaurante con mercado con productos biológicos Roots y dos centros de entrenamiento, Clandestin y Tracy Anderson Method, conocido por contar con Madonna, Gwyneth Paltrow o Jennifer López entre sus clientes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El inmueble, que mezcla elementos neoclásicos y modernistas, fue diseñado por el arquitecto Santiago Castellanos Urízar y, en sus comienzos, fue la sede de la conocida fábrica de carruajes de los hermanos Lamarca, además de sus viviendas. El edificio está protegido por su indudable valor arquitectónico, ejemplo de la arquitectura industrial madrileña del siglo XIX y principios del XX. La reforma realizada por el arquitecto Moisés García González ha salvado las fachadas, manteniendo su belleza, pero ha dado un cambio completo a su interior, con un diseño vanguardista.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Fernando VI, 10"/>
+            <column name="postal_code" value="28004"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440960.66601"/>
+            <column name="y_etrs89" valueNumeric="4475146.33157"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/edificio-lamarca"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-11-16 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este pintoresco edificio, construido en 1902, alberga en su interior 26 viviendas de lujo, además de cuatro espacios exclusivos y novedosos: la tienda de moda multimarca Lab, el restaurante con mercado con productos biológicos Roots y dos centros de entrenamiento, Clandestin y Tracy Anderson Method, conocido por contar con Madonna, Gwyneth Paltrow o Jennifer López entre sus clientes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El inmueble, que mezcla elementos neoclásicos y modernistas, fue diseñado por el arquitecto Santiago Castellanos Urízar y, en sus comienzos, fue la sede de la conocida fábrica de carruajes de los hermanos Lamarca, además de sus viviendas. El edificio está protegido por su indudable valor arquitectónico, ejemplo de la arquitectura industrial madrileña del siglo XIX y principios del XX. La reforma realizada por el arquitecto Moisés García González ha salvado las fachadas, manteniendo su belleza, pero ha dado un cambio completo a su interior, con un diseño vanguardista.&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/edificio_lamarca_3.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0016"/>
+            <column name="id" value="PIT0016"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Sal&amp;oacute;n de Baile del Teatro Real"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/teatro-real&quot;&gt;Teatro Real&lt;/a&gt; inaugura el próximo 28 de noviembre este nuevo espacio dedicado al flamenco, que contará con actuaciones regulares los miércoles alternos a las 20:30 horas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Se trata de una experiencia pionera en su historia ya que, con esta sala se creará un espacio propicio para actuaciones de este género artístico español de manera estable.&lt;/p&gt;&lt;p&gt;El antiguo Salón de Baile del Teatro Real, terminado en 1835, fue inicialmente destinado a fiestas y bailes de máscaras. Posteriormente, entre 1841 y 1850. esta sala tuvo una función de enorme transcendencia, dando cobijo a las reuniones periódicas de las cortes generales de España, mientras se construía el Congreso de los Diputados.&lt;/p&gt;&lt;p&gt;Sus 500 metros cuadrados, con fachada a la Plaza de Isabel II, constituyen hoy un espacio versátil y polivalente, heredero del salón de actos del conservatorio, que también se alojó en el edificio del Real durante casi cuatro décadas.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Isabel II, s/n"/>
+            <column name="postal_code" value="28013"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439716.69637"/>
+            <column name="y_etrs89" valueNumeric="4474428.38615"/>
+            <column name="email" value="info@teatroreal.es"/>
+            <column name="telephone" value="(+34) 91 516 06 60"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/salon-baile-teatro-real"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-11-15 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/teatro-real&quot;&gt;Teatro Real&lt;/a&gt; inaugura el próximo 28 de noviembre este nuevo espacio dedicado al flamenco, que contará con actuaciones regulares los miércoles alternos a las 20:30 horas.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Se trata de una experiencia pionera en su historia ya que, con esta sala se creará un espacio propicio para actuaciones de este género artístico español de manera estable.&lt;/p&gt;&lt;p&gt;El antiguo Salón de Baile del Teatro Real, terminado en 1835, fue inicialmente destinado a fiestas y bailes de máscaras. Posteriormente, entre 1841 y 1850. esta sala tuvo una función de enorme transcendencia, dando cobijo a las reuniones periódicas de las cortes generales de España, mientras se construía el Congreso de los Diputados.&lt;/p&gt;&lt;p&gt;Sus 500 metros cuadrados, con fachada a la Plaza de Isabel II, constituyen hoy un espacio versátil y polivalente, heredero del salón de actos del conservatorio, que también se alojó en el edificio del Real durante casi cuatro décadas.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Miércoles alternos: 20:30 h&lt;/p&gt;&lt;p&gt;Consultar programación en web oficial.&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/teatro_real.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0017"/>
+            <column name="id" value="PIT0017"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Espacio SOLO"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Espacio SOLO es una sala de exposiciones situada en el Barrio de Salamanca donde confluyen iniciativas tecnológicas, científicas, médicas, artísticas y culturales que promueven el pensamiento creativo y fomentan la innovación. En sus 1400 m2 acoge la colección de arte contemporáneo SOLO.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La Colección SOLO es una colección internacional, compuesta por cerca de 500 obras de arte contemporáneo, seleccionadas bajo un criterio propio de carácter narrativo y divulgativo. Una reflexión sobre la relación transversal que existe entre diferentes culturas populares conectadas por conceptos como la televisión, el cómic, la animación o el graffiti. Un recorrido que presenta piezas de distintas disciplinas de artistas reconocidos como Neo Rauch, Raymond Pettibon, Takashi Murakami o Kaws, y a la vez de artistas emergentes entre los que se encuentran Mu Pan, Raymond Lemstra, Sergio Mora o Juan Díaz-Faes, entre otros.&lt;/p&gt;&lt;p&gt;El Espacio SOLO puede visitarse previa cita a través de la web oficial. Las visitas son gratuitas y guiadas.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de la Independencia, 5"/>
+            <column name="postal_code" value="28001"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441613.37630"/>
+            <column name="y_etrs89" valueNumeric="4474671.75027"/>
+            <column name="email" value="visitas@coleccionsolo.com"/>
+            <column name="telephone" value="(+34) 910 53 42 07"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/espacio-solo"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-11-29 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Espacio SOLO es una sala de exposiciones situada en el Barrio de Salamanca donde confluyen iniciativas tecnológicas, científicas, médicas, artísticas y culturales que promueven el pensamiento creativo y fomentan la innovación. En sus 1400 m2 acoge la colección de arte contemporáneo SOLO.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La Colección SOLO es una colección internacional, compuesta por cerca de 500 obras de arte contemporáneo, seleccionadas bajo un criterio propio de carácter narrativo y divulgativo. Una reflexión sobre la relación transversal que existe entre diferentes culturas populares conectadas por conceptos como la televisión, el cómic, la animación o el graffiti. Un recorrido que presenta piezas de distintas disciplinas de artistas reconocidos como Neo Rauch, Raymond Pettibon, Takashi Murakami o Kaws, y a la vez de artistas emergentes entre los que se encuentran Mu Pan, Raymond Lemstra, Sergio Mora o Juan Díaz-Faes, entre otros.&lt;/p&gt;&lt;p&gt;El Espacio SOLO puede visitarse previa cita a través de la web oficial. Las visitas son gratuitas y guiadas.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Previa reserva en la web oficial.&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/espacio_solo.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0018"/>
+            <column name="id" value="PIT0018"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Parque de las Cataratas (Parque Vallecas Villa)"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Ubicado en el Casco Histórico de Vallecas, este parque destaca por contar con una fuente de cuatro alturas que asemeja una catarata.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además, en él se puede disfrutar de una gran cantidad de arbustos y árboles, así como de zonas infantiles, zonas caninas y un espacio deportivo&amp;nbsp;para practicar skate.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Babilafuente, 2"/>
+            <column name="postal_code" value="28031"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="447043.88377"/>
+            <column name="y_etrs89" valueNumeric="4469260.53270"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/parque-cataratas-parque-vallecas-villa"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-10-29 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Ubicado en el Casco Histórico de Vallecas, este parque destaca por contar con una fuente de cuatro alturas que asemeja una catarata.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Además, en él se puede disfrutar de una gran cantidad de arbustos y árboles, así como de zonas infantiles, zonas caninas y un espacio deportivo&amp;nbsp;para practicar skate.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Abierto todo el día&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/parque_de_las_cataratas_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0019"/>
+            <column name="id" value="PIT0019"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Spaces Atocha"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Frente al parque de El Retiro y próximo a la estación de Atocha se encuentra este espacio de trabajo que da la posibilidad a los profesionales que se desplacen a Madrid por motivos laborales de tener un lugar de trabajo inspirador, creativo y completamente equipado para realizar sus actividades.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El local cuenta con 4.100 metros cuadrados, en los que se ubican 155 oficinas de diferentes tamaños para dar solución a cualquier tipo de necesidad, desde oficinas para uno o dos puestos hasta espacios más grandes para empresas ya establecidas o equipos de mayor tamaño. El corazón del centro está ocupado por su Business Club, un área de coworking con 169 puestos destinados a la comunidad de Spaces, donde los profesionales innovadores pueden reunirse, conocerse e intercambiar ideas.&lt;/p&gt;&lt;p&gt;Spaces dispone de Wi-fi de alta velocidad, mobiliario de diseño, servicio de restauración y salas de reunión. La compañía ya cuenta con otro centro en Madrid, Spaces Río, en la calle Manzanares, 4.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Alfonso XII, 62"/>
+            <column name="postal_code" value="28014"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441536.53055"/>
+            <column name="y_etrs89" valueNumeric="4473323.83432"/>
+            <column name="email" value="reception.atocha@spacesworks.com"/>
+            <column name="telephone" value="(+34) 91 076 70 00"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/spaces-atocha"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-10-29 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Frente al parque de El Retiro y próximo a la estación de Atocha se encuentra este espacio de trabajo que da la posibilidad a los profesionales que se desplacen a Madrid por motivos laborales de tener un lugar de trabajo inspirador, creativo y completamente equipado para realizar sus actividades.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El local cuenta con 4.100 metros cuadrados, en los que se ubican 155 oficinas de diferentes tamaños para dar solución a cualquier tipo de necesidad, desde oficinas para uno o dos puestos hasta espacios más grandes para empresas ya establecidas o equipos de mayor tamaño. El corazón del centro está ocupado por su Business Club, un área de coworking con 169 puestos destinados a la comunidad de Spaces, donde los profesionales innovadores pueden reunirse, conocerse e intercambiar ideas.&lt;/p&gt;&lt;p&gt;Spaces dispone de Wi-fi de alta velocidad, mobiliario de diseño, servicio de restauración y salas de reunión. La compañía ya cuenta con otro centro en Madrid, Spaces Río, en la calle Manzanares, 4.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; vier: 9:00 &amp;ndash; 18:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/spaces_atocha_2_0.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0020"/>
+            <column name="id" value="PIT0020"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Casa de M&amp;eacute;xico"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Un palacete de primeros del siglo XX del barrio de Chamberí, espacio municipal cedido por el Ayuntamiento de Madrid, acoge este centro que sirve de puente de intercambio cultural y de conocimiento entre México y España. Forma parte de la Embajada de México.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El edificio, de 2.700 metros cuadrados, cuenta con cuatro plantas en las que se encuentran la librería del Fondo de Cultura Económica &amp;ldquo;Martín Luis Guzmán&amp;rdquo;, un auditorio, una tienda especializada en arte popular, salas de exposiciones, una colección permanente de arte mexicano, espacio para talleres comunitarios, un aula gastronómica y el restaurante mexicano Punta Arena.&lt;/p&gt;&lt;p&gt;También contará con el Instituto de México en España o la biblioteca Octavio Paz, la más completa sobre temas mexicanos que habrá en Madrid.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;Día de Muertos en la nueva Casa de México&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&amp;iexcl;El&amp;nbsp;Día de Muertos&amp;nbsp;lo celebran a lo grande en México! No te pierdas &lt;a href=&quot;/sites/default/files/agend_dia_de_muertos_g.jpg&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;las actividades&lt;/strong&gt;&lt;/a&gt; que la institución ha preparado para ti y para tu familia.&amp;nbsp;&lt;a data-ft=&quot;{&amp;quot;type&amp;quot;:104,&amp;quot;tn&amp;quot;:&amp;quot;*N&amp;quot;}&quot; href=&quot;https://www.facebook.com/hashtag/alacasadem%C3%A9xicolleg%C3%B3lacatrina&quot;&gt;#ALaCasaDeMéxicoLlegóLaCat&lt;wbr /&gt;rina&lt;/a&gt;&lt;br /&gt;&lt;strong&gt;&lt;a href=&quot;https://www.esmadrid.com/sites/default/files/agend_dia_de_muertos_g.jpg&quot; target=&quot;_blank&quot;&gt;[[{&quot;fid&quot;:&quot;161962&quot;,&quot;view_mode&quot;:&quot;file_thumbnail_rutas&quot;,&quot;fields&quot;:{&quot;format&quot;:&quot;file_thumbnail_rutas&quot;,&quot;field_file_image_alt_text[und][0][value]&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;field_file_image_title_text[und][0][value]&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;field_folder[und]&quot;:&quot;3478&quot;},&quot;type&quot;:&quot;media&quot;,&quot;link_text&quot;:null,&quot;attributes&quot;:{&quot;alt&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;title&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;height&quot;:335,&quot;width&quot;:288,&quot;style&quot;:&quot;width: 288px; height: 335px; border-width: 5px; border-style: solid; margin: 5px;&quot;,&quot;class&quot;:&quot;media-element file-file-thumbnail-rutas&quot;}}]]&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Alberto Aguilera, 20"/>
+            <column name="postal_code" value="28015"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439814.60596"/>
+            <column name="y_etrs89" valueNumeric="4475738.72203"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/casa-mexico"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-10-31 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Un palacete de primeros del siglo XX del barrio de Chamberí, espacio municipal cedido por el Ayuntamiento de Madrid, acoge este centro que sirve de puente de intercambio cultural y de conocimiento entre México y España. Forma parte de la Embajada de México.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El edificio, de 2.700 metros cuadrados, cuenta con cuatro plantas en las que se encuentran la librería del Fondo de Cultura Económica &amp;ldquo;Martín Luis Guzmán&amp;rdquo;, un auditorio, una tienda especializada en arte popular, salas de exposiciones, una colección permanente de arte mexicano, espacio para talleres comunitarios, un aula gastronómica y el restaurante mexicano Punta Arena.&lt;/p&gt;&lt;p&gt;También contará con el Instituto de México en España o la biblioteca Octavio Paz, la más completa sobre temas mexicanos que habrá en Madrid.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;Día de Muertos en la nueva Casa de México&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&amp;iexcl;El&amp;nbsp;Día de Muertos&amp;nbsp;lo celebran a lo grande en México! No te pierdas &lt;a href=&quot;/sites/default/files/agend_dia_de_muertos_g.jpg&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;las actividades&lt;/strong&gt;&lt;/a&gt; que la institución ha preparado para ti y para tu familia.&amp;nbsp;&lt;a data-ft=&quot;{&amp;quot;type&amp;quot;:104,&amp;quot;tn&amp;quot;:&amp;quot;*N&amp;quot;}&quot; href=&quot;https://www.facebook.com/hashtag/alacasadem%C3%A9xicolleg%C3%B3lacatrina&quot;&gt;#ALaCasaDeMéxicoLlegóLaCat&lt;wbr /&gt;rina&lt;/a&gt;&lt;br /&gt;&lt;strong&gt;&lt;a href=&quot;https://www.esmadrid.com/sites/default/files/agend_dia_de_muertos_g.jpg&quot; target=&quot;_blank&quot;&gt;[[{&quot;fid&quot;:&quot;161962&quot;,&quot;view_mode&quot;:&quot;file_thumbnail_rutas&quot;,&quot;fields&quot;:{&quot;format&quot;:&quot;file_thumbnail_rutas&quot;,&quot;field_file_image_alt_text[und][0][value]&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;field_file_image_title_text[und][0][value]&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;field_folder[und]&quot;:&quot;3478&quot;},&quot;type&quot;:&quot;media&quot;,&quot;link_text&quot;:null,&quot;attributes&quot;:{&quot;alt&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;title&quot;:&quot;Altar de muertos en Casa de México&quot;,&quot;height&quot;:335,&quot;width&quot;:288,&quot;style&quot;:&quot;width: 288px; height: 335px; border-width: 5px; border-style: solid; margin: 5px;&quot;,&quot;class&quot;:&quot;media-element file-file-thumbnail-rutas&quot;}}]]&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; mar: 10:00 &amp;ndash; 19:00 h&lt;/p&gt;&lt;p&gt;Miér &amp;ndash; vier: 10:00 &amp;ndash; 21:00 h&lt;/p&gt;&lt;p&gt;Sábado: 10:00 &amp;ndash; 14:00 h&lt;/p&gt;&lt;p&gt;Domingo: cerrado&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/casademexico_diademuertos.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0021"/>
+            <column name="id" value="PIT0021"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Palacio de la Moncloa"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Situado en el noroeste de Madrid, este edificio construido entre 1949 y 1954 en el mismo lugar que el antiguo Real Sitio de la Moncloa, destruido durante la Guerra Civil, es la sede de la Presidencia del Gobierno de España así como la residencia oficial del Presidente del Gobierno español y su familia, establecido así desde 1977 por el presidente Adolfo Suárez.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El palacio fue construido por el arquitecto Diego Méndez, siguiendo el modelo de la Casa del Labrador de Aranjuez, y en sus comienzos sirvió como residencia oficial de Jefes de Estado y altas personalidades en visita a España.&lt;/p&gt;&lt;p&gt;Actualmente el programa &lt;a href=&quot;http://www.lamoncloa.gob.es/serviciosdeprensa/moncloaabierta/Paginas/index.aspx&quot;&gt;&lt;strong&gt;Moncloa Abierta&lt;/strong&gt;&lt;/a&gt; permite realizar visitas guiadas semanales de 90 minutos por algunas de sus dependencias, previa inscripción en su web oficial. El recorrido incluye los jardines así como algunas de las salas de reuniones, y los edificios del Consejo de Ministros y de la Secretaría de Estado de Comunicación. Las visitas se celebrarán los días que no haya agenda oficial en el complejo, ni actos públicos programados.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Puerta de Hierro, s/n"/>
+            <column name="postal_code" value="28071"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="437714.81740"/>
+            <column name="y_etrs89" valueNumeric="4477470.81138"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/palacio-moncloa"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-10-22 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Situado en el noroeste de Madrid, este edificio construido entre 1949 y 1954 en el mismo lugar que el antiguo Real Sitio de la Moncloa, destruido durante la Guerra Civil, es la sede de la Presidencia del Gobierno de España así como la residencia oficial del Presidente del Gobierno español y su familia, establecido así desde 1977 por el presidente Adolfo Suárez.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El palacio fue construido por el arquitecto Diego Méndez, siguiendo el modelo de la Casa del Labrador de Aranjuez, y en sus comienzos sirvió como residencia oficial de Jefes de Estado y altas personalidades en visita a España.&lt;/p&gt;&lt;p&gt;Actualmente el programa &lt;a href=&quot;http://www.lamoncloa.gob.es/serviciosdeprensa/moncloaabierta/Paginas/index.aspx&quot;&gt;&lt;strong&gt;Moncloa Abierta&lt;/strong&gt;&lt;/a&gt; permite realizar visitas guiadas semanales de 90 minutos por algunas de sus dependencias, previa inscripción en su web oficial. El recorrido incluye los jardines así como algunas de las salas de reuniones, y los edificios del Consejo de Ministros y de la Secretaría de Estado de Comunicación. Las visitas se celebrarán los días que no haya agenda oficial en el complejo, ni actos públicos programados.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Programa Moncloa Abierta, consultar &lt;a href=&quot;http://www.lamoncloa.gob.es/serviciosdeprensa/moncloaabierta/Paginas/index.aspx&quot;&gt;web oficial&lt;/a&gt;&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/la_moncloa_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0022"/>
+            <column name="id" value="PIT0022"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Mustang Road"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Esta exclusiva experiencia turística permite a los viajeros más intrépidos descubrir los tesoros que esconde la ciudad de Madrid y sus enclaves cercanos, como Toledo, Segovia&amp;nbsp;o El Escorial, mientras se conduce una joya del automovilismo, el Ford Mustang.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Mustang Road se compone de seis vehículos descapotables con más de 300 C.V. El servicio incluye la presencia de un guía oficial que, además de ilustrar el recorrido, acompañará a los clientes durante las visitas privadas a los monumentos históricos. El broche de oro lo pone una experiencia gastronómica de alto nivel en los mejores restaurantes de cada destino.&lt;/p&gt;&lt;p&gt;También organizan experiencias privadas y exclusivas ajustadas a las necesidades de empresas y grupos especiales.&lt;/p&gt;&lt;p&gt;&lt;iframe allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j-sjJEEOHXE?rel=0&quot; width=&quot;560&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Fuencarral, 44, Edificio 9, Oficina 34"/>
+            <column name="postal_code" value="28108"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="445120.79360"/>
+            <column name="y_etrs89" valueNumeric="4487026.34907"/>
+            <column name="email" value="info@mustangroad.es"/>
+            <column name="telephone" value="(+34) 914 529 049"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/mustang-road"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-10-10 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Esta exclusiva experiencia turística permite a los viajeros más intrépidos descubrir los tesoros que esconde la ciudad de Madrid y sus enclaves cercanos, como Toledo, Segovia&amp;nbsp;o El Escorial, mientras se conduce una joya del automovilismo, el Ford Mustang.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Mustang Road se compone de seis vehículos descapotables con más de 300 C.V. El servicio incluye la presencia de un guía oficial que, además de ilustrar el recorrido, acompañará a los clientes durante las visitas privadas a los monumentos históricos. El broche de oro lo pone una experiencia gastronómica de alto nivel en los mejores restaurantes de cada destino.&lt;/p&gt;&lt;p&gt;También organizan experiencias privadas y exclusivas ajustadas a las necesidades de empresas y grupos especiales.&lt;/p&gt;&lt;p&gt;&lt;iframe allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j-sjJEEOHXE?rel=0&quot; width=&quot;560&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar con empresa&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/mustang_road_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0023"/>
+            <column name="id" value="PIT0023"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Escuela Espa&amp;ntilde;ola de Cata"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El Barrio de Salamanca acoge esta escuela compuesta por un destacado equipo de profesionales y colaboradores, pionera en la impartición de Cursos de Cata y análisis sensorial de productos agroalimentarios, Aval de Calidad, Organización de eventos y Viajes gastronómicos, dirigido a empresas y particulares en España e Iberoamérica.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la actualidad imparte&amp;nbsp;cursos presenciales&amp;nbsp;de cata&amp;nbsp; de&amp;nbsp;Vinos, Cavas, Jerez, Cervezas, Espirituosos, Jamones, Quesos, Aceite De Oliva, Cafés, Aguas, entre otros, así como semipresenciales.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Mártires Concepcionistas, 19"/>
+            <column name="postal_code" value="28006"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="443109.82520"/>
+            <column name="y_etrs89" valueNumeric="4475587.94327"/>
+            <column name="email" value="arturohurtado@escueladecata.com"/>
+            <column name="telephone" value="(+34) 91 402 67 04"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/escuela-espanola-cata"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-09-26 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El Barrio de Salamanca acoge esta escuela compuesta por un destacado equipo de profesionales y colaboradores, pionera en la impartición de Cursos de Cata y análisis sensorial de productos agroalimentarios, Aval de Calidad, Organización de eventos y Viajes gastronómicos, dirigido a empresas y particulares en España e Iberoamérica.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la actualidad imparte&amp;nbsp;cursos presenciales&amp;nbsp;de cata&amp;nbsp; de&amp;nbsp;Vinos, Cavas, Jerez, Cervezas, Espirituosos, Jamones, Quesos, Aceite De Oliva, Cafés, Aguas, entre otros, así como semipresenciales.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar web oficial&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/escuela_espanola_de_cata_2_0.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0024"/>
+            <column name="id" value="PIT0024"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Espacio Abierto Quinta de los Molinos"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El Palacete de &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/quinta-molinos&quot;&gt;La Quinta de Los Molinos &lt;/a&gt;acoge este espacio cultural diseñado expresamente para niñas, niños y adolescentes. Una iniciativa que cuenta con una programación permanente destinada a un público de entre 0 y 16 años con el objetivo de inculcar la creatividad a los jóvenes desde la infancia.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El Palacete pertenece al Ayuntamiento de Madrid desde 1982 y nunca ha sido empleado para ningún acto ni actividad hasta el momento, cuando el Ayuntamiento ha decidido dedicar un espacio pensado para la juventud madrileña. Espacio Abierto de La Quinta de los Molinos cuenta con una doble línea: por un lado ofrece un programa de actividades permanentes de talleres, espectáculos y actividades diversas. Por otra parte, se convierte en un lugar donde los jóvenes pueden disfrutar y conocer a otras personas.&lt;/p&gt;&lt;p&gt;Por otro lado,&amp;nbsp;el centro cuenta con una escuela de hostelería para jóvenes en situación de vulnerabilidad que lleva el Café-Jardín, una cafetería donde todas las familias pueden disfrutar de este espacio cultural en Madrid.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;Servicios:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/urbanoteca/&quot; target=&quot;_blank&quot;&gt;Urbanoteca&lt;/a&gt;&lt;/strong&gt;: zona de juego libre, para peques de 0 a 10/12 años&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/playquinta/&quot; target=&quot;_blank&quot;&gt;#PlayQuinta&lt;/a&gt;&lt;/strong&gt;: cuarto de estar a gusto para jóvenes de entre 13 y 16/18 años&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/cafe-jardin/&quot; target=&quot;_blank&quot;&gt;Café-jardín&lt;/a&gt;:&lt;/strong&gt;&amp;nbsp;cafetería para relajarse y compartir juntos. Todo lo consumido estará cocinado, preparado y servido por los alumnos de la escuela&amp;nbsp;Quinta Cocina.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/auditorio/&quot; target=&quot;_blank&quot;&gt;Auditorio&lt;/a&gt;&lt;/strong&gt;:&amp;nbsp;teatro, cine, danza, música y mucho más&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/aulas/&quot; target=&quot;_blank&quot;&gt;Aulas I, II y Digital&lt;/a&gt;:&lt;/strong&gt;&amp;nbsp;talleres, investigación, risas e&amp;nbsp;inventos además de mucho arte&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Alcalá, 527"/>
+            <column name="postal_code" value="28027"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="446860.25241"/>
+            <column name="y_etrs89" valueNumeric="4476925.08639"/>
+            <column name="email"/>
+            <column name="telephone" value="(+34) 91 318 45 90"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/espacio-abierto-quinta-molinos"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-01-30 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El Palacete de &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/quinta-molinos&quot;&gt;La Quinta de Los Molinos &lt;/a&gt;acoge este espacio cultural diseñado expresamente para niñas, niños y adolescentes. Una iniciativa que cuenta con una programación permanente destinada a un público de entre 0 y 16 años con el objetivo de inculcar la creatividad a los jóvenes desde la infancia.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El Palacete pertenece al Ayuntamiento de Madrid desde 1982 y nunca ha sido empleado para ningún acto ni actividad hasta el momento, cuando el Ayuntamiento ha decidido dedicar un espacio pensado para la juventud madrileña. Espacio Abierto de La Quinta de los Molinos cuenta con una doble línea: por un lado ofrece un programa de actividades permanentes de talleres, espectáculos y actividades diversas. Por otra parte, se convierte en un lugar donde los jóvenes pueden disfrutar y conocer a otras personas.&lt;/p&gt;&lt;p&gt;Por otro lado,&amp;nbsp;el centro cuenta con una escuela de hostelería para jóvenes en situación de vulnerabilidad que lleva el Café-Jardín, una cafetería donde todas las familias pueden disfrutar de este espacio cultural en Madrid.&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;Servicios:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/urbanoteca/&quot; target=&quot;_blank&quot;&gt;Urbanoteca&lt;/a&gt;&lt;/strong&gt;: zona de juego libre, para peques de 0 a 10/12 años&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/playquinta/&quot; target=&quot;_blank&quot;&gt;#PlayQuinta&lt;/a&gt;&lt;/strong&gt;: cuarto de estar a gusto para jóvenes de entre 13 y 16/18 años&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/cafe-jardin/&quot; target=&quot;_blank&quot;&gt;Café-jardín&lt;/a&gt;:&lt;/strong&gt;&amp;nbsp;cafetería para relajarse y compartir juntos. Todo lo consumido estará cocinado, preparado y servido por los alumnos de la escuela&amp;nbsp;Quinta Cocina.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/auditorio/&quot; target=&quot;_blank&quot;&gt;Auditorio&lt;/a&gt;&lt;/strong&gt;:&amp;nbsp;teatro, cine, danza, música y mucho más&lt;/p&gt;&lt;p&gt;&lt;strong&gt;- &lt;a href=&quot;https://espacioquinta.madrid.es/aulas/&quot; target=&quot;_blank&quot;&gt;Aulas I, II y Digital&lt;/a&gt;:&lt;/strong&gt;&amp;nbsp;talleres, investigación, risas e&amp;nbsp;inventos además de mucho arte&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;&lt;strong&gt;Apertura del centro:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Miér-dom:&amp;nbsp;10:00 -&amp;nbsp;20:00 h&lt;/p&gt;&lt;p&gt;Cerrado: festivos&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Horario del parque Quinta de Los Molinos:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Abierto todos los días, Lun-dom: 06:30 - 22:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/espacio_abierto_quinta_de_los_molinos.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0025"/>
+            <column name="id" value="PIT0025"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Cripta de la Catedral de la Almudena"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Situado frente a la Muralla Árabe, justo debajo de la misma &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/catedral-de-la-almudena&quot;&gt;Catedral de la Almudena&lt;/a&gt;, se esconde este hermoso templo construido en estilo neorrománico, con planta de cruz latina, en el que destacan sus más de 400 columnas coronadas con capiteles, todos ellos diferentes, que evocan figuras bíblicas y motivos de la naturaleza, así como la figura de la Osa y el Madroño, símbolo de Madrid.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;De las mismas dimensiones que la catedral, la cripta está considerada como una de las mayores de toda España. La fachada goza de referencias medievales, con una triple puerta con arco de medio punto. Está presidida por una imagen de la Almudena, patrona de Madrid, junto al Corazón de Jesús y San Isidro, cobijados por una girola. Entre sus atractivos se encuentran unas espectaculares vidrieras, que iluminan las 20 capillas de las que se compone el templo.&lt;/p&gt;&lt;p&gt;Una de sus joyas es la imagen de Nuestra Señora de la Flor de Lis, posiblemente la imagen más antigua de la Virgen que se venera en la ciudad.&lt;/p&gt;&lt;p&gt;&lt;iframe allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Qu7m7IXaLQ0?rel=0&quot; width=&quot;560&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Mayor, 92"/>
+            <column name="postal_code" value="28013"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439395.13293"/>
+            <column name="y_etrs89" valueNumeric="4474089.13538"/>
+            <column name="email" value="criptadelaalmudena@gmail.com"/>
+            <column name="telephone" value="(+34) 91 548 09 30"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/cripta-catedral-almudena"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-02-22 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Situado frente a la Muralla Árabe, justo debajo de la misma &lt;a href=&quot;https://www.esmadrid.com/informacion-turistica/catedral-de-la-almudena&quot;&gt;Catedral de la Almudena&lt;/a&gt;, se esconde este hermoso templo construido en estilo neorrománico, con planta de cruz latina, en el que destacan sus más de 400 columnas coronadas con capiteles, todos ellos diferentes, que evocan figuras bíblicas y motivos de la naturaleza, así como la figura de la Osa y el Madroño, símbolo de Madrid.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;De las mismas dimensiones que la catedral, la cripta está considerada como una de las mayores de toda España. La fachada goza de referencias medievales, con una triple puerta con arco de medio punto. Está presidida por una imagen de la Almudena, patrona de Madrid, junto al Corazón de Jesús y San Isidro, cobijados por una girola. Entre sus atractivos se encuentran unas espectaculares vidrieras, que iluminan las 20 capillas de las que se compone el templo.&lt;/p&gt;&lt;p&gt;Una de sus joyas es la imagen de Nuestra Señora de la Flor de Lis, posiblemente la imagen más antigua de la Virgen que se venera en la ciudad.&lt;/p&gt;&lt;p&gt;&lt;iframe allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Qu7m7IXaLQ0?rel=0&quot; width=&quot;560&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Despacho Parroquial:&lt;/p&gt;&lt;p&gt;Lun &amp;ndash; vier: 11:30 &amp;ndash; 13:30 h/ 17:30 &amp;ndash; 20:00 h&lt;/p&gt;&lt;p&gt;Visita libre&lt;/p&gt;&lt;p&gt;Lun - dom: 10:00 - 20:00 h (dispone de audioguía gratuito en español, inglés, francés, italiano y alemán).&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/cripta_de_la_almudena_-2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0026"/>
+            <column name="id" value="PIT0026"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Concha Barrios Gallery"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Esta galería de arte, situada en el Barrio de Salamanca, cuenta con piezas destacadas procedentes del arte colonial americano, asiático y europeo. Su fundadora, Concha Barrios, destaca por su incesante actividad como anticuaria por todo el mundo.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Barrios comenzó su trayectoria en el mundo del arte con una galería en la calle Claudio Coello de Madrid, en 1977, especializada en Pintura Antigua y del siglo XIX. Más tarde inaugura en Nápoles, en 1994, otra galería junto a su marido Claudio Brandi, anticuario napolitano especialista en artes decorativas.&lt;/p&gt;&lt;p&gt;La Galería ha estado presente en algunas de las ferias más importantes tanto a nivel nacional como internacional, tales como, TEFAF (Maastricht), TEFAF (Basilea), la BIENNALE INTERNAZIONALE DELL&amp;rsquo;ANTIQUARIATO (Milán), la MOSTRA INTERNAZIONALE DELL&amp;rsquo;ANTIQUARIATO (Florencia), el SALON DU COLLECTIONNEUR (París), el IFAE (Palm Beach, Miami, USA) o FERIARTE (Madrid) , entre otras.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Villanueva, 27"/>
+            <column name="postal_code" value="28001"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="441992.51062"/>
+            <column name="y_etrs89" valueNumeric="4474865.03253"/>
+            <column name="email" value="admin@conchabarrios.com"/>
+            <column name="telephone" value="(+34) 915 77 64 07"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/concha-barrios-gallery"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-04-09 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Esta galería de arte, situada en el Barrio de Salamanca, cuenta con piezas destacadas procedentes del arte colonial americano, asiático y europeo. Su fundadora, Concha Barrios, destaca por su incesante actividad como anticuaria por todo el mundo.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Barrios comenzó su trayectoria en el mundo del arte con una galería en la calle Claudio Coello de Madrid, en 1977, especializada en Pintura Antigua y del siglo XIX. Más tarde inaugura en Nápoles, en 1994, otra galería junto a su marido Claudio Brandi, anticuario napolitano especialista en artes decorativas.&lt;/p&gt;&lt;p&gt;La Galería ha estado presente en algunas de las ferias más importantes tanto a nivel nacional como internacional, tales como, TEFAF (Maastricht), TEFAF (Basilea), la BIENNALE INTERNAZIONALE DELL&amp;rsquo;ANTIQUARIATO (Milán), la MOSTRA INTERNAZIONALE DELL&amp;rsquo;ANTIQUARIATO (Florencia), el SALON DU COLLECTIONNEUR (París), el IFAE (Palm Beach, Miami, USA) o FERIARTE (Madrid) , entre otras.&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/concha_barrios.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0027"/>
+            <column name="id" value="PIT0027"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Monumento Alfonso XII"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este conjunto escultórico dedicado al rey Alfonso XII, que fue inaugurado en 1922 por su hijo Alfonso XIII, se encuentra en una de las zonas más concurridas&amp;nbsp;del estanque grande del Retiro. La figura ecuestre, de más de 20 metros de altura, es obra del escultor Mariano Benlliure, autor de otras conocidas efigies de la capital, como la de Álvaro de Bazán, en la Plaza de la Villa; la fachada del edificio Metrópolis, en Gran Vía; o la escultura de Goya, junto al Museo del Prado.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la columna situada a los pies del caballo se encuentra un mirador que&amp;nbsp;se abre al público este abril, tras haberse realizado una gran reforma.&amp;nbsp;Desde él se pueden contemplar los edificios señoriales del Barrio de Salamanca, los tejados del Barrio de las Letras y algunos de los emblemas de la Gran Vía, como el edificio de Telefónica.&lt;/p&gt;&lt;h3&gt;&lt;u&gt;&lt;strong&gt;Visitas al mirador cerradas hasta la primavera: obligatoria inscripción en&amp;nbsp;la web oficial&amp;nbsp;&lt;a href=&quot;https://reservaspatrimonio.es/&quot;&gt;www.reservaspatrimonio.es&lt;/a&gt;&lt;/strong&gt;&lt;/u&gt;&lt;/h3&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Maestro Villa"/>
+            <column name="postal_code" value="28009"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="442048.73392"/>
+            <column name="y_etrs89" valueNumeric="4474303.00283"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/monumento-alfonso-xii"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2019-02-03 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este conjunto escultórico dedicado al rey Alfonso XII, que fue inaugurado en 1922 por su hijo Alfonso XIII, se encuentra en una de las zonas más concurridas&amp;nbsp;del estanque grande del Retiro. La figura ecuestre, de más de 20 metros de altura, es obra del escultor Mariano Benlliure, autor de otras conocidas efigies de la capital, como la de Álvaro de Bazán, en la Plaza de la Villa; la fachada del edificio Metrópolis, en Gran Vía; o la escultura de Goya, junto al Museo del Prado.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la columna situada a los pies del caballo se encuentra un mirador que&amp;nbsp;se abre al público este abril, tras haberse realizado una gran reforma.&amp;nbsp;Desde él se pueden contemplar los edificios señoriales del Barrio de Salamanca, los tejados del Barrio de las Letras y algunos de los emblemas de la Gran Vía, como el edificio de Telefónica.&lt;/p&gt;&lt;h3&gt;&lt;u&gt;&lt;strong&gt;Visitas al mirador cerradas hasta la primavera: obligatoria inscripción en&amp;nbsp;la web oficial&amp;nbsp;&lt;a href=&quot;https://reservaspatrimonio.es/&quot;&gt;www.reservaspatrimonio.es&lt;/a&gt;&lt;/strong&gt;&lt;/u&gt;&lt;/h3&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;&lt;strong&gt;Visitas guiadas al Mirador:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;&lt;strong&gt;Visitas cerradas hasta la primavera: obligatoria inscripción en&amp;nbsp;la web oficial&amp;nbsp;&lt;a href=&quot;https://reservaspatrimonio.es/&quot;&gt;www.reservaspatrimonio.es&lt;/a&gt;&lt;/strong&gt;&lt;/u&gt;&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/monumento_alfonso_xii.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0028"/>
+            <column name="id" value="PIT0028"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Huerta de la Partida"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;En la margen derecha del río Manzanares se encuentra este espacio natural de 38.000 metros cuadrados, cercano a la Casa de Campo. Enmarcado en el entorno de Madrid Río, a pocos metros del Puente del Rey, sus orígenes se remontan al siglo XVI cuando era la huerta que surtía de hortalizas al palacio de la familia de los Vargas, una de las más influyentes de la ciudad.&amp;nbsp; En esta zona se hicieron construir su casa de campo, que después pasaría a formar parte de la corona.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la actualidad este lugar cuenta con senderos repletos de árboles frutales (avellanos, almendros, olivos&amp;hellip;). En la parte alta de la Huerta hay un mirador desde el que se contempla no sólo el parque de Madrid Río sino también el Palacio Real, la Catedral de la Almudena y, a la izquierda, las torres de la Plaza de España.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="del Embarcadero, 3"/>
+            <column name="postal_code" value="28011"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="438381.55031"/>
+            <column name="y_etrs89" valueNumeric="4474399.79838"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/huerta-partida"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-04-03 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;En la margen derecha del río Manzanares se encuentra este espacio natural de 38.000 metros cuadrados, cercano a la Casa de Campo. Enmarcado en el entorno de Madrid Río, a pocos metros del Puente del Rey, sus orígenes se remontan al siglo XVI cuando era la huerta que surtía de hortalizas al palacio de la familia de los Vargas, una de las más influyentes de la ciudad.&amp;nbsp; En esta zona se hicieron construir su casa de campo, que después pasaría a formar parte de la corona.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En la actualidad este lugar cuenta con senderos repletos de árboles frutales (avellanos, almendros, olivos&amp;hellip;). En la parte alta de la Huerta hay un mirador desde el que se contempla no sólo el parque de Madrid Río sino también el Palacio Real, la Catedral de la Almudena y, a la izquierda, las torres de la Plaza de España.&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/huerta_de_la_partida_3.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0029"/>
+            <column name="id" value="PIT0029"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Dalieda de San Francisco"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;En la zona de Las Vistillas, llamado así por las espectaculares vistas de la zona oeste de la ciudad que&amp;nbsp;se contemplan, se encuentra este jardín botánico, especializado en dalias y situado en lo alto de una pequeña meseta, justo al lado de la Real Basílica de San Francisco el Grande, en el mismo lugar que en su día ocupó un convento.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Cuenta con más de 700 ejemplares de dalias, que alcanzan su mayor esplendor en el mes de junio, y un gran mirador tras la escultura titulada El sueño de San Isidro, del escultor Santiago Costa, que representa al patrón de la ciudad y a un ángel que posa la mano sobre su cabeza.&lt;/p&gt;&lt;p&gt;Un estupendo lugar para disfrutar del atardecer.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Gran Vía de San Francisco, 29"/>
+            <column name="postal_code" value="28005"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439389.75191"/>
+            <column name="y_etrs89" valueNumeric="4473507.91840"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/dalieda-san-francisco"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-04-04 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;En la zona de Las Vistillas, llamado así por las espectaculares vistas de la zona oeste de la ciudad que&amp;nbsp;se contemplan, se encuentra este jardín botánico, especializado en dalias y situado en lo alto de una pequeña meseta, justo al lado de la Real Basílica de San Francisco el Grande, en el mismo lugar que en su día ocupó un convento.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Cuenta con más de 700 ejemplares de dalias, que alcanzan su mayor esplendor en el mes de junio, y un gran mirador tras la escultura titulada El sueño de San Isidro, del escultor Santiago Costa, que representa al patrón de la ciudad y a un ángel que posa la mano sobre su cabeza.&lt;/p&gt;&lt;p&gt;Un estupendo lugar para disfrutar del atardecer.&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/dalieda_de_san_francicos.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0030"/>
+            <column name="id" value="PIT0030"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Teatro de la Escuela"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Esta sala de teatro forma parte del proyecto de formación teatral impulsado por los actores Clara Méndez-Leite y Alberto Ammann, Escuela para el Arte del Actor. Situada en el barrio de Malasaña, en ella los alumnos de la escuela podrán poner en práctica todo lo aprendido y entrar en contacto con el público, aunque también cuenta con una programación independiente, centrada principalmente en las obras teatrales, así como otras actividades culturales.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La sala tiene un aforo de 50 localidades y se encuentra en el lugar que ocupaba el Espacio Labruc.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de la Palma, 18"/>
+            <column name="postal_code" value="28004"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440367.79888"/>
+            <column name="y_etrs89" valueNumeric="4475308.41059"/>
+            <column name="email" value="info@teatrodelasculturas.com"/>
+            <column name="telephone" value="(+34)  912 98 41 15"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/teatro-escuela"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-02-19 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Esta sala de teatro forma parte del proyecto de formación teatral impulsado por los actores Clara Méndez-Leite y Alberto Ammann, Escuela para el Arte del Actor. Situada en el barrio de Malasaña, en ella los alumnos de la escuela podrán poner en práctica todo lo aprendido y entrar en contacto con el público, aunque también cuenta con una programación independiente, centrada principalmente en las obras teatrales, así como otras actividades culturales.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La sala tiene un aforo de 50 localidades y se encuentra en el lugar que ocupaba el Espacio Labruc.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Consultar web oficial&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/teatro_de_la_escuela.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0031"/>
+            <column name="id" value="PIT0031"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Sala Arapiles 16"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Ubicado en la antigua sala El Sol de York, este espacio teatral centrado en la formación de actores (dependiente de la Universidad Internacional de la Rioja UNIR Escuela de Actores) acoge una variada programación así como sirve para exponer producciones propias en las que poder disfrutar del trabajo de los alumnos de la escuela.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Esta sala cuenta con una capacidad para 164&amp;nbsp;personas.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Arapiles, 16"/>
+            <column name="postal_code" value="28015"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439930.82336"/>
+            <column name="y_etrs89" valueNumeric="4476073.32822"/>
+            <column name="email" value="arapiles16@unir.net"/>
+            <column name="telephone" value="(+34) 91 467 85 25"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/sala-arapiles-16"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-11-28 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Ubicado en la antigua sala El Sol de York, este espacio teatral centrado en la formación de actores (dependiente de la Universidad Internacional de la Rioja UNIR Escuela de Actores) acoge una variada programación así como sirve para exponer producciones propias en las que poder disfrutar del trabajo de los alumnos de la escuela.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Esta sala cuenta con una capacidad para 164&amp;nbsp;personas.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Según espectáculo&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/sala_arapiles_16_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0032"/>
+            <column name="id" value="PIT0032"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Javier Aranburu"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El fotógrafo Javier Aranburu es el propietario de esta galería en la que expone y vende su trabajo y que en sus comienzos, en 2011, se llamó Yellow Tomate. Tras una gran reforma realizada en 2017, se modificó el nombre y la estética, dando más peso a la muestra y venta de la obra de Aranburu y ampliándose el fondo fotográfico.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Situada en el barrio de Gaztambide, esta galería cuenta con 75 metros cuadrados en los que se puede conocer y adquirir la obra de este fotógrafo, que ha trabajado para grandes firmas en distintos campos como la publicidad, la moda, retratos y reportajes. Su obra se caracteriza por su variedad temática, su creatividad, su armonía y su equilibrio.&amp;nbsp;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de Guzmán el Bueno, 63"/>
+            <column name="postal_code" value="28015"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="439497.43151"/>
+            <column name="y_etrs89" valueNumeric="4476358.33173"/>
+            <column name="email" value="contacto@javieraranburu.com"/>
+            <column name="telephone" value="(+34) 91 080 51 94"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/javier-aranburu"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-02-13 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El fotógrafo Javier Aranburu es el propietario de esta galería en la que expone y vende su trabajo y que en sus comienzos, en 2011, se llamó Yellow Tomate. Tras una gran reforma realizada en 2017, se modificó el nombre y la estética, dando más peso a la muestra y venta de la obra de Aranburu y ampliándose el fondo fotográfico.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Situada en el barrio de Gaztambide, esta galería cuenta con 75 metros cuadrados en los que se puede conocer y adquirir la obra de este fotógrafo, que ha trabajado para grandes firmas en distintos campos como la publicidad, la moda, retratos y reportajes. Su obra se caracteriza por su variedad temática, su creatividad, su armonía y su equilibrio.&amp;nbsp;&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lu &amp;ndash; sáb: 11:00 &amp;ndash; 15:00 h/ 16:30 &amp;ndash; 20:30 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/javier_aranburu_0.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0033"/>
+            <column name="id" value="PIT0033"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Centro Cultural Isl&amp;aacute;mico de Madrid"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Considerado como la institución cultural islámica más grande de España, este centro se inauguró el 21 de septiembre de 1992. Desde entonces se ha convertido en la casa del Islam en Madrid, frecuentado por miles de musulmanes así como de no musulmanes, atraídos por la singularidad del alminar (uno de los dos que existen en Madrid). Popularmente se conoce como la Mezquita de la M 30. por estar situado al lado de esta arteria que recorre la ciudad.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La mezquita es la más grande de España y su interior está inspirado en el interior de la Alhambra de Granada. &amp;nbsp;El conjunto, de 12.000 metros cuadrados distribuidos en seis plantas, cuenta, además, con un colegio, una&amp;nbsp;biblioteca&amp;nbsp;(con fondos árabes, españoles, ingleses y franceses), dos salas de exposiciones, un&amp;nbsp;museo, un auditorio, un gimnasio, las viviendas del director y el imán, un restaurante y una cafetería.? Su fachada está decorada con mármol de Almería.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Salvador de Madariaga, 4"/>
+            <column name="postal_code" value="28027"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="444193.31886"/>
+            <column name="y_etrs89" valueNumeric="4476623.00961"/>
+            <column name="email" value="inform.cci@gmail.com"/>
+            <column name="telephone" value="(+34) 91 3262610"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/centro-cultural-islamico-madrid"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-04-10 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Considerado como la institución cultural islámica más grande de España, este centro se inauguró el 21 de septiembre de 1992. Desde entonces se ha convertido en la casa del Islam en Madrid, frecuentado por miles de musulmanes así como de no musulmanes, atraídos por la singularidad del alminar (uno de los dos que existen en Madrid). Popularmente se conoce como la Mezquita de la M 30. por estar situado al lado de esta arteria que recorre la ciudad.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La mezquita es la más grande de España y su interior está inspirado en el interior de la Alhambra de Granada. &amp;nbsp;El conjunto, de 12.000 metros cuadrados distribuidos en seis plantas, cuenta, además, con un colegio, una&amp;nbsp;biblioteca&amp;nbsp;(con fondos árabes, españoles, ingleses y franceses), dos salas de exposiciones, un&amp;nbsp;museo, un auditorio, un gimnasio, las viviendas del director y el imán, un restaurante y una cafetería.? Su fachada está decorada con mármol de Almería.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; vier: 9:00 &amp;ndash; 16:00 h&lt;/p&gt;&lt;p&gt;Sábado: 11:00 &amp;ndash; 14:00 h&lt;/p&gt;&lt;p&gt;Domingo: cerrado&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/centro_cultural_islamico_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0034"/>
+            <column name="id" value="PIT0034"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Virtual Recall"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este parque temático de realidad virtual, situado en el Centro Comercial de Rivas Vaciamadrid, a pocos kilómetros del centro de Madrid, permite disfrutar de esta experiencia tanto al público general como al especializado gracias a unas instalaciones equipadas con la última tecnología del sector.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Abierto a mediados de 2017, este centro se une al primer proyecto&amp;nbsp;de ocio especializado en Realidad Virtual en España. Todas sus cabinas cuentan con procesadores, tarjetas gráficas y discos duros de gran potencia y resolución, consiguiendo que la experiencia de los usuarios sea fluida y cómoda. Pueden interactuar&amp;nbsp;hasta&amp;nbsp;6 cabinas a la vez, con temáticas de acción, terror, infantil, familiar o educativa, entre otras.&lt;/p&gt;&lt;p&gt;Entre las propuestas se encuentran simuladores de conducción, simuladores de aviación, montaña rusa con fuerzas G y giros en 360&amp;ordm; y plataformas omnidireccionales Virtuix Omni. A través de su web oficial se pueden realizar reservas.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de la Constitución, 2"/>
+            <column name="postal_code" value="28522"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="453551.90722"/>
+            <column name="y_etrs89" valueNumeric="4467425.87546"/>
+            <column name="email" value="info@virtualrecall.es"/>
+            <column name="telephone" value="(+34) 91 057 85 53"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/virtual-recall"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-02-13 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este parque temático de realidad virtual, situado en el Centro Comercial de Rivas Vaciamadrid, a pocos kilómetros del centro de Madrid, permite disfrutar de esta experiencia tanto al público general como al especializado gracias a unas instalaciones equipadas con la última tecnología del sector.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Abierto a mediados de 2017, este centro se une al primer proyecto&amp;nbsp;de ocio especializado en Realidad Virtual en España. Todas sus cabinas cuentan con procesadores, tarjetas gráficas y discos duros de gran potencia y resolución, consiguiendo que la experiencia de los usuarios sea fluida y cómoda. Pueden interactuar&amp;nbsp;hasta&amp;nbsp;6 cabinas a la vez, con temáticas de acción, terror, infantil, familiar o educativa, entre otras.&lt;/p&gt;&lt;p&gt;Entre las propuestas se encuentran simuladores de conducción, simuladores de aviación, montaña rusa con fuerzas G y giros en 360&amp;ordm; y plataformas omnidireccionales Virtuix Omni. A través de su web oficial se pueden realizar reservas.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; vier: 17:00 &amp;ndash; 22:00 h&lt;/p&gt;&lt;p&gt;Sáb, dom y fest: 11:00 &amp;ndash; 22:00 h&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/virtual_recall_1.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0035"/>
+            <column name="id" value="PIT0035"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Parque Europa"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;El Parque&amp;nbsp;Europa es la mayor zona verde y de ocio de Torrejón de Ardoz. Ocupa una superficie de 233.000 metros cuadrados y cuenta con las reproducciones de los monumentos más emblemáticos de las principales ciudades europeas así como con diferentes zonas de ocio y multiaventura y una fuente cibernética, que realiza un gran espectáculo de agua, luz y sonido. La entrada es gratuita.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El&amp;nbsp;parque&amp;nbsp;posee&amp;nbsp;réplicas&amp;nbsp;de&amp;nbsp;17 monumentos europeos&amp;nbsp;y un fragmento original de&amp;nbsp;Muro de Berlín, cedido gratuitamente por el&amp;nbsp;Ayuntamiento&amp;nbsp;de esta ciudad. Junto a cada una de estas reproducciones se ha instalado un panel explicativo con referencias al monumento original. Entre ellos cabe destacar la Puerta de Brandenburgo, el Teatro Griego, la Torre de Belém, la Fontana de Trevi, la Torre Eiffel o el Puente de Londres.&lt;/p&gt;&lt;p&gt;Además, dispone de merenderos, zonas de restauración y de varias actividades para toda la familia, como una tirolina, el embarcadero, un centro de tiro con arco, camas elásticas, paseos en poni o laberinto laser, entre otras.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de los Cipreses, s/n"/>
+            <column name="postal_code" value="28850"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="461354.99004"/>
+            <column name="y_etrs89" valueNumeric="4477458.34453"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/parque-europa"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-07-24 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;El Parque&amp;nbsp;Europa es la mayor zona verde y de ocio de Torrejón de Ardoz. Ocupa una superficie de 233.000 metros cuadrados y cuenta con las reproducciones de los monumentos más emblemáticos de las principales ciudades europeas así como con diferentes zonas de ocio y multiaventura y una fuente cibernética, que realiza un gran espectáculo de agua, luz y sonido. La entrada es gratuita.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El&amp;nbsp;parque&amp;nbsp;posee&amp;nbsp;réplicas&amp;nbsp;de&amp;nbsp;17 monumentos europeos&amp;nbsp;y un fragmento original de&amp;nbsp;Muro de Berlín, cedido gratuitamente por el&amp;nbsp;Ayuntamiento&amp;nbsp;de esta ciudad. Junto a cada una de estas reproducciones se ha instalado un panel explicativo con referencias al monumento original. Entre ellos cabe destacar la Puerta de Brandenburgo, el Teatro Griego, la Torre de Belém, la Fontana de Trevi, la Torre Eiffel o el Puente de Londres.&lt;/p&gt;&lt;p&gt;Además, dispone de merenderos, zonas de restauración y de varias actividades para toda la familia, como una tirolina, el embarcadero, un centro de tiro con arco, camas elásticas, paseos en poni o laberinto laser, entre otras.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;&lt;strong&gt;Verano (jun &amp;ndash; sept):&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Dom &amp;ndash; jue y fest: 9:00 &amp;ndash; 24:00 h&lt;/p&gt;&lt;p&gt;Vier &amp;ndash; sáb y vísperas festivos: 9:00 &amp;ndash; 01:00 h&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Primavera / Otoño (abril, mayo, octubre):&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Dom &amp;ndash; jue y fest: 9:00 &amp;ndash; 22:00 h&lt;/p&gt;&lt;p&gt;Vier &amp;ndash; sáb y vísperas festivos: 9:00 &amp;ndash; 24:00 h&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Invierno (nov &amp;ndash; mar):"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/parque_europa_2.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0036"/>
+            <column name="id" value="PIT0036"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Fundaci&amp;oacute;n Fernando de Castro"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este edificio, que acogió la sede de la Asociación para la Enseñanza de la Mujer, fue edificado entre 1892 y 1893 para albergar las dependencias de esta Institución, creada por Fernando de Castro para ofrecer a las mujeres españolas de clase media la oportunidad de tener acceso a una enseñanza académica y científica eficaz.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El edificio, construido por los arquitectos Pablo Sánchez y Gerardo de la Puente, junto a Manuel Ruiz de Quevedo, resulta original con respecto al contexto madrileño por su perfecta conjugación de lenguajes tan dispares como el eclecticismo, marcadamente académico, y el de la arquitectura del hierro, pragmático y pendiente de la naturaleza de los materiales, y que se puede disfrutar en el patio trapezoidal. Su diseño y la elección del entorno no fueron elegidos al azar, sino que se tuvieron en cuenta la luz, la ventilación y el espacio.&lt;/p&gt;&lt;p&gt;En su interior se encuentra un importante conjunto de mobiliario característico de la segunda mitad del siglo XIX.&amp;nbsp;&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="false"/>
+            <column name="tipo_accesibilidad"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="de San Mateo, 15"/>
+            <column name="postal_code" value="28004"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440734.32085"/>
+            <column name="y_etrs89" valueNumeric="4475289.28516"/>
+            <column name="email"/>
+            <column name="telephone" value="(+34) 91 448 10 46"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/fundacion-fernando-castro"/>
+            <column name="siglo"/>
+            <column name="estilo_artistico"/>
+            <column name="coste_mantenimiento"/>
+            <column name="ingresos_obtenidos"/>
+            <column name="afluencia_publico"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-01-25 00:00:00.0"/>
+            <column name="modo_acceso"/>
+            <column name="medio_transporte"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este edificio, que acogió la sede de la Asociación para la Enseñanza de la Mujer, fue edificado entre 1892 y 1893 para albergar las dependencias de esta Institución, creada por Fernando de Castro para ofrecer a las mujeres españolas de clase media la oportunidad de tener acceso a una enseñanza académica y científica eficaz.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;El edificio, construido por los arquitectos Pablo Sánchez y Gerardo de la Puente, junto a Manuel Ruiz de Quevedo, resulta original con respecto al contexto madrileño por su perfecta conjugación de lenguajes tan dispares como el eclecticismo, marcadamente académico, y el de la arquitectura del hierro, pragmático y pendiente de la naturaleza de los materiales, y que se puede disfrutar en el patio trapezoidal. Su diseño y la elección del entorno no fueron elegidos al azar, sino que se tuvieron en cuenta la luz, la ventilación y el espacio.&lt;/p&gt;&lt;p&gt;En su interior se encuentra un importante conjunto de mobiliario característico de la segunda mitad del siglo XIX.&amp;nbsp;&lt;/p&gt;"/>
+            <column name="opening_hours"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/fundacion_fernando_de_castro.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0037"/>
+            <column name="id" value="PIT0037"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Centro del Actor"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Este espacio para la formación continua de actores, creado por la actriz, profesora de actuación y directora de teatro Lorena García de las Bayonas, cuenta también con una sala de teatro en la que la compañía Teatro a Voces, compuesta por actores procedentes del Centro, pone en escena sus montajes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La sala cuenta con un aforo para 80 personas dispuestas en una grada frontal, un escenario de 13 metros de ancho y 12 metros de fondo.&amp;nbsp;Se puede alquilar para ensayos, cursos, etc.&amp;nbsp;&lt;/p&gt;&lt;p&gt;El Centro del Actor abrió sus puertas en 2012 con la idea de crear un espacio en el que los actores puedan recibir cursos puntuales a modo de reciclaje o continuar unos años para adquirir una formación parcial o completa, de la mano de maestros profesionales nacionales e internacionales.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Dolores Armengot, 22, bajo"/>
+            <column name="postal_code" value="28025"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="436934.10571"/>
+            <column name="y_etrs89" valueNumeric="4470851.12041"/>
+            <column name="email" value="info@centrodelactor.com"/>
+            <column name="telephone" value="(+34) 912977090"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/centro-actor"/>
+            <column name="siglo" value="XIX"/>
+            <column name="estilo_artistico" value="Clasico"/>
+            <column name="coste_mantenimiento" valueNumeric="89830.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="3260980.02"/>
+            <column name="afluencia_publico" value="Mayores de 18"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-01-25 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="No tiene"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Este espacio para la formación continua de actores, creado por la actriz, profesora de actuación y directora de teatro Lorena García de las Bayonas, cuenta también con una sala de teatro en la que la compañía Teatro a Voces, compuesta por actores procedentes del Centro, pone en escena sus montajes.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La sala cuenta con un aforo para 80 personas dispuestas en una grada frontal, un escenario de 13 metros de ancho y 12 metros de fondo.&amp;nbsp;Se puede alquilar para ensayos, cursos, etc.&amp;nbsp;&lt;/p&gt;&lt;p&gt;El Centro del Actor abrió sus puertas en 2012 con la idea de crear un espacio en el que los actores puedan recibir cursos puntuales a modo de reciclaje o continuar unos años para adquirir una formación parcial o completa, de la mano de maestros profesionales nacionales e internacionales.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Lun &amp;ndash; jue: 9:00 &amp;ndash; 18:00 h&lt;/p&gt;&lt;p&gt;Viernes: 9:00 &amp;ndash; 14:00 h&lt;/p&gt;&lt;p&gt;Consultar web oficial para horario de representaciones puntuales.&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/centro_del_actor.jpg"/>
+        </insert>
+        <insert tableName="punto_interes_turistico">
+            <column name="ikey" value="PIT0038"/>
+            <column name="id" value="PIT0038"/>
+            <column name="category" value="lugar interes turistico"/>
+            <column name="title" value="Sala Intemperie Teatro"/>
+            <column name="description" value="&lt;p&gt;&lt;strong&gt;Junto a la Plaza del Dos de Mayo este espacio cultural pretende ser un lugar de exhibición de las artes escénicas y punto de encuentro para los profesionales del teatro, espectadores, aficionados y amigos del barrio de Malasaña. Entre sus peculiaridades se encuentra que, a pesar de ser una sala Off, mantendrá una programación regular a lo largo del año.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La Sala Intemperie Teatro exhibe una programación ecléctica con espectáculos que recorren desde el teatro a la música en acústico, pasando por conciertos, presentaciones, magia o recitales. También ofrece cursos y talleres intensivos impartidos por reconocidos profesionales de las artes escénicas.&lt;/p&gt;&lt;p&gt;Este espacio apuesta por abrirse literalmente al público y al barrio gracias a sus tres grandes ventanales que dan directamente al escenario de trabajo y permiten observar desde la calle la actividad del interior.&lt;/p&gt;"/>
+            <column name="accesible" valueBoolean="true"/>
+            <column name="tipo_accesibilidad" value="Variada"/>
+            <column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="street_address" value="Velarde, 15"/>
+            <column name="postal_code" value="28004"/>
+            <column name="barrio_id" value="280796062"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="x_etrs89" valueNumeric="440336.80848"/>
+            <column name="y_etrs89" valueNumeric="4475367.96818"/>
+            <column name="email" value="info@intemperieteatro.com"/>
+            <column name="telephone"/>
+            <column name="url" value="http://www.esmadrid.com/informacion-turistica/sala-intemperie-teatro"/>
+            <column name="siglo" value="XIX"/>
+            <column name="estilo_artistico" value="Clasico"/>
+            <column name="coste_mantenimiento" valueNumeric="89830.98"/>
+            <column name="ingresos_obtenidos" valueNumeric="3260980.02"/>
+            <column name="afluencia_publico" value="Jovenes y Adultos"/>
+            <column name="fecha_declaracion_bien" valueDate="2018-01-30 00:00:00.0"/>
+            <column name="modo_acceso" value="Ascensores y Escaleras Mecánicas"/>
+            <column name="medio_transporte" value="Autobuses, cernanias y Metro"/>
+            <column name="nota_historica" value="&lt;p&gt;&lt;strong&gt;Junto a la Plaza del Dos de Mayo este espacio cultural pretende ser un lugar de exhibición de las artes escénicas y punto de encuentro para los profesionales del teatro, espectadores, aficionados y amigos del barrio de Malasaña. Entre sus peculiaridades se encuentra que, a pesar de ser una sala Off, mantendrá una programación regular a lo largo del año.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;La Sala Intemperie Teatro exhibe una programación ecléctica con espectáculos que recorren desde el teatro a la música en acústico, pasando por conciertos, presentaciones, magia o recitales. También ofrece cursos y talleres intensivos impartidos por reconocidos profesionales de las artes escénicas.&lt;/p&gt;&lt;p&gt;Este espacio apuesta por abrirse literalmente al público y al barrio gracias a sus tres grandes ventanales que dan directamente al escenario de trabajo y permiten observar desde la calle la actividad del interior.&lt;/p&gt;"/>
+            <column name="opening_hours" value="&lt;p&gt;Mar &amp;ndash; sáb: 20:15 h&lt;/p&gt;&lt;p&gt;Domingo: 19:15 h&lt;/p&gt;&lt;p&gt;Programación nocturna, jue-sáb: 22:30 h&lt;/p&gt;&lt;p&gt;Cursos regulares e intensivos: por las mañanas&lt;/p&gt;"/>
+            <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/sala_intemperie_1.jpg"/>
+        </insert>
+		<rollback>
+           delete from punto_interes_turistico where category like 'lugar interes turistico';
+       </rollback>    		
+    </changeSet>
+    <changeSet id="DATA-PUNTO-INTERES-TURISTICO-tag-1.11" author="Localidata">
+    	<tagDatabase tag="1.11" />		
+  	</changeSet>  
+</databaseChangeLog>

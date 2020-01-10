@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="table-callejero_portal">
+     <createTable tableName="callejero_portal">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street_address" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="via" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="provincia_id" type="VARCHAR(50)"/>
+            <column name="autonomia_id" type="VARCHAR(50)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="callejero_portal"/>            
+       </rollback> 
+        </changeSet>
+    <changeSet author="Localidata" id="table-callejero_tramo_via">
+    <createTable tableName="callejero_tramo_via">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="via" type="VARCHAR(50)"/>
+            <column name="junta_administrativa" type="VARCHAR(200)"/>
+            <column name="numero_inicio_tramo" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_fin_tramo" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="callejero_tramo_via"/>            
+       </rollback> 
+	 </changeSet>
+    <changeSet author="Localidata" id="table-callejero_via">
+        <createTable tableName="callejero_via">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo_via" type="VARCHAR(50)"/>
+            <column name="estado" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="callejero_via"/>            
+       </rollback>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="PK-table-callejero_via">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_callejero_via" tableName="callejero_via"/>
+    </changeSet>
+    
+     <changeSet author="Localidata" id="Index-callejero_via-id">
+        <addUniqueConstraint columnNames="id" constraintName="index_id_via" tableName="callejero_via"/>
+    </changeSet>
+    
+    
+     <changeSet author="Localidata" id="PK-table-callejero_tramo_via">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_callejero_tramo_via" tableName="callejero_tramo_via"/>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="Index-table-callejero_tramo_via-id">
+        <createIndex indexName="index_id_tramo_via" tableName="callejero_tramo_via">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>    
+    
+    <changeSet author="Localidata" id="Index-table-callejero_tramo_via-via">
+        <createIndex indexName="index_via_tramo_via" tableName="callejero_tramo_via">
+            <column name="via"/>
+        </createIndex>
+    </changeSet>
+    
+   
+    <changeSet author="Localidata" id="PK-table-callejero_portal">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_callejero_portal" tableName="callejero_portal"/>
+    </changeSet>
+    <changeSet author="Localidata" id="Index-table-callejero_portal-id">
+        <createIndex indexName="index_id_portal" tableName="callejero_portal">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="Index-table-callejero_portal-via">
+        <createIndex indexName="index_portal_via" tableName="callejero_portal">
+            <column name="via"/>
+        </createIndex>
+    </changeSet>
+    
+    
+ 
+    
+</databaseChangeLog>
