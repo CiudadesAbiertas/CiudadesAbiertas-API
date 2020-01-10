@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+     <changeSet author="Localidata" id="TablasTerritorio-1">
+        <createTable tableName="territorio_pais">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_pais"/>            
+       </rollback>
+    </changeSet>
+     <changeSet author="Localidata" id="TablasTerritorio-2">
+        <createTable tableName="territorio_autonomia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_autonomia"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-3">
+        <createTable tableName="territorio_provincia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autonomia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_provincia"/>            
+       </rollback>
+    </changeSet>   
+    <changeSet author="Localidata" id="TablasTerritorio-4">
+        <createTable tableName="territorio_municipio">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autonomia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provincia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="territorio_municipio"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-5">
+        <createTable tableName="territorio_distrito">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autonomia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provincia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_distrito"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-6">
+        <createTable tableName="territorio_barrio">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autonomia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provincia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_barrio"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-7">
+        <createTable tableName="territorio_seccion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pais" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autonomia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provincia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="municipio" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distrito" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+         <rollback>
+            <dropTable tableName="territorio_seccion"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-8">
+        <addPrimaryKey columnNames="ikey" constraintName="autonomia_PRIMARY" tableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-9">
+        <addPrimaryKey columnNames="ikey" constraintName="barrio_PRIMARY" tableName="territorio_barrio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-10">
+        <addPrimaryKey columnNames="ikey" constraintName="distrito_PRIMARY" tableName="territorio_distrito"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-11">
+        <addPrimaryKey columnNames="ikey" constraintName="municipio_PRIMARY" tableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-12">
+        <addPrimaryKey columnNames="ikey" constraintName="pais_PRIMARY" tableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-13">
+        <addPrimaryKey columnNames="ikey" constraintName="provincia_PRIMARY" tableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-14">
+        <addPrimaryKey columnNames="ikey" constraintName="seccion_PRIMARY" tableName="territorio_seccion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-15">
+        <createIndex indexName="autonomia1" tableName="territorio_barrio">
+            <column name="autonomia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-16">
+        <createIndex indexName="autonomia2" tableName="territorio_distrito">
+            <column name="autonomia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-17">
+        <createIndex indexName="autonomia3" tableName="territorio_municipio">
+            <column name="autonomia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-18">
+        <createIndex indexName="autonomia4" tableName="territorio_provincia">
+            <column name="autonomia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-19">
+        <createIndex indexName="autonomia5" tableName="territorio_seccion">
+            <column name="autonomia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-20">
+        <createIndex indexName="distrito1" tableName="territorio_barrio">
+            <column name="distrito"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-21">
+        <createIndex indexName="distrito2" tableName="territorio_seccion">
+            <column name="distrito"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-22">
+        <createIndex indexName="index_id_t_autonomia" tableName="territorio_autonomia">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-23">
+        <createIndex indexName="index_id_t_barrio" tableName="territorio_barrio">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-24">
+        <createIndex indexName="index_id_t_distrito" tableName="territorio_distrito">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-25">
+        <createIndex indexName="index_id_t_municipio" tableName="territorio_municipio">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-26">
+        <createIndex indexName="index_id_t_pais" tableName="territorio_pais">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-27">
+        <createIndex indexName="index_id_t_provincia" tableName="territorio_provincia">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-28">
+        <createIndex indexName="index_id_t_seccion" tableName="territorio_seccion">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-29">
+        <createIndex indexName="municipio1" tableName="territorio_barrio">
+            <column name="municipio"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-30">
+        <createIndex indexName="municipio2" tableName="territorio_distrito">
+            <column name="municipio"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-31">
+        <createIndex indexName="municipio3" tableName="territorio_municipio">
+            <column name="provincia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-32">
+        <createIndex indexName="municipio4" tableName="territorio_seccion">
+            <column name="municipio"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-33">
+        <createIndex indexName="pais1" tableName="territorio_autonomia">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-34">
+        <createIndex indexName="pais2" tableName="territorio_barrio">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-35">
+        <createIndex indexName="pais3" tableName="territorio_distrito">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-36">
+        <createIndex indexName="pais4" tableName="territorio_municipio">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-37">
+        <createIndex indexName="pais5" tableName="territorio_provincia">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-38">
+        <createIndex indexName="pais6" tableName="territorio_seccion">
+            <column name="pais"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-39">
+        <createIndex indexName="provincia1" tableName="territorio_barrio">
+            <column name="provincia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-40">
+        <createIndex indexName="provincia2" tableName="territorio_distrito">
+            <column name="provincia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-41">
+        <createIndex indexName="provincia3" tableName="territorio_seccion">
+            <column name="provincia"/>
+        </createIndex>
+    </changeSet>
+
+	<!-- eleminamos foreignKey
+    <changeSet author="Localidata" id="TablasTerritorio-42">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_autonomia" constraintName="t_autonomia_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-43">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-44">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-45">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-46">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-47">
+        <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_barrio" constraintName="t_barrio_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-48">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-49">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-50">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-51">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_distrito" constraintName="t_distrito_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-52">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-53">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-54">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_municipio" constraintName="t_municipio_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-55">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_provincia" constraintName="t_provincia_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-56">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_provincia" constraintName="t_provincia_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-57">
+        <addForeignKeyConstraint baseColumnNames="pais" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_pais"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-58">
+        <addForeignKeyConstraint baseColumnNames="autonomia" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_autonomia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-59">
+        <addForeignKeyConstraint baseColumnNames="provincia" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_provincia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-60">
+        <addForeignKeyConstraint baseColumnNames="municipio" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_municipio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="TablasTerritorio-61">
+        <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
+    </changeSet>
+    -->
+
+</databaseChangeLog>

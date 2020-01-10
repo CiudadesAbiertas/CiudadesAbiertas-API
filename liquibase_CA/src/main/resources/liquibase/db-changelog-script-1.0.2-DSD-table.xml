@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	
+
+   <changeSet author="Localidata" id="DSD_Tables-1">
+        <createTable tableName="cube_dsd">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notation" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd"/>            
+       </rollback> 
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-2">
+        <createTable tableName="cube_dsd_dimension">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notation" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="concept_scheme" type="VARCHAR(400)"/>            
+            <column name="same_as" type="VARCHAR(400)"/>            
+            <column name="multiple_field" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd_dimension"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-3">
+        <createTable tableName="cube_dsd_dimension_value">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimension_key" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="top_concept_of" type="VARCHAR(400)"/>
+            <column name="external_path_id" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd_dimension_value"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-4">
+        <createTable tableName="cube_dsd_measure">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd_measure"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-5">
+        <createTable tableName="cube_dsd_rel_dimension">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cube_key" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimension_key" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd_rel_dimension"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-6">
+        <createTable tableName="cube_dsd_rel_measure">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cube_key" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="measure_key" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cube_dsd_rel_measure"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-7">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd" tableName="cube_dsd"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-8">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd_dimension" tableName="cube_dsd_dimension"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-9">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd_dimension_value" tableName="cube_dsd_dimension_value"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-10">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd_measure" tableName="cube_dsd_measure"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-11">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd_rel_dimension" tableName="cube_dsd_rel_dimension"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-12">
+        <addPrimaryKey columnNames="ikey" constraintName="PK-dsd_rel_measure" tableName="cube_dsd_rel_measure"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-13">
+        <createIndex indexName="cube_dsd_id" tableName="cube_dsd">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-14">
+        <createIndex indexName="cube_key_rel1" tableName="cube_dsd_rel_dimension">
+            <column name="cube_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-15">
+        <createIndex indexName="cube_key_rel2" tableName="cube_dsd_rel_measure">
+            <column name="cube_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-16">
+        <createIndex indexName="dimension_id_dim_val" tableName="cube_dsd_dimension_value">
+            <column name="dimension_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-17">
+        <createIndex indexName="dimension_key_dim" tableName="cube_dsd_rel_dimension">
+            <column name="dimension_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-18">
+        <createIndex indexName="id_measure" tableName="cube_dsd_measure">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-19">
+        <createIndex indexName="measure_key" tableName="cube_dsd_rel_measure">
+            <column name="measure_key"/>
+        </createIndex>
+    </changeSet>
+	<!-- eliminamos las foreign key
+    <changeSet author="Localidata" id="DSD_Tables-20">
+        <addForeignKeyConstraint baseColumnNames="cube_key" baseTableName="cube_dsd_rel_dimension" constraintName="cube_dsd_rel_dim_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-21">
+        <addForeignKeyConstraint baseColumnNames="cube_key" baseTableName="cube_dsd_rel_measure" constraintName="cube_dsd_rel_mea_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-22">
+        <addForeignKeyConstraint baseColumnNames="measure_key" baseTableName="cube_dsd_rel_measure" constraintName="cube_dsd_rel_mea_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_measure"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-23">
+        <addForeignKeyConstraint baseColumnNames="dimension_key" baseTableName="cube_dsd_dimension_value" constraintName="dsd_dim_value_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_dimension"/>
+    </changeSet>
+    <changeSet author="Localidata" id="DSD_Tables-24">
+        <addForeignKeyConstraint baseColumnNames="dimension_key" baseTableName="cube_dsd_rel_dimension" constraintName="dsd_rel_dim_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd_dimension"/>
+    </changeSet>
+    -->
+
+    
+</databaseChangeLog>

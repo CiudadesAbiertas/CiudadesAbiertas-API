@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<changeSet author="Localidata" id="dsdDatos-1">
+        <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron1"/>
+            <column name="id" value="poblacionPorEdad"/>
+            <column name="title" value="Estructura de los datos relacionados con la edad de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorEdad"/>
+        </insert>
+        <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron2"/>
+            <column name="id" value="poblacionPorNivelEstudio"/>
+            <column name="title" value="Estructura de los datos relacionados con el nivel de estudio de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorNivelEstudio"/>
+        </insert>
+         <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron3"/>
+            <column name="id" value="poblacionPorNacionalidad"/>
+            <column name="title" value="Estructura de los datos relacionados con la nacionalidad de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorNacionalidad"/>
+        </insert>
+        <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron4"/>
+            <column name="id" value="poblacionPorProcedencia"/>
+            <column name="title" value="Estructura de los datos relacionados con el lugar de procedencia de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorProcedencia"/>
+        </insert>        
+        <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron5"/>
+            <column name="id" value="poblacionPorIndicadores"/>
+            <column name="title" value="Estructura de los datos relacionados con los indicadores de la estructura demografica de los habitantes registrados en el padron municipal"/>
+            <column name="notation" value="poblacionPorIndicadores"/>
+        </insert> 
+		<rollback>
+           delete from cube_dsd;
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="dsdDatos-2">       
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="edad-grupos-quinquenales"/>
+            <column name="id" value="edadGruposQuinquenales"/>
+            <column name="title" value="Edad (grupos quinquenales)"/>
+            <column name="notation" value="edad-grupos-quinquenales"/>
+            <column name="concept_scheme" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="same_as" value="http://opendata.aragon.es/def/iaest/dimension#edad-grupos-quinquenales"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="refArea"/>
+            <column name="id" value="refArea"/>
+            <column name="title" value="The country or geographic area to which the measured statistical phenomenon relates"/>
+            <column name="notation" value="distrito"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+            <column name="multiple_field" value="paisId,paisTitle,autonomiaId,autonomiaTitle,provinciaId,provinciaTitle,municipioId,municipioTitle,distritoId,distritoTitle,barrioId,barrioTitle,seccionCensalId,seccionCensalTitle"/>            
+        </insert>
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="refPeriod"/>
+            <column name="id" value="refPeriod"/>
+            <column name="title" value="The period of time or point in time to which the measured observation is intended to refer"/>
+            <column name="notation" value="refPeriod"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="sex"/>
+            <column name="id" value="sex"/>
+            <column name="title" value="The state of being male or female"/>
+            <column name="notation" value="sex"/>
+            <column name="concept_scheme" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="same_as" value="http://purl.org/linked-data/sdmx/2009/concept#sex"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="tipo-nivel-estudio"/>
+            <column name="id" value="tipoNivelEstudio"/>
+            <column name="title" value="The highest level of an educational programme the person has successfully completed"/>
+            <column name="notation" value="tipo-nivel-estudio"/>
+            <column name="concept_scheme" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="same_as" value="http://purl.org/linked-data/sdmx/2009/concept#tipo-nivel-estudio"/>
+        </insert>
+         <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="nacionalidad"/>
+            <column name="id" value="nacionalidad"/>
+            <column name="title" value="Nacionalidad"/>
+            <column name="notation" value="nacionalidad"/>
+            <column name="concept_scheme" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="same_as" value="https://opendata.aragon.es/def/iaest/dimension#nacionalidad"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="municipio-procedencia"/>
+            <column name="id" value="municipioProcedencia"/>
+            <column name="title" value="Municipio de procedencia"/>
+            <column name="notation" value="municipio-procedencia"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+        </insert>   
+         <insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="provincia-procedencia"/>
+            <column name="id" value="provinciaProcedencia"/>
+            <column name="title" value="Provincia de procedencia"/>
+            <column name="notation" value="provincia-procedencia"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+        </insert>
+		<rollback>
+           delete from cube_dsd_dimension;
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="dsdDatos-3">
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango02"/>
+            <column name="id" value="05-a-09"/>
+            <column name="title" value="De 5 a 9 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/05-a-09"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango03"/>
+            <column name="id" value="10-a-14"/>
+            <column name="title" value="De 10 a 14 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/10-a-14"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango04"/>
+            <column name="id" value="15-a-19"/>
+            <column name="title" value="De 15 a 19 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/15-a-19"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango05"/>
+            <column name="id" value="20-a-24"/>
+            <column name="title" value="De 20 a 24 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/20-a-24"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango06"/>
+            <column name="id" value="25-a-29"/>
+            <column name="title" value="De 25 a 29 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/25-a-29"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango07"/>
+            <column name="id" value="30-a-34"/>
+            <column name="title" value="De 30 a 34 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/30-a-34"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango08"/>
+            <column name="id" value="35-a-39"/>
+            <column name="title" value="De 35 a 39 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/35-a-39"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango09"/>
+            <column name="id" value="40-a-44"/>
+            <column name="title" value="De 40 a 44 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/40-a-44"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango1"/>
+            <column name="id" value="00-a-04"/>
+            <column name="title" value="De 0 a 4 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/00-a-04"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango10"/>
+            <column name="id" value="45-a-49"/>
+            <column name="title" value="De 45 a 49 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/45-a-49"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango11"/>
+            <column name="id" value="50-a-54"/>
+            <column name="title" value="De 50 a 54 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/50-a-54"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango12"/>
+            <column name="id" value="55-a-59"/>
+            <column name="title" value="De 55 a 59 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/55-a-59"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango13"/>
+            <column name="id" value="60-a-64"/>
+            <column name="title" value="De 60 a 64 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/60-a-64"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango14"/>
+            <column name="id" value="65-a-69"/>
+            <column name="title" value="De 65 a 69 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/65-a-69"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango15"/>
+            <column name="id" value="70-a-74"/>
+            <column name="title" value="De 70 a 74 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/70-a-74"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango16"/>
+            <column name="id" value="75-a-79"/>
+            <column name="title" value="De 75 a 79 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/75-a-79"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango17"/>
+            <column name="id" value="80-a-84"/>
+            <column name="title" value="De 80 a 84 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/80-a-84"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango18"/>
+            <column name="id" value="85-a-89"/>
+            <column name="title" value="De 85 a 89 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/85-a-89"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango19"/>
+            <column name="id" value="90-a-94"/>
+            <column name="title" value="De 90 a 94 años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/90-a-94"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango20"/>
+            <column name="id" value="95-y-mas"/>
+            <column name="title" value="De 95 y más años"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/95-y-mas"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="edadRango21"/>
+            <column name="id" value="sin-clasificar"/>
+            <column name="title" value="Sin clasificar"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
+            <column name="external_path_id" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/sin-clasificar"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="sex-F"/>
+            <column name="id" value="sex-F"/>
+            <column name="title" value="Female"/>
+            <column name="dimension_key" value="sex"/>
+            <column name="top_concept_of" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="external_path_id" value="http://purl.org/linked-data/sdmx/2009/code#sex-F"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="sex-M"/>
+            <column name="id" value="sex-M"/>
+            <column name="title" value="Male"/>
+            <column name="dimension_key" value="sex"/>
+            <column name="top_concept_of" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="external_path_id" value="http://purl.org/linked-data/sdmx/2009/code#sex-M"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="sex-N"/>
+            <column name="id" value="sex-N"/>
+            <column name="title" value="Not applicable"/>
+            <column name="dimension_key" value="sex"/>
+            <column name="top_concept_of" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="external_path_id" value="http://purl.org/linked-data/sdmx/2009/code#sex-N"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="sex-T"/>
+            <column name="id" value="sex-T"/>
+            <column name="title" value="Total"/>
+            <column name="dimension_key" value="sex"/>
+            <column name="top_concept_of" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="external_path_id" value="http://purl.org/linked-data/sdmx/2009/code#sex-T"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="sex-U"/>
+            <column name="id" value="sex-U"/>
+            <column name="title" value="Unknown"/>
+            <column name="dimension_key" value="sex"/>
+            <column name="top_concept_of" value="http://purl.org/linked-data/sdmx/2009/code#sex"/>
+            <column name="external_path_id" value="http://purl.org/linked-data/sdmx/2009/code#sex-U"/>
+        </insert>
+               <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="00"/>
+            <column name="id" value="00"/>
+            <column name="title" value="No aplicable por ser menor de 16 años"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/00"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="10"/>
+            <column name="id" value="10"/>
+            <column name="title" value="No sabe leer ni escribir"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/10"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="20"/>
+            <column name="id" value="20"/>
+            <column name="title" value="Inferior a grado escolar"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/20"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="21"/>
+            <column name="id" value="21"/>
+            <column name="title" value="Sin estudios"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/21"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="22"/>
+            <column name="id" value="22"/>
+            <column name="title" value="Enseñanza primaria incompleta"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/22"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="30"/>
+            <column name="id" value="30"/>
+            <column name="title" value="Grado escolar o equivalente"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/30"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="31"/>
+            <column name="id" value="31"/>
+            <column name="title" value="Bachiller elemental, graduado escolar, EGB completa, primaria completa, ESO, formación profesional básica"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/31"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="32"/>
+            <column name="id" value="32"/>
+            <column name="title" value="Formación profesional primer grado/grado medio, oficialía industrial"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/32"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="40"/>
+            <column name="id" value="40"/>
+            <column name="title" value="Bachiller, formación profesional de segundo grado o títulos equivalentes o superiores"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/40"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="41"/>
+            <column name="id" value="41"/>
+            <column name="title" value="Formación profesional segundo grado/grado superior, maestría industrial"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/41"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="42"/>
+            <column name="id" value="42"/>
+            <column name="title" value="Bachiller superior/LOGSE, BUP"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/42"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="43"/>
+            <column name="id" value="43"/>
+            <column name="title" value="Otras titulaciones medias"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/43"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="44"/>
+            <column name="id" value="44"/>
+            <column name="title" value="Diplomado en escuelas universitarias"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/44"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="45"/>
+            <column name="id" value="45"/>
+            <column name="title" value="Arquitecto o Ingeniero técnico"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/45"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="46"/>
+            <column name="id" value="46"/>
+            <column name="title" value="Grado/Licenciado universitario, arquitecto o ingeniero superior"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/46"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="47"/>
+            <column name="id" value="47"/>
+            <column name="title" value="Estudios superiores no universitarios"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/47"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="48"/>
+            <column name="id" value="48"/>
+            <column name="title" value="Doctorado, postgrado, especialización licenciado, máster universitario"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/48"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="99"/>
+            <column name="id" value="99"/>
+            <column name="title" value="Sin especificar"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+            <column name="top_concept_of" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio"/>
+            <column name="external_path_id" value="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/99"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="nacionalidadEspanoles"/>
+            <column name="id" value="espanoles"/>
+            <column name="title" value="Españoles"/>
+            <column name="dimension_key" value="nacionalidad"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/espanoles"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="nacionalidadExtranjerosComunitarios27"/>
+            <column name="id" value="extranjeros-comunitarios-ue-27"/>
+            <column name="title" value="Extranjeros comunitarios (UE-27)"/>
+            <column name="dimension_key" value="nacionalidad"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/extranjeros-comunitarios-ue-27"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="nacionalidadExtranjerosComunitarios28"/>
+            <column name="id" value="extranjeros-comunitarios-ue-28"/>
+            <column name="title" value="Extranjeros comunitarios (UE-28)"/>
+            <column name="dimension_key" value="nacionalidad"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/extranjeros-comunitarios-ue-28"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="nacionalidadNoComunitarios"/>
+            <column name="id" value="extranjeros-no-comunitarios"/>
+            <column name="title" value="Extranjeros no comunitarios"/>
+            <column name="dimension_key" value="nacionalidad"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/extranjeros-no-comunitarios"/>
+        </insert>
+        <insert tableName="cube_dsd_dimension_value">
+            <column name="ikey" value="nacionalidadNoConsta"/>
+            <column name="id" value="no-consta"/>
+            <column name="title" value="No consta"/>
+            <column name="dimension_key" value="nacionalidad"/>
+            <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
+            <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/no-consta"/>
+        </insert>
+		<rollback>
+           delete from cube_dsd_dimension_value;
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="dsdDatos-4">
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="numero-personas"/>
+            <column name="id" value="numeroPersonas"/>
+            <column name="title" value="Número de personas"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="edad-media-poblacion"/>
+            <column name="id" value="edadMediaPoblacion"/>
+            <column name="title" value="Edad media de la población"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-dependencia"/>
+            <column name="id" value="indiceDependencia"/>
+            <column name="title" value="Índice de dependencia"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-feminidad"/>
+            <column name="id" value="indiceFeminidad"/>
+            <column name="title" value="Índice de feminidad"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-infancia"/>
+            <column name="id" value="indiceInfancia"/>
+            <column name="title" value="Índice de infancia"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-juventud"/>
+            <column name="id" value="indiceJuventud"/>
+            <column name="title" value="Índice de juventud"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-maternidad"/>
+            <column name="id" value="indiceMaternidad"/>
+            <column name="title" value="Índice de maternidad"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-poblacion-activa"/>
+            <column name="id" value="indicePoblacionActiva"/>
+            <column name="title" value="Índice de población activa"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-reemplazo"/>
+            <column name="id" value="indiceReemplazo"/>
+            <column name="title" value="Índice de reemplazo"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-sobreenvejecimiento"/>
+            <column name="id" value="indiceSobreenvejecimiento"/>
+            <column name="title" value="Índice de sobreenvejecimiento"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="indice-tendencia"/>
+            <column name="id" value="indiceTendencia"/>
+            <column name="title" value="Índice de tendencia"/>
+        </insert>        
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="porcentaje-poblacion-adulta"/>
+            <column name="id" value="porcentajePoblacionAdulta"/>
+            <column name="title" value="Porcentaje de población adulta"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="porcentaje-poblacion-envejecida"/>
+            <column name="id" value="porcentajePoblacionEnvejecida"/>
+            <column name="title" value="Porcentaje de población envejecida"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="porcentaje-poblacion-extranjera-infantil"/>
+            <column name="id" value="porcentajePoblacionExtranjeraInfantil"/>
+            <column name="title" value="Porcentaje de población extranjera infantil"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="porcentaje-poblacion-joven"/>
+            <column name="id" value="porcentajePoblacionJoven"/>
+            <column name="title" value="Porcentaje de población joven"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="tasa-mortalidad"/>
+            <column name="id" value="tasaMortalidad"/>
+            <column name="title" value="Tasa de mortalidad"/>
+        </insert>
+        <insert tableName="cube_dsd_measure">
+            <column name="ikey" value="tasa-natalidad"/>
+            <column name="id" value="tasaNatalidad"/>
+            <column name="title" value="Tasa de natalidad"/>
+        </insert>
+		<rollback>
+           delete from cube_dsd_measure;
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="dsdDatos-5">
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadRangosEdad"/>
+            <column name="cube_key" value="cuboPadron1"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadRefArea"/>
+            <column name="cube_key" value="cuboPadron1"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadRefPeriod"/>
+            <column name="cube_key" value="cuboPadron1"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadSexo"/>
+            <column name="cube_key" value="cuboPadron1"/>
+            <column name="dimension_key" value="sex"/>
+        </insert>
+         <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEstudiosRefPeriod"/>
+            <column name="cube_key" value="cuboPadron2"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEstudiosTipoNivelEstudio"/>
+            <column name="cube_key" value="cuboPadron2"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronNacionalidadEdadGrupos"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronNacionalidadNacionalidad"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="dimension_key" value="nacionalidad"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronNacionalidadRefArea"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronNacionalidadRefPeriod"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronNacionalidadSexo"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="dimension_key" value="sex"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaMunicipio"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="municipio-procedencia"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaProvincia"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="provincia-procedencia"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaRangosEdad"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaRefArea"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaRefPeriod"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronProcedenciaTipoNivelEstudio"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="dimension_key" value="tipo-nivel-estudio"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronIndicadoresRefArea"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronIndicadoresRefPeriod"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+		<rollback>
+           delete from cube_dsd_rel_dimension;
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="dsdDatos-6">
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronEdadPersonas"/>
+            <column name="cube_key" value="cuboPadron1"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronEstudiosPersonas"/>
+            <column name="cube_key" value="cuboPadron2"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronNacionalidadPersonas"/>
+            <column name="cube_key" value="cuboPadron3"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+         <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronProcedenciaPersonas"/>
+            <column name="cube_key" value="cuboPadron4"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM01"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-dependencia"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM02"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-feminidad"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM03"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-infancia"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM04"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-juventud"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM05"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-maternidad"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM06"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-poblacion-activa"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM07"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-reemplazo"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM08"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-sobreenvejecimiento"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM09"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="indice-tendencia"/>
+        </insert>        
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM10"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="tasa-mortalidad"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM11"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="tasa-natalidad"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM12"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="edad-media-poblacion"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM13"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="porcentaje-poblacion-joven"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM14"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="porcentaje-poblacion-adulta"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM15"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="porcentaje-poblacion-envejecida"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM16"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="porcentaje-poblacion-extranjera-infantil"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronIndicadoresM17"/>
+            <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+		<rollback>
+           delete from cube_dsd_rel_measure;
+       </rollback>
+    </changeSet> 
+	
+	<changeSet id="TABLE-dsdDatos-1-tag-1.0.2" author="Localidata">
+    	<tagDatabase tag="1.0.2" />
+  	</changeSet>
+    
+</databaseChangeLog>

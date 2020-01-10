@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="data-equipamiento">                               
+      <insert tableName="equipamiento">
+            <column name="ikey" value="0001"/>
+            <column name="id" value="EQ0001"/>
+            <column name="title" value="Aula de Educación Ambiental"/>
+            <column name="description" value="Datos de interés Servicios principales Equipamiento ambiental situado en el Jardín de la Vega donde se desarrollan actividades y programas relacionados con la Educación Ambiental. Proyecto Coches compartidos Accesos Coche Autobús:  151 / 152C  / 153  /154C / 158 / 166      Metro. Estación La Moraleja Más información sobre transportes  Horario Del 1/10 al 31/03: lunes a viernes de 16:30 a 18:30 h. Del 1/04 al 30/06: lunes a viernes de 17:00 a 20:00 h. Del 1/07 al 30/09: lunes a viernes de 10:00 a 13:00 h."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV OLIMPICA s/n"/>
+            <column name="postal_code" value="28108"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446175.61012"/>
+            <column name="y_etrs89" valueNumeric="4487376.65943"/>
+            <column name="email" value="aulaambiental2@aytoalcobendas.org"/>
+            <column name="telephone" value="34916618096"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours" value="Sin horario"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0002"/>
+            <column name="id" value="EQ0002"/>
+            <column name="title" value="Ayuntamiento de Alcobendas"/>
+            <column name="description" value="Datos de interés Accesos Coche Autobús:   L 2  / C 10 / C 11 / 151  / 827/ 827A / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes  Horario Para acceso a Tablones de Edictos de lunes a viernes de 8 a 20 h., y los sábados de 10 a 13 h. Si desea información o realizar algún trámite, puede dirigirse al Servicio de Atención Ciudadana. Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria. Contacto (código QR/BIDI)"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PZ MAYOR 1"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445672.87341"/>
+            <column name="y_etrs89" valueNumeric="4488726.88198"/>
+            <column name="email"/>
+            <column name="telephone" value="34916597600"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0003"/>
+            <column name="id" value="EQ0003"/>
+            <column name="title" value="Casa de la Mujer Clara Campoamor"/>
+            <column name="description" value="Datos de interés   Servicios principales Mujer: •  Información específica sobre actividades relacionadas con la formación, el ocio, tiempo libre, salud, etc.., y actividades organizadas por las asociaciones. •  Centro de documentación, donde pueden consultar y obtener préstamo de libros sobre autoestima, infancia, familia, psicología,violencia de género, etc. •  Asesoramiento legal en casos de separación, divorcio, régimen económico, impago de pensiones, derecho laboral (contratos, permisos de maternidad, etc...), siempre con cita previa. •  Atención psicológica en casos de malos tratos, depresiones, etc..., siempre con cita previa. •  Informa y asesora a asociaciones de mujer y subvenciones. •  Cursos de Orientación Laboral y Formación Ocupacional, en colaboración con otros organismos (INEM, Instituto de la Mujer, Dirección General de la Mujer, etc.). •  Encuentros. Ayudas y subvenciones, cesión de espacios y apoyo técnico a las actividades realizadas por las propias mujeres. •  Apoyo a iniciativas culturales, deportivas o de voluntariado de las propias mujeres.  Inmigración: •  Información y asesoramiento sobre asociacionismo en la población inmigrante. •  Gestión de subvenciones y convocatorias a proyectos propios del área. •  Información y gestión de informes de adecuación de vivienda y de arraigo social en colaboración con la Comunidad de Madrid. •  Desarrollo y seguimiento de los diferentes convenios de colaboración en materia de inmigración. •  Apoyo a asociaciones, cesión de espacios municipales y apoyo técnico en las actividades. •  Estudio de propuestas en relación con programas de intervención social en el ámbito de la inmigración. •  Gestión de programas propios del servicio de inmigración en colaboración con otros servicios municipales para la integración de inmigrantes. •  Proporcionar información y orientación a la población inmigrante en el acceso a los recursos existentes y a las instituciones públicas. •  Organización de actos de convivencia intercultural. •  Colaboración con otros centros de participación e integración de inmigrantes (CEPI...) •  Comisión Sectorial de Integración Social e Inmigración. Accesos Coche Autobús: C 10 / C 11 Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario Lunes a viernes de 9:00 a 14:00 h.  Lunes y Miércoles 16 a 19:30 h. Horario de verano: de 5 de junio a 15 de septiembre:  Lunes a viernes de 9:00 a 14:00 h. Navidad (26 de diciembre a 4 de enero): Lunes a viernes de 9:00 a 14:00 h."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL MALAGA 50"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445622.94415"/>
+            <column name="y_etrs89" valueNumeric="4489044.61684"/>
+            <column name="email" value="casamujer@aytoalcobendas.org"/>
+            <column name="telephone" value="916543199 - 916543787"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0004"/>
+            <column name="id" value="EQ0004"/>
+            <column name="title" value="Casa de las Asociaciones"/>
+            <column name="description" value="Datos de interés Descripción La Casa de las Asociaciones es un espacio municipal destinado a facilitar espacios y recursos a las asociaciones que lo soliciten. Dispone de múltiples aulas para actividades y de despachos para la gestión interna. En ella tienen su sede múltiples entidades. El edificio consta de cuatro plantas, plan baja y semisótano y acoge además diferentes servicios municipales: Apoyo Sociocultural. Patronato Sociocultural De lunes a viernes de 9:00 a 15:00. Otros horarios contactar previamente. Apoyo a asociaciones. Patronato de Bienestar Social. De lunes a viernes de 9:00 a 15:00 h. Apoyo a Asociaciones. Participación ciudadana. Punto de información al voluntariado. De martes a viernes de 10:00 a 14:30 y lunes de 16:00 a 20:30 h. La Pecera Centro. Programa infantil de Servicios Sociales. Lunes a viernes de16:30 a 19:30 h. Conect@ De lunes a viernes de 10:00 a 15:00 y de 16:00 a 21:00 h. Proyecto Starts-up. Desarrollo Económico y Empleo Talleres de orientación para la búsqueda de empleo. Patronato de Bienestar Social Tutoría de tarde. Centro Psicopedagógico. Martes, jueves y viernes de 15:00 a 19:30 h. Otros datos de contacto Tf: 91 653 76 00 Ext: 8300 E-mail: asociaciones.psc@aytoalcobendas.org Twitter: @ALCBDS_Asociaci Facebook: Asociaciones de Alcobendas Servicios principales Cesión de salas para actividades. Préstamo de materiales audiovisuales y otros recursos. Cesión de despachos para sede de asociaciones. Información de actividades, recursos y convocatorias. Asesoría jurídica para asociaciones. Centro de Documentación para asociaciones. Programa de Formación para Asociaciones Consulte Descripción espacios Casa de las Asociaciones Salas y capacidad. Sala 101. Capacidad 35 personas Sala 102. Capacidad 50 personas Salas 201, 202, 401 y 402. Capacidad 20 personas. Sala 301. Capacidad 40 personas Sala 006. Capacidad 15 personas Sala 007. Capacidad 55 personas Sala 009. Capacidad 75 personas Sala Polivalente: 55 personas Salón de Actos. Capacidad 110/220 personas. Para conferencias y presentaciones. Recursos y material de préstamo: Video Proyectores (3). Ordenadores portátiles (2). Pantallas de proyección (2). Reproductores de CD (2). Equipos de sonido portátiles (2). Cada equipo cuenta con una mesa de mezclas y altavoces. 25 sillas. 28 mesas plegables. Horario Horario atención al público Asociaciones: Lunes a viernes de 9:00 a 22:45 h. Sábados de 10:00 a 22:45 h. Domingos y festivos de 10:00 a 15:45 h. Mes de agosto: cerrado. Asesoría Jurídica y Fiscal para las Asociaciones Locales: Miércoles de 19:00 a 22:00 h. Servicio especializado de orientación y asesoramiento sobre las obligaciones jurídicas de las asociaciones. Los colectivos y asociaciones pueden acudir directamente sin cita previa o contactar en este mismo horario a través del teléfono 91 659 76 00 Ext.: 8311 Centro de Documentación: Servicio de préstamo de libros para las asociaciones dispone de un fondo especializado cercano a los 1000 ejemplares para préstamo en el horario siguiente: De lunes a viernes de 9:00 a 20:00 h. en la Casa de las Asociaciones. Accesos Coche Autobús:  L2 / 151 / 152C  / 153  /154 / 158 /166  Metro Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL CACERES 18"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446474.65766"/>
+            <column name="y_etrs89" valueNumeric="4487732.88326"/>
+            <column name="email" value="c.asociaciones@aytoalcobendas.org"/>
+            <column name="telephone" value="34916537378"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0005"/>
+            <column name="id" value="EQ0005"/>
+            <column name="title" value="Cementerio Municipal Nuestra Señora de la Paz"/>
+            <column name="description" value="Datos de interés Servicios principales Servicios funerarios. Accesos Autobús:  L5 /  155 Puede consultar recorrido y horarios en la página web del Consorcio de Transportes o en la empresa de autobuses Interbús. Metro. Estación de La Moraleja. Otros datos Horario: Lunes a Domingo, de 9:00 a 13:00 y de 14:00 a 17:30 horas. Del 15 de junio al 15 de septiembre: de 9:00 a 13:30 y de 16:00 a 19:00 horas."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL BEGONIA 277"/>
+            <column name="postal_code" value="28109"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445781.14107"/>
+            <column name="y_etrs89" valueNumeric="4486114.36294"/>
+            <column name="email"/>
+            <column name="telephone" value="34916500878"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0006"/>
+            <column name="id" value="EQ0006"/>
+            <column name="title" value="Centro Cívico C/ Málaga"/>
+            <column name="description" value="Datos de interés Servicios principales Espacio gestionado por el Servicio Apoyo Sociocultural Cesión de salas para actividades. Cesión de espacios para sede a asociaciones. El Centro Cívico comparte edificio con la Casa de la Mujer  Clara Campoamor Salas y capacidad: Sala Polivalente. Capacidad 80 personas. Sala de Trabajo comunitario. Capacidad 20 personas. Biblioteca. Capacidad 20 personas. Sala Plástica I. Capacidad 15 personas. Sala Plástica II. Capacidad 15 personas. Accesos Coche    Autobús:  L2 / L5 /  L6 / C 10 / C 11 /  827 /  827A       Metro. Renfe : Cercanías C1 Alcobendas-San Sebastián de los Reyes. Más información sobre transportes  Horario Horario de atención público: Lunes a viernes de 14:30 a 21:45 h. Horario general del centro: Lunes a viernes de 10:00 a 22:45 h. Mes de agosto cerrado"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL MALAGA 50"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445622.94584"/>
+            <column name="y_etrs89" valueNumeric="4489044.61683"/>
+            <column name="email"/>
+            <column name="telephone" value="34916524470"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0007"/>
+            <column name="id" value="EQ0007"/>
+            <column name="title" value="Centro Cívico del Distrito Centro"/>
+            <column name="description" value="Datos de interés Descripción Equipamiento municipal con diferentes usos: culturales, administrativos y sociales. Consta de cuatro plantas y semisótano. Gestionado por el Servicio de Apoyo Sociocultural del Patronato Sociocultural. Acoge diferentes dependencias municipales y dispone de aulas y oficinas/despachos para uso de asociaciones, entidades, grupos de estudio y de los propios servicios municipales: Planta Baja: SAC. Servicio de Atención Ciudadana: De 8.30 a 14.00 h. UAC. Unidad Atención al Ciudadano de Policía Local SAV. Servicio de Atención a la Víctima. Dependiente de la UAC. De 10.00 a 14.00 y de 16.00 a 19.00 Asesoramiento legal, asesoramiento social, prevención del delito e intervención psicológica 900 10 10 29 Planta Primera: Concejalía y Junta Municipal del Distrito Centro: De lunes a jueves de 9.00 a 14.00 h. y de 17.30 a 20.00 h. Viernes de 9.00 a 14.00 h. Planta Segunda: Oficina 29: ASOBIDE. Asociación Trastornos Bipolar Depresivo Alcobendas. Atención al público: martes y miércoles, de 17.00 a 20.00 h. AECC. Asociación Española Contra el Cáncer. Atención al público, lunes de 17.00 a 19.00 h. Oficina 27: Programa Integramujer. Depende de Integración e Igualdad. De 10.30 a 14.00 y de 15.30 a 19.00 Oficina 26: FAPA. Federación Asociaciones Padres. Atención al público: martes, de 18.00 a 20.00 h. Planta Tercera: RECAUDACIÓN MUNICIPAL: de 9.00 a 18.00 h. Espacios: Salas y capacidad. Sala Reuniones planta baja: 10 personas Sala 1.1 : 60 personas Sala 1.2 : 25 personas Sala 2.1 : 20 personas Sala 2.3 : 50 personas Sala 2.4 : 20 personas Sala 2.5 : 40 personas Consulte documento con la descripción de espacios del Centro Servicios principales Cesión de salas para actividades. Préstamo de materiales audiovisuales y otros recursos. Cesión de espacios para sede de asociaciones. Información de actividades, recursos y convocatorias. Información general al ciudadano. Accesos Coche Autobús:   L2 / C 10 / L5 / L6 /151 /152C /153 /154 / 154C / 158 / 166 / 827 / 828  Metro Más información sobre transportes  Horario Horario atención al público: Lunes a jueves de 14:30 a 21:00h. Viernes de 14:30 a 20:00h. Horario general del edificio: Lunes a jueves de 8:30 a 22,00 h. Viernes de 8:30 a 20:30 h. Horario verano: Agosto, se cierra a las 19:30 h. "/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PZ PUEBLO 1"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446304.75276"/>
+            <column name="y_etrs89" valueNumeric="4487995.92999"/>
+            <column name="email" value="cc.alcocentro@aytoalcobendas.org"/>
+            <column name="telephone" value="916539246  916597600 Ext. 4347"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0008"/>
+            <column name="id" value="EQ0008"/>
+            <column name="title" value="Centro Cultural Anabel Segura"/>
+            <column name="description" value="Datos de interés Descripción Edificio que alberga los siguientes servicios municipales: Junta Municipal Distrito Urbanizaciones Concejalía de Distrito Urbanizaciones Apoyo Sociocultural, cesión de dos salas polivalentes para actividades y cesión de espacio para sede de asociaciones. SAC Mediateca Artes Plásticas / Sala de exposiciones Servicios principales Cesión de salas para actividades: Sala Nº 1. Capacidad 22 personas. Sala Nº 2. Capacidad 22 personas. Sala Exposiciones. Accesos Coche Autobús:  L 9 / 159 / N101   Metro. Estación La Moraleja Más información sobre transportes  Horarios Servicio Atención Ciudadana (SAC):  Tfno.:  010 / 912969088 Lunes a Viernes de 8:30 a 14:00 h. (Cerrado julio y agosto) Concejalía Distrito Urbanizaciones: Tfno.: 916597600, Ext. 3721, 3709 y 91 490 07 63 / distritourbanizaciones@aytoalcabendas.org Lunes a Jueves de 9 a 14 horas y de 17:30 a 20:00 horas. Viernes de 9 a 14:00 horas. Julio, Agosto, Navidad y Semana Santa de lunes a viernes de 9 a 14:00 horas Centro Cívico: Lunes a viernes de 10 a 13:00 horas y de 17 a 20:00 horas. Mediateca: Adultos: de lunes a viernes de 9:00 a 21:00 h Infantil: de lunes a viernes de 17:00 a 20:00 h. Exposición       • Lunes a Viernes de 10:00 a 21:00 h        • Sábado de 16:30 a 20:00 h.  Más información Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV BRUSELAS DE 19"/>
+            <column name="postal_code" value="28108"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446076.42436"/>
+            <column name="y_etrs89" valueNumeric="4486928.44701"/>
+            <column name="email" value="cc.asegura@aytoalcobendas.org"/>
+            <column name="telephone" value="34914841685"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0009"/>
+            <column name="id" value="EQ0009"/>
+            <column name="title" value="Centro Cultural Pablo Iglesias"/>
+            <column name="description" value="Datos de interés Accesos Coche Autobús: L2 / C 10 / C 11 / 157 / N101   Metro - Estación Marqués de la Valdavia Más información sobre transportes Horario Lunes a sábado, de 9:00 a 21:00 h. Verano: Cerrado del 1 de agosto al 2 de septiembre Taquilla: Lunes a sábados (no festivos) de 11:00 a 12:30 h. Los días de función, una hora antes del inicio del espectáculo, además del horario habitual. Venta de última hora: Se reservarán un mínimo de 10 localidades para ser vendidas una hora antes de cada espectáculo en taquilla. Media hora antes de cada espectáculo, las taquillas sólo despacharán localidades para dicho espectáculo.   Otros datos Plano aforo El edificio ha obtenido el premio internacional de diseño que organiza cada año en Estados Unidos la School Desing Share. Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PS CHOPERA 59"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445497.77256"/>
+            <column name="y_etrs89" valueNumeric="4488222.23436"/>
+            <column name="email" value="ccpiglesias@aytoalcobendas.org"/>
+            <column name="telephone" value="34912294220"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0010"/>
+            <column name="id" value="EQ0010"/>
+            <column name="title" value="Centro de Arte Alcobendas"/>
+            <column name="description" value="Datos de interés Descripción Un edificio contemporáneo, singular, emblemático, creado por el arquitecto Fernando Parrilla, contribuye a difundir la ciudad de Alcobendas como referente cultural a nivel nacional. Dotado de instalaciones ecológicas, busca el menor consumo, generando su propia energía a partir de los paneles fotovoltaicos de sus ventanales y ajardina su cubierta con una capa vegetal silvestre que no necesita mantenimiento. Nacido para generar pensamiento, debate y provocación, abre caminos para recorrer dentro y fuera de nuestras fronteras Conecte con el arte, viva la música, acérquese a la cultura, disfrute de la mediateca y marque su nuevo punto de encuentro; un espacio para interactuar creado por el arquitecto Fernando Parrilla en el corazón de Alcobendas Servicios principales   Arte en la ciudad. Exposiciones y actividades de artes plásticas. Auditorio: Paco de Lucía Museo de la imagen.  Animación Infantil. Accesos Coche Autobús:  L2 / C 10 / L5 /151 /153 /158 / 827 / 828 / N101  Metro Más información sobre transportes  Horario: Lunes a sábado de 10 a 21h. Sala de exposiciones: de 11 a 20 h. Taquillas: viernes y sábados de 11 a 13:30 y de 17 a 19:30 h. Otros datos  Documentos: Folleto Centro de Arte Agenda de actividades Más información Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL MARIANO SEBAST IZUEL 9"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446590.09936"/>
+            <column name="y_etrs89" valueNumeric="4487986.68284"/>
+            <column name="email" value="gestion.centroarte@aytoalcobendas.org"/>
+            <column name="telephone" value="34912294940"/>
+            <column name="url" value="http://www.centrodeartealcobendas.org"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0011"/>
+            <column name="id" value="EQ0011"/>
+            <column name="title" value="Centro de Atención Integral a las Drogodependencias (CAID)"/>
+            <column name="description" value="Datos de interés Descripción El CAID es el Centro de Atención Integral a las Drogodependencias, pertenece al Servicio de Salud del Ayuntamiento de Alcobendas. Es un servicio público y ofrece sus servicios de forma gratuita y desarrolla algunos de sus proyectos en colaboración con la Subdirección General de Actuaciones de la Comunidad de Madrid (SGAA). Servicios principales Desde el CAID se desarrollan los siguientes programas: Programa de Asistencia a personas con consumo de drogas (heroína, cocaína, cannabis, pastillas…) y dispensación de metadona. Programa de Sanciones Administrativas. Programa de Menores y Jóvenes con conductas de riesgo en consumo de sustancias Servicio de información y asesoramiento para adolescentes, jóvenes y familias Además, a lo largo del año, se elaboran Planes, abiertos a población general, para dejar de fumar. Otros datos El Centro de Atención Integral a las drogodependencias dispone de: • Certificación por la norma ISO 9001 • Política de Calidad Accesos ¿Cómo llegar al CAID?"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL LIBERTAD 6 Planta: Planta baja"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446258.41049"/>
+            <column name="y_etrs89" valueNumeric="4487939.29114"/>
+            <column name="email" value="caid@aytoalcobendas.org"/>
+            <column name="telephone" value="34916637001"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0012"/>
+            <column name="id" value="EQ0012"/>
+            <column name="title" value="Centro de Empresas"/>
+            <column name="description" value="Datos de interés Descripción El Centro de Empresas del Ayuntamiento de Alcobendas es un espacio destinado al fomento de nuevas iniciativas emprendedoras  y de apoyo al crecimiento y consolidación de las empresas.  El Ayuntamiento  tiene como principal objetivo impulsar el desarrollo económico y la generación de empleo en la ciudad de Alcobendas, especialmente de aquellos colectivos que tienen más dificultades para conseguir su inserción socioeconómica. 1. Cesión de uso privativo de locales para empresas con menos de dos años de antigüedad. Con este servicio se apoya a los proyectos empresariales viables y pertenecientes al sector servicios, poniendo a disposición de nuevos promotores empresariales, locales a un precio subvencionado, así como un conjunto de servicios profesionales y materiales para cubrir las necesidades que surgen cuando se inicia una actividad económica, ayudando de esta manera a conseguir que las nuevas empresas despeguen y se consoliden en el mercado. Para conseguir favorecer al mayor número posible de empresas, el plazo de estancia máximo en el Centro es de 3 años, tiempo suficiente para su consolidación. Servicios comunes para las empresas instaladas: Asesoramiento y mentorización empresarial; Apoyo en la búsqueda de financiación para las empresas instaladas, Programas de crecimiento y consolidación empresarial; Networking empresarial; Aula de formación; Centralita telefónica; Salas de reuniones; Fotocopiadora; Recepción; Aparcamiento. El Centro de Empresas dispone de 1000 m2, poniendo al servicio de los nuevos promotores empresariales los siguientes espacios: •   2 talleres de 60 m2. •   18 oficinas de diferentes tamaños (de 12, 25, 30 y 60 m2). Más información y tramitación para la cesión de locales 2. Domiciliación de empresas sin necesidad de oficina o local Este servicio está dirigido a empresas con forma jurídica de sociedad mercantil (S.A. o S.L.) interesadas en establecer su domicilio social en Alcobendas. Las empresas interesadas han de solicitar la domiciliación y han de firmar un convenio con el Ayuntamiento. El plazo máximo de domiciliación está establecido en 4 años y la sociedad viene obligada al pago de la correspondiente Tasa para cubrir los costes del servicio. Los servicios de valor que recibe la sociedad domiciliada son los siguientes. Servicios para las sociedades: •·         Uso de la dirección del Centro de Empresas como domicilio social. •·         Uso de las salas de reuniones, con un crédito de TRES HORAS al mes incluido en el importe de la tasa. •·         Fotocopiadora. Recepción de correspondencia y pequeña paquetería. Más información y tramitación para la domiciliación de empresas Accesos Coche Autobús:  C 11 / 157 / 157C  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horarios Lunes a jueves de 9:00 a 14:00 h. y de 16:00 a 17:30 h. Viernes de 9:00 a 14:00 h. Del 15 de junio al 15 de septiembre, de 9:00 a 14:00 h. de lunes a viernes."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL RAMON Y CAJAL 5"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444732.89008"/>
+            <column name="y_etrs89" valueNumeric="4488201.83975"/>
+            <column name="email" value="centroempresas@aytoalcobendas.org"/>
+            <column name="telephone" value="34914841800"/>
+            <column name="url" value="http://emprendealcobendas.org/lugar/centro-de-empresas-municipal/"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0013"/>
+            <column name="id" value="EQ0013"/>
+            <column name="title" value="Centro de Formación de Valdelaparra"/>
+            <column name="description" value="Datos de interés Descripción Centro de Formación de Valdelaparra Accesos Autobús: 157 Puede consultar recorrido y horarios en la página web del Consorcio de Transportes o en la empresa de autobuses Interbús. Renfe. Cercanías C1 Estación de Valdelasfuentes Coche. Metro."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV VALDELAPARRA 112"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="443984.16742"/>
+            <column name="y_etrs89" valueNumeric="4488667.31796"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url"/>
+            <column name="titularidad" value="Mixta"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0014"/>
+            <column name="id" value="EQ0014"/>
+            <column name="title" value="Centro de Formación e Inserción Laboral"/>
+            <column name="description" value="Datos de interés Servicios principales Actividades formativas para la búsqueda de empleo o mejora del mismo. Oferta cursos concertados con el INEM o con la Consejería de Empleo,Turismo y Cultura. en la siguientes áreas, principalmente: automoción, oficios tradicionales, medio ambiente, cocina y jardinería, administración y gestión. Orientación laboral grupal e individualizada, previa cita. Accesos Coche Autobús:    C 11 / 157  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horarios De lunes a viernes de 8:00 a 22:00h. Agosto de 9 a 14 h. Inscripción de cursos: de 10 a 14 h. y de 16 a 18 h., excepto viernes tarde."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL RAMON Y CAJAL 30"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444605.32522"/>
+            <column name="y_etrs89" valueNumeric="4488293.06926"/>
+            <column name="email" value="centrodeformacion@aytoalcobendas.org"/>
+            <column name="telephone" value="34916616487"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0015"/>
+            <column name="id" value="EQ0015"/>
+            <column name="title" value="Centro de Mayores Carmen García Bloise"/>
+            <column name="description" value="Datos de interés Servicios principales Salidas culturales. Biblioteca y comedor (Comida a domicilio en situaciones especiales). Prensa diaria y revistas semanales, además, préstamos de libros, vídeos, juegos de mesa, sala de TV y billar. Terapia Ocupacional: Trabajo Cognitivo Trabajo Corporal: Gimnasia suave. Encuentro-voluntariado. Abordaje terapéutico. Talleres de Creatividad: Manualidades básicas. Pintura, Alfombras, cestería... (Grupos autónomos). Informática básica y uso del móvil Animación Sociocultural: Escuela y Cultura  Express Arte Taller de medio ambiente Taller de inglés (iniciación y avanzado) Salud, educación y crecimiento personal Accesos Coche Autobús:   L2 / L5 /C 10 /151 / 153  / 158 / 827 /  827A /  828   Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Otros datos La última semana de cada mes se publicarán las plazas vacantes para los talleres de Animación Sociocultural y de Terapia ocupacional en el tablón del anuncios del Centro. Horario: Lunes a domingo, de 9:30 a 20:00h. Cierre: 25 de diciembre y 1 de enero: Cerrado  julio y agosto Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL OLIVAR 5"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445118.50510"/>
+            <column name="y_etrs89" valueNumeric="4488701.78655"/>
+            <column name="email" value="cgbloise@aytoalcobendas.org"/>
+            <column name="telephone" value="34916523630"/>
+            <column name="url"/>
+            <column name="titularidad" value="Mixta"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0016"/>
+            <column name="id" value="EQ0016"/>
+            <column name="title" value="Centro de Mayores María Zambrano"/>
+            <column name="description" value="Datos de interés Servicios principales Terapia ocupacional: Trabajo Cognitivo: 1 grupo de memoria Trabajo Corporal: Expresión corporal (1 grupos) Gimnasia suave (2 grupos) Encuentro-voluntariado (1 grupo) Abordaje terapéutico (1 grupo) Talleres de Creatividad   Manualidades básicas (1 grupo de Iniciación a la encuadernación Encuadernación reglado  (grupos autónomos) Animación sociocultural: Escuela y Cultura Juegos con problemas Senderismo (reglado y autónomo) Petanca avanzado Salidas culturales. Biblioteca y comedor (Comida a domicilio en situaciones especiales). Aula de informática. Router wi-fi y ordenador con acceso público en la cafetería del centro.  Prensa diaria y revistas semanales, además, préstamos de libros, vídeos, juegos de mesa, sala de TV y billar. Peluquería: Señoras de lunes a viernes de 9,30 a 14,30 horas (Petición de cita a partir de la 10 horas) y Caballeros, de lunes a viernes de 15,00 a 16,30 horas. Accesos Coche Autobús:  L2 / L5 /  L6 / C 10 /151 /153 / 158 / 827 / 828  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Otros datos La última semana de cada mes se publicarán las plazas vacantes para los talleres de Animación Sociocultural y de Terapia ocupacional en el tablón del anuncios del Centro. Horario: Lunes a domingo, de 9:30 a 20:00h. Cierre:  25 de diciembre y 1 de enero: cerrado.  Mes de agosto: Cerrado Más información Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL DAOIZ 1"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445522.84065"/>
+            <column name="y_etrs89" valueNumeric="4488355.25725"/>
+            <column name="email" value="mzambrano@aytoalcobendas.org"/>
+            <column name="telephone" value="34916619507"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0017"/>
+            <column name="id" value="EQ0017"/>
+            <column name="title" value="Centro de Mayores Nuestra Señora de la Paz"/>
+            <column name="description" value="Datos de interés Servicios principales Actividades programadas: Mañanas: Juegos con problemas autónomos; Taller Salud y Bienestar; Taller Crisis y Duelo; Cultura general; Neolectores. Tardes: Actividades Asociaciones (Bailes de salón, Taller de fotografía...) Aula de informática Biblioteca y Sala de Lectura Cafetería Prensa Diaria Juegos de Mesa. Otros datos Horario: Lunes a Domingo de 9:30 a 14:00 y de 16:00 a 20:00. Agosto cerrado Accesos Coche Autobús:     152C  /154C / 158 / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL NTRA SRA DEL PILAR 2"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446399.57945"/>
+            <column name="y_etrs89" valueNumeric="4488060.61739"/>
+            <column name="email" value="nslapaz@aytoalcobendas.org"/>
+            <column name="telephone" value="34916526129"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0018"/>
+            <column name="id" value="EQ0018"/>
+            <column name="title" value="Centro de Mayores Pedro González Guerra"/>
+            <column name="description" value="Datos de interés Servicios principales Terapia ocupacional: Trabajo Cognitivo: 2 grupo de refuerzo cognitivo Trabajo Corporal: Expresión corporal (3 grupos) Gimnasia suave (5 grupos) Encuentro-voluntariado (1 grupo) Trabajo postural Relajación Reto a la autonomía (2 grupos) Talleres de Creatividad Manualidades básicas (1 grupo) Pintura, marquetería, espacio libre de movimiento, costura, sevillanas, cestería ... (Grupos autónomos) Iniciación a internet Compra y cocina sana Animación sociocultural: Recordando la escuela (2 grupos) Juegos con problemas Huerto Otros tiempos otros lugares Bailes de salón (2 grupos) Senderismo reglado Senderismo autónomo Salidas culturales. Otros servicios: Podología, los martes de 17 a 19, los miércoles y viernes de 9,45 a 12,45 horas (cita previa). Asesoría Jurídica los miércoles de 18,30 a 20 horas (cita previa). Aula de informática, se informará en el centro. Actividades acuáticas. Estancias diurnas Biblioteca y comedor. Comida a domicilio en situaciones especiales. Prensa diaria y revistas semanales, además de préstamos de libros, vídeos, juegos de mesa, sala de TV y billar. Accesos Coche Autobús:  L2 / L5 /  L6 / C 10 / 151 /153  /158 / 827 / 828  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Otros datos La última semana de cada mes se publicarán las plazas vacantes para los talleres de Animación Sociocultural y de Terapia ocupacional en el tablón del anuncios del Centro.  Sede de la asociación Rondalla El abuelo tiene novia. La asociación atiende al público los martes y viernes, de 10 a 13 horas.  Teatro y Variedades 'La alegría'. La asociación atiende al público los viernes de 10 a 13 h. Ensayos viernes de 17 a 20 h. ACOM. La asociación atiende al público los lunes y miércoles de 10 a 12.30 horas. Horario: Lunes a domingo, de 9:30 a 20:00h. Más información Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL ORENSE 7"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446090.00034"/>
+            <column name="y_etrs89" valueNumeric="4488109.99956"/>
+            <column name="email" value="conspguerra@aytoalcobendas.org"/>
+            <column name="telephone" value="912414200 912414100"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0019"/>
+            <column name="id" value="EQ0019"/>
+            <column name="title" value="Centro de Mayores Ramón Rubial"/>
+            <column name="description" value="Datos de interés Servicios principales Terapia ocupacional: Trabajo Cognitivo: (2 grupos de memoria) Trabajo Corporal: Expresión corporal (2 grupos) Gimnasia suave (2 grupos) Encuentro-voluntariado (1 grupo) Abordaje terapéutico (1 grupo) Talleres de Creatividad   Manualidades básicas (1 grupo) Pintura, alfombras,marquetería, costura, corte y patronaje, cestería (Grupos autónomos) Animación sociocultural: Recordando la escuela Actividades culturales Comunicación e interpretación Salidas culturales. Aula de informática Router wi-fi y ordenador de acceso gratuito en la cafetería. Biblioteca y comedor (Comida a domicilio en situaciones especiales). Prensa diaria y revistas semanales, además, préstamos de libros, vídeos, juegos de mesa, sala de TV y billar. Peluquería: Señoras, de lunes a viernes de 12,30 a 16,30 horas (Petición de cita a partir de la 10 horas). Caballeros, de lunes a viernes de 9,30 a 12,00 horas. Biblioteca y comedor (Comida a domicilio en situaciones especiales). Prensa diaria y revistas semanales, además, préstamos de libros, vídeo, juegos de mesa, sala de TV y billar. Otros: Grupo de voluntariado, las personas interesadas tienen que llamar al centro para concertar cita. Estancias diurnas temporales, promoción de la autonomía e integración en el entorno diario. Accesos Coche Autobús:  152C /154 /154C /158 /  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Otros datos La última semana de cada mes se publicarán las plazas vacantes para los talleres de Animación Sociocultural y de Terapia ocupacional en el tablón del anuncios del Centro Horario: Lunes a domingo, de 9:30 a 20:00h. Cierre: Agosto: cerrado Más información Este Centro dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PZ RAMON RUBIAL"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="447087.44833"/>
+            <column name="y_etrs89" valueNumeric="4488214.84950"/>
+            <column name="email" value="rrubial@aytoalcobendas.org"/>
+            <column name="telephone" value="34916636864"/>
+            <column name="url"/>
+            <column name="titularidad" value="Privado"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0020"/>
+            <column name="id" value="EQ0020"/>
+            <column name="title" value="Centro de Mayores Urbanizaciones calle Salvia"/>
+            <column name="description" value="Datos de interés Servicios principales Actividades Programadas: • Trabajo corporal • Desarrollo tu mente • Talleres de creatividad • Medio Ambiente: Huerto Urbano • Talleres Informática • Espacios Autónomos: Pintura y Encuadernación Otros datos Ademas cuenta con: • Aula de Informática • Biblioteca, Sala de Lectura • Prensa diaria • Juegos de Mesa Horario:  De lunes a viernes de 09:30 a 14:00 y de 16:00 a 20:00 Cierra en navidad (22 de diciembre al 7 de enero), julio y agosto"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL SALVIA 135"/>
+            <column name="postal_code" value="28109"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446328.50028"/>
+            <column name="y_etrs89" valueNumeric="4486835.66596"/>
+            <column name="email" value="urbanizaciones@aytoalcobendas.org"/>
+            <column name="telephone" value="34916597602"/>
+            <column name="url"/>
+            <column name="titularidad" value="Privado"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0021"/>
+            <column name="id" value="EQ0021"/>
+            <column name="title" value="Ciudad Deportiva Valdelasfuentes"/>
+            <column name="description" value="Datos de interés Servicios principales Instalaciones: Piscinas de nado, enseñanza, terapéutica y lúdicas (olas, laguna recreativa e hidromasajes). Es necesario utilizar gorro de baño, chanclas, y disponer de candado (arco largo de 30 mm) para dejar pertenencias en las taquillas habilitadas para ello. Los menores de 14 años deberán estar acompañados de una persona mayor de 18 años para poder hacer uso de las piscinas. Será necesaria la presencia de 1 adulto responsable por cada cinco menores. Zona termal – Spa, con saunas exteriores, baños de vapor, caldarium, sanarium, pozos fríos, baño romano, piscina dinámica y duchas de sensaciones. Sala de fitness y musculación. 8 gimnasios polivalentes. Sala de snooker. Sala de ciclismo indoor. 3 campos de fútbol de hierba artificial. 6 pistas polideportivas. 8 pistas de pádel. 4 pistas de tenis. Frontón semicubierto. Velódromo de 363 m. de cuerda. Skate park. Circuito de cross. Centro de Medicina Deportiva. Gimnasio de fisioterapia, cabinas de masaje y circuitos de bienestar. Salón de actos. Sala de lectura. 3 salas-aulas polivalentes. Zona infantil. Cafetería-restaurante. Parking en superficie para 500 vehículos. Ver imágenes de las instalaciones Accesos Coche Autobús:    L5 /  L6 / C 10 / C 11 / 153 /  827A / 158 /  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario Complejo acuático, sala termal, Spa, Sala de Fitness y musculación: Lunes a viernes de 8:30 a 22:00 h. (Sala de fitness, hasta las 22:30 h.) Sábados, domingos y festivos de 8:30 a 21:30 h. Pistas de raqueta, velódromo y pistas de skate: Lunes a viernes de 8:30 a 23:30 h. Sábados, domingos y festivos de 8:30 a 21:30 h. Horario de Atención Oficina de Actividades Deportivas: Consulte horarios Centro de medicina deportiva: Atención a urgencias, de 8:30 a 22:30 h. Fisioterapia: Lunes a viernes de 9:00 a 22:00 h. Previa petición de hora. Masajes y circuitos de tratamiento: Previa petición de hora: Lunes a viernes de 9:00 a 22:00 h. Sábados: Masajes de 9:00 a 15:00 h y Circuitos de tratamiento de 9.00 a 14:00 h. Horario durante las fiestas de Navidad: Los días 24 y 31 de diciembre la instalación se cierra al público a las 13:30 h. El frontón, el pádel y el tenis se cierran a las 12:30 h. La sala fitness, el spa y la piscina se cierran a las 13:00 h. Horario durante los meses de julio y agosto: Lunes a viernes: de 8:30 a 22:30 h. Sábados, domingos y festivos: de 8:30 a 21:30 horas. Cierre de Instalación: La instalación tendrá cierres parciales  durante el mes de agosto por labores de mantenimiento, que serán publicados en los tablones informativos de la instalación, al igual que los días en los que el complejo cubierto esté cerrado completamente en cumplimiento de la normativa de prevención de la legionelosis. Durante estas fechas las pistas exteriores (tenis, frontón, campos de fútbol, velódromo...)  permanecerán abiertas. Cerrado los días 25 de diciembre, 1 de enero y 1 de mayo. Más información Consulte las tarifas."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV MIGUEL CERVANTES S/N"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445113.15075"/>
+            <column name="y_etrs89" valueNumeric="4489103.67898"/>
+            <column name="email"/>
+            <column name="telephone" value="34916587110"/>
+            <column name="url"/>
+            <column name="titularidad" value="Privado"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0022"/>
+            <column name="id" value="EQ0022"/>
+            <column name="title" value="Conect@ - Centro de Nuevas Tecnologías"/>
+            <column name="description" value="Datos de interés Descripción El Centro de Nuevas Tecnologías conect@  nace de un proyecto impulsado por el Ayuntamiento de Alcobendas y busca, entre otros objetivos, acercar la innovación tecnológica a los ciudadanos y empresas. Servicios principales Servicios al ciudadano      - Conocer a fondo las posibilidades del software libre a su alcance.      - Acercarle a las nuevas tecnologías.      - Contar con un espacio dotado de las últimas innovaciones tecnológicas y con el asesoramiento personalizado de técnicos en la materia.      - Aprovechar las instalaciones para entrar en el mundo virtual sin necesidad de contar con equipos ni inversiones en su propio hogar.      - Formación en el ámbito tecnológico.      - Participar en foros, encuentros, exposiciones y eventos relacionadas con las Tecnologías de la Información y la Comunicación que despiertan un mayor interés. Servicios a las empresas      - Un lugar donde conocer las novedades en el ámbito tecnológico que permitan mejorar su productividad.      - Un espacio abierto para acercar el software libre con asesoramiento de personal técnico especializado.      - Un punto de encuentro para empresarios, profesionales y comerciantes donde compartir experiencias, inquietudes y conocimiento en el ámbito de las Tecnologías de la Información y la Comunicación aplicadas a los negocios. Servicios en la web      - Retransmisión en tiempo real de los eventos ofrecidos en conect@.      - Videos y showroom para conocer más en profundidad conect@.      - Mapa wifi de Alcobendas, en el que se mostrarán los lugares donde es posible conectarse gratis.      - Tablón de anuncios.      - Zona privada para el ciudadano registrado en conect@ donde encontrar toda la información específicamente destinado a él. Horario       - De lunes a viernes de 10 a 15 h. y de 16 a 21 h."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL SORIA 43"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446407.08359"/>
+            <column name="y_etrs89" valueNumeric="4487718.78616"/>
+            <column name="email"/>
+            <column name="telephone" value="34916237387"/>
+            <column name="url" value="http://conecta.alcobendas.org/"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0023"/>
+            <column name="id" value="EQ0023"/>
+            <column name="title" value="Escuela Infantil Pública Municipal El Cuquillo"/>
+            <column name="description" value="Datos de interés Descripción Escuela Infantil gestionada por el Ayuntamiento de Alcobendas.  Servicios principales Dos aulas de bebés (0 a 1 años). Tres aulas de 1-2 años (1 a 2 años). Tres aulas de 2-3 años (2 a 3 años). Servicio de Pediatría. Accesos Coche Autobús:  L2 / C 10 / 157 /157C Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario Normalizado de 9:00 h. a 16:00 h. Ampliado de mañana de 7:30 h. a 9:00 h. Ampliado de tarde de 16:00 h. a 17:30 h. Otros datos Las solicitudes de plazas para las escuelas infantiles suelen ser en el mes de marzo o abril. Jornada de puertas abiertas Nombre social: E.I. El Cuquillo Categoría: Escuelas infantiles"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PS CHOPERA 118"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444941.84040"/>
+            <column name="y_etrs89" valueNumeric="4488476.04896"/>
+            <column name="email" value="eei.elcuquillo.alcobendas@educa.madrid.org"/>
+            <column name="telephone" value="34916624097"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0024"/>
+            <column name="id" value="EQ0024"/>
+            <column name="title" value="Escuela Infantil Pública Municipal La Chopera"/>
+            <column name="description" value="Datos de interés Descripción Escuela Infantil gestionada por el Ayuntamiento de Alcobendas.  Servicios principales Un aula de bebés (0 a 1 años). Cuatro aulas de 1-2 años (1 a 2 años). Cuatro aulas de 2-3 años (2 a 3 años). Servicio de Pediatría. Accesos Coche Autobús:  L2 /  C 10 / C 11 / 157  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario Normalizado de 9:00 a 16:00 h. Ampliado de mañana de 7:30 a 9:00 h. Ampliado de tarde de 16:00 a 17:30 h.  Otros datos Las solicitudes de plazas para las escuelas infantiles suelen ser en el mes de marzo o abril. Jornada de puertas abiertas Categoría: Escuelas infantiles AMPA Escuela Infantil La Chopera"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL PINTOR VELAZQUEZ 38"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445538.01247"/>
+            <column name="y_etrs89" valueNumeric="4487943.34140"/>
+            <column name="email" value="eichopera@aytoalcobendas.org"/>
+            <column name="telephone" value="34916617508"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0025"/>
+            <column name="id" value="EQ0025"/>
+            <column name="title" value="Escuela Infantil Pública Municipal Valdelaparra"/>
+            <column name="description" value="Datos de interés Descripción Escuela Infantil gestionada por el Ayuntamiento de Alcobendas.  Servicios principales Dos aulas para bebés (0 a 1 años). Tres aulas para niños y niñas de un año (1 a 2 años). Tres aulas para niños y niñas de dos años (2 a 3 años). Servicio de Pediatría. Accesos Coche Autobús:  157   Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario   Normalizado de 9:00 a 16:00 h. Ampliado de mañana de 7:30 a 9:00 h. Ampliado de tarde de 16:00 a 17:30 h. Otros datos Las solicitudes de plazas para las escuelas infantiles suelen ser en el mes de marzo o abril. Jornada de puertas abiertas Categoría: Escuelas infantiles"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV CAMILO-JOSE CELA 26"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444281.34570"/>
+            <column name="y_etrs89" valueNumeric="4488169.89417"/>
+            <column name="email" value="valdelaparra@aytoalcobendas.org"/>
+            <column name="telephone" value="34912290820"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0026"/>
+            <column name="id" value="EQ0026"/>
+            <column name="title" value="Escuela Municipal de Música y Danza"/>
+            <column name="description" value="Datos de interés Servicios principales Formación en música y danza. Audiciones, festivales, conciertos, encuentros e intercambios. Alquiler de cabinas para estudiar y camaretas de ensayo para grupos. Horario  Horario del centro Horario de Secretaría:  Lunes a viernes de 10:00 a 22:00h. El Curso dará comienzo a partir del 17 de septiembre Lunes de 11:00 a 12:30 y de 17:00 a 20:30h.  Sábado y domingo de 10:00 a 14:00h. Martes, miércoles y jueves de 17:00 a 20:30h.   Viernes de 11:00 a 13:30h.  Presentación La Escuela Municipal de Música y Danza Proyecto curricular Plan de Estudios ÿmbitos del Plan de Estudio Descripción de actividades por ámbitos Música y movimiento Práctica instrumental Danza Talleres de danza Talleres de música Agrupaciones de música Grupos de danza Otros datos Calendario curso Plazas libres taller de bebés Accesos Coche Autobús:   L2 / L5 / C 10 / C 11 / 151 / 153  / 827 /  828 / N101 Metro Tren: Línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL RUPERTO CHAPI 22"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445654.03177"/>
+            <column name="y_etrs89" valueNumeric="4488817.16301"/>
+            <column name="email" value="emusicaydanza@aytoalcobendas.org"/>
+            <column name="telephone" value="34916597600"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0027"/>
+            <column name="id" value="EQ0027"/>
+            <column name="title" value="Espacio 2014 (Museo del baloncesto de la FEB)"/>
+            <column name="description" value="Datos de interés Descripción Museo dedicado a la historia del baloncesto. Con una extensión de 900 m2 reúne dos exposiciones: una permanente y otra temporal, además de una zona lúdica interactiva. El acceso a la exposición permanente se realiza a través de un pasillo de vestuarios, al salir del cual suenan vítores, gritos y aplausos como si entrase en una cancha. La visita recorre varias zonas: Orígenes del baloncesto: balones, el libro más antiguo sobre baloncesto, retazos de historia, medallas, imágenes de John Naismith y del Padre Millán (misionero cubano que introdujo el baloncesto en España(.  Juegos Olímpicos: con pósteres, entradas, medallas, trofeos y carteles sobre el tema.  Exposición con las portadas de los primeros números de todos los periódicos deportivos: Marca, As, Mundo Deportivo, Aire libre... Vitrina con la ficha federativa de Don Juan Carlos, con sus datos y su foto, como jugador de baloncesto cuando estudiaba en la Academia Militar del Aire de San Javier. Equipo Nacional Masculino: medalla de plata de los Juegos Olímpicos de Los ÿngeles, trofeos, camisetas y las zapatillas firmadas de Calderón, Mumbrú o Ibaka (próximamente, las de Gasol). La exposición temporal, en la planta superior, se centra en el  Baloncesto femenino y la Selección Española y se inicia con una imagen de 1963, fecha en la que jugaron su primer partido. En la zona lúdica, situada en la planta baja,  se puede practicar baloncesto física y virtualmente. Contiene una colección de juegos antiguos y máquinas recreativas relacionadas con el baloncesto. Servicios principales    Investigación y documentación sobre el baloncesto. Biblioteca sobre temas de baloncesto. Cursos de temática deportiva. Conferencias.  Horario A partir de  finales de octubre se organizarán visitas, una vez a la semana, para grupos de no más de 20 personas y previa inscripción. Los centros escolares que lo deseen también pueden solicitarlo. El  horario de las instalaciones es de Lunes a viernes de 9:00 a 13:00 y de 16:00 a 19:00h. Accesos Coche Autobús:   151 / 152C  / 153  /154 / 154C / 158 / 181 /  N101  Metro Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV OLIMPICA 22"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446229.75675"/>
+            <column name="y_etrs89" valueNumeric="4487451.29136"/>
+            <column name="email"/>
+            <column name="telephone" value="34918263017"/>
+            <column name="url" value="http://www.alcobendas.org"/>
+            <column name="titularidad" value="Privado"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0028"/>
+            <column name="id" value="EQ0028"/>
+            <column name="title" value="Espacio Miguel Delibes"/>
+            <column name="description" value="Datos de interés Servicios principales Universidad Popular de Alcobendas (UPA) Servicio de Atención Ciudadana Norte (SAC Distrito Norte) Mediateca adultos e infantil Escuela Internacional de Fotografía Alcobendas PhotoEspaña (PIC.A) Junta Municipal Distrito Norte Concejalía del Distrito Norte Descargar folleto en pdf Accesos Coche  Autobús: C 10 / C 11 / 157C Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Galería de imágenes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV. MAGIA 4"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444355.69083"/>
+            <column name="y_etrs89" valueNumeric="4489187.36895"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0029"/>
+            <column name="id" value="EQ0029"/>
+            <column name="title" value="Invernadero Jardín de la Vega"/>
+            <column name="description" value="Datos de interés Horario: Del 1 de abril al 30 de junio: Lunes a viernes, visitas concertadas. Sábados, domingos y festivos de 11:00 a 14:00 h y de 18:00 a 21:00 h. Del 1 de julio al 30 de septiembre: todos los días de la semana excepto lunes 19:00 a 21:00 h. Del 1 de octubre al 31 de marzo: sábados, domingos y festivos de 11:00 a 14:00 h. y de 16:00 a 19:00 h. Accesos Coche Autobús:   151 / 152C  / 153  / 154 /154C / 158 / 181 /  N101   Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV OLIMPICA"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="447015.96080"/>
+            <column name="y_etrs89" valueNumeric="4487677.35998"/>
+            <column name="email"/>
+            <column name="telephone"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0030"/>
+            <column name="id" value="EQ0030"/>
+            <column name="title" value="La Esfera - Sede de las Casas Regionales de Alcobendas"/>
+            <column name="description" value="Datos de interés Descripción El Centro Municipal La Esfera es sede de las Casa Regionales de Andalucía, Asturias, Castilla La Mancha, Extremadura y Xuntanza de Gallegos Consta en su parte superior de un gran espacio escénico polivalente, Esfera-Plaza Cubierta, apto para la realización de espectáculos, ferias y actos de gran afluencia de público. Dispone de aulas polivalentes con capacidad para 200 personas Salas y capacidad: Sala 1 - capacidad 85 personas Sala 2 - capacidad 85 personas Sala 3 - capacidad 50 personas (estas tres aulas pueden unificarse en una gran sala polivalente) Sala La Casita - capacidad 30 personas Sede Casa de Extremadura. Sede Casa de Asturias. Sede Casa de Castilla la Mancha. Sede Casa de Andalucía. Sede Casa Xuntanza Galegos. Esfera Plaza Cubierta. Espacio polivalente para grandes eventos equipado con escenario, equipo de sonido y luces con capacidad para 600 personas sentadas y 1200 de pie. Camerinos Cafetería Restaurante Jardín Recursos y material de préstamo: En las Aulas: DVD. Pantallas de proyección. Video proyector. 2 Micrófonos de sobremesa 1 Micrófono inalámbrico En Esfera Plaza Cubierta: Equipo de sonido y luces Equipo de proyección Horario De lunes a jueves de 9:30 a 22:45. Viernes, sábado y vísperas de festivos de 9:30  a 1:00 Domingos de 09:00 a 15:45 excepto acceso a Cafetería y sedes regionales Mes de agosto: Cerrado. Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria. Accesos Coche Autobús:  151 /152C /153 /154 /154C / 158 / 181 / N101 / N103 Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV OLIMPICA 14"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446421.63764"/>
+            <column name="y_etrs89" valueNumeric="4487519.82757"/>
+            <column name="email" value="cm.laesfera@aytoalcobendas.org"/>
+            <column name="telephone" value="34914840687"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0031"/>
+            <column name="id" value="EQ0031"/>
+            <column name="title" value="Laboratorio Municipal"/>
+            <column name="description" value="Datos de interés •  Descargar folleto informativo del Laboratorio Municipal Accesos Coche Autobús:   157 / 157C  Metro Más información sobre transportes Horario: Lunes a jueves de 8:00 a 15:00 h. y viernes de 8:00 a 14:00 h. En verano del 5 de junio hasta el 15 de septiembre de 8:30 a 14:00 h."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL JOSE ECHEGARAY 16 Bloque: Parque Empresarial Casablanca Portal: Edificio A-1 Escalera: Local 1-1"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444564.46637"/>
+            <column name="y_etrs89" valueNumeric="4488137.40094"/>
+            <column name="email" value="laboratorio@aytoalcobendas.org"/>
+            <column name="telephone" value="34916544550"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0032"/>
+            <column name="id" value="EQ0032"/>
+            <column name="title" value="Ludoteca Municipal de Alcobendas"/>
+            <column name="description" value="Datos de interés Descripción Servicio Municipal que desde 1982 pone a disposición de la infancia y de las familias más de 1.000 referencias entre juguetes, libros, películas y material lúdico para que disfruten, jueguen y se diviertan en sus espacios o en casa mediante el préstamo exterior. Para todas las edades. Servicios principales Lugar dedicado a la animación recreativa y deportiva, cuenta con más de mil juguetes y ofrece a la población infantil un espacio destinado al juego, donde los niños tienen oportunidad de desarrollar su imaginación y creatividad. Orientada a niños y niñas de todas las edades para que jueguen, se diviertan y disfruten en igualdad y en libertad, solos, con amigos, con hermanos, padres, abuelos. Los padres tienen libre acceso. Actividades: Préstamo de juguetes y libros, para jugar con ellos en la Ludoteca (préstamo interior), o llevarlos a casa durante unos días (préstamo exterior: como máximo 15 días). Juegos basados en diferentes deportes. Construcción de juguetes. Taller de proyectos en madera. Juegos populares: bolos, canicas, chapas, petanca... Animación infantil. Rastrillo de juguetes, donde los niños pueden intercambiar sus propios juguetes Torneos lúdico-deportivos, etc. Campaña de Verano. Ludoteca en natación infantil Distribuye la Guía del Juguete Accesos Coche Autobús:   C 10 / C 11 / L5 / L6 /153 /158 / 159 / 827 / 828  Más información sobre transportes Horario  Lunes a viernes de 17:00 a 21:00 h. Sábados de 10:30 a 14:30 h."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AVDA. BARAJAS s/n"/>
+            <column name="postal_code" value="28108"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="447502.66010"/>
+            <column name="y_etrs89" valueNumeric="4487657.56901"/>
+            <column name="email" value="ludoteca.pmd@aytoalcobendas.org"/>
+            <column name="telephone" value="34916587110"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0033"/>
+            <column name="id" value="EQ0033"/>
+            <column name="title" value="Museo de Bonsai (Jardín Japonés)"/>
+            <column name="description" value="Datos de interés Servicios principales Exposición permanente. Visitas guiadas en colaboración con el Aula de la Naturaleza, destinadas a Colegios. Exposiciones monográficas. Asesoramiento. Cursos. Exposición de la Asociación Bonsái en Alcobendas. Precio General: 3 € Niños menores de 10 años: Gratis  Discapacitados: 1,50 €  Grupos de 10 o más personas: 1,50 €/persona  Tarjeta de amigos del museo: 100 € anuales. Esta tarjeta da derecho exclusivo: Acceso al Museo en cualquier momento durante los horarios de apertura. Acceso a Exposición “Concurso Nacional Luis Vallejo MBA‿. Información. Publicaciones. Descuentos: Materiales de un 20% y árboles de un 10% Servicio de guía experto en bonsáis: 25 €/hora  Horario: De miércoles a domingos y días festivos:    • Del 15 de octubre al 31 de marzo: de 10:00 a 14:00 horas y de 16:00 a 18:00 horas.    • Del 1 de abril al 14 de octubre: de 11:00 a 14:00 y de 17:00 a 20:00 horas.    • Visitas concertadas de grupos: de miércoles a viernes de 10:00 a 16:00 horas. Lunes y martes cerrado. Cerrado: Agosto y los días 25 de diciembre, 1 y 6 de enero. Accesos Coche Autobús:   151 /152C /153 /154 /154C / 158 / 181 / N101 / N103  Más información sobre transportes"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV OLIMPICA"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446604.38054"/>
+            <column name="y_etrs89" valueNumeric="4487515.25912"/>
+            <column name="email"/>
+            <column name="telephone" value="34917652041"/>
+            <column name="url" value="http://www.luisvallejoestudiobonsai.com/"/>
+            <column name="titularidad" value="Mixta"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0034"/>
+            <column name="id" value="EQ0034"/>
+            <column name="title" value="Oficina de Atención al Ciudadano de la Policia Local"/>
+            <column name="description" value="umapolicia@aytoalcobendas.org"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="PZ PUEBLO 1"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446304.75276"/>
+            <column name="y_etrs89" valueNumeric="4487995.92999"/>
+            <column name="email"/>
+            <column name="telephone" value="91 6597600 Ext.: 4349"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publica"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0035"/>
+            <column name="id" value="EQ0035"/>
+            <column name="title" value="Oficina de Información y Asesoramiento Juvenil de Imagina"/>
+            <column name="description" value="Datos de interés Servicios principales Información, Documentación y Asesoramiento Juvenil Dirigido a jóvenes a partir de 14 años. Resuelve dudas y tramita acciones a través de la Oficina de Información Juvenil y de las Asesorías. Asesoría de la Naturaleza: préstamo de material de montaña, jornadas de naturaleza y montaña, viajetecas mensuales, senderismo, bicicleta de montaña, rafting y otras actividades relacionadas con el medio ambiente. Asesoría de Estudios: asesoramiento y orientación en materia de educación. Publicación de guías de educación. Asesoría Jurídica: un abogado atiende tus consultas sobre vivienda, empleo, derechos y deberes, y hasta la declaración de la renta. Bolsa de Vivienda en Alquiler: informa y asesora en cualquier tema relacionado con la vivienda. Consulta Joven de Sexualidad: resuelve todas las dudas que tengas sobre sexualidad. Cuenta con personal cualificado para orientarte, informarte y atender la consulta ginecológica. Asesoría de Diversidad Sexual: información y asesoramiento de atención personalizada, apoyo y escucha. Publicaciones. Acceso a Internet y uso de ordenadores Acceso a la red de información juvenil Eurodesk (portal joven europeo). Viajeteca. Préstamos de libros y guías de viajes Sala de lectura. Autoconsulta Tramitación de carnés juveniles Oficina de información virtual. Escuela de Animación dirigida a jóvenes a partir de 14 años: está especializada en programas de animación sociocultural y presta especial atención a la creatividad y formación ce colectivos juveniles Cursos de monitores/as y coordinadores/as de tiempo libre homologados por la Comunidad de Madrid. Talleres de técnicas y cursos de especialización. Formación para asociaciones. Escuela Virtual. Animación Juvenil Escuela de Verano. Actividades de ocio, participación y educación en valores dirigido a jóvenes a partir de 14 años. Programa de sensibilización en institutos. Ocio nocturno. Asesoría de Programas Internacionales. Servicio de Voluntariado Europeo (SVE). Cooperación internacional. Campos de trabajo. Apoyo a asociaciones juveniles. Accesos Coche Autobús: L2 / L5 / C 10 / C 11 / 151 / 153  / 827 /  827A / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc.  Más información sobre transportes  Horario Horario invierno: Lunes a viernes: de 09:00 a 14:00 horas y de 17:00 a 21:00 horas Horario de verano (15 de junio al 15 de septiembre): Lunes a viernes: de 09:00 a 14:00 h. (lunes también de 17:00 a 20:00 h). Agosto sólo de 9 a 14 h.. Oficina de Información Juvenil Mañanas: lunes a viernes de 11:30 a 13:30 horas Tardes: lunes a jueves de 17 a 21 horas y viernes 17 a 19 horas Horario de Navidad: Del 26 de diciembre al 4 de enero lunes a viernes de 11:30 a 13:30 horas Cierre:  Agosto cerrado"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL RUPERTO CHAPI 18"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445453.20439"/>
+            <column name="y_etrs89" valueNumeric="4488789.71850"/>
+            <column name="email" value="juventud@aytoalcobendas.org"/>
+            <column name="telephone" value="34916590957"/>
+            <column name="url" value="http://www.imaginalcobendas.org/"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0036"/>
+            <column name="id" value="EQ0036"/>
+            <column name="title" value="Patronato Municipal de Bienestar Social (PBS)"/>
+            <column name="description" value="Datos de interés Descripción Más información sobre el PBS Organismo autónomo del Ayuntamiento de Alcobendas cuya finalidad consiste en responder a las necesidades y problemas que tienen nuestros ciudadanos contribuyendo a su mejora en la calidad de vida y promocionando la integración social y la salud pública, así como la protección y defensa de sus derechos, potenciando el equilibrio, el bienestar social y el desarrollo sostenible, mediante los servicios de Mayores, Servicios Sociales, Salud, Consumo, Integración e Igualdad de Oportunidades.  Consulte información sobre Patronato de Bienestar Social (PBS): Organigrama, Estatutos, Funciones de los Servicios, Relación Puestos Trabajo (RPT), Memoria, Reconocimientos... Accesos Coche Autobús: L5 /  L6 / 151 / 152C  / 153  /154 /154C / 157 / 158 /  827 / 828 / N101    Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario: Lunes a viernes de 9:00 a 13:30 h. Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL LIBERTAD 6"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446258.41049"/>
+            <column name="y_etrs89" valueNumeric="4487939.29114"/>
+            <column name="email" value="pbs@aytoalcobendas.org"/>
+            <column name="telephone" value="34916637001"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0037"/>
+            <column name="id" value="EQ0037"/>
+            <column name="title" value="Policía Local - Sede Central (Distrito Norte)"/>
+            <column name="description" value="Datos de interés Servicios principales Recogida permiso de armas, informes de actuaciones policiales. Objetos perdidos. Unidades Operativas: Unidad de Distrito y Convivencia Distrito Norte. Unidad de Atestados y Seguridad Vial. Unidad de Violencia de Género. Unidad Patrulla de Medio Ambiente. Unidad Policía administrativa. Unidad de Seguridad Vial y Movilidad.  Accesos      Coche Autobús: 157 Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario De lunes a viernes de 8:30 a 14h  Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV VALDELAPARRA 124"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="443928.67174"/>
+            <column name="y_etrs89" valueNumeric="4488737.37903"/>
+            <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
+            <column name="telephone" value="092 914904070"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0038"/>
+            <column name="id" value="EQ0038"/>
+            <column name="title" value="Policía Local (Sede Distrito Centro)"/>
+            <column name="description" value="Datos de interés Servicios principales Emergencias 092 / 112 Servicio de atención ciudadana 24 horas Entrega de objetos perdidos Unidades operativas: Unidad Distrito y Convivencia de Centro. Accesos Accesos Coche Autobús:   L5 / L6 /151 /152C /153 /154 /154C / 157 /158 / 827 / 828 / N101 Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes horario 24 horas Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL LIBERTAD 8"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446226.70510"/>
+            <column name="y_etrs89" valueNumeric="4487919.44489"/>
+            <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
+            <column name="telephone" value="092 914904070"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0039"/>
+            <column name="id" value="EQ0039"/>
+            <column name="title" value="Policía Local (Sede Distrito Urbanizaciones)"/>
+            <column name="description" value="Datos de interés Servicios principales Emergencias 092 / 112 Servicio de atención ciudadana 24 horas Entrega de objetos perdidos Unidades operativas: Unidad de Distrito y Convivencia de Urbanizaciones. Horario 24 horas Accesos Coche Autobús:  L5 /  L6 / C 10 / 151 / 152C  / 153  /154 /154C /158 / 166 / 827 / 828 / N101  Metro Más información sobre transportes Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV BRUSELAS DE 43"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445535.41527"/>
+            <column name="y_etrs89" valueNumeric="4486547.22562"/>
+            <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
+            <column name="telephone" value="092 914904070"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0040"/>
+            <column name="id" value="EQ0040"/>
+            <column name="title" value="Policía Local (Sede Parque Municipal de Educación Vial)"/>
+            <column name="description" value="Datos de interés Descripción El Parque Municipal de Educación Vial se creó en el año 1986 con la intención de facilitar un lugar en donde nuestros ciudadanos puedan poner en práctica sus conocimientos sobre la circulación, especialmente los más pequeños. Tras cerca de 30 años de funcionamiento sigue siendo el lugar de encuentro de los jóvenes y niños de la localidad para sus primeros contactos con la seguridad vial.  OBJETIVOS: - Formación del ciudadano como usuario de las vías públicas en su faceta de peatón, conductor y viajero. - Elaborar y difundir materiales didácticos basados en la promoción de valores seguros para la formación en Educación Vial en las etapas de Educación Primaria y Secundaria. ´- Adopción de comportamientos seguros y responsables PROGRAMAS QUE SE REALIZAN: Educación infantil Educación Vial en Primaria: Primer ciclo de Primaria Segundo ciclo de Primaria Educación Vial en Secundaria: Primer ciclo de Secundaria   Colegios de NEE ( Necesidades educativas especiales) Otros Cursos y Actividades: Programas de Mayores Formación voluntarios Viales Concurso de Educación Vial Escolar  Asociaciones Colaboración con Entidades Privadas  Colaboración con otros municipios ASISTENCIAS: Anualmente asisten a las cursos programados en el Parque de Educación Vial un número aproximado de 4.500 niños personas entre niños y adultos. El Parque de Educación Vial ha participado de manera ininterrumpida desde el año 1988 en todos los Concursos Nacionales de Educación Vial organizados por la DGT, tanto en la modalidad de Parques Infantiles como en Seguridad Vial en Ciclomotor habiendo conseguido en su larga trayectoria numerosos trofeos en sendas competiciones. Accesos Coche Autobús:   L5 /  L6 / C 10 / C 11 / 153  /158 / 827A / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Más información sobre transportes Horario Lunes a viernes de 7:30 a  15:00h. Abierto en días no lectivos desde mayo a septiembre (ambos inclusive) para disfrute lúdico de los ciudadanos"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL MANUEL DE FALLA 63"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445501.48380"/>
+            <column name="y_etrs89" valueNumeric="4489260.17326"/>
+            <column name="email"/>
+            <column name="telephone" value="34916538336"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0041"/>
+            <column name="id" value="EQ0041"/>
+            <column name="title" value="Polideportivo Municipal de Alcobendas José Caballero"/>
+            <column name="description" value="Datos de interés Servicios principales Instalaciones (ver todas las instalaciones del Polideportivo José Caballero) Bono Fitness mensual para sala fitness/ musculación/ piscina de verano para mayores de 16 años Empadronados:25 euros No empadronados: 37,50 euros Actividades: Entrenamiento personal: Los titulares del Abono Deporte podrán usar el servicio de planificación y asesoramiento deportivo individual. Consultar con los monitores de la sala fitness Piscinas climatizadas: Lunes a viernes de 08:45 a 22:00 h. Sábados, domingos y festivos de 08:45 a 21:30 h. A partir del 1 de julio, dispondrán de dos calles para nado de 8:45 a 22:00 h. Por labores de mantenimiento se cierra desde el 29 de julio al 27 de agosto. Oficina de Usuarios de Actividades Deportivas. Consulte horario Piscina de verano: abierta del 2 de junio al 2 de septiembre. Lunes a viernes de 11:00 a 20:00 h. Sábados, domingos y festivos de 10:00 a 20:00 h. Bibliopiscina: abierta del 1 de julio al 27 de agosto: de lunes a domingo de 15 a 19 horas. Piscina cubierta móvil: A partir del 1 de julio dispondrán de dos calles como mínimo para nado, de 11 a 20 horas. Del 28 de julio al 26 de agosto permanecerá abierta para nado de 8:45 a 22 horas. Cerrada del 27 de agosto al 23 de septiembre. Ludoteca Municipal:  Lunes a viernes de 17:00 a 21:00 h. Sábado de 10:30 a 14:30 h. Cerrada del 30 de julio al 2 de septiembre Más información sobre la Ludoteca Municipal Sauna, baño y vapor: Lunes a viernes de 8:30 a 22:00 h. Sábados, domingos y festivos de 8:30 a 21:30 h. Cerrada del 28 de julio al 26 de agosto. Sala de Fitnes y musculación: Lunes a viernes de 7:30 a 22:30 h. Sábados: de 8:30 a 21:30 h. (En agosto, de 8:30 a 15:30 h.) Domingos y festivos de 8:30 a 15:30 h. Durante el mes de agosto, permanecerá cerrada los sábados y domingos por la tarde. Pistas de raqueta: Lunes a viernes de 8:30 a 23:30 h. Sábados, domingos y festivos de 8:30 a 21:30 h. Servicio Médico: Consulta y reconocimientos médicos, previa petición de hora. Fisioterapia: Lunes a viernes de 16:00 a 22:00 h. Pistas de pádel: 8 pistas dobles y 3 individuales.. Accesos Coche Autobús:  L5 /  L6 / C 10 / C 11 / 153   158 / 159 /  827 /  828  Más información sobre transportes Horario Lunes a viernes: de 8:00 a 24:00h. Sábados, domingos y festivos: de 8:00 a 22:30h. Horario de ventanilla: lunes a viernes de 8:15 a 23:00h. Sábados, domingos y festivos de 8:15 a 22:30h. Horario durante las fiestas de Navidad: Los días 24 y 31 de diciembre se cierra al público a las 13:30 horas. Las instalaciones exteriores se cierran al público a las 12:30 (última reserva a las 11:30 horas). La sala fitness y la piscina se cierra a las 13:00 horas. Cierre de Instalación Cerrado los días 25 de diciembre, 1 de enero y 1 de mayo. Más Información Consulte las tarifas"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AVDA. BARAJAS s/n"/>
+            <column name="postal_code" value="28108"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="446527.06062"/>
+            <column name="y_etrs89" valueNumeric="4488361.05599"/>
+            <column name="email"/>
+            <column name="telephone" value="34916587110"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0042"/>
+            <column name="id" value="EQ0042"/>
+            <column name="title" value="Punto limpio"/>
+            <column name="description" value="Datos de interés Servicios principales Recepción por separado de pequeñas cantidades de residuos previamente seleccionados: cartón, metales, madera, plásticos, etc. Residuos admisibles y cantidades máximas: Cartón. Metales.  Madera (máximo 0,5 m3) Pinturas (hasta 5 kg.) Papel. Frigoríficos. 1 unidad/ persona Envases. Aceite de cocina. 10 litros Aceite de automóvil. (hasta 10 l.) Envases de aceite vacíos. Filtros de aceite.  Vidrio. Plásticos. Corcho blanco. Baterías. (máximo 2) Radiografías. 5unidades/persona Pilas.  Fluorescentes. (máximo 3) Cartuchos de impresión y toner. Equipos de informática y telecomunicaciones. Aparatos electrónicos de consumo. Pequeños y grandes electrodomésticos. Instrumentos de vigilancia y control Herramientas eléctricas y electrónicas (excepto las herramientas industriales  de gran envergadura). Residuos no admisibles: Residuos orgánicos. Escombros. Neumáticos. Residuos peligrosos. Residuos Infecciosos. Residuos radioactivos Residuos Industriales. Medicamentos Accesos Autobús:   157 /157C Puede consultar recorrido y horarios en la página web del Consorcio de Transportes o en la empresa de autobuses Interbús. Renfe. Línea C4 de Cercanías  Coche. Metro Otros datos Si bien el Punto Limpio está indicado para los usuarios particulares, las empresas y/o actividades comerciales que deseen hacer uso de estas instalaciones, podrán solicitar por escrito autorización específica para depositar residuos generados en su actividad, siempre que los mismos estén dentro de los residuos y cantidades admisibles. El acceso a las instalaciones está restringido a un mismo vehículo por usuario al día, a fin de evitar que se saturen los contenedores y que se cumpla con el aporte de cantidades máximas diarias establecidas. Todos los residuos que se aporten al Punto Limpio, deberán segregarse y ser depositados por cada usuario en los contenedores correspondientes asignados para cada tipo de residuo. Otros datos de interés: Vidrio, papel, cartón, plástico, madera y brick en cantidades domésticas normales.      Residuos Voluminosos: no pueden ser superiores a 50 kg. Muebles: con un peso no superior a 50 kg. Horario: Lunes a viernes, de 8:00 a 20:00 h. Sábados, domingos y festivos: de 9:00 a 20:00 h. Punto Limpio Móvil Concebido para acercar a los vecinos de Alcobendas este servicio. De esta forma se evitan en gran medida los inconvenientes de una instalación fija alejada del centro urbano y se facilita la reutilización de objetos que de otra forma acabarían en los contenedores de bioresiduos distribuidos por todo el municipio. El Punto Limpio móvil será instalado en distintos puntos del municipio, distribuidos estratégicamente en función de la densidad de población y del espacio disponible en los viales para minimizar las molestias a los vecinos y ocupar el menor número posible de plazas de estacionamiento de vehículos. Más información"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL GABRIEL GARCÿA MÿRQUEZ 24"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444417.71029"/>
+            <column name="y_etrs89" valueNumeric="4487905.77976"/>
+            <column name="email"/>
+            <column name="telephone" value="34917652025"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0043"/>
+            <column name="id" value="EQ0043"/>
+            <column name="title" value="Servicio de juventud, infancia y adolescencia. IMAGINA"/>
+            <column name="description" value="Datos de interés Accesos Sus oficinas se encuentran en Imagina. Coche Autobús: L2 / L5 / C 10 / C 11 / 151 / 153  / 827 /  827A / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc.  Más información sobre transportes "/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL RUPERTO CHAPI 18"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445453.20439"/>
+            <column name="y_etrs89" valueNumeric="4488789.71850"/>
+            <column name="email" value="oij@imaginalcobendas.org"/>
+            <column name="telephone" value="34916590957"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0044"/>
+            <column name="id" value="EQ0044"/>
+            <column name="title" value="Teatro Auditorio Ciudad de Alcobendas"/>
+            <column name="description" value="Datos de interés Servicios principales Programación y difusión de espectáculos. Ejecución técnica de espectáculos. Disponibilidad del Teatro para actividades organizadas por Asociaciones. Posibilidad de alquiler para reuniones de empresa. Campaña escolar de Danza, Música y Teatro. Taquilla para venta de Abonos y entradas.  Accesos Coche Autobús:  L 2 / L5 / C 10 / C 11 / 151  / 153 / 827/ 827A / N101  Metro Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc.  Más información sobre transportes  Horario de taquilla: Martes a viernes (no festivos) de 18:00 a 20:00 h. Los días de inicio de venta de las localidades sueltas para cada periodo de programación, la taquilla abrirá de 11:00 a 12:30 y de 18:00 a 20:00 h. Dos horas antes del inicio del espectáculo. Otros datos Venta de localidades y abonos Normas para la asistencia a espectáculos Consulte el Plano de aforo Más información Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria."/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="CL BLAS DE OTERO 4"/>
+            <column name="postal_code" value="28100"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="445574.99527"/>
+            <column name="y_etrs89" valueNumeric="4488791.46792"/>
+            <column name="email" value="teatro@aytoalcobendas.org"/>
+            <column name="telephone" value="34916597721"/>
+            <column name="url" value="http://www.teatroalcobendas.org"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours"/>
+        </insert>
+        <insert tableName="equipamiento">
+            <column name="ikey" value="0045"/>
+            <column name="id" value="EQ0045"/>
+            <column name="title" value="Universidad Popular de Alcobendas (UPA)"/>
+            <column name="description" value="Datos de interés Accesos Coche  Autobús: C 10 / C 11 / 157C Metro - Estación Manuel de Falla Tren: A Alcobendas llega la línea C4 Parla-Alcobendas-San Sebastián de los Reyes. Acceda a la información sobre estaciones, horarios, etc. Horarios Cierre: Del 24 de diciembre al 7 de enero, ambos inclusive. Horario de verano: Desde el 2 al 22 de julio y desde el 3 al 11 de septiembre de lunes a viernes de 9:00 a 14:00 horas. Horario de invierno: De atención al público: de lunes a viernes de 9:00 a 14:00 y de 16:00 a 20:00 h. .  Servicios principales Actividades de animación sociocultural (informática, contabilidad, etc.). Cursos de actualización profesional. Cursos de disciplinas artísticas (fotografía, cerámica, pintura, grabado, etc.). Cursos de formación reglada (educación básica de adultos, graduado en secundaria, etc.). Cursos de idiomas (alemán, inglés, español para extranjeros). Cursos monográficos (historia, ciencia, etc.). Colegio electoral. Plataforma educativa Moodle. Más información Puede consultar Universidad Popular de Alcobendas donde encontrará información sobre los cursos y actividades que se celebran. Este edificio dispone de desfibrilador, ofreciendo la posibilidad de una rápida actuación ante una parada cardiorrespiratoria"/>
+            <column name="tipo_equipamiento" value="equipamiento municipal"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="provincia_id" value="28"/>
+            <column name="autonomia_id" value="13"/>
+            <column name="pais_id" value="España"/>
+            <column name="street_address" value="AV MAGIA DE LA 4"/>
+            <column name="postal_code"/>
+            <column name="barrio_id" value="28006011"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="x_etrs89" valueNumeric="444333.78925"/>
+            <column name="y_etrs89" valueNumeric="4489188.88773"/>
+            <column name="email" value="upa@aytoalcobendas.org"/>
+            <column name="telephone" value="34916626062"/>
+            <column name="url"/>
+            <column name="titularidad" value="Publico"/>
+            <column name="opening_hours" value="Sin horario"/>
+        </insert>
+        <rollback>
+           delete from equipamiento where tipo_equipamiento like 'equipamiento municipal';
+       </rollback>        	      
+    </changeSet>
+    <changeSet id="DATA-EQUIPAMIENTO-tag-1.02" author="Localidata">
+    	<tagDatabase tag="1.02" />
+  	</changeSet>  
+</databaseChangeLog>

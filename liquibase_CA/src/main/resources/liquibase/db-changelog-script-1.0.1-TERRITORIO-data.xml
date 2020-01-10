@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="territorio_data-1">
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="724"/>
+            <column name="id" value="724"/>
+            <column name="identifier" value="España"/>
+            <column name="title" value="España"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="Localidata" id="territorio_data-2">
+        <insert tableName="territorio_autonomia">
+            <column name="ikey" value="13"/>
+            <column name="id" value="13"/>
+            <column name="title" value="Comunidad de Madrid"/>
+            <column name="identifier" value="Comunidad-Madrid"/>
+            <column name="pais" value="724"/>
+        </insert>
+        <rollback/>        
+    </changeSet>
+    <changeSet author="Localidata" id="territorio_data-3">
+        <insert tableName="territorio_provincia">
+            <column name="ikey" value="28"/>
+            <column name="id" value="28"/>
+            <column name="title" value="Madrid"/>
+            <column name="identifier" value="Madrid"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+        </insert>
+        <rollback/>        
+    </changeSet>
+    <changeSet author="Localidata" id="territorio_data-4">
+        <insert tableName="territorio_municipio">
+            <column name="ikey" value="28006"/>
+            <column name="id" value="28006"/>
+            <column name="title" value="Alcobendas"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+        </insert>
+        <insert tableName="territorio_municipio">
+            <column name="ikey" value="28079"/>
+            <column name="id" value="28079"/>
+            <column name="title" value="Madrid"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+        </insert>
+        <rollback/>        
+    </changeSet>
+    <changeSet author="Localidata" id="territorio_data-5">
+        <insert tableName="territorio_distrito">
+            <column name="ikey" value="2800601"/>
+            <column name="id" value="2800601"/>
+            <column name="title" value="Distrito 1"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+         <insert tableName="territorio_distrito">
+            <column name="ikey" value="28079606"/>
+            <column name="id" value="28079606"/>
+            <column name="title" value="Tetuán"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28079"/>
+        </insert>
+        <rollback/>        
+    </changeSet>   
+    <changeSet author="Localidata" id="territorio_data-6">
+    	 <insert tableName="territorio_barrio">
+            <column name="ikey" value="280796062"/>
+            <column name="id" value="280796062"/>
+            <column name="title" value="Cuatro Caminos"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="28079606"/>
+            <column name="municipio" value="28079"/>
+        </insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006011"/>
+            <column name="id" value="28006011"/>
+            <column name="title" value="Barrio de prueba 1"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006012"/>
+            <column name="id" value="28006012"/>
+            <column name="title" value="Barrio de prueba 2"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert> 
+        <rollback/>        
+    </changeSet>
+    <changeSet author="Localidata" id="territorio_data-7">
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601001"/>
+            <column name="id" value="2800601001"/>
+            <column name="title" value="Sección Censal 1"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601002"/>
+            <column name="id" value="2800601002"/>
+            <column name="title" value="Sección Censal 2"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601003"/>
+            <column name="id" value="2800601003"/>
+            <column name="title" value="Sección Censal 3"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601004"/>
+            <column name="id" value="2800601004"/>
+            <column name="title" value="Sección Censal 4"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601005"/>
+            <column name="id" value="2800601005"/>
+            <column name="title" value="Sección Censal 5"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601006"/>
+            <column name="id" value="2800601006"/>
+            <column name="title" value="Sección Censal 6"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601007"/>
+            <column name="id" value="2800601007"/>
+            <column name="title" value="Sección Censal 7"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601008"/>
+            <column name="id" value="2800601008"/>
+            <column name="title" value="Sección Censal 8"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601009"/>
+            <column name="id" value="2800601009"/>
+            <column name="title" value="Sección Censal 9"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601011"/>
+            <column name="id" value="2800601011"/>
+            <column name="title" value="Sección Censal 11"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601012"/>
+            <column name="id" value="2800601012"/>
+            <column name="title" value="Sección Censal 12"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601013"/>
+            <column name="id" value="2800601013"/>
+            <column name="title" value="Sección Censal 13"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601014"/>
+            <column name="id" value="2800601014"/>
+            <column name="title" value="Sección Censal 14"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601015"/>
+            <column name="id" value="2800601015"/>
+            <column name="title" value="Sección Censal 15"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601016"/>
+            <column name="id" value="2800601016"/>
+            <column name="title" value="Sección Censal 16"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601017"/>
+            <column name="id" value="2800601017"/>
+            <column name="title" value="Sección Censal 17"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601018"/>
+            <column name="id" value="2800601018"/>
+            <column name="title" value="Sección Censal 18"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601019"/>
+            <column name="id" value="2800601019"/>
+            <column name="title" value="Sección Censal 19"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601020"/>
+            <column name="id" value="2800601020"/>
+            <column name="title" value="Sección Censal 20"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601021"/>
+            <column name="id" value="2800601021"/>
+            <column name="title" value="Sección Censal 21"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601022"/>
+            <column name="id" value="2800601022"/>
+            <column name="title" value="Sección Censal 22"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601023"/>
+            <column name="id" value="2800601023"/>
+            <column name="title" value="Sección Censal 23"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601024"/>
+            <column name="id" value="2800601024"/>
+            <column name="title" value="Sección Censal 24"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601025"/>
+            <column name="id" value="2800601025"/>
+            <column name="title" value="Sección Censal 25"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601026"/>
+            <column name="id" value="2800601026"/>
+            <column name="title" value="Sección Censal 26"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601027"/>
+            <column name="id" value="2800601027"/>
+            <column name="title" value="Sección Censal 27"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601028"/>
+            <column name="id" value="2800601028"/>
+            <column name="title" value="Sección Censal 28"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601029"/>
+            <column name="id" value="2800601029"/>
+            <column name="title" value="Sección Censal 29"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601030"/>
+            <column name="id" value="2800601030"/>
+            <column name="title" value="Sección Censal 30"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601031"/>
+            <column name="id" value="2800601031"/>
+            <column name="title" value="Sección Censal 31"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601032"/>
+            <column name="id" value="2800601032"/>
+            <column name="title" value="Sección Censal 32"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601033"/>
+            <column name="id" value="2800601033"/>
+            <column name="title" value="Sección Censal 33"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601034"/>
+            <column name="id" value="2800601034"/>
+            <column name="title" value="Sección Censal 34"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601035"/>
+            <column name="id" value="2800601035"/>
+            <column name="title" value="Sección Censal 35"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601036"/>
+            <column name="id" value="2800601036"/>
+            <column name="title" value="Sección Censal 36"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601037"/>
+            <column name="id" value="2800601037"/>
+            <column name="title" value="Sección Censal 37"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601038"/>
+            <column name="id" value="2800601038"/>
+            <column name="title" value="Sección Censal 38"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601039"/>
+            <column name="id" value="2800601039"/>
+            <column name="title" value="Sección Censal 39"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601040"/>
+            <column name="id" value="2800601040"/>
+            <column name="title" value="Sección Censal 40"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601041"/>
+            <column name="id" value="2800601041"/>
+            <column name="title" value="Sección Censal 41"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601042"/>
+            <column name="id" value="2800601042"/>
+            <column name="title" value="Sección Censal 42"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601043"/>
+            <column name="id" value="2800601043"/>
+            <column name="title" value="Sección Censal 43"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601044"/>
+            <column name="id" value="2800601044"/>
+            <column name="title" value="Sección Censal 44"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601045"/>
+            <column name="id" value="2800601045"/>
+            <column name="title" value="Sección Censal 45"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601046"/>
+            <column name="id" value="2800601046"/>
+            <column name="title" value="Sección Censal 46"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601047"/>
+            <column name="id" value="2800601047"/>
+            <column name="title" value="Sección Censal 47"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601048"/>
+            <column name="id" value="2800601048"/>
+            <column name="title" value="Sección Censal 48"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601049"/>
+            <column name="id" value="2800601049"/>
+            <column name="title" value="Sección Censal 49"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601050"/>
+            <column name="id" value="2800601050"/>
+            <column name="title" value="Sección Censal 50"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601051"/>
+            <column name="id" value="2800601051"/>
+            <column name="title" value="Sección Censal 51"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601052"/>
+            <column name="id" value="2800601052"/>
+            <column name="title" value="Sección Censal 52"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601053"/>
+            <column name="id" value="2800601053"/>
+            <column name="title" value="Sección Censal 53"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601054"/>
+            <column name="id" value="2800601054"/>
+            <column name="title" value="Sección Censal 54"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601055"/>
+            <column name="id" value="2800601055"/>
+            <column name="title" value="Sección Censal 55"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601056"/>
+            <column name="id" value="2800601056"/>
+            <column name="title" value="Sección Censal 56"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601057"/>
+            <column name="id" value="2800601057"/>
+            <column name="title" value="Sección Censal 57"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601058"/>
+            <column name="id" value="2800601058"/>
+            <column name="title" value="Sección Censal 58"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601059"/>
+            <column name="id" value="2800601059"/>
+            <column name="title" value="Sección Censal 59"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601060"/>
+            <column name="id" value="2800601060"/>
+            <column name="title" value="Sección Censal 60"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601061"/>
+            <column name="id" value="2800601061"/>
+            <column name="title" value="Sección Censal 61"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601062"/>
+            <column name="id" value="2800601062"/>
+            <column name="title" value="Sección Censal 62"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <insert tableName="territorio_seccion">
+            <column name="ikey" value="2800601063"/>
+            <column name="id" value="2800601063"/>
+            <column name="title" value="Sección Censal 63"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="distrito" value="2800601"/>
+            <column name="municipio" value="28006"/>
+        </insert>
+        <rollback/> 
+    </changeSet>
+    
+        
+      <changeSet id="DATA-CORE-tag-1.0.1" author="Localidata">
+    	<tagDatabase tag="1.0.1" />
+  	</changeSet>  
+</databaseChangeLog>
