@@ -125,3 +125,15 @@ API_CA/.project
 /.metadata/
 *.log
 Servers/
+API_CA/API_DSD/.classpath
+API_CA/API_DSD/.gitignore
+API_CA/API_DSD/.project
+API_CA/API_DSD/.settings/
+API_CA/API_DSD/src/test/resources/config.properties
+API_CA/API_DSD/src/test/resources/logback.xml
+API_CA/API_TERRITORIO/.classpath
+API_CA/API_TERRITORIO/.gitignore
+API_CA/API_TERRITORIO/.project
+API_CA/API_TERRITORIO/.settings/
+API_CA/API_TERRITORIO/src/test/resources/config.properties
+API_CA/API_TERRITORIO/src/test/resources/logback.xml
