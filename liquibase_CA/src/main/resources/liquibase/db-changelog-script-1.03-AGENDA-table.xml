@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="table-agenda">
+        <createTable tableName="agenda">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="municipio_id" type="VARCHAR(10)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="image" type="VARCHAR(200)"/>
+            <column name="fecha_inicio" type="datetime(6)"/>
+            <column name="fecha_fin" type="datetime(6)"/>
+            <column name="tipo_evento" type="VARCHAR(200)"/>
+            <column name="tipo_publico" type="VARCHAR(200)"/>
+            <column name="age_range" type="VARCHAR(200)"/>
+            <column name="maximo_participantes" type="INT"/>
+            <column name="equipamiento_title" type="VARCHAR(200)"/>
+            <column name="lugar_inscripcion_title" type="VARCHAR(200)"/>
+            <column name="medio_transporte_title" type="VARCHAR(200)"/>
+            <column name="servicio_municipal_title" type="VARCHAR(200)"/>
+            <column defaultValueNumeric="0" name="accesible" type="BIT"/>
+            <column name="tipo_accesibilidad" type="VARCHAR(200)"/>
+        </createTable>
+         <rollback>
+            <dropTable tableName="agenda"/>            
+       </rollback>    
+    </changeSet>
+    
+    <changeSet author="Localidata" id="PK-table-agenda">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_agenda" tableName="agenda"/>        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="Index-agenda-id">
+        <createIndex indexName="index_id_agenda" tableName="agenda">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    
+
+	
+
+</databaseChangeLog>
