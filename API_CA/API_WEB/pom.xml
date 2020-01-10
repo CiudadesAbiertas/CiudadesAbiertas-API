@@ -40,6 +40,17 @@
 	  			<version>0.0.1-SNAPSHOT</version>
  	  	</dependency>
 		
+		<dependency>
+				<groupId>API_CA</groupId>
+	  			<artifactId>org.ciudadesabiertas.territorio</artifactId>
+	  			<version>0.0.1-SNAPSHOT</version>
+ 	  	</dependency>
+ 	  	
+ 	  	<dependency>
+				<groupId>API_CA</groupId>
+	  			<artifactId>org.ciudadesabiertas.dsd</artifactId>
+	  			<version>0.0.1-SNAPSHOT</version>
+ 	  	</dependency>
 		  
   </dependencies>
   <profiles>
@@ -162,6 +173,28 @@
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
 			  	
+			  	<!--  Dependencia dsd-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.dsd</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia padron-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.padron</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!--  Dependencia territorio-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.territorio</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
 			  	<dependency>
@@ -373,6 +406,21 @@
 			 </dependencies>
 		</profile>
 		
+		
+		
+		
+		<profile>
+			<id>padron</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.padron</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+
 		<!-- Perfil para el conjunto de datos plantilla --> 
 		<!-- 
 		<profile>

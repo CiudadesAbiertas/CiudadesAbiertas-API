@@ -8,8 +8,10 @@
 	<properties>
 		<api.warName>OpenCitiesAPI</api.warName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<springframework.version>4.3.11.RELEASE</springframework.version>
 		<spring.security.version>4.0.1.RELEASE</spring.security.version>
+		<spring.oauth2.version>2.0.18.RELEASE</spring.oauth2.version>
 		<jackson.version>2.9.2</jackson.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<logback.version>1.1.2</logback.version>
@@ -21,7 +23,7 @@
 		<pmdVersion>6.8.0</pmdVersion>
 		<oracleDriverVersion>11.2.0.3</oracleDriverVersion>
 		<mysqlDriverVersion>5.1.47</mysqlDriverVersion>
-		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>
+		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>		
 	</properties>
 
 
@@ -50,6 +52,9 @@
 				<module>API_ALOJAMIENTO</module>
 				<module>API_CALLEJERO</module>
 				<module>API_TRAMITE</module>
+				<module>API_DSD</module>
+				<module>API_PADRON</module>
+				<module>API_TERRITORIO</module>				
 				<!-- 
 				<module>API_PLANTILLA</module>
 				 -->
@@ -62,8 +67,10 @@
 			<modules>
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
-				<module>API_WEB</module>
-				<module>API_SUBVENCION</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
+				<module>API_SUBVENCION</module>				
 			</modules>
 		</profile>
 
@@ -73,6 +80,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_EQUIPAMIENTO</module>
 			</modules>
 		</profile>
@@ -83,6 +92,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_AGENDA</module>
 			</modules>
 		</profile>
@@ -93,6 +104,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_LOCALCOMERCIAL</module>
 			</modules>
 		</profile>
@@ -103,6 +116,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_PUNTOWIFI</module>
 			</modules>
 		</profile>
@@ -113,6 +128,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_APARCAMIENTO</module>
 			</modules>
 		</profile>
@@ -124,6 +141,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_BUSQUEDAINDEXADA</module>
 			</modules>
 		</profile>
@@ -134,6 +153,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_INSTALACIONESDEP</module>
 			</modules>
 		</profile>
@@ -143,6 +164,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_CALIDADAIRE</module>
 			</modules>
 		</profile>
@@ -153,6 +176,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_AVISOQUEJASUGERENCIA</module>
 			</modules>
 		</profile>
@@ -164,6 +189,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_ORGANIGRAMA</module>
 			</modules>
 		</profile>
@@ -174,6 +201,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_INTERESTURISTICOS</module>
 			</modules>
 		</profile>
@@ -184,6 +213,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_MONUMENTO</module>
 			</modules>
 		</profile>
@@ -194,6 +225,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>
 				<module>API_ALOJAMIENTO</module>
 			</modules>
 		</profile>
@@ -204,6 +237,8 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>				
 				<module>API_CALLEJERO</module>
 			</modules>
 		</profile>
@@ -214,9 +249,26 @@
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
 				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>				
 				<module>API_TRAMITE</module>
 			</modules>
 		</profile>
+		
+		<profile>
+			<id>padron</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>				
+				<module>API_PADRON</module>
+			</modules>
+		</profile>
+		
+
+
 		
 		<!-- Perfil para el conjunto de datos Plantilla -->
 		<!-- 
@@ -225,8 +277,10 @@
 			<modules>
 				<module>rdfGeneratorZ</module>
 				<module>API_CORE</module>
-				<module>API_WEB</module>
-				<module>API_PLANTILLA</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_PLANTILLA</module>				
 			</modules>
 		</profile>
 		 -->
@@ -243,6 +297,14 @@
   
   	<build>	
 		<plugins>
+		
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>        
 			<!-- 
 				Plugin para añadir el copyright en todos los ficheros, se ejecuta con:
 				mvn license:format
