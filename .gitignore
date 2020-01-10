@@ -137,3 +137,9 @@ API_CA/API_TERRITORIO/.project
 API_CA/API_TERRITORIO/.settings/
 API_CA/API_TERRITORIO/src/test/resources/config.properties
 API_CA/API_TERRITORIO/src/test/resources/logback.xml
+API_CA/API_PADRON/.classpath
+API_CA/API_PADRON/.gitignore
+API_CA/API_PADRON/.project
+API_CA/API_PADRON/.settings/
+API_CA/API_PADRON/src/test/resources/config.properties
+API_CA/API_PADRON/src/test/resources/logback.xml
