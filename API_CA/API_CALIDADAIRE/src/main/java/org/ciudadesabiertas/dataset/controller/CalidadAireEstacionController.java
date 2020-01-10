@@ -37,7 +37,6 @@ import org.ciudadesabiertas.dataset.util.CalidadAireObservacionSearch;
 import org.ciudadesabiertas.dataset.util.CalidadAireSensorSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ExceptionUtil;
 import org.ciudadesabiertas.utils.ObjectResult;
@@ -170,7 +169,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId)
 			
 	{
@@ -195,7 +194,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,HttpServletRequest request)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
@@ -225,7 +224,9 @@ public class CalidadAireEstacionController extends GenericController implements 
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new CalidadAireEstacion(), new CalidadAireEstacionResult(), availableFields, getKey(),dsService);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new CalidadAireEstacion(), new CalidadAireEstacionResult(), availableFields, getKey(),dsService);
+		
+		return integraCallejero(list,request);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -243,7 +244,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,		
 						
 			@RequestHeader HttpHeaders headersRequest)
@@ -255,8 +256,11 @@ public class CalidadAireEstacionController extends GenericController implements 
 		
 		RSQLVisitor<CriteriaQuery<CalidadAireEstacion>, EntityManager> visitor = new JpaCriteriaQueryVisitor<CalidadAireEstacion>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new CalidadAireEstacion(), new CalidadAireEstacionResult(), 
+		ResponseEntity list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new CalidadAireEstacion(), new CalidadAireEstacionResult(), 
 					 availableFields, getKey(), visitor,dsService);
+	
+	
+		return integraCallejero(list,request);
 	}
 
 
@@ -277,7 +281,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -376,14 +380,21 @@ public class CalidadAireEstacionController extends GenericController implements 
 										
 				}else {
 					
-					//Comprobamos que no haya observaciones ni sensores que contengan este estacion
-					CalidadAireSensorSearch searchSensor=new CalidadAireSensorSearch();
-					searchSensor.setIsHostedBy(item.getId());
-					long numSensors = calidadAireSensorService.rowcount(getKey(),CalidadAireSensor.class, searchSensor);
-									
-					CalidadAireObservacionSearch searchObservacion=new CalidadAireObservacionSearch();
-					searchObservacion.setMadeBySensor(item.getId());
-					long numObservations=calidadAireObservacionService.rowcount(getKey(),CalidadAireObservacion.class, searchObservacion);
+					//CMG CONTROL PARA VER SI SE CONTROLA LAS FK
+					long numSensors = 0;
+					long numObservations = 0;
+					
+					if (activeFK) {
+					
+						//Comprobamos que no haya observaciones ni sensores que contengan este estacion
+						CalidadAireSensorSearch searchSensor=new CalidadAireSensorSearch();
+						searchSensor.setIsHostedBy(item.getId());
+						numSensors = calidadAireSensorService.rowcount(getKey(),CalidadAireSensor.class, searchSensor);
+										
+						CalidadAireObservacionSearch searchObservacion=new CalidadAireObservacionSearch();
+						searchObservacion.setMadeBySensor(item.getId());
+						numObservations=calidadAireObservacionService.rowcount(getKey(),CalidadAireObservacion.class, searchObservacion);
+					}
 					
 					if ((numSensors==0)&&(numObservations==0))
 					{
@@ -456,15 +467,16 @@ public class CalidadAireEstacionController extends GenericController implements 
 	            
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new CalidadAireEstacion(), srId, CalidadAireEstacionController.class.getName(), RECORD, dsService,getKey());
+		ResponseEntity record = record(request, id, new CalidadAireEstacion(), new CalidadAireEstacionResult(), srId, CalidadAireEstacionController.class.getName(), RECORD, dsService,getKey());
 
+		return integraCallejero(record,request);
 	}
 	
 	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -476,7 +488,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");

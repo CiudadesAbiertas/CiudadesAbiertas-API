@@ -37,6 +37,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.EnumTipoEquipamiento;
@@ -69,7 +70,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESEQUIP, propiedad = "Equipamiento")
 @PathId(value="/equipamiento")
-public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, MultiURI {
+public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, MultiURI, ICallejero {
 
 
 	@JsonIgnore
@@ -89,117 +90,126 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
-	
-	
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="tipoEquipamiento", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESEQUIP, propiedad = "tipo-equipamiento")	
 	private String tipoEquipamiento;
 	
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
-	private String municipioId;
-	
-	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
-	private String municipioTitle;
-	
-	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
-	@RdfExternalURI(inicioURI="http://datos.gob.es/recurso/sector-publico/territorio/Provincia/", finURI="provincia", capitalize=true, urifyLevel=1)
-	private String provincia;
-	
-	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")		
-	@RdfExternalURI(inicioURI="http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/", finURI="autonomia",capitalize=true, urifyLevel=1)
-	private String autonomia;
-	
-	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "pais")	
-	@RdfExternalURI(inicioURI="http://datos.gob.es/recurso/sector-publico/territorio/Pais/", finURI="pais", capitalize=true, urifyLevel=1)
-	private String pais;
-	
-	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;
 	
+	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
+	@CsvBindByPosition(position=6)
+	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "pais")	
+	@RdfExternalURI(inicioURI="/territorio/pais/",finURI="paisId", urifyLevel = 1)
+	private String paisId;
+	
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
+	@RdfExternalURI(inicioURI="/territorio/autonomia/",finURI="autonomiaId", urifyLevel = 1)
+	private String autonomiaId;
+	
+	@CsvBindByPosition(position=8)
+	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
+	@RdfExternalURI(inicioURI="/territorio/provincia/",finURI="provinciaId", urifyLevel = 1)
+	private String provinciaId;
+	
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")
+	private String municipioId;
+	
 	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+	
+	@CsvBindByPosition(position=12)
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)
+	private String barrioId;
+		
+	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
-	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	private String barrio;
-	
-	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	private String distrito;
-	
-	@CsvBindByPosition(position=13)
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;	
 	
-	@CsvBindByPosition(position=14)
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=16)
+	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-	@CsvBindByPosition(position=17)
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
 	private String email;
 	
-	@CsvBindByPosition(position=18)
+	@CsvBindByPosition(position=19)
 	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
 	private String telephone;
 	
-	@CsvBindByPosition(position=19)
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
 	@IsUri
 	private String url;
 	
-	@CsvBindByPosition(position=20)
+	@CsvBindByPosition(position=21)
 	@CsvBindByName(column="titularidad", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESEQUIP, propiedad = "titularidad")
 	private String titularidad;
-	
-	@CsvBindByPosition(position=21)	
+		
+	@CsvBindByPosition(position=22)	
 	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
 	private String openingHours;
 
 
-	@CsvBindByPosition(position=22)	
+	@CsvBindByPosition(position=23)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;
@@ -220,13 +230,13 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.tipoEquipamiento = eq.tipoEquipamiento;
 		this.municipioId = eq.municipioId;
 		this.municipioTitle = eq.municipioTitle;
-		this.provincia = eq.provincia;
-		this.autonomia = eq.autonomia;
-		this.pais = eq.pais;
+		this.provinciaId = eq.provinciaId;
+		this.autonomiaId = eq.autonomiaId;
+		this.paisId = eq.paisId;
 		this.streetAddress = eq.streetAddress;
 		this.postalCode = eq.postalCode;
-		this.barrio = eq.barrio;
-		this.distrito = eq.distrito;
+		this.barrioId = eq.barrioId;
+		this.distritoId = eq.distritoId;
 		this.x = eq.x;
 		this.y = eq.y;
 		this.email = eq.email;
@@ -234,6 +244,7 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.url = eq.url;
 		this.titularidad = eq.titularidad;
 		this.openingHours = eq.openingHours;
+		this.portalId = eq.portalId;
 	}
 
 	@Id
@@ -301,31 +312,31 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.municipioTitle = municipioTitle;
 	}
 
-	@Column(name = "provincia", length = 200)
-	public String getProvincia() {
-		return this.provincia;
+	@Column(name = "provincia_id", length = 200)
+	public String getProvinciaId() {
+		return this.provinciaId;
 	}
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
+	public void setProvinciaId(String provinciaId) {
+		this.provinciaId = provinciaId;
 	}
 
-	@Column(name = "autonomia", length = 200)
-	public String getAutonomia() {
-		return this.autonomia;
+	@Column(name = "autonomia_id", length = 200)
+	public String getAutonomiaId() {
+		return this.autonomiaId;
 	}
 
-	public void setAutonomia(String autonomia) {
-		this.autonomia = autonomia;
+	public void setAutonomiaId(String autonomiaId) {
+		this.autonomiaId = autonomiaId;
 	}
 
-	@Column(name = "pais", length = 200)
-	public String getPais() {
-		return this.pais;
+	@Column(name = "pais_id", length = 200)
+	public String getPaisId() {
+		return this.paisId;
 	}
 
-	public void setPais(String pais) {
-		this.pais = pais;
+	public void setPaisId(String paisId) {
+		this.paisId = paisId;
 	}
 
 	@Column(name = "street_address", length = 200)
@@ -346,22 +357,22 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.postalCode = postalCode;
 	}
 
-	@Column(name = "barrio", length = 200)
-	public String getBarrio() {
-		return this.barrio;
+	@Column(name = "barrio_id", length = 200)
+	public String getBarrioId() {
+		return this.barrioId;
 	}
 
-	public void setBarrio(String barrio) {
-		this.barrio = barrio;
+	public void setBarrioId(String barrioId) {
+		this.barrioId = barrioId;
 	}
 
-	@Column(name = "distrito", length = 200)
-	public String getDistrito() {
-		return this.distrito;
+	@Column(name = "distrito_id", length = 200)
+	public String getDistritoId() {
+		return this.distritoId;
 	}
 
-	public void setDistrito(String distrito) {
-		this.distrito = distrito;
+	public void setDistritoId(String distritoId) {
+		this.distritoId = distritoId;
 	}	
 
 	@Column(name = "email", length = 200)
@@ -466,6 +477,27 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 	public Double getDistance() {
 		return this.distance;
 	}
+	
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
+
+	
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
+
 
 	//Constructor copia con lista de attributos a settear
 	public Equipamiento(Equipamiento copia, List<String> attributesToSet)
@@ -491,14 +523,14 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		if (attributesToSet.contains("municipioTitle")) {
 			this.municipioTitle = copia.municipioTitle;
 		}
-		if (attributesToSet.contains("provincia")) {
-			this.provincia = copia.provincia;
+		if (attributesToSet.contains("provinciaId")) {
+			this.provinciaId = copia.provinciaId;
 		}
-		if (attributesToSet.contains("autonomia")) {
-			this.autonomia = copia.autonomia;	
+		if (attributesToSet.contains("autonomiaId")) {
+			this.autonomiaId = copia.autonomiaId;	
 		}
-		if (attributesToSet.contains("pais")) {
-			this.pais = copia.pais;
+		if (attributesToSet.contains("paisId")) {
+			this.paisId = copia.paisId;
 		}
 		if (attributesToSet.contains("streetAddress")) {
 			this.streetAddress = copia.streetAddress;
@@ -506,11 +538,11 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		if (attributesToSet.contains("postalCode")) {
 			this.postalCode = copia.postalCode;
 		}
-		if (attributesToSet.contains("barrio")) {
-			this.barrio = copia.barrio;
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = copia.barrioId;
 		}
-		if (attributesToSet.contains("distrito")) {
-			this.distrito = copia.distrito;	
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = copia.distritoId;	
 		}
 		if (attributesToSet.contains("xETRS89")) {
 			this.x = copia.x;
@@ -534,19 +566,29 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		if (attributesToSet.contains("openingHours")) {
 			this.openingHours = copia.openingHours;			
 		}
+		
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = copia.portalId;			
+		}
+		
+		
 	}
 
+	
+		
 	@Override
 	public String toString() {
-		return "Equipamiento [ikey=" + ikey + ", id=" + id + ", title=" + title + ", description=" + description
-				+ ", tipoEquipamiento=" + tipoEquipamiento + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
-				+ ", provincia=" + provincia + ", autonomia=" + autonomia + ", pais="
-				+ pais + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", barrio="
-				+ barrio + ", distrito=" + distrito + ", x=" + x + ", y="
-				+ y + ", email=" + email + ", telephone=" + telephone + ", url=" + url + ", titularidad="
-				+ titularidad + ", openingHours=" + openingHours+"]";
+		return "Equipamiento [ikey=" + ikey + ", id=" + id + ", title=" + title + ", tipoEquipamiento="
+				+ tipoEquipamiento + ", streetAddress=" + streetAddress + ", portalId=" + portalId + ", paisId="
+				+ paisId + ", autonomiaId=" + autonomiaId + ", provinciaId=" + provinciaId + ", municipioId="
+				+ municipioId + ", municipioTitle=" + municipioTitle + ", distritoId=" + distritoId + ", barrioId="
+				+ barrioId + ", postalCode=" + postalCode + ", x=" + x + ", y=" + y + ", latitud=" + latitud
+				+ ", longitud=" + longitud + ", email=" + email + ", telephone=" + telephone + ", url=" + url
+				+ ", titularidad=" + titularidad + ", openingHours=" + openingHours + ", description=" + description
+				+ ", distance=" + distance + "]";
 	}
-		
+
+
 	public Map<String,String> prefixes()
 	{
 		Map<String,String> prefixes=new HashMap<String,String>();				
@@ -557,7 +599,7 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		prefixes.put(Context.GEO, Context.GEO_URI);	
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);
 		prefixes.put(Context.ESEQUIP, Context.ESEQUIP_URI);
-		
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		
 		return prefixes;
 	}

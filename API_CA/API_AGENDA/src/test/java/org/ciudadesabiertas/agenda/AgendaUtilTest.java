@@ -39,7 +39,7 @@ public class AgendaUtilTest
 {
 
 
-	private static final String[] fieldsToIngore = { "ikey" };
+	private static final String[] fieldsToIngore = { "ikey","equipamientoIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"AG0001\",\r\n" + 
@@ -54,6 +54,7 @@ public class AgendaUtilTest
 			"    \"ageRange\" : \"Menores de 18\",\r\n" + 
 			"    \"maximoParticipantes\" : 30,\r\n" + 
 			"    \"equipamientoTitle\" : \"Teatro Auditorio Ciudad de Alcobendas\",\r\n" + 
+			"    \"equipamientoId\" : \"EQ0002\",\r\n" + 
 			"    \"lugarInscripcionTitle\" : \"Ayuntamiento\",\r\n" + 
 			"    \"medioTransporteTitle\" : \"Bus 5\",\r\n" + 
 			"    \"servicioMunicipalTitle\" : \"Cultura\",\r\n" + 

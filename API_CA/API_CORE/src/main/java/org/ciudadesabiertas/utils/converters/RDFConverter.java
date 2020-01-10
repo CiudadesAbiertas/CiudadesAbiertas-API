@@ -101,7 +101,7 @@ public class RDFConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
     @SuppressWarnings("unchecked")
     @Override
     protected void writeInternal (L l, HttpOutputMessage outputMessage)
-              throws IOException, HttpMessageNotWritableException {
+              throws ClassCastException,IOException, HttpMessageNotWritableException {
         
         
         try {
@@ -160,7 +160,8 @@ public class RDFConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
     			throw e;
     		}
     			
-    			
+        } catch (ClassCastException cce) {
+            throw cce;
     	
         } catch (Exception e) {
             throw new RuntimeException(e);

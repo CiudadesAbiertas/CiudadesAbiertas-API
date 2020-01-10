@@ -116,8 +116,11 @@ public class DatasetDao<T>
 
 			if (page >= 0)
 			{
-				criteria.setFirstResult(page * pageSize);
-				criteria.setMaxResults(pageSize);
+				if (page != Constants.NO_PAGINATION_PAGE_1)
+				{
+					criteria.setFirstResult(page * pageSize);
+					criteria.setMaxResults(pageSize);
+				}
 
 				// Tratamiento de Fields
 				if (fieldsQuery != null && !fieldsQuery.isEmpty())
@@ -761,6 +764,50 @@ public class DatasetDao<T>
 		}
 		
 		return rowCount.longValue();
+	}
+
+	@SuppressWarnings("unchecked")
+	public T findByIdentifierObject(String key, Class<T> type, String identifier)
+	{
+
+		List<T> result = new ArrayList<T>();
+
+		if (key==null || "".equals(key)) {
+			key = Util.extractKeyFromModelClass(type);
+		}
+		
+		String nameEntity=Util.extractNameFromModelClass(type);
+
+		// Criteria criteria = null;
+		Session opennedSession = null;
+
+		Query<?> query = null;
+		if (multipleSessionFactory.getKeys().contains(key))
+		{
+			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
+			opennedSession = multipleSessionFactory.getFactories().get(key).openSession();
+			query = opennedSession.createQuery("FROM "+nameEntity+" where identifier = :code ");
+		} else
+		{
+			query = sessionFactory.getCurrentSession().createQuery("FROM "+nameEntity+" where identifier = :code ");
+		}
+
+		query.setParameter("code", identifier);
+		result = (List<T>) query.list();
+
+		if (opennedSession != null)
+		{
+			opennedSession.close();
+		}
+
+		if (result.size() > 0)
+		{
+			return result.get(0);
+		} else
+		{
+			return null;
+		}
+
 	}
 	
 }

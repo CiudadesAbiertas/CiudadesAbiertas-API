@@ -134,6 +134,8 @@ public class Constants
 	public static final String SUPPORTED_SRIDS = "EPSG:25830,EPSG:25829,EPSG:25828,EPSG:25831,EPSG:23030,EPSG:23029,EPSG:23028,EPSG:23031,EPSG:4258,EPSG:4230,EPSG:4326,EPSG:4082,EPSG:4083";
 	public static final String SUPPORTED_XY_SRIDS="EPSG:25830,EPSG:25829,EPSG:25828,EPSG:25831,EPSG:23030,EPSG:23029,EPSG:23028,EPSG:23031,EPSG:4082,EPSG:4083";
 	public static final String DEFAULT_XY_VALUE="EPSG:25830";
+	public static final String DOCUMENTATION_SRID= "EPSG:4326";
+	
 	
 	public static final String SUPPORTED_LAT_LON_SRIDS="EPSG:4258,EPSG:4230,EPSG:4326";
 	public static final String DEFAULT_LAT_LON_VALUE="EPSG:4258";
@@ -165,13 +167,16 @@ public class Constants
 	public static final String APPSECRET = "appsecret";
 	public static final String STR_NODO_PATTERN = "nodo.pattern";
 
-	
+	//Propiedad foreign key
+	public static final String STR_ACTVE_FOREIGN_KEY="claves.foraneas";
 
 	
 	public static final String mimeHTML = "text/html";
 	public static final String mimeJSON = "application/json";
 	public static final String mimeXML = "application/xml";
 	public static final String mimeCSV = "text/csv";
+	public static final String mimeGEOJSON = "application/geo+json";
+		
 	
 	public static final int maxSizeURL=2000;
 	
@@ -231,8 +236,9 @@ public class Constants
 	public static final String FORMATO_TTL = "ttl";
 	public static final String FORMATO_JSONLD = "jsonld";
 	public static final String FORMATO_N3 = "n3";
+	public static final String FORMATO_GEOJSON = "geojson";
 	
-	public static final String[] FORMATOS_EXTENSIONES= {FORMATO_HTML,FORMATO_JSON,FORMATO_XML,FORMATO_CSV,FORMATO_RDF,FORMATO_TTL,FORMATO_JSONLD,FORMATO_N3};
+	public static final String[] FORMATOS_EXTENSIONES= {FORMATO_HTML,FORMATO_JSON,FORMATO_XML,FORMATO_CSV,FORMATO_RDF,FORMATO_TTL,FORMATO_JSONLD,FORMATO_N3, FORMATO_GEOJSON};
 	
 	public static final String CONTENT_TYPE_JSON_UTF8 = "application/json;charset=UTF-8";
 	public static final String CONTENT_TYPE_XML_UTF8 = "application/xml;charset=UTF-8";
@@ -241,6 +247,7 @@ public class Constants
 	
 	public static final String MEDIA_TYPE_TEXT = mimeHTML;
 	public static final String MEDIA_TYPE_CSV = mimeCSV;
+	public static final String MEDIA_TYPE_GEOJSON = mimeGEOJSON;
 	
 	
 	
@@ -256,6 +263,8 @@ public class Constants
 	
 	public static final String STR_HTTPS = "https";
 	public static final String STR_ACTIVE_ON = "on";
+	public static final String STR_ACTIVE_TRUE = "true";
+	public static final String STR_INACTIVE_FALSE = "false";
 	
 	public static final String STR_CONTEXTO = "contexto";
 	public static final String STR_PAGE_MAX = "pagina.maximo";
@@ -266,5 +275,8 @@ public class Constants
 	
 	public static final String SWAGGER_V2_API_DOCS = "/v2/api-docs";
 	public static final String SWAGGER_INDEX = "swagger/index.html";
+	
+	public static final int  NO_PAGINATION = 99999;
+	public static final int  NO_PAGINATION_PAGE_1 = NO_PAGINATION-1;
 }
 

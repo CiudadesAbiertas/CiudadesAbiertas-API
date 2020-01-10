@@ -34,9 +34,9 @@ import org.ciudadesabiertas.dataset.utils.LocalComercialConstants;
 import org.ciudadesabiertas.dataset.utils.LocalComercialSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ExceptionUtil;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
@@ -199,7 +199,7 @@ public class AgrupacionComercialController extends GenericController implements 
 	@RequestMapping(value = { LIST, VERSION_1 + LIST }, method = { RequestMethod.HEAD })
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, AgrupacionComercialSearch search, @RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, @RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, @RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize, @RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId, @RequestHeader HttpHeaders headersRequest)
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId, @RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[listHead][" + LIST + "]");
 		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
@@ -274,10 +274,13 @@ public class AgrupacionComercialController extends GenericController implements 
 
 				} else
 				{
-
-					LocalComercialSearch localSearch = new LocalComercialSearch();
-					localSearch.setAgrupacionComercial(agrupacionComercial.getId());
-					long rowcount = localComercialService.rowcount(getKey(), LocalComercial.class, localSearch);
+					//CMG Control para ver si estan activas las FK
+					long rowcount = 0;
+					if (activeFK) {
+						LocalComercialSearch localSearch = new LocalComercialSearch();
+						localSearch.setAgrupacionComercial(agrupacionComercial.getId());
+						rowcount = localComercialService.rowcount(getKey(), LocalComercial.class, localSearch);
+					}
 
 					if (rowcount == 0)
 					{
@@ -336,7 +339,7 @@ public class AgrupacionComercialController extends GenericController implements 
 
 		log.debug("[parmam][id:" + id + "]");
 
-		return record(request, id, new AgrupacionComercial(), NO_HAY_SRID, AgrupacionComercialController.class.getName(), RECORD, service, getKey());
+		return record(request, id, new AgrupacionComercial(),new AgrupacionComercialResult(), NO_HAY_SRID, AgrupacionComercialController.class.getName(), RECORD, service, getKey());
 
 	}
 

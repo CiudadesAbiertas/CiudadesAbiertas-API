@@ -133,26 +133,26 @@ public class LocalComercialDataRSQLTest
 	public void test_Busqueda_municipioId_municipioTitle_barrio() throws Exception
 	{
 		
-		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrio=='Valdeacederas'";		
+		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrioId=='280796062'";		
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1749);
+		assertTrue(total == 9498);
 	}
 	
 	@Test
-	public void test_Busqueda_barrio_or() throws Exception
+	public void test_Busqueda_barrio_and() throws Exception
 	{
 
-		String value = "barrio=='Valdeacederas' or barrio=='Castillejos'";
+		String value = "barrioId=='280796062' and streetAddress=='Calle Bravo Murillo Num 236'";
 	
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2839);
+		assertTrue(total == 1);
 	}
 	
 	@Test
@@ -213,14 +213,14 @@ public class LocalComercialDataRSQLTest
 	public void test_Busqueda_distrito_and_barrio() throws Exception
 	{
 
-		String value = "distrito=='Tetuan' and barrio=='Cuatro Caminos'";
+		String value = "distritoId=='28079606' and barrioId=='280796062'";
 		
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2319);
+		assertTrue(total == 9498);
 	}
 	
 	@Test
@@ -242,10 +242,10 @@ public class LocalComercialDataRSQLTest
 	@Test
 	public void test_Busqueda_referenciaCatastral() throws Exception
 	{
-		String value = "referenciaCatastral=='9872023 VH5797S 0001 WX' and barrio=='Castillejos'";
+		String value = "referenciaCatastral=='9872023 VH5797S 0001 WX' and barrioId=='280796062'";
 		String paramField = "q";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(total == 1090);
+		assertTrue(total == 9498);
 	}
 	@Test
 	public void test_Busqueda_rotulo() throws Exception
@@ -258,7 +258,7 @@ public class LocalComercialDataRSQLTest
 	@Test
 	public void test_Busqueda_tieneLicenciaApertura() throws Exception
 	{
-		String value = "tieneLicenciaApertura=='60000068/106-1993-02762'";		
+		String value = "tieneLicenciaApertura=='60000068-106-1993-02762'";		
 		String paramField = "q";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		assertTrue(total == 1);
@@ -306,7 +306,19 @@ public class LocalComercialDataRSQLTest
 	}
 
 
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 	
 	
 

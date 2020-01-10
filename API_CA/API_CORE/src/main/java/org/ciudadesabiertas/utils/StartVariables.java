@@ -19,6 +19,8 @@ package org.ciudadesabiertas.utils;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -52,4 +54,14 @@ public class StartVariables
 		public static String uriBase = "";
 		public static String serverPort = "";
 		public static String schema = "";
+		
+		//Lista con todos los controllers cargados de en la aplicación
+		public static List<String> listControllers;
+		
+		//Conversor de JSON utilizado en el sistema
+		public static MappingJackson2HttpMessageConverter jsonConverter;
+		
+		//VBLE para el control de las FK
+		public static boolean activeFK = true;
+		
 }

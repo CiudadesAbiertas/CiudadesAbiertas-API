@@ -39,7 +39,7 @@ public class AlojamientoUtilTest
 {
 
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"ALJ0001\",\r\n" + 
@@ -51,8 +51,8 @@ public class AlojamientoUtilTest
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
 			"    \"streetAddress\" : \"de la Montera, 10 - 12\",\r\n" + 
 			"    \"postalCode\" : \"28013\",\r\n" + 
-			"    \"barrio\" : \"CUATRO CAMINOS\",\r\n" + 
-			"    \"distrito\" : \"TETUAN\",\r\n" +
+			"    \"barrioId\" : \"CUATRO CAMINOS\",\r\n" + 
+			"    \"distritoId\" : \"TETUAN\",\r\n" +
 			"    \"email\" : \"hotel.puertadelsol@hotelbb.com\",\r\n" + 
 			"    \"telephone\" : \"(+34) 914 890 591\",\r\n" +
 			"    \"faxNumber\" : \"(+34) 914 890 591\",\r\n" + 
@@ -63,7 +63,8 @@ public class AlojamientoUtilTest
 			"    \"image\" : \"http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/bb_hotel_madrid_centro_puerta_del_sol.jpg\",\r\n" + 
 			"    \"description\" : \"<p><strong>Próximo a la céntrica Puerta del Sol se encuentra este hotel de tres estrellas que dispone de 74 habitaciones con un diseño arquitectónico innovador. Cuenta con un moderno lobby lounge con café e infusiones las 24 horas y wifi gratis. En su azotea se encuentra el restaurante <a href=\\\"https://www.esmadrid.com/restaurantes/dona-luz\\\">Doña Luz</a>, en el que se puede disfrutar de recetas internacionales, copas y cócteles.</strong></p><p>Todas las habitaciones están compuestas de una exclusiva cama flotante Airbed&reg;, TV LCD de 49&rsquo;&rsquo;, escritorio, caja fuerte electronica, minibar, baño de diseño novedoso y con ducha de efecto lluvia, así como con secador de pelo y WiFi de alta velocidad. Se puede elegir entre habitaciones individuales premium, dobles matrimoniales deluxe, doble premium o doble premium con terraza con vistas a la Puerta del Sol.</p>\",\r\n" + 
 			"    \"xETRS89\" : 440396.51166,\r\n" + 
-			"    \"yETRS89\" : 4474341.38044\r\n" + 
+			"    \"yETRS89\" : 4474341.38044,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

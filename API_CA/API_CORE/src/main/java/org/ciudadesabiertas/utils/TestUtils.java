@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -84,6 +84,12 @@ public class TestUtils
 		JSONObject resultObj = invokeService(URL, "?"+paramField+"=" + value, mockMvc);
 
 		JSONArray records = (JSONArray) resultObj.get("records");
+		
+		if (records==null)
+		{
+			return new JSONArray();
+		}
+		
 		return records;
 	}
 	
@@ -186,15 +192,24 @@ public class TestUtils
 	
 	
 	
-	public static boolean checkFormatURIs(String URL, MockMvc mockMvc) throws Exception 
+	public static boolean checkFormatURIs(String URL, MockMvc mockMvc)  
 	{   	
 		String[] formatos= {"json","xml","csv","rdf","ttl","jsonld","n3"};
-	    ArrayList<Integer> responseStatus=new ArrayList<Integer>();
-	    	    	
+	    ArrayList<Integer> responseStatus=new ArrayList<Integer>();	    	
+	    
     	for (String format:formatos)
     	{
+    		log.info("checking "+format+" format");
     		String formatURL=URL+"."+format;
-    	    int status = mockMvc.perform(MockMvcRequestBuilders.get(formatURL)).andReturn().getResponse().getStatus();    		
+    		int status = 0;
+    		try
+    		{
+    			status = mockMvc.perform(MockMvcRequestBuilders.get(formatURL)).andReturn().getResponse().getStatus();
+    		}
+    		catch (Exception e)
+    		{
+    			log.error("Error in URL: "+formatURL);
+    		}
     		responseStatus.add(status);
     	}
     	
@@ -221,6 +236,7 @@ public class TestUtils
 			field.setAccessible(true);
 			String name = field.getName();
 		    Object value = field.get(objToCheck);
+		    
 			if ((ignoreList.contains(name)==false)&&(value==null))
 			{
 				log.error("field without value "+name);
@@ -291,14 +307,37 @@ public class TestUtils
 	
 	public static String checkRDFURI(MockMvc mockMvc,String listURI) throws Exception, UnsupportedEncodingException
 	{
-		MockHttpServletResponse response = mockMvc.perform(MockMvcRequestBuilders.get(listURI+".ttl")).andReturn().getResponse();    		
-    	String ttlResponse=response.getContentAsString();
+		MockHttpServletResponse response = mockMvc.perform(MockMvcRequestBuilders.get(listURI+".ttl")).andReturn().getResponse();
+		//Convertimos a byte[] para que la ñ aparezca correctamente
+		byte[] contentAsByteArray = response.getContentAsByteArray();
+		String ttlResponse=new String(contentAsByteArray);
     	String[] lines = ttlResponse.split("\\r?\\n");
     	List<String> urisToCheck=new ArrayList<String>();
+    	
         for (String line : lines) {             
              if (line.contains(listURI))
              {
-            	 urisToCheck.add(line.trim().replace("<", "").replace(">", ""));
+            	 if ((line.contains("/geometry")==false))
+            	 {
+	            	 String lineM = line.trim().replace("<", "").replace(">", "");
+	            	 if (lineM.trim().endsWith(".")) {
+	            		 lineM = lineM.trim();
+	            		 lineM = StringUtils.chop(lineM).trim();
+	            	 }
+	            	 
+	            	 
+	            	 int position=lineM.indexOf(listURI)+1+listURI.length();
+	            	 String part1=lineM.substring(0,position);
+	            	 String part2=lineM.substring(position,lineM.length());	            	 
+	            	 log.error(part2);
+	            	 part2=Util.encodeURL(part2);	 
+	            	 urisToCheck.add(part1+part2);
+	            	 
+	            	 
+	            	 //Encodeo la ñ
+	            	 //lineM=lineM.replace("Ã±", "%C3%B1");          	 
+	            	 //urisToCheck.add(lineM);
+            	 }
              }
         }
         
@@ -306,7 +345,7 @@ public class TestUtils
         if (urisToCheck.size()>0)
         {
         	theURI=urisToCheck.get(0);
-        	theURI=theURI.substring(theURI.indexOf(listURI));
+        	theURI=theURI.substring(theURI.indexOf(listURI));        	
         	theURI=theURI+".json";
         }
 		return theURI;

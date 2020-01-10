@@ -126,7 +126,7 @@ public class CallejeroPortalDataRSQLTest
 	public void test_Busqueda_barrio() throws Exception
 	{	
 		String paramField="q";
-		String value = "barrio=='Rios Rosas' and id=='PORTAL000105'";		
+		String value = "barrioId=='280796062' and id=='PORTAL000105'";		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -163,17 +163,17 @@ public class CallejeroPortalDataRSQLTest
 	public void test_Busqueda_provincia() throws Exception
 	{	
 		String paramField="q";	
-		String value = "provincia=='Madrid' and id=='PORTAL000105'";
+		String value = "provinciaId=='Madrid' and id=='PORTAL000105'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}	
 	
 	
 	@Test
-	public void test_Busqueda_autonomia() throws Exception
+	public void test_Busqueda_autonomia_portal() throws Exception
 	{		
 		String paramField="q";	
-		String value = "autonomia=='*Madrid' and id=='PORTAL000105'";		
+		String value = "autonomiaId=='Comunidad-Madrid' and id=='PORTAL000105'";		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}

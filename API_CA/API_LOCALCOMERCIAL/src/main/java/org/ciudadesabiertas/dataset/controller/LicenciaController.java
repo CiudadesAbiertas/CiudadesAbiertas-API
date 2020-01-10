@@ -87,13 +87,13 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = "/localComercial/licenciaActividad/{idLocal}/{refLicencia}";	
+	public static final String RECORD = "/localComercial/licenciaActividad/{id}";	
 	
 	public static final String TRANSFORM = "/localComercial/licenciaActividad/transform";
 	
 	public static final String ADD = "/localComercial/licenciaActividad";
-	public static final String UPDATE = "/localComercial/licenciaActividad/{idLocal}/{refLicencia}";
-	public static final String DELETE = "/localComercial/licenciaActividad/{idLocal}/{refLicencia}";
+	public static final String UPDATE = "/localComercial/licenciaActividad/{id}";
+	public static final String DELETE = "/localComercial/licenciaActividad/{id}";
 	
 	
 	public static final String MODEL_VIEW_LIST = "localComercial/licenciaActividadList";
@@ -234,7 +234,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -278,14 +278,12 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(			 
-			@PathVariable String idLocal, @PathVariable String refLicencia, 
+			@PathVariable String id, 
 			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_LICENCIAACTIVIDAD_TEXT) 
 			@RequestBody LicenciaActividad obj)
 	{
 
 		log.info("[update][" + UPDATE + "]");
-
-		String id=idLocal+"/"+refLicencia;	
 		
 		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] ");			
 					
@@ -303,12 +301,10 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(			 
-			@PathVariable String idLocal, @PathVariable String refLicencia)
+			@PathVariable String id)
 	{
 
 		log.info("[delete][" + DELETE + "]");
-
-		String id=idLocal+"/"+refLicencia;		
 		
 		log.debug("[parmam][id:" + id + "] ");
 		
@@ -331,10 +327,14 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 					errorApi.setError("Error trying to delete. [id:"+id+"] Not Found in BBDD");
 										
 				}else {
-										
-					LocalComercialSearch localSearch=new LocalComercialSearch();
-					localSearch.setTieneLicenciaApertura(licencia.getId());
-					long rowcount = localComercialService.rowcount(getKey(),LocalComercial.class,localSearch);
+							
+					//CMG Control para ver si estan activas las FK
+					long rowcount = 0;
+					if (activeFK) {
+						LocalComercialSearch localSearch=new LocalComercialSearch();
+						localSearch.setTieneLicenciaApertura(licencia.getId());
+						rowcount = localComercialService.rowcount(getKey(),LocalComercial.class,localSearch);
+					}
 					if (rowcount==0)
 					{						
 						service.delete(getKey(),licencia);
@@ -388,16 +388,14 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,  @PathVariable String idLocal, @PathVariable String refLicencia)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,  @PathVariable String id)
 	{
 
-		log.info("[record][" + RECORD + "]");
-		
-		String id=idLocal+"/"+refLicencia;
+		log.info("[record][" + RECORD + "]");	
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new LicenciaActividad(), NO_HAY_SRID, LicenciaController.class.getName(), RECORD, service,getKey());
+		return record(request, id, new LicenciaActividad(), new LicenciaResult(),NO_HAY_SRID, LicenciaController.class.getName(), RECORD, service,getKey());
 
 	}	
 	
@@ -411,11 +409,11 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String idLocal, @PathVariable String refLicencia)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
-		return record(request, idLocal, refLicencia);
+		return record(request, id);
 		
 	}
 

@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -69,7 +70,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ORG, propiedad = "Organization")
 @PathId(value = "/organigrama/organizacion")
-public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
+public class Organigrama implements java.io.Serializable, GeoModel, RDFModel, ICallejero
 {
 	@JsonIgnore
 	private static final long serialVersionUID = 3254116450000749613L;
@@ -165,14 +166,12 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 
 	@CsvBindByPosition(position = 17)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 
 	@CsvBindByPosition(position = 18)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
 	private String municipioTitle;
 
 	@CsvBindByPosition(position=19)
@@ -233,6 +232,19 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 	@Rdf(contexto = Context.ORG, propiedad = "purpose")
 	private String purpose;
 	
+	@CsvBindByPosition(position=29)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
+	
+	
 	private Double distance;
 
 	public Organigrama()
@@ -271,6 +283,7 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 		this.y=copia.y;
 		this.url=copia.url;
 		this.image=copia.image;
+		this.portalId = copia.portalId;
 	}
 
 	public Organigrama(Organigrama copia, List<String> attributesToSet)
@@ -413,6 +426,11 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 		if (attributesToSet.contains("nivelJerarquico"))
 		{
 			this.nivelJerarquico = copia.nivelJerarquico;
+		}
+		
+		if (attributesToSet.contains("portalId"))
+		{
+			this.portalId = copia.portalId;
 		}
 		
 	}
@@ -748,7 +766,26 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 	public Double getDistance() {
 		return this.distance;
 	}
+	
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
 
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
+
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
+	
 	public Map<String, String> prefixes()
 	{
 		Map<String, String> prefixes = new HashMap<String, String>();
@@ -761,6 +798,7 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 		prefixes.put(Context.ORG, Context.ORG_URI);
 		prefixes.put(Context.ORGES, Context.ORGES_URI);
 		prefixes.put(Context.FOAF, Context.FOAF_URI);
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		return prefixes;
 	}
 
@@ -775,7 +813,7 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel
 				+ ", postalCode=" + postalCode + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
 				+ ", x=" + x + ", y=" + y + ", latitud=" + latitud + ", longitud=" + longitud
 				+ ", telephone=" + telephone + ", faxNumber=" + faxNumber + ", email=" + email + ", url=" + url
-				+ ", image=" + image + ", purpose=" + purpose + "]";
+				+ ", image=" + image + ", purpose=" + purpose + ", portalId="+portalId+"]";
 	}
 	
 	@SuppressWarnings("unchecked")

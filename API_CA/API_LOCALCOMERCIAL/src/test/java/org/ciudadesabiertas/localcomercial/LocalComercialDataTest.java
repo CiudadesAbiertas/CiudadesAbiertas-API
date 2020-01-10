@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.localcomercial;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -128,13 +128,13 @@ public class LocalComercialDataTest
 	@Test
 	public void test_Busqueda_municipioId() throws Exception
 	{
-		String [] paramField= {"municipioId","barrio"};
+		String [] paramField= {"municipioId","barrioId"};
 
-		String [] value = {"28079","Almenara"};
+		String [] value = {"28079","280796062"};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total== 1414);
+		assertTrue(total== 9498);
 			
 	}
 	
@@ -143,13 +143,13 @@ public class LocalComercialDataTest
 	public void test_Busqueda_municipioTitle() throws Exception
 	{		
 		
-		String [] paramField= {"municipioTitle","barrio"};
+		String [] paramField= {"municipioTitle","barrioId"};
 
-		String [] value = {"Madrid","Valdeacederas"};
+		String [] value = {"Madrid","280796062"};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total== 1749);
+		assertTrue(total== 9498);
 	}
 	
 	
@@ -162,7 +162,7 @@ public class LocalComercialDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -176,7 +176,7 @@ public class LocalComercialDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	
@@ -199,14 +199,14 @@ public class LocalComercialDataTest
 	public void test_Busqueda_postalCode() throws Exception
 	{
 
-		String [] paramField= {"postalCode","barrio"};
+		String [] paramField= {"postalCode","barrioId"};
 
-		String [] value = {"28039","Berruguete"};
+		String [] value = {"28039","280796062"};
 		
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1398);
+		assertTrue(total == 9498);
 	}
 	
 	
@@ -214,26 +214,26 @@ public class LocalComercialDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 
-		String value = "Berruguete";
+		String value = "280796062";
 		
-		String paramField="barrio";
+		String paramField="barrioId";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1398);
+		assertTrue(total == 9498);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{
 		
-		String [] paramField= {"distrito","barrio"};
+		String [] paramField= {"distritoId","barrioId"};
 
-		String [] value = {"Tetuan","Castillejos"};
+		String [] value = {"28079606","280796062"};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1090);
+		assertTrue(total == 9498);
 	}
 	
 	
@@ -337,14 +337,14 @@ public class LocalComercialDataTest
 	{
 
 		
-		String [] paramField= {"referenciaCatastral","barrio"};
+		String [] paramField= {"referenciaCatastral","barrioId"};
 
-		String [] value = {"9872023 VH5797S 0001 WX","Castillejos"};
+		String [] value = {"9872023 VH5797S 0001 WX","280796062"};
 		
 						
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1090);
+		assertTrue(total == 9498);
 	}
 	
 	
@@ -403,7 +403,7 @@ public class LocalComercialDataTest
 		
 		String [] paramField= {"tieneLicenciaApertura"};
 
-		String [] value = {"60000068/106-1993-02762"};
+		String [] value = {"60000068-106-1993-02762"};
 		
 						
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
@@ -490,11 +490,11 @@ public class LocalComercialDataTest
 		
 		String paramField="field";
 		
-		String value = "barrio";
+		String value = "tipoAcceso";
 
 		long total = TestUtils.extractTotalDistinct(LocalComercialController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
-		assertTrue(total == 6);
+		assertTrue(total == 2);
 	}
 	
 	
@@ -526,5 +526,17 @@ public class LocalComercialDataTest
 		assertTrue(records.size() == 19);	
 	}
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
 
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 }

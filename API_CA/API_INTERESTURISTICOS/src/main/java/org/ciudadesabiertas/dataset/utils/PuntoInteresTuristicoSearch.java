@@ -39,6 +39,9 @@ public class PuntoInteresTuristicoSearch extends PuntoInteresTuristico implement
 	@JsonIgnore
 	private static final long serialVersionUID = -7261783860307676914L;
 
+	@ApiModelProperty(hidden = true)
+	private String portalIdIsolated;	
+	
 
 	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;

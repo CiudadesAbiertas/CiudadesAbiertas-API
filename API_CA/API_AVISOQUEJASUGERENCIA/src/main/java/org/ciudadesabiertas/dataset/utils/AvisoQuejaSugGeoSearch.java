@@ -37,7 +37,9 @@ public class AvisoQuejaSugGeoSearch extends AvisoQuejaSug implements  Serializab
 	@JsonIgnore
 	private static final long serialVersionUID = 5262015467667727807L;	
 	
-
+	@ApiModelProperty(hidden = true)
+	private String portalIdIsolated;	
+	
 	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;
 	

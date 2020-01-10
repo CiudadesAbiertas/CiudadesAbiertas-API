@@ -498,4 +498,10 @@ public class OrganigramaTest {
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,OrganigramaController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganigramaController.LIST+"/"+"26015", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
 }

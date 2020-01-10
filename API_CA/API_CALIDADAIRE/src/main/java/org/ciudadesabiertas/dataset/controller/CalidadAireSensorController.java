@@ -382,6 +382,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 
 		log.debug("[parmam][isHostedBy:" + isHostedBy + "][observesId:" + observesId + "] [dato:" + obj + "] ");
 		
+		isHostedBy=Util.decodeURL(isHostedBy);
+		observesId=Util.decodeURL(observesId);
+		
 		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);
 		Result<Object> resultObj = new Result<Object>();
 		ResultError errorApi = new ResultError ();
@@ -502,6 +505,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 
 		log.debug("[parmam][isHostedBy:" + isHostedBy + "][observesId:" + observesId + "]");
 		
+		isHostedBy=Util.decodeURL(isHostedBy);
+		observesId=Util.decodeURL(observesId);
+		
 		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);
 		Result<Object> resultObj = new Result<Object>();
 		ResultError errorApi = new ResultError ();
@@ -576,6 +582,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][isHostedBy:" + isHostedBy + "][observesId:" + observesId + "]");
+		
+		isHostedBy=Util.decodeURL(isHostedBy);
+		observesId=Util.decodeURL(observesId);
 		
 		//Verifico la negociación de contenidos
 		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
@@ -697,8 +706,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	private List<String> checkClavesExternas(CalidadAireSensor item)
 	{
 		List<String> errores=new ArrayList<String>();
-		//Chequeamos los identificadores que apuntan a otras tablas					
-		if (Util.validValue(item.getIsHostedBy()))
+		//Chequeamos los identificadores que apuntan a otras tablas	
+		//CMG Se comprueba solo si estan activabas las FK
+		if (Util.validValue(item.getIsHostedBy()) && activeFK)
 		{
 			CalidadAireEstacion findById = calidadAireEstacionService.findById(getKey(),CalidadAireEstacion.class,item.getIsHostedBy());
 			if (findById==null)

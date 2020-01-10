@@ -361,7 +361,7 @@ public class PlantillaController extends GenericController implements CiudadesAb
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Plantilla(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		return record(request, id, new Plantilla(),new PlantillaResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
 
 	}
 	

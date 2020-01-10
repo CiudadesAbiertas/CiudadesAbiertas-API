@@ -50,10 +50,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.DataCubeModel;
 import org.ciudadesabiertas.model.GeoModel;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -64,8 +67,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -75,7 +76,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Util
 {
-	
+	private static final String ISOLATED = "isolated";
 
 	private static final Logger log = LoggerFactory.getLogger(Util.class);
 	
@@ -102,7 +103,11 @@ public class Util
 			for (PropertyDescriptor propertyDesc : beanInfo.getPropertyDescriptors())
 			{
 				String propertyName = propertyDesc.getName();
-				availableFields.add(propertyName);
+				//Para que no solicite los campos *isolated
+				if (propertyName.toLowerCase().endsWith(ISOLATED)==false)
+				{
+					availableFields.add(propertyName);					
+				}
 			}
 			if (availableFields.contains(Constants.X.toLowerCase()))
 			{
@@ -170,6 +175,7 @@ public class Util
 			BeanInfo beanInfo = Introspector.getBeanInfo(beanClass.getClass());
 			for (PropertyDescriptor propertyDesc : beanInfo.getPropertyDescriptors())
 			{
+				log.debug(propertyDesc.getName());
 				BeanUtil bean = new BeanUtil();
 				bean.setFieldName( propertyDesc.getName() );
 				bean.setTypeName( propertyDesc.getPropertyType().getName() );
@@ -238,7 +244,7 @@ public class Util
 		return randomNum;
 	}
 
-	public static String formaterFechas(Date fecha, String formato)
+	public static String formatearFechas(Date fecha, String formato)
 	{
 		String result = "";
 		String format = Constants.DATE_TIME_FORMAT;
@@ -251,9 +257,9 @@ public class Util
 		return result;
 	}
 
-	public static String formaterFechas(Date fecha)
+	public static String formatearFechas(Date fecha)
 	{
-		return formaterFechas(fecha, "");
+		return formatearFechas(fecha, "");
 	}
 
 	public static boolean validValue(String value)
@@ -363,6 +369,13 @@ public class Util
 	public static PageInfo getPageInfoFromURL(HttpServletRequest request, int pageSize, String uriBase, String context) {
 	    
 		PageInfo info=new PageInfo();
+		if (pageSize==Constants.NO_PAGINATION)
+		{
+			pageSize=-1;
+			info.setPage(-1);
+			info.setPageSize(-1);
+		}
+		
 		if (Util.validValue(pageSize))
 		{
 			info.setPageSize(pageSize);
@@ -390,7 +403,10 @@ public class Util
 			 String value=getValueFromStringArray(entry.getValue());		
 			 if (entry.getKey().equals("pageSize"))
 			 {
-				 info.setPageSize(Integer.parseInt(value));
+				 if (!value.equals(Constants.NO_PAGINATION+""))
+				 {
+					 info.setPageSize(Integer.parseInt(value));
+				 }
 			 }
 			 else if (entry.getKey().equals("page"))
 			 {
@@ -427,10 +443,15 @@ public class Util
 	
 	public static String getValueFromStringArray(String[] param)	
 	{
+		String SEPARATOR = ",";
 		String value="";
 		for (String v:param)
 		{
-			value+=v;
+			value+=v+SEPARATOR;
+		}
+		if (value.endsWith(SEPARATOR))
+		{
+			value=StringUtils.chop(value);
 		}
 		return value;
 	}
@@ -724,7 +745,7 @@ public class Util
 		String result = new String("");
 		
 		if (withDate) {
-			String fecha = formaterFechas(new Date(), "yyyyMMddHHmmssSSS");
+			String fecha = formatearFechas(new Date(), "yyyyMMddHHmmssSSS");
 			result+=fecha;
 		}
 		if (validValue(pattern)) {
@@ -860,7 +881,7 @@ public class Util
 			String list_admin_auth = properties.getProperty(Constants.STR_REQUEST_ADMIN_AUTH);			
 			listRequestType = verifyRequestByParamAuth(list_admin_auth, key, listRequestType, Constants.ADMIN_AUTH);
 			
-															
+			log.info("[getRequestType] ["+key+"] "+LiteralConstants.TXT_CUSTOM_REQUEST_ON);											
 		}
 		
 		return listRequestType;
@@ -1001,7 +1022,21 @@ public class Util
 		
 	}
 	
-	
+	public static void generaDataCubeInfo(List listado)
+	{	
+		//control para los objetos que o extienden de GeoModel		
+		if (isObjectDataCubeModel(listado)) {
+						
+			for (int i=0;i<listado.size();i++)		
+			{
+				DataCubeModel dataCubeModel=(DataCubeModel) listado.get(i);
+				dataCubeModel.asignaCubo();
+				dataCubeModel.asignaDSD();
+			}			
+			
+		}//fin if isGeomodel
+		
+	}
 	
 	
 	/* Private Method Auxiliar */
@@ -1009,12 +1044,13 @@ public class Util
 	private static List<RequestType> verifyRequestByParamAuth(String listService, String key,
 			List<RequestType> listRequestType, String typeAuth) {
 
+		String SEPARATOR = ",";
 		if (listService != null && !"".equals(listService)) {
 
 			log.info("[getRequestType] [" + key + "] [Authentication:" + typeAuth + "] "
 					+ LiteralConstants.TXT_CUSTOM_REQUEST_ON);
 
-			StringTokenizer strTokenizer = new StringTokenizer(listService.trim(), ",");
+			StringTokenizer strTokenizer = new StringTokenizer(listService.trim(), SEPARATOR);
 			while (strTokenizer.hasMoreTokens()) {
 				String aux = strTokenizer.nextToken();
 				for (RequestType obj : listRequestType) {
@@ -1077,6 +1113,11 @@ public class Util
 	//Clase para validar los campos asociados al RDF
 	public static boolean validatorFieldRDF (String field, String anotation) {
 		boolean result = false;
+		//TODO Excepción en la integración con callejero (Revisar si se toca el módulo en un futuro realizar el cambio correctamente).
+		if ("portalId".equals(field)) {
+			field="portal";
+		}
+		
 		//1º Validacionn nombre de campo iguales
 		if (field.toLowerCase().equals(anotation.toLowerCase())) {
 			return true;
@@ -1277,7 +1318,26 @@ public class Util
 	
 	
 
+	/**
+	 * Metodo para ver si los objetos de un listado extienden de DataCubemodel.
+	 * @param listado
+	 * @return
+	 */
+	public static boolean isObjectDataCubeModel(List listado) {
+		boolean result=false;
+		if (listado!=null && listado.size()>0) {
+			try {
+				DataCubeModel aux=(DataCubeModel) listado.get(0);
+				result = true;
+			}catch (Exception e) {
+				log.info("[isObjectDataCubeModel] [listado] No is a object DataCubeModel");
+				result = false;
+			}//Fin control
+		}
+		return result;
+	}
 	
+
 	
 
 	
@@ -1419,6 +1479,102 @@ public class Util
 		text=text.toLowerCase();
 		text=StringUtils.stripAccents(text);
 		return text;
+	}
+	
+	
+	public static boolean isSemanticPetition(HttpServletRequest request)
+	{	
+		boolean semantic=false;
+		String red=Util.getFullURL(request);
+		
+		URL aURL = null;
+		try
+		{
+			aURL = new URL(red);
+		} 
+		catch (MalformedURLException e1)
+		{
+			log.error("Error generating URL from request",e1);
+			return semantic;
+		}
+		
+		String acceptHeader=request.getHeader("ACCEPT");		
+		if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==false))
+		{	
+			return semantic;
+		}
+		else if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==true)&&(acceptHeader.equals("*/*")==false))
+		{					
+			
+			if (acceptHeader.contains(RDFConverter.RDF_XML))
+			{
+				semantic=true;
+			}
+			else if (acceptHeader.contains(RDFConverter.TURTLE))
+			{
+				semantic=true;
+			}
+			else if (acceptHeader.contains(RDFConverter.N3))
+			{
+				semantic=true;
+			}
+			else if (acceptHeader.contains(RDFConverter.JSONLD))
+			{
+				semantic=true;
+			}							
+		}
+		else if (aURL.getPath().contains("."))
+		{
+			String ext=getExtensionUri(aURL.getPath());
+			if (ext.contains("rdf"))
+			{
+				semantic=true;
+			}
+			else if (ext.contains("ttl"))
+			{
+				semantic=true;
+			}
+			else if (ext.contains("n3"))
+			{
+				semantic=true;
+			}
+			else if (ext.contains("jsonld"))
+			{
+				semantic=true;
+			}			
+		}
+		
+		return semantic;
+	}
+	
+	public static boolean isCallejeroIntegration() {
+		String nameControlerTerritorio="CallejeroPortalController";
+		return exitController(nameControlerTerritorio);
+	}
+	
+	public static boolean isOrganigramaIntegration() {
+		String nameControler="OrganigramaController";
+		return exitController(nameControler);
+	}
+	
+	public static boolean isEquipamientoIntegration() {
+		String nameControler="EquipamientoController";
+		return exitController(nameControler);
+	}
+	
+	public static boolean exitController(String nameController) {
+		boolean result=false;
+		if (nameController!=null) {
+			if (StartVariables.listControllers!= null && !StartVariables.listControllers.isEmpty()) {
+				for (String nameC : StartVariables.listControllers) {
+					if (nameC.contains(nameController)) {
+						result= true;
+						break;
+					}
+				}
+			}
+		}
+		return result;
 	}
 	
 	public static void main(String[] args)

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AparcamientoUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"EQAP0001\",\r\n" + 
@@ -46,13 +46,13 @@ public class AparcamientoUtilTest
 			"    \"tipoEquipamiento\" : \"aparcamiento publico\",\r\n" + 
 			"    \"municipioId\" : \"28079\",\r\n" + 
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
-			"    \"provincia\" : \"Madrid\",\r\n" + 
-			"    \"autonomia\" : \"Comunidad de Madrid\",\r\n" + 
-			"    \"pais\" : \"España\",\r\n" + 
+			"    \"provinciaId\" : \"Madrid\",\r\n" + 
+			"    \"autonomiaId\" : \"Comunidad de Madrid\",\r\n" + 
+			"    \"paisId\" : \"España\",\r\n" + 
 			"    \"streetAddress\" : \"CALLE BARCELO V 2\",\r\n" + 
 			"    \"postalCode\" : \"28004\",\r\n" + 
-			"    \"barrio\" : \"JUSTICIA\",\r\n" + 
-			"    \"distrito\" : \"CENTRO\",\r\n" +
+			"    \"barrioId\" : \"JUSTICIA\",\r\n" + 
+			"    \"distritoId\" : \"CENTRO\",\r\n" +
 			"    \"email\" : \"ciudadesAbiertas@ciudadesAbiertas.com\",\r\n" +
 			"    \"telephone\" : \"555 67 67\",\r\n" +
 			"    \"url\" : \"http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a50e15cbed51c010VgnVCM2000000c205a0aRCRD\",\r\n" + 
@@ -60,7 +60,8 @@ public class AparcamientoUtilTest
 			"    \"openingHours\" : \"Sin Horario\",\r\n" + 
 			"    \"description\" : \"Plazas: 318 públicas y 298 para residentes Abierto 24 horas Admite Tarjeta BonoRed Titularidad: Ayuntamiento de Madrid\",\r\n" + 
 			"    \"xETRS89\" : 440654.00047,\r\n" + 
-			"    \"yETRS89\" : 4475352.11778\r\n" + 
+			"    \"yETRS89\" : 4475352.11778,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

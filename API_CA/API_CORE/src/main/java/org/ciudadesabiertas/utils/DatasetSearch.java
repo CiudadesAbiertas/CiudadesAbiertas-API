@@ -149,7 +149,7 @@ public interface DatasetSearch<T>  {
 					
 					if  (!Constants.TYPE_CLASS_CLASS.equals(obj.getTypeName())) {
 						if (Constants.TYPE_DATE_CLASS.equals(obj.getTypeName())) {
-							urlParam.append("&"+obj.getFieldName()+"="+Util.formaterFechas((Date)obj.getValue()));
+							urlParam.append("&"+obj.getFieldName()+"="+Util.formatearFechas((Date)obj.getValue()));
 						}else {
 							urlParam.append("&"+obj.getFieldName()+"="+obj.getValue());
 						}

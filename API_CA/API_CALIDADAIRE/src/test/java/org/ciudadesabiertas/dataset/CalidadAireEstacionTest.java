@@ -419,4 +419,11 @@ public class CalidadAireEstacionTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
     
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireEstacionController.LIST+"/"+"STAT04", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
+    
 }

@@ -20,14 +20,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -93,14 +94,12 @@ public class CallejeroVia implements java.io.Serializable, RDFModel
 	
 	@CsvBindByPosition(position = 7)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
 	private String municipioTitle;
 
 	@CsvBindByPosition(position = 8)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 
 

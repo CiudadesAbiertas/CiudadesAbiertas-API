@@ -36,9 +36,11 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
 
@@ -70,7 +72,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.OPEN311, propiedad = "ServiceRequest")
 @PathId(value="/avisoQuejaSugerencia/avisoQuejaSugerencia")
-public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
+public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
 
 	@JsonIgnore
 	private static final long serialVersionUID = -5896570841942655495L;
@@ -142,31 +144,31 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 	
 	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	private String municipioTitle;
 	
 	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	private String barrio;
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
+	private String barrioId;
 	
 	@CsvBindByPosition(position=13)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	private String distrito;
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
 	
 	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="address", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
-	private String address;
+	private String streetAddress;
 	
 	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
@@ -211,6 +213,18 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 	@RdfBlankNode(tipo=Context.OPEN311_URI+"Type", propiedad=Context.OPEN311_URI+"has311Type", nodoId="Type")	
 	private String typeCode;
 	
+	@CsvBindByPosition(position=22)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
 	private Double distance;
 
 	public AvisoQuejaSug() {
@@ -237,9 +251,9 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 		this.source = copia.source;
 		this.municipioId = copia.municipioId;
 		this.municipioTitle = copia.municipioTitle;
-		this.barrio = copia.barrio;
-		this.distrito = copia.distrito;
-		this.address = copia.address;
+		this.barrioId = copia.barrioId;
+		this.distritoId = copia.distritoId;
+		this.streetAddress = copia.streetAddress;
 		this.postalCode = copia.postalCode;
 		this.latitud = copia.latitud;
 		this.longitud = copia.longitud;
@@ -247,6 +261,7 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 		this.typeCode = copia.typeCode;
 		this.x = copia.x;
 		this.y = copia.y;
+		this.portalId = copia.portalId;
 	}
 
 	@Id
@@ -353,13 +368,13 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 		this.source = source;
 	}
 
-	@Column(name = "address", length = 200)
-	public String getAddress() {
-		return this.address;
+	@Column(name = "streetAddress", length = 200)
+	public String getStreetAddress() {
+		return this.streetAddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStreetAddress(String address) {
+		this.streetAddress = address;
 	}
 
 	@Column(name = "postal_code", length = 200)
@@ -429,22 +444,22 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 		this.municipioTitle = municipioTitle;
 	}
 	
-	@Column(name = "barrio", length = 200)
-	public String getBarrio() {
-		return this.barrio;
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId() {
+		return this.barrioId;
 	}
 
-	public void setBarrio(String barrio) {
-		this.barrio = barrio;
+	public void setBarrioId(String barrioId) {
+		this.barrioId = barrioId;
 	}
 
-	@Column(name = "distrito", length = 200)
-	public String getDistrito() {
-		return this.distrito;
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId() {
+		return this.distritoId;
 	}
 
-	public void setDistrito(String distrito) {
-		this.distrito = distrito;
+	public void setDistritoId(String distritoId) {
+		this.distritoId = distritoId;
 	}
 
 	@JsonProperty("xETRS89")
@@ -483,7 +498,24 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 	}
 	
 
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
 	
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
 
 	@Override
 	public String toString() {
@@ -491,9 +523,9 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 				+ ", serviceRequestId=" + serviceRequestId + ", stat=" + stat + ", statusNotes=" + statusNotes
 				+ ", openDate=" + openDate + ", closeDate=" + closeDate + ", updateDate=" + updateDate + ", details="
 				+ details + ", source=" + source + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
-				+ ", barrio=" + barrio + ", distrito=" + distrito + ", address=" + address + ", postalCode="
+				+ ", barrioId=" + barrioId + ", distritoId=" + distritoId + ", address=" + streetAddress + ", postalCode="
 				+ postalCode + ", x=" + x + ", y=" + y + ", typeName=" + typeName
-				+ ", typeCode=" + typeCode + "]";
+				+ ", typeCode=" + typeCode + ", portalId="+portalId+"]";
 	}
 
 	
@@ -551,13 +583,13 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 			this.municipioTitle = copia.municipioTitle;		
 		}
 		
-		if (attributesToSet.contains("distrito")) {
-			this.distrito = copia.distrito;		
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = copia.distritoId;		
 		}
 								
 		
-		if (attributesToSet.contains("address")) {
-			this.address = copia.address;		
+		if (attributesToSet.contains("streetAddress")) {
+			this.streetAddress = copia.streetAddress;		
 		}
 		
 		if (attributesToSet.contains("postalCode")) {
@@ -580,8 +612,12 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 			this.typeCode = copia.typeCode;		
 		}
 		
-		if (attributesToSet.contains("barrio")) {
-			this.barrio = copia.barrio;		
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = copia.barrioId;		
+		}
+		
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = copia.portalId;		
 		}
 
 	}
@@ -597,6 +633,7 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel {
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);
 		prefixes.put(Context.TIME, Context.TIME_URI);	
 		prefixes.put(Context.ESADM, Context.ESADM_URI);	
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		
 		return prefixes;
 	}

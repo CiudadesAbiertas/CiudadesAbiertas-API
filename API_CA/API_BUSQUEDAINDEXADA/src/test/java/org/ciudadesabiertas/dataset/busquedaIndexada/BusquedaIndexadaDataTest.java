@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.dataset.busquedaIndexada;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import java.io.UnsupportedEncodingException;

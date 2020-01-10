@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.dataset;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -80,7 +80,7 @@ public class OrganigramaDataTest
 		String paramField="id";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 
 	@Test
@@ -98,7 +98,7 @@ public class OrganigramaDataTest
 		String paramField="title";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class OrganigramaDataTest
 		String paramField="nivelJerarquico";
 		String value = "99";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 		
 	@Test
@@ -134,7 +134,7 @@ public class OrganigramaDataTest
 		String paramField="unitOf";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -155,7 +155,7 @@ public class OrganigramaDataTest
 		String paramField="unidadRaiz";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -173,7 +173,7 @@ public class OrganigramaDataTest
 		String paramField="headOfName";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -191,7 +191,7 @@ public class OrganigramaDataTest
 		String paramField="foundingDate";
 		String value = "3999-03-21T00:00:00";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -209,7 +209,7 @@ public class OrganigramaDataTest
 		String paramField="dissolutionDate";
 		String value = "3999-03-21T00:00:00";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -227,7 +227,7 @@ public class OrganigramaDataTest
 		String paramField="estadoEntidadId";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -245,7 +245,7 @@ public class OrganigramaDataTest
 		String paramField="estadoEntidadTitle";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -263,7 +263,7 @@ public class OrganigramaDataTest
 		String paramField="nivelAdministracionId";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -281,7 +281,7 @@ public class OrganigramaDataTest
 		String paramField="nivelAdministracionTitle";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -299,7 +299,7 @@ public class OrganigramaDataTest
 		String paramField="tipoEntidadId";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -317,7 +317,7 @@ public class OrganigramaDataTest
 		String paramField="tipoEntidadTitle";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -335,7 +335,7 @@ public class OrganigramaDataTest
 		String paramField="xETRS89";
 		String value = "676840.38123";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -353,7 +353,7 @@ public class OrganigramaDataTest
 		String paramField="yETRS89";
 		String value = "461396";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -371,7 +371,7 @@ public class OrganigramaDataTest
 		String paramField="faxNumber";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -389,7 +389,7 @@ public class OrganigramaDataTest
 		String paramField="email";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -407,7 +407,7 @@ public class OrganigramaDataTest
 		String paramField="streetAddress";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -425,7 +425,7 @@ public class OrganigramaDataTest
 		String paramField="postalCode";
 		String value = "99999*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -444,7 +444,7 @@ public class OrganigramaDataTest
 		String paramField="municipioId";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -463,7 +463,7 @@ public class OrganigramaDataTest
 		String paramField="municipioTitle";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -482,7 +482,7 @@ public class OrganigramaDataTest
 		String paramField="url";
 		String value = "https://www.localidata.com";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -501,7 +501,7 @@ public class OrganigramaDataTest
 		String paramField="image";
 		String value = "https://www.localidata.com";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -520,7 +520,7 @@ public class OrganigramaDataTest
 		String paramField="purpose";
 		String value = "xxxxxxxxxxxxxxxx*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -565,7 +565,18 @@ public class OrganigramaDataTest
 	}
 	
 
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 	
 

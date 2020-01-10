@@ -80,47 +80,52 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
-
+	
 	@CsvBindByPosition(position=2)
+	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = Constants.IDENTIFIER)
+	private String identifier;
+
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="referencia", format=Constants.STRING_FORMAT)	
 	private String referencia;	
 	
-	@CsvBindByPosition(position=3)
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="asociadaA", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "asociadaA")
 	@RdfExternalURI(inicioURI="/localComercial/localComercial/", finURI="asociadaA")
 	private String asociadaA;
 	
-	@CsvBindByPosition(position=4)
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="autorizaActividadEconomica", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "autorizaActividadEconomica")
 	private String autorizaActividadEconomica;
 	
-	@CsvBindByPosition(position=5)
+	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="estadoTramitacion", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "estadoTramitacion")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-estado-tramite-licencia/", finURI="estadoTramitacion", urifyLevel=1)
 	private String estadoTramitacion;
 	
-	@CsvBindByPosition(position=6)
+	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="fechaAlta", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaAlta", typeURI=Context.XSD_URI+"date")
 	private Date fechaAlta;
 	
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="fechaCese", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaCese", typeURI=Context.XSD_URI+"date")
 	private Date fechaCese;
 	
-	@CsvBindByPosition(position=8)
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="fechaSolicitud", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaSolicitud", typeURI=Context.XSD_URI+"date")
 	private Date fechaSolicitud;
 	
-	@CsvBindByPosition(position=9)
+	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="seOtorgaA", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "seOtorgaA")	
 	private String seOtorgaA;
@@ -129,17 +134,12 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 	{
 	}
 
-	public LicenciaActividad(String ikey, String id, Date fechaSolicitud)
-	{
-		this.ikey = ikey;
-		this.id = id;
-		this.fechaSolicitud = fechaSolicitud;
-	}
 
 	public LicenciaActividad(LicenciaActividad copia)
 	{
 		this.ikey = copia.ikey;
 		this.id = copia.id;
+		this.identifier = copia.identifier;
 		this.asociadaA = copia.asociadaA;
 		this.autorizaActividadEconomica = copia.autorizaActividadEconomica;
 		this.estadoTramitacion = copia.estadoTramitacion;
@@ -157,6 +157,9 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 		}
 		if (attributesToSet.contains(Constants.IDENTIFICADOR)) {
 			this.id = obj.id;
+		}
+		if (attributesToSet.contains(Constants.IDENTIFIER)) {
+			this.identifier = obj.identifier;
 		}
 		if (attributesToSet.contains("asociadaA")) {
 			this.asociadaA = obj.asociadaA;
@@ -207,6 +210,17 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 	public void setId(String id)
 	{
 		this.id = id;
+	}
+	
+	@Column(name = "identifier", nullable = false, length = 50)
+	public String getIdentifier()
+	{
+		return this.identifier;
+	}
+
+	public void setIdentifier(String identifier)
+	{
+		this.identifier = identifier;
 	}
 
 	@Column(name = "asociada_a", length = 200)
@@ -307,17 +321,22 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 		prefixes.put(Context.XSD, Context.XSD_URI);
 		prefixes.put(Context.DCT, Context.DCT_URI);
 		prefixes.put(Context.ESCOM, Context.ESCOM_URI);
+		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);
 		
 		return prefixes;
 	}
 
-	@Override
-	public String toString()
-	{
-		return "LicenciaActividad [ikey=" + ikey + ", id=" + id + ", referencia=" + referencia + ", asociadaA=" + asociadaA + ", autorizaActividadEconomica=" + autorizaActividadEconomica + ", estadoTramitacion=" + estadoTramitacion + ", fechaAlta=" + fechaAlta + ", fechaCese=" + fechaCese + ", fechaSolicitud="
-				+ fechaSolicitud + ", seOtorgaA=" + seOtorgaA + "]";
-	}
 	
+	
+	@Override
+	public String toString() {
+		return "LicenciaActividad [ikey=" + ikey + ", id=" + id + ", identifier=" + identifier + ", referencia="
+				+ referencia + ", asociadaA=" + asociadaA + ", autorizaActividadEconomica=" + autorizaActividadEconomica
+				+ ", estadoTramitacion=" + estadoTramitacion + ", fechaAlta=" + fechaAlta + ", fechaCese=" + fechaCese
+				+ ", fechaSolicitud=" + fechaSolicitud + ", seOtorgaA=" + seOtorgaA + "]";
+	}
+
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T cloneModel(T copia, List<String> listado) {

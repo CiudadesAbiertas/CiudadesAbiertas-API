@@ -148,11 +148,11 @@ public class AlojamientoDataRSQLTest
 	
 	
 	@Test
-	public void test_Busqueda_address_barrio_distrito() throws Exception
+	public void test_Busqueda_address_barrioId_distritoId() throws Exception
 	{
 		String paramField="q";
 
-		String value = "streetAddress=='*de Diego de León, 43*' and barrio=='EMBAJADORES' and distrito=='CENTRO'";
+		String value = "streetAddress=='*de Diego de León, 43*' and barrioId=='280796062' and distritoId=='28079606'";
 		
 		//Cargamos los tipos asociados a category
 		//value+=" and " +loadCategory();
@@ -305,10 +305,48 @@ public class AlojamientoDataRSQLTest
 	
 	
 		
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 	
+	@Test
+	public void test_Busqueda_barrioId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "barrioId=='280796062'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total == 10);
+	}
 
 	
-	
+	@Test
+	public void test_Busqueda_distritoId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "distritoId=='28079606'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total == 10);
+	}
 
 	
 

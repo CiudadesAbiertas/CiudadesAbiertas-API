@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.puntowifi;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -149,7 +149,7 @@ public class PuntoWifiDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -164,16 +164,16 @@ public class PuntoWifiDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
 	public void test_Busqueda_provincia() throws Exception	
 	{
 		
-		String [] paramField= {"provincia","id"};
+		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"MADRID","*EQPW003*"};
+		String [] value = {"28","*EQPW003*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -184,9 +184,9 @@ public class PuntoWifiDataTest
 	public void test_Busqueda_autonomia() throws Exception
 	{
 
-		String [] paramField= {"autonomia","id"};
+		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"Comunidad de Madrid","*EQPW004*"};
+		String [] value = {"13","*EQPW004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -197,7 +197,7 @@ public class PuntoWifiDataTest
 	public void test_Busqueda_pais() throws Exception
 	{	
 		
-		String [] paramField= {"pais","id"};
+		String [] paramField= {"paisId","id"};
 
 		String [] value = {"España","*EQPW004*"};
 
@@ -235,27 +235,23 @@ public class PuntoWifiDataTest
 	@Test
 	public void test_Busqueda_barrio() throws Exception
 	{
-
-		String value = "NIÑO JESUS";
+		String [] paramField= {"barrioId","postalCode"};
+		String [] value = {"280796062","28043"};
 		
-		String paramField="barrio";
-
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 7);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
-	{
+	{		
+				
+		String [] paramField= {"distritoId","postalCode"};
+		String [] value = {"28079606","28043"};
+
 		
-		String  paramField= "distrito";
-
-		String  value = "RETIRO";
-
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 8);
+		assertTrue(records.size() == 7);
 	}
 	
 	@Test
@@ -482,5 +478,17 @@ public class PuntoWifiDataTest
 		assertTrue(total == 168);
 	}	
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 	}

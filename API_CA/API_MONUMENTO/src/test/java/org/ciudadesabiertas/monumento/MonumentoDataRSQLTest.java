@@ -145,7 +145,7 @@ public class MonumentoDataRSQLTest
 	{
 		String paramField = "q";
 
-		String value = "streetAddress=='*CALLE ALCALA V 48*' and barrio=='CORTES' and distrito=='CENTRO'";
+		String value = "streetAddress=='*CALLE ALCALA V 48*' and barrioId=='280796062' and distritoId=='28079606'";
 
 		// Cargamos los tipos asociados a category
 		value += " and " + loadCategory();
@@ -289,6 +289,25 @@ public class MonumentoDataRSQLTest
 		assertTrue(records.size() == 1);
 	}
 
+	
+	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";	
+		// Cargamos los tipos asociados a category
+		value += " and " + loadCategory();
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
+	
+	
 	private String loadCategory()
 	{
 

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PuntoInteresTuristicoUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"PIT0001\",\r\n" + 
@@ -50,8 +50,8 @@ public class PuntoInteresTuristicoUtilTest
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
 			"    \"streetAddress\" : \"Mayor\",\r\n" + 
 			"    \"postalCode\" : \"28012\",\r\n" + 
-			"    \"barrio\" : \"CUATRO CAMINOS\",\r\n" + 
-			"    \"distrito\" : \"TETUAN\",\r\n" + 
+			"    \"barrioId\" : \"CUATRO CAMINOS\",\r\n" + 
+			"    \"distritoId\" : \"TETUAN\",\r\n" + 
 			"    \"latitud\" : 40.41677540,\r\n" + 
 			"    \"longitud\" : -3.70379020,\r\n" + 
 			"    \"email\" : \"info@histohuellas.es\",\r\n" + 
@@ -70,7 +70,8 @@ public class PuntoInteresTuristicoUtilTest
 			"    \"image\" : \"http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/histohuellas_5.jpg\",\r\n" + 
 			"    \"description\" : \"<p><strong>Compuesta por un grupo de licenciados en Historia e Historia del Arte, especializados en docencia y gestión del patrimonio cultural y con experiencia en el sector turístico, esta empresa ofrece a los ciudadanos y turistas numerosas actividades histórico&nbsp; - culturales con las que dar a conocer el importante patrimonio artístico y cultural de Madrid.</strong></p><p>Entre sus propuestas se encuentran excursiones para colegios, compuestas de visitas, gymkanas y entradas a museos; visitas privadas exteriores o en museos y gymkanas culturales; y actividades culturales para empresas. Además, todos los fines de semana organizan visitas guiadas en grupos abiertos, para las que es preciso reservar entrada en su página web.</p>\",\r\n" + 
 			"    \"xETRS89\" : 440291.26773,\r\n" + 
-			"    \"yETRS89\" : 4474254.64478\r\n" + 
+			"    \"yETRS89\" : 4474254.64478,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

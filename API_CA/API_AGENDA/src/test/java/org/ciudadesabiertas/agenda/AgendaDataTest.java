@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.agenda;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -143,7 +143,7 @@ public class AgendaDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -158,7 +158,7 @@ public class AgendaDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
@@ -362,7 +362,18 @@ public class AgendaDataTest
 	}
 	
 
-	
+	@Test
+	public void test_Busqueda_equipamiento_id() throws Exception
+	{
+		//Incluimos control para que no de como resultado el total de campos
+		String value = "EQ0002";
+
+		String paramField = "equipamientoId";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 5);
+	}
 
 	
 	

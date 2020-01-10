@@ -17,6 +17,7 @@ Contenido:
      - Datos Generales asociados a la API
      - Activación JNDI
      - Personalización
+     - Encoding (Tests)
 
 
 ## Requerimientos
@@ -25,6 +26,7 @@ Contenido:
   - Git
   - Maven
   - Sistema de relacional de BBDD: Oracle, SQLServer y MySQL
+  - UTF-8 como encodig predefinido.
 
 ## Primeros pasos
 
@@ -134,6 +136,8 @@ peticiones.maximas.segundo.identificadas=
 
 nodo.pattern=
 
+claves.foraneas=
+
 https=
 
 tokenTime=
@@ -163,6 +167,13 @@ db.validationQuery=
 hibernate.show_sql=
 hibernate.format_sql=
 hibernate.use_sql_comments=
+rsql.log.active=
+
+
+solr.coreURL=
+solr.timeout=
+solr.username=
+solr.password=
 ```
 
 A continuación se muestra una configuración básica utilizando Oracle comentando cada parámetro:
@@ -186,6 +197,10 @@ peticiones.maximas.segundo.identificadas=25
 
 #Nodo Patron para Id Estadisticas
 nodo.pattern=A
+
+#vble para el control de Foreign KEY en la aplicación si no se configura su valor es activo (true)
+#si su valor fuese false, indicaria que no se tendran encuenta las Foreign key de los conjuntos de datos.
+claves.foraneas=true
 
 #Https mode (on/off) (en producción SIEMPRE on con https!!!!) 
 https=off
@@ -236,6 +251,17 @@ hibernate.show_sql=false
 hibernate.format_sql=true
 #posibles valores true o false permite que se puedan añadir comentarios a las sentencias de SQL mediante programación
 hibernate.use_sql_comments=true
+#RSQL ON / OFF LOG para el paquete de RSQL
+rsql.log.active=off
+
+#Configuración para el modulo de Busqueda indexada (comentar si no se utiliza)
+#dirección del indice (core) de búsqueda indexada
+solr.coreURL=http://127.0.0.1:8983/solr/ciudadesAbiertas
+#timeout en milisegundos (10 segundos=10000)
+solr.timeout=10000
+#security
+solr.username=localidata
+solr.password=Localidat@39
 
 #Control para el listado de peticiones a requerir identificación, este control debe realizares por 
 #modulo y no se incluye en el generico (config.properties)
@@ -380,6 +406,8 @@ mvn package -P subvencion,equipamiento -DskipTests
 
 ### Tests de integración
 Durante la generación del desplegable, se lanzan diversos test para validar el correcto funcionamiento de la aplicación. Para que estos test sean satisfactorios es necesario que la configuración de la aplicación sea correcta. Para ello lo mejor es configurar el fichero: \API_CA\API_WEB\src\main\resources\config.properties tal y como se ha visto en la sección "Despliegue en desarrollo"
+
+Y es necesario revisar el apartado encoding de este documento, para configurar el mismo a UTF-8.
 
 ### Diferentes conexiones por cada conjunto de datos
 
@@ -810,6 +838,11 @@ La aplicación dispone de unas plantillas básicas que se utilizan para cada uno
 
 **Nota**: Como anteriormente se describió en los parámetros de configuración la API REST Ciudades Abiertas,  esta permite la externalización de estas plantillas mediante la configuración del parámetro **path.template.html** 
 
+## Encoding (Test)
+Fijar en la consola antes de ejecutar las instruciones de maven el siguiente comando:
+**set JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8**
+
+Para que cuando realice la ejecución de los Test previa a la instalación de la aplicación, estos se ejecuten con **encodig = UTF-8**
 
 
 # Autores

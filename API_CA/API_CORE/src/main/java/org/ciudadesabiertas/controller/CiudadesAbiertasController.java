@@ -18,6 +18,7 @@ package org.ciudadesabiertas.controller;
 
 import java.util.ArrayList;
 
+import org.ciudadesabiertas.exception.NotFoundException;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.slf4j.Logger;
@@ -75,5 +76,24 @@ public interface CiudadesAbiertasController
 		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("Wrong request:"+ex.getMessage(),HttpStatus.NOT_ACCEPTABLE.value()),HttpStatus.NOT_ACCEPTABLE);
 		return responseEntity;
 	}
+	
+	@ExceptionHandler(value 
+		      = { java.lang.ClassCastException.class })
+	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+	default @ResponseBody ResponseEntity<?> notFormatValid(Exception ex) {
+		log.error("[notFormatValid][ERROR:"+ex.getMessage()+"]");
+		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("Wrong request:"+ex.getMessage(),HttpStatus.NOT_ACCEPTABLE.value()),HttpStatus.NOT_ACCEPTABLE);
+		return responseEntity;
+	}
+	
+	
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	default @ResponseBody ResponseEntity<?> handleNotFoundException(Exception ex) {
+		log.error("[handleNotFoundException][ERROR:"+ex.getMessage()+"]");
+		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("NOT FOUND",HttpStatus.NOT_FOUND.value()),HttpStatus.NOT_FOUND);
+		return responseEntity;
+	}
+	
 
 }

@@ -27,6 +27,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -50,21 +52,24 @@ import org.springframework.web.context.WebApplicationContext;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WebTest {
 	
-	
 	@Autowired
 	private WebApplicationContext wac;
-
-        
+       
     private MockMvc mockMvc;
     
     @Before
     public void setup() throws Exception {
-
-    	
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-       
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();       
     }
 
+
+	
+    private static final Logger log = LoggerFactory.getLogger(WebTest.class);
+	
+    
+    //Constantes que se utilizan para los tests de datos
+    private static final String DIMENSION_ID = "{dimensionId}";	
+    
     @Test
     public void test_List_URIs_200() throws Exception {
     	
@@ -73,23 +78,27 @@ public class WebTest {
     	
     	if (StartVariables.listURIs.size()>0)
     	{
-    	    	
+    	    
 	    	for (String URL:StartVariables.listURIs)
-	    	{    		
-	    	    int status = this.mockMvc.perform(MockMvcRequestBuilders.get(URL+".html")).andReturn().getResponse().getStatus();    		
+	    	{
+	    		URL=URL.replace(DIMENSION_ID,"");
+	    		
+	    	    int status = this.mockMvc.perform(MockMvcRequestBuilders.get(URL+".html")).andReturn().getResponse().getStatus();
+	    	    if (status!=200)
+	    	    {
+	    	    	log.error(status+" "+URL);
+	    	    }
 	    		responseStatus.add(status);
 	    	}
 	    	
 	    	boolean checkAll=true;
 	    	for (Integer i:responseStatus)
-	    	{
-	    		
+	    	{	
 	    		if (i.intValue()!=200)
 	    		{
 	    			checkAll=false;
 	    			break;
-	    		}
-	    			
+	    		}	
 	    	}
 	    	
 	    	assertTrue(checkAll);

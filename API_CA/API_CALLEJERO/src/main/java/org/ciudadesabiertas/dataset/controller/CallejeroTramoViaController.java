@@ -75,21 +75,21 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="CallejeroTramoVia",description = "Conjunto de operaciones sobre tramos del conjunto de datos Callejero", tags= {"Callejero - Tramos"})
+@Api(value="CallejeroTramo",description = "Conjunto de operaciones sobre tramos del conjunto de datos Callejero", tags= {"Callejero - Tramo"})
 public class CallejeroTramoViaController extends GenericController implements CiudadesAbiertasController
 {	
 
-	public static final String LIST = "/callejero/tramoVia";
+	public static final String LIST = "/callejero/tramo";
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = "/callejero/tramoVia/{id}";
+	public static final String RECORD = "/callejero/tramo/{id}";
 	
-	public static final String TRANSFORM = "/callejero/tramoVia/transform";
+	public static final String TRANSFORM = "/callejero/tramo/transform";
 	
-	public static final String ADD = "/callejero/tramoVia";
-	public static final String UPDATE = "/callejero/tramoVia/{id}";
-	public static final String DELETE = "/callejero/tramoVia/{id}";
+	public static final String ADD = "/callejero/tramo";
+	public static final String UPDATE = "/callejero/tramo/{id}";
+	public static final String DELETE = "/callejero/tramo/{id}";
 	
 	public static final String MODEL_VIEW_LIST = "callejero/tramoViaList";
 	public static final String MODEL_VIEW_ID = "callejero/tramoViaId";
@@ -100,13 +100,13 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	
 	//Carga por defecto de las peticiones
 	static {
-		listRequestType.add(new RequestType("TRAMOVIA_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("TRAMOVIA_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("TRAMOVIA_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TRAMO_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TRAMO_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TRAMO_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
 		
-		listRequestType.add(new RequestType("TRAMOVIA_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("TRAMOVIA_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("TRAMOVIA_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TRAMO_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TRAMO_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TRAMO_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
 		
 	}
 	
@@ -156,7 +156,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId)
 			
 	{
@@ -330,7 +330,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new CallejeroTramoVia(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		return record(request, id, new CallejeroTramoVia(), new CallejeroTramoViaResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
 
 	}
 	

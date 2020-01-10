@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.dataset;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -131,7 +131,7 @@ public class CalidadAireEstacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -146,7 +146,7 @@ public class CalidadAireEstacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	
@@ -296,5 +296,17 @@ public class CalidadAireEstacionDataTest
 		assertTrue(records.size() == 1);	
 	}
 		
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 
 }

@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.jena.atlas.logging.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -33,17 +34,20 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.CustomId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.HtmlContent;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Interno;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsPropiedadSemanticaCentro;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RangeSKOS;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfDinamico;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfList;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfType;
 import org.ciudadesAbiertas.rdfGeneratorZ.geo.Geometria;
 import org.ciudadesAbiertas.rdfGeneratorZ.geo.LineString;
@@ -57,8 +61,6 @@ import org.springframework.util.StringUtils;
 
 
 public class TransformadorBasicoRdf {
-		
-	
 	
 	private static final Logger logger = LoggerFactory.getLogger(TransformadorBasicoRdf.class);
 	private Html2MarkDown transformadorMarkDown = new Html2MarkDown();
@@ -123,7 +125,7 @@ public class TransformadorBasicoRdf {
 						rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 	
 					Property initResProp;
-					if (rdf.startsWith("http://"))
+					if (startsWithHttp(rdf))
 						initResProp = model.createProperty(rdf);
 					else
 						initResProp = model.createProperty(uriBase+ rdf);
@@ -135,7 +137,7 @@ public class TransformadorBasicoRdf {
 							rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 		
 						Property initResProp;
-						if (rdf.startsWith("http://"))
+						if (startsWithHttp(rdf))
 							initResProp = model.createProperty(rdf);
 						else
 							initResProp = model.createProperty(uriBase+ rdf);
@@ -194,7 +196,7 @@ public class TransformadorBasicoRdf {
 										rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 					
 									Property initResProp;
-									if (rdf.startsWith("http://"))
+									if (startsWithHttp(rdf))
 										initResProp = model.createProperty(rdf);
 									else
 										initResProp = model.createProperty(uriBase+ rdf);
@@ -206,7 +208,7 @@ public class TransformadorBasicoRdf {
 											rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 						
 										Property initResProp;
-										if (rdf.startsWith("http://"))
+										if (startsWithHttp(rdf))
 											initResProp = model.createProperty(rdf);
 										else
 											initResProp = model.createProperty(uriBase+ rdf);
@@ -341,6 +343,15 @@ public class TransformadorBasicoRdf {
 						
 		}
 	}
+
+	private boolean startsWithHttp(String rdf) {
+		boolean check=false;
+		if (rdf!=null)
+		{
+			check=rdf.startsWith("http://")||(rdf.startsWith("https://"));
+		}
+		return check;
+	}
 	
 	public boolean transformarObjeto(StringBuilder respuesta, Object retorno,
 			Peticion peticion, String prefijo, Resource resource)
@@ -398,7 +409,7 @@ public class TransformadorBasicoRdf {
 										rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 					
 									Property initResProp;
-									if (rdf.startsWith("http://"))
+									if (startsWithHttp(rdf))
 										initResProp = model.createProperty(rdf);
 									else
 										initResProp = model.createProperty(uriBase+ rdf);
@@ -410,7 +421,7 @@ public class TransformadorBasicoRdf {
 											rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 						
 										Property initResProp;
-										if (rdf.startsWith("http://"))
+										if (startsWithHttp(rdf))
 											initResProp = model.createProperty(rdf);
 										else
 											initResProp = model.createProperty(uriBase+ rdf);
@@ -625,7 +636,14 @@ public class TransformadorBasicoRdf {
 								{
 									model.add(blankNodeResource, RDF.type, model.createResource(tipo));
 								}
-								model.add(blankNodeResource, entityProp, valor.toString());
+								if (typeURI.equals(""))
+								{
+									model.add(blankNodeResource, entityProp, valor.toString());
+								}
+								else 
+								{									
+									checkTypeURIandFormat(model, blankNodeResource, valor, typeURI, entityProp);
+								}
 							}							
 							else {
 							
@@ -673,7 +691,6 @@ public class TransformadorBasicoRdf {
 				}
 			}else if (transformarCampo && field.isAnnotationPresent(RdfDinamico.class)) {							
 								
-				
 				String inicioURI=obtenerInicioURIAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
 				
 				if (inicioURI.startsWith("/"))
@@ -681,11 +698,88 @@ public class TransformadorBasicoRdf {
 					inicioURI=uriBase+context+inicioURI;
 				}
 				String finURI=obtenerFinURIKeyAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
-				String propiedad=obtenerPropiedadAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));																		
+				String propiedad=obtenerPropiedadAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
+				String rdfType=obtenerRdfTypeAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));
 				String valorURI=mapaValores.get(finURI);
-						
+				if (valorURI==null)
+				{
+					valorURI="";
+				}
 			
 				model.add(resource, model.createProperty(propiedad), model.createResource(inicioURI+valorURI));
+				
+				if ((rdfType!=null)&&(!rdfType.equals("")))
+				{
+					Object valor = Funciones.retrieveObjectValue(retorno, field.getName());
+					model.add(model.createResource(valor.toString()),RDF.type,model.createResource(rdfType));
+				}
+				
+				output = true;
+			}else if (transformarCampo && field.isAnnotationPresent(RangeSKOS.class)) {
+				
+				Object valor = Funciones.retrieveObjectValue(retorno, field.getName());
+				
+				if (valor!=null)
+				{
+					Resource blankNodeRestriction=model.createResource();				
+					blankNodeRestriction.addProperty(RDF.type,model.createResource(Context.OWL_URI+"Restriction"));
+					blankNodeRestriction.addProperty(model.createProperty(Context.OWL_URI+"onProperty"),model.createResource(Context.SKOS_URI+"inScheme"));
+					blankNodeRestriction.addProperty(model.createProperty(Context.OWL_URI+"hasValue"),model.createResource(valor.toString()));				
+								
+					model.add(resource, model.createProperty(Context.RDFS_URI+"range"), blankNodeRestriction);
+				}
+				model.add(resource, model.createProperty(Context.RDFS_URI+"range"), model.createResource(Context.SKOS_URI+"Concept"));
+				
+				
+			}else if (transformarCampo && field.isAnnotationPresent(RdfNode.class)) {							
+				
+				RdfNode annotation = field.getAnnotation(RdfNode.class);
+				
+				String inicioURI=annotation.inicioURI();
+				String valorURI=annotation.valorURI();
+				String finURI=annotation.finURI();
+				
+				String propiedad=annotation.propiedad();
+				
+				String nodoType=annotation.nodoType();
+				String nodoPropiedad=annotation.nodoPropiedad();
+				String nodoPropiedadTipo=annotation.nodoPropiedadTipo();
+				
+				Object valor = Funciones.retrieveObjectValue(retorno, field.getName());
+				
+				if (valorURI==null)
+				{
+					valorURI="";
+				}
+				
+				if (finURI==null)
+				{
+					finURI="";
+				}
+				
+				if (inicioURI.startsWith("/"))
+				{
+					inicioURI=uriBase+context+inicioURI;
+				}
+				
+				valorURI=mapaValores.get(valorURI);
+				
+				String theURI=inicioURI+valorURI+finURI;
+								
+				model.add(resource, model.createProperty(propiedad), model.createResource(theURI));
+				
+				if (nodoType!=null)
+				{					
+					model.add(model.createResource(theURI),RDF.type,model.createResource(nodoType));
+				}
+				
+				if ((nodoPropiedadTipo!=null)&&(!nodoPropiedadTipo.equals("")))
+				{				
+					model.add(model.createResource(theURI),model.createProperty(nodoPropiedad),valor.toString());
+				}else {
+					model.add(model.createResource(theURI),model.createProperty(nodoPropiedad), model.createTypedLiteral(valor.toString(),nodoPropiedadTipo));
+				}
+				
 				
 				output = true;
 			}else if (transformarCampo && field.isAnnotationPresent(RdfList.class)) {
@@ -698,11 +792,17 @@ public class TransformadorBasicoRdf {
 				
 				for (String actualValue:valueList)
 				{
+					boolean actualValueURI=false;
+					
 					actualValue=actualValue.trim();
 					
 					if (actualValue.startsWith("/"))
 					{
 						actualValue=uriBase+context+actualValue;
+						actualValueURI=true;
+					}else if (actualValue.startsWith("http"))
+					{
+						actualValueURI=true;
 					}
 				
 					if( field.isAnnotationPresent(RdfBlankNode.class) )
@@ -713,10 +813,24 @@ public class TransformadorBasicoRdf {
 						
 						model.add(resource, model.createProperty(propiedad), blankNodeResource);
 						
-						model.add(blankNodeResource, model.createProperty(propiedadNodoEnBlanco), actualValue);
+						if (actualValueURI)
+						{
+							model.add(blankNodeResource, model.createProperty(propiedadNodoEnBlanco),  model.createResource(actualValue));
+						}
+						else
+						{						
+							model.add(blankNodeResource, model.createProperty(propiedadNodoEnBlanco), actualValue);
+						}
 					}
 					else {
-						model.add(resource, model.createProperty(propiedad), actualValue);
+						if (actualValueURI)
+						{
+							model.add(resource, model.createProperty(propiedad), model.createResource(actualValue));
+						}	
+						else 
+						{
+							model.add(resource, model.createProperty(propiedad), actualValue);
+						}
 					}
 					
 				}
@@ -983,7 +1097,7 @@ public class TransformadorBasicoRdf {
 				rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 
 			Property initResProp;
-			if (rdf.startsWith("http://"))
+			if (startsWithHttp(rdf))
 				initResProp = model.createProperty(rdf);
 			else
 				initResProp = model.createProperty(uriBase+ rdf);
@@ -995,7 +1109,7 @@ public class TransformadorBasicoRdf {
 					rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 
 				Property initResProp;
-				if (rdf.startsWith("http://"))
+				if (startsWithHttp(rdf))
 					initResProp = model.createProperty(rdf);
 				else
 					initResProp = model.createProperty(uriBase+ rdf);
@@ -1033,18 +1147,27 @@ public class TransformadorBasicoRdf {
 		for (Field fld : retorno.getClass().getDeclaredFields()) {
 			if (fld.getName().equals("id") || (fld.isAnnotationPresent(Id.class))){
 				
-				Object val = Funciones.retrieveObjectValue(retorno, fld.getName());
-				if (val != null) {
-					id = val.toString();
-					
-					if (id.contains(" ") || id.contains(",") || (id.contains ("[") || id.contains ("]"))){
-						String prefijo = retorno.getClass().getAnnotation(Rdf.class).prefijo();
-						id = getComplexId(id,raiz,prefijo);	
-						complexId = true;
+			    if (fld.isAnnotationPresent(CustomId.class))
+			    {
+			    	String realId=obtenerPropiedadID(fld.getAnnotation(CustomId.class));
+			    	Object val = Funciones.retrieveObjectValue(retorno, realId);
+			    	id=val.toString();
+			    }
+			    else 
+			    {
+					Object val = Funciones.retrieveObjectValue(retorno, fld.getName());
+					if (val != null) {
+						id = val.toString();
+						
+						if (id.contains(" ") || id.contains(",") || (id.contains ("[") || id.contains ("]"))){
+							String prefijo = retorno.getClass().getAnnotation(Rdf.class).prefijo();
+							id = getComplexId(id,raiz,prefijo);	
+							complexId = true;
+						}
+					} else {
+						id = Funciones.generarHash(retorno.toString());
 					}
-				} else {
-					id = Funciones.generarHash(retorno.toString());
-				}
+			    }
 			}
 		}
 		if (complexId){
@@ -1057,7 +1180,12 @@ public class TransformadorBasicoRdf {
 			//JCBH Cambio para control por interfaz para PathIdComplex			
 			if (retorno instanceof PathIdComplex ) {
 				pathIdFromObject=((PathIdComplex) retorno).obtainURLPath();
-				path = path + pathIdFromObject;
+				if (pathIdFromObject.startsWith("//"))
+				{
+					path = path + pathIdFromObject;
+				}else {
+					path = pathIdFromObject;
+				}
 				return path;
 			}
 			//Fin PathIdComplex
@@ -1205,11 +1333,17 @@ public class TransformadorBasicoRdf {
 		return ann.propiedad();
 	}
 	
+	private String obtenerRdfTypeAnotacionDinamicRDF(RdfDinamico ann) {
+		return ann.rdfType();
+	}
+	
 	private String obtenerPropiedadAnotacionRdfList(RdfList ann) {
 		return ann.propiedad();
 	}
 	
-	
+	private String obtenerPropiedadID(CustomId ann) {
+		return ann.id();
+	}
 		
 	private String obtenerTipoAnotacionExternalRDF(RdfExternalURI ann) {
 		return ann.tipo();

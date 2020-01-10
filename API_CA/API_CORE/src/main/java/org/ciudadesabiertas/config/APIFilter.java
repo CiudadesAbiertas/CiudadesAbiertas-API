@@ -122,6 +122,7 @@ public class APIFilter implements Filter
 			String extension=Util.getExtensionUri(theURL);
 			
 			if (!Util.isValidExtensionOfUri(extension) /* & validar */) {
+				log.info("Extension not allowed: "+extension+" in "+Constants.FORMATOS_EXTENSIONES);
 				sendBadRequestError(extension, request, response);
 				return;
 			}

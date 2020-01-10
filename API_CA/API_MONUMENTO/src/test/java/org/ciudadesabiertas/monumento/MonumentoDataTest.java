@@ -179,29 +179,29 @@ public class MonumentoDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 			
-		String [] paramField= {"barrio",MonumentoConstants.CATEGORY_FIELD};
+		String [] paramField= {"barrioId",MonumentoConstants.CATEGORY_FIELD};
 
 		//CATEGORY
-		String [] value = {"RECOLETOS",MonumentoConstants.CATEGORY};
+		String [] value = {"280796062",MonumentoConstants.CATEGORY};
 
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 4);
+		assertTrue(records.size() == 86);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{			
 		
-		String [] paramField= {"distrito",MonumentoConstants.CATEGORY_FIELD};
+		String [] paramField= {"distritoId",MonumentoConstants.CATEGORY_FIELD};
 
 		//CATEGORY
-		String [] value = {"SALAMANCA",MonumentoConstants.CATEGORY};
+		String [] value = {"28079606",MonumentoConstants.CATEGORY};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 8);
+		assertTrue(total == 86);
 	}
 	
 	
@@ -434,7 +434,18 @@ public class MonumentoDataTest
 	}	
 	
 	
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 	
 	

@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.aparcamiento;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -150,7 +150,7 @@ public class AparcamientoDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -165,16 +165,16 @@ public class AparcamientoDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
 	public void test_Busqueda_provincia() throws Exception	
 	{
 		
-		String [] paramField= {"provincia","id"};
+		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"Madrid","*EQAP002*"};
+		String [] value = {"28","*EQAP002*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -185,9 +185,9 @@ public class AparcamientoDataTest
 	public void test_Busqueda_autonomia() throws Exception
 	{
 
-		String [] paramField= {"autonomia","id"};
+		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"Comunidad de Madrid","*EQAP0005*"};
+		String [] value = {"13","*EQAP0005*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -198,7 +198,7 @@ public class AparcamientoDataTest
 	public void test_Busqueda_pais() throws Exception
 	{	
 		
-		String [] paramField= {"pais","id"};
+		String [] paramField= {"paisId","id"};
 
 		String [] value = {"España","*EQAP001*"};
 
@@ -237,26 +237,26 @@ public class AparcamientoDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 
-		String value = "JUSTICIA";
+		String value = "280796062";
 		
-		String paramField="barrio";
+		String paramField="barrioId";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 4);
+		assertTrue(records.size() == 56);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{
 		
-		String  paramField= "distrito";
+		String  paramField= "distritoId";
 
-		String  value = "CENTRO";
+		String  value = "28079606";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 16);
+		assertTrue(records.size() == 56);
 	}
 	
 	@Test
@@ -446,11 +446,11 @@ public class AparcamientoDataTest
 		
 		String paramField="field";
 		
-		String value = "barrio";
+		String value = "barrioId";
 
 		long total = TestUtils.extractTotalDistinct(AparcamientoController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
-		assertTrue(total == 29);
+		assertTrue(total == 1);
 	}
 	
 	
@@ -470,5 +470,16 @@ public class AparcamientoDataTest
 	}
 	
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
 		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 }

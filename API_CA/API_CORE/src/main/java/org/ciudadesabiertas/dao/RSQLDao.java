@@ -25,6 +25,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
@@ -96,13 +98,21 @@ public class RSQLDao  {
     		Node rootNode;
     		CriteriaQuery<T> query;
 
-    		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();    		
+    		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();    	
     		
     		rootNode = new RSQLParser(operators).parse(queryString);
     		    		  		
-    		query = rootNode.accept(visitor, entityManager);          
+    		query = rootNode.accept(visitor, entityManager);       
+    		/*
+    		TypedQuery<T> findAllBooks = entityManager.createQuery(query);
     		
+    		String queryString2 = findAllBooks.unwrap(org.hibernate.Query.class).getQueryString();
     		
+    		System.out.println(queryString2);
+    		
+    	    //query.where("lower(generatedAlias0.description) like :param0");
+    		*/
+    	       		
     		
     		return query;
     	}

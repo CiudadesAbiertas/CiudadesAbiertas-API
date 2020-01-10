@@ -26,7 +26,6 @@ import javax.servlet.ServletContext;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.CalidadAireEstacionController;
-import org.ciudadesabiertas.dataset.controller.CalidadAireObservacionController;
 import org.ciudadesabiertas.dataset.controller.CalidadAireSensorController;
 import org.ciudadesabiertas.dataset.model.CalidadAireSensor;
 import org.ciudadesabiertas.dataset.service.CalidadAireSensorService;
@@ -132,25 +131,7 @@ public class CalidadAireSensorTest {
         	.andExpect(MockMvcResultMatchers.status().isCreated());
     }
     
-    @Test    
-    public void test04_Add_WRONG_SENSOR_409() throws Exception {
-  
-    	String item = "{"
-    			+"\"id\" : \"TEMPSTAT04\","
-    			+"\"isHostedBy\" : \"STATKO\","
-    			+"\"observesTitle\" : \"Elemento para tests\","
-    			+"\"observesId\" :  \"elementTests\""    			
-    			+"}";
-    	    	    	
-    	item = new String (item.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.post(CalidadAireSensorController.ADD)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(item))	
-        	
-        	.andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+
     
     @Test    
     public void test05_Add_NO_OK_400() throws Exception {
@@ -203,24 +184,7 @@ public class CalidadAireSensorTest {
 	        .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test    
-    public void test07_Update_WRONG_SENSOR_409() throws Exception {
-    	String item = "{"
-    			+"\"id\" : \"TEMPSTAT04\","
-    			+"\"isHostedBy\" : \"STATKO\","
-    			+"\"observesTitle\" : \"Elemento para tests 2\","
-    			+"\"observesId\" : \"elementTests\""    			
-    			+"}";
-    	
-    	String agendaUPDATE = new String (item.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(CalidadAireSensorController.CONTEXTO+"/estacion/"+"STAT04"+"/sensor/"+"elementTests")
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(agendaUPDATE))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+
     
     @Test    
     public void test08_Update_NO_OK_400() throws Exception {
@@ -416,4 +380,11 @@ public class CalidadAireSensorTest {
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,CalidadAireSensorController.LIST,CalidadAireEstacionController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireSensorController.CONTEXTO+"/estacion/"+"STAT04"+"/sensor/"+"dioxidoDeAzufre", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
+    
 }

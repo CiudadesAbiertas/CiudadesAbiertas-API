@@ -186,7 +186,7 @@ public class TerrazaLocalComercialController extends GenericController implement
 	@RequestMapping(value = { RECORD + Constants.EXT_HTML,
 			VERSION_1 + RECORD + Constants.EXT_HTML }, method = RequestMethod.GET)
 	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
 		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
@@ -232,7 +232,7 @@ public class TerrazaLocalComercialController extends GenericController implement
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest) {
 		log.info("[listHead][" + LIST + "]");
 		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
@@ -321,9 +321,13 @@ public class TerrazaLocalComercialController extends GenericController implement
 
 				} else {
 
-					LocalComercialSearch localSearch = new LocalComercialSearch();
-					localSearch.setTieneTerraza(terrazaComercial.getId());
-					long rowcount = localComercialService.rowcount(getKey(), LocalComercial.class, localSearch);
+					//CMG Control para ver si estan activas las FK
+					long rowcount = 0;
+					if (activeFK) {
+						LocalComercialSearch localSearch = new LocalComercialSearch();
+						localSearch.setTieneTerraza(terrazaComercial.getId());
+						rowcount = localComercialService.rowcount(getKey(), LocalComercial.class, localSearch);
+					}
 					if (rowcount == 0) {
 						service.delete(getKey(), terrazaComercial);
 						List<Object> records = new ArrayList<Object>();
@@ -381,7 +385,7 @@ public class TerrazaLocalComercialController extends GenericController implement
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Terraza(), NO_HAY_SRID, TerrazaLocalComercialController.class.getName(), RECORD, service,getKey());
+		return record(request, id, new Terraza(), new TerrazaLocalComercialResult(), NO_HAY_SRID, TerrazaLocalComercialController.class.getName(), RECORD, service,getKey());
 
 
 	}

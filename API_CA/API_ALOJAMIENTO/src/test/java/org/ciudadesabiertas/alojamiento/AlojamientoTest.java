@@ -497,4 +497,10 @@ public class AlojamientoTest {
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,AlojamientoController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(AlojamientoController.LIST+"/"+"ALJ0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
 }

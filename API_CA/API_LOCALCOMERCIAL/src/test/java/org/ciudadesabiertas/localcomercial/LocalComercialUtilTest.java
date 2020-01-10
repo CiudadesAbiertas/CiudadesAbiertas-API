@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class LocalComercialUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"270002391\",\r\n" + 
@@ -47,8 +47,8 @@ public class LocalComercialUtilTest
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
 			"    \"streetAddress\" : \"Calle Bravo Murillo Num 360\",\r\n" + 
 			"    \"postalCode\" : \"28039\",\r\n" + 
-			"    \"barrio\" : \"Castillejos\",\r\n" + 
-			"    \"distrito\" : \"Tetuan\",\r\n" + 
+			"    \"barrioId\" : \"Castillejos\",\r\n" + 
+			"    \"distritoId\" : \"Tetuan\",\r\n" + 
 			"    \"latitud\" : 40.46489928,\r\n" + 
 			"    \"longitud\" : -3.69355444,\r\n" + 
 			"    \"telephone\" : \"919999991\",\r\n" + 
@@ -65,7 +65,8 @@ public class LocalComercialUtilTest
 			"    \"tieneLicenciaApertura\" : \"270002391/106-2003-01539\",\r\n" + 
 			"    \"description\" : \"Descripcion OGAME : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book\",\r\n" + 
 			"    \"xETRS89\" : 441201.61000,\r\n" + 
-			"    \"yETRS89\" : 4479589.52999\r\n" + 
+			"    \"yETRS89\" : 4479589.52999,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

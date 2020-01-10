@@ -33,14 +33,14 @@ public class Context {
 	public static final String ESSRVC_URI = "http://vocab.linkeddata.es/datosabiertos/def/sector-publico/servicio#";
 	public static final String QB_URI = "http://purl.org/linked-data/cube#";
 	public static final String SKOS_URI = "http://www.w3.org/2004/02/skos/core#";
+	public static final String ESPAD_URI = "http://vocab.ciudadesabiertas.es/def/demografia/padron-municipal#";
 	public static final String ESPADMEDIDA_URI = "http://vocab.linkeddata.es/def/demografia/padron-municipal/medida#";	                                              
 	public static final String IAESTDIMENSION_URI = "https://opendata.aragon.es/def/iaest/dimension#";
 	public static final String SDMXDIMENSION_URI = "http://purl.org/linked-data/sdmx/2009/dimension#";
-	
-	
-	
-	
-	
+	public static final String SF_URI = "http://www.opengis.net/ont/sf#";
+	public static final String GEOSPARQL_URI = "http://www.opengis.net/ont/geosparql#";
+	public static final String ESAGM_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/agenda-municipal#";
+	public static final String OCDS_URI = "https://theybuyforyou.eu/ontology/ocds/";		
 	
 	
 	public static final String RDF = "rdf";
@@ -95,13 +95,12 @@ public class Context {
 	public static final String GEOCORE = "geo_core";
 	public static final String QB = "qb";
 	public static final String ESPADMEDIDA = "espad-medida";
+	public static final String ESPAD = "espad";
 	public static final String IAESTDIMENSION = "iaest-dimension";
 	public static final String SDMXTDIMENSION = "sdmx-dimension";
-	
-	
-	
-	
-	
+	public static final String SF = "sf";
+	public static final String ESAGM = "esagm";
+	public static final String OCDS = "ocds";
 	
 	
 	
@@ -120,7 +119,7 @@ public class Context {
         listado.put(XSD, new Context(XSD_URI, XSD));
         listado.put(ORG, new Context(ORG_URI, ORG));
         listado.put(MY, new Context("http://www.zaragoza.es/example/my#", MY));
-        listado.put(GEOSPARQL, new Context("http://www.opengis.net/ont/geosparql#", GEOSPARQL));
+        listado.put(GEOSPARQL, new Context(GEOSPARQL_URI, GEOSPARQL));
         listado.put(GRAPH, new Context("http://www.zaragoza.es/graph/default/", GRAPH));
         listado.put(ESCJR, new Context(ESCJR_URI,ESCJR));
         listado.put(ESADM, new Context(ESADM_URI,ESADM));
@@ -158,12 +157,13 @@ public class Context {
         listado.put(ESAIR, new Context(ESAIR_URI,ESAIR));
         listado.put(GEOCORE, new Context(GEOCORE_URI,GEOCORE));
         listado.put(QB, new Context(QB_URI,QB));
+        listado.put(ESPAD, new Context(ESPAD_URI,ESPAD));
         listado.put(ESPADMEDIDA, new Context(ESPADMEDIDA_URI,ESPADMEDIDA));
         listado.put(IAESTDIMENSION, new Context(IAESTDIMENSION_URI,IAESTDIMENSION));
         listado.put(SDMXTDIMENSION, new Context(SDMXDIMENSION_URI,SDMXTDIMENSION));
-        
-        
-        
+        listado.put(SF, new Context(SF_URI,SF));
+        listado.put(ESAGM, new Context(ESAGM_URI,ESAGM));
+        listado.put(OCDS, new Context(OCDS_URI,OCDS));
         
     }
 	

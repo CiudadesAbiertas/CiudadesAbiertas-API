@@ -29,14 +29,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.persistence.Transient;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
-
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -93,14 +93,12 @@ public class Agenda implements java.io.Serializable,RDFModel {
 	
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
 	private String municipioTitle;
 	
 	@CsvBindByPosition(position=18)	
@@ -153,29 +151,40 @@ public class Agenda implements java.io.Serializable,RDFModel {
 	private String equipamientoTitle;
 	
 	@CsvBindByPosition(position=13)
+	@CsvBindByName(column="equipamientoId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESEQUIP, propiedad = "equipamiento")
+	@RdfExternalURI(inicioURI="/equipamiento/equipamiento/",finURI="equipamientoId", urifyLevel = 1)
+	private String equipamientoId;
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.ESEQUIP_URI+"Equipamiento", propiedad=Context.ESEQUIP_URI+"equipamiento", nodoId="equipamiento")
+	private String equipamientoIdIsolated;
+	
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="lugarInscripcionTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"Place", propiedad=Context.SCHEMA_URI+"lugarInscripcion", nodoId="lugarInscripcion")
 	private String lugarInscripcionTitle;
 	
-	@CsvBindByPosition(position=14)
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="medioTransporteTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	@RdfBlankNode(tipo=Context.ESTRN_URI+"MedioTransporte", propiedad=Context.ESTRN_URI+"medioTransporte", nodoId="medioTransporte")
 	private String medioTransporteTitle;
 	
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="servicioMunicipalTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	@RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ORG_URI+"servicioMunicipal", nodoId="servicioMunicipal")
 	private String servicioMunicipalTitle;
 	
-	@CsvBindByPosition(position=16)
+	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGENDA, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
 	private Boolean accesible;
 	
-	@CsvBindByPosition(position=17)
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGENDA, propiedad = "tipoAccesibilidad")
 	private String tipoAccesibilidad;
@@ -201,6 +210,7 @@ public class Agenda implements java.io.Serializable,RDFModel {
 		this.ageRange = obj.ageRange;
 		this.maximoParticipantes = obj.maximoParticipantes;
 		this.equipamientoTitle = obj.equipamientoTitle;
+		this.equipamientoId = obj.equipamientoId;
 		this.lugarInscripcionTitle = obj.lugarInscripcionTitle;
 		this.medioTransporteTitle = obj.medioTransporteTitle;
 		this.servicioMunicipalTitle = obj.servicioMunicipalTitle;
@@ -337,6 +347,15 @@ public class Agenda implements java.io.Serializable,RDFModel {
 	public void setEquipamientoTitle(String equipamientoTitle) {
 		this.equipamientoTitle = equipamientoTitle;
 	}
+	
+	@Column(name = "equipamiento_id", length = 20)
+	public String getEquipamientoId() {
+		return this.equipamientoId;
+	}
+
+	public void setEquipamientoId(String equipamientoId) {
+		this.equipamientoId = equipamientoId;
+	}
 
 	@Column(name = "lugar_inscripcion_title", length = 200)
 	public String getLugarInscripcionTitle() {
@@ -383,9 +402,17 @@ public class Agenda implements java.io.Serializable,RDFModel {
 		this.tipoAccesibilidad = tipoAccesibilidad;
 	}
 	
-	
-	
-	
+	@Transient
+	public String getEquipamientoIdIsolated() {
+		return equipamientoIdIsolated;
+	}
+
+	public void setEquipamientoIdIsolated(String equipamientoIdIsolated) {
+		this.equipamientoIdIsolated = equipamientoIdIsolated;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Agenda [ikey=" + ikey + ", id=" + id + ", title=" + title 
@@ -393,7 +420,7 @@ public class Agenda implements java.io.Serializable,RDFModel {
 				+ description + ", image=" + image + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
 				+ ", tipoEvento=" + tipoEvento + ", tipoPublico=" + tipoPublico + ", ageRange=" + ageRange
 				+ ", maximoParticipantes=" + maximoParticipantes + ", equipamientoTitle=" + equipamientoTitle
-				+ ", lugarInscripcionTitle=" + lugarInscripcionTitle + ", medioTransporteTitle="
+				+ ", equipamientoId=" + equipamientoId + ", lugarInscripcionTitle=" + lugarInscripcionTitle + ", medioTransporteTitle="
 				+ medioTransporteTitle + ", servicioMunicipalTitle=" + servicioMunicipalTitle + ", accesible="
 				+ accesible + ", tipoAccesibilidad=" + tipoAccesibilidad + "]";
 	}
@@ -482,6 +509,10 @@ public class Agenda implements java.io.Serializable,RDFModel {
 
 		if (attributesToSet.contains("equipamientoTitle")) {
 			this.equipamientoTitle = copia.equipamientoTitle;
+		}
+		
+		if (attributesToSet.contains("equipamientoId")) {
+			this.equipamientoId = copia.equipamientoId;
 		}
 
 		if (attributesToSet.contains("lugarInscripcionTitle")) {

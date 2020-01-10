@@ -159,32 +159,32 @@ public class AlojamientoDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_barrio() throws Exception
+	public void test_Busqueda_barrioId() throws Exception
 	{
 			
-		String [] paramField= {"barrio"};
+		String [] paramField= {"barrioId"};
 
 		
-		String [] value = {"CUATRO CAMINOS"};
+		String [] value = {"280796062"};
 
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 10);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{			
 		
-		String [] paramField= {"distrito"};
+		String [] paramField= {"distritoId"};
 
 		
-		String [] value = {"TETUAN"};
+		String [] value = {"28079606"};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 10);
 	}
 	
 	
@@ -429,6 +429,19 @@ public class AlojamientoDataTest
 		long total = TestUtils.extractTotalDistinct(AlojamientoController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
 		assertTrue(total == 626);
+	}
+	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(AlojamientoController.LIST, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
 	}
 	
 	

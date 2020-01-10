@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class OrganigramaUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"1\",\r\n" + 
@@ -66,7 +66,8 @@ public class OrganigramaUtilTest
 			"    \"url\" : \"http://www.zaragoza.es/sede/portal/organizacion/corporacion/luisa-broto\",\r\n" + 
 			"    \"image\" : \"https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/vicepte_2.jpg\",\r\n" +
 			"	 \"xETRS89\" : 676840.38000"+",\r\n" +
-		    " 	 \"yETRS89\" : 4613965.90000"+"\r\n" +
+		    " 	 \"yETRS89\" : 4613965.90000"+",\r\n" +
+		    "    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"     }";
 
 	@Test

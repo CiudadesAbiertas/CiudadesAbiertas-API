@@ -58,7 +58,6 @@ import org.springframework.web.context.WebApplicationContext;
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
  * @author Oscar Corcho (UPM, Localidata)
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { WebConfig.class })
@@ -123,13 +122,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"aulaambiental2@aytoalcobendas.org\","
@@ -171,13 +170,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"aulaambiental2@aytoalcobendas.org\","
@@ -206,13 +205,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
@@ -255,13 +254,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
@@ -361,13 +360,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28079\","
         	    +"\"municipioTitle\" : \"Madrid\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"CALLE BARCELO V 2\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
@@ -396,13 +395,13 @@ public class InstalacionDepTest {
         	    +"\"tipoEquipamiento\" : \""+InstalacionDepConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provinciaId\" : \"Madrid\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
@@ -483,4 +482,11 @@ public class InstalacionDepTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
 
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(InstalacionDepController.LIST+"/"+"EQID0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
+    
+    
 }

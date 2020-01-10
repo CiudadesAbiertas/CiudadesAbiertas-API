@@ -35,9 +35,9 @@ import org.ciudadesabiertas.dataset.utils.LocalComercialResult;
 import org.ciudadesabiertas.dataset.utils.LocalComercialSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ExceptionUtil;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
@@ -180,7 +180,9 @@ public class LocalComercialController extends GenericController implements Ciuda
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new LocalComercial(), new LocalComercialResult(), availableFields, getKey(),service);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new LocalComercial(), new LocalComercialResult(), availableFields, getKey(),service);
+		
+		return integraCallejero(list,request);
 	}
 
 	@ApiIgnore	
@@ -198,7 +200,7 @@ public class LocalComercialController extends GenericController implements Ciuda
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 
 		log.info("[listHTML][" + LIST + ".html]");
 
@@ -221,7 +223,7 @@ public class LocalComercialController extends GenericController implements Ciuda
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
@@ -244,7 +246,7 @@ public class LocalComercialController extends GenericController implements Ciuda
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -255,8 +257,11 @@ public class LocalComercialController extends GenericController implements Ciuda
 		
 		RSQLVisitor<CriteriaQuery<LocalComercial>, EntityManager> visitor = new JpaCriteriaQueryVisitor<LocalComercial>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new LocalComercial(), new LocalComercialResult(), 
+		ResponseEntity list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new LocalComercial(), new LocalComercialResult(), 
 					 availableFields, getKey(), visitor,service);
+		
+		
+		return integraCallejero(list,request);
 	}	
 	
 
@@ -274,7 +279,7 @@ public class LocalComercialController extends GenericController implements Ciuda
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -550,15 +555,16 @@ public class LocalComercialController extends GenericController implements Ciuda
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new LocalComercial(), srId, LocalComercialController.class.getName(), RECORD, service,getKey());
-
+		ResponseEntity record = record(request, id, new LocalComercial(),new LocalComercialResult(), srId, LocalComercialController.class.getName(), RECORD, service,getKey());
+	
+		return integraCallejero(record,request);
 	}
 	
 	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -570,7 +576,7 @@ public class LocalComercialController extends GenericController implements Ciuda
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -630,31 +636,35 @@ public class LocalComercialController extends GenericController implements Ciuda
 	private List<String> checkClavesExternas(LocalComercial localComercial)
 	{
 		List<String> errores=new ArrayList<String>();
-		//Chequeamos los identificadores que apuntan a otras tablas					
-		if (Util.validValue(localComercial.getAgrupacionComercial()))
-		{
-			AgrupacionComercial findById = agrupacionComercialService.findById(getKey(),AgrupacionComercial.class,localComercial.getAgrupacionComercial());
-			if (findById==null)
-			{
-				errores.add("AgrupacionComercial ID not exists in entity: "+localComercial.getAgrupacionComercial());
-			}
-		}
 		
-		if (Util.validValue(localComercial.getTieneLicenciaApertura() ))
-		{
-			LicenciaActividad findById = licenciaService.findById(getKey(),LicenciaActividad.class,localComercial.getTieneLicenciaApertura());
-			if (findById==null)
+		//CMG CONTROL PARA ACTIVAR LAS FK
+		if (activeFK) {
+			//Chequeamos los identificadores que apuntan a otras tablas					
+			if (Util.validValue(localComercial.getAgrupacionComercial()))
 			{
-				errores.add("TieneLicenciaApertura ID not exists in entity: "+localComercial.getTieneLicenciaApertura());
+				AgrupacionComercial findById = agrupacionComercialService.findById(getKey(),AgrupacionComercial.class,localComercial.getAgrupacionComercial());
+				if (findById==null)
+				{
+					errores.add("AgrupacionComercial ID not exists in entity: "+localComercial.getAgrupacionComercial());
+				}
 			}
-		}
-		
-		if (Util.validValue(localComercial.getTieneTerraza() ))
-		{
-			Terraza findById = terrazaService.findById(getKey(),Terraza.class,localComercial.getTieneTerraza() );
-			if (findById==null)
+			
+			if (Util.validValue(localComercial.getTieneLicenciaApertura() ))
 			{
-				errores.add("TieneTerraza ID not exists in entity: "+localComercial.getTieneTerraza());
+				LicenciaActividad findById = licenciaService.findById(getKey(),LicenciaActividad.class,localComercial.getTieneLicenciaApertura());
+				if (findById==null)
+				{
+					errores.add("TieneLicenciaApertura ID not exists in entity: "+localComercial.getTieneLicenciaApertura());
+				}
+			}
+			
+			if (Util.validValue(localComercial.getTieneTerraza() ))
+			{
+				Terraza findById = terrazaService.findById(getKey(),Terraza.class,localComercial.getTieneTerraza() );
+				if (findById==null)
+				{
+					errores.add("TieneTerraza ID not exists in entity: "+localComercial.getTieneTerraza());
+				}
 			}
 		}
 		return errores;

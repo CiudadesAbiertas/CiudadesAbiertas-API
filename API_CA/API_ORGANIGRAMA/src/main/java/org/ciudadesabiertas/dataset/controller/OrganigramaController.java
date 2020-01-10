@@ -33,9 +33,9 @@ import org.ciudadesabiertas.dataset.util.OrganigramaResult;
 import org.ciudadesabiertas.dataset.util.OrganigramaSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.GroupBySearch;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
@@ -165,7 +165,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId)
 			
 	{
@@ -190,7 +190,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,HttpServletRequest request)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
@@ -214,13 +214,13 @@ public class OrganigramaController extends GenericController implements Ciudades
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
 			@RequestHeader HttpHeaders headersRequest)
 	{
-
 		log.info("[geoList][" + LIST + "]");
 
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
-		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Organigrama(), new OrganigramaResult(), availableFields, getKey(),service);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Organigrama(), new OrganigramaResult(), availableFields, getKey(),service);
+
+		return integraCallejero(list,request);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -238,7 +238,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,		
 						
 			@RequestHeader HttpHeaders headersRequest)
@@ -250,8 +250,10 @@ public class OrganigramaController extends GenericController implements Ciudades
 		
 		RSQLVisitor<CriteriaQuery<Organigrama>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Organigrama>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Organigrama(), new OrganigramaResult(), 
+		ResponseEntity list= list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Organigrama(), new OrganigramaResult(), 
 					 availableFields, getKey(), visitor,service);
+
+		return integraCallejero(list,request);
 	}
 
 
@@ -269,7 +271,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -361,15 +363,16 @@ public class OrganigramaController extends GenericController implements Ciudades
 	            
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Organigrama(), srId, nameController, RECORD, service,getKey());
-
+		ResponseEntity record = record(request, id, new Organigrama(), new OrganigramaResult(), srId, nameController, RECORD, service,getKey());
+		
+		return integraCallejero(record,request);
 	}
 	
 	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -381,7 +384,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -412,7 +415,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_AGRUPADA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_AGRUPADA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_AGRUPADA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_AGRUPADA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO_AGRUPADA,  response=Organigrama.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -423,7 +426,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	@RequestMapping(value=SEARCHGROUP, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> groupBySearch(HttpServletRequest request, 
 															GroupBySearch groupBySearch,
-															@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,
+															@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,
 															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
 															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
 	{

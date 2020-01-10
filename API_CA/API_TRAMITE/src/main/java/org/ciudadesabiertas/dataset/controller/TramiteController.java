@@ -337,7 +337,8 @@ public class TramiteController extends GenericController implements CiudadesAbie
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Tramite(), NO_HAY_SRID, nameController, RECORD, dsService,getKey());
+		return record(request, id, new Tramite(), new TramiteResult(), NO_HAY_SRID, nameController, RECORD, dsService,getKey());		
+		
 		
 	}	
 	
@@ -350,7 +351,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");

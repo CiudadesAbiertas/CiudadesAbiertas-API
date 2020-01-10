@@ -25,7 +25,6 @@ import javax.servlet.ServletContext;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.CallejeroPortalController;
 import org.ciudadesabiertas.dataset.controller.CallejeroTramoViaController;
 import org.ciudadesabiertas.dataset.model.CallejeroTramoVia;
 import org.ciudadesabiertas.dataset.util.CallejeroConstants;
@@ -424,6 +423,12 @@ public class CallejeroTramoViaTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,CallejeroTramoViaController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CallejeroTramoViaController.LIST+"/"+"TRA000001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
     
 }

@@ -24,6 +24,11 @@ package org.ciudadesabiertas.utils;
  */
 public class BeanUtil {
 	
+	@Override
+	public String toString() {
+		return "BeanUtil [fieldName=" + fieldName + ", typeName=" + typeName + ", value=" + value + "]";
+	}
+
 	private String fieldName;
 	
 	private String typeName;

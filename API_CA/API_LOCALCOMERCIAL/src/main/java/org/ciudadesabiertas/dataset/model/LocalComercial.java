@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
 
@@ -71,7 +72,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCOM, propiedad = "LocalComercial")
 @PathId(value="/localComercial/localComercial")
-public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
+public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel, ICallejero
 {
 	@JsonIgnore
 	private static final long serialVersionUID = 8909539156599176499L;
@@ -93,39 +94,39 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 	
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	private String municipioTitle;
 	
 
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="streetAddress")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String streetAddress;
 	
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="streetAddress")	
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
 	
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	private String barrio;
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
+	private String barrioId;
 	
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	private String distrito;
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
 	
 	
 	@CsvBindByPosition(position=9)
@@ -222,8 +223,19 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 	@RdfExternalURI(inicioURI= "/localComercial/agrupacionComercial/", finURI="agrupacionComercial")
 	private String agrupacionComercial;
 	
+	@CsvBindByPosition(position=25)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
 	
-	@CsvBindByPosition(position=25)	
+	
+	@ApiModelProperty(hidden = true)
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
+	private String portalIdIsolated;
+	
+	@CsvBindByPosition(position=26)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;
@@ -250,8 +262,8 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 		this.municipioTitle = lc.municipioTitle;
 		this.streetAddress = lc.streetAddress;
 		this.postalCode = lc.postalCode;
-		this.distrito = lc.distrito;
-		this.barrio = lc.barrio;
+		this.distritoId = lc.distritoId;
+		this.barrioId = lc.barrioId;
 		this.latitud = lc.latitud;
 		this.longitud = lc.longitud;
 		this.telephone = lc.telephone;
@@ -268,6 +280,7 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 		this.agrupacionComercial = lc.agrupacionComercial;
 		this.x=lc.x;
 		this.y=lc.y;
+		this.portalId = lc.portalId;
 	}
 	
 	
@@ -303,12 +316,12 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 			this.postalCode = lc.postalCode;
 		}
 		
-		if (attributesToSet.contains("distrito")) {
-			this.distrito = lc.distrito;
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = lc.distritoId;
 		}
 
-		if (attributesToSet.contains("barrio")) {
-			this.barrio = lc.barrio;
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = lc.barrioId;
 		}
 
 		if (attributesToSet.contains("latitud")) {
@@ -381,7 +394,9 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 			this.y = lc.y;
 		}
 		
-		
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = lc.portalId;
+		}
 		
 	}
 	
@@ -476,26 +491,26 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 		this.postalCode = postalCode;
 	}
 
-	@Column(name = "distrito", length = 200)
-	public String getDistrito()
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId()
 	{
-		return this.distrito;
+		return this.distritoId;
 	}
 
-	public void setDistrito(String distrito)
+	public void setDistritoId(String distrito)
 	{
-		this.distrito = distrito;
+		this.distritoId = distrito;
 	}
 
-	@Column(name = "barrio", length = 200)
-	public String getBarrio()
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId()
 	{
-		return this.barrio;
+		return this.barrioId;
 	}
 
-	public void setBarrio(String barrio)
+	public void setBarrioId(String barrio)
 	{
-		this.barrio = barrio;
+		this.barrioId = barrio;
 	}
 
 	
@@ -689,12 +704,29 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 		return this.distance;
 	}
 	
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
 	
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
 
 	@Override
 	public String toString()
 	{
-		return "LocalComercial [ikey=" + ikey + ", id=" + id + ", title=" + title + ", description=" + description + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", barrio=" + barrio + ", distrito=" + distrito + ", latitud="
+		return "LocalComercial [ikey=" + ikey + ", id=" + id + ", title=" + title + ", description=" + description + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", barrioId=" + barrioId + ", distritoId=" + distritoId + ", latitud="
 				+ latitud + ", longitud=" + longitud + ", telephone=" + telephone + ", url=" + url + ", tipoActividadEconomica=" + tipoActividadEconomica + ", nombreComercial=" + nombreComercial + ", rotulo=" + rotulo + ", aforo=" + aforo + ", tipoSituacion=" + tipoSituacion + ", tipoAcceso=" + tipoAcceso
 				+ ", referenciaCatastral=" + referenciaCatastral + ", x=" + x + ", y=" + y + ", tieneLicenciaApertura=" + tieneLicenciaApertura + ", tieneTerraza=" + tieneTerraza + ", agrupacionComercial=" + agrupacionComercial + "]";
 	}
@@ -709,7 +741,7 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
 		prefixes.put(Context.GEO, Context.GEO_URI);
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);	
-		
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		prefixes.put(Context.ESCOM, Context.ESCOM_URI);		
 		
 		

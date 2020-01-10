@@ -35,14 +35,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Oscar Corcho (UPM, Localidata)
  *
  */
-public class LicenciaActividadUtilTest
+public class LicenciaUtilTest
 {
 
 
 	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
 	
 	private static final String testJSON = "{\r\n" + 
-			"    \"id\" : \"270002391/106-2003-01539\",\r\n" + 
+			"    \"id\" : \"270002391-106-2003-01539\",\r\n" + 
+			"    \"identifier\" : \"270002391/106-2003-01539\",\r\n" + 
 			"    \"referencia\" : \"106-2003-01539\",\r\n" + 
 			"    \"asociadaA\" : \"270002391\",\r\n" + 
 			"    \"autorizaActividadEconomica\" : \"90\",\r\n" + 

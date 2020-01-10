@@ -47,92 +47,71 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(classes = { WebConfig.class })
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class PuntoInteresTuristicoDataRSQLTest
-{
+public class PuntoInteresTuristicoDataRSQLTest {
 
 	@Autowired
 	private WebApplicationContext wac;
 
-	private String listURL= PuntoInteresTuristicoController.LIST;
+	private String listURL = PuntoInteresTuristicoController.LIST;
 
-	private MockMvc mockMvc;	
+	private MockMvc mockMvc;
 
 	@Before
-	public void setup() throws Exception
-	{
+	public void setup() throws Exception {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
 
-
 	@Test
-	public void test_Busqueda_Id() throws Exception
-	{
+	public void test_Busqueda_Id() throws Exception {
 
-		String paramField="q";
-		
+		String paramField = "q";
+
 		String value = "id==PIT0001";
-		
-		
-		
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 1);
 
 	}
-	
-	//Genera un error muy extraño
+
+	// Genera un error muy extraño
 	@Test
-	public void test_Busqueda_title() throws Exception
-	{
-		String paramField="q";
+	public void test_Busqueda_title() throws Exception {
+		String paramField = "q";
 
 		String value = "title=='Histohuellas'";
-		
-		
-		
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 1);
 	}
-	
-	
-	@Test
-	public void test_Busqueda_category_title() throws Exception
-	{
-		String paramField="q";
 
-		String value = "category=='"+PuntoInteresTuristicoConstants.CATEGORY+"' and title=='Histohuellas*'";
+	@Test
+	public void test_Busqueda_category_title() throws Exception {
+		String paramField = "q";
+
+		String value = "category=='" + PuntoInteresTuristicoConstants.CATEGORY + "' and title=='Histohuellas*'";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 1);
 	}
-	
+
 	@Test
-	public void test_Busqueda_description() throws Exception
-	{
-		String paramField="q";
+	public void test_Busqueda_description() throws Exception {
+		String paramField = "q";
 
 		String value = "description=='*grupo de licenciados en Historia e Historia del Arte*'";
-		
-		
-		
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 1);
 	}
-	
+
 	@Test
-	public void test_Busqueda_municipioId_municipioNombre_tipo_accesibilidad() throws Exception
-	{
-		//Incluimos control para que no de como resultado el total de campos
+	public void test_Busqueda_municipioId_municipioNombre_tipo_accesibilidad() throws Exception {
+		// Incluimos control para que no de como resultado el total de campos
 		String value = "municipioId=='28079' and municipioTitle=='Madrid' and tipoAccesibilidad=='Variada'";
-		
-		
-		
 
 		String paramField = "q";
 
@@ -140,256 +119,185 @@ public class PuntoInteresTuristicoDataRSQLTest
 
 		assertTrue(total == 6);
 	}
-	
-	
-	@Test
-	public void test_Busqueda_accesible() throws Exception
-	{
 
-		String value = "accesible==true"; 
-		
-		
-		
-		
+	@Test
+	public void test_Busqueda_accesible() throws Exception {
+
+		String value = "accesible==true";
+
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 6);
 	}
-	
-	
-	
-	
+
 	@Test
-	public void test_Busqueda_address_barrio_distrito() throws Exception
-	{
-		String paramField="q";
-
-		String value = "streetAddress=='*Mayor*' and barrio=='CUATRO CAMINOS' and distrito=='TETUAN'";
-		
-		
-		
-				
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);		
-
-		assertTrue(records.size() == 1);
-			
+	public void test_Busqueda_address_barrio_distrito() throws Exception {
+		String paramField = "q";
+		String value = "streetAddress=='*Mayor*' and barrioId=='280796062' and distritoId=='28079606'";
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		assertTrue(records.size() == 2);
 	}
-	
-		
-	
+
 	@Test
-	public void test_Busqueda_postal_code() throws Exception
-	{
-			
-		String paramField="q";
-		
+	public void test_Busqueda_postal_code() throws Exception {
+
+		String paramField = "q";
+
 		String value = "postalCode=='28012'";
-		
-		
-		
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total==3);
+		assertTrue(total == 3);
 	}
-	
+
 	@Test
-	public void test_Busqueda_XETRS89() throws Exception
-	{
-			
-		String paramField="q";
-		
+	public void test_Busqueda_XETRS89() throws Exception {
+
+		String paramField = "q";
+
 		String value = "xETRS89==440291.26773";
-		
-		
-		
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 2);
 	}
-	
+
 	@Test
-	public void test_Busqueda_YETRS89() throws Exception
-	{
-			
-		String paramField="q";
-		
+	public void test_Busqueda_YETRS89() throws Exception {
+
+		String paramField = "q";
+
 		String value = "yETRS89==4474254.64478";
-		
-		
-		
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 2);
 	}
-	
+
 	@Test
-	public void test_Busqueda_RSQL_xETRS89_intervalo() throws Exception
-	{
+	public void test_Busqueda_RSQL_xETRS89_intervalo() throws Exception {
 
 		String paramField = "q";
 
 		String value = "xETRS89>440200 and xETRS89<440300";
-		
-		
-		
-			
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		
+
 		assertTrue(total == 2);
 
 	}
-	
+
 	@Test
-	public void test_Busqueda_RSQL_yETRS89_intervalo() throws Exception
-	{
+	public void test_Busqueda_RSQL_yETRS89_intervalo() throws Exception {
 
 		String paramField = "q";
 
 		String value = "yETRS89>4470700 and yETRS89<4470900";
-		
-		
-		
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		
+
 		assertTrue(total == 2);
 
 	}
-	
-	
+
 	@Test
-	public void test_Busqueda_id_getXETRS89_getYETRS89() throws Exception
-	{
+	public void test_Busqueda_id_getXETRS89_getYETRS89() throws Exception {
 
-		String [] paramField= {"srId","id"};
+		String[] paramField = { "srId", "id" };
 
-		String [] value = {"EPSG:23030","PIT0004"};
-		
+		String[] value = { "EPSG:23030", "PIT0004" };
+
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		
-		JSONObject obj=(JSONObject) records.get(0);
 
-		boolean checkXY=((obj.get("xETRS89")!=null)&&(obj.get("yETRS89")!=null));
-		
+		JSONObject obj = (JSONObject) records.get(0);
+
+		boolean checkXY = ((obj.get("xETRS89") != null) && (obj.get("yETRS89") != null));
+
 		assertTrue(checkXY == true);
 	}
-	
+
 	@Test
-	public void test_Busqueda_id_getLatitud_getLongitud() throws Exception
-	{
+	public void test_Busqueda_id_getLatitud_getLongitud() throws Exception {
 
-		String [] paramField= {"srId","id"};
+		String[] paramField = { "srId", "id" };
 
-		String [] value = {"EPSG:23030","PIT0004"};
-		
+		String[] value = { "EPSG:23030", "PIT0004" };
+
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		
-		JSONObject obj=(JSONObject) records.get(0);
 
-		boolean checkXY=((obj.get("latitud")!=null)&&(obj.get("longitud")!=null));
-		
+		JSONObject obj = (JSONObject) records.get(0);
+
+		boolean checkXY = ((obj.get("latitud") != null) && (obj.get("longitud") != null));
+
 		assertTrue(checkXY == true);
 	}
-	
-	
-	@Test
-	public void test_Busqueda_email() throws Exception
-	{
-		
-		String  paramField= "q";
 
-		String  value = "email=='info@histohuellas.es'";
-		
-		
-		
+	@Test
+	public void test_Busqueda_email() throws Exception {
+
+		String paramField = "q";
+
+		String value = "email=='info@histohuellas.es'";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 1);
 	}
-	
-	
-	
+
 	@Test
-	public void test_Busqueda_url() throws Exception
-	{
+	public void test_Busqueda_url() throws Exception {
 
 		String value = "url=='http://www.esmadrid.com/informacion-turistica/histohuellas'";
-		
-		
-				
-		
-		String paramField="q";
+
+		String paramField = "q";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 1);
 	}
-	
-	@Test
-	public void test_Busqueda_siglo_estiloArtistico() throws Exception
-	{
-		
-		String  paramField= "q";
 
-		String  value = "siglo=='XII' and estiloArtistico=='Romanico'";
-		
-		
-				
+	@Test
+	public void test_Busqueda_siglo_estiloArtistico() throws Exception {
+
+		String paramField = "q";
+
+		String value = "siglo=='XII' and estiloArtistico=='Romanico'";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 1);
 	}
-	
 
-	
 	@Test
-	public void test_Busqueda_costeMantenimiento_ingresosObtenidos() throws Exception
-	{
-		
-		String  paramField= "q";
+	public void test_Busqueda_costeMantenimiento_ingresosObtenidos() throws Exception {
 
-		String  value = "costeMantenimiento==19800.98 and ingresosObtenidos==126980.02";
+		String paramField = "q";
 
-		
-		
-				
+		String value = "costeMantenimiento==19800.98 and ingresosObtenidos==126980.02";
+
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 1);
 	}
-	
-	
-	
-	@Test
-	public void test_Busqueda_fechaDeclaracionBien() throws Exception
-	{
 
-		String value = "fechaDeclaracionBien==2019-03-25T00:00:00"; 
-		
-		
-		
-		String paramField="q";
+	@Test
+	public void test_Busqueda_fechaDeclaracionBien() throws Exception {
+
+		String value = "fechaDeclaracionBien==2019-03-25T00:00:00";
+
+		String paramField = "q";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 2);
 	}
-	
+
 	@Test
-	public void test_Busqueda_Rango_Fechas() throws Exception
-	{
-		
+	public void test_Busqueda_Rango_Fechas() throws Exception {
+
 		String value = "fechaDeclaracionBien>=2019-01-12T00:00:00 and fechaDeclaracionBien<2019-03-26T23:59:59";
-		
-		
 
 		String paramField = "q";
 
@@ -397,22 +305,29 @@ public class PuntoInteresTuristicoDataRSQLTest
 
 		assertTrue(total == 14);
 	}
-	
-	@Test
-	public void test_Busqueda_modoAcceso_medioTransporte() throws Exception
-	{
 
-		String value = "modoAcceso=='Ascensores y Escaleras Mecánicas' and medioTransporte=='Autobuses, cernanias y Metro'"; 
-				
-		String paramField="q";
+	@Test
+	public void test_Busqueda_modoAcceso_medioTransporte() throws Exception {
+
+		String value = "modoAcceso=='Ascensores y Escaleras Mecánicas' and medioTransporte=='Autobuses, cernanias y Metro'";
+
+		String paramField = "q";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 5);
 	}
-	
-	
-	
 
+	@Test
+	public void test_Busqueda_portalId() throws Exception {
+
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 
 }

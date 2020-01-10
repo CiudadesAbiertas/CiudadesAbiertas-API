@@ -47,6 +47,7 @@ import org.ciudadesabiertas.utils.StringToDateConverter;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.ciudadesabiertas.utils.converters.CSVConverter;
+import org.ciudadesabiertas.utils.converters.GEOJSONConverter;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -141,7 +142,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		mediaType(Constants.FORMATO_CSV, MediaType.valueOf(Constants.MEDIA_TYPE_CSV)).
 		mediaType(Constants.FORMATO_JSONLD, MediaType.valueOf(RDFConverter.JSONLD)).
 		mediaType(Constants.FORMATO_TTL, MediaType.valueOf(RDFConverter.TURTLE)).
-		mediaType(Constants.FORMATO_N3, MediaType.valueOf(RDFConverter.N3));
+		mediaType(Constants.FORMATO_N3, MediaType.valueOf(RDFConverter.N3)).
+		mediaType(Constants.FORMATO_GEOJSON, MediaType.valueOf(Constants.MEDIA_TYPE_GEOJSON));
 
 	}
 
@@ -154,7 +156,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			if (converter instanceof MappingJackson2HttpMessageConverter)
 			{
 				MappingJackson2HttpMessageConverter jsonMessageConverter = (MappingJackson2HttpMessageConverter) converter;
-
+				
 				// eliminamos de formatos soportados por el JSON el *+json para que el xml no se
 				// apodere de ld+json
 				MediaType JSON_FORMAT[] = { MediaType.valueOf(Constants.CONTENT_TYPE_JSON_UTF8) };
@@ -167,6 +169,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 				objectMapper.setDateFormat(new SimpleDateFormat(Constants.DATE_TIME_FORMAT));
 				objectMapper.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, false);
 				jsonMessageConverter.setPrettyPrint(true);
+				
+				StartVariables.jsonConverter=jsonMessageConverter;
 
 			} else if (converter instanceof MappingJackson2XmlHttpMessageConverter)
 			{
@@ -208,6 +212,13 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		// Añadimos JSONLD
 		converters.add(new RDFConverter<>(RDFConverter.JSONLD, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
+		// Añadimos geojson		
+		converters.add(new GEOJSONConverter());
+		
+		
+		
+		
+		
 	}
 
 	private Properties getHibernateProperties()
@@ -418,6 +429,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		String srId_LATLON_App = env.getProperty(Constants.STR_LAT_LON_ETRS89_EPSG);
 		String str_pathTemplate = env.getProperty(Constants.STR_PATH_TEMPLATE);
 		String str_rsql_log_active = env.getProperty(Constants.STR_RSQL_LOG_ACTIVE);
+		String str_active_fk = env.getProperty(Constants.STR_ACTVE_FOREIGN_KEY);
 		
 		if (Util.validValue(env.getProperty(Constants.URI_BASE)))
 		{
@@ -527,6 +539,17 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			globalLogger.setLevel(java.util.logging.Level.OFF);
 		}
 		//FIN DESACTIVACION
+		
+		//Control de fk
+		if (Util.validValue(str_active_fk))
+		{
+			StartVariables.activeFK = !Constants.STR_INACTIVE_FALSE.equals(str_active_fk.toLowerCase());
+			
+		} else
+		{	//POR DEFECTO SI NO SE CONFIGURA ES UN TRUE
+			StartVariables.activeFK = Boolean.TRUE;
+		}
+		log.info("ACTIVE FOREIGN KEY: " + StartVariables.activeFK);
 	}
 
 	

@@ -33,6 +33,7 @@ public class SwaggerConstants
 	public static final String PETICION_INCORRECTA = "Petición incorrecta";
 	public static final String RESULTADO_DE_BUSQUEDA_O_LISTADO = "Resultado de búsqueda o listado";	
 	public static final String RESULTADO_DE_INSERCION = "Resultado de inserción";
+	public static final String FORMATOS_CONSULTA_RESPONSE_GROUPBY = "application/json, application/xml, text/csv";
 	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3";
 	public static final String FORMATOS_CONSULTA_RESPONSE_FULL = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3, text/html";
 	public static final String FORMATOS_CONSULTA_INDEXADA_RESPONSE = "application/json, application/xml";
@@ -55,7 +56,7 @@ public class SwaggerConstants
 	public static final String DESCRIPCION_BUSQUEDA_AGRUPADA_HTML = "Permite realizar la operación de busqueda agrupada a través de diferentes parámetros";
 	public static final String LISTADO_Y_BUSQUEDA_AGRUPADA_HTML = "Búsqueda Agrupada en formato HTML";
 	public static final String RESULTADO_DE_BUSQUEDA_O_LISTADO_AGRUPADA = "Resultado de la búsqueda agrupada";	
-	public static final String DESCRIPCION_BUSQUEDA_AGRUPADA = "Permite realizar la operación de busqueda agrupada a través de diferentes parámetros";
+	public static final String DESCRIPCION_BUSQUEDA_AGRUPADA = "Permite realizar la operación de busqueda agrupada a través de diferentes parámetros, las operaciones permitidas son: SUM,COUNT,AVG,MAX y MIN";
 	public static final String LISTADO_Y_BUSQUEDA_AGRUPADA = "Búsqueda Agrupada";
 	public static final String BUSQUEDA_DISTINCT = "Búsqueda de los valores de un atributo";
 	public static final String DESCRIPCION_BUSQUEDA_DISTINCT = "Permite realizar la operación de busqueda los distintos posibles valores de un atributo";
@@ -70,6 +71,9 @@ public class SwaggerConstants
 	public static final String CONSULTA_CUBO = "Consulta a un cubo de datos";
 	public static final String DESCRIPCION_CONSULTA_CUBO = "Permite obtener los datos de un cubo fijando una dimensión, una medida y aplicando una operación de agregación";
 	public static final String LISTADO_CUBO_POR_MEDIDA = "Búsqueda de cubos de datos que tienen una derminada medida";
+	public static final String GEOMETRIA="Geometría de un registro";
+	public static final String GEOMETRIA_FICHA = "Permite ver la geometria de un registro en concreto del módulo correspondiente";
+	
 	
 	//Parametros a Documentar
 	public static final String PARAM_ID_TEXT= "id del Objeto necesario para ejecutar la operación";
@@ -91,7 +95,8 @@ public class SwaggerConstants
 	public static final String PARAM_TERRAZA_TEXT= "Objeto (Terraza) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_ORGANIGRAMA_TEXT= "Objeto (Organigrama) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_PLANTILLA_TEXT= "Objeto (Plantilla) en formato json necesario para poder realizar la operación";
-	public static final String PARAM_CUBO_PADRON_DISTRITO_EDAD_TEXT= "Objeto (Observación del Cubo de Datos de Padron: Distrito y Edad) en formato json necesario para poder realizar la operación";	
+	public static final String PARAM_CUBO_PADRON_DISTRITO_EDAD_TEXT= "Objeto (Observación del Cubo de Datos de Padron: Distrito y Edad) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONTRATO_PROCESS_TEXT= "Licitación (Contratos) en formato json necesario para poder realizar la operación";
 	
 	
 	public static final String PARAM_OBSERVES_ID_TEXT= "Código del elemento que se está obervando";
@@ -112,4 +117,6 @@ public class SwaggerConstants
 	public static final String URL_LICENCIA = "https://joinup.ec.europa.eu/software/page/eupl";
 	public static final String TEXTO_LICENCIA = "Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es."; 
 	
+	//Subvencion agrupadas
+	public static final String AGRUPADAS_OPER_PERMITIDAS= "SUM,COUNT,AVG,MAX,MIN";
 }

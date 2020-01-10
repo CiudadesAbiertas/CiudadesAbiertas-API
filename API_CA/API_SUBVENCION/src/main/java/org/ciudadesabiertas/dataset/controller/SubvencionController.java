@@ -30,12 +30,14 @@ import org.ciudadesabiertas.dataset.model.Subvencion;
 import org.ciudadesabiertas.dataset.utils.SubvencionConstants;
 import org.ciudadesabiertas.dataset.utils.SubvencionResult;
 import org.ciudadesabiertas.dataset.utils.SubvencionSearch;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.GroupBySearch;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -45,6 +47,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -209,8 +212,13 @@ public class SubvencionController extends GenericController implements CiudadesA
 		
 		RSQLVisitor<CriteriaQuery<Subvencion>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Subvencion>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Subvencion(), new SubvencionResult(), 
-					 availableFields, getKey(), visitor,service);
+		ResponseEntity<Subvencion> list=list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Subvencion(), new SubvencionResult(),	availableFields, getKey(), visitor,service);
+		
+		
+		integraOrganigrama(list,request);
+		
+				
+		return list;
 	}
 
 	
@@ -322,8 +330,12 @@ public class SubvencionController extends GenericController implements CiudadesA
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
-				
-		return record(request, id, new Subvencion(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		
+		ResponseEntity<Subvencion> record=record(request, id, new Subvencion(), new SubvencionResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		
+		integraOrganigrama(record,request);
+		
+		return record;
 
 	}
 	
@@ -367,7 +379,7 @@ public class SubvencionController extends GenericController implements CiudadesA
 	
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_AGRUPADA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_AGRUPADA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_AGRUPADA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_AGRUPADA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO_AGRUPADA,  response=SubvencionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -454,6 +466,50 @@ public class SubvencionController extends GenericController implements CiudadesA
 	public String getListURI()
 	{
 		return LIST;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	private  ResponseEntity<Subvencion> integraOrganigrama(ResponseEntity<Subvencion> list,HttpServletRequest request){
+		
+		HttpStatus statusCode = list.getStatusCode();
+		
+		if (statusCode.is2xxSuccessful())
+		{
+			boolean isSemantic=Util.isSemanticPetition(request);				
+			
+			if (isSemantic) {
+				
+				Object body = list.getBody();
+				
+				Result<Subvencion> result=((Result<Subvencion>)body);
+				
+				List<Subvencion> records = result.getRecords();
+				
+				
+				if (Util.isOrganigramaIntegration()) {
+					for (Subvencion subvencion :records) {
+						if (Util.validValue(subvencion.getAreaId()))
+						{
+							subvencion.setAreaTitle(null);
+						}
+						if (Util.validValue(subvencion.getEntidadFinanciadoraId()))
+						{
+							subvencion.setEntidadFinanciadoraTitle(null);
+						}
+					}
+				}else {
+					for (Subvencion subvencion :records) {		
+						 subvencion.setAreaIdIsolated(subvencion.getAreaId());
+						 subvencion.setEntidadFinanciadoraIdIsolated(subvencion.getEntidadFinanciadoraId());
+						 subvencion.setAreaId(null);					
+						 subvencion.setEntidadFinanciadoraId(null);
+					}
+				}
+			}		
+		}
+	
+		return list;
 	}
 	
 }

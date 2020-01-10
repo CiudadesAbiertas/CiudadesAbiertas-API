@@ -224,7 +224,18 @@ public class AgendaDataRSQLTest
 	}
 	
 	
+	@Test
+	public void test_Busqueda_equipamiento_id() throws Exception
+	{
+		//Incluimos control para que no de como resultado el total de campos
+		String value = "equipamientoId=='EQ0002' ";
 
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 5);
+	}
 	
 	
 

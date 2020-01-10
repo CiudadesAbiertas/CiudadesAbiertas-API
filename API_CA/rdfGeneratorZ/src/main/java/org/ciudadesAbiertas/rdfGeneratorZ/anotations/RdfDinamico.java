@@ -8,4 +8,5 @@ public @interface RdfDinamico {
 	String inicioURI() default "";
 	String finURI() default "";	
 	String propiedad() default "";
+	String rdfType() default "";
 }

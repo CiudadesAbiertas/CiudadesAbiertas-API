@@ -124,39 +124,39 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	private BigDecimal longitud;
 	
 	@CsvBindByPosition(position=9)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	private String barrio;
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)	
+	private String barrioId;
 	
 	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	private String distrito;
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
 	
 	
 	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	private String municipioTitle;
 	
 	@CsvBindByPosition(position=13)
-	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="provinciaId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
-	@RdfExternalURI(inicioURI="http://datos.gob.es/recurso/sector-publico/territorio/Provincia/", finURI="provincia", capitalize=true, urifyLevel=1)
-	private String provincia;
+	@RdfExternalURI(inicioURI="/territorio/provincia/",finURI="provinciaId" ,urifyLevel = 1)	
+	private String provinciaId;
 
 	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="autonomiaId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")		
-	@RdfExternalURI(inicioURI="http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/", finURI="autonomia",capitalize=true, urifyLevel=1)
-	private String autonomia;
+	@RdfExternalURI(inicioURI="/territorio/autonomia/",finURI="autonomiaId" , urifyLevel = 1)	
+	private String autonomiaId;
 	
 	private Double distance;
 
@@ -174,12 +174,12 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 		this.postalCode = copia.postalCode;
 		this.x = copia.x;
 		this.y = copia.y;
-		this.barrio = copia.barrio;
-		this.distrito = copia.distrito;
+		this.barrioId = copia.barrioId;
+		this.distritoId = copia.distritoId;
 		this.municipioId = copia.municipioId;
 		this.municipioTitle = copia.municipioTitle;
-		this.provincia = copia.provincia;
-		this.autonomia = copia.autonomia;
+		this.provinciaId = copia.provinciaId;
+		this.autonomiaId = copia.autonomiaId;
 		this.via=copia.via;
 	}
 
@@ -213,13 +213,13 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 		{
 			this.y = copia.y;
 		}
-		if (attributesToSet.contains("barrio"))
+		if (attributesToSet.contains("barrioId"))
 		{
-			this.barrio = copia.barrio;
+			this.barrioId = copia.barrioId;
 		}
-		if (attributesToSet.contains("distrito"))
+		if (attributesToSet.contains("distritoId"))
 		{
-			this.distrito = copia.distrito;
+			this.distritoId = copia.distritoId;
 		}
 		if (attributesToSet.contains("municipioId"))
 		{
@@ -229,13 +229,13 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 		{
 			this.municipioTitle = copia.municipioTitle;
 		}
-		if (attributesToSet.contains("provincia"))
+		if (attributesToSet.contains("provinciaId"))
 		{
-			this.provincia = copia.provincia;
+			this.provinciaId = copia.provinciaId;
 		}
-		if (attributesToSet.contains("autonomia"))
+		if (attributesToSet.contains("autonomiaId"))
 		{
-			this.autonomia = copia.autonomia;
+			this.autonomiaId = copia.autonomiaId;
 		}
 		if (attributesToSet.contains("via"))
 		{
@@ -352,29 +352,29 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	}
 
 
-	@Column(name = "barrio", length = 200)
-	public String getBarrio()
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId()
 	{
-		return this.barrio;
+		return this.barrioId;
 	}
 
-	public void setBarrio(String barrio)
+	public void setBarrioId(String barrio)
 	{
-		this.barrio = barrio;
+		this.barrioId = barrio;
 	}
 
-	@Column(name = "distrito", length = 200)
-	public String getDistrito()
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId()
 	{
-		return this.distrito;
+		return this.distritoId;
 	}
 
-	public void setDistrito(String distrito)
+	public void setDistritoId(String distrito)
 	{
-		this.distrito = distrito;
+		this.distritoId = distrito;
 	}
 
-	@Column(name = "municipio_id", length = 10)
+	@Column(name = "municipio_id", length = 50)
 	public String getMunicipioId()
 	{
 		return this.municipioId;
@@ -396,26 +396,26 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 		this.municipioTitle = municipioTitle;
 	}
 
-	@Column(name = "provincia", length = 200)
-	public String getProvincia()
+	@Column(name = "provincia_id", length = 50)
+	public String getProvinciaId()
 	{
-		return this.provincia;
+		return this.provinciaId;
 	}
 
-	public void setProvincia(String provincia)
+	public void setProvinciaId(String provincia)
 	{
-		this.provincia = provincia;
+		this.provinciaId = provincia;
 	}
 
-	@Column(name = "autonomia", length = 200)
-	public String getAutonomia()
+	@Column(name = "autonomia_id", length = 50)
+	public String getAutonomiaId()
 	{
-		return this.autonomia;
+		return this.autonomiaId;
 	}
 
-	public void setAutonomia(String autonomia)
+	public void setAutonomiaId(String autonomia)
 	{
-		this.autonomia = autonomia;
+		this.autonomiaId = autonomia;
 	}
 	
 	@Transient
@@ -486,8 +486,10 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	@Override
 	public String toString()
 	{
-		return "CallejeroPortal [ikey=" + ikey + ", id=" + id + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", x=" + x + ", y=" + y + ", barrio=" + barrio + ", distrito=" + distrito + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", provincia="
-				+ provincia + ", autonomia=" + autonomia + "]";
+		return "CallejeroPortal [ikey=" + ikey + ", id=" + id + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode 
+				+ ", x=" + x + ", y=" + y + ", barrioId=" + barrioId + ", distritoId=" + distritoId + ", municipioId=" + municipioId 
+				+ ", municipioTitle=" + municipioTitle + ", provinciaId="
+				+ provinciaId + ", autonomiaId=" + autonomiaId + "]";
 	}
 
 

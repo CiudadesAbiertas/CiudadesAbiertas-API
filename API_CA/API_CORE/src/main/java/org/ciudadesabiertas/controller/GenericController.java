@@ -27,11 +27,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.exception.NotFoundException;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.CoordinateTransformer;
+import org.ciudadesabiertas.utils.CubeQuerySearch;
 import org.ciudadesabiertas.utils.DatasetSearch;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ExceptionUtil;
@@ -63,6 +66,8 @@ import cz.jirutka.rsql.parser.ast.RSQLVisitor;
  */
 public class GenericController<T> {
 
+	
+
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(GenericController.class);
 
@@ -80,7 +85,7 @@ public class GenericController<T> {
 	@Autowired
 	protected Environment env;
 	
-	
+	public static boolean activeFK = StartVariables.activeFK;
 	
 	
 	/**
@@ -261,6 +266,75 @@ public class GenericController<T> {
 		return responseEntity;
 
 	}
+
+	
+	/**
+	 * Metodo generico de los Controller para realizar el Alta de los objetos en la API
+	 * @param obj  Objeto a dar de alta
+	 * @param nameController Nombre del controlador del que procedemos, para tratamiento de Errores
+	 * @param operacion llamada de la que venimos.
+	 * @param dsService DatasetService dependiente del modulo que lo invoque
+	 * @param key nombre del fichero si se aplica configuracion propia
+	 * @return ResponseEntity
+	 */
+	public  ResponseEntity<?> add(T obj , String nameController,String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)
+	{
+		
+
+		log.debug("[parmam][dato:" + obj + "],"
+				+"[nameController:" + nameController + "],[operacion:" + operacion +"][activeFK:"+activeFK+"]");
+		//VBLES		
+		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);			
+		ResultError errorApi = new ResultError();		
+		
+		//TODO control para las FK, pero se debe desactivar cuando se decida que no hay FK, necesario controlar PDTE
+		//FK
+		if (activeFK && erroresFK!=null && !erroresFK.isEmpty()) {
+			log.debug("[add][" + operacion + "] [ERROR Validator:"+erroresFK+"]");
+			errorApi.setStatus(409);
+			errorApi.setClassName(nameController);
+			errorApi.setMethod("add");
+			errorApi.setErrors(erroresFK);
+			responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
+			return responseEntity;
+		}else {
+			return add(obj, nameController, operacion, dsService, key);
+		}
+		
+	}
+
+
+	/**
+	 * Metodo generico de los Controller para realizar la modificación de los objetos en la API
+	 * @param id
+	 * @param obj  Objeto a modificar
+	 * @param nameController Nombre del controlador del que procedemos, para tratamiento de Errores
+	 * @param operacion llamada de la que venimos.
+	 * @param dsService DatasetService dependiente del modulo que lo invoque
+	 * @param key nombre del fichero si se aplica configuracion propia
+	 * @return ResponseEntity
+	 */
+	public  ResponseEntity<?> update(
+			 String id, T obj, String nameController,String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)	
+	{
+		
+		log.info("[update][" + operacion + "] [nameController:" + nameController + "] [activeFK:"+activeFK+"]");
+
+		if (activeFK && (erroresFK.size()>0)) {
+			log.debug("[update][" + operacion + "] [ERROR Validator:"+erroresFK+"]");
+			ResultError errorApi = new ResultError ();
+			errorApi.setStatus(409);
+			errorApi.setClassName(nameController);
+			errorApi.setMethod("update");				
+			errorApi.setError(erroresFK.toString());	
+			ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.CONFLICT);	
+			responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
+			return responseEntity;
+		}
+		else {
+			return update(id, obj, nameController, operacion, dsService, key);
+		}
+	}
 	
 	/**
 	 * Metodo generico de los Controller para realizar la modificación de los objetos en la API
@@ -276,10 +350,11 @@ public class GenericController<T> {
 	public  ResponseEntity<?> update(
 			 String id, T obj, String nameController,String operacion, DatasetService<T> dsService, String key)			 
 	{
-
 		log.info("[update][" + operacion + "]");
 
 		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] ");
+		
+		id=Util.decodeURL(id);
 		
 		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);	
 		ResultError errorApi = new ResultError ();
@@ -384,10 +459,13 @@ public class GenericController<T> {
 
 		log.debug("[parmam][id:" + id + "] ");
 		
+		id=Util.decodeURL(id);
+		
 		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);		
 		ResultError errorApi = new ResultError ();
 		Result<Object> resultObj = new Result<Object>();
 		boolean error=false;	
+		
 		
 		if (Util.validValue(id)) {
 		
@@ -438,17 +516,49 @@ public class GenericController<T> {
 	}
 	
 	/**
-	 * Metodo para obtener las fichas de los modulos
-	 * @param request
+	 * Metodo para el borrado de objetos
 	 * @param id
 	 * @param obj
-	 * @param srId
+	 * @param dsService
 	 * @param nameController
 	 * @param operacion
 	 * @param dsService DatasetService dependiente del modulo que lo invoque
 	 * @param key nombre del fichero si se aplica configuracion propia
 	 * @return
 	 */
+	public  ResponseEntity<?> delete(		 
+			String id, 
+			T obj, String nameController, String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)
+	{
+
+		log.info("[delete][" + operacion + "] [nameController:" + nameController + "] [activeFK:"+activeFK+"]");
+
+		log.debug("[parmam][id:" + id + "] ");
+		
+		id=Util.decodeURL(id);		
+		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);		
+		ResultError errorApi = new ResultError ();
+		
+		//TODO control para las FK, pero se debe desactivar cuando se decida que no hay FK, necesario controlar PDTE
+		//FK
+		if (activeFK && erroresFK!=null && !erroresFK.isEmpty()) {
+			log.debug("[delete][" + operacion + "] [ERROR Validator:"+erroresFK+"]");
+			errorApi.setStatus(409);
+			errorApi.setClassName(nameController);
+			errorApi.setMethod("delete");
+			errorApi.setErrors(erroresFK);
+			responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
+			return responseEntity;
+		}else {
+			return delete(id, obj, nameController, operacion, dsService, key);
+		}
+		
+	}
+	
+	/**
+	 * Este metodo provoca un error al generar fichas de CSV (muy común...)
+	 */
+	@Deprecated 
 	@SuppressWarnings("unchecked")
 	public  ResponseEntity<?> record(HttpServletRequest request, 
 									String id, 
@@ -517,6 +627,218 @@ public class GenericController<T> {
 				errorApi.setClassName(nameController);
 				errorApi.setMethod("record");	
 				errorApi.setError("id is not valid [id:"+id+"] Not Found in BBDD");					
+				responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
+			}		
+			
+			
+		} catch (Exception e)
+		{
+			responseEntity=ExceptionUtil.checkException(e);
+		} 
+
+		return responseEntity;		
+	}
+	
+	
+	/**
+	 * Metodo para obtener las fichas de los modulos
+	 * @param request
+	 * @param id
+	 * @param obj
+	 * @param resultObj
+	 * @param srId
+	 * @param nameController
+	 * @param operacion
+	 * @param dsService DatasetService dependiente del modulo que lo invoque
+	 * @param key nombre del fichero si se aplica configuracion propia
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public  ResponseEntity<?> record(HttpServletRequest request, 
+									String id, 
+									T obj, 
+									T resultObj,
+									String srId, 
+									String nameController,
+									String operacion,
+									DatasetService<T> dsService,
+									String key)
+	{
+
+		log.info("[record][" + operacion + "]");
+
+		log.debug("[parmam][id:" + id + "]");
+		
+		id=Util.decodeURL(id);
+		
+		//Result<Object> resultObj = new Result<Object>();
+		
+		//Verifico la negociación de contenidos
+		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
+		if (negotiationResponseEntity!=null)
+		{
+			return negotiationResponseEntity;
+		}
+		
+		ResponseEntity<?> responseEntity= null;
+		
+		if (Util.validValue(srId))
+		{
+			if (!CoordinateTransformer.isValidSrId(srId))
+			{				
+				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong System reference identificator"));
+				return responseEntity;
+			}
+		}
+		
+	
+		List<T> listado=new ArrayList<T>();
+		
+	
+		try {
+			T objP= dsService.findById(key,(Class<T>) obj.getClass(), id);
+						
+			if (objP instanceof GeoModel)
+			{
+				Util.generaCoordenadasAll(srId, (GeoModel)objP);
+			}			
+			if (objP!=null)
+			{	
+				listado.add(objP);
+				((Result<?>) resultObj).setPage(1);
+				((Result<?>) resultObj).setPageRecords(1);
+				((Result<?>) resultObj).setPageSize(1);
+				((Result<?>) resultObj).setTotalRecords(1);
+				((Result<T>) resultObj).setRecords((List<T>) listado);
+				((Result<T>) resultObj).setStatus(200);
+				//MD5
+				((Result<?>) resultObj).setContentMD5(Util.generateHash( obj.toString() ));
+				
+				//Cabeceras no se estaban incluyendo
+				HttpHeaders headers = Util.extractHeaders((Result<?>) resultObj);
+				responseEntity = new ResponseEntity<Object>(resultObj,headers, HttpStatus.OK);
+			}else {
+				
+				if (Util.isSemanticPetition(request))
+				{
+					((Result<?>) resultObj).setPage(0);
+					((Result<?>) resultObj).setPageRecords(0);
+					((Result<?>) resultObj).setPageSize(0);
+					((Result<?>) resultObj).setTotalRecords(0);
+					((Result<T>) resultObj).setRecords(new ArrayList<T>());
+					((Result<T>) resultObj).setStatus(404);
+					
+					//Cabeceras no se estaban incluyendo
+					HttpHeaders headers = Util.extractHeaders((Result<?>) resultObj);
+					responseEntity = new ResponseEntity<Object>(resultObj,headers, HttpStatus.NOT_FOUND);
+				}
+				else
+				{
+					//Fijamos ERROR	
+					ResultError errorApi = new ResultError ();
+					errorApi.setStatus(404);
+					errorApi.setClassName(nameController);
+					errorApi.setMethod("record");	
+					errorApi.setError("id is not valid [id:"+id+"] Not Found in BBDD");					
+					responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
+					throw new NotFoundException("identifier '"+id+"'");
+				}
+			}		
+			
+			
+		} catch (Exception e)
+		{
+			responseEntity=ExceptionUtil.checkException(e);
+		} 
+
+		return responseEntity;
+
+	}
+	
+	
+	/**
+	 * Metodo para obtener las fichas de los modulos a partir de su título
+	 * @param request
+	 * @param id
+	 * @param obj
+	 * @param srId
+	 * @param nameController
+	 * @param operacion
+	 * @param dsService DatasetService dependiente del modulo que lo invoque
+	 * @param key nombre del fichero si se aplica configuracion propia
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public  ResponseEntity<?> recordByIndentifier(HttpServletRequest request, 
+									String identifier, 
+									T obj, 
+									T resultObj,
+									String srId, 
+									String nameController,
+									String operacion,
+									DatasetService<T> dsService,
+									String key)
+	{
+
+		log.info("[record][" + operacion + "]");
+
+		log.debug("[parmam][identifier:" + identifier + "]");
+		
+		identifier=Util.decodeURL(identifier);
+		
+		//Verifico la negociación de contenidos
+		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
+		if (negotiationResponseEntity!=null)
+		{
+			return negotiationResponseEntity;
+		}
+		
+		ResponseEntity<?> responseEntity= null;
+		
+		if (Util.validValue(srId))
+		{
+			if (!CoordinateTransformer.isValidSrId(srId))
+			{				
+				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong System reference identificator"));
+				return responseEntity;
+			}
+		}
+		
+	
+		List<T> listado=new ArrayList<T>();
+		
+	
+		try {
+			T objP= dsService.findByIdentifier(key,(Class<T>) obj.getClass(), identifier);
+						
+			if (objP instanceof GeoModel)
+			{
+				Util.generaCoordenadasAll(srId, (GeoModel)objP);
+			}			
+			if (objP!=null)
+			{	
+				listado.add(objP);
+				((Result<?>) resultObj).setPage(1);
+				((Result<?>) resultObj).setPageRecords(1);
+				((Result<?>) resultObj).setPageSize(1);
+				((Result<?>) resultObj).setTotalRecords(1);
+				((Result<T>) resultObj).setRecords((List<T>) listado);
+				((Result<T>) resultObj).setStatus(200);
+				//MD5
+				((Result<?>) resultObj).setContentMD5(Util.generateHash( obj.toString() ));
+				
+				
+				
+				//Cabeceras no se estaban incluyendo
+				HttpHeaders headers = Util.extractHeaders((Result<?>) resultObj);
+				responseEntity = new ResponseEntity<Object>(resultObj,headers, HttpStatus.OK);
+			}else {
+				//Fijamos ERROR	
+				ResultError errorApi = new ResultError ();
+				errorApi.setStatus(404);
+				errorApi.setClassName(nameController);
+				errorApi.setMethod("record");	
+				errorApi.setError("title is not valid [identifier:"+identifier+"] Not Found in BBDD");					
 				responseEntity = new ResponseEntity<Object>(errorApi, HttpStatus.valueOf(errorApi.getStatus()));
 			}		
 			
@@ -702,8 +1024,7 @@ public class GenericController<T> {
 				if (rsqlQ.contains(Constants.FIELD_URL)) {										
 					rsqlQ = Util.decodeURL(rsqlQ);	
 				}
-				
-				
+					
 				Result<T> result =dsService.searchByRSQLQuery(visitor,key, rsqlQ, numPage, numPageSize, orders);				
 				
 				List<T> records = result.getRecords();				
@@ -888,12 +1209,20 @@ public class GenericController<T> {
 
 		log.debug("[parmam][page:" + page + "] [pageSize:" + pageSize + "] [key:" + key + "] [srId:" + srId + "] [groupBySearch:" + groupBySearch + "] ");
 		
+		//CMG: Control para las peticiones semanticas en las Groupby no esta permitidas
+		if (Util.isSemanticPetition(request)) {
+			return ExceptionUtil.checkException(new BadRequestException("Format not Support"));
+			
+		}
+		
 		//Verifico la negociación de contenidos
 		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
 		if (negotiationResponseEntity!=null)
 		{
 			return negotiationResponseEntity;
 		}		
+		
+	
 		
 		//CMG
 		//Validación de parametros de entrada
@@ -912,7 +1241,7 @@ public class GenericController<T> {
 		
 		ResponseEntity<?> responseEntity= null;	
 			
-		setPagina(page,pageSize);
+		setPaginaGroupBy(page,pageSize);
 		
 		
 		if (objModel instanceof GeoModel)
@@ -1061,20 +1390,26 @@ public class GenericController<T> {
 
 		// Pagina actual
 		((Result<?>) obj).setSelf(pMCalculation.get(Constants.SELF));
-		// Pagina inicial
-		((Result<?>) obj).setFirst(pMCalculation.get(Constants.FIRST));
-		// Ultima página
-		((Result<?>) obj).setLast(pMCalculation.get(Constants.LAST));
-		// Pagina siguiente
-		((Result<?>) obj).setNext(pMCalculation.get(Constants.NEXT));
-		// Pagina anterior
-		((Result<?>) obj).setPrev(pMCalculation.get(Constants.PREV));
+		if (result.getPage()!=Constants.NO_PAGINATION) {
+			// Pagina inicial
+			((Result<?>) obj).setFirst(pMCalculation.get(Constants.FIRST));
+			// Ultima página
+			((Result<?>) obj).setLast(pMCalculation.get(Constants.LAST));
+			// Pagina siguiente
+			((Result<?>) obj).setNext(pMCalculation.get(Constants.NEXT));
+			// Pagina anterior
+			((Result<?>) obj).setPrev(pMCalculation.get(Constants.PREV));
+		}
 		// MD5
 		((Result<?>) obj).setContentMD5(Util.generateHash(Util.toString(listado)));
 
 		((Result<T>) obj).setRecords(listado);
-		((Result<?>) obj).setPage(result.getPage());
-		((Result<?>) obj).setPageSize(result.getPageSize());
+		if (result.getPage()!=Constants.NO_PAGINATION) {
+			((Result<?>) obj).setPage(result.getPage());
+		}
+		if (result.getPage()!=Constants.NO_PAGINATION) {
+			((Result<?>) obj).setPageSize(result.getPageSize());
+		}
 		((Result<?>) obj).setPageRecords(result.getRecords().size());
 		((Result<?>) obj).setTotalRecords(result.getTotalRecords());
 
@@ -1105,25 +1440,40 @@ public class GenericController<T> {
 		//Control de coordenadas
 		Util.generaCoordenadasAll( srId, listado);		
 		
-		
+		Util.generaDataCubeInfo(listado);
+
 
 		Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request, total, numPageSize,env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
 
 		// Pagina actual
 		((Result<?>) obj).setSelf(pageMetadataCalculation.get(Constants.SELF));
-		// Pagina inicial
-		((Result<?>) obj).setFirst(pageMetadataCalculation.get(Constants.FIRST));
-		// Ultima página
-		((Result<?>) obj).setLast(pageMetadataCalculation.get(Constants.LAST));
-		// Pagina siguiente
-		((Result<?>) obj).setNext(pageMetadataCalculation.get(Constants.NEXT));
-		// Pagina anterior
-		((Result<?>) obj).setPrev(pageMetadataCalculation.get(Constants.PREV));
+		
+		if (numPage!=Constants.NO_PAGINATION) {
+			// Pagina inicial
+			((Result<?>) obj).setFirst(pageMetadataCalculation.get(Constants.FIRST));
+			// Ultima página
+			((Result<?>) obj).setLast(pageMetadataCalculation.get(Constants.LAST));
+			// Pagina siguiente
+			((Result<?>) obj).setNext(pageMetadataCalculation.get(Constants.NEXT));
+			// Pagina anterior
+			((Result<?>) obj).setPrev(pageMetadataCalculation.get(Constants.PREV));
+		}
 		// MD5
 		((Result<?>) obj).setContentMD5(Util.generateHash(Util.toString(listado)));
 
-		((Result<?>) obj).setPage(numPage);
-		((Result<?>) obj).setPageSize(numPageSize);
+		if (numPage!=Constants.NO_PAGINATION) {
+			((Result<?>) obj).setPage(numPage);
+		}else {
+			((Result<?>) obj).setPage(1);
+		}
+		
+		
+		if (numPageSize!=Constants.NO_PAGINATION) {
+			((Result<?>) obj).setPageSize(numPageSize);
+		}	else {
+			((Result<?>) obj).setPageSize((int)total);
+		}		
+		
 		((Result<?>) obj).setPageRecords(listado.size());
 		((Result<T>) obj).setRecords(listado);
 		((Result<?>) obj).setTotalRecords(total);
@@ -1146,6 +1496,13 @@ public class GenericController<T> {
 	 * @throws NumberFormatException
 	 */
 	public void setPagina(String page, String pageSize) throws NumberFormatException {
+		
+		if ((page == null) || (pageSize == null))
+		{
+			numPage=Constants.NO_PAGINATION;
+			numPageSize=Constants.NO_PAGINATION;
+			return;
+		}
 
 		if (pageSize.equals("")) {
 			pageSize = Integer.toString(StartVariables.defaultPageSize);
@@ -1157,6 +1514,36 @@ public class GenericController<T> {
 
 		if (numPageSize < 0 || numPageSize > StartVariables.maxPageSize) {
 			numPageSize = StartVariables.defaultPageSize;
+		}
+
+	}
+	
+	
+	/**
+	 * Guardamos y controlamos los valores de paginación para consulta GroupBy y Queries de Cubos de Datos
+	 * @param page
+	 * @param pageSize
+	 * @throws NumberFormatException
+	 */
+	public void setPaginaGroupBy(String page, String pageSize) throws NumberFormatException {
+		
+		if ((page == null) || (pageSize == null))
+		{
+			numPage=Constants.NO_PAGINATION;
+			numPageSize=Constants.NO_PAGINATION;
+			return;
+		}
+
+		if (pageSize.equals("")) {
+			pageSize = Integer.toString(Constants.defaultGroupByPageSize);
+		}
+
+		numPage = Integer.parseInt(page);
+
+		numPageSize = Integer.parseInt(pageSize);
+
+		if (numPageSize < 0 || numPageSize > Constants.maxGroupbyPageSize) {
+			numPageSize = Constants.defaultGroupByPageSize;
 		}
 
 	}
@@ -1210,6 +1597,131 @@ public class GenericController<T> {
 
 		
 
+	
+	
+	@SuppressWarnings("unchecked")
+	public ResponseEntity<?> datacubeSearch(
+			 HttpServletRequest request, 
+			 CubeQuerySearch cubeQuerySearch,		 
+			 String page, 
+			 String pageSize,
+			 String key,
+			 T objModel,
+			 T objResult,			 
+			 DatasetService<T> dsService) {
+		
+		log.info("[datacubeQuery]");
+
+		log.debug("[parmam][page:" + page + "] [pageSize:" + pageSize + "]  [cubeQuerySearch:" + cubeQuerySearch + "] ");
+		
+		//Verifico la negociación de contenidos
+		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
+		if (negotiationResponseEntity!=null)
+		{
+			return negotiationResponseEntity;
+		}		
+		
+		//CMG
+		//Validación de parametros de entrada
+		List<String> availableFields=Util.extractPropertiesFromBean(CubeQuerySearch.class);
+		
+		List<String> allowedParams=new ArrayList<String>();
+		allowedParams.add(Constants.PAGE);
+		allowedParams.add(Constants.PAGESIZE);		
+		allowedParams.add(Constants.AJAX_PARAM);		
+										
+		ResponseEntity<?> responseErrorParams = Util.validateParams(request.getParameterMap(), availableFields,allowedParams);
+		if (responseErrorParams!=null) {
+			return responseErrorParams;
+		}	
+		
+		ResponseEntity<?> responseEntity= null;	
+			
+		setPaginaGroupBy(page,pageSize);
+		
+		
+		int numPage = getNumPage();
+		int numPageSize = getNumPageSize();
+			
+		
+		if (!Util.validValue(cubeQuerySearch.getDimension()))
+		{
+			responseEntity=ExceptionUtil.checkException(new BadRequestException("the param 'dimension' is required"));
+			return responseEntity;
+		}		
+		
+		if (!Util.validValue(cubeQuerySearch.getGroup()))
+		{
+			responseEntity=ExceptionUtil.checkException(new BadRequestException("the param 'group' is required"));
+			return responseEntity;
+		}
+		
+		if (!Util.validValue(cubeQuerySearch.getMeasure()))
+		{
+			responseEntity=ExceptionUtil.checkException(new BadRequestException("the param 'measure' is required"));
+			return responseEntity;
+		}
+
+		List<T> records;
+		try
+		{
+			//hacemos una copia por dentro del groupBySearch se modifica el where
+			CubeQuerySearch copy=new CubeQuerySearch(cubeQuerySearch);
+			records = (List<T>) dsService.cubeQuery(key,(Class<T>)objModel.getClass(),cubeQuerySearch, numPage, numPageSize);			
+			long numtotalRecords=dsService.rowCountCubeQuery(key,(Class<T>)objModel.getClass(),copy);
+			
+			responseEntity = guardarResult(NO_HAY_SRID, records, numtotalRecords,objResult, request);
+			
+					
+		} catch (Exception e)
+		{
+			responseEntity=ExceptionUtil.checkException(e);
+		}
+		
+
+		return responseEntity;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public  ResponseEntity<?> integraCallejero(ResponseEntity<T> list,HttpServletRequest request){
+		
+		HttpStatus statusCode = list.getStatusCode();
+		
+		if (statusCode.is2xxSuccessful())
+		{
+			boolean isSemantic=Util.isSemanticPetition(request);				
+			
+			if (isSemantic) {
+				
+				Object body = list.getBody();
+				
+				Result<T> result=((Result<T>)body);
+				
+				List<T> records = result.getRecords();
+				
+				
+				if (Util.isCallejeroIntegration()) {
+					log.debug("[integraCallejero] isCallejeroIntegration ");
+					for (T objCallejero :records) {	
+						//CMG Controlamos en la integración con callejero, que tenga valor portalId
+						if ( Util.validValue(((ICallejero) objCallejero).getPortalId())){
+							((ICallejero) objCallejero).setStreetAddress(null);		
+							((ICallejero) objCallejero).setPostalCode(null);
+						}
+					}
+				}else {
+					log.debug("[integraCallejero] Not isCallejeroIntegration ");
+					for (T objCallejero:records) {	
+						((ICallejero) objCallejero).setPortalIdIsolated(((ICallejero) objCallejero).getPortalId());
+						((ICallejero) objCallejero).setPortalId(null);						
+					}
+				}
+			}
+		}
+	
+		return list;
+	}
 	
 	
 	

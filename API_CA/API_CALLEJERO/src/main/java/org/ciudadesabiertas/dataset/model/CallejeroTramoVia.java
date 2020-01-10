@@ -30,7 +30,6 @@ import javax.persistence.Table;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -61,8 +60,8 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic = false)
 @JsonIgnoreProperties({ Constants.IKEY })
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESCJR, propiedad = "TramoVia")
-@PathId(value = "/callejero/tramoVia")
+@Rdf(contexto = Context.ESCJR, propiedad = "Tramo")
+@PathId(value = "/callejero/tramo")
 public class CallejeroTramoVia implements java.io.Serializable, RDFModel
 {
 
@@ -114,14 +113,12 @@ public class CallejeroTramoVia implements java.io.Serializable, RDFModel
 	
 	@CsvBindByPosition(position = 8)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
 	private String municipioTitle;
 	
 	@CsvBindByPosition(position = 9)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo = Context.ESADM_URI + "Municipio", propiedad = Context.ESADM_URI + "municipio", nodoId = "municipio")
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 
 	

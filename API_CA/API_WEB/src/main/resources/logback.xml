@@ -57,8 +57,9 @@
 	<!-- 
 	<logger name="org.hibernate" level="DEBUG" />  
     <logger name="org.hibernate.type" level="ALL" />
-     -->    
+     -->
     <Logger name="org.hibernate.orm.deprecation" additivity="false" level="ERROR" />
     <Logger name="io.swagger.models.parameters.AbstractSerializableParameter" additivity="false" level="ERROR" />
+    <Logger name="io.swagger.models.parameters.AbstractSerializableParameter" additivity="false" level="WARN" />
 
 </configuration>

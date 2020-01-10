@@ -38,6 +38,9 @@ public class AlojamientoSearch extends Alojamiento implements  Serializable, Dat
 	private static final long serialVersionUID = -3773361021929583183L;	
 	
 	@ApiModelProperty(hidden = true)
+	private String portalIdIsolated;	
+	
+	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;
 	
 	@ApiModelProperty(hidden = true)

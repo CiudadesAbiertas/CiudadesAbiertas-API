@@ -39,7 +39,7 @@ public class CalidadAireEstacionUtilTest
 {
 
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"STAT04\",\r\n" + 
@@ -51,7 +51,8 @@ public class CalidadAireEstacionUtilTest
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
 			"    \"postalCode\" : \"28039\",\r\n" + 
 			"    \"xETRS89\" : 439582.03357,\r\n" + 
-			"    \"yETRS89\" : 4475019.12562\r\n" + 
+			"    \"yETRS89\" : 4475019.12562,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

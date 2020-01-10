@@ -36,6 +36,7 @@ import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -164,7 +165,7 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 		log.info("[listHTML][" + LIST + ".html]");
@@ -188,7 +189,7 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 
@@ -213,13 +214,10 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
 			@RequestHeader HttpHeaders headersRequest)
 	{
-
 		log.info("[geoList][" + LIST + "]");
-
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
-		
-		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new PuntoWifiResult(), availableFields, getKey(),service);
+		ResponseEntity geoList= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new PuntoWifiResult(), availableFields, getKey(),service);
+		return integraCallejero(geoList,request);
 	}
 
 	
@@ -240,7 +238,7 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 
 	{
@@ -268,8 +266,10 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 		}
 		// FIN CODIGO PERSONALIZADO
 
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST, new Equipamiento(),
+		ResponseEntity list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST, new Equipamiento(),
 				new PuntoWifiResult(), availableFields, getKey(), visitor, service);
+		
+		return integraCallejero(list,request);
 	}
 
 	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -286,7 +286,7 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -398,15 +398,16 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 
-		return record(request, id, new Equipamiento(), srId, nameController, RECORD, service,
-				getKey());
+		ResponseEntity record = record(request, id, new Equipamiento(),new PuntoWifiResult(), srId, nameController, RECORD, service,getKey());
+
+		return integraCallejero(record,request);
 
 	}
 	
@@ -419,7 +420,7 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");

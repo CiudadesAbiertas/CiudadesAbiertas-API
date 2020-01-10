@@ -25,7 +25,6 @@ import javax.servlet.ServletContext;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.LocalComercialController;
 import org.ciudadesabiertas.dataset.controller.TerrazaLocalComercialController;
 import org.ciudadesabiertas.dataset.model.Terraza;
 import org.ciudadesabiertas.dataset.utils.LocalComercialConstants;
@@ -372,15 +371,7 @@ public class TerrazaComercialTest {
     }
     
     
-    @Test    
-    public void test21_Delete_Used_Terraza_409() throws Exception {
-    	String id ="4769";
-    	    	
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(TerrazaLocalComercialController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+   
     
     @Test    
     public void test22_List_Sort_200() throws Exception {
@@ -413,5 +404,12 @@ public class TerrazaComercialTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,TerrazaLocalComercialController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(TerrazaLocalComercialController.LIST+"/"+"1693", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 }

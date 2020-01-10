@@ -25,7 +25,6 @@ import javax.servlet.ServletContext;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.CalidadAireEstacionController;
 import org.ciudadesabiertas.dataset.controller.CalidadAireObservacionController;
 import org.ciudadesabiertas.dataset.model.CalidadAireObservacion;
 import org.ciudadesabiertas.dataset.util.CalidadAireConstants;
@@ -139,28 +138,7 @@ public class CalidadAireObservacionTest {
         	.andExpect(MockMvcResultMatchers.status().isCreated());
     }
     
-    @Test    
-    public void test04_Add_WRONG_SENSOR_409() throws Exception {
-    	String id ="TEST01_OBS0001";
-    	String item = "{"    			
-    	    			+"\"id\" : \""+id+"\","
-    	    			+"\"madeBySensor\" : \""+"NOEXISTE"+"\","
-    	    			+"\"hasDataValue\" : 6,"    			
-    	    			+"\"resultTime\" : \"2019-03-27T01:00:00\","
-    	    			+"\"quality\" : \"Microgramo por metro cúbico\","    			
-    	    			+"\"observedPropertyTitle\" : \"Dióxido de Azufre\","
-    	    			+"\"observedPropertyId\" : \"dioxidoDeAzufre\""
-    	    			+"}";
-    	    	    	
-    	item = new String (item.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.post(CalidadAireObservacionController.ADD)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(item))	
-        	
-        	.andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+   
     
     @Test    
     public void test05_Add_NO_OK_400() throws Exception {
@@ -221,28 +199,7 @@ public class CalidadAireObservacionTest {
 	        .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    @Test    
-    public void test07_Update_WRONG_SENSOR_409() throws Exception {
-    	String id ="TEST01_OBS0001";
-    	String item = "{"    			
-    			+"\"id\" : \""+id+"\","
-    			+"\"madeBySensor\" : \""+"NOEXISTE"+"\","
-    			+"\"hasDataValue\" : 6,"    			
-    			+"\"resultTime\" : \"2019-03-27T01:00:00\","
-    			+"\"quality\" : \"Microgramo por metro cúbico\","    			
-    			+"\"observedPropertyTitle\" : \"Dióxido de Azufre\","
-    			+"\"observedPropertyId\" : \"dioxidoDeAzufre\""
-    			+"}";
-    	
-    	String agendaUPDATE = new String (item.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(CalidadAireObservacionController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(agendaUPDATE))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+   
     
     
     @Test    
@@ -451,5 +408,11 @@ public class CalidadAireObservacionTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,CalidadAireObservacionController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireObservacionController.LIST+"/"+"OBS0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 }

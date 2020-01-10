@@ -33,8 +33,8 @@ import org.ciudadesabiertas.dataset.utils.EquipamientoResult;
 import org.ciudadesabiertas.dataset.utils.EquipamientoSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
@@ -159,7 +159,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 
 		log.info("[listHTML][" + LIST + ".html]");
 
@@ -184,7 +184,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 	@RequestMapping(value = { RECORD + Constants.EXT_HTML,
 			VERSION_1 + RECORD + Constants.EXT_HTML }, method = RequestMethod.GET)
 	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 		
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 
@@ -221,7 +221,9 @@ public class EquipamientoController extends GenericController implements Ciudade
 						+ "[sort:" + sort + "]");
 		
 		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new EquipamientoResult(), availableFields, getKey(),service);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new EquipamientoResult(), availableFields, getKey(),service);
+		
+		return integraCallejero(list,request);
 	}
 	
 	
@@ -240,7 +242,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest) {
 
 		log.info("[list][" + LIST + "]");
@@ -266,8 +268,10 @@ public class EquipamientoController extends GenericController implements Ciudade
 		}
 		// FIN CODIGO PERSONALIZADO
 
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST, new Equipamiento(),
+		ResponseEntity list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST, new Equipamiento(),
 				new EquipamientoResult(), availableFields, getKey(), visitor, service);
+		
+		return integraCallejero(list,request);
 	}
 
 	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = {
@@ -283,7 +287,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page,
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest) {
 
 		log.info("[listHead][" + LIST + "]");
@@ -386,14 +390,15 @@ public class EquipamientoController extends GenericController implements Ciudade
 			@ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO, response = ResultError.class) })
 	@RequestMapping(value = { RECORD, VERSION_1 + RECORD }, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 
 		log.info("[record][" + RECORD + "]");
 
-		log.debug("[parmam][id:" + id + "]");
+		log.debug("[parmam][id:" + id + "]");		
+		
+		ResponseEntity record = record(request, id, new Equipamiento(), new EquipamientoResult(),srId, nameController, RECORD, service,getKey());
 
-		return record(request, id, new Equipamiento(), srId, nameController, RECORD, service,
-				getKey());
+		return integraCallejero(record,request);
 
 	}
 
@@ -407,7 +412,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 			@ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO, response = ResultError.class) })
 	@RequestMapping(value = { RECORD, VERSION_1 + RECORD }, method = RequestMethod.HEAD)
 	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id,
-			@RequestParam(value = Constants.SRID, defaultValue = "", required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 
 		log.info("[recordHead][" + RECORD + "]");
 		return record(request, id, srId);

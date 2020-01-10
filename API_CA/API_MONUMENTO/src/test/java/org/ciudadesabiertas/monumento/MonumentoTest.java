@@ -126,8 +126,8 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -181,8 +181,8 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -223,8 +223,8 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -279,8 +279,8 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -392,7 +392,7 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"longitud\" : -3.65799129,"
@@ -434,8 +434,8 @@ public class MonumentoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -523,5 +523,11 @@ public class MonumentoTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,MonumentoController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(MonumentoController.LIST+"/"+"PITM0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 }

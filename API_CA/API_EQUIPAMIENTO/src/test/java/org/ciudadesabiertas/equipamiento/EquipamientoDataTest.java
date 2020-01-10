@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.equipamiento;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -145,7 +145,7 @@ public class EquipamientoDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -160,16 +160,16 @@ public class EquipamientoDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
-	public void test_Busqueda_provincia() throws Exception	
+	public void test_Busqueda_provinciaId() throws Exception	
 	{
 		
-		String [] paramField= {"provincia","id"};
+		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"Madrid","*EQ004*"};
+		String [] value = {"28","*EQ004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -177,12 +177,12 @@ public class EquipamientoDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_autonomia() throws Exception
+	public void test_Busqueda_autonomia_id() throws Exception
 	{
 
-		String [] paramField= {"autonomia","id"};
+		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"Comunidad de Madrid","*EQ004*"};
+		String [] value = {"13","*EQ004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -193,7 +193,7 @@ public class EquipamientoDataTest
 	public void test_Busqueda_pais() throws Exception
 	{	
 		
-		String [] paramField= {"pais","id"};
+		String [] paramField= {"paisId","id"};
 
 		String [] value = {"España","*EQ004*"};
 
@@ -231,25 +231,25 @@ public class EquipamientoDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_barrio() throws Exception
+	public void test_Busqueda_barrio_id() throws Exception
 	{
 
-		String value = "Urbanizaciones";
+		String value = "28006011";
 		
-		String paramField="barrio";
+		String paramField="barrioId";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 10);
+		assertTrue(records.size() == 45);
 	}
 	
 	@Test
-	public void test_Busqueda_distrito() throws Exception
+	public void test_Busqueda_distrito_id() throws Exception
 	{
 		
-		String [] paramField= {"distrito","id"};
+		String [] paramField= {"distritoId","id"};
 
-		String [] value = {"Unico","*EQ004*"};
+		String [] value = {"2800601","*EQ004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -465,7 +465,18 @@ public class EquipamientoDataTest
 	}
 	
 	
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 	
 }

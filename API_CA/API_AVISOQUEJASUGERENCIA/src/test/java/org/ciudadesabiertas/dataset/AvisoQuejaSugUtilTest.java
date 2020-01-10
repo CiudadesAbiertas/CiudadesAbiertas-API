@@ -24,8 +24,6 @@ import java.util.List;
 import org.ciudadesabiertas.dataset.model.AvisoQuejaSug;
 import org.ciudadesabiertas.utils.TestUtils;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -40,9 +38,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AvisoQuejaSugUtilTest
 {
 
-	private static final Logger log = LoggerFactory.getLogger(AvisoQuejaSugUtilTest.class);
 
-	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey","latitud","longitud","distance","portalIdIsolated" };
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"AQSA0001\",\r\n" + 
@@ -57,16 +54,17 @@ public class AvisoQuejaSugUtilTest
 			"    \"source\" : \"PRESENCIAL/TELEFONICOES\",\r\n" + 
 			"    \"municipioId\" : \"28079\",\r\n" + 
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
-			"    \"barrio\" : \"ALUCHE\",\r\n" + 
-			"    \"distrito\" : \"LATINA\",\r\n" + 
-			"    \"address\" : \"CALLE MAQUEDA 1 --\",\r\n" + 
+			"    \"barrioId\" : \"280796062\",\r\n" + 
+			"    \"distritoId\" : \"2807960\",\r\n" + 
+			"    \"streetAddress\" : \"CALLE MAQUEDA 1 --\",\r\n" + 
 			"    \"postalCode\" : \"28024\",\r\n" + 
 			"    \"latitud\" : 40.39696028,\r\n" + 
 			"    \"longitud\" : -3.76370471,\r\n" + 
 			"    \"typeName\" : \"RECOGIDA DE ANIMALES MUERTOS\",\r\n" + 
 			"    \"typeCode\" : \"3547\",\r\n" + 
 			"    \"xETRS89\" : 435189.14000,\r\n" + 
-			"    \"yETRS89\" : 4472097.38000\r\n" + 
+			"    \"yETRS89\" : 4472097.38000,\r\n" + 
+			"    \"portalId\" : \"PORTAL00008\"\r\n" +
 			"  }";
 
 	@Test

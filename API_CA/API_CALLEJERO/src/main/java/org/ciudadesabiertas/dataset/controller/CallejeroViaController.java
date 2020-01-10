@@ -377,7 +377,7 @@ public class CallejeroViaController extends GenericController implements Ciudade
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new CallejeroVia(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		return record(request, id, new CallejeroVia(),new CallejeroViaResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
 
 	}
 	

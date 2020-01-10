@@ -209,7 +209,7 @@ public class AvisoQuejaSugDataTest
 	@Test
 	public void test_Busqueda_address() throws Exception
 	{
-		String paramField="address";
+		String paramField="streetAddress";
 
 		String value = "*CALLE ILLESCAS 82*";
 				
@@ -352,7 +352,7 @@ public class AvisoQuejaSugDataTest
 		
 		String paramField="field";
 		
-		String value = "address";
+		String value = "streetAddress";
 
 		long total = TestUtils.extractTotalDistinct(AvisoQuejaSugController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
@@ -363,27 +363,39 @@ public class AvisoQuejaSugDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 
-		String value = "JUSTICIA";
+		String value = "280796062";
 		
-		String paramField="barrio";
+		String paramField="barrioId";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 100);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{
 		
-		String  paramField= "distrito";
+		String  paramField= "distritoId";
 
-		String  value = "CENTRO";
+		String  value = "28079606";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 100);
+		assertTrue(total == 2000);
 	}
 	
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 }

@@ -23,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.PuntoWifiController;
 import org.ciudadesabiertas.dataset.utils.PuntoWifiConstants;
+import org.ciudadesabiertas.utils.TestUtils;
 import org.ciudadesabiertas.utils.Util;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -61,6 +62,7 @@ public class PuntoWifiDataRSQLTest
 	@Autowired
 	private WebApplicationContext wac;
 
+	private String listURL= PuntoWifiController.LIST;
 
 	JSONParser parser = new JSONParser();
 
@@ -196,7 +198,7 @@ public class PuntoWifiDataRSQLTest
 	public void test_Busqueda_municipioId_municipioTitle_barrio() throws Exception
 	{
 		//Incluimos control para que no de como resultado el total de campos
-		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrio=='ORCASITAS'";
+		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrioId=='280796062'";
 
 		//Cargamos los tipos asociados a equipamiento tipo wifi
 		value+=" and " +loadTiposDeEquipamientos();
@@ -205,22 +207,23 @@ public class PuntoWifiDataRSQLTest
 
 		long total = extractTotal(paramField, value);
 
-		assertTrue(total == 1);
+		assertTrue(total == 203);
 	}
 	
 	@Test
 	public void test_Busqueda_barrio_or() throws Exception
 	{
 
-		String value = "(barrio=='ORCASITAS' or barrio=='BUTARQUE')";
+		String value = "barrioId=='280796062'";
+		value+=" and postalCode=='28043'";
 		//Cargamos los tipos asociados a equipamiento tipo wifi
 		value+=" and " +loadTiposDeEquipamientos();
-
+		
 		String paramField = "q";
 
 		long total = extractTotal(paramField, value);
 
-		assertTrue(total == 2);
+		assertTrue(total == 7);
 	}
 	
 	
@@ -258,7 +261,7 @@ public class PuntoWifiDataRSQLTest
 	public void test_Busqueda_distrito_and_barrio() throws Exception
 	{
 
-		String value = "distrito=='LATINA' and barrio=='PUERTA DEL ANGEL'";
+		String value = "distritoId=='28079606' and barrioId=='280796062'";
 		//Cargamos los tipos asociados a equipamiento tipo wifi
 		value+=" and " +loadTiposDeEquipamientos();
 
@@ -266,7 +269,7 @@ public class PuntoWifiDataRSQLTest
 
 		long total = extractTotal(paramField, value);
 
-		assertTrue(total == 3);
+		assertTrue(total == 203);
 	}
 	
 	
@@ -300,6 +303,20 @@ public class PuntoWifiDataRSQLTest
 		return total;
 	}
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";	
+		value+=" and " +loadTiposDeEquipamientos();
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 	
 	private String loadTiposDeEquipamientos() {
 		

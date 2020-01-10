@@ -68,7 +68,17 @@ public class LicenciaDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
+		String value = "60000068-106-1993-02762";
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		assertTrue(records.size() == 1);		
+	}
+	
+	@Test
+	public void test_Busqueda_Identifier() throws Exception
+	{
+		String paramField="identifier";		
 		String value = "60000068/106-1993-02762";
+		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);		
 	}

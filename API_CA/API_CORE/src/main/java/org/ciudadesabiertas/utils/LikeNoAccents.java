@@ -74,18 +74,18 @@ public class LikeNoAccents implements Criterion {
         if (database.equals(Constants.ORACLE))
         {
         	//theSQLString= "TRANSLATE(UPPER("+ columns[0] +"),'ÂÁÀÄÃÊÉÈËÎÍÌÏÔÓÒÖÕÛÚÙÜÑ', 'AAAAAEEEEIIIIOOOOOUUUUN') like ?";
-        	theSQLString= DifferentSQLforDatabases.TRANSLATE_ORACLE + columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
+        	theSQLString= DifferentSQLforDatabases.TRANSLATE_ORACLE + "this_."+columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
         		
         }
         else if (database.equals(Constants.SQLSERVER))
         {	//TEXT Description
         	//theSQLString= "dbo.TRANSLATE(UPPER(convert(varchar(5000),"+ columns[0] +")),'ÂÁÀÄÃÊÉÈËÎÍÌÏÔÓÒÖÕÛÚÙÜÑ', 'AAAAAEEEEIIIIOOOOOUUUUN') like ?";
         	//VARCHAR DESCRIPTION
-        	theSQLString= DifferentSQLforDatabases.TRANSLATE_SQLSERVER+ columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
+        	theSQLString= DifferentSQLforDatabases.TRANSLATE_SQLSERVER+ "this_."+columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
         }
         else if (database.equals(Constants.MYSQL))
         {
-        	theSQLString= columnName +" like ?";
+        	theSQLString= "this_."+columnName +" like ?";
         }
         
         

@@ -65,11 +65,21 @@ public class LicenciaDataRSQLTest
 	@Test
 	public void test_Busqueda_id() throws Exception
 	{
-		String value = "id=='60000068/106-1993-02762'";		
+		String value = "id=='60000068-106-1993-02762'";		
 		String paramField = "q";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		assertTrue(total == 1);
 	}
+	
+	@Test
+	public void test_Busqueda_identifier() throws Exception
+	{
+		String value = "identifier=='60000068/106-1993-02762'";		
+		String paramField = "q";
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(total == 1);
+	}
+	
 	@Test
 	public void test_Busqueda_tipo_asociadaA() throws Exception
 	{

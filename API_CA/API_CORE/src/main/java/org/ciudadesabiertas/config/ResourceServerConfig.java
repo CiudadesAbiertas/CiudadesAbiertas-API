@@ -105,6 +105,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		}
 		
 		StartVariables.listURIs=new ArrayList<String>();
+		//CMG Para el control de los controllers
+		StartVariables.listControllers=new ArrayList<String>();
 		log.info("Controllers detected from Ciudades Abiertas Libraries:");
 		Map<String, Object> controllers = listableBeanFactory.getBeansWithAnnotation(RestController.class);
 		for (Map.Entry<String, Object> entry : controllers.entrySet())
@@ -117,6 +119,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				if (controller.getListURI()!=null)
 				{
 					StartVariables.listURIs.add(controller.getListURI());
+					//CMG Añadimos el nombre de los Controllers
+					StartVariables.listControllers.add(controller.getName());
 				}
 				
 				log.info("\t"+controller.getName());

@@ -122,8 +122,8 @@ public class EquipamientoTest {
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
         	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
         	    +"\"barrio\" : \"Urbanizaciones\","
@@ -169,8 +169,8 @@ public class EquipamientoTest {
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
         	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
         	    +"\"barrio\" : \"Urbanizaciones\","
@@ -204,8 +204,8 @@ public class EquipamientoTest {
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
         	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
         	    +"\"barrio\" : \"Urbanizaciones\","
@@ -253,8 +253,8 @@ public class EquipamientoTest {
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
         	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
         	    +"\"barrio\" : \"Urbanizaciones\","
@@ -358,13 +358,13 @@ public class EquipamientoTest {
         	    +"\"tipoEquipamiento\" : \""+EquipamientoConstants.TIPO_EQUIPAMIENTO+"\","
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
-        	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"provincia\" : \"28\","
+        	    +"\"autonomiaId\" : \"13\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
-        	    +"\"barrio\" : \"Urbanizaciones\","
-        	    +"\"distrito\" : \"Unico\","
+        	    +"\"barrioId\" : \"Urbanizaciones\","
+        	    +"\"distritoId\" : \"Unico\","
         	    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
@@ -394,8 +394,8 @@ public class EquipamientoTest {
         	    +"\"municipioId\" : \"28006\","
         	    +"\"municipioTitle\" : \"Alcobendas\","
         	    +"\"provincia\" : \"Madrid\","
-        	    +"\"region\" : \"Madrid\","
-        	    +"\"pais\" : \"España\","
+        	    +"\"autonomiaId\" : \"Madrid\","
+        	    +"\"paisId\" : \"España\","
         	    +"\"streetAddress\" : \"AV OLIMPICA s/n\","
         	    +"\"postalCode\" : \"28108\","
         	    +"\"barrio\" : \"Urbanizaciones\","
@@ -478,6 +478,12 @@ public class EquipamientoTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,EquipamientoController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(EquipamientoController.LIST+"/"+"EQ0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 
 }

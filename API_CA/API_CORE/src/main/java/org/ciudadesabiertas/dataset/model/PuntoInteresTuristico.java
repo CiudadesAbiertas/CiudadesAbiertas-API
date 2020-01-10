@@ -38,7 +38,9 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.EnumCategoryPuntoInteres;
@@ -71,7 +73,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESTURISMO, propiedad = "LugarInteresTuristico")
 @PathId(value="/puntoInteresTuristico/puntoInteresTuristico")
-public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RDFModel,MultiURI {
+public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RDFModel,MultiURI, ICallejero {
 
 	@JsonIgnore
 	private static final long serialVersionUID = -4486812743090306716L;
@@ -96,26 +98,26 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	private String category;
 	
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
-	private Boolean accesible;	
-	
-	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "tipoAccesibilidad")
-	private String tipoAccesibilidad;
-		
-	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")	
 	private String municipioId;
 	
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	private String municipioTitle;
+	
+	@CsvBindByPosition(position=6)
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
+	private String distritoId;
+	
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
+	private String barrioId;
 	
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
@@ -130,39 +132,39 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	private String postalCode;
 	
 	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	private String barrio;
-	
-	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	private String distrito;
-		
-	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;	
 	
-	@CsvBindByPosition(position=13)
+	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=14)
+	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
+	@CsvBindByPosition(position=14)
+	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
+	private Boolean accesible;	
+	
+	@CsvBindByPosition(position=15)
+	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "tipoAccesibilidad")
+	private String tipoAccesibilidad;
+		
 	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
@@ -234,7 +236,18 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	@IsUri
 	private String image;
 	
-	@CsvBindByPosition(position=30)	
+	@CsvBindByPosition(position=30)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
+	@CsvBindByPosition(position=31)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;
@@ -249,7 +262,7 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		this.ikey = ikey;
 	}
 
-	public PuntoInteresTuristico(String ikey, String id, String category, String title, String description, Boolean accesible, String tipoAccesibilidad, String municipioId, String municipioTitle, String streetAddress, String postalCode, String barrio, String distrito, BigDecimal x, BigDecimal y, String email, String telephone, String url, String siglo, String estiloArtistico, BigDecimal costeMantenimiento, BigDecimal ingresosObtenidos, String afluenciaPublico, Date fechaDeclaracionBien, String modoAcceso, String medioTransporte, String notaHistorica, String openingHours, String image) {
+	public PuntoInteresTuristico(String ikey, String id, String category, String title, String description, Boolean accesible, String tipoAccesibilidad, String municipioId, String municipioTitle, String streetAddress, String postalCode, String barrioId, String distritoId, BigDecimal x, BigDecimal y, String email, String telephone, String url, String siglo, String estiloArtistico, BigDecimal costeMantenimiento, BigDecimal ingresosObtenidos, String afluenciaPublico, Date fechaDeclaracionBien, String modoAcceso, String medioTransporte, String notaHistorica, String openingHours, String image, String portalId) {
        this.ikey = ikey;
        this.id = id;
        this.category = category;
@@ -261,8 +274,8 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
        this.municipioTitle = municipioTitle;
        this.streetAddress = streetAddress;
        this.postalCode = postalCode;
-       this.barrio = barrio;
-       this.distrito = distrito;
+       this.barrioId = barrioId;
+       this.distritoId = distritoId;
        this.x = x;
        this.y = y;
        this.email = email;
@@ -279,6 +292,7 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
        this.notaHistorica = notaHistorica;
        this.openingHours = openingHours;
        this.image = image;
+       this.portalId = portalId;
     }
 
 	@Id
@@ -382,22 +396,22 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		this.postalCode = postalCode;
 	}
 
-	@Column(name = "barrio", length = 200)
-	public String getBarrio() {
-		return this.barrio;
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId() {
+		return this.barrioId;
 	}
 
-	public void setBarrio(String barrio) {
-		this.barrio = barrio;
+	public void setBarrioId(String barrioId) {
+		this.barrioId = barrioId;
 	}
 
-	@Column(name = "distrito", length = 200)
-	public String getDistrito() {
-		return this.distrito;
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId() {
+		return this.distritoId;
 	}
 
-	public void setDistrito(String distrito) {
-		this.distrito = distrito;
+	public void setDistritoId(String distritoId) {
+		this.distritoId = distritoId;
 	}
 
 	
@@ -583,18 +597,30 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		return this.distance;
 	}
 	
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
+	
+	
+
 	@Override
 	public String toString() {
 		return "PuntoInteresTuristico [ikey=" + ikey + ", id=" + id + ", title=" + title + ", category=" + category
-				+ ", accesible=" + accesible + ", tipoAccesibilidad=" + tipoAccesibilidad + ", description="
-				+ description + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
-				+ ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", barrio=" + barrio
-				+ ", distrito=" + distrito + ", email=" + email + ", telephone=" + telephone
+				+ ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", distritoId=" + distritoId
+				+ ", barrioId=" + barrioId + ", streetAddress=" + streetAddress + ", postalCode=" + postalCode + ", x="
+				+ x + ", y=" + y + ", latitud=" + latitud + ", longitud=" + longitud + ", accesible=" + accesible
+				+ ", tipoAccesibilidad=" + tipoAccesibilidad + ", email=" + email + ", telephone=" + telephone
 				+ ", url=" + url + ", siglo=" + siglo + ", estiloArtistico=" + estiloArtistico + ", costeMantenimiento="
 				+ costeMantenimiento + ", ingresosObtenidos=" + ingresosObtenidos + ", afluenciaPublico="
 				+ afluenciaPublico + ", fechaDeclaracionBien=" + fechaDeclaracionBien + ", modoAcceso=" + modoAcceso
 				+ ", medioTransporte=" + medioTransporte + ", notaHistorica=" + notaHistorica + ", openingHours="
-				+ openingHours + ", image=" + image + ", x=" + x + ", y=" + y + "]";
+				+ openingHours + ", image=" + image + ", portalId=" + portalId + ", description=" + description
+				+ ", distance=" + distance + "]";
 	}
 
 	public PuntoInteresTuristico(PuntoInteresTuristico obj) {
@@ -609,8 +635,8 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	       this.municipioTitle = obj.municipioTitle;
 	       this.streetAddress = obj.streetAddress;
 	       this.postalCode = obj.postalCode;
-	       this.barrio = obj.barrio;
-	       this.distrito = obj.distrito;
+	       this.barrioId = obj.barrioId;
+	       this.distritoId = obj.distritoId;
 	       this.x = obj.x;
 	       this.y = obj.y;
 	       this.email = obj.email;
@@ -627,6 +653,7 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	       this.notaHistorica = obj.notaHistorica;
 	       this.openingHours = obj.openingHours;
 	       this.image = obj.image;
+	       this.portalId = obj.portalId;
 	    }
 	
 	public PuntoInteresTuristico(PuntoInteresTuristico copia, List<String> attributesToSet)
@@ -664,11 +691,11 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		if (attributesToSet.contains("postalCode")) {
 			this.postalCode = copia.postalCode;		
 		}
-		if (attributesToSet.contains("barrio")) {
-			this.barrio = copia.barrio;		
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = copia.barrioId;		
 		}
-		if (attributesToSet.contains("distrito")) {
-			this.distrito = copia.distrito;		
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = copia.distritoId;		
 		}	
 		if (attributesToSet.contains("xETRS89")) {
 			this.x = copia.x;		
@@ -719,6 +746,9 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		if (attributesToSet.contains("image")) {
 			this.image = copia.image;		
 		}
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = copia.portalId;		
+		}
 
 	}
 	
@@ -733,7 +763,7 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
 		prefixes.put(Context.GEO, Context.GEO_URI);	
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);	
-		
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		prefixes.put(Context.ESTURISMO, Context.ESTURISMO_URI);
 		
 		
@@ -797,6 +827,17 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 			}         
         } 
 		return path;
+	}
+
+	
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated=portalIdIsolated;
+		
+	}
+
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
 	}
 }
 

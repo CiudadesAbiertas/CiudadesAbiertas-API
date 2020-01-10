@@ -33,7 +33,7 @@ public class SubvencionUtilTest
 {
 
 
-	private static final String[] fieldsToIngore = { "ikey" };
+	private static final String[] fieldsToIngore = { "ikey","areaIdIsolated","entidadFinanciadoraIdIsolated" };
 	
 	private static final String testJSON = "{"  
 		    +"\"id\": \"2Test01186\","

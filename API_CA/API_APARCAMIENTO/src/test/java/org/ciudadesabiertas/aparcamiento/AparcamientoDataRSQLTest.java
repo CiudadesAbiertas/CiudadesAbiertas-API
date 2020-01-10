@@ -161,26 +161,26 @@ public class AparcamientoDataRSQLTest
 	public void test_Busqueda_municipioId_municipioTitle_barrio() throws Exception
 	{
 		// Incluimos control para que no de como resultado el total de campos
-		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrio=='TRAFALGAR'";
+		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrioId=='280796062'";
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 56);
 	}
 
 	@Test
 	public void test_Busqueda_barrio_or() throws Exception
 	{
 
-		String value = "(barrio=='ARAVACA' or barrio=='PACIFICO')";
+		String value = "(barrioId=='280796062')";
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 56);
 	}
 
 	@Test
@@ -213,13 +213,13 @@ public class AparcamientoDataRSQLTest
 	public void test_Busqueda_distrito_and_barrio() throws Exception
 	{
 
-		String value = "distrito=='RETIRO' and barrio=='LOS JERONIMOS'";
+		String value = "distritoId=='28079606'";
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 1);
+		assertTrue(total == 56);
 	}
 
 	@Test
@@ -235,4 +235,17 @@ public class AparcamientoDataRSQLTest
 		assertTrue(total == 2);
 	}
 
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
+
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 }

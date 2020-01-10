@@ -33,8 +33,8 @@ import org.ciudadesabiertas.dataset.utils.AgendaSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -44,6 +44,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,7 +122,7 @@ public class AgendaController extends GenericController implements CiudadesAbier
 	@SuppressWarnings("unchecked")
 	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=AgendaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
@@ -138,7 +139,7 @@ public class AgendaController extends GenericController implements CiudadesAbier
 		log.debug("[parmam][field:" + search.getField() + "] ");
 		
 
-		return distinctSearch(request, search, availableFields, page, pageSize,getKey(),NO_HAY_SRID, SEARCH_DISTINCT, new Agenda(), new ObjectResult(),  service);
+		return distinctSearch(request, search, availableFields, page, pageSize,getKey(),NO_HAY_SRID, SEARCH_DISTINCT, new Agenda(), new AgendaResult(),  service);
 
 	}
 	
@@ -214,8 +215,9 @@ public class AgendaController extends GenericController implements CiudadesAbier
 		
 		RSQLVisitor<CriteriaQuery<Agenda>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Agenda>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Agenda(), new AgendaResult(), 
+		ResponseEntity<Agenda> list= list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Agenda(), new AgendaResult(), 
 					 availableFields, getKey(), visitor,service);
+		return integraEquipamiento(list, request);
 	}
 
 
@@ -332,7 +334,9 @@ public class AgendaController extends GenericController implements CiudadesAbier
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new Agenda(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		ResponseEntity record = record(request, id, new Agenda(),new AgendaResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		
+		return integraEquipamiento(record, request);
 
 	}
 	
@@ -406,6 +410,47 @@ public class AgendaController extends GenericController implements CiudadesAbier
 		return LIST;
 	}
 
+	/**
+	 * ***********************************************************
+	 * METODOS ESPECIFICOS PARA EL CONTROLADOR - NO GENERALIZABLES
+	 * ***********************************************************
+	 *  ||												||
+	 *  \/												\/
+	 */
 	
+	@SuppressWarnings("unchecked")
+	private ResponseEntity<?> integraEquipamiento(ResponseEntity<Agenda> list,  HttpServletRequest request) {
+
+		HttpStatus statusCode = list.getStatusCode();
+
+		if (statusCode.is2xxSuccessful()) {
+			boolean isSemantic = Util.isSemanticPetition(request);
+
+			if (isSemantic) {
+
+				Object body = list.getBody();
+
+				Result<Agenda> result = ((Result<Agenda>) body);
+
+				List<Agenda> records = result.getRecords();
+
+				if (Util.isEquipamientoIntegration()) {
+					for (Agenda agenda : records) {
+						// CMG Controlamos en la integración con equipamiento, que tenga valor equipamientoId
+						if ( Util.validValue(agenda.getEquipamientoId() )) {
+							agenda.setEquipamientoTitle(null);
+						}
+					}
+				} else {
+					for (Agenda agenda : records) {
+						agenda.setEquipamientoIdIsolated(agenda.getEquipamientoId());
+						agenda.setEquipamientoId(null);
+					}
+				}
+			}
+		}
+
+		return list;
+	}
 
 }

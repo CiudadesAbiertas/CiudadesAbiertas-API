@@ -126,8 +126,8 @@ public class PuntoInteresTuristicoTest {
     		    +"\"municipioTitle\" : \"Madrid\","
     		    +"\"streetAddress\" : \"Puerto del Milagro, 6\","
     		    +"\"postalCode\" : \"28018\","
-    		    +"\"barrio\" : \"EMBAJADORES\","
-    		    +"\"distrito\" : \"CENTRO\","
+    		    +"\"barrioId\" : \"EMBAJADORES\","
+    		    +"\"distritoId\" : \"CENTRO\","
     		    +"\"xETRS89\" : 440598.07885,"
         	    +"\"yETRS89\" : 4472390.03112,"
     		    +"\"web\" : \"http://www.esmadrid.com/informacion-turistica/torre-san-jose\","
@@ -526,5 +526,11 @@ public class PuntoInteresTuristicoTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
 
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(PuntoInteresTuristicoController.LIST+"/"+"PIT0001", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
+    }
+    
     
 }

@@ -33,8 +33,10 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -67,7 +69,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @RdfMultiple({@Rdf(contexto = Context.SOSA, propiedad = "Platform"),@Rdf(contexto = Context.ESAIR, propiedad = "AirQualityStation")})
 @PathId(value="/calidadAire/estacion")
-public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFModel
+public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFModel, ICallejero
 {
 	@JsonIgnore
 	private static final long serialVersionUID = 508564003699317657L;
@@ -120,14 +122,12 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 	
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")	
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	private String municipioTitle;
 	
 	@CsvBindByPosition(position=10)
@@ -135,6 +135,18 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="streetAddress")	
 	private String postalCode;
+	
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	
+	@ApiModelProperty(hidden = true)
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
 	
 	private Double distance;
 	
@@ -158,6 +170,7 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 		this.postalCode=copia.postalCode;
 		this.x=copia.x;
 		this.y=copia.y;
+		this.portalId = copia.portalId;
 	}
 
 	public CalidadAireEstacion(CalidadAireEstacion copia, List<String> attributesToSet)
@@ -194,6 +207,10 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 		
 		if (attributesToSet.contains("postalCode")) {
 			this.postalCode = copia.postalCode;
+		}
+		
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = copia.portalId;
 		}
 		
 	}
@@ -267,7 +284,7 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 	}
 	
 	
-	@Column(name = "municipio_id", length = 10)
+	@Column(name = "municipio_id", length = 50)
 	public String getMunicipioId() {
 		return this.municipioId;
 	}
@@ -332,7 +349,24 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 	}
 	
 	
+	@Column(name = "portal_id", length = 20)
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
 	
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
 
 	public Map<String,String> prefixes()
 	{
@@ -345,6 +379,7 @@ public class CalidadAireEstacion implements java.io.Serializable, GeoModel, RDFM
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);
 		prefixes.put(Context.GEO, Context.GEO_URI);
 		prefixes.put(Context.ESAIR, Context.ESAIR_URI);	
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
 		return prefixes;
 	}
 

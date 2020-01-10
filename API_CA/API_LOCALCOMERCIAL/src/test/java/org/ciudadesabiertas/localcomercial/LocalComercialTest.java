@@ -25,7 +25,6 @@ import javax.servlet.ServletContext;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.LicenciaController;
 import org.ciudadesabiertas.dataset.controller.LocalComercialController;
 import org.ciudadesabiertas.dataset.model.LocalComercial;
 import org.ciudadesabiertas.dataset.utils.LocalComercialConstants;
@@ -136,7 +135,7 @@ public class LocalComercialTest {
     			+"\"tipoSituacion\" : \"Abierto\","
     			+"\"tipoAcceso\" : \"Agrupado\","
     			+"\"tieneTerraza\" : \"4769\","    
-    			+"\"tieneLicenciaApertura\" : \"280030153/106-2010-10782\","
+    			+"\"tieneLicenciaApertura\" : \"280030153-106-2010-10782\","
     			+"\"agrupacionComercial\" : \"99000213\","
     			+"\"referenciaCatastral\" : \"9872023 VH5797S 0001 WX\""
         	  +"}";
@@ -226,7 +225,7 @@ public class LocalComercialTest {
     			+"\"tipoAcceso\" : \"Agrupado\","
     			+"\"referenciaCatastral\" : \"9872023 VH5797S 0001 WX\","
     			+"\"tieneTerraza\" : \"4769\","    
-    			+"\"tieneLicenciaApertura\" : \"280030153/106-2010-10782\","
+    			+"\"tieneLicenciaApertura\" : \"280030153-106-2010-10782\","
     			+"\"agrupacionComercial\" : \"99000213\""    			 
         	  +"}";
     	
@@ -467,179 +466,7 @@ public class LocalComercialTest {
     }
     
     
-    @Test    
-    public void test21_Add_Checkin_Wrong_Agrupacion_409() throws Exception {
-    	String itemAdd = "{"    			
-    			+"\"id\" : \"TEST01_LC0001\","
-    			+"\"title\" : \"LATAGLIATELLA2\","
-    			+"\"description\" : \"Descripcion LATAGLIATELLA : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \","
-    			+"\"municipioId\" : \"28079\","
-    			+"\"municipioTitle\" : \"Madrid\","
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"postalCode\" : \"28039\","
-    			+"\"barrio\" : \"Cuatro Caminos\","
-    			+"\"distrito\" : \"Tetuan\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999,"
-    			+"\"telephone\" : \"9199999913\","
-    			+"\"url\" : \"http://api.ciudadesabiertas.org/id=280030153\","
-    			+"\"tipoActividadEconomica\" : \"56\","
-    			+"\"nombreComercial\" : \"Nombre Comercial LATAGLIATELLA\","
-    			+"\"rotulo\" : \"Rotulo LATAGLIATELLA\","
-    			+"\"aforo\" : 50,"
-    			+"\"tipoSituacion\" : \"Abierto\","
-    			+"\"tipoAcceso\" : \"Agrupado\","
-    			+"\"referenciaCatastral\" : \"9872023 VH5797S 0001 WX\","
-    			+"\"agrupacionComercial\" : \"11111\""    			 
-        	  +"}";
-    	
-    	itemAdd = new String (itemAdd.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.post(LocalComercialController.ADD)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(itemAdd))	
-        	
-        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
-    public void test21_Add_Checkin_Wrong_Terraza_409() throws Exception {
-    	String itemAdd = "{"    			
-    			+"\"id\" : \"TEST01_LC0001\","
-    			+"\"title\" : \"LATAGLIATELLA2\","
-    			+"\"description\" : \"Descripcion LATAGLIATELLA : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \","
-    			+"\"municipioId\" : \"28079\","
-    			+"\"municipioTitle\" : \"Madrid\","
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"postalCode\" : \"28039\","
-    			+"\"barrio\" : \"Cuatro Caminos\","
-    			+"\"distrito\" : \"Tetuan\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999,"
-    			+"\"telephone\" : \"9199999913\","
-    			+"\"url\" : \"http://api.ciudadesabiertas.org/id=280030153\","
-    			+"\"tipoActividadEconomica\" : \"56\","
-    			+"\"nombreComercial\" : \"Nombre Comercial LATAGLIATELLA\","
-    			+"\"rotulo\" : \"Rotulo LATAGLIATELLA\","
-    			+"\"aforo\" : 50,"
-    			+"\"tipoSituacion\" : \"Abierto\","
-    			+"\"tipoAcceso\" : \"Agrupado\","
-    			+"\"referenciaCatastral\" : \"9872023 VH5797S 0001 WX\","    			
-    			+"\"tieneTerraza\" : \"1111\""    			    			 
-        	  +"}";
-    	
-    	itemAdd = new String (itemAdd.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.post(LocalComercialController.ADD)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(itemAdd))	
-        	
-        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
-    public void test21_Add_Checkin_Wrong_Licencia_409() throws Exception {
-    	String itemAdd = "{"    			
-    			+"\"id\" : \"TEST01_LC0001\","
-    			+"\"title\" : \"LATAGLIATELLA2\","
-    			+"\"description\" : \"Descripcion LATAGLIATELLA : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \","
-    			+"\"municipioId\" : \"28079\","
-    			+"\"municipioTitle\" : \"Madrid\","
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"postalCode\" : \"28039\","
-    			+"\"barrio\" : \"Cuatro Caminos\","
-    			+"\"distrito\" : \"Tetuan\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999,"
-    			+"\"telephone\" : \"9199999913\","
-    			+"\"url\" : \"http://api.ciudadesabiertas.org/id=280030153\","
-    			+"\"tipoActividadEconomica\" : \"56\","
-    			+"\"nombreComercial\" : \"Nombre Comercial LATAGLIATELLA\","
-    			+"\"rotulo\" : \"Rotulo LATAGLIATELLA\","
-    			+"\"aforo\" : 50,"
-    			+"\"tipoSituacion\" : \"Abierto\","
-    			+"\"tipoAcceso\" : \"Agrupado\","
-    			+"\"referenciaCatastral\" : \"9872023 VH5797S 0001 WX\","
-    			+"\"tieneLicenciaApertura\" : \"500-2017F00190\""    					    			 
-        	  +"}";
-    	
-    	itemAdd = new String (itemAdd.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.post(LocalComercialController.ADD)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(itemAdd))	
-        	
-        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
-    public void test22_Update_WRONG_Licencia_409() throws Exception {
-    	String id ="270017603";    	
-    	String obj = "{"    			
-    			+"\"id\" : \""+id+"\","    			
-    			+"\"title\" : \"RESTAURANTE ASADOR EL TURIA\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999,"   
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"tieneLicenciaApertura\" : \"106-0100F03177\"" 			 
-        	  +"}";
-    	
-    	String LocalComercialUPDATE = new String (obj.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(LocalComercialController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(LocalComercialUPDATE))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
-    public void test23_Update_WRONG_Agrupacion_409() throws Exception {
-    	String id ="270017603";    	
-    	String obj = "{"    			
-    			+"\"id\" : \""+id+"\","    			
-    			+"\"title\" : \"RESTAURANTE ASADOR EL TURIA\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999," 
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"agrupacionComercial\" : \"P000001\"" 			 
-        	  +"}";
-    	
-    	String LocalComercialUPDATE = new String (obj.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(LocalComercialController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(LocalComercialUPDATE))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
-    public void test24_Update_WRONG_Terraza_409() throws Exception {
-    	String id ="270017603";    	
-    	String obj = "{"    			
-    			+"\"id\" : \""+id+"\","    			
-    			+"\"title\" : \"RESTAURANTE ASADOR EL TURIA\","
-    			+"\"xETRS89\" : 441176.61,"
-    			+"\"yETRS89\" : 4480303.53999,"
-    			+"\"streetAddress\" : \"Avenida General Peron Num 40\","
-    			+"\"tieneTerraza\" : \"TFALSA\"" 			 
-        	  +"}";
-    	
-    	String LocalComercialUPDATE = new String (obj.getBytes(),"UTF-8");	
-    	
-    	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(LocalComercialController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON)
-    	        .content(LocalComercialUPDATE))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
+   
     
     @Test    
     public void test25_List_Sort_200() throws Exception {
@@ -678,5 +505,11 @@ public class LocalComercialTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,LocalComercialController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(LocalComercialController.LIST+"/"+"285033785", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 }

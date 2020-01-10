@@ -208,7 +208,7 @@ public class AvisoQuejaSugDataRSQLTest
 	public void test_Busqueda_Rango_movil_address() throws Exception
 	{
 		//Incluimos control para que no de como resultado el total de campos
-		String value = "source=='MOVIL' and address=='CALLE EDUARDO MARQUINA 37*'";
+		String value = "source=='MOVIL' and streetAddress=='CALLE EDUARDO MARQUINA 37*'";
 
 		String paramField = "q";
 
@@ -244,33 +244,34 @@ public class AvisoQuejaSugDataRSQLTest
 	}
 	
 
-	@Test
-	public void test_Busqueda_barrio_or() throws Exception
-	{
-
-		String value = "(barrio=='ARAVACA' or barrio=='PACIFICO')";		
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 41);
-	}
+	
 	
 	@Test
 	public void test_Busqueda_distrito_and_barrio() throws Exception
 	{
 
-		String value = "distrito=='RETIRO' and barrio=='LOS JERONIMOS'";
+		String value = "distritoId=='28079606' and barrioId=='280796062'";
 		
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 2000);
 	}
 	
 	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
 
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 	
 }

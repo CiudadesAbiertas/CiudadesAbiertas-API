@@ -109,11 +109,12 @@ function genAttrInfo(fieldName, fieldValue)
 		
 	}
 		
-	var dateValue="";
-	//console.log(fieldName)
-	//console.log(isDate(fieldValue))
+	var dateValue="";	
+	console.log(fieldValue)
+	console.log(isDate(fieldValue))
 	if (isDate(fieldValue))
 	{
+		console.log(fieldValue)
 		theDate=Date.parse(fieldValue);
 		if ((fieldValue.indexOf('T00:00:00')>0)||(fieldValue.indexOf('T')<0))
 		{
@@ -121,11 +122,14 @@ function genAttrInfo(fieldName, fieldValue)
 		}else{
 			dateValue=theDate.toString('dd-MM-yyyy HH:mm:ss')
 		}
+		console.log(dateValue)
+		dateValue=formatearFechaHora(fieldValue);
 	}
 	var numberValue="";	
 	if (typeof fieldValue === 'number')
 	{
-		if (fieldName.indexOf("ETRS89"))
+		
+		if (fieldName.indexOf("ETRS89")>=0)
 		{
 			numberValue=formatETRS(fieldValue);
 		}
@@ -133,24 +137,31 @@ function genAttrInfo(fieldName, fieldValue)
 		{		
 			if ($.inArray( fieldName, moneyFields )>=0)
 			{
-				numberValue=formatMoney(fieldValue);
+				numberValue=formatMoney(fieldValue);		
 			}else{
-				numberValue=formatNumber(fieldValue);	
+				numberValue=formatNumber(fieldValue);				
 			}
-		}
-		
+		}		
 	}
 	var booleanValue="";	
 	if (typeof fieldValue === 'boolean')
 	{
 		booleanValue = translateBoolean(fieldValue)		
 	}
+	var objectValue="";	
+	if (typeof fieldValue === 'object')
+	{
+		objectValue = JSON.stringify(fieldValue)		
+	}
+	
+	
+	
 	
 	var htmlGen="";
 	htmlGen+="<div class='form-group row'>";
 	htmlGen+="<p class='col-sm-2 text-capitalize'>"+fieldName+"</p>";
 	htmlGen+="<div id='fila_"+fieldName+"' class='col-sm-10'>";
-	if ((linkableValue=='')&&(dateValue=='')&&(numberValue=='')&&(booleanValue==''))
+	if ((linkableValue=='')&&(dateValue=='')&&(numberValue=='')&&(booleanValue=='')&&(objectValue==''))
 	{
 		htmlGen+="<p id='static"+fieldName+"'>"+fieldValue+"</p>";
 	}
@@ -167,6 +178,10 @@ function genAttrInfo(fieldName, fieldValue)
 	else if (booleanValue!='')
 	{		
 		htmlGen+="<p id='static"+fieldName+"'>"+ booleanValue+"</p>";
+	}
+	else if (objectValue!='')
+	{		
+		htmlGen+="<p id='static"+fieldName+"'>"+ objectValue+"</p>";
 	}
 	
 	
@@ -187,9 +202,12 @@ function translateBoolean (fieldValue)
 }
 
 function isDate (value) {
+	if (value.length<10)
+	{
+		return false;
+	}
 	var localDate = Date.parse(value);
-	
-	return (localDate!=null && localDate.length>=10)	
+	return (localDate!=null)
 }
 
 function formatNumber(value)

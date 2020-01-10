@@ -48,12 +48,12 @@ public class CallejeroPortalUtilTest
 			"    \"postalCode\" : \"28015\",\r\n" + 
 			"    \"latitud\" : 40.43406413,\r\n" + 
 			"    \"longitud\" : -3.70454469,\r\n" + 
-			"    \"barrio\" : \"Rios Rosas\",\r\n" + 
-			"    \"distrito\" : \"Chamberí\",\r\n" + 
+			"    \"barrioId\" : \"Rios Rosas\",\r\n" + 
+			"    \"distritoId\" : \"Chamberí\",\r\n" + 
 			"    \"municipioId\" : \"28079\",\r\n" + 
 			"    \"municipioTitle\" : \"Madrid\",\r\n" + 
-			"    \"provincia\" : \"Madrid\",\r\n" + 
-			"    \"autonomia\" : \"Comunidad de Madrid\",\r\n" + 
+			"    \"provinciaId\" : \"Madrid\",\r\n" + 
+			"    \"autonomiaId\" : \"Comunidad de Madrid\",\r\n" + 
 			"    \"xETRS89\" : 440242.56000,\r\n" + 
 			"    \"yETRS89\" : 4476174.20000\r\n" + 
 			"  }";

@@ -191,29 +191,29 @@ public class PuntoInteresTuristicoDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 			
-		String [] paramField= {"barrio",PuntoInteresTuristicoConstants.CATEGORY_FIELD};
+		String [] paramField= {"barrioId",PuntoInteresTuristicoConstants.CATEGORY_FIELD};
 
 		//CATEGORY
-		String [] value = {"CUATRO CAMINOS",PuntoInteresTuristicoConstants.CATEGORY};
+		String [] value = {"280796062",PuntoInteresTuristicoConstants.CATEGORY};
 
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 38);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{			
 		
-		String [] paramField= {"distrito",PuntoInteresTuristicoConstants.CATEGORY_FIELD};
+		String [] paramField= {"distritoId",PuntoInteresTuristicoConstants.CATEGORY_FIELD};
 
 		//CATEGORY
-		String [] value = {"TETUAN",PuntoInteresTuristicoConstants.CATEGORY};
+		String [] value = {"28079606",PuntoInteresTuristicoConstants.CATEGORY};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 38);
 	}
 	
 	
@@ -544,7 +544,18 @@ public class PuntoInteresTuristicoDataTest
 	}	
 	
 	
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 
 }

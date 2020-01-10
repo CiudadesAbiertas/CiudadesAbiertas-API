@@ -33,11 +33,10 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
+import org.ciudadesabiertas.dataset.util.CalidadAireConstants;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.EnumTipoEquipamiento;
 import org.ciudadesabiertas.utils.Util;
-import org.ciudadesabiertas.dataset.util.CalidadAireConstants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

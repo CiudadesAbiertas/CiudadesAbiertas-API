@@ -169,7 +169,7 @@ public class InstalacionDepDataRSQLTest
 	public void test_Busqueda_municipioId_municipioTitle_barrio() throws Exception
 	{
 		// Incluimos control para que no de como resultado el total de campos
-		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrio=='MARROQUINA'";
+		String value = "municipioId=='28079' and municipioTitle=='Madrid' and barrioId=='280796062'";
 
 		// Cargamos los tipos asociados a equipamiento tipo aparcamiento
 
@@ -177,21 +177,21 @@ public class InstalacionDepDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 10);
+		assertTrue(total == 484);
 	}
 
 	@Test
 	public void test_Busqueda_barrio_or() throws Exception
 	{
 
-		String value = "barrio=='PIOVERA' or barrio=='DELICIAS'";
+		String value = "barrioId=='280796062'";
 		// Cargamos los tipos asociados a equipamiento tipo aparcamiento
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 7);
+		assertTrue(total == 484);
 	}
 
 	@Test
@@ -226,14 +226,14 @@ public class InstalacionDepDataRSQLTest
 	public void test_Busqueda_distrito_and_barrio() throws Exception
 	{
 
-		String value = "distrito=='VILLAVERDE' and barrio=='BUTARQUE'";
+		String value = "distritoId=='28079606' and barrioId=='280796062'";
 		// Cargamos los tipos asociados a equipamiento tipo aparcamiento
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 4);
+		assertTrue(total == 484);
 	}
 
 	@Test
@@ -249,5 +249,17 @@ public class InstalacionDepDataRSQLTest
 		assertTrue(total == 1);
 	}
 
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		
+		String paramField = "q";
 
+		String value = "portalId=='PORTAL000098'";			
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		
+		assertTrue(total > 10);
+	}
 }

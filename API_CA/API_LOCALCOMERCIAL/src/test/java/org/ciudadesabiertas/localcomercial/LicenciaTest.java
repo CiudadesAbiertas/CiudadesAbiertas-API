@@ -25,7 +25,6 @@ import javax.servlet.ServletContext;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.AgrupacionComercialController;
 import org.ciudadesabiertas.dataset.controller.LicenciaController;
 import org.ciudadesabiertas.dataset.model.LicenciaActividad;
 import org.ciudadesabiertas.dataset.utils.LocalComercialConstants;
@@ -89,8 +88,6 @@ public class LicenciaTest {
         final List<LicenciaActividad> items = service.basicQuery(LocalComercialConstants.KEY,LicenciaActividad.class);
         
         assertTrue( items.size()>0 );
-
-
     }
     
     
@@ -113,9 +110,10 @@ public class LicenciaTest {
     
     @Test    
     public void test04_Add() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	String itemAdd = "{"    			
     			+"\"id\" : \""+id+"\","
+    			+"\"identifier\" : \""+id+"\","
     			+"\"asociadaA\" : \"270105664\","
     			+"\"referencia\" : \"106-1993-02762\","
     			+"\"estadoTramitacion\" : \"concedida\","
@@ -150,8 +148,10 @@ public class LicenciaTest {
     
     @Test    
     public void test06_Add_NO_OK_409() throws Exception {
+    	String id ="TEST60000068-106-1993-02762";
     	String itemAdd = "{"    			
-    			+"\"id\" : \"TEST60000068/106-1993-02762\","
+    			+"\"id\" : \""+id+"\","
+    			+"\"identifier\" : \""+id+"\","
     			+"\"asociadaA\" : \"270105664\","
     			+"\"referencia\" : \"106-1993-02762\","
     			+"\"estadoTramitacion\" : \"concedida\","
@@ -174,25 +174,24 @@ public class LicenciaTest {
     
     @Test    
     public void test07_Update() throws Exception {
-    	String idLocal ="TEST60000068";
-    	String referenciaLic ="106-1993-02762";  
-    	//String id ="TEST60000068/106-1993-02762";
-    	String obj = "{"    			
-    			+"\"id\" : \""+idLocal+"/"+referenciaLic+"\","
+    	String id ="TEST60000068-106-1993-02762";
+    	String itemAdd = "{"    			
+    			+"\"id\" : \""+id+"\","
+    			+"\"identifier\" : \""+id+"\","
     			+"\"asociadaA\" : \"270105664\","
     			+"\"referencia\" : \"106-1993-02762\","
-    			+"\"autorizaActividadEconomica\" : \"52\","
     			+"\"estadoTramitacion\" : \"concedida\","
+    			+"\"autorizaActividadEconomica\" : \"52\","    				
     			+"\"fechaAlta\" : \"1900-01-01T00:00:00\","
     			+"\"fechaCese\" : \"2040-02-16T00:00:00\","
     			+"\"fechaSolicitud\" : \"2010-02-16T00:00:00\","
-    			+"\"seOtorgaA\" : \"Mario Bros\""
+    			+"\"seOtorgaA\" : \"Mario Gomez\""
         	  +"}";
     	
-    	String LicenciaUPDATE = new String (obj.getBytes(),"UTF-8");	
+    	String LicenciaUPDATE = new String (itemAdd.getBytes(),"UTF-8");	
     	
     	 
-        this.mockMvc.perform(MockMvcRequestBuilders.put(LicenciaController.ADD+"/"+idLocal+"/"+referenciaLic)
+        this.mockMvc.perform(MockMvcRequestBuilders.put(LicenciaController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON)
     	        .content(LicenciaUPDATE))	
             
@@ -201,7 +200,7 @@ public class LicenciaTest {
     
     @Test    
     public void test08_Update_NO_OK_400() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	String LicenciaUPDATE = "{"      	
     			+"}";
     	
@@ -215,7 +214,7 @@ public class LicenciaTest {
     
     @Test    
     public void test09_Update_NO_OK_404() throws Exception {
-    	String id ="TEST60000068/106-1993-02761";    	
+    	String id ="TEST60000068-106-1993-02761";    	
     	String obj = "{"    			
     			+"\"id\" : \""+id+"\","
     			+"\"asociadaA\" : \"270105664\","
@@ -242,7 +241,7 @@ public class LicenciaTest {
     
     @Test    
     public void test10_Record() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.get(LicenciaController.ADD+"/"+id+".json")
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -252,7 +251,7 @@ public class LicenciaTest {
     
     @Test    
     public void test11_Record_HEAD() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	
         this.mockMvc.perform(MockMvcRequestBuilders.head(LicenciaController.ADD+"/"+id+".json")
         		.contentType(MediaType.APPLICATION_JSON))
@@ -261,7 +260,7 @@ public class LicenciaTest {
     
     @Test    
     public void test12_Record_NO_OK_404() throws Exception {
-    	String id ="TEST60000068/106-1993-02762_NOOK";
+    	String id ="TEST60000068-106-1993-02762_NOOK";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.get(LicenciaController.ADD+"/"+id+".json")
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -271,7 +270,7 @@ public class LicenciaTest {
     
     @Test    
     public void test13_Delete() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.delete(LicenciaController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -281,7 +280,7 @@ public class LicenciaTest {
     
     @Test    
     public void test14_Delete_NO_OK_404() throws Exception {
-    	String id ="TEST60000068/106-1993-02762_NOOK";
+    	String id ="TEST60000068-106-1993-02762_NOOK";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.delete(LicenciaController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -311,7 +310,7 @@ public class LicenciaTest {
 
     @Test    
     public void test18_Post_Transform() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	String obj = "{"    			
     			+"\"id\" : \""+id+"\","
     			+"\"asociadaA\" : \"270105664\","
@@ -336,7 +335,7 @@ public class LicenciaTest {
     
     @Test    
     public void test19_Post_Transform_NO_OK() throws Exception {
-    	String id ="TEST60000068/106-1993-02762";
+    	String id ="TEST60000068-106-1993-02762";
     	String obj = "{"    			
     			+"\"id\" : \""+id+"\","
     			//+"\"title\" : \"CENTRO COMERCIAL TULULIANO 3\","
@@ -380,16 +379,6 @@ public class LicenciaTest {
     
     
     @Test    
-    public void test21_Delete_Used_License_409() throws Exception {
-    	String id ="280030153/106-2010-10782";
-    	    	
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(LicenciaController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
-    @Test    
     public void test22_List_Sort_200() throws Exception {
     	String sort="?sort=-id,referencia";
         this.mockMvc.perform(MockMvcRequestBuilders.get(LicenciaController.LIST+".json"+sort)).andExpect(MockMvcResultMatchers.status().is(200));
@@ -419,5 +408,11 @@ public class LicenciaTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,LicenciaController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(LicenciaController.LIST+"/"+"60000068-106-1993-02762", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
 }

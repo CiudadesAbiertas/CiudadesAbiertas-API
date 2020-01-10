@@ -346,16 +346,7 @@ public class AgrupacionComercialTest {
     }
     
     
-    @Test    
-    public void test21_Delete_Used_Agrupacion_409() throws Exception {
-    	String id ="99000213";
-    	    	
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(AgrupacionComercialController.ADD+"/"+id)
-        		.contentType(MediaType.APPLICATION_JSON))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isConflict());
-    }
-    
+       
     @Test    
     public void test22_List_Sort_200() throws Exception {
     	String sort="?sort=-id,title";
@@ -387,6 +378,12 @@ public class AgrupacionComercialTest {
     public void test26_List_RDF_200() throws Exception {    	
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,AgrupacionComercialController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
+    }
+    
+    @Test
+    public void test27_Record_Formatos_200() throws Exception {    	    	
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(AgrupacionComercialController.LIST+"/"+"99000218", mockMvc);
+    	assertTrue(checkAllFormats);    	    	
     }
     
 }

@@ -18,6 +18,7 @@ package org.ciudadesabiertas.utils;
 
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.DAOException;
+import org.ciudadesabiertas.exception.NotFoundException;
 import org.ciudadesabiertas.exception.TooManyRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,8 @@ public class ExceptionUtil
 			responseEntity=new ResponseEntity(new ResultError("Database error:"+exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR.value()),HttpStatus.INTERNAL_SERVER_ERROR);
 		}else if (exception instanceof TooManyRequestException) {
 			responseEntity=new ResponseEntity(new ResultError("Too Many Request:"+exception.getMessage(),HttpStatus.TOO_MANY_REQUESTS.value()),HttpStatus.TOO_MANY_REQUESTS);
+		}else if (exception instanceof NotFoundException) {
+			responseEntity=new ResponseEntity(new ResultError("Not Found: "+exception.getMessage(),HttpStatus.NOT_FOUND.value()),HttpStatus.NOT_FOUND);
 		}
 		
 		return responseEntity;

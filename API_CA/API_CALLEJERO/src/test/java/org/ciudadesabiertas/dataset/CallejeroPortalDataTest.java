@@ -120,16 +120,16 @@ public class CallejeroPortalDataTest
 	@Test
 	public void test_Busqueda_barrio() throws Exception
 	{	
-		String [] paramField= {"barrio","id"};
-		String [] value = {"Rios Rosas","PORTAL000105"};
+		String [] paramField= {"barrioId","id"};
+		String [] value = {"280796062","PORTAL000105"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
 	
 	public void test_Busqueda_distrito() throws Exception
 	{	
-		String [] paramField= {"distrito","id"};
-		String [] value = {"Chamberí","PORTAL000105"};
+		String [] paramField= {"distritoId","id"};
+		String [] value = {"28079606","PORTAL000105"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}	
@@ -157,7 +157,7 @@ public class CallejeroPortalDataTest
 	@Test
 	public void test_Busqueda_provincia() throws Exception
 	{				
-		String [] paramField= {"provincia","id"};
+		String [] paramField= {"provinciaId","id"};
 		String [] value = {"Madrid","PORTAL000105"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
@@ -167,8 +167,8 @@ public class CallejeroPortalDataTest
 	@Test
 	public void test_Busqueda_autonomia() throws Exception
 	{				
-		String [] paramField= {"autonomia","id"};
-		String [] value = {"*Madrid*","PORTAL000105"};
+		String [] paramField= {"autonomiaId","id"};
+		String [] value = {"Comunidad-Madrid*","PORTAL000105"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}

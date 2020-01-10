@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -37,7 +39,8 @@ public class AgendaSearch extends Agenda implements  Serializable, DatasetSearch
 	@JsonIgnore
 	private static final long serialVersionUID = -7261783860307676914L;
 
-
+	@ApiModelProperty(hidden = true)
+	private String equipamientoIdIsolated;
 	
 
 	

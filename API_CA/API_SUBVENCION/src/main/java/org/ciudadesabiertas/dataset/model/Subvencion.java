@@ -30,7 +30,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.persistence.Transient;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
@@ -95,29 +95,30 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	 @CsvBindByPosition(position=3)
 	 @CsvBindByName (column = "areaId", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	 //@RdfExternalURI(tipo=Context.ORG_URI+"Organization",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/area/", finURI="areaId", propiedad=Context.ESSUBV_URI+"area")
-	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"area", nodoId="area")
+	 @RdfExternalURI(inicioURI="/organigrama/organizacion/", finURI="areaId", propiedad=Context.ESSUBV_URI+"area")
 	 private String areaId;
 	 
 	 @CsvBindByPosition(position=4)
 	 @CsvBindByName (column = "areaTitle", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = "title")
-	 //@RdfExternalURI(tipo=Context.ORG_URI+"Organization",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/area/", finURI="areaId", propiedad=Context.ESSUBV_URI+"area")
 	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"area", nodoId="area")
  	 private String areaTitle;
 	 
+	 @Transient
+	 @ApiModelProperty(hidden = true)
+	 @Rdf(contexto = Context.DCT, propiedad = "identifier")
+	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"area", nodoId="area")
+	 private String areaIdIsolated;
+	 
+	 
 	 @CsvBindByPosition(position=5)
 	 @CsvBindByName (column = "municipioId", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	 //@RdfExternalURI(tipo=Context.ESADM_URI+"Municipio",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/municipio/", finURI="municipioId", propiedad=Context.ESADM_URI+"municipio")
-	 @RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
+	 @Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	 @RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	 private String municipioId;
 	 
 	 @CsvBindByPosition(position=6)
 	 @CsvBindByName (column = "municipioTitle", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = "title")
-	 //@RdfExternalURI(tipo=Context.ESADM_URI+"Municipio",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/municipio/", finURI="municipioId", propiedad=Context.ESADM_URI+"municipio")
-	 @RdfBlankNode(tipo=Context.ESADM_URI+"Municipio", propiedad=Context.ESADM_URI+"municipio", nodoId="municipio")
 	 private String municipioTitle;
 	 
 	 @CsvBindByPosition(position=7)
@@ -132,54 +133,59 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	 @Rdf(contexto = Context.DCT, propiedad = "title")
 	 //@RdfExternalURI(tipo=Context.OWL_URI+"Thing",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/adjudicatario/", finURI="adjudicatarioId", propiedad=Context.ESSUBV_URI+"adjudicatario")
 	 @RdfBlankNode(tipo=Context.OWL_URI+"Thing", propiedad=Context.ESSUBV_URI+"adjudicatario", nodoId="adjudicatario")
-	private String adjudicatarioTitle;
+	 private String adjudicatarioTitle;
 	 
 	 @CsvBindByPosition(position=9)
 	 @CsvBindByName (column = "entidadFinanciadoraId", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	 //@RdfExternalURI(tipo=Context.ORG_URI+"Organization",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/entidadFinanciadora/", finURI="entidadFinanciadoraId", propiedad=Context.ESSUBV_URI+"entidadFinanciadora")
-	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"entidadFinanciadora", nodoId="entidadFinanciadora")
-	private String entidadFinanciadoraId;
+	 @RdfExternalURI(inicioURI="/organigrama/organizacion/", finURI="entidadFinanciadoraId", propiedad=Context.ESSUBV_URI+"entidadFinanciadora")
+	 private String entidadFinanciadoraId;
 	 
 	 @CsvBindByPosition(position=10)
 	 @CsvBindByName (column = "entidadFinanciadoraTitle", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = "title")
-	 //@RdfExternalURI(tipo=Context.ORG_URI+"Organization",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/entidadFinanciadora/", finURI="entidadFinanciadoraId", propiedad=Context.ESSUBV_URI+"entidadFinanciadora")
+	 @Rdf(contexto = Context.DCT, propiedad = "title")	 
+	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"entidadFinanciadora", nodoId="entidadFinanciadora")	 
+	 private String entidadFinanciadoraTitle;
+	 
+	 @Transient
+	 @ApiModelProperty(hidden = true)
+	 @Rdf(contexto = Context.DCT, propiedad = "identifier")
 	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"entidadFinanciadora", nodoId="entidadFinanciadora")
-	private String entidadFinanciadoraTitle;
+	 private String entidadFinanciadoraIdIsolated;
+	 
 	 
 	 @CsvBindByPosition(position=11)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "importe", typeURI=Context.XSD_URI+"double")
 	 @CsvBindByName (column = "importe")
-	private BigDecimal importe;
+	 private BigDecimal importe;
 	 
 	 @CsvBindByPosition(position=12)
 	 @CsvBindByName (column = "fechaAdjudicacion")	
 	 @CsvDate(Constants.DATE_FORMAT)
-	@Rdf(contexto = Context.ESSUBV, propiedad = "fechaAdjudicacion", typeURI=Context.XSD_URI+"date")
-	private Date fechaAdjudicacion;	 
+	 @Rdf(contexto = Context.ESSUBV, propiedad = "fechaAdjudicacion", typeURI=Context.XSD_URI+"date")
+	 private Date fechaAdjudicacion;	 
 	
 	 @CsvBindByPosition(position=13)
 	 @CsvBindByName (column = "lineaFinanciacion", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "lineaFinanciacion", typeURI=Context.XSD_URI+"string")
-	private String lineaFinanciacion;
+	 private String lineaFinanciacion;
 	 
 	 @CsvBindByPosition(position=14)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "basesReguladoras")
 	 @IsUri()
 	 @CsvBindByName (column = "basesReguladoras", format=Constants.STRING_FORMAT)
-	private String basesReguladoras;
+	 private String basesReguladoras;
 	 
 	 @CsvBindByPosition(position=15)
-	@CsvBindByName (column = "tipoInstrumento", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESSUBV, propiedad = "tipoInstrumento")
-	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/subvencion/tipo-instrumento/", finURI="tipoInstrumento", urifyLevel=2)
-	private String tipoInstrumento;
+	 @CsvBindByName (column = "tipoInstrumento", format=Constants.STRING_FORMAT)
+	 @Rdf(contexto = Context.ESSUBV, propiedad = "tipoInstrumento")
+	 @RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/subvencion/tipo-instrumento/", finURI="tipoInstrumento", urifyLevel=2)
+	 private String tipoInstrumento;
 	
 	 @CsvBindByPosition(position=16)
 	 @CsvBindByName (column = "aplicacionPresupuestaria", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESPRESUP, propiedad = "aplicacionPresupuestaria")
-	private String aplicacionPresupuestaria;
+	 @Rdf(contexto = Context.ESPRESUP, propiedad = "aplicacionPresupuestaria")
+	 private String aplicacionPresupuestaria;
 
 	public Subvencion()
 	{
@@ -461,6 +467,29 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	public void setAplicacionPresupuestaria(String aplicacionPresupuestaria)
 	{
 		this.aplicacionPresupuestaria = aplicacionPresupuestaria;
+	}
+	
+
+	@Transient
+	public String getAreaIdIsolated() {
+		return areaIdIsolated;
+	}
+
+	@Transient
+	public void setAreaIdIsolated(String areaIdIsolated) {
+		this.areaIdIsolated = areaIdIsolated;
+	}
+	
+	
+	
+	@Transient
+	public String getEntidadFinanciadoraIdIsolated() {
+		return entidadFinanciadoraIdIsolated;
+	}
+
+	@Transient
+	public void setEntidadFinanciadoraIdIsolated(String entidadFinanciadoraIdIsolated) {
+		this.entidadFinanciadoraIdIsolated = entidadFinanciadoraIdIsolated;
 	}
 
 	public Map<String,String> prefixes()

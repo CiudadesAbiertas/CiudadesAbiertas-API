@@ -16,7 +16,7 @@
 
 package org.ciudadesabiertas.instalaciondep;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
@@ -149,7 +149,7 @@ public class InstalacionDepDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 			
 	}
 	
@@ -164,16 +164,16 @@ public class InstalacionDepDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertNull(records);
+		assertTrue(records.size()==0);
 	}
 	
 	@Test
 	public void test_Busqueda_provincia() throws Exception	
 	{
 		
-		String [] paramField= {"provincia","id"};
+		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"Madrid","*EQID002*"};
+		String [] value = {"28","*EQID002*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -184,9 +184,9 @@ public class InstalacionDepDataTest
 	public void test_Busqueda_autonomia() throws Exception
 	{
 
-		String [] paramField= {"autonomia","id"};
+		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"Comunidad de Madrid","*EQID0005*"};
+		String [] value = {"13","*EQID0005*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -197,7 +197,7 @@ public class InstalacionDepDataTest
 	public void test_Busqueda_pais() throws Exception
 	{	
 		
-		String [] paramField= {"pais","id"};
+		String [] paramField= {"paisId","id"};
 
 		String [] value = {"España","*EQID001*"};
 
@@ -236,26 +236,26 @@ public class InstalacionDepDataTest
 	public void test_Busqueda_barrio() throws Exception
 	{
 
-		String value = "PUEBLO NUEVO";
+		String value = "280796062";
 		
-		String paramField="barrio";
+		String paramField="barrioId";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 8);
+		assertTrue(records == 484);
 	}
 	
 	@Test
 	public void test_Busqueda_distrito() throws Exception
 	{
 		
-		String  paramField= "distrito";
+		String  paramField= "distritoId";
 
-		String  value = "CIUDAD LINEAL";
+		String  value = "28079606";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 32);
+		assertTrue(records == 484);
 	}
 	
 	@Test
@@ -475,6 +475,17 @@ public class InstalacionDepDataTest
 		assertTrue(total == 7);
 	}	
 	
-	
+	@Test
+	public void test_Busqueda_portalId() throws Exception
+	{
+		
+		String paramField="portalId";
+		
+		String value = "PORTAL000098";
+
+		long total = TestUtils.extractTotalDistinct(listURL, paramField, value, mockMvc);
+
+		assertTrue(total > 10);
+	}
 	
 }

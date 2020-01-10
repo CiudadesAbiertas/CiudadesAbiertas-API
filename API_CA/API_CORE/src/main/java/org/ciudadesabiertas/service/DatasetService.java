@@ -24,7 +24,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-
+import org.ciudadesabiertas.dao.CubeQueryDao;
 import org.ciudadesabiertas.dao.DatasetDao;
 import org.ciudadesabiertas.dao.DatasetDistinctDao;
 import org.ciudadesabiertas.dao.DatasetGroupDao;
@@ -32,6 +32,7 @@ import org.ciudadesabiertas.dao.RSQLDao;
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.DAOException;
 import org.ciudadesabiertas.utils.Constants;
+import org.ciudadesabiertas.utils.CubeQuerySearch;
 import org.ciudadesabiertas.utils.GroupBySearch;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.SearchBasic;
@@ -73,7 +74,9 @@ public class DatasetService<T>  {
 	@Autowired
 	private DatasetDistinctDao<T> datasetDistinctDao;
 	
-
+	@Autowired
+	private CubeQueryDao<T> cubeQueryDao;
+	
 	
 	@Autowired
 	private RSQLDao rsqlDao;
@@ -227,7 +230,24 @@ public class DatasetService<T>  {
 	}
 
 	 
-   
+    @Transactional(readOnly = true)
+    public List<T> cubeQuery(String key,Class<T> type,CubeQuerySearch cubeQuerySearch, int page, int pageSize) throws DAOException, BadRequestException {
+    	log.debug("[search][key:"+key+"][cubeQuery:"+cubeQuerySearch+"]");
+    	//Restamos 1 a la pagina, porque la primera ahora es 1
+    	page--;
+    	return cubeQueryDao.cubeQuery(key,type, cubeQuerySearch, page, pageSize);
+    }
+    
+    @Transactional(readOnly = true)
+    public long rowCountCubeQuery(String key,Class<T> type,CubeQuerySearch cubeQuerySearch) throws DAOException, BadRequestException {
+    	log.debug("[search][key:"+key+"][cubeQueryRowCount:"+cubeQuerySearch+"]");    	
+    	return cubeQueryDao.rowCountCubeQuery(key,type, cubeQuerySearch);
+    }
+
+	public T findByIdentifier(String key, Class<T> type, String identifier) {
+		log.debug("[findByIdentifier][key:"+key+"][identifier:"+identifier+"]");
+        return datasetDao.findByIdentifierObject(key, type, identifier);
+	}
  
  
 	 

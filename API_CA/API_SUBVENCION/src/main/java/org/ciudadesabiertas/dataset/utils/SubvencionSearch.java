@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -36,6 +38,10 @@ public class SubvencionSearch extends Subvencion implements  Serializable,Datase
 	@JsonIgnore	
 	private static final long serialVersionUID = -5636750457062454627L;
 
+	@ApiModelProperty(hidden = true)
+	private String areaIdIsolated;
 	
+	@ApiModelProperty(hidden = true)
+	private String entidadFinanciadoraIdIsolated;
 
 }

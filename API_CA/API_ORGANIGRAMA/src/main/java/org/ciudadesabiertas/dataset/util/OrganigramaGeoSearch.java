@@ -37,6 +37,8 @@ public class OrganigramaGeoSearch extends Organigrama implements  Serializable, 
 	@JsonIgnore
 	private static final long serialVersionUID = -5903129921624303113L;	
 	
+	@ApiModelProperty(hidden = true)
+	private String portalIdIsolated;
 	
 	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;

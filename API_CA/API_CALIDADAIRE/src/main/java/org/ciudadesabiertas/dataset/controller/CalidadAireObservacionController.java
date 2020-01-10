@@ -519,7 +519,7 @@ public class CalidadAireObservacionController extends GenericController implemen
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new CalidadAireObservacion(), NO_HAY_SRID, CalidadAireObservacionController.class.getName(), RECORD, service,getKey());
+		return record(request, id, new CalidadAireObservacion(), new CalidadAireObservacionResult(), NO_HAY_SRID, CalidadAireObservacionController.class.getName(), RECORD, service,getKey());
 
 	}
 	
@@ -596,8 +596,9 @@ public class CalidadAireObservacionController extends GenericController implemen
 	private List<String> checkClavesExternas(CalidadAireObservacion item)
 	{
 		List<String> errores=new ArrayList<String>();
-		//Chequeamos los identificadores que apuntan a otras tablas					
-		if (Util.validValue(item.getMadeBySensor()))
+		//Chequeamos los identificadores que apuntan a otras tablas		
+		//CMG Se comprueba solo si estan activabas las FK
+		if (Util.validValue(item.getMadeBySensor()) && activeFK)
 		{
 			CalidadAireEstacion findById = calidadAireEstacionService.findById(getKey(),CalidadAireEstacion.class,item.getMadeBySensor());
 			if (findById==null)
