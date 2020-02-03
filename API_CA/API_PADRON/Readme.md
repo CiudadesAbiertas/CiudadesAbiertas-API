@@ -2,11 +2,13 @@
 # API CIUDADES ABIERTAS - MÓDULO PADRÓN
 
 Este módulo integra el vocabulario de padrón para las consultas semánticas (RDF)  se basa en estructuras de cubos, definidas en el módulo DSD, actualmente los cubos implantados son:
--	CuboEdad
--	CuboEstudios
--	CuboIndicadores
--	CuboNacionalidad
--	CuboProcedencia
+-	Cubo Edad
+-   Cubo Edad Grupo Quinquenales
+-	Cubo Estudios
+-	Cubo Indicadores
+-	Cubo Nacionalidad
+-   Cubo Pais Nacimiento
+-	Cubo Procedencia
 
 
 ## Configuración del Módulo
@@ -161,6 +163,9 @@ Listado de Operaciones:
 - **CUBOEDAD_LIST**: Listado de generico de los cubos
 - **CUBOEDAD_RECORD**: Ficha del cubo
 - **CUBOEDAD_QUERY**: Consulta standard de cubo de Datos.
+- **CUBOEDAD_G_Q_LIST**: Listado de generico de los cubos
+- **CUBOEDAD_G_Q_RECORD**: Ficha del cubo
+- **CUBOEDAD_G_Q_QUERY**: Consulta standard de cubo de Datos.
 - **CUBOESTUDIO_LIST**: Listado de generico de los cubos
 - **CUBOESTUDIO_RECORD**: Ficha del cubo
 - **CUBOESTUDIO_QUERY**: Consulta standard de cubo de Datos.
@@ -173,6 +178,10 @@ Listado de Operaciones:
 - **CUBOPROCEDENCIA_LIST**: Listado de generico de los cubos
 - **CUBOPROCEDENCIA_RECORD**: Ficha del cubo
 - **CUBOPROCEDENCIA_QUERY**: Consulta standard de cubo de Datos.
+- **CUBO_PAIS_N_LIST**: Listado de generico de los cubos
+- **CUBO_PAIS_N_RECORD**: Ficha del cubo
+- **CUBO_PAIS_N_QUERY**: Consulta standard de cubo de Datos.
+
 
 
 **NOTA:** Si alguna etiqueta de identificación de servicio no se incluyera en los parametros se le aplicaria la configuración por defecto asociada al mismo.

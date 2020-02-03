@@ -18,8 +18,11 @@
 package org.ciudadesabiertas.utils;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -187,6 +190,137 @@ public class DifferentSQLforDatabases {
 		}
 		return firstLoop;
 	}
+		
+	/* Metodo que sustituye los campos de la select que esten dentro de la funcion lower por
+	 * la funcion translate (para borrar acentos y ñ) de cada bbdd y además pasa a mayusculas
+	 * */
+	public static String rsqlTransFormLower(String query, String driver)
+	{
+		String queryT=query;
+		
+		String[] result = StringUtils.substringsBetween(query, "lower(", ")");
+		
+		List<String> fieldsTranslated=new ArrayList<String>();
+		boolean changed=false;
+		for (String field:result)
+		{
+			String fieldT="";
+			if (driver.contains(Constants.ORACLE))
+			{
+				fieldT=TRANSLATE_ORACLE+field+TRANSLATE_END;
+				fieldsTranslated.add(fieldT);
+				changed=true;
+			}
+			else if (driver.contains(Constants.SQLSERVER))
+			{
+				fieldT=TRANSLATE_SQLSERVER+field+TRANSLATE_END;
+				fieldsTranslated.add(fieldT);
+				changed=true;
+			}
+			
+			
+			
+		}
+		
+		for (int i=0;i<fieldsTranslated.size();i++)
+		{
+			queryT=queryT.replace(result[i],fieldsTranslated.get(i));
+		}
+		
+		if (changed)
+		{
+			queryT=queryT.replace("lower", "");
+		}
+		
+		return queryT;
+	}
 	
+	
+	/* Metodo que sustituye los campos de la select que trata el in por
+	 * la funcion translate (para borrar acentos y ñ) de cada bbdd y además pasa a mayusculas
+	 * 
+	 * inOrOut puede ser ' in ' o 'not in'
+	 * 
+	 * */
+	public static String rsqlTransFormInOut(String query, String driver, String inOrOut) throws Exception
+	{
+		String queryT=query;
+		
+		if (!inOrOut.equals(" in ") && (!inOrOut.equals(" not in ")))
+		{
+			throw new Exception ("wrong parameter value, must be ' in ' or ' not in '");
+		}
+				
+		String[] split = query.split("generatedAlias0.");
+		
+		ArrayList<Pair<String, String>> changes=new ArrayList<>();
+		
+		for (String s:split)
+		{
+			if (s.contains(inOrOut))
+			{
+				String tratamiento="generatedAlias0."+s;
+				
+				String[] result = StringUtils.substringsBetween(tratamiento, "generatedAlias0.", inOrOut);
+				
+				List<String> fieldsTranslated=new ArrayList<String>();
+				
+				for (String field:result)
+				{	
+					String fieldT="";
+					if (driver.contains(Constants.ORACLE))
+					{
+						fieldT=TRANSLATE_ORACLE+"generatedAlias0."+field+TRANSLATE_END;
+						fieldsTranslated.add(fieldT);
+					}
+					else if (driver.contains(Constants.SQLSERVER))
+					{
+						fieldT=TRANSLATE_SQLSERVER+"generatedAlias0."+field+TRANSLATE_END;
+						fieldsTranslated.add(fieldT);
+					}
+				}
+				
+				for (int i=0;i<fieldsTranslated.size();i++)
+				{	
+					Pair<String, String> pair = new MutablePair<>("generatedAlias0."+result[i], fieldsTranslated.get(i));
+					if (changes.contains(pair)==false)
+					{
+						changes.add(pair);
+					}
+				}
+			}
+		}
+		
+			
+		for (Pair<String,String> pair:changes)
+		{
+			queryT=queryT.replaceAll(pair.getKey(), pair.getValue());
+		}
+		
+		return queryT;
+	}
+	
+	
+	
+	
+	public static String rsqlRemoveAccentsForParams(String param)
+	{
+		String paramT=param;
+		
+		paramT=paramT.replace("À", "A");
+		paramT=paramT.replace("Á", "A");
+		paramT=paramT.replace("É", "E");
+		paramT=paramT.replace("È", "E");
+		paramT=paramT.replace("Í", "I");
+		paramT=paramT.replace("Ì", "I");
+		paramT=paramT.replace("Ó", "O");
+		paramT=paramT.replace("Ú", "U");
+		paramT=paramT.replace("Ù", "U");
+		paramT=paramT.replace("Ü", "U");
+		paramT=paramT.replace("Ñ", "N");
 
+		return paramT;
+		
+			
+	}
 }

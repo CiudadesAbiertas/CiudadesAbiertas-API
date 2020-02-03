@@ -213,7 +213,7 @@ public class MunicipioTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(MunicipioController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(MunicipioController.LIST, true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -226,7 +226,7 @@ public class MunicipioTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(MunicipioController.LIST+"/"+"28006", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(MunicipioController.LIST+"/"+"28006", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

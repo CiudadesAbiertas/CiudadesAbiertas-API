@@ -942,6 +942,19 @@ public class GenericController<T> {
 			return negotiationResponseEntity;
 		}
 		
+		//CMG: Verificacion de formato para las llamadas GEOS
+		if (Util.isGeoLocationPetition(availableFields, request)) {
+			//Validamos que tenga campos lat o long			
+			boolean result = Util.contains("latitud", (ArrayList<String>) availableFields ) || 
+					Util.contains("x", (ArrayList<String>) availableFields )	||
+					Util.contains("hasGeometry", (ArrayList<String>) availableFields );
+			if (!result) {
+				BadRequestException e=new BadRequestException("Format not valid");
+				return ExceptionUtil.checkException(e);
+			}
+		}
+		//Fin Verificación
+		
 		//CMG: Proceso de Validación de Parametros ahora debemos pasar los campos por metodo ya que no seran igual para todos
 		List<String> allowedParams=new ArrayList<String>();		
 		allowedParams.add(Constants.FIELDS);
@@ -1024,7 +1037,8 @@ public class GenericController<T> {
 				if (rsqlQ.contains(Constants.FIELD_URL)) {										
 					rsqlQ = Util.decodeURL(rsqlQ);	
 				}
-					
+				
+				
 				Result<T> result =dsService.searchByRSQLQuery(visitor,key, rsqlQ, numPage, numPageSize, orders);				
 				
 				List<T> records = result.getRecords();				

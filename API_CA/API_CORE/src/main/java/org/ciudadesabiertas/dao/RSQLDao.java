@@ -18,28 +18,35 @@ package org.ciudadesabiertas.dao;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Parameter;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.DAOException;
+import org.ciudadesabiertas.utils.Constants;
+import org.ciudadesabiertas.utils.DifferentSQLforDatabases;
+import org.ciudadesabiertas.utils.RegularExpressions;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.Sort;
 import org.ciudadesabiertas.utils.Util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
 import cz.jirutka.rsql.parser.RSQLParser;
@@ -64,12 +71,14 @@ public class RSQLDao  {
 	
 	@Autowired
     public MultipleSessionFactory multipleSessionFactory;
-	
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Autowired
+	protected Environment env;	
 
+	/*
 	public EntityManager getEntityManager(String key)
 	{
 		Session session = null;
@@ -87,14 +96,75 @@ public class RSQLDao  {
 		
 		return entityManager;
 	}
+	*/
+	
+	/*
+	 public <T> CriteriaQuery<T> getCriteriaQuery(String datasetKey, String queryString, RSQLVisitor<CriteriaQuery<T>, EntityManager> visitor) throws BadRequestException {
+  	   
+	    	EntityManager entityManager=null;
+	    	try
+	    	{
+	    		entityManager=getEntityManager(datasetKey);    	
+	    		Node rootNode;
+	    		CriteriaQuery<T> query;
 
+	    		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();    	
+	    		
+	    		rootNode = new RSQLParser(operators).parse(queryString);
+	    		    		  		
+	    		query = rootNode.accept(visitor, entityManager); 	    	       		
+	    		
+	    		return query;
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		String msg="Error translating RSQL query to HQL query";
+	    		log.error(msg,e);
+	    		throw new BadRequestException(msg);
+	    	}finally {
+	    		entityManager.close();
+	    	}
+	    }
+	  */ 
+	
 
-    public <T> CriteriaQuery<T> getCriteriaQuery(String datasetKey, String queryString, RSQLVisitor<CriteriaQuery<T>, EntityManager> visitor) throws BadRequestException {
-    	   
-    	EntityManager entityManager=null;
+     
+    
+
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public <T>Result runQuery(String key, RSQLVisitor<CriteriaQuery<T>, EntityManager> visitor, String queryString, int numPage, int numPageSize, List<Sort> orders) throws BadRequestException, DAOException
+    {
+    	Result result=new Result();
+    	
+    	List resultList = new ArrayList<T>();
+    	
+    	//Se necesita una sesion y un entity manager propio para ejecutar la select final  (persistenceQuery)
+    	
+		Session session = null;
+		Session openedSession = null;
+		Session persistenceSession = null;		
+		EntityManager entityManager = null;
+		EntityManager entityManagerPersistence = null;
+		int total=0;
+		
+		if (Util.validValue(key)&&(multipleSessionFactory.getFactories().get(key)!=null))
+		{
+			openedSession=multipleSessionFactory.getFactories().get(key).openSession();
+			entityManager = openedSession.getEntityManagerFactory().createEntityManager();			
+			persistenceSession=multipleSessionFactory.getFactories().get(key).openSession();
+			entityManagerPersistence = persistenceSession.getEntityManagerFactory().createEntityManager();
+			openedSession.close();
+		}else {
+			session=sessionFactory.getCurrentSession();			
+			persistenceSession=sessionFactory.openSession();
+			entityManager = session.getEntityManagerFactory().createEntityManager();
+			entityManagerPersistence = persistenceSession.getEntityManagerFactory().createEntityManager();
+		}
+    		
+        	
     	try
     	{
-    		entityManager=getEntityManager(datasetKey);    	
     		Node rootNode;
     		CriteriaQuery<T> query;
 
@@ -102,112 +172,133 @@ public class RSQLDao  {
     		
     		rootNode = new RSQLParser(operators).parse(queryString);
     		    		  		
-    		query = rootNode.accept(visitor, entityManager);       
-    		/*
-    		TypedQuery<T> findAllBooks = entityManager.createQuery(query);
+    		query = rootNode.accept(visitor, entityManager);
     		
-    		String queryString2 = findAllBooks.unwrap(org.hibernate.Query.class).getQueryString();
+    		 if (query.getRoots().size()>0)
+	         {
+	         	Root root=query.getRoots().iterator().next();         	
+	         	//Tratamiento de Order
+	 	        if (orders.size()>0)
+	 	        {	        
+	 		        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+	 		        
+	 		        List<javax.persistence.criteria.Order> orderList=new ArrayList<javax.persistence.criteria.Order>();
+	 		        if (orders!=null && !orders.isEmpty()) {
+	 					for (Sort sort: orders) {
+	 						if (sort.isDesc()) {
+	 							orderList.add( cb.desc(root.get(sort.getProperty())));
+	 						}else {					
+	 							orderList.add( cb.asc(root.get(sort.getProperty())));
+	 						}
+	 					}			
+	 				}        
+	 		        
+	 		        query.orderBy(orderList);	        
+	 	        }
+	         }
     		
-    		System.out.println(queryString2);
+
+    		TypedQuery<T> typedQuery = entityManager.createQuery(query);    		
+    		Query<T> unwrapQuery = typedQuery.unwrap(Query.class);
     		
-    	    //query.where("lower(generatedAlias0.description) like :param0");
-    		*/
+    		String sqlString=unwrapQuery.getQueryString();
+    		log.info("original SQL: "+sqlString);
+    		
+    		if(transfromQueryForDriver())
+    		{
+	    		if (sqlString.contains("lower("))
+	    		{
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormLower(sqlString, env.getProperty(Constants.DB_DRIVER));
+	    			log.debug("translated SQL: "+sqlString);
+	    		}
+	    		if (sqlString.contains("BD"))
+	    		{
+	    			List<Pair<String, String>> removeSuffixBDInNumbers = RegularExpressions.removeSuffixBDInNumbers(sqlString);
+	    			for (Pair<String,String> p:removeSuffixBDInNumbers)
+	    			{
+	    				sqlString=sqlString.replace(p.getLeft(), p.getRight());
+	    			}
+	    			log.info("translated SQL: "+sqlString);
+	    		}
+	    		//en el if pongo =in= pero lo que pasamos es el sqlString con ' in'  (cuidado con esto)
+	    		if (queryString.contains("=in="))
+	    		{
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," in ");
+	    			log.info("translated SQL: "+sqlString);
+	    		}
+	    		//en el if pongo =out= pero lo que pasamos es el sqlString con ' not in'  (cuidado con esto)
+	    		if (queryString.contains("=out="))
+	    		{
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," not in ");
+	    			log.info("translated SQL: "+sqlString);
+	    		}
+    		}
+    		javax.persistence.Query createQuery = entityManagerPersistence.createQuery(sqlString);
+    		
+    		Map<String,Object> parameterMap=new HashMap<String,Object>();
+    		Set<Parameter<?>> namedParameters = unwrapQuery.getParameters();
+    		for (Parameter<?> p:namedParameters)
+    		{
+    			
+    			Object parameterValue = unwrapQuery.getParameterValue(p.getName());
+    			
+    			if (transfromQueryForDriver())
+				{
+    				if (parameterValue instanceof String)
+        			{
+        				log.debug(parameterValue.toString());	
+        				parameterValue=((String) parameterValue).toUpperCase();
+        				parameterValue=DifferentSQLforDatabases.rsqlRemoveAccentsForParams(parameterValue.toString());
+        			}	
+				}
+    			
+    			log.info("param "+p.getName()+":"+parameterValue);
+    			parameterMap.put(p.getName(), parameterValue);
+    		}    
     	       		
+    		for (Map.Entry<String, Object> entry : parameterMap.entrySet()) {
+    		    //System.out.println(entry.getKey() + "/" + entry.getValue());
+    		    createQuery.setParameter(entry.getKey(), entry.getValue());
+    		}
     		
-    		return query;
+    		total = createQuery.getResultList().size();
+    		
+    		//Restamos 1 a la pagina, porque la primera ahora es 1         
+    		createQuery.setFirstResult((numPage-1) * numPageSize);
+    		createQuery.setMaxResults(numPageSize);
+    		
+    		resultList = createQuery.getResultList();
+    		
+    		if (openedSession != null)
+			{
+    			openedSession.close();
+			}
+    		
     	}
     	catch (Exception e)
     	{
     		String msg="Error translating RSQL query to HQL query";
     		log.error(msg,e);
     		throw new BadRequestException(msg);
-    	}finally {
-    		entityManager.close();
-    	}
-    }
-    
-    
-
-    
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	public <T>Result runQuery(String datasetKey, RSQLVisitor<CriteriaQuery<T>, EntityManager> visitor, String queryString, int numPage, int numPageSize, List<Sort> orders) throws BadRequestException, DAOException
-    {
-    	Result result=new Result();
-    	
-    	CriteriaQuery<T> query;
-    	
-    	 EntityManager entityManager = null;
-		
-    	try
-		{
-    		query = getCriteriaQuery(datasetKey, queryString, visitor);
-		} 
-    	catch (BadRequestException e)
-		{   
-    		throw new BadRequestException("Wrong query");
-		}
-    	 
-    	
-    	try
+    	}  
+    	finally
     	{
-    	   entityManager=getEntityManager(datasetKey);
-         
-         if (query.getRoots().size()>0)
-         {
-         	Root root=query.getRoots().iterator().next();         	
-         	//Tratamiento de Order
- 	        if (orders.size()>0)
- 	        {	        
- 		        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
- 		        
- 		        List<javax.persistence.criteria.Order> orderList=new ArrayList<javax.persistence.criteria.Order>();
- 		        if (orders!=null && !orders.isEmpty()) {
- 					for (Sort sort: orders) {
- 						if (sort.isDesc()) {
- 							orderList.add( cb.desc(root.get(sort.getProperty())));
- 						}else {					
- 							orderList.add( cb.asc(root.get(sort.getProperty())));
- 						}
- 					}			
- 				}        
- 		        
- 		        query.orderBy(orderList);	        
- 	        }
-         }
-         
-         
-         //Extraemos el total
-         log.debug("Before RSQL rowcount");
-         int total = entityManager.createQuery(query).getResultList().size();        
-         log.debug("After RSQL rowcount");
-         
-         TypedQuery typedQuery = entityManager.createQuery(query);
-         //Restamos 1 a la pagina, porque la primera ahora es 1         
-         typedQuery.setFirstResult((numPage-1) * numPageSize);
-         typedQuery.setMaxResults(numPageSize);
-         
-         List resultList = typedQuery.getResultList();
-         
-         result.setRecords(resultList);
-         result.setPage(numPage);
-         result.setPageSize(numPageSize);
-         result.setTotalRecords(total);
-         
-         
-         
+    		persistenceSession.close();
+    		entityManagerPersistence.close();
     	}
-    	catch (Exception e)
-    	{
-    		String msg="Error in RSQL query";
-    		log.error(msg,e);
-    		throw new DAOException(msg);
-    	}finally {
-    		entityManager.close();
-    	}
-                  
+		 
+        result.setRecords(resultList);
+        result.setPage(numPage);
+        result.setPageSize(numPageSize);
+        result.setTotalRecords(total);
                   
          
          return result;
     }
 	
+    
+    private boolean transfromQueryForDriver()
+    {
+    	return (env.getProperty(Constants.DB_DRIVER).contains(Constants.ORACLE))||env.getProperty(Constants.DB_DRIVER).contains(Constants.SQLSERVER);
+    }
 }

@@ -432,7 +432,7 @@ public class CallejeroPortalTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(CallejeroPortalController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CallejeroPortalController.LIST, true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -444,7 +444,7 @@ public class CallejeroPortalTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(CallejeroPortalController.LIST+"/"+"PORTAL000001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CallejeroPortalController.LIST+"/"+"PORTAL000001",true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

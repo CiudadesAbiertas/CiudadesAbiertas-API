@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

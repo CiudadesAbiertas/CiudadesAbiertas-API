@@ -497,7 +497,7 @@ public class LocalComercialTest {
     @Test
     public void test25_List_Formatos_200() throws Exception {    	
     	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(LocalComercialController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(LocalComercialController.LIST, true, mockMvc);
      	assertTrue(checkAllFormats);    	    	
     }
     
@@ -509,7 +509,7 @@ public class LocalComercialTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(LocalComercialController.LIST+"/"+"285033785", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(LocalComercialController.LIST+"/"+"285033785", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

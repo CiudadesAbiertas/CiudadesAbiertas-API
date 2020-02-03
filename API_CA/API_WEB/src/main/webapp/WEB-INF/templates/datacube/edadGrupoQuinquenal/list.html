@@ -1,0 +1,251 @@
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${T(org.ciudadesabiertas.utils.StartVariables).HTML_TITLE} + ' - Listado Cubos'"></title>
+  </head>
+  <body>
+  
+  <div class="container-fluid">
+	  <div class="row">
+	  	<h1>Padron - Listado Observaciones Cubo Padrón Edad por Grupos Quinquenales</h1>
+	  </div>
+	  <div class="row">
+	  	<div class="table-responsive">
+	        <table id="tablaPrincipal" class="table">
+	        	<thead>
+	        	 <tr>
+	                <th>Id.</th>
+	                <th>Sexo</th>	                
+					<th>Municipio</th>
+					<th>Distrito</th>
+					<th>Barrio</th>
+					<th>Sección Censal</th>
+					<th>Año</th>
+					<th>Edad</th>
+					<th>Personas</th>
+	             </tr>        	
+	        	</thead>
+	        	<tbody>		    
+			    </tbody>
+			</table>
+			</div>
+	   </div>
+   </div>
+        
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap/bootstrap.min.css}">
+    
+    <script th:src="@{/resources/js/jquery/jquery.min.js}"></script>    
+    <script th:src="@{/resources/js/bootstrap/popper.min.js}"></script>
+    <script th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/datatables/datatables.min.css}"/>
+    
+    <script th:src="@{/resources/js/datejs/date.js}"></script>
+    <script th:src="@{/resources/js/datatables/datatables.min.js}"></script>
+    <script th:src="@{/resources/js/numeral/numeral.min.js}"></script>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/ciudadesAbiertas.css}"/>
+    <a id="dataTablesLangLink" th:href="@{/resources/js/datatables/spanish.js}"></a>
+    
+    <script th:src="@{/resources/js/common.js}"></script>   
+    
+    <script>
+    var urlIdioma;
+    var urlSearch="[[${theURL}]]";
+    var recordURL="[[${recordURL}]]";
+    var pageSize="[[${pageSize}]]";
+    var page="[[${page}]]";
+    var sort="[[${sort}]]";
+    
+    urlSearch=encodeURI(urlSearch);
+    while (urlSearch.indexOf("&amp;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&amp;","&");
+    }
+    while (urlSearch.indexOf("&lt;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&lt;","<");
+    }
+    while (urlSearch.indexOf("&gt;")>=0)
+    {
+    	urlSearch=urlSearch.replace("&gt;",">");
+    }
+    
+    //console.log(urlSearch)
+    
+    </script>
+    
+    
+    
+    
+	
+	<script>	
+	
+var fieldsName=["id","sex","municipioTitle","distritoTitle","barrioTitle","seccionCensalTitle","refPeriod","edadGruposQuinquenales","numeroPersonas"];
+var fieldsPosition=[0,1,2,3,4,5,6,7,8];
+var enableCoordenadas=false;	
+
+
+$(document).ready(function() {
+	//console.log("ready")
+	//Esta linea es para que no haya warnings
+	$.fn.dataTable.ext.errMode = 'none';
+    var table=$('#tablaPrincipal').DataTable( {
+        "processing": true,
+		"serverSide": true,
+		"searching": false,
+		"language": {
+            "url": $("#dataTablesLangLink").attr("href")
+        },       
+		"paging": true,
+		"pageLength": generateSize(pageSize),
+		"displayStart": generateOffset(page, pageSize),
+		"order":generateOrder(sort,fieldsName,fieldsPosition), 
+		"sDom": '<"wrapper"lfptip>',
+		 "columns": [
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" },
+	        { "type": "html" }
+	        ],
+        "ajax": {
+            "url": urlSearch,
+           "dataSrc": function ( json ) {
+        	    //console.log("datasrc")
+				actualPage=json.page;
+				actualPage=(actualPage+1)
+				//Con las siguietnes 3 lineas extraemos de la respuesta el total de registros y se lo escribimos a la respuesta para que lo interprete
+				var total=json.totalRecords;
+				json.recordsTotal=total;
+				json.recordsFiltered=total;
+				//hay que devolver la parte de la estructura que contiene el array
+				if (json.records==null)
+				{					
+					json.records=new Array();	
+				}
+				return json.records;
+			},
+			"data": function ( d ) {				
+				//console.log("data")				
+				var actualPage = $('#tablaPrincipal').DataTable().page.info().page;
+				actualPage++;
+				//console.log("actualPage: "+actualPage)
+				var newD = new Object();
+				if (actualPage==null){
+					actualPage=1;
+				}
+				
+				if (pageSize!='')
+				{
+					newD.pageSize = pageSize;
+					$('#tablaPrincipal').DataTable().page.len(pageSize);
+				}else{
+					newD.pageSize = d.length;	
+				}
+				
+				newD.page=actualPage;
+				
+				var order=fieldsName[0];
+				//console.log("sort: "+sort)
+				if (sort=='')
+				{
+					if (d.order.length>0)
+					{
+						var columnaSeleccionada=d.order[0].column-1;						
+						for (var i=1;i<fieldsName.length;i++)
+						{
+							var fName=fieldsName[i];
+							if (fieldsPosition[i-1]==columnaSeleccionada)
+							{
+								order=fName;
+							}	
+						}					
+						
+						if(d.order[0].dir=="desc")
+						{
+							order="-"+order;
+						}
+					}
+					
+					
+				}else{
+					order=sort;					
+				}
+				
+				newD.sort = order;
+				
+				return newD;
+            },
+            error: function (xhr, error, thrown) {
+            	console.log("Error")            	
+            }
+        },	
+        
+        "columns": [
+            { "data": "id","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                $(nTd).html("<a href='"+recordURL+"/"+oData.id+".html'>"+oData.id+"</a>");            
+            }},
+            { "data": "sex" },
+			{ "data": "municipioTitle" },
+            { "data": "distritoTitle" },
+            { "data": "barrioTitle" },
+            { "data": "seccionCensalTitle" },
+            { "data": "refPeriod" },
+            { "data": "edadGruposQuinquenales" },            
+            { "data": "numeroPersonas","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                $(nTd).html(formatNumber(oData.numeroPersonas));            
+            	}
+            }
+            
+            
+            
+        ]    
+    } );
+    $('#tablaPrincipal').DataTable().on( 'draw', function () {
+        //Despues de pintar una primera vez me cepillo la información que he recogido del modelo
+    	  pageSize="";
+    	  page="";
+    	  sort="";
+    	  
+    	 
+    	  
+    } );
+  
+} );
+
+
+
+
+
+
+</script>
+	
+	
+    
+  </body>
+</html>

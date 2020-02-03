@@ -39,7 +39,7 @@ import org.springframework.util.NumberUtils;
  * @author Oscar Corcho (UPM, Localidata)
  *
  */
-public class ConvertStringToNumber implements ConverterFactory<String, Number> {
+public class StringToNumberConverter implements ConverterFactory<String, Number> {
 
 	@Override
 	public <T extends Number> Converter<String, T> getConverter(Class<T> targetType) {

@@ -87,7 +87,7 @@ public interface CiudadesAbiertasController
 	}
 	
 	
-	@ExceptionHandler
+	@ExceptionHandler(value = {java.lang.IllegalStateException.class})
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	default @ResponseBody ResponseEntity<?> handleNotFoundException(Exception ex) {
 		log.error("[handleNotFoundException][ERROR:"+ex.getMessage()+"]");

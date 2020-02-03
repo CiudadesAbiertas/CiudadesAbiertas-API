@@ -368,7 +368,7 @@ public class AgrupacionComercialTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	
-    	
+
     	boolean checkAllFormats=TestUtils.checkFormatURIs(AgrupacionComercialController.LIST, mockMvc);
      	assertTrue(checkAllFormats);    	    	
     }

@@ -42,6 +42,9 @@ public interface GeoModel
 
 	public void setY(BigDecimal y);
 		
-
+	public void setDistance(Double distance);
+	
+	public Double getDistance();
+	
 
 }

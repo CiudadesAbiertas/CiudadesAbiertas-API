@@ -515,7 +515,7 @@ public class PuntoInteresTuristicoTest {
     @Test
     public void test25_List_Formatos_200() throws Exception {    	
     	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(PuntoInteresTuristicoController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(PuntoInteresTuristicoController.LIST,true, mockMvc);
      	assertTrue(checkAllFormats);    	    	
     }
     
@@ -528,7 +528,7 @@ public class PuntoInteresTuristicoTest {
 
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(PuntoInteresTuristicoController.LIST+"/"+"PIT0001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(PuntoInteresTuristicoController.LIST+"/"+"PIT0001", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

@@ -515,7 +515,7 @@ public class MonumentoTest {
     @Test
     public void test25_List_Formatos_200() throws Exception {    	
     	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(MonumentoController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(MonumentoController.LIST, true, mockMvc);
      	assertTrue(checkAllFormats);    	    	
     }
     
@@ -527,7 +527,7 @@ public class MonumentoTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(MonumentoController.LIST+"/"+"PITM0001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(MonumentoController.LIST+"/"+"PITM0001", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

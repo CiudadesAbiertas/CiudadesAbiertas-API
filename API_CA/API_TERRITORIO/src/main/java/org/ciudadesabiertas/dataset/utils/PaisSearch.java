@@ -19,7 +19,6 @@ package org.ciudadesabiertas.dataset.utils;
 import java.io.Serializable;
 
 import org.ciudadesabiertas.dataset.model.Pais;
-import org.ciudadesabiertas.dataset.model.SeccionCensal;
 import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

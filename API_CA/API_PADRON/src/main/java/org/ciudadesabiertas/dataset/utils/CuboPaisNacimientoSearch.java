@@ -13,7 +13,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Licence for the specific language governing permissions and limitations under the Licence.
  */
+
 package org.ciudadesabiertas.dataset.utils;
+
+import java.io.Serializable;
+import org.ciudadesabiertas.dataset.model.CuboPaisNacimiento;
+import org.ciudadesabiertas.utils.DatasetSearch;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -21,15 +28,11 @@ package org.ciudadesabiertas.dataset.utils;
  * @author Oscar Corcho (UPM, Localidata)
  *
  */
+public class CuboPaisNacimientoSearch extends CuboPaisNacimiento implements  Serializable, DatasetSearch<CuboPaisNacimiento> {
 
-public interface Territorio {
+	@JsonIgnore
+	private static final long serialVersionUID = -3073361021929583183L;	
 	
-	public String getId();
-	
-	public String getTitle();
-	
-	public void setHasGeometry(Object hasGeometry);
-	
-	public void showFieldTerritorio();
+
 	
 }

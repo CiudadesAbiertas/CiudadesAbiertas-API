@@ -489,7 +489,7 @@ public class OrganigramaTest {
     @Test
     public void test25_List_Formatos_200() throws Exception {    	
     	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganigramaController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganigramaController.LIST, true, mockMvc);
      	assertTrue(checkAllFormats);    	    	
     }
     
@@ -501,7 +501,7 @@ public class OrganigramaTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganigramaController.LIST+"/"+"26015", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganigramaController.LIST+"/"+"26015", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

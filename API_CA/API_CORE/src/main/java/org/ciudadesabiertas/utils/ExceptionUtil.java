@@ -36,6 +36,7 @@ public class ExceptionUtil
 	private static final Logger log = LoggerFactory.getLogger(ExceptionUtil.class);
 	
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static ResponseEntity<?> checkException(Exception exception)
 	{
 		log.error(exception.getMessage());

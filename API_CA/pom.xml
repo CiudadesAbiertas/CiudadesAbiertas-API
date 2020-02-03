@@ -23,7 +23,8 @@
 		<pmdVersion>6.8.0</pmdVersion>
 		<oracleDriverVersion>11.2.0.3</oracleDriverVersion>
 		<mysqlDriverVersion>5.1.47</mysqlDriverVersion>
-		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>		
+		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>	
+		<geoRss.Rome.version>1.12.2</geoRss.Rome.version>	
 	</properties>
 
 
@@ -54,7 +55,7 @@
 				<module>API_TRAMITE</module>
 				<module>API_DSD</module>
 				<module>API_PADRON</module>
-				<module>API_TERRITORIO</module>				
+				<module>API_TERRITORIO</module>
 				<!-- 
 				<module>API_PLANTILLA</module>
 				 -->
@@ -267,7 +268,43 @@
 			</modules>
 		</profile>
 		
+		<profile>
+			<id>agendaMunicipal</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>					
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_AGENDAMUNICIPAL</module>				
+			</modules>
+		</profile>
 
+		<profile>
+			<id>contratos</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_CONTRATOS</module>				
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>bicicletaPublica</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_BICICLETAPUBLICA</module>				
+			</modules>
+		</profile>
+		
+		
 
 		
 		<!-- Perfil para el conjunto de datos Plantilla -->

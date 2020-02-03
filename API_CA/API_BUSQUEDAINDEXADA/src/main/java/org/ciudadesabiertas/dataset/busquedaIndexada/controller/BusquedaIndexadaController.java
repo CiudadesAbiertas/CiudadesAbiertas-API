@@ -67,6 +67,8 @@ public class BusquedaIndexadaController implements CiudadesAbiertasController
 {
 	public static final String SOLR_LIST = "/busquedaIndexada";
 		
+	public static final String SOLR_SEARCH_DATASET = "/busquedaDatasetName";
+	
 	public static final String VERSION_1 = "v1/";
 	
 	public static final String MODEL_VIEW_LIST = "busquedaIndexada/list";
@@ -83,99 +85,88 @@ public class BusquedaIndexadaController implements CiudadesAbiertasController
 	//http://localhost:8080/API/solr.json?query=madrid
 	//http://localhost:8080/API/solr.json?dataset=agenda&query=madrid	
 	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_INDEXADA_RESPONSE, authorizations = { @Authorization(value=Constants.APIKEY) })
-		@ApiResponses({
-		            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=BusquedaIndexadaResult.class),
-		            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
-		            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
-		            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
-		   })
-		@RequestMapping(value= {SOLR_LIST,  VERSION_1+SOLR_LIST}, method = {RequestMethod.GET})	
-		public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, 
-				@RequestParam(value = "dataset", defaultValue = "", required = false) String dataset, 
-				@RequestParam(value = "query", required = true) String query,
-				@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-				@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,			
-				@RequestHeader HttpHeaders headersRequest)
-		{
+	@ApiResponses({
+			@ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO, response = BusquedaIndexadaResult.class),
+			@ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA, response = ResultError.class),
+			@ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO, response = ResultError.class),
+			@ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO, response = ResultError.class) })
+	@RequestMapping(value = { SOLR_LIST, VERSION_1 + SOLR_LIST }, method = { RequestMethod.GET })
+	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request,
+			@RequestParam(value = "dataset", defaultValue = "", required = false) String dataset,
+			@RequestParam(value = "query", required = true) String query,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page,
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
+			@RequestHeader HttpHeaders headersRequest) {
 
-			log.info("[list][" + SOLR_LIST + "]");
+		log.info("[list][" + SOLR_LIST + "]");
 
-			log.info("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] ");
-			
-			//Verifico la negociación de contenidos
-			/*
-			ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
-			if (negotiationResponseEntity!=null){
-				return negotiationResponseEntity;
+		log.info("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] ");
+
+		// Verifico la negociación de contenidos
+		/*
+		 * ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
+		 * if (negotiationResponseEntity!=null){ return negotiationResponseEntity; }
+		 */
+		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);
+
+		int numPage = Constants.defaultPage;
+		int numPageSize = StartVariables.defaultPageSize;
+		if (pageSize.equals("")) {
+			pageSize = Integer.toString(StartVariables.defaultPageSize);
+		}
+		try {
+			numPage = Integer.parseInt(page);
+
+			numPageSize = Integer.parseInt(pageSize);
+
+			if (numPageSize < 0 || numPageSize > StartVariables.maxPageSize) {
+				numPageSize = StartVariables.defaultPageSize;
 			}
-			*/
-			ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);
-			
-			int numPage = Constants.defaultPage;
-			int numPageSize =StartVariables.defaultPageSize;		
-			if (pageSize.equals(""))
-			{
-				pageSize=Integer.toString(StartVariables.defaultPageSize);
-			}
-			try
-			{
-				numPage = Integer.parseInt(page);
-		
-				numPageSize = Integer.parseInt(pageSize);
-		
-				if (numPageSize < 0|| numPageSize > StartVariables.maxPageSize)
-				{
-					numPageSize = StartVariables.defaultPageSize;			
-				}
-			}
-			catch (NumberFormatException e)
-			{
-				log.error("Error parsing page numbers",e);
-				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong page information"));
-				return responseEntity;
-			}
-					
-			try
-			{
-				BusquedaIndexadaResult solrResult = solrService.query(dataset, query, numPage, numPageSize);
-			
-				Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request,solrResult.getTotalRecords(),numPageSize,env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));
-				
-				//Pagina actual
-				solrResult.setSelf(pageMetadataCalculation.get(Constants.SELF));				
-				//Pagina inicial				
-				solrResult.setFirst(pageMetadataCalculation.get(Constants.FIRST));
-				//Ultima página				
-				solrResult.setLast(pageMetadataCalculation.get(Constants.LAST));
-				//Pagina siguiente
-				solrResult.setNext(pageMetadataCalculation.get(Constants.NEXT));				
-				//Pagina anterior
-				solrResult.setPrev(pageMetadataCalculation.get(Constants.PREV));
-				//MD5
-				solrResult.setContentMD5(Util.generateHash( Util.toString(solrResult.getRecords()) ));
-				
-				solrResult.setPage(numPage);
-				solrResult.setPageSize(numPageSize);
-				solrResult.setPageRecords(solrResult.getRecords().size());				
-				solrResult.setTotalRecords(solrResult.getTotalRecords());
-				
-				solrResult.setStatus(200);
-				
-				HttpHeaders headers = Util.extractHeaders(solrResult);				
-				
-				responseEntity=new ResponseEntity<Object>(solrResult,headers,HttpStatus.OK);
-				
-				
-				
-				responseEntity=new ResponseEntity<Object>(solrResult,HttpStatus.OK);
-			} catch (Exception e)
-			{
-				log.error("internal error",e);
-				responseEntity=ExceptionUtil.checkException(e);
-			}
-			
+		} catch (NumberFormatException e) {
+			log.error("Error parsing page numbers", e);
+			responseEntity = ExceptionUtil.checkException(new BadRequestException("Wrong page information"));
 			return responseEntity;
 		}
+
+		try {
+			BusquedaIndexadaResult solrResult = solrService.query(dataset, query, numPage, numPageSize);
+
+			Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request,
+					solrResult.getTotalRecords(), numPageSize, env.getProperty(Constants.URI_BASE),
+					env.getProperty(Constants.STR_CONTEXTO));
+
+			// Pagina actual
+			solrResult.setSelf(pageMetadataCalculation.get(Constants.SELF));
+			// Pagina inicial
+			solrResult.setFirst(pageMetadataCalculation.get(Constants.FIRST));
+			// Ultima página
+			solrResult.setLast(pageMetadataCalculation.get(Constants.LAST));
+			// Pagina siguiente
+			solrResult.setNext(pageMetadataCalculation.get(Constants.NEXT));
+			// Pagina anterior
+			solrResult.setPrev(pageMetadataCalculation.get(Constants.PREV));
+			// MD5
+			solrResult.setContentMD5(Util.generateHash(Util.toString(solrResult.getRecords())));
+
+			solrResult.setPage(numPage);
+			solrResult.setPageSize(numPageSize);
+			solrResult.setPageRecords(solrResult.getRecords().size());
+			solrResult.setTotalRecords(solrResult.getTotalRecords());
+
+			solrResult.setStatus(200);
+
+			HttpHeaders headers = Util.extractHeaders(solrResult);
+
+			responseEntity = new ResponseEntity<Object>(solrResult, headers, HttpStatus.OK);
+
+			responseEntity = new ResponseEntity<Object>(solrResult, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("internal error", e);
+			responseEntity = ExceptionUtil.checkException(e);
+		}
+
+		return responseEntity;
+	}
 
 	@ApiIgnore
 	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_HTML, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -223,6 +214,71 @@ public class BusquedaIndexadaController implements CiudadesAbiertasController
 		return mv;
 	}
 	
+	
+	//http://parla.dia.fi.upm.es:8983/solr/ciudadesAbiertas/select?facet.field=datasetName&facet.query=datasetName&facet=on&fl=datasetName&q=*%3A*
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DATASET_NAME_SOLR, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DATASET_NAME_SOLR, produces = SwaggerConstants.FORMATOS_CONSULTA_INDEXADA_RESPONSE, authorizations = {
+			@Authorization(value = Constants.APIKEY) })
+	@ApiResponses({
+			@ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO, response = BusquedaIndexadaResult.class),
+			@ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA, response = ResultError.class),
+			@ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO, response = ResultError.class),
+			@ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO, response = ResultError.class) })
+	@RequestMapping(value = { SOLR_SEARCH_DATASET, VERSION_1 + SOLR_SEARCH_DATASET }, method = { RequestMethod.GET })
+	public @ResponseBody ResponseEntity<?> getDataset(HttpServletRequest request,						
+			@RequestHeader HttpHeaders headersRequest) {
+
+		log.info("[getDataset][" + SOLR_SEARCH_DATASET + "]");
+
+
+
+		// Verifico la negociación de contenidos
+		/*
+		 * ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
+		 * if (negotiationResponseEntity!=null){ return negotiationResponseEntity; }
+		 */
+		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);
+
+		int numPageSize = StartVariables.defaultPageSize;
+
+		try {
+			BusquedaIndexadaResult solrResult = solrService.searchDataset();
+
+			Map<String, String> pageMetadataCalculation = Util.pageMetadataCalculation(request,
+					solrResult.getTotalRecords(), numPageSize, env.getProperty(Constants.URI_BASE),
+					env.getProperty(Constants.STR_CONTEXTO));
+
+			// Pagina actual
+			solrResult.setSelf(pageMetadataCalculation.get(Constants.SELF));
+			// Pagina inicial
+			solrResult.setFirst(pageMetadataCalculation.get(Constants.FIRST));
+			// Ultima página
+			solrResult.setLast(pageMetadataCalculation.get(Constants.LAST));
+			// Pagina siguiente
+			solrResult.setNext(pageMetadataCalculation.get(Constants.NEXT));
+			// Pagina anterior
+			solrResult.setPrev(pageMetadataCalculation.get(Constants.PREV));
+			// MD5
+			solrResult.setContentMD5(Util.generateHash(Util.toString(solrResult.getRecords())));
+
+			solrResult.setPage(1);
+			solrResult.setPageSize(numPageSize);
+			solrResult.setPageRecords(solrResult.getRecords().size());
+			solrResult.setTotalRecords(solrResult.getTotalRecords());
+
+			solrResult.setStatus(200);
+
+			HttpHeaders headers = Util.extractHeaders(solrResult);
+
+			responseEntity = new ResponseEntity<Object>(solrResult, headers, HttpStatus.OK);
+
+			responseEntity = new ResponseEntity<Object>(solrResult, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("internal error", e);
+			responseEntity = ExceptionUtil.checkException(e);
+		}
+
+		return responseEntity;
+	}
 	
 	
 	@Override

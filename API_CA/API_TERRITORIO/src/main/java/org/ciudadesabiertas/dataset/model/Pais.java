@@ -32,9 +32,9 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.CustomId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
-import org.ciudadesabiertas.dataset.utils.Territorio;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
+import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

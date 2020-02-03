@@ -176,7 +176,8 @@ public class Constants
 	public static final String mimeXML = "application/xml";
 	public static final String mimeCSV = "text/csv";
 	public static final String mimeGEOJSON = "application/geo+json";
-		
+	public static final String mimeGEORSS = "application/atom+xml";
+	
 	
 	public static final int maxSizeURL=2000;
 	
@@ -237,8 +238,10 @@ public class Constants
 	public static final String FORMATO_JSONLD = "jsonld";
 	public static final String FORMATO_N3 = "n3";
 	public static final String FORMATO_GEOJSON = "geojson";
+	public static final String FORMATO_GEORSS = "georss";
+	public static final String FORMATO_ODATA = "odata";
 	
-	public static final String[] FORMATOS_EXTENSIONES= {FORMATO_HTML,FORMATO_JSON,FORMATO_XML,FORMATO_CSV,FORMATO_RDF,FORMATO_TTL,FORMATO_JSONLD,FORMATO_N3, FORMATO_GEOJSON};
+	public static final String[] FORMATOS_EXTENSIONES= {FORMATO_HTML,FORMATO_JSON,FORMATO_XML,FORMATO_CSV,FORMATO_RDF,FORMATO_TTL,FORMATO_JSONLD,FORMATO_N3, FORMATO_GEOJSON,FORMATO_GEORSS,FORMATO_ODATA };
 	
 	public static final String CONTENT_TYPE_JSON_UTF8 = "application/json;charset=UTF-8";
 	public static final String CONTENT_TYPE_XML_UTF8 = "application/xml;charset=UTF-8";
@@ -248,6 +251,7 @@ public class Constants
 	public static final String MEDIA_TYPE_TEXT = mimeHTML;
 	public static final String MEDIA_TYPE_CSV = mimeCSV;
 	public static final String MEDIA_TYPE_GEOJSON = mimeGEOJSON;
+	public static final String MEDIA_TYPE_GEORSS = mimeGEORSS;
 	
 	
 	

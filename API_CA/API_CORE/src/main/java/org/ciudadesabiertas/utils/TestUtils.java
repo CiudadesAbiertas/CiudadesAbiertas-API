@@ -16,11 +16,19 @@
 
 package org.ciudadesabiertas.utils;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
@@ -191,10 +199,14 @@ public class TestUtils
 	}
 	
 	
-	
 	public static boolean checkFormatURIs(String URL, MockMvc mockMvc)  
 	{   	
-		String[] formatos= {"json","xml","csv","rdf","ttl","jsonld","n3"};
+	    return checkFormatURIs(URL, false, mockMvc);    	    	
+	 }
+	
+	public static boolean checkFormatURIs(String URL,  boolean geoFormats, MockMvc mockMvc)  
+	{   	
+		List<String> formatos=TestUtils.formatos(geoFormats);
 	    ArrayList<Integer> responseStatus=new ArrayList<Integer>();	    	
 	    
     	for (String format:formatos)
@@ -211,6 +223,89 @@ public class TestUtils
     			log.error("Error in URL: "+formatURL);
     		}
     		responseStatus.add(status);
+    		
+    		if (format.equals("geojson")||format.equals("json")||format.equals("jsonld"))
+    		{
+    			JSONObject jsonObj=null;
+    			String jsonResponse = "";
+    			try        		
+    			{
+    				MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(formatURL)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+    				jsonResponse = result.getResponse().getContentAsString(); 	
+        			jsonObj=(JSONObject) parser.parse(jsonResponse);  
+        			
+        			if (format.equals("geojson"))
+        			{
+        				JSONArray records=(JSONArray) jsonObj.get("features");
+        				JSONObject obj=(JSONObject) records.get(0);
+        				JSONObject geometry=(JSONObject) obj.get("geometry");
+        				JSONArray coordinates=(JSONArray) geometry.get("coordinates");
+        				boolean validCoordinates=false;
+        				if ((coordinates!=null))
+        				{
+        					validCoordinates=true;
+        				}
+        				if (!validCoordinates)
+        				{
+        					assertTrue(validCoordinates);
+        				}
+        			}
+        		}
+        		catch (Exception e)
+        		{
+        			log.error("Format: "+format);
+        			log.error("Error in with content in URI: "+formatURL);
+        			log.error(e.toString());
+        			log.error(jsonResponse);        			
+        		}
+    			if (jsonObj==null)
+    			{
+    				//Si no es un objeto valido, lanzo este assert para provocar error
+    				assertNotNull(jsonObj);
+    			}
+    		}else if ((format.equals("georss"))||(format.equals("xml"))||(format.equals("rdf"))||(format.equals("odata"))) {
+    			String xmlResponse = "";
+    			boolean valid=false;
+    			try        		
+    			{
+    				MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(formatURL)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+    				xmlResponse = result.getResponse().getContentAsString(); 	
+    				valid=checkXML(xmlResponse);    				
+    		    }
+        		catch (Exception e)
+        		{        	
+        			log.error(e.toString());        			
+        			valid=false;
+        		}
+    			if (valid==false)
+    			{
+    				log.error("Format: "+format);
+        			log.error("Error in with content in URI: "+formatURL);
+    				log.error(xmlResponse);  
+    				assertTrue(valid);
+    			}    		
+    		}else {
+    			String response="";
+    			boolean valid=false;
+    			try        		
+    			{
+    				MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(formatURL)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+    				response = result.getResponse().getContentAsString(); 	
+    				valid=checkResponse(response);
+        		}
+        		catch (Exception e)
+        		{
+        			log.error(e.toString());
+        			valid=false;
+        		}
+    			if (valid==false)
+    			{
+        			log.error("Format: "+format);
+        			log.error("Error in with content in URI: "+formatURL);        			
+        			log.error(response);
+    				assertTrue(valid);
+    			}
+    		}
     	}
     	
     	boolean checkAll=true;
@@ -225,6 +320,8 @@ public class TestUtils
 	        
 	    return checkAll;    	    	
 	 }
+	
+	
 	
 	
 	
@@ -376,4 +473,64 @@ public class TestUtils
 		return theURI;
 	}
 	
+	public static List<String> formatos(boolean geoFormats)
+	{
+		List<String> formatos=new ArrayList<String>();
+		formatos.add("json");
+		formatos.add("xml");
+		formatos.add("csv");
+		formatos.add("rdf");
+		formatos.add("ttl");
+		formatos.add("jsonld");
+		formatos.add("n3");
+		//TODO descomentar para formatos geo
+		/*
+		if (geoFormats)
+		{
+			formatos.add("geojson");
+			formatos.add("georss");	
+		}
+		*/
+		return formatos;		
+	}
+	
+	public static boolean checkXML(String content)
+	{		
+		try
+		{
+			InputStream stream = new ByteArrayInputStream(content.getBytes("UTF-8"));		
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			dBuilder.parse(stream);
+			return true;
+		}
+		catch (Exception e)
+		{
+			log.error("Error validanting xml",e);			
+		}
+		return false;
+	}
+	
+	
+	
+	private static boolean checkResponse(String response) {
+				
+		if (response==null)
+		{
+			return false;
+		}
+		
+		if (response.length()<1)
+		{
+			return false;
+		}
+		
+		if (response.toLowerCase().contains(" error "))
+		{
+			return false;
+		}
+		
+		return true;
+	}
+
 }

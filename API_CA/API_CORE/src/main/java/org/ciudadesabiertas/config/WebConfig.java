@@ -41,13 +41,12 @@ import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.config.multipe.MultipleDataSource;
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ConvertStringToNumber;
+import org.ciudadesabiertas.utils.StringToNumberConverter;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.StringToDateConverter;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.ciudadesabiertas.utils.converters.CSVConverter;
-import org.ciudadesabiertas.utils.converters.GEOJSONConverter;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -143,7 +142,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		mediaType(Constants.FORMATO_JSONLD, MediaType.valueOf(RDFConverter.JSONLD)).
 		mediaType(Constants.FORMATO_TTL, MediaType.valueOf(RDFConverter.TURTLE)).
 		mediaType(Constants.FORMATO_N3, MediaType.valueOf(RDFConverter.N3)).
-		mediaType(Constants.FORMATO_GEOJSON, MediaType.valueOf(Constants.MEDIA_TYPE_GEOJSON));
+		mediaType(Constants.FORMATO_RDF, MediaType.valueOf(RDFConverter.RDF_XML));
+		
 
 	}
 
@@ -212,11 +212,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		// Añadimos JSONLD
 		converters.add(new RDFConverter<>(RDFConverter.JSONLD, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
-		// Añadimos geojson		
-		converters.add(new GEOJSONConverter());
 		
-		
-		
+
 		
 		
 	}
@@ -315,7 +312,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	public void addFormatters(FormatterRegistry registry)
 	{
 		registry.addConverter(new StringToDateConverter());
-		registry.addConverterFactory( new ConvertStringToNumber());
+		registry.addConverterFactory( new StringToNumberConverter());
 	}
 
 	// Beans thymeleaf

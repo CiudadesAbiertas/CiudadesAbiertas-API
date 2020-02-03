@@ -218,11 +218,12 @@ public class UserDaoImpl implements UserDao
 	{
 
 		CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
-		CriteriaQuery<Long> criteria = builder.createQuery( Long.class );
+		//CriteriaQuery<Long> criteria = builder.createQuery( Long.class );
+		CriteriaQuery<Integer> criteria = builder.createQuery( Integer.class );
 		Root<UserRole> root = criteria.from( UserRole.class );
 		criteria.multiselect(builder.max(root.get("id")));
 		
-		Long idCount = sessionFactory.getCurrentSession().createQuery(criteria).getResultList().get(0);
+		Integer idCount = sessionFactory.getCurrentSession().createQuery(criteria).getResultList().get(0);
 		
 		int result=0;
 
@@ -445,5 +446,7 @@ public class UserDaoImpl implements UserDao
 		session.delete(user);
 
 	}
+	
+	
 
 }

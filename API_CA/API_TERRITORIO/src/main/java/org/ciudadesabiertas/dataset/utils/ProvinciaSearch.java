@@ -18,14 +18,10 @@ package org.ciudadesabiertas.dataset.utils;
 
 import java.io.Serializable;
 
-import org.ciudadesabiertas.dataset.model.Autonomia;
-import org.ciudadesabiertas.dataset.model.Pais;
 import org.ciudadesabiertas.dataset.model.Provincia;
 import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)

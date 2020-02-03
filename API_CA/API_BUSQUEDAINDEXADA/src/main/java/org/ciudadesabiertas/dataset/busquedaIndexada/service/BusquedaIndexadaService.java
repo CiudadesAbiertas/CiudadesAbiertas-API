@@ -33,6 +33,8 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.request.QueryRequest;
 import org.apache.solr.client.solrj.request.SolrPing;
+import org.apache.solr.client.solrj.response.FacetField;
+import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.common.SolrDocument;
@@ -200,10 +202,129 @@ public class BusquedaIndexadaService {
     	
     	return solrResult;
 
+    }
+    
+    public BusquedaIndexadaResult searchDataset() throws Exception {
+    	
+    	log.debug("[searchDataset]");  
+    	
+    	if (solrClient==null)
+    	{
+    		if (Util.validValue(env.getProperty("solr.coreURL")))
+    		{    		
+    			if (env.getProperty("solr.username")!=null)
+    			{
+    				username=env.getProperty("solr.username").trim();
+    			}
+    			if (env.getProperty("solr.password")!=null)
+    			{
+    				password=env.getProperty("solr.password").trim();
+    			}
+    			 
+    			generateSolrClient();   			
+    			
+    			try 
+    			{
+    				SolrPingResponse ping = null;
+    		    	if (Util.validValue(username)||Util.validValue(password))
+    				{
+    		    		SolrPing solrPing = new SolrPing();
+    		    		solrPing.setBasicAuthCredentials(username,password);    		    		
+    		    		ping = solrPing.process(solrClient, null);
+    				}
+    		    	else 
+    		    	{
+    		    		ping = solrClient.ping(); 
+    		    	}
+    		    	if (ping.getStatus() == 0) {
+		    			log.info("Pinged Solr in {}", ping.getQTime());
+		    		}    		    	
+    		    	
+    	        } catch (SolrServerException | IOException e) {
+    	            log.error("Cannot connect to solr server", e);    	       
+    	            solrClient=null;
+    	            throw new Exception("The index server is not available",e);
+    	        } 
+    		}
+    	}
+    	
+    	
+    	
+    	    	
+    	//asusoldjc:8983/solr/ciudadesAbiertas/select?facet.field=datasetName&facet.query=datasetName&facet=on&fl=datasetName&q=*%3A*
+    	//Lógica para obtener la busqued facetada de los datasetname cargados en solr
+    	SolrQuery solrQuery = new SolrQuery();
+    	solrQuery.setQuery("*:*");
+    	solrQuery.setFacet(true);
+    	solrQuery.add("facet.field","datasetName");
+    	solrQuery.add("facet.query","datasetName");    	
+    	solrQuery.add("fl","datasetName");     	
+    	
+   
+    	 
+    	QueryResponse response = null;
+    	try
+    	{
+	    	if (Util.validValue(username)||Util.validValue(password))
+			{
+	    		  SolrRequest<QueryResponse> req = new QueryRequest(solrQuery);
+				  req.setBasicAuthCredentials(username, password);
+				  response=req.process(solrClient);	
+			}
+	    	else 
+	    	{
+	    		response = solrClient.query(solrQuery);
+	    	}
+    	}    	
+    	catch (Exception e)
+    	{
+    		log.error("Error quering solr",e);
+    	}
+    	catch (Throwable e)
+    	{
+    		log.error("Error quering solr",e);
+    	}
+    	
+    	BusquedaIndexadaResult solrResult=new BusquedaIndexadaResult();
+    
+    	
+    	if (response!=null)
+    	{
+    		List<Map<String, Object>> docs=new ArrayList<Map<String,Object>>();
+    		//Lógica para obtener la busqued facetada de los datasetname cargados en solr
+    		final List<FacetField> facetFields = response.getFacetFields();
+    		if (facetFields!=null && !facetFields.isEmpty()) {
+	    		solrResult.setTotalRecords(facetFields.size());
+	    		for (FacetField facet:facetFields)
+	    		{	
+	    			
+	    			String fieldName = facet.getName();       			
+	    			List<Count> listado = facet.getValues();
+	    			for (Count id:listado) {
+	    				String value =id.getName();
+	    				HashMap<String, Object> actualDoc=new HashMap<String,Object>();
+	    				actualDoc.put(fieldName, value);
+	    				docs.add(actualDoc);
+	    			}
+	    			    			
+	    			
+	    			
+	    		}
+    		}
+    		solrResult.setRecords(docs);
+    		solrResult.setPageRecords(docs.size());
+    		        	
+        	    	
+    	}
+    	
+    	
+    	return solrResult;
+
 
 
     }
 
+	@SuppressWarnings("deprecation")
 	private void generateSolrClient()
 	{
 		log.info("Generating solrClient");

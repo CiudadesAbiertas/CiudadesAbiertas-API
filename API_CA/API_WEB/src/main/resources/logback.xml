@@ -54,11 +54,14 @@
 	
 	
 	<!-- Hibernate log -->
-	<!-- 
-	<logger name="org.hibernate" level="DEBUG" />  
-    <logger name="org.hibernate.type" level="ALL" />
-     -->
+	 
+	<!-- <logger name="org.hibernate" level="DEBUG" />  
+    <logger name="org.hibernate.type" level="ALL" />  -->
+         
     <Logger name="org.hibernate.orm.deprecation" additivity="false" level="ERROR" />
+    <Logger name="org.springframework.security.oauth2.provider.endpoint.FrameworkEndpointHandlerMapping" additivity="false" level="INFO" />
+    <Logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" additivity="false" level="INFO" />    
+    <Logger name="springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator" additivity="false" level="INFO" />  
     <Logger name="io.swagger.models.parameters.AbstractSerializableParameter" additivity="false" level="ERROR" />
     <Logger name="io.swagger.models.parameters.AbstractSerializableParameter" additivity="false" level="WARN" />
 

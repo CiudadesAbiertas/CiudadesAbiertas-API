@@ -106,7 +106,7 @@ public class PaisDataTest
 
 		long total = TestUtils.extractTotalDistinct(PaisController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
-		assertTrue(total == 1);
+		assertTrue(total == 240);
 	}
 	
 	@Test

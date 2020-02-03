@@ -30,7 +30,6 @@ import javax.persistence.Transient;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfDinamico;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.DataCubeModel;
 import org.ciudadesabiertas.model.RDFModel;
@@ -137,8 +136,8 @@ public class CuboEdad implements java.io.Serializable, RDFModel, DataCubeModel {
 	
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="edad", format=Constants.STRING_FORMAT)
-	@RdfDinamico(inicioURI="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/", finURI="edadGruposQuinquenales", propiedad=Context.IAESTDIMENSION_URI+"edad-grupos-quinquenales")
-	private String edadGruposQuinquenales;
+	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "age")
+	private String age;
 	
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="numeroPersonas")
@@ -174,7 +173,7 @@ public class CuboEdad implements java.io.Serializable, RDFModel, DataCubeModel {
 		this.seccionCensalId= copia.seccionCensalId;
 		this.seccionCensalTitle= copia.seccionCensalTitle;
 		this.refPeriod= copia.refPeriod;
-		this.edadGruposQuinquenales= copia.edadGruposQuinquenales;
+		this.age= copia.age;
 		this.numeroPersonas= copia.numeroPersonas;
 
 	}
@@ -191,8 +190,8 @@ public class CuboEdad implements java.io.Serializable, RDFModel, DataCubeModel {
 		if (attributesToSet.contains("sex")) {
 			this.sex = copia.sex;
 		}
-		if (attributesToSet.contains("edadGruposQuinquenales")) {
-			this.edadGruposQuinquenales = copia.edadGruposQuinquenales;
+		if (attributesToSet.contains("age")) {
+			this.age = copia.age;
 		}
 		if (attributesToSet.contains("distritoId")) {
 			this.distritoId = copia.distritoId;
@@ -271,13 +270,13 @@ public class CuboEdad implements java.io.Serializable, RDFModel, DataCubeModel {
 		this.municipioTitle = municipioTitle;
 	}
 
-	@Column(name = "edad_grupos_quinquenales", nullable = false, length = 50)
-	public String getEdadGruposQuinquenales() {
-		return this.edadGruposQuinquenales;
+	@Column(name = "age", nullable = false, length = 50)
+	public String getAge() {
+		return this.age;
 	}
 
-	public void setEdadGruposQuinquenales(String edadGruposQuinquenales) {
-		this.edadGruposQuinquenales = edadGruposQuinquenales;
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	@Column(name = "distrito_id", nullable = false, length = 50)

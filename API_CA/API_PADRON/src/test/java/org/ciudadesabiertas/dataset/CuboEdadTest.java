@@ -116,7 +116,7 @@ public class CuboEdadTest {
     @Test    
     public void test05_Query2Dimensions() throws Exception {
     	
-    	String dimensionP="dimension=refPeriod,edadGruposQuinquenales";
+    	String dimensionP="dimension=refPeriod,age";
     	String groupP="group=AVG";
     	String measureP="measure=numeroPersonas";
     	
@@ -129,7 +129,7 @@ public class CuboEdadTest {
     @Test    
     public void test05_Query2DimensionsWhere() throws Exception {
     	
-    	String dimensionP="dimension=refPeriod,edadGruposQuinquenales";
+    	String dimensionP="dimension=refPeriod,age";
     	String groupP="group=AVG";
     	String measureP="measure=numeroPersonas";
     	String whereP="where=numeroPersonas>50000";

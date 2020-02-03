@@ -228,14 +228,57 @@ public class SubvencionDataRSQLTest
 	public void test_Busqueda_lineaFinanciacion() throws Exception
 	{
 
-		String value = "lineaFinanciacion=in=('Medio ambiente y sostenibilidad','Fomento ecomómico y social')";
+		String value = "lineaFinanciacion=in=('Medio ambiente y sostenibilidad','Fomento económico y social')";
 
 		String paramField = "q";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
 		assertTrue(total == 3353);
+
 	}
+	
+	@Test
+	public void test_Busqueda_lineaFinanciacion_in_or_in() throws Exception
+	{		
+		String value = "lineaFinanciacion=in=('Medio ambiente y sostenibilidad') or lineaFinanciacion=in=('Fomento económico y social')";
+
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 3353);
+
+	}
+	
+	@Test
+	public void test_Busqueda_lineaFinanciacion_in_and_in() throws Exception
+	{	
+		String value = "entidadFinanciadoraId=in=('A05003362') and lineaFinanciacion=in=('Fomento económico y social')";
+
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 20);
+
+	}
+
+	
+	
+	@Test
+	public void test_Busqueda_lineaFinanciacion_out() throws Exception
+	{
+
+		String value = "lineaFinanciacion=out=('Medio ambiente y sostenibilidad','Fomento económico y social')";
+
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 4945);
+	}
+	
 	
 	@Test
 	public void test_Busqueda_basesReguladoras() throws Exception

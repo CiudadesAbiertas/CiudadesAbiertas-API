@@ -213,7 +213,7 @@ public class AutonomiaTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(AutonomiaController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(AutonomiaController.LIST, true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -227,7 +227,7 @@ public class AutonomiaTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(AutonomiaController.LIST+"/"+"Comunidad-Madrid", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(AutonomiaController.LIST+"/"+"Comunidad-Madrid", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

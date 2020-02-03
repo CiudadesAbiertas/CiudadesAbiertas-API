@@ -213,7 +213,7 @@ public class ProvinciaTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(ProvinciaController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(ProvinciaController.LIST, true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -226,7 +226,7 @@ public class ProvinciaTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(ProvinciaController.LIST+"/"+"Madrid", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(ProvinciaController.LIST+"/"+"Madrid", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

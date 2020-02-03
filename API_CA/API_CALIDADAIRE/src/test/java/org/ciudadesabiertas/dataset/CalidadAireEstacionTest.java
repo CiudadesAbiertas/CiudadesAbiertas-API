@@ -408,7 +408,7 @@ public class CalidadAireEstacionTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireEstacionController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireEstacionController.LIST, true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -422,7 +422,7 @@ public class CalidadAireEstacionTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireEstacionController.LIST+"/"+"STAT04", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(CalidadAireEstacionController.LIST+"/"+"STAT04", true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

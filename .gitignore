@@ -143,3 +143,14 @@ API_CA/API_PADRON/.project
 API_CA/API_PADRON/.settings/
 API_CA/API_PADRON/src/test/resources/config.properties
 API_CA/API_PADRON/src/test/resources/logback.xml
+API_CA/utils/datacube/padron_mini.sql
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-10.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-2.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-3.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-4.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-5.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-6.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-7.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-8.xml
+liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-9.xml

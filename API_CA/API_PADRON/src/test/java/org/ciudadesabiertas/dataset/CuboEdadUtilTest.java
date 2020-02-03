@@ -46,7 +46,7 @@ public class CuboEdadUtilTest
 			"      \"seccionCensalId\": \"2800601020\",\n" + 
 			"      \"seccionCensalTitle\": \"Sección Censal 20\",\n" + 
 			"      \"refPeriod\": \"2016\",\n" + 
-			"      \"edadGruposQuinquenales\": \"00-a-04\",\n" + 
+			"      \"age\": \"00-a-04\",\n" + 
 			"      \"numeroPersonas\": 56647\n" + 
 			"    }";
 

@@ -250,7 +250,7 @@ public class SubvencionDataTest
 	public void test_Busqueda_lineaFinanciacion() throws Exception
 	{
 
-		String value = "Fomento ecomómico y social";
+		String value = "Fomento económico y social";
 		
 		String paramField="lineaFinanciacion";
 

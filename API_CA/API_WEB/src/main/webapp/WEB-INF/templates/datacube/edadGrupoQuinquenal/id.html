@@ -1,0 +1,123 @@
+<!--
+
+    Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
+    
+    This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
+    
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+    
+    https://joinup.ec.europa.eu/software/page/eupl
+    
+    Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Licence for the specific language governing permissions and limitations under the Licence.
+
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${T(org.ciudadesabiertas.utils.StartVariables).HTML_TITLE} + ' - Cubos'"></title>
+  </head>
+  <body>
+  
+  <div class="container-fluid">
+	  <div class="row">
+	  	<h1>Detalle de una observación del Cubo Padrón Edad por grupos Quinquenales</h1>
+	  </div>	  
+	  <div class="row">
+	  	<div class="col-sm-8 text-right">
+	  		<img id="imagenAgenda">
+	  	</div>
+	  </div>	  
+	  <div id="formulario">	  	
+	  </div>
+	   <div class="row d-none" id="capaVolver">
+	   	<a id="enlaceVolver">Volver</a>
+	   </div>
+   </div>
+        
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap/bootstrap.min.css}">
+    
+    <script th:src="@{/resources/js/jquery/jquery.min.js}"></script>    
+    <script th:src="@{/resources/js/bootstrap/popper.min.js}"></script>
+    <script th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/datatables/datatables.min.css}"/>
+    
+    <script th:src="@{/resources/js/datejs/date.js}"></script>
+    <script th:src="@{/resources/js/datatables/datatables.min.js}"></script>
+    
+    <script th:src="@{/resources/js/numeral/numeral.min.js}"></script>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/ciudadesAbiertas.css}"/>
+    
+    <script th:src="@{/resources/js/common.js}"></script>   
+    
+    
+    
+    
+   
+	<script>	
+	var moneyFields= [];
+
+$(document).ready(function() {
+	if ('[[${referer}]]' != '')
+	{
+		$("#enlaceVolver").attr("href", '[[${referer}]]')
+		$("#capaVolver").removeClass("d-none");
+	}
+	
+
+	//console.log('[[${ajaxURL}]]');	
+	$.ajax({url: '[[${ajaxURL}]]', success: function(result){		
+			if ((result!=null)&&(result.records!=null))
+			{
+				if (result.records.length>0)
+				{
+					var obj=result.records[0];
+					
+					for(var propt in obj){					
+						if ((propt!="image"))
+						{
+							genAttrInfo(propt,obj[propt]);
+						}else{
+							if (propt=="image")
+							{
+								$("#imagenAgenda").attr("src",obj[propt]);
+								$("#imagenAgenda").attr("alt","Imagen de "+obj["title"]);
+								$("#fila_title").attr('class', 'col-sm-8');
+							}
+						}
+					}
+				}
+			}	   
+		  }, error: function(result){
+			  if (result!=null){
+				  var error = result.responseJSON;
+				  for(var propt in error){					
+						genAttrInfo(propt,error[propt]);
+					}
+				  
+			   }else{
+				   var error="Sin Datos";
+				   console.log(error);
+			   }
+	  	  }
+	  });
+	
+});
+
+
+
+
+</script>
+	
+	
+    
+  </body>
+</html>

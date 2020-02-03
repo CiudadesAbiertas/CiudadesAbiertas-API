@@ -210,7 +210,7 @@ public class SeccionCensalTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(SeccionCensalController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(SeccionCensalController.LIST, true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -223,7 +223,7 @@ public class SeccionCensalTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(SeccionCensalController.LIST+"/"+"2800601001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(SeccionCensalController.LIST+"/"+"2800601001", true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

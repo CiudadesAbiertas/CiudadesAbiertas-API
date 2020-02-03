@@ -27,6 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.InternalErrorException;
@@ -150,12 +151,12 @@ public class APIFilter implements Filter
 				}
 				catch (RuntimeException runEx)
 				{
-					log.error("Error 500");					
+					log.error("Error 500", runEx);					
 					sendInternalError(request, response);
 				}
 				catch (Exception e)
 				{
-					log.error("Error 500");					
+					log.error("Error 500",e);					
 					sendInternalError(request, response);
 				}
 			}else {
@@ -270,7 +271,7 @@ public class APIFilter implements Filter
 
 	public void sendBadRequestError(String ext, ServletRequest request, ServletResponse response) throws IOException {	
 		
-		BadRequestException errorObj = new BadRequestException("Bad Request Error. Extension '"+ext+"' not valid");
+		BadRequestException errorObj = new BadRequestException("Bad Request Error. Extension '"+ext+"' not valid");		
 		createResponseError(request, response, errorObj);
 
 	}
@@ -295,7 +296,7 @@ public class APIFilter implements Filter
 	 *  \/												\/
 	 */
 
-	//Función para cerrar el flujo de salida cuando devolvemos error
+	//Función para cerrar el flujo de salida cuando devolvemos  error
 	private void closeOutput(ServletResponse response) 
 	{
 		try
@@ -324,6 +325,15 @@ public class APIFilter implements Filter
 			contentType = ((HttpServletRequest) request).getHeader(Constants.HEADDER_ACCEPT);
 		}
 
+		if (errorObj instanceof BadRequestException)
+		{
+			((HttpServletResponse) response).setStatus(HttpServletResponse.SC_BAD_REQUEST);		
+		}
+		else if (errorObj instanceof InternalErrorException)
+		{
+			((HttpServletResponse) response).setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);		
+		}
+		
 		response.setCharacterEncoding(Constants.ENCODING_UTF8);
 		ResponseEntity<Object> responseEntity= new ResponseEntity<>(HttpStatus.OK);
 		if (errorObj!=null) {

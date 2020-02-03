@@ -472,7 +472,7 @@ public class InstalacionDepTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(InstalacionDepController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(InstalacionDepController.LIST,true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -484,7 +484,7 @@ public class InstalacionDepTest {
 
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(InstalacionDepController.LIST+"/"+"EQID0001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(InstalacionDepController.LIST+"/"+"EQID0001", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

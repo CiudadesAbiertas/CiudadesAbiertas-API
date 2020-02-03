@@ -3,14 +3,11 @@ package org.ciudadesAbiertas.rdfGeneratorZ;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -24,9 +21,7 @@ import java.util.UUID;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.jena.atlas.logging.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
-import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -48,6 +43,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfList;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfTripleExtenal;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfType;
 import org.ciudadesAbiertas.rdfGeneratorZ.geo.Geometria;
 import org.ciudadesAbiertas.rdfGeneratorZ.geo.LineString;
@@ -485,64 +481,76 @@ public class TransformadorBasicoRdf {
 							output = true;
 					}
 				} else {
-				
-						if (field.isAnnotationPresent(Rdf.class) && !field.isAnnotationPresent(Interno.class)) {
-							String anot = obtenerValorAnotacionRDF(field.getAnnotation(Rdf.class)).replaceAll("\"", "");
-							String typeURI=obtenerTipoLiteralAnotacionRDF(field.getAnnotation(Rdf.class));							
-							Property entityProp = model.createProperty(anot);
-							//Modificación JCBH
-							if (field.isAnnotationPresent(RdfExternalURI.class)) {
+					if (field.isAnnotationPresent(RdfTripleExtenal.class)) {						
+							
+							//Vamos a componer una tripleta de tres URLs
+							String sujetoURI="";
+							String predicadoURI="";
+							String objetoURI="";
+							//URL del Sujeto							
+							String sujetoInicioURI=field.getAnnotation(RdfTripleExtenal.class).sujetoInicioURI();
+							String sujetoFinURI=field.getAnnotation(RdfTripleExtenal.class).sujetoFinURI();
+							if (sujetoInicioURI.startsWith("/"))
+							{
+								sujetoURI=uriBase+context+sujetoInicioURI+mapaValores.get(sujetoFinURI);
+							} else {
+								sujetoURI=sujetoInicioURI+mapaValores.get(sujetoFinURI);
+							}
+							//URL del Predicado
+							predicadoURI=field.getAnnotation(RdfTripleExtenal.class).propiedadURI();
+							String objetoInicioURI=field.getAnnotation(RdfTripleExtenal.class).objetoInicioURI();
+							String objectoFinURI=field.getAnnotation(RdfTripleExtenal.class).objetoFinURI();
+							if (objetoInicioURI.startsWith("/"))
+							{
+								objetoURI=uriBase+context+objetoInicioURI+mapaValores.get(objectoFinURI);
+							} else {
+								objetoURI=objetoInicioURI+mapaValores.get(objectoFinURI);
+							}						
+							
+							
+							model.add(model.createResource(sujetoURI), model.createProperty(predicadoURI), model.createResource(objetoURI));	
 								
-								boolean isValorURI=false;
-								
-								if ((valor.toString().startsWith("/"))||(valor.toString().startsWith("http")))
+							}
+					
+							if (field.isAnnotationPresent(Rdf.class) && !field.isAnnotationPresent(Interno.class)) {
+								String anot = obtenerValorAnotacionRDF(field.getAnnotation(Rdf.class)).replaceAll("\"", "");
+								String typeURI=obtenerTipoLiteralAnotacionRDF(field.getAnnotation(Rdf.class));							
+								Property entityProp = model.createProperty(anot);
+								//Modificación JCBH
+								if (field.isAnnotationPresent(RdfExternalURI.class)) 
 								{
-									isValorURI=true;
-								}
-								
-								
-								String separador=obtenerSeparadorAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-								ArrayList<String> theURIs=new ArrayList<String>();
-								
-								String inicioURI=obtenerInicioURIAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-								if (inicioURI.startsWith("/"))
-								{
-									inicioURI=uriBase+context+inicioURI;
-								}
-								String finURI=obtenerFinURIKeyAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-								String propiedad=obtenerPropiedadAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));																		
-								String tipo=obtenerTipoAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-								int urifyLevel=obtenerUrifyLevelAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-								boolean capitalize=obtenerCapitalizeAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									boolean isValorURI=false;
 									
-								
-								
-								if (!inicioURI.equals(""))
-								{
-									String theURI=inicioURI;
+									if ((valor.toString().startsWith("/"))||(valor.toString().startsWith("http")))
+									{
+										isValorURI=true;
+									}
 									
-									if (!finURI.equals(""))
-									{	
-										if (separador.equals(""))
-										{
-											String valorURI=mapaValores.get(finURI);
-											if (capitalize)
+									String separador=obtenerSeparadorAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									ArrayList<String> theURIs=new ArrayList<String>();
+									
+									String inicioURI=obtenerInicioURIAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									if (inicioURI.startsWith("/"))
+									{
+										inicioURI=uriBase+context+inicioURI;
+									}
+									String finURI=obtenerFinURIKeyAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									String propiedad=obtenerPropiedadAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));																		
+									String tipo=obtenerTipoAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									int urifyLevel=obtenerUrifyLevelAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+									boolean capitalize=obtenerCapitalizeAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
+										
+									
+									
+									if (!inicioURI.equals(""))
+									{
+										String theURI=inicioURI;
+										
+										if (!finURI.equals(""))
+										{	
+											if (separador.equals(""))
 											{
-												valorURI=StringUtils.capitalize(valorURI.toLowerCase());
-											}
-											if (valorURI!=null)
-											{
-												theURI+=Funciones.urlify(valorURI,urifyLevel);
-											}else {
-												theURI=null;
-											}
-										}
-										else {
-											String valoresURI=mapaValores.get(finURI);
-											String[] splitedValues = valoresURI.split(separador);
-											for (String valorURI:splitedValues)
-											{				
-												valorURI=valorURI.trim();
+												String valorURI=mapaValores.get(finURI);
 												if (capitalize)
 												{
 													valorURI=StringUtils.capitalize(valorURI.toLowerCase());
@@ -553,57 +561,37 @@ public class TransformadorBasicoRdf {
 												}else {
 													theURI=null;
 												}
-												theURIs.add(theURI);
 											}
-											theURI=null;
-										}
-									}
-										
-									//Reemplazamos la metavariables en las URLs externas
-									//theURI=theURI.replace(Metavariables.uriBase, uriBase);
-									//theURI=theURI.replace(Metavariables.contexto, context);
-									
-									if (theURI!=null)
-									{
-										Resource externalResourceURI =model.createResource(theURI);									
-									
-										if (propiedad.equals(""))
-										{
-											model.add(resource, entityProp, externalResourceURI);	
-										}
-										else 
-										{
-											model.add(resource, model.createProperty(propiedad), externalResourceURI);
-											if (!tipo.equals(""))
-											{
-												model.add(externalResourceURI, RDF.type, model.createResource(tipo));
-											}
-											
-											if (isValorURI)
-											{
-												String valorURI="";
-												if (valor.toString().startsWith("/"))
-												{
-													valorURI=uriBase+context+valor.toString();
-												}else {
-													valorURI=valor.toString();
+											else {
+												String valoresURI=mapaValores.get(finURI);
+												String[] splitedValues = valoresURI.split(separador);
+												for (String valorURI:splitedValues)
+												{				
+													valorURI=valorURI.trim();
+													if (capitalize)
+													{
+														valorURI=StringUtils.capitalize(valorURI.toLowerCase());
+													}
+													if (valorURI!=null)
+													{
+														theURI+=Funciones.urlify(valorURI,urifyLevel);
+													}else {
+														theURI=null;
+													}
+													theURIs.add(theURI);
 												}
-												
-												model.add(externalResourceURI, entityProp, model.createResource(valorURI));
+												theURI=null;
 											}
-											else 
-											{											
-												model.add(externalResourceURI, entityProp, valor.toString());
-											}
-										}									
-									}
-									
-									if (theURIs.size()>0)
-									{
-										for (String oneURI:theURIs)
-										{
-											Resource externalResourceURI =model.createResource(oneURI);		
+										}
 											
+										//Reemplazamos la metavariables en las URLs externas
+										//theURI=theURI.replace(Metavariables.uriBase, uriBase);
+										//theURI=theURI.replace(Metavariables.contexto, context);
+										
+										if (theURI!=null)
+										{
+											Resource externalResourceURI =model.createResource(theURI);									
+										
 											if (propiedad.equals(""))
 											{
 												model.add(resource, entityProp, externalResourceURI);	
@@ -615,13 +603,50 @@ public class TransformadorBasicoRdf {
 												{
 													model.add(externalResourceURI, RDF.type, model.createResource(tipo));
 												}
-												model.add(externalResourceURI, entityProp, valor.toString());
-											}	
+												
+												if (isValorURI)
+												{
+													String valorURI="";
+													if (valor.toString().startsWith("/"))
+													{
+														valorURI=uriBase+context+valor.toString();
+													}else {
+														valorURI=valor.toString();
+													}
+													
+													model.add(externalResourceURI, entityProp, model.createResource(valorURI));
+												}
+												else 
+												{											
+													model.add(externalResourceURI, entityProp, valor.toString());
+												}
+											}									
 										}
+										
+										if (theURIs.size()>0)
+										{
+											for (String oneURI:theURIs)
+											{
+												Resource externalResourceURI =model.createResource(oneURI);		
+												
+												if (propiedad.equals(""))
+												{
+													model.add(resource, entityProp, externalResourceURI);	
+												}
+												else 
+												{
+													model.add(resource, model.createProperty(propiedad), externalResourceURI);
+													if (!tipo.equals(""))
+													{
+														model.add(externalResourceURI, RDF.type, model.createResource(tipo));
+													}
+													model.add(externalResourceURI, entityProp, valor.toString());
+												}	
+											}
+										}
+										
+										
 									}
-									
-									
-								}
 							}
 							else if (field.isAnnotationPresent(RdfBlankNode.class))
 							{
@@ -1180,7 +1205,7 @@ public class TransformadorBasicoRdf {
 			//JCBH Cambio para control por interfaz para PathIdComplex			
 			if (retorno instanceof PathIdComplex ) {
 				pathIdFromObject=((PathIdComplex) retorno).obtainURLPath();
-				if (pathIdFromObject.startsWith("//"))
+				if (pathIdFromObject.startsWith("/"))
 				{
 					path = path + pathIdFromObject;
 				}else {

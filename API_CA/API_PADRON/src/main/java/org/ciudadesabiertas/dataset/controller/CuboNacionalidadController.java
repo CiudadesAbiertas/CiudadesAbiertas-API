@@ -74,7 +74,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Cubo Edad",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón", tags= {"Padrón - Cubo de datos Nacionalidad"})
+@Api(value="Cubo Nacionalidad",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón", tags= {"Padrón - Cubo de datos Nacionalidad"})
 public class CuboNacionalidadController<T> extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String QUERY = "/padron/datacube/nacionalidad/query";	

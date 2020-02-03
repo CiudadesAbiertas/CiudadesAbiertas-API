@@ -194,7 +194,9 @@
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
 			  	
-			 			  	
+	
+
+			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
 			  	<dependency>
@@ -420,7 +422,7 @@
 			  	
 			 </dependencies>
 		</profile>
-
+		
 		<!-- Perfil para el conjunto de datos plantilla --> 
 		<!-- 
 		<profile>

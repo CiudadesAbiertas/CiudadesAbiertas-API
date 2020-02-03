@@ -81,7 +81,7 @@ public class EstadisticaDao
 		
 		if (idCount == null)
 		{
-			idCount = new Long(0);
+			idCount = Long.valueOf(0);
 		}
 
 		return idCount;

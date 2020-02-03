@@ -810,7 +810,16 @@ public class Util
 			else if (acceptHeader.contains(RDFConverter.JSONLD))
 			{
 				headers.add(Constants.HEADER_LOCATION, red.replace(aURL.getPath(), aURL.getPath()+".jsonld"));
-			}							
+			}	
+			//CMG NUEVOS FORMATOS
+			else if (acceptHeader.contains(Constants.mimeGEOJSON))
+			{
+				headers.add(Constants.HEADER_LOCATION, red.replace(aURL.getPath(), aURL.getPath()+".geojson"));
+			}
+			else if (acceptHeader.contains(Constants.mimeGEORSS))
+			{
+				headers.add(Constants.HEADER_LOCATION, red.replace(aURL.getPath(), aURL.getPath()+".georss"));
+			}
 		}
 		if (headers.size()>0)
 		{
@@ -1481,6 +1490,56 @@ public class Util
 		return text;
 	}
 	
+	public static boolean isGeoLocationPetition(List<String> availableFields,HttpServletRequest request) {
+		
+		boolean result = false;
+		String red=Util.getFullURL(request);
+		
+		URL aURL = null;
+		try
+		{
+			aURL = new URL(red);
+		} 
+		catch (MalformedURLException e1)
+		{
+			log.error("Error generating URL from request",e1);
+			return result;
+		}
+		
+		String acceptHeader=request.getHeader("ACCEPT");		
+		if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==false))
+		{	
+			return result;
+		}
+		else if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==true)&&(acceptHeader.equals("*/*")==false))
+		{					
+			
+			if (acceptHeader.contains(Constants.MEDIA_TYPE_GEORSS))
+			{
+				result=true;
+			}
+			else if (acceptHeader.contains(Constants.MEDIA_TYPE_GEORSS))
+			{
+				result=true;
+			}
+								
+		}
+		else if (aURL.getPath().contains("."))
+		{
+			String ext=getExtensionUri(aURL.getPath());
+			if (ext.contains("georss"))
+			{
+				result=true;
+			}
+			else if (ext.contains("geojson"))
+			{
+				result=true;
+			}	
+		}
+		
+		return result;
+	}
+	
 	
 	public static boolean isSemanticPetition(HttpServletRequest request)
 	{	
@@ -1575,6 +1634,21 @@ public class Util
 			}
 		}
 		return result;
+	}
+	
+	public static String extractSrIdFromURL(String stringURL) {
+		String petitionSrId="";
+		if (stringURL.contains(Constants.SRID))
+		{
+			petitionSrId=stringURL.substring(stringURL.indexOf(Constants.SRID)+Constants.SRID.length()+1);
+			if (petitionSrId.contains("&"))
+			{
+				petitionSrId=petitionSrId.substring(0,petitionSrId.indexOf("&"));					
+			}
+			petitionSrId=petitionSrId.replace("EPSG:", "");
+			log.info(Constants.SRID+" extraido de la URL: "+petitionSrId);
+		}
+		return petitionSrId;
 	}
 	
 	public static void main(String[] args)

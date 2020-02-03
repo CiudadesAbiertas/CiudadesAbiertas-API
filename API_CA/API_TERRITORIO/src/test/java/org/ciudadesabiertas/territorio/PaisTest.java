@@ -169,7 +169,7 @@ public class PaisTest {
     
     @Test    
     public void test15_GEOMETRY_NO_OK_404() throws Exception {
-    	String id ="Andorra";
+    	String id ="Andorra la bella";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.get(PaisController.GEOMETRY.replace("{id}", id)+".json")
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -247,7 +247,7 @@ public class PaisTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(PaisController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(PaisController.LIST, true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -265,7 +265,7 @@ public class PaisTest {
     	
     	id=URLEncoder.encode(id, "UTF-8");
     	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(PaisController.LIST+"/"+id, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(PaisController.LIST+"/"+id, true,  mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
 }

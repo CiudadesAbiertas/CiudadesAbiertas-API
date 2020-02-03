@@ -213,7 +213,7 @@ public class DistritoTest {
     
     @Test
     public void test25_List_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(DistritoController.LIST, mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(DistritoController.LIST, true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     
@@ -226,7 +226,7 @@ public class DistritoTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(DistritoController.LIST+"/"+"2800601", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(DistritoController.LIST+"/"+"2800601", true, mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

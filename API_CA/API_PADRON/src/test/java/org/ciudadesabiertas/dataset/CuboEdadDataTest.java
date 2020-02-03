@@ -161,10 +161,10 @@ public class CuboEdadDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_edadGruposQuinquenales() throws Exception
+	public void test_Busqueda_edad() throws Exception
 	{
-		String [] paramField= {"edadGruposQuinquenales","numeroPersonas"};
-		String [] value = {"05-a-09","90073"};
+		String [] paramField= {"age","numeroPersonas"};
+		String [] value = {"25","87232"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -194,9 +194,9 @@ public class CuboEdadDataTest
     public void test_Query2Dimensions() throws Exception 
     {	
     	String [] paramField= {"dimension","group","measure"};
-		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas"};   
+		String [] value = {"refPeriod,age","AVG","numeroPersonas"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 5);
+		assertTrue(records.size() == 12);
     }
 	    
 	    
@@ -204,9 +204,9 @@ public class CuboEdadDataTest
     public void test_Query2DimensionsWhere() throws Exception
     {	
     	String [] paramField= {"dimension","group","measure","where"};
-		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas","refPeriod=2016"};   
+		String [] value = {"refPeriod,age","AVG","numeroPersonas","refPeriod=2016"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 5);
+		assertTrue(records.size() == 12);
     }
     
 	

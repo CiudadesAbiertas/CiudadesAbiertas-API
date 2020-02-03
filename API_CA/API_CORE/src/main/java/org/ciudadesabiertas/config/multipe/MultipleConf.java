@@ -58,7 +58,7 @@ public class MultipleConf
 				
 		for (final File fileEntry : file.getParentFile().listFiles()) {
 	        if (fileEntry.isFile() && !fileEntry.getName().equals(Constants.CONFIG_PROPERTIES) && fileEntry.getName().endsWith(".properties")) {	        	
-	        	log.info("Custom file founded: "+fileEntry.getName());  
+	        	log.info(" *** [MultipleConf] [Custom file founded: "+fileEntry.getName() + "] ***");  
 	        	Properties prop = new Properties();	           
 		      	try {
 					prop.load(new FileInputStream(fileEntry.getAbsolutePath()));

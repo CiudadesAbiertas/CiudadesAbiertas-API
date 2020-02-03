@@ -107,6 +107,8 @@ public class Plantilla  implements java.io.Serializable, GeoModel, RDFModel {
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
+	private Double distance;
+	
 
 	public Plantilla()
 	{
@@ -232,7 +234,23 @@ public class Plantilla  implements java.io.Serializable, GeoModel, RDFModel {
 		this.longitud = longitud;
 	}
 
-		
+	
+	
+	@Transient
+	public Double getDistance() {
+		return distance;
+	}
+
+
+	@Transient
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+
+
+
+
 	@Override
 	public String toString()
 	{

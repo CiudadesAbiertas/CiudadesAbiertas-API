@@ -35,7 +35,7 @@ public class SwaggerConstants
 	public static final String RESULTADO_DE_INSERCION = "Resultado de inserción";
 	public static final String FORMATOS_CONSULTA_RESPONSE_GROUPBY = "application/json, application/xml, text/csv";
 	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3";
-	public static final String FORMATOS_CONSULTA_RESPONSE_FULL = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3, text/html";
+	public static final String FORMATOS_CONSULTA_RESPONSE_FULL = FORMATOS_CONSULTA_RESPONSE_NO_HTML+ ", text/html";
 	public static final String FORMATOS_CONSULTA_INDEXADA_RESPONSE = "application/json, application/xml";
 	public static final String DESCRIPCION_BUSQUEDA = "Permite realizar la operación de listado y búsquedas a través de diferentes parámetros";
 	public static final String DESCRIPCION_BUSQUEDA_GEOGRAFICA = "Permite realizar la operación de búsqueda geográfica a través de las coordenadas de un punto y su radio en metros, se puden utilizar los demás atributos para una búsqueda más específica";
@@ -73,6 +73,8 @@ public class SwaggerConstants
 	public static final String LISTADO_CUBO_POR_MEDIDA = "Búsqueda de cubos de datos que tienen una derminada medida";
 	public static final String GEOMETRIA="Geometría de un registro";
 	public static final String GEOMETRIA_FICHA = "Permite ver la geometria de un registro en concreto del módulo correspondiente";
+	public static final String BUSQUEDA_DATASET_NAME_SOLR = "Listado DatasetName SOLR";
+	public static final String DESCRIPCION_BUSQUEDA_DATASET_NAME_SOLR = "Búsqueda de todos los datasetName cargados en SOLR";
 	
 	
 	//Parametros a Documentar
@@ -97,7 +99,11 @@ public class SwaggerConstants
 	public static final String PARAM_PLANTILLA_TEXT= "Objeto (Plantilla) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_CUBO_PADRON_DISTRITO_EDAD_TEXT= "Objeto (Observación del Cubo de Datos de Padron: Distrito y Edad) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_CONTRATO_PROCESS_TEXT= "Licitación (Contratos) en formato json necesario para poder realizar la operación";
-	
+	public static final String PARAM_BICICLETAPUBLICABICICLETA_TEXT= "Objeto (BicicletaPublicaBicicleta) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BICICLETAPUBLICAESTACION_TEXT= "Objeto (BicicletaPublicaEstacion) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BICICLETAPUBLICAANCLAJE_TEXT= "Objeto (BicicletaPublicaAnclaje) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BICICLETAPUBLICAUSUARIO_TEXT= "Objeto (BicicletaPublicaUsuario) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BICICLETAPUBLICATRAYECTO_TEXT= "Objeto (BicicletaPublicaTrayecto) en formato json necesario para poder realizar la operación";
 	
 	public static final String PARAM_OBSERVES_ID_TEXT= "Código del elemento que se está obervando";
 	public static final String PARAM_IS_HOSTED_BY_TEXT= "Código de la estación donde se encuentra el sensor";
