@@ -56,7 +56,10 @@
      <changeSet author="Localidata" id="FK-Index-table-portal_via-via">
         <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_portal" constraintName="callejero_portal_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
     </changeSet>
+	
 		
+
+	
 	<!-- DSD -->
 	<changeSet author="Localidata" id="DSD_Tables-20">
         <addForeignKeyConstraint baseColumnNames="cube_key" baseTableName="cube_dsd_rel_dimension" constraintName="cube_dsd_rel_dim_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="cube_dsd"/>
@@ -135,5 +138,6 @@
     <changeSet author="Localidata" id="TablasTerritorio-61">
         <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
     </changeSet>
-
+	
+	
 </databaseChangeLog>

@@ -2,10 +2,1444 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <changeSet author="Localidata" id="territorio_data-1">
         <insert tableName="territorio_pais">
+            <column name="ikey" value="10"/>
+            <column name="id" value="10"/>
+            <column name="identifier" value="Antartida"/>
+            <column name="title" value="Antártida"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="100"/>
+            <column name="id" value="100"/>
+            <column name="identifier" value="Bulgaria"/>
+            <column name="title" value="Bulgaria"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="104"/>
+            <column name="id" value="104"/>
+            <column name="identifier" value="Myanmar"/>
+            <column name="title" value="Myanmar"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="108"/>
+            <column name="id" value="108"/>
+            <column name="identifier" value="Burundi"/>
+            <column name="title" value="Burundi"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="112"/>
+            <column name="id" value="112"/>
+            <column name="identifier" value="Belarus"/>
+            <column name="title" value="Belarús"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="116"/>
+            <column name="id" value="116"/>
+            <column name="identifier" value="Camboya"/>
+            <column name="title" value="Camboya"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="12"/>
+            <column name="id" value="12"/>
+            <column name="identifier" value="Argel"/>
+            <column name="title" value="Argel"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="120"/>
+            <column name="id" value="120"/>
+            <column name="identifier" value="Camerun"/>
+            <column name="title" value="Camerún"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="124"/>
+            <column name="id" value="124"/>
+            <column name="identifier" value="Canada"/>
+            <column name="title" value="Canadá"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="132"/>
+            <column name="id" value="132"/>
+            <column name="identifier" value="Cabo-Verde"/>
+            <column name="title" value="Cabo Verde"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="136"/>
+            <column name="id" value="136"/>
+            <column name="identifier" value="Islas-Caiman"/>
+            <column name="title" value="Islas Caimán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="140"/>
+            <column name="id" value="140"/>
+            <column name="identifier" value="Republica-Centro-Africana"/>
+            <column name="title" value="República Centro-Africana"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="144"/>
+            <column name="id" value="144"/>
+            <column name="identifier" value="Sri-Lanka"/>
+            <column name="title" value="Sri Lanka"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="148"/>
+            <column name="id" value="148"/>
+            <column name="identifier" value="Cha"/>
+            <column name="title" value="Chad"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="152"/>
+            <column name="id" value="152"/>
+            <column name="identifier" value="Chile"/>
+            <column name="title" value="Chile"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="156"/>
+            <column name="id" value="156"/>
+            <column name="identifier" value="China"/>
+            <column name="title" value="China"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="158"/>
+            <column name="id" value="158"/>
+            <column name="identifier" value="Taiwan"/>
+            <column name="title" value="Taiwán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="16"/>
+            <column name="id" value="16"/>
+            <column name="identifier" value="Samoa-Americana"/>
+            <column name="title" value="Samoa Americana"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="162"/>
+            <column name="id" value="162"/>
+            <column name="identifier" value="Islas-Christmas"/>
+            <column name="title" value="Islas Christmas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="166"/>
+            <column name="id" value="166"/>
+            <column name="identifier" value="Islas-Cocos"/>
+            <column name="title" value="Islas Cocos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="170"/>
+            <column name="id" value="170"/>
+            <column name="identifier" value="Colombia"/>
+            <column name="title" value="Colombia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="174"/>
+            <column name="id" value="174"/>
+            <column name="identifier" value="Comoros"/>
+            <column name="title" value="Comoros"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="175"/>
+            <column name="id" value="175"/>
+            <column name="identifier" value="Mayotte"/>
+            <column name="title" value="Mayotte"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="178"/>
+            <column name="id" value="178"/>
+            <column name="identifier" value="Congo"/>
+            <column name="title" value="Congo"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="184"/>
+            <column name="id" value="184"/>
+            <column name="identifier" value="Islas-Cook"/>
+            <column name="title" value="Islas Cook"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="188"/>
+            <column name="id" value="188"/>
+            <column name="identifier" value="Costa-Rica"/>
+            <column name="title" value="Costa Rica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="191"/>
+            <column name="id" value="191"/>
+            <column name="identifier" value="Croacia"/>
+            <column name="title" value="Croacia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="192"/>
+            <column name="id" value="192"/>
+            <column name="identifier" value="Cuba"/>
+            <column name="title" value="Cuba"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="196"/>
+            <column name="id" value="196"/>
+            <column name="identifier" value="Chipre"/>
+            <column name="title" value="Chipre"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="20"/>
+            <column name="id" value="20"/>
+            <column name="identifier" value="Andorra"/>
+            <column name="title" value="Andorra"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="203"/>
+            <column name="id" value="203"/>
+            <column name="identifier" value="Republica-Checa"/>
+            <column name="title" value="República Checa"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="204"/>
+            <column name="id" value="204"/>
+            <column name="identifier" value="Benin"/>
+            <column name="title" value="Benin"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="208"/>
+            <column name="id" value="208"/>
+            <column name="identifier" value="Dinamarca"/>
+            <column name="title" value="Dinamarca"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="212"/>
+            <column name="id" value="212"/>
+            <column name="identifier" value="Dominica"/>
+            <column name="title" value="Domínica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="214"/>
+            <column name="id" value="214"/>
+            <column name="identifier" value="Republica-Dominicana"/>
+            <column name="title" value="República Dominicana"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="218"/>
+            <column name="id" value="218"/>
+            <column name="identifier" value="Ecuador"/>
+            <column name="title" value="Ecuador"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="222"/>
+            <column name="id" value="222"/>
+            <column name="identifier" value="El-Salvador"/>
+            <column name="title" value="El Salvador"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="226"/>
+            <column name="id" value="226"/>
+            <column name="identifier" value="Guinea-Ecuatorial"/>
+            <column name="title" value="Guinea Ecuatorial"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="231"/>
+            <column name="id" value="231"/>
+            <column name="identifier" value="Etiopia"/>
+            <column name="title" value="Etiopía"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="232"/>
+            <column name="id" value="232"/>
+            <column name="identifier" value="Eritrea"/>
+            <column name="title" value="Eritrea"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="233"/>
+            <column name="id" value="233"/>
+            <column name="identifier" value="Estonia"/>
+            <column name="title" value="Estonia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="234"/>
+            <column name="id" value="234"/>
+            <column name="identifier" value="Islas-Faroe"/>
+            <column name="title" value="Islas Faroe"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="238"/>
+            <column name="id" value="238"/>
+            <column name="identifier" value="Islas-Malvinas"/>
+            <column name="title" value="Islas Malvinas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="239"/>
+            <column name="id" value="239"/>
+            <column name="identifier" value="Georgia-del-Sur-e-Islas-Sandwich-del-Sur"/>
+            <column name="title" value="Georgia del Sur e Islas Sandwich del Sur"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="24"/>
+            <column name="id" value="24"/>
+            <column name="identifier" value="Angola"/>
+            <column name="title" value="Angola"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="242"/>
+            <column name="id" value="242"/>
+            <column name="identifier" value="Fiji"/>
+            <column name="title" value="Fiji"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="246"/>
+            <column name="id" value="246"/>
+            <column name="identifier" value="Finlandia"/>
+            <column name="title" value="Finlandia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="248"/>
+            <column name="id" value="248"/>
+            <column name="identifier" value="Islas-Aland"/>
+            <column name="title" value="Islas Áland"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="250"/>
+            <column name="id" value="250"/>
+            <column name="identifier" value="Francia"/>
+            <column name="title" value="Francia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="254"/>
+            <column name="id" value="254"/>
+            <column name="identifier" value="Guayana-Francesa"/>
+            <column name="title" value="Guayana Francesa"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="258"/>
+            <column name="id" value="258"/>
+            <column name="identifier" value="Polinesia-Francesa"/>
+            <column name="title" value="Polinesia Francesa"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="260"/>
+            <column name="id" value="260"/>
+            <column name="identifier" value="Territorios-Australes-Franceses"/>
+            <column name="title" value="Territorios Australes Franceses"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="262"/>
+            <column name="id" value="262"/>
+            <column name="identifier" value="Yibuti"/>
+            <column name="title" value="Yibuti"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="266"/>
+            <column name="id" value="266"/>
+            <column name="identifier" value="Gabon"/>
+            <column name="title" value="Gabón"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="268"/>
+            <column name="id" value="268"/>
+            <column name="identifier" value="Georgia"/>
+            <column name="title" value="Georgia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="270"/>
+            <column name="id" value="270"/>
+            <column name="identifier" value="Gambia"/>
+            <column name="title" value="Gambia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="275"/>
+            <column name="id" value="275"/>
+            <column name="identifier" value="Palestina"/>
+            <column name="title" value="Palestina"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="276"/>
+            <column name="id" value="276"/>
+            <column name="identifier" value="Alemania"/>
+            <column name="title" value="Alemania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="28"/>
+            <column name="id" value="28"/>
+            <column name="identifier" value="Antigua-y-Barbuda"/>
+            <column name="title" value="Antigua y Barbuda"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="288"/>
+            <column name="id" value="288"/>
+            <column name="identifier" value="Ghana"/>
+            <column name="title" value="Ghana"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="292"/>
+            <column name="id" value="292"/>
+            <column name="identifier" value="Gibraltar"/>
+            <column name="title" value="Gibraltar"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="296"/>
+            <column name="id" value="296"/>
+            <column name="identifier" value="Kiribati"/>
+            <column name="title" value="Kiribati"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="300"/>
+            <column name="id" value="300"/>
+            <column name="identifier" value="Grecia"/>
+            <column name="title" value="Grecia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="304"/>
+            <column name="id" value="304"/>
+            <column name="identifier" value="Groenlandia"/>
+            <column name="title" value="Groenlandia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="308"/>
+            <column name="id" value="308"/>
+            <column name="identifier" value="Granada"/>
+            <column name="title" value="Granada"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="31"/>
+            <column name="id" value="31"/>
+            <column name="identifier" value="Azerbaiyan"/>
+            <column name="title" value="Azerbaiyán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="312"/>
+            <column name="id" value="312"/>
+            <column name="identifier" value="Guadalupe"/>
+            <column name="title" value="Guadalupe"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="316"/>
+            <column name="id" value="316"/>
+            <column name="identifier" value="Guam"/>
+            <column name="title" value="Guam"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="32"/>
+            <column name="id" value="32"/>
+            <column name="identifier" value="Argentina"/>
+            <column name="title" value="Argentina"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="320"/>
+            <column name="id" value="320"/>
+            <column name="identifier" value="Guatemala"/>
+            <column name="title" value="Guatemala"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="324"/>
+            <column name="id" value="324"/>
+            <column name="identifier" value="Guinea"/>
+            <column name="title" value="Guinea"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="328"/>
+            <column name="id" value="328"/>
+            <column name="identifier" value="Guayana"/>
+            <column name="title" value="Guayana"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="332"/>
+            <column name="id" value="332"/>
+            <column name="identifier" value="Haiti"/>
+            <column name="title" value="Haití"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="334"/>
+            <column name="id" value="334"/>
+            <column name="identifier" value="Islas-Heard-y-McDonald"/>
+            <column name="title" value="Islas Heard y McDonald"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="336"/>
+            <column name="id" value="336"/>
+            <column name="identifier" value="Ciudad-del-Vaticano"/>
+            <column name="title" value="Ciudad del Vaticano"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="340"/>
+            <column name="id" value="340"/>
+            <column name="identifier" value="Honduras"/>
+            <column name="title" value="Honduras"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="344"/>
+            <column name="id" value="344"/>
+            <column name="identifier" value="Hong-Kong"/>
+            <column name="title" value="Hong Kong"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="348"/>
+            <column name="id" value="348"/>
+            <column name="identifier" value="Hungria"/>
+            <column name="title" value="Hungría"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="352"/>
+            <column name="id" value="352"/>
+            <column name="identifier" value="Islandia"/>
+            <column name="title" value="Islandia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="356"/>
+            <column name="id" value="356"/>
+            <column name="identifier" value="India"/>
+            <column name="title" value="India"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="36"/>
+            <column name="id" value="36"/>
+            <column name="identifier" value="Australia"/>
+            <column name="title" value="Australia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="360"/>
+            <column name="id" value="360"/>
+            <column name="identifier" value="Indonesia"/>
+            <column name="title" value="Indonesia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="364"/>
+            <column name="id" value="364"/>
+            <column name="identifier" value="Iran"/>
+            <column name="title" value="Irán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="368"/>
+            <column name="id" value="368"/>
+            <column name="identifier" value="Irak"/>
+            <column name="title" value="Irak"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="372"/>
+            <column name="id" value="372"/>
+            <column name="identifier" value="Irlanda"/>
+            <column name="title" value="Irlanda"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="376"/>
+            <column name="id" value="376"/>
+            <column name="identifier" value="Israel"/>
+            <column name="title" value="Israel"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="380"/>
+            <column name="id" value="380"/>
+            <column name="identifier" value="Italia"/>
+            <column name="title" value="Italia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="384"/>
+            <column name="id" value="384"/>
+            <column name="identifier" value="Costa-Marfil"/>
+            <column name="title" value="Costa de Marfil"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="388"/>
+            <column name="id" value="388"/>
+            <column name="identifier" value="Jamaica"/>
+            <column name="title" value="Jamaica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="392"/>
+            <column name="id" value="392"/>
+            <column name="identifier" value="Japon"/>
+            <column name="title" value="Japón"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="398"/>
+            <column name="id" value="398"/>
+            <column name="identifier" value="Kazajstan"/>
+            <column name="title" value="Kazajstán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="4"/>
+            <column name="id" value="4"/>
+            <column name="identifier" value="Afganistan"/>
+            <column name="title" value="Afganistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="40"/>
+            <column name="id" value="40"/>
+            <column name="identifier" value="Austria"/>
+            <column name="title" value="Austria"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="400"/>
+            <column name="id" value="400"/>
+            <column name="identifier" value="Jordania"/>
+            <column name="title" value="Jordania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="404"/>
+            <column name="id" value="404"/>
+            <column name="identifier" value="Kenia"/>
+            <column name="title" value="Kenia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="408"/>
+            <column name="id" value="408"/>
+            <column name="identifier" value="Corea-del-Norte"/>
+            <column name="title" value="Corea del Norte"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="410"/>
+            <column name="id" value="410"/>
+            <column name="identifier" value="Corea-del-Sur"/>
+            <column name="title" value="Corea del Sur"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="414"/>
+            <column name="id" value="414"/>
+            <column name="identifier" value="Kuwait"/>
+            <column name="title" value="Kuwait"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="417"/>
+            <column name="id" value="417"/>
+            <column name="identifier" value="Kirguistan"/>
+            <column name="title" value="Kirguistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="418"/>
+            <column name="id" value="418"/>
+            <column name="identifier" value="Laos"/>
+            <column name="title" value="Laos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="422"/>
+            <column name="id" value="422"/>
+            <column name="identifier" value="Libano"/>
+            <column name="title" value="Líbano"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="426"/>
+            <column name="id" value="426"/>
+            <column name="identifier" value="Lesotho"/>
+            <column name="title" value="Lesotho"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="428"/>
+            <column name="id" value="428"/>
+            <column name="identifier" value="Letonia"/>
+            <column name="title" value="Letonia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="430"/>
+            <column name="id" value="430"/>
+            <column name="identifier" value="Liberia"/>
+            <column name="title" value="Liberia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="434"/>
+            <column name="id" value="434"/>
+            <column name="identifier" value="Libia"/>
+            <column name="title" value="Libia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="438"/>
+            <column name="id" value="438"/>
+            <column name="identifier" value="Liechtenstein"/>
+            <column name="title" value="Liechtenstein"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="44"/>
+            <column name="id" value="44"/>
+            <column name="identifier" value="Bahamas"/>
+            <column name="title" value="Bahamas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="440"/>
+            <column name="id" value="440"/>
+            <column name="identifier" value="Lituania"/>
+            <column name="title" value="Lituania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="442"/>
+            <column name="id" value="442"/>
+            <column name="identifier" value="Luxemburgo"/>
+            <column name="title" value="Luxemburgo"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="446"/>
+            <column name="id" value="446"/>
+            <column name="identifier" value="Macao"/>
+            <column name="title" value="Macao"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="450"/>
+            <column name="id" value="450"/>
+            <column name="identifier" value="Madagascar"/>
+            <column name="title" value="Madagascar"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="454"/>
+            <column name="id" value="454"/>
+            <column name="identifier" value="Malawi"/>
+            <column name="title" value="Malawi"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="458"/>
+            <column name="id" value="458"/>
+            <column name="identifier" value="Malasia"/>
+            <column name="title" value="Malasia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="462"/>
+            <column name="id" value="462"/>
+            <column name="identifier" value="Maldivas"/>
+            <column name="title" value="Maldivas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="466"/>
+            <column name="id" value="466"/>
+            <column name="identifier" value="Mali"/>
+            <column name="title" value="Mali"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="470"/>
+            <column name="id" value="470"/>
+            <column name="identifier" value="Malta"/>
+            <column name="title" value="Malta"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="474"/>
+            <column name="id" value="474"/>
+            <column name="identifier" value="Martinica"/>
+            <column name="title" value="Martinica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="478"/>
+            <column name="id" value="478"/>
+            <column name="identifier" value="Mauritania"/>
+            <column name="title" value="Mauritania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="48"/>
+            <column name="id" value="48"/>
+            <column name="identifier" value="Bahrein"/>
+            <column name="title" value="Bahréin"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="480"/>
+            <column name="id" value="480"/>
+            <column name="identifier" value="Mauricio"/>
+            <column name="title" value="Mauricio"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="484"/>
+            <column name="id" value="484"/>
+            <column name="identifier" value="Mexico"/>
+            <column name="title" value="México"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="492"/>
+            <column name="id" value="492"/>
+            <column name="identifier" value="Monaco"/>
+            <column name="title" value="Mónaco"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="496"/>
+            <column name="id" value="496"/>
+            <column name="identifier" value="Mongolia"/>
+            <column name="title" value="Mongolia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="498"/>
+            <column name="id" value="498"/>
+            <column name="identifier" value="Moldova"/>
+            <column name="title" value="Moldova"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="499"/>
+            <column name="id" value="499"/>
+            <column name="identifier" value="Montenegro"/>
+            <column name="title" value="Montenegro"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="50"/>
+            <column name="id" value="50"/>
+            <column name="identifier" value="Bangladesh"/>
+            <column name="title" value="Bangladesh"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="500"/>
+            <column name="id" value="500"/>
+            <column name="identifier" value="Montserrat"/>
+            <column name="title" value="Montserrat"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="504"/>
+            <column name="id" value="504"/>
+            <column name="identifier" value="Marruecos"/>
+            <column name="title" value="Marruecos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="508"/>
+            <column name="id" value="508"/>
+            <column name="identifier" value="Mozambique"/>
+            <column name="title" value="Mozambique"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="51"/>
+            <column name="id" value="51"/>
+            <column name="identifier" value="Armenia"/>
+            <column name="title" value="Armenia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="512"/>
+            <column name="id" value="512"/>
+            <column name="identifier" value="Oman"/>
+            <column name="title" value="Omán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="516"/>
+            <column name="id" value="516"/>
+            <column name="identifier" value="Namibia"/>
+            <column name="title" value="Namibia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="52"/>
+            <column name="id" value="52"/>
+            <column name="identifier" value="Barbados"/>
+            <column name="title" value="Barbados"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="520"/>
+            <column name="id" value="520"/>
+            <column name="identifier" value="Nauru"/>
+            <column name="title" value="Nauru"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="524"/>
+            <column name="id" value="524"/>
+            <column name="identifier" value="Nepal"/>
+            <column name="title" value="Nepal"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="528"/>
+            <column name="id" value="528"/>
+            <column name="identifier" value="Paises-Bajos"/>
+            <column name="title" value="Países Bajos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="530"/>
+            <column name="id" value="530"/>
+            <column name="identifier" value="Antillas-Neerlandesas"/>
+            <column name="title" value="Antillas Neerlandesas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="533"/>
+            <column name="id" value="533"/>
+            <column name="identifier" value="Aruba"/>
+            <column name="title" value="Aruba"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="540"/>
+            <column name="id" value="540"/>
+            <column name="identifier" value="Nueva-Caledonia"/>
+            <column name="title" value="Nueva Caledonia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="548"/>
+            <column name="id" value="548"/>
+            <column name="identifier" value="Vanuatu"/>
+            <column name="title" value="Vanuatu"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="554"/>
+            <column name="id" value="554"/>
+            <column name="identifier" value="Nueva-Zelanda"/>
+            <column name="title" value="Nueva Zelanda"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="558"/>
+            <column name="id" value="558"/>
+            <column name="identifier" value="Nicaragua"/>
+            <column name="title" value="Nicaragua"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="56"/>
+            <column name="id" value="56"/>
+            <column name="identifier" value="Belgica"/>
+            <column name="title" value="Bélgica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="562"/>
+            <column name="id" value="562"/>
+            <column name="identifier" value="Niger"/>
+            <column name="title" value="Níger"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="566"/>
+            <column name="id" value="566"/>
+            <column name="identifier" value="Nigeria"/>
+            <column name="title" value="Nigeria"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="570"/>
+            <column name="id" value="570"/>
+            <column name="identifier" value="Niue"/>
+            <column name="title" value="Niue"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="574"/>
+            <column name="id" value="574"/>
+            <column name="identifier" value="Islas-Norkfolk"/>
+            <column name="title" value="Islas Norkfolk"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="578"/>
+            <column name="id" value="578"/>
+            <column name="identifier" value="Noruega"/>
+            <column name="title" value="Noruega"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="583"/>
+            <column name="id" value="583"/>
+            <column name="identifier" value="Micronesia"/>
+            <column name="title" value="Micronesia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="584"/>
+            <column name="id" value="584"/>
+            <column name="identifier" value="Islas-Marshall"/>
+            <column name="title" value="Islas Marshall"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="585"/>
+            <column name="id" value="585"/>
+            <column name="identifier" value="Islas-Palaos"/>
+            <column name="title" value="Islas Palaos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="586"/>
+            <column name="id" value="586"/>
+            <column name="identifier" value="Pakistan"/>
+            <column name="title" value="Pakistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="591"/>
+            <column name="id" value="591"/>
+            <column name="identifier" value="Panama"/>
+            <column name="title" value="Panamá"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="598"/>
+            <column name="id" value="598"/>
+            <column name="identifier" value="Papua-Nueva-Guinea"/>
+            <column name="title" value="Papúa Nueva Guinea"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="60"/>
+            <column name="id" value="60"/>
+            <column name="identifier" value="Bermudas"/>
+            <column name="title" value="Bermudas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="600"/>
+            <column name="id" value="600"/>
+            <column name="identifier" value="Paraguay"/>
+            <column name="title" value="Paraguay"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="604"/>
+            <column name="id" value="604"/>
+            <column name="identifier" value="Peru"/>
+            <column name="title" value="Perú"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="608"/>
+            <column name="id" value="608"/>
+            <column name="identifier" value="Filipinas"/>
+            <column name="title" value="Filipinas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="612"/>
+            <column name="id" value="612"/>
+            <column name="identifier" value="Islas-Pitcairn"/>
+            <column name="title" value="Islas Pitcairn"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="616"/>
+            <column name="id" value="616"/>
+            <column name="identifier" value="Polonia"/>
+            <column name="title" value="Polonia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="620"/>
+            <column name="id" value="620"/>
+            <column name="identifier" value="Portugal"/>
+            <column name="title" value="Portugal"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="624"/>
+            <column name="id" value="624"/>
+            <column name="identifier" value="Guinea-Bissau"/>
+            <column name="title" value="Guinea-Bissau"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="626"/>
+            <column name="id" value="626"/>
+            <column name="identifier" value="Timor-Leste"/>
+            <column name="title" value="Timor-Leste"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="630"/>
+            <column name="id" value="630"/>
+            <column name="identifier" value="Puerto-Rico"/>
+            <column name="title" value="Puerto Rico"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="634"/>
+            <column name="id" value="634"/>
+            <column name="identifier" value="Qatar"/>
+            <column name="title" value="Qatar"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="638"/>
+            <column name="id" value="638"/>
+            <column name="identifier" value="Reunion"/>
+            <column name="title" value="Reunión"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="64"/>
+            <column name="id" value="64"/>
+            <column name="identifier" value="Bhutan"/>
+            <column name="title" value="Bhután"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="642"/>
+            <column name="id" value="642"/>
+            <column name="identifier" value="Rumania"/>
+            <column name="title" value="Rumanía"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="643"/>
+            <column name="id" value="643"/>
+            <column name="identifier" value="Rusia"/>
+            <column name="title" value="Rusia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="646"/>
+            <column name="id" value="646"/>
+            <column name="identifier" value="Ruanda"/>
+            <column name="title" value="Ruanda"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="652"/>
+            <column name="id" value="652"/>
+            <column name="identifier" value="San-Bartolome"/>
+            <column name="title" value="San Bartolomé"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="654"/>
+            <column name="id" value="654"/>
+            <column name="identifier" value="Santa-Elena"/>
+            <column name="title" value="Santa Elena"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="659"/>
+            <column name="id" value="659"/>
+            <column name="identifier" value="San-Cristobal-y-Nieves"/>
+            <column name="title" value="San Cristóbal y Nieves"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="660"/>
+            <column name="id" value="660"/>
+            <column name="identifier" value="Anguila"/>
+            <column name="title" value="Anguila"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="662"/>
+            <column name="id" value="662"/>
+            <column name="identifier" value="Santa-Lucia"/>
+            <column name="title" value="Santa Lucía"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="666"/>
+            <column name="id" value="666"/>
+            <column name="identifier" value="San-Pedro-y-Miquelon"/>
+            <column name="title" value="San Pedro y Miquelón"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="670"/>
+            <column name="id" value="670"/>
+            <column name="identifier" value="San-Vicente-y-las-Granadinas"/>
+            <column name="title" value="San Vicente y las Granadinas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="674"/>
+            <column name="id" value="674"/>
+            <column name="identifier" value="San-Marino"/>
+            <column name="title" value="San Marino"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="678"/>
+            <column name="id" value="678"/>
+            <column name="identifier" value="Santo-Tome-y-Principe"/>
+            <column name="title" value="Santo Tomé y Príncipe"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="68"/>
+            <column name="id" value="68"/>
+            <column name="identifier" value="Bolivia"/>
+            <column name="title" value="Bolivia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="682"/>
+            <column name="id" value="682"/>
+            <column name="identifier" value="Arabia-Saudita"/>
+            <column name="title" value="Arabia Saudita"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="686"/>
+            <column name="id" value="686"/>
+            <column name="identifier" value="Senegal"/>
+            <column name="title" value="Senegal"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="688"/>
+            <column name="id" value="688"/>
+            <column name="identifier" value="Serbia-y-Montenegro"/>
+            <column name="title" value="Serbia y Montenegro"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="690"/>
+            <column name="id" value="690"/>
+            <column name="identifier" value="Seychelles"/>
+            <column name="title" value="Seychelles"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="694"/>
+            <column name="id" value="694"/>
+            <column name="identifier" value="Sierra-Leona"/>
+            <column name="title" value="Sierra Leona"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="70"/>
+            <column name="id" value="70"/>
+            <column name="identifier" value="Bosnia-y-Herzegovina"/>
+            <column name="title" value="Bosnia y Herzegovina"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="702"/>
+            <column name="id" value="702"/>
+            <column name="identifier" value="Singapur"/>
+            <column name="title" value="Singapur"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="703"/>
+            <column name="id" value="703"/>
+            <column name="identifier" value="Eslovaquia"/>
+            <column name="title" value="Eslovaquia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="704"/>
+            <column name="id" value="704"/>
+            <column name="identifier" value="Vietnam"/>
+            <column name="title" value="Vietnam"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="705"/>
+            <column name="id" value="705"/>
+            <column name="identifier" value="Eslovenia"/>
+            <column name="title" value="Eslovenia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="706"/>
+            <column name="id" value="706"/>
+            <column name="identifier" value="Somalia"/>
+            <column name="title" value="Somalia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="710"/>
+            <column name="id" value="710"/>
+            <column name="identifier" value="Sudafrica"/>
+            <column name="title" value="Sudáfrica"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="72"/>
+            <column name="id" value="72"/>
+            <column name="identifier" value="Botsuana"/>
+            <column name="title" value="Botsuana"/>
+        </insert>
+        <insert tableName="territorio_pais">
             <column name="ikey" value="724"/>
             <column name="id" value="724"/>
             <column name="identifier" value="España"/>
             <column name="title" value="España"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="732"/>
+            <column name="id" value="732"/>
+            <column name="identifier" value="Sahara-Occidental"/>
+            <column name="title" value="Sahara Occidental"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="736"/>
+            <column name="id" value="736"/>
+            <column name="identifier" value="Sudan"/>
+            <column name="title" value="Sudán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="74"/>
+            <column name="id" value="74"/>
+            <column name="identifier" value="Isla-Bouvet"/>
+            <column name="title" value="Isla Bouvet"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="740"/>
+            <column name="id" value="740"/>
+            <column name="identifier" value="Surinam"/>
+            <column name="title" value="Surinam"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="744"/>
+            <column name="id" value="744"/>
+            <column name="identifier" value="Islas-Svalbard-y-Jan-Mayen"/>
+            <column name="title" value="Islas Svalbard y Jan Mayen"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="748"/>
+            <column name="id" value="748"/>
+            <column name="identifier" value="Suazilandia"/>
+            <column name="title" value="Suazilandia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="752"/>
+            <column name="id" value="752"/>
+            <column name="identifier" value="Suecia"/>
+            <column name="title" value="Suecia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="756"/>
+            <column name="id" value="756"/>
+            <column name="identifier" value="Suiza"/>
+            <column name="title" value="Suiza"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="76"/>
+            <column name="id" value="76"/>
+            <column name="identifier" value="Brasil"/>
+            <column name="title" value="Brasil"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="760"/>
+            <column name="id" value="760"/>
+            <column name="identifier" value="Siria"/>
+            <column name="title" value="Siria"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="762"/>
+            <column name="id" value="762"/>
+            <column name="identifier" value="Tayikistan"/>
+            <column name="title" value="Tayikistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="764"/>
+            <column name="id" value="764"/>
+            <column name="identifier" value="Tailandia"/>
+            <column name="title" value="Tailandia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="768"/>
+            <column name="id" value="768"/>
+            <column name="identifier" value="Togo"/>
+            <column name="title" value="Togo"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="772"/>
+            <column name="id" value="772"/>
+            <column name="identifier" value="Tokelau"/>
+            <column name="title" value="Tokelau"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="776"/>
+            <column name="id" value="776"/>
+            <column name="identifier" value="Tonga"/>
+            <column name="title" value="Tonga"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="780"/>
+            <column name="id" value="780"/>
+            <column name="identifier" value="Trinidad-y-Tobago"/>
+            <column name="title" value="Trinidad y Tobago"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="784"/>
+            <column name="id" value="784"/>
+            <column name="identifier" value="Emiratos-Arabes-Unidos"/>
+            <column name="title" value="Emiratos Árabes Unidos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="788"/>
+            <column name="id" value="788"/>
+            <column name="identifier" value="Tunez"/>
+            <column name="title" value="Túnez"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="792"/>
+            <column name="id" value="792"/>
+            <column name="identifier" value="Turquia"/>
+            <column name="title" value="Turquía"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="795"/>
+            <column name="id" value="795"/>
+            <column name="identifier" value="Turkmenistan"/>
+            <column name="title" value="Turkmenistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="796"/>
+            <column name="id" value="796"/>
+            <column name="identifier" value="Islas-Turcas-y-Caicos"/>
+            <column name="title" value="Islas Turcas y Caicos"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="798"/>
+            <column name="id" value="798"/>
+            <column name="identifier" value="Tuvalu"/>
+            <column name="title" value="Tuvalu"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="8"/>
+            <column name="id" value="8"/>
+            <column name="identifier" value="Albania"/>
+            <column name="title" value="Albania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="800"/>
+            <column name="id" value="800"/>
+            <column name="identifier" value="Uganda"/>
+            <column name="title" value="Uganda"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="804"/>
+            <column name="id" value="804"/>
+            <column name="identifier" value="Ucrania"/>
+            <column name="title" value="Ucrania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="807"/>
+            <column name="id" value="807"/>
+            <column name="identifier" value="Macedonia"/>
+            <column name="title" value="Macedonia"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="818"/>
+            <column name="id" value="818"/>
+            <column name="identifier" value="Egipto"/>
+            <column name="title" value="Egipto"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="826"/>
+            <column name="id" value="826"/>
+            <column name="identifier" value="Reino-Unido"/>
+            <column name="title" value="Reino Unido"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="831"/>
+            <column name="id" value="831"/>
+            <column name="identifier" value="Guernsey"/>
+            <column name="title" value="Guernsey"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="832"/>
+            <column name="id" value="832"/>
+            <column name="identifier" value="Jersey"/>
+            <column name="title" value="Jersey"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="833"/>
+            <column name="id" value="833"/>
+            <column name="identifier" value="Isla-Man"/>
+            <column name="title" value="Isla de Man"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="834"/>
+            <column name="id" value="834"/>
+            <column name="identifier" value="Tanzania"/>
+            <column name="title" value="Tanzania"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="84"/>
+            <column name="id" value="84"/>
+            <column name="identifier" value="Belice"/>
+            <column name="title" value="Belice"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="840"/>
+            <column name="id" value="840"/>
+            <column name="identifier" value="Estados-Unidos-America"/>
+            <column name="title" value="Estados Unidos de América"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="850"/>
+            <column name="id" value="850"/>
+            <column name="identifier" value="Islas-Virgenes-los-Estados-Unidos-America"/>
+            <column name="title" value="Islas Vírgenes de los Estados Unidos de América"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="854"/>
+            <column name="id" value="854"/>
+            <column name="identifier" value="Burkina-Faso"/>
+            <column name="title" value="Burkina Faso"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="858"/>
+            <column name="id" value="858"/>
+            <column name="identifier" value="Uruguay"/>
+            <column name="title" value="Uruguay"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="86"/>
+            <column name="id" value="86"/>
+            <column name="identifier" value="Territorio-Britanico-del-Oceano-Indico"/>
+            <column name="title" value="Territorio Británico del Océano Índico"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="860"/>
+            <column name="id" value="860"/>
+            <column name="identifier" value="Uzbekistan"/>
+            <column name="title" value="Uzbekistán"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="862"/>
+            <column name="id" value="862"/>
+            <column name="identifier" value="Venezuela"/>
+            <column name="title" value="Venezuela"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="876"/>
+            <column name="id" value="876"/>
+            <column name="identifier" value="Wallis-y-Futuna"/>
+            <column name="title" value="Wallis y Futuna"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="882"/>
+            <column name="id" value="882"/>
+            <column name="identifier" value="Samoa"/>
+            <column name="title" value="Samoa"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="887"/>
+            <column name="id" value="887"/>
+            <column name="identifier" value="Yemen"/>
+            <column name="title" value="Yemen"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="90"/>
+            <column name="id" value="90"/>
+            <column name="identifier" value="Islas-Solomon"/>
+            <column name="title" value="Islas Solomón"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="92"/>
+            <column name="id" value="92"/>
+            <column name="identifier" value="Islas-Virgenes-Britanicas"/>
+            <column name="title" value="Islas Vírgenes Británicas"/>
+        </insert>
+        <insert tableName="territorio_pais">
+            <column name="ikey" value="96"/>
+            <column name="id" value="96"/>
+            <column name="identifier" value="Brunei"/>
+            <column name="title" value="Brunéi"/>
         </insert>
 		<rollback/>
     </changeSet>

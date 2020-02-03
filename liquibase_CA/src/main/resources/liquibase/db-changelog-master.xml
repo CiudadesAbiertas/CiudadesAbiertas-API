@@ -112,22 +112,8 @@
   
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-mini.xml"/>
    
-   <!--
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data.xml"/>  
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-2.xml"/>            
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-3.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-4.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-5.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-6.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-7.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-8.xml"/>
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-9.xml"/>  
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-10.xml"/>
- -->
-  <!-- Version 1.18 Integracion Callejero -->
-  <!-- include file="liquibase/db-changelog-script-1.18-INT-CALLEJERO-ALL-update.xml"/ -->
-  <include file="liquibase/db-changelog-script-1.18-INTEGRACIONES-ALL-update.xml"/>
-  
+  <!-- Version 1.18 Integracion Callejero -->  
+  <include file="liquibase/db-changelog-script-1.18-INTEGRACIONES-ALL-update.xml"/>     
 
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

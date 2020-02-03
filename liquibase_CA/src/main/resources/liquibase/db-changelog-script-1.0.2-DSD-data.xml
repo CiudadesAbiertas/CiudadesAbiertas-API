@@ -2,11 +2,12 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 <changeSet author="Localidata" id="dsdDatos-1">
-        <insert tableName="cube_dsd">
+       
+		<insert tableName="cube_dsd">
             <column name="ikey" value="cuboPadron1"/>
-            <column name="id" value="poblacionPorEdad"/>
-            <column name="title" value="Estructura de los datos relacionados con la edad de los habitantes registrados en el padrón municipal"/>
-            <column name="notation" value="poblacionPorEdad"/>
+            <column name="id" value="poblacionPorEdadGruposQuinquenales"/>
+            <column name="title" value="Estructura de los datos relacionados con la edad de los habitantes registrados en el padrón municipal según rangos quinquenales"/>
+            <column name="notation" value="poblacionPorEdadGruposQuinquenales"/>
         </insert>
         <insert tableName="cube_dsd">
             <column name="ikey" value="cuboPadron2"/>
@@ -32,6 +33,21 @@
             <column name="title" value="Estructura de los datos relacionados con los indicadores de la estructura demografica de los habitantes registrados en el padron municipal"/>
             <column name="notation" value="poblacionPorIndicadores"/>
         </insert> 
+
+		 <insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron6"/>
+            <column name="id" value="poblacionPorEdad"/>
+            <column name="title" value="Estructura de los datos relacionados con la edad de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorEdad"/>
+        </insert>
+	
+		<insert tableName="cube_dsd">
+            <column name="ikey" value="cuboPadron7"/>
+            <column name="id" value="poblacionPorPaisNacimiento"/>
+            <column name="title" value="Estructura de los datos relacionados con el país de nacimiento de los habitantes registrados en el padrón municipal"/>
+            <column name="notation" value="poblacionPorPaisNacimiento"/>
+        </insert> 
+
 		<rollback>
            delete from cube_dsd;
        </rollback>
@@ -45,6 +61,7 @@
             <column name="concept_scheme" value="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales"/>
             <column name="same_as" value="http://opendata.aragon.es/def/iaest/dimension#edad-grupos-quinquenales"/>
         </insert>
+
         <insert tableName="cube_dsd_dimension">
             <column name="ikey" value="refArea"/>
             <column name="id" value="refArea"/>
@@ -102,11 +119,31 @@
             <column name="concept_scheme"/>
             <column name="same_as"/>
         </insert>
+		
+		<insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="age"/>
+            <column name="id" value="age"/>
+            <column name="title" value="Edad"/>
+            <column name="notation" value="age"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+        </insert> 
+		
+		<insert tableName="cube_dsd_dimension">
+            <column name="ikey" value="pais-nacimiento"/>
+            <column name="id" value="paisNacimiento"/>
+            <column name="title" value="Pais de nacimiento"/>
+            <column name="notation" value="pais-nacimiento"/>
+            <column name="concept_scheme"/>
+            <column name="same_as"/>
+        </insert>
+
 		<rollback>
            delete from cube_dsd_dimension;
        </rollback>
     </changeSet>
-    <changeSet author="Localidata" id="dsdDatos-3">
+    
+	<changeSet author="Localidata" id="dsdDatos-3">
         <insert tableName="cube_dsd_dimension_value">
             <column name="ikey" value="edadRango02"/>
             <column name="id" value="05-a-09"/>
@@ -600,17 +637,17 @@
             <column name="dimension_key" value="edad-grupos-quinquenales"/>
         </insert>
         <insert tableName="cube_dsd_rel_dimension">
-            <column name="ikey" value="PadronEdadRefArea"/>
+            <column name="ikey" value="PadronEdadRangosRefArea"/>
             <column name="cube_key" value="cuboPadron1"/>
             <column name="dimension_key" value="refArea"/>
         </insert>
         <insert tableName="cube_dsd_rel_dimension">
-            <column name="ikey" value="PadronEdadRefPeriod"/>
+            <column name="ikey" value="PadronEdadRangosRefPeriod"/>
             <column name="cube_key" value="cuboPadron1"/>
             <column name="dimension_key" value="refPeriod"/>
         </insert>
         <insert tableName="cube_dsd_rel_dimension">
-            <column name="ikey" value="PadronEdadSexo"/>
+            <column name="ikey" value="PadronEdadRangosSexo"/>
             <column name="cube_key" value="cuboPadron1"/>
             <column name="dimension_key" value="sex"/>
         </insert>
@@ -689,6 +726,56 @@
             <column name="cube_key" value="cuboPadron5"/>
             <column name="dimension_key" value="refPeriod"/>
         </insert>
+		
+		
+		<insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadSex"/>
+            <column name="cube_key" value="cuboPadron6"/>
+            <column name="dimension_key" value="sex"/>
+        </insert>
+		<insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadrefArea"/>
+            <column name="cube_key" value="cuboPadron6"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+		
+		<insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadrefPeriod"/>
+            <column name="cube_key" value="cuboPadron6"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+		<insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronEdadAge"/>
+            <column name="cube_key" value="cuboPadron6"/>
+            <column name="dimension_key" value="age"/>
+        </insert>
+		
+		<insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronPaisNacimientoEdadGrupoQuinquenales"/>
+            <column name="cube_key" value="cuboPadron7"/>
+            <column name="dimension_key" value="edad-grupos-quinquenales"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronPaisNacimientoPaisNacimiento"/>
+            <column name="cube_key" value="cuboPadron7"/>
+            <column name="dimension_key" value="pais-nacimiento"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronPaisNacimientoRefArea"/>
+            <column name="cube_key" value="cuboPadron7"/>
+            <column name="dimension_key" value="refArea"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronPaisNacimientoRefPeriod"/>
+            <column name="cube_key" value="cuboPadron7"/>
+            <column name="dimension_key" value="refPeriod"/>
+        </insert>
+        <insert tableName="cube_dsd_rel_dimension">
+            <column name="ikey" value="PadronPaisNacimientoSex"/>
+            <column name="cube_key" value="cuboPadron7"/>
+            <column name="dimension_key" value="sex"/>
+        </insert>
+		
 		<rollback>
            delete from cube_dsd_rel_dimension;
        </rollback>
@@ -797,6 +884,16 @@
         <insert tableName="cube_dsd_rel_measure">
             <column name="ikey" value="PadronIndicadoresM17"/>
             <column name="cube_key" value="cuboPadron5"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+		<insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronEdadM1"/>
+            <column name="cube_key" value="cuboPadron6"/>
+            <column name="measure_key" value="numero-personas"/>
+        </insert>
+		<insert tableName="cube_dsd_rel_measure">
+            <column name="ikey" value="PadronPaisNacimientoM1"/>
+            <column name="cube_key" value="cuboPadron7"/>
             <column name="measure_key" value="numero-personas"/>
         </insert>
 		<rollback>

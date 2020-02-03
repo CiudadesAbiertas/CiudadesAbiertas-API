@@ -5,8 +5,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+	
 	<changeSet author="Localidata" id="table_padron_cube1">
-		<createTable tableName="padron_edad">
+		<createTable tableName="padron_edad_g_quiquenal">
 			<column name="ikey" type="VARCHAR(50)">
 				<constraints nullable="false" />
 			</column>
@@ -51,19 +52,19 @@
 			</column>
 		</createTable>
 		<rollback>
-			<dropTable tableName="padron_edad" />
+			<dropTable tableName="padron_edad_g_quiquenal" />
 		</rollback>
 	</changeSet>
 
 
-	<changeSet author="Localidata" id="PK-table-padron_cube_edad">
+	<changeSet author="Localidata" id="PK-table-padron_cube_edad_g_q">
 		<addPrimaryKey columnNames="ikey"
-			constraintName="PK-Padron-Edad" tableName="padron_edad" />
+			constraintName="PK-Padron-Edad_G_Q" tableName="padron_edad_g_quiquenal" />
 	</changeSet>
 	<changeSet author="Localidata"
-		id="INDEX-table-padron_cube_edad">
+		id="INDEX-table-padron_cube_edad_g_q">
 		<createIndex indexName="cubo-padron1-id"
-			tableName="padron_edad">
+			tableName="padron_edad_g_quiquenal">
 			<column name="id" />
 		</createIndex>
 	</changeSet>
@@ -175,7 +176,7 @@
 	</changeSet>
     
     <changeSet author="Localidata" id="table_padron_cube4">
-    <createTable tableName="padron_procedencia">
+		<createTable tableName="padron_procedencia">
             <column name="ikey" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
@@ -336,10 +337,8 @@
             <dropTable tableName="padron_indicadores"/>            
        </rollback> 
     </changeSet>
-           
-
-    
-    <changeSet author="Localidata"
+	
+	  <changeSet author="Localidata"
 		id="PK-table-padron_cube_indicadores">
 		<addPrimaryKey columnNames="ikey"
 			constraintName="PK-Padron-Indicadores"
@@ -350,6 +349,137 @@
 		id="INDEX-table-padron_cube_indicadores">
 		<createIndex indexName="cubo-padron5-id"
 			tableName="padron_indicadores">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+           
+	<changeSet author="Localidata" id="table_padron_cube6">
+		<createTable tableName="padron_edad">
+			<column name="ikey" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_title" type="VARCHAR(400)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ref_period" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="age" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sex" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="numero_personas" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="padron_edad" />
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="PK-table-padron_cube_edad">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Edad" tableName="padron_edad" />
+	</changeSet>
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_edad">
+		<createIndex indexName="cubo-padron6-id"
+			tableName="padron_edad">
+			<column name="id" />
+		</createIndex>
+	</changeSet>
+    
+  <changeSet author="Localidata" id="table_padron_cube7">
+		<createTable tableName="padron_pais_nacimiento">
+			<column name="ikey" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ref_period" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="edad_grupos_quinquenales" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sex" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="pais_nacimiento" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="municipio_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="distrito_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="barrio_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_id" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="seccion_censal_title" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="numero_personas" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="padron_pais_nacimiento" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet author="Localidata"
+		id="PK-table-padron_cube_pais_n">
+		<addPrimaryKey columnNames="ikey"
+			constraintName="PK-Padron-Pais-N"
+			tableName="padron_pais_nacimiento" />
+	</changeSet>
+
+	<changeSet author="Localidata"
+		id="INDEX-table-padron_cube_pais_n">
+		<createIndex indexName="cubo-padron7-id"
+			tableName="padron_pais_nacimiento">
 			<column name="id" />
 		</createIndex>
 	</changeSet>
