@@ -1177,6 +1177,7 @@ public class TransformadorBasicoRdf {
 			    	String realId=obtenerPropiedadID(fld.getAnnotation(CustomId.class));
 			    	Object val = Funciones.retrieveObjectValue(retorno, realId);
 			    	id=val.toString();
+			    	id=Funciones.urlify(id, 3);			    	
 			    }
 			    else 
 			    {
