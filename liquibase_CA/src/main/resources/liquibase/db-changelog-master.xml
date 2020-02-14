@@ -112,8 +112,30 @@
   
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-mini.xml"/>
    
-  <!-- Version 1.18 Integracion Callejero -->  
-  <include file="liquibase/db-changelog-script-1.18-INTEGRACIONES-ALL-update.xml"/>     
+   <!--
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data.xml"/>  
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-2.xml"/>            
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-3.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-4.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-5.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-6.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-7.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-8.xml"/>
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-9.xml"/>  
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-10.xml"/>
+ -->
+  <!-- Version 1.18 Integracion Callejero -->
+  <!-- include file="liquibase/db-changelog-script-1.18-INT-CALLEJERO-ALL-update.xml"/ -->
+  <include file="liquibase/db-changelog-script-1.18-INTEGRACIONES-ALL-update.xml"/>
+  <!-- Version 1.19 AGENDA MUNICIPAL -->
+  <include file="liquibase/db-changelog-script-1.19-AGENDA_MUNICIPAL-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.19-AGENDA_MUNICIPAL-data.xml"/>
+  
+  <!-- Version 1.20 CONTRATOS -->
+  <include file="liquibase/db-changelog-script-1.20-CONTRATOS-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data.xml"/>    
+  
+
 
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

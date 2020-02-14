@@ -57,8 +57,54 @@
         <addForeignKeyConstraint baseColumnNames="via" baseTableName="callejero_portal" constraintName="callejero_portal_ibfk_1" referencedColumnNames="id" referencedTableName="callejero_via"/>
     </changeSet>
 	
-		
-
+	<!-- Agenda municipal -->
+	<changeSet author="Localidata" id="FK-documento-to-evento">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="agenda_m_document" constraintName="fk_documento_to_evento"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-rolEvento-to-evento">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="agenda_m_rolintegranteevento" constraintName="fk_rol_i_evento_to_evento"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-eveto-to-evento">
+        <addForeignKeyConstraint baseColumnNames="super_event_id" baseTableName="agenda_m_evento" constraintName="fk_evento_to_evento_super"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+	
+	
+	<!-- Contratos -->
+	 
+	 <changeSet author="Localidata" id="fk-con-33">
+        <addForeignKeyConstraint baseColumnNames="is_supplier_for" baseTableName="contratos_award" constraintName="contratos_award_ibfk_1" 
+		referencedColumnNames="id" 	referencedTableName="contratos_organization"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-con-34">
+        <addForeignKeyConstraint baseColumnNames="tender_id" baseTableName="contratos_lot" constraintName="contratos_lot_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-35">
+        <addForeignKeyConstraint baseColumnNames="has_supplier" baseTableName="contratos_lot" constraintName="contratos_lot_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_award"/>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="fk-con-36">
+        <addForeignKeyConstraint baseColumnNames="lot_id" baseTableName="contratos_lot_rel_item" constraintName="contratos_lot_rel_item_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_lot"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-37">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="contratos_lot_rel_item" constraintName="contratos_lot_rel_item_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_item"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-38">
+        <addForeignKeyConstraint baseColumnNames="has_tender" baseTableName="contratos_process" constraintName="contratos_process_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-39">
+        <addForeignKeyConstraint baseColumnNames="is_buyer_for" baseTableName="contratos_process" constraintName="contratos_process_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_organization"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-40">
+        <addForeignKeyConstraint baseColumnNames="has_supplier" baseTableName="contratos_tender" constraintName="contratos_tender_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_award"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-41">
+        <addForeignKeyConstraint baseColumnNames="tender_id" baseTableName="contratos_tender_rel_item" constraintName="cont_tender_r_item_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-42">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="contratos_tender_rel_item" constraintName="cont_tender_r_item_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_item"/>
+    </changeSet>
 	
 	<!-- DSD -->
 	<changeSet author="Localidata" id="DSD_Tables-20">
@@ -139,5 +185,7 @@
         <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
     </changeSet>
 	
+	 
+
 	
 </databaseChangeLog>

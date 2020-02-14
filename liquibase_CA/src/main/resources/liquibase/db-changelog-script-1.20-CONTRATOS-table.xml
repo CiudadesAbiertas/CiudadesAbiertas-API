@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<!-- TABLAS -->
+	
+    <changeSet author="Localidata" id="tabla-contratos_award">
+        <createTable tableName="contratos_award">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="award_date" type="datetime(6)"/>
+			<column name="value_amount" type="DECIMAL(12, 2)"/>
+            <column name="is_supplier_for" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_award"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_item">
+        <createTable tableName="contratos_item">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_classification" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_item"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_lot">
+        <createTable tableName="contratos_lot">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tender_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_supplier" type="VARCHAR(50)"/>
+            <column name="value_amount" type="DECIMAL(12, 2)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_lot"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_lot_rel_item">
+        <createTable tableName="contratos_lot_rel_item">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lot_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_lot_rel_item"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_organization">
+        <createTable tableName="contratos_organization">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL" type="VARCHAR(400)"/>
+			<column name="contactPoint_email" type="VARCHAR(200)"/>
+			<column name="contactPoint_faxNumber" type="VARCHAR(200)"/>
+			<column name="contactPoint_telephone" type="VARCHAR(200)"/>
+			<column name="contactPoint_title" type="VARCHAR(400)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>			
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>		
+			<column name="portal_id" type="varchar(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_organization"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_process">
+        <createTable tableName="contratos_process">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="identifier" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL" type="VARCHAR(400)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="has_tender" type="VARCHAR(50)"/>
+            <column name="is_buyer_for" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_process"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_tender">
+		<createTable tableName="contratos_tender">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_supplier" type="VARCHAR(50)"/>
+            <column name="main_proc_category" type="VARCHAR(50)">                
+            </column>
+            <column name="additional_proc_category" type="VARCHAR(50)">
+            </column>
+            <column name="number_of_tenderers" type="INT">                
+            </column>
+            <column name="proc_method" type="VARCHAR(200)">                
+            </column>
+            <column name="proc_method_details" type="VARCHAR(200)">
+            </column>
+            <column name="tender_status" type="VARCHAR(200)"/>
+            <column name="period_duration_in_days" type="INT"/>
+            <column name="period_end_date" type="datetime(6)"/>
+            <column name="period_start_date" type="datetime(6)"/>
+            <column name="value_amount" type="DECIMAL(12, 2)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_tender"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="tabla-contratos_tender_rel_item">
+        <createTable tableName="contratos_tender_rel_item">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tender_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="contratos_tender_rel_item"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-01">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk01" tableName="contratos_award"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-02">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk02" tableName="contratos_item"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-03">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk03" tableName="contratos_lot"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-04">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk04" tableName="contratos_lot_rel_item"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-05">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk05" tableName="contratos_organization"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-06">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk06" tableName="contratos_process"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-07">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk07" tableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-08">
+        <addPrimaryKey columnNames="ikey" constraintName="con_pk08" tableName="contratos_tender_rel_item"/>
+    </changeSet>
+    
+	<changeSet author="Localidata" id="index-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-contratos_award" tableName="contratos_award"/>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="index-id-02">
+		<addUniqueConstraint columnNames="id" constraintName="index-id-contratos_item" tableName="contratos_item"/>        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="index-id-03">
+		<addUniqueConstraint columnNames="id" constraintName="index-id-contratos_lot" tableName="contratos_lot"/>        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="index-id-04">
+		<addUniqueConstraint columnNames="id" constraintName="index-id-contratos_org" tableName="contratos_organization"/>        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="index-id-05">
+		<addUniqueConstraint columnNames="id" constraintName="index-id-contratos_pro" tableName="contratos_process"/>        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="index-id-06">
+		<addUniqueConstraint columnNames="id" constraintName="index-id-contratos_tend" tableName="contratos_tender"/>        
+    </changeSet>	
+	
+	
+    <changeSet author="Localidata" id="index-extra-01">
+        <createIndex indexName="i_con_awa_is_suplier" tableName="contratos_award">
+            <column name="is_supplier_for"/>
+        </createIndex>
+    </changeSet>
+   
+    <changeSet author="Localidata" id="index-extra-02">
+        <createIndex indexName="i_con_lot_has_supplier" tableName="contratos_lot">
+            <column name="has_supplier"/>
+        </createIndex>
+    </changeSet>
+   
+    <changeSet author="Localidata" id="index-extra-03">
+        <createIndex indexName="i_con_lot_tender" tableName="contratos_lot">
+            <column name="tender_id"/>
+        </createIndex>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="index-extra-04">
+        <createIndex indexName="i_con_pro_has_tender" tableName="contratos_process">
+            <column name="has_tender"/>
+        </createIndex>
+    </changeSet>
+   
+    <changeSet author="Localidata" id="index-extra-05">
+        <createIndex indexName="i_con_pro_is_buyer_for" tableName="contratos_process">
+            <column name="is_buyer_for"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="index-extra-06">
+        <createIndex indexName="i_con_ten_has_supplier" tableName="contratos_tender">
+            <column name="has_supplier"/>
+        </createIndex>
+    </changeSet>
+  
+    <changeSet author="Localidata" id="index-extra-07">
+        <createIndex indexName="i_con_lot_rel" tableName="contratos_lot_rel_item">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="index-extra-08">
+        <createIndex indexName="i_con_tender_rel" tableName="contratos_tender_rel_item">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="index-extra-09">
+        <createIndex indexName="i_con_lot_rel_id" tableName="contratos_lot_rel_item">
+            <column name="lot_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="index-extra-10">
+        <createIndex indexName="i_con_tender_id" tableName="contratos_tender_rel_item">
+            <column name="tender_id"/>
+        </createIndex>
+    </changeSet>
+        
+
+</databaseChangeLog>

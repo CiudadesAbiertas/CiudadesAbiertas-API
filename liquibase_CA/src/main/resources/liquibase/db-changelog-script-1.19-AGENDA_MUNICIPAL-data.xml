@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="data-agenda_municipal_evento">   			
+        <insert tableName="agenda_m_evento">
+            <column name="ikey" value="0001"/>
+            <column name="id" value="AGM0001"/>
+            <column name="title" value="Acto de entrega de los Premios Los Leones de EL ESPAÑOL. Global"/>           
+            <column name="description" value="Acto de entrega de los Premios Los Leones de EL ESPAÑOL. Global"/>
+            <column name="url" value="https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&amp;vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&amp;vgnextfmt=default"/>
+            <column name="start_date" valueDate="2019-12-06 10:00:00.0"/>
+            <column name="end_date" valueDate="2019-12-10 20:00:00.0"/>
+			<column name="location_title" value="Auditorio del Comité Olímpico Español"/>
+			<column name="street_address" value="CL BLAS DE OTERO 4"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+			<column name="equipamiento_id" value="EQ0044"/>
+			<column name="equipamiento_title" value="Teatro Auditorio Ciudad de Alcobendas"/>
+			<column name="super_event_id" />
+			<column name="reunion_lobby" valueBoolean="false"/>						
+            <column name="tipo_evento" value="evento-con-medio-de-comunicacion"/>
+			<column name="tipo_acceso" value="publico"/>
+			<column name="tipo_sesion" value="extraordinaria"/>
+			<column name="canal" value="presencial"/>			            
+        </insert>
+				
+		<insert tableName="agenda_m_evento">
+            <column name="ikey" value="0002"/>
+            <column name="id" value="AGM0002"/>
+            <column name="title" value="Acto de entrega de los Premios Los Leones de EL ESPAÑOL. Profesionales"/>           
+            <column name="description" value="Acto de entrega de los Premios Los Leones de EL ESPAÑOL solo para profesionales"/>
+            <column name="url" value="https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&amp;vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&amp;vgnextfmt=default"/>
+            <column name="start_date" valueDate="2019-12-08 10:00:00.0"/>
+            <column name="end_date" valueDate="2019-12-08 20:00:00.0"/>
+			<column name="location_title" value="Auditorio del Comité Olímpico Español"/>
+			<column name="street_address" value="CL BLAS DE OTERO 4"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+			<column name="equipamiento_id" value="EQ0044"/>
+			<column name="equipamiento_title" value="Teatro Auditorio Ciudad de Alcobendas"/>
+			<column name="super_event_id" value="AGM0001"/>
+			<column name="reunion_lobby" valueBoolean="false"/>						
+            <column name="tipo_evento" value="evento-con-medio-de-comunicacion"/>
+			<column name="tipo_acceso" value="privado"/>
+			<column name="tipo_sesion" value="extraordinaria"/>
+			<column name="canal" value="presencial"/>			            
+        </insert>
+		
+		<insert tableName="agenda_m_evento">
+            <column name="ikey" value="0003"/>
+            <column name="id" value="AGM0003"/>
+            <column name="title" value="Junta rectora IFEMA"/>           
+            <column name="description" value="Seguimiento anual de la Junta rectora IFEMA"/>
+            <column name="url" />
+            <column name="start_date" valueDate="2019-12-01 10:00:00.0"/>
+            <column name="end_date" valueDate="2019-12-01 20:00:00.0"/>
+			<column name="location_title" value="IFEMA"/>
+			<column name="street_address" value="CL BLAS DE OTERO 4"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+			<column name="equipamiento_id" value="EQ0008"/>
+			<column name="equipamiento_title" value="Centro Cultural Anabel Segura"/>
+			<column name="super_event_id" />
+			<column name="reunion_lobby" valueBoolean="true"/>						
+            <column name="tipo_evento" value="reunion-interna"/>
+			<column name="tipo_acceso" value="privado"/>
+			<column name="tipo_sesion" value="ordinaria"/>
+			<column name="canal" value="presencial"/>			            
+        </insert>
+		
+		<insert tableName="agenda_m_evento">
+            <column name="ikey" value="0004"/>
+            <column name="id" value="AGM0004"/>
+            <column name="title" value="Reunión con la directiva del Club Deportivo Oña Sanchinarro"/>           
+            <column name="description" value="Seguimiento anual de la Reunión con la directiva del Club Deportivo Oña Sanchinarro"/>
+            <column name="url" />
+            <column name="start_date" valueDate="2019-11-27 10:00:00.0"/>
+            <column name="end_date" valueDate="2019-11-27 13:00:00.0"/>
+			<column name="location_title" value="Sala de Juntas de Hortaleza"/>
+			<column name="street_address" value="CL BLAS DE OTERO 4"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000111"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+			<column name="equipamiento_id" value="EQID0095"/>
+			<column name="equipamiento_title" value="Instalación Deportiva Municipal Básica Club Deportivo Alzola"/>
+			<column name="super_event_id" />
+			<column name="reunion_lobby" valueBoolean="false"/>						
+            <column name="tipo_evento" value="reunion-interna"/>
+			<column name="tipo_acceso" value="privado"/>
+			<column name="tipo_sesion" value="ordinaria"/>
+			<column name="canal" value="presencial"/>			            
+        </insert>
+        
+        <rollback/>        	      
+    </changeSet>
+	
+	<changeSet author="Localidata" id="data-agenda_municipal_documento">   			
+        <insert tableName="agenda_m_document">
+			<column name="ikey" value="0001"/>
+            <column name="id" value="AGMDOC0001"/>
+            <column name="encoding_format" value="texto"/>           
+            <column name="name" value="Inscripcion Evento"/>
+			<column name="url"/>
+			<column name="event_id" value="AGM0001"/>
+		</insert>
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0002"/>
+            <column name="id" value="AGMDOC0002"/>
+            <column name="encoding_format" value="imagen"/>           
+            <column name="name" value="Fotografia para la Inscripcion Evento"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0001"/>
+		</insert>
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0003"/>
+            <column name="id" value="AGMDOC0003"/>
+            <column name="encoding_format" value="imagen"/>           
+            <column name="name" value="Fotocopia DNI"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0001"/>
+		</insert>
+		
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0004"/>
+            <column name="id" value="AGMDOC0004"/>
+            <column name="encoding_format" value="texto"/>           
+            <column name="name" value="Inscripcion Evento"/>
+			<column name="url" />
+			<column name="event_id" value="AGM0002"/>
+		</insert>
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0005"/>
+            <column name="id" value="AGMDOC0005"/>
+            <column name="encoding_format" value="imagen"/>           
+            <column name="name" value="Fotografia para la Inscripcion Evento"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0002"/>
+		</insert>
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0006"/>
+            <column name="id" value="AGMDOC0006"/>
+            <column name="encoding_format" value="imagen"/>           
+            <column name="name" value="Fotocopia DNI"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0002"/>
+		</insert>
+		
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0007"/>
+            <column name="id" value="AGMDOC0007"/>
+            <column name="encoding_format" value="texto"/>           
+            <column name="name" value="Documento de cuentas IFEMA"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0003"/>
+		</insert>
+		
+		<insert tableName="agenda_m_document">
+			<column name="ikey" value="0008"/>
+            <column name="id" value="AGMDOC0008"/>
+            <column name="encoding_format" value="texto"/>           
+            <column name="name" value="Documento de cuentas Club Deportivo Oña Sanchinarro"/>
+			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="event_id" value="AGM0004"/>
+		</insert>
+		
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="data-agenda_municipal_rol">   			
+        
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0001"/>
+            <column name="id" value="AGMROL0001"/>
+            <column name="agent_name" value="JOSE ANIORTE RUEDA"/>           
+            <column name="organization_title" value="UNIDAD DE COORDINACION DE PROGRAMAS Y CENTROS"/>
+			<column name="organization_id" value="61028"/>
+			<column name="role" value="DELEGADO/A DE AREA DE GOBIERNO"/>
+			<column name="rol" value="titular"/>
+			<column name="inicio_asistencia" valueDate="2019-12-06 10:10:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-12-06 11:15:00.0"/>	
+			<column name="nombre" value="JOSE"/>			
+			<column name="apellido1" value="ANIORTE"/>
+			<column name="apellido2" value="RUEDA"/>			
+			<column name="event_id" value="AGM0001"/>
+		</insert>	
+
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0002"/>
+            <column name="id" value="AGMROL0002"/>
+            <column name="agent_name" value="JOSE ANIORTE RUEDA"/>           
+            <column name="organization_title" value="UNIDAD DE COORDINACION DE PROGRAMAS Y CENTROS"/>
+			<column name="organization_id" value="61028"/>
+			<column name="role" value="DELEGADO/A DE AREA DE GOBIERNO"/>
+			<column name="rol" value="titular"/>	
+			<column name="inicio_asistencia" valueDate="2019-12-08 10:30:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-12-08 12:00:00.0"/>	
+			<column name="nombre" value="JOSE"/>			
+			<column name="apellido1" value="ANIORTE"/>
+			<column name="apellido2" value="RUEDA"/>			
+			<column name="event_id" value="AGM0002"/>
+		</insert>		
+
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0003"/>
+            <column name="id" value="AGMROL0003"/>
+            <column name="agent_name" value="JOSE LUIS MARTINEZ ALMEIDA NAVASQÜÉS"/>           
+            <column name="organization_title" value="COORDINACIÓN GENERAL DEL ÁREA DE ALCALDÍA"/>
+			<column name="organization_id" value="61586"/>
+			<column name="role" value="ALCALDE/SA"/>
+			<column name="rol" value="titular"/>
+			<column name="inicio_asistencia" valueDate="2019-12-01 10:00:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-12-01 12:00:00.0"/>	
+			<column name="nombre" value="JOSE LUIS MARTINEZ"/>			
+			<column name="apellido1" value="ALMEIDA"/>
+			<column name="apellido2" value="NAVASQÜÉS"/>
+			<column name="event_id" value="AGM0003"/>
+		</insert>			
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0004"/>
+            <column name="id" value="AGMROL0004"/>
+            <column name="agent_name" value="CARLOS X. D. G."/>           
+            <column name="organization_title" value="COORDINACIÓN GENERAL DEL ÁREA DE ALCALDÍA"/>
+			<column name="organization_id" value="61586"/>
+			<column name="role" value="CONCEJAL"/>
+			<column name="rol" value="asistente"/>	
+			<column name="inicio_asistencia" valueDate="2019-11-27 10:50:00.0"/>	
+			<column name="fin_asistencia"    valueDate="2019-11-27 11:20:00.0"/>	
+			<column name="nombre" value="CARLOS"/>			
+			<column name="apellido1" value="Xxxx."/>
+			<column name="apellido2" value="Dddd. Gggg."/>
+			<column name="event_id" value="AGM0003"/>
+		</insert>			
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0005"/>
+            <column name="id" value="AGMROL0005"/>
+            <column name="agent_name" value="JUAN CARLOS X. H."/>           
+            <column name="organization_title" value="UNIDAD TÉCNICA DE ACTIVIDADES, INSTALACIONES E INGENIERÍA"/>
+			<column name="organization_id" value="61400"/>
+			<column name="role" value="GERENTE"/>
+			<column name="rol" value="asistente"/>		
+			<column name="inicio_asistencia" valueDate="2019-12-01 11:00:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-12-01 12:00:00.0"/>	
+			<column name="nombre" value="JUAN CARLOS"/>			
+			<column name="apellido1" value="Xxxx."/>
+			<column name="apellido2" value="Hhhh."/>
+			<column name="event_id" value="AGM0003"/>
+		</insert>
+		
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0006"/>
+            <column name="id" value="AGMROL0006"/>
+            <column name="agent_name" value="MARÍA DEL CARMEN TOSCANO RAMIRO"/>           
+            <column name="organization_title" value="COORDINACIÓN GENERAL DEL ÁREA DE ALCALDÍA"/>
+			<column name="organization_id" value="61586"/>
+			<column name="role" value="COORDINADOR/A DEL DISTRITO"/>
+			<column name="rol" value="titular"/>	
+			<column name="inicio_asistencia" valueDate="2019-11-27 10:20:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-11-27 13:10:00.0"/>	
+			<column name="nombre" value="MARÍA DEL CARMEN"/>			
+			<column name="apellido1" value="TOSCANO RAMIRO"/>
+			<column name="apellido2" value="RAMIRO"/>			
+			<column name="event_id" value="AGM0004"/>			
+		</insert>			
+		<insert tableName="agenda_m_rolintegranteevento">
+			<column name="ikey" value="0007"/>
+            <column name="id" value="AGMROL0007"/>
+            <column name="agent_name" value="HUGO L. F. X."/>           
+            <column name="organization_title" value="PRESIDENCIA DE LA JUNTA MUNICIPAL DE ACTUR-REY FERNANDO"/>
+			<column name="organization_id" value="61042"/>
+			<column name="role" value="PRESIDENTE"/>
+			<column name="rol" value="asistente"/>	
+			<column name="inicio_asistencia" valueDate="2019-11-27 10:20:00.0"/>	
+			<column name="fin_asistencia" valueDate="2019-11-27 13:10:00.0"/>	
+			<column name="nombre" value="HUGO"/>			
+			<column name="apellido1" value="Lxx."/>
+			<column name="apellido2" value="Fx. Xi."/>				
+			<column name="event_id" value="AGM0004"/>
+		</insert>	
+		
+		<rollback/>
+	</changeSet>
+	
+	
+	<!-- eliminamos FOREIGNKEYS 
+	<changeSet author="Localidata" id="FK-documento-to-evento">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="agenda_m_document" constraintName="fk_documento_to_evento"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-rolEvento-to-evento">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="agenda_m_rolintegranteevento" constraintName="fk_rol_i_evento_to_evento"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="FK-eveto-to-evento">
+        <addForeignKeyConstraint baseColumnNames="super_event_id" baseTableName="agenda_m_evento" constraintName="fk_evento_to_evento_super"  referencedColumnNames="id" referencedTableName="agenda_m_evento"/>
+    </changeSet>
+
+	-->	
+    <changeSet id="DATA-AGENDA-MUNICIPAL-tag-1.19" author="Localidata">
+    	<tagDatabase tag="1.19" />
+  	</changeSet>  
+</databaseChangeLog>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<!-- TABLAS -->
+	
+    <changeSet author="Localidata" id="table-agenda_m_evento">
+        <createTable tableName="agenda_m_evento">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="start_date" type="datetime(6)"/>
+            <column name="end_date" type="datetime(6)"/>
+            <column name="location_title" type="VARCHAR(400)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>
+            <column name="portal_id" type="VARCHAR(50)"/>
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+            <column name="equipamiento_id" type="VARCHAR(50)"/>
+            <column name="equipamiento_title" type="VARCHAR(400)"/>
+            <column name="super_event_id" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="reunion_lobby" type="BIT"/>
+            <column name="tipo_evento" type="VARCHAR(200)"/>
+            <column name="tipo_acceso" type="VARCHAR(200)"/>
+            <column name="tipo_sesion" type="VARCHAR(200)"/>
+            <column name="canal" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="agenda_m_evento"/>            
+       </rollback>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="table-agenda_m_documentacion">
+        <createTable tableName="agenda_m_document">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="encoding_format" type="VARCHAR(400)"/>
+            <column name="name" type="VARCHAR(400)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="event_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="agenda_m_document"/>            
+       </rollback>
+    </changeSet>
+	
+    <changeSet author="Localidata" id="table-agenda_m_rolintegranteevento">
+        <createTable tableName="agenda_m_rolintegranteevento">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="agent_name" type="VARCHAR(400)"/>
+			<column name="nombre" type="VARCHAR(100)"/>
+			<column name="apellido1" type="VARCHAR(100)"/>
+			<column name="apellido2" type="VARCHAR(100)"/>
+            <column name="organization_title" type="VARCHAR(400)"/>
+            <column name="organization_id" type="VARCHAR(50)"/>
+            <column name="role" type="VARCHAR(200)"/>
+            <column name="rol" type="VARCHAR(200)"/>
+			<column name="inicio_asistencia" type="datetime(6)"/>
+			<column name="fin_asistencia" type="datetime(6)"/>
+            <column name="event_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="agenda_m_rolintegranteevento"/>            
+       </rollback>
+    </changeSet>
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-agenda_m_documentacion">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_agenda_m_documentacion" tableName="agenda_m_document"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-agenda_m_evento">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_agenda_m_evento" tableName="agenda_m_evento"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-agenda_m_rolintegranteevento">
+        <addPrimaryKey columnNames="ikey" constraintName="pk_agenda_m_rol_i_vento" tableName="agenda_m_rolintegranteevento"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	<changeSet author="Localidata" id="INDEX-table-agenda_m_documentacion">
+        <addUniqueConstraint columnNames="id" constraintName="index_id_agenda_m_doc" tableName="agenda_m_document"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-table-agenda_m_evento">
+        <addUniqueConstraint columnNames="id" constraintName="index_id_agenda_m_evento" tableName="agenda_m_evento"/>
+    </changeSet>  
+	
+	<changeSet author="Localidata" id="INDEX-table-agenda_m_rolintegranteevento">
+        <addUniqueConstraint columnNames="id" constraintName="index_id_agenda_m_rol_i_event" tableName="agenda_m_rolintegranteevento"/>
+    </changeSet>
+	
+	
+	<!-- INDEX event_id-->
+	<changeSet author="Localidata" id="INDEX-table-agenda_m_documentacion_event">
+        <createIndex indexName="index_event_id_agenda_m_doc" tableName="agenda_m_document">
+            <column name="event_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<!-- INDEX event_id-->
+	<changeSet author="Localidata" id="INDEX-table-agenda_m_rol_i_evento_event">
+        <createIndex indexName="index_e_id_agen_m_rol_i_e" tableName="agenda_m_rolintegranteevento">
+            <column name="event_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<!-- INDEX super_event_id-->
+	<changeSet author="Localidata" id="INDEX-table-index_super_event_id_agenda_m_evento">
+        <createIndex indexName="index_sup_eve_id_agen_m_e" tableName="agenda_m_evento">
+            <column name="super_event_id"/>
+        </createIndex>
+    </changeSet>
+
+
+</databaseChangeLog>
