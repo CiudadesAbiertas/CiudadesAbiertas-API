@@ -154,3 +154,4 @@ liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-6
 liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-7.xml
 liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-8.xml
 liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-9.xml
+liquibase_CA/target/
