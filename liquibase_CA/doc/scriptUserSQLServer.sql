@@ -15,7 +15,9 @@ GO
 EXEC sp_addrolemember 'db_ddladmin', 'ciudadesAbiertas';
 EXEC sp_addrolemember 'db_datareader', 'ciudadesAbiertas';
 EXEC sp_addrolemember 'db_datawriter', 'ciudadesAbiertas';
-grant execute on dbo.Translate to ciudadesAbiertas;
+
+GRANT EXECUTE TO ciudadesAbiertas WITH GRANT OPTION;
+
 
 --USE ciudadesAbiertas
 --GO
