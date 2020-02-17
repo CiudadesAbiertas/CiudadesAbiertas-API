@@ -42,6 +42,7 @@ public class Context {
 	public static final String ESAGM_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/agenda-municipal#";
 	public static final String OCDS_URI = "https://theybuyforyou.eu/ontology/ocds/";		
 	public static final String ESBICI_URI = "http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#";
+	public static final String ESCONV_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/convenio#";
 	
 	public static final String RDF = "rdf";
 	public static final String RDFS = "rdfs";
@@ -102,6 +103,8 @@ public class Context {
 	public static final String ESAGM = "esagm";
 	public static final String OCDS = "ocds";
 	public static final String ESBICI = "esbici";
+	public static final String ESCONV = "esconv";
+	
 	
 	
 	
@@ -166,6 +169,7 @@ public class Context {
         listado.put(ESAGM, new Context(ESAGM_URI,ESAGM));
         listado.put(OCDS, new Context(OCDS_URI,OCDS));
         listado.put(ESBICI, new Context(ESBICI_URI,ESBICI));
+        listado.put(ESCONV, new Context(ESCONV_URI,ESCONV));
         
     }
 	

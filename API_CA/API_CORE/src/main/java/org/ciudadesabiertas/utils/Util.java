@@ -22,7 +22,11 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -94,9 +98,13 @@ public class Util
 	private static JSONParser JSONParser=new JSONParser();
 
 	public static <T> ArrayList<String> extractPropertiesFromBean(Class<T> beanClass)
-	{
+	{	
 		ArrayList<String> availableFields = new ArrayList<String>();
-
+		
+		//TODO activar para para añadir el esquema a las entidades cuando es necesario
+		//Table annotation = beanClass.getAnnotation(Table.class);		
+		//changeAnnotationValue(annotation,"schema","esquemaAPI");
+		
 		try
 		{
 			BeanInfo beanInfo = Introspector.getBeanInfo(beanClass);
@@ -382,19 +390,9 @@ public class Util
 		}
 		String extraParams="";
 		
-		String serverData=request.getServerName()+":"+request.getServerPort();		
-		String tomcatContex=request.getContextPath();
+		String selfRequest = generateSelfRequest(request);
 		
-		String tomcatURI=request.getRequestURL().toString();
-		
-		tomcatURI=tomcatURI.replace(serverData, StartVariables.serverPort);
-		tomcatURI=tomcatURI.replace(tomcatContex, StartVariables.context);
-		
-		int cutPosition=tomcatURI.indexOf("://")+3;		
-		String prefix=StartVariables.schema;
-		tomcatURI=prefix+tomcatURI.substring(cutPosition).replace("//", "/");
-		
-		info.setRequestURL(tomcatURI);
+		info.setRequestURL(selfRequest);
 		
 		 Map<String, String[]> parameterNames = request.getParameterMap(); 
 		 
@@ -438,6 +436,35 @@ public class Util
 	    return info;
 	    
 	    
+	}
+
+	public static String generateSelfRequest(HttpServletRequest request) {
+		String selfRequest="";
+		
+		String serverData=request.getServerName()+":"+request.getServerPort();		
+		String tomcatContex=request.getContextPath();
+		
+		//Si tomcatContex no es valido, es porque viene de un test
+		if (Util.validValue(tomcatContex))
+		{
+			//Esta logica se hace por si hay un servidor frontal delante de nuestro contenedor
+			//de servlets (normalmente tomcat, que es donde esta el war)
+			String tomcatURI=request.getRequestURL().toString();
+			
+			tomcatURI=tomcatURI.replace(serverData, StartVariables.serverPort);
+			tomcatURI=tomcatURI.replace(tomcatContex, StartVariables.context);
+			
+			int cutPosition=tomcatURI.indexOf("://")+3;		
+			String prefix=StartVariables.schema;
+			tomcatURI=prefix+tomcatURI.substring(cutPosition).replace("//", "/");
+			
+			selfRequest=tomcatURI;
+		}
+		else
+		{
+			selfRequest=request.getRequestURL().toString();
+		}
+		return selfRequest;
 	}
 	
 	
@@ -1649,6 +1676,34 @@ public class Util
 			log.info(Constants.SRID+" extraido de la URL: "+petitionSrId);
 		}
 		return petitionSrId;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	/*
+	 * Metodo que cambia el valor de una anotacion de manera dinámica
+	 * */
+	public static Object changeAnnotationValue(Annotation annotation, String key, Object newValue){
+	    Object handler = Proxy.getInvocationHandler(annotation);
+	    Field f;
+	    try {
+	        f = handler.getClass().getDeclaredField("memberValues");
+	    } catch (NoSuchFieldException | SecurityException e) {
+	        throw new IllegalStateException(e);
+	    }
+	    f.setAccessible(true);
+	    Map<String, Object> memberValues;
+	    try {
+	        memberValues = (Map<String, Object>) f.get(handler);
+	    } catch (IllegalArgumentException | IllegalAccessException e) {
+	        throw new IllegalStateException(e);
+	    }
+	    Object oldValue = memberValues.get(key);
+	    if (oldValue == null || oldValue.getClass() != newValue.getClass()) {
+	        throw new IllegalArgumentException();
+	    }
+	    memberValues.put(key,newValue);
+	    return oldValue;
 	}
 	
 	public static void main(String[] args)

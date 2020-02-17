@@ -34,7 +34,7 @@ public class SwaggerConstants
 	public static final String RESULTADO_DE_BUSQUEDA_O_LISTADO = "Resultado de búsqueda o listado";	
 	public static final String RESULTADO_DE_INSERCION = "Resultado de inserción";
 	public static final String FORMATOS_CONSULTA_RESPONSE_GROUPBY = "application/json, application/xml, text/csv";
-	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3";
+	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = "application/json, application/xml, text/csv, application/geo+json, application/atom+xml, application/ld+json, text/turtle, application/rdf+xml, text/n3";
 	public static final String FORMATOS_CONSULTA_RESPONSE_FULL = FORMATOS_CONSULTA_RESPONSE_NO_HTML+ ", text/html";
 	public static final String FORMATOS_CONSULTA_INDEXADA_RESPONSE = "application/json, application/xml";
 	public static final String DESCRIPCION_BUSQUEDA = "Permite realizar la operación de listado y búsquedas a través de diferentes parámetros";

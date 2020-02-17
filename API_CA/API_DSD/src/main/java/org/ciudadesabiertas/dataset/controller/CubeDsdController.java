@@ -272,6 +272,9 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 			
 			Result<CubeDsd> result=((Result<CubeDsd>)body);
 			
+			String selfRequest = Util.generateSelfRequest(request);		
+			result.setSelf(selfRequest);
+			
 			List<CubeDsd> records = result.getRecords();
 			
 			for (CubeDsd dsd:records) {	

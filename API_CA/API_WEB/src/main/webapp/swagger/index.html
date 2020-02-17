@@ -76,7 +76,7 @@
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "./../api.json",
+        url: "./../api.json?a="+Math.random(),
         dom_id: '#swagger-ui',
         deepLinking: true,
         docExpansion: "none",
@@ -91,6 +91,8 @@
       })
       // End Swagger UI call region
 
+      console.log(ui);
+      
       window.ui = ui
       
       $('.topbar-wrapper a:first-child img').attr('src','logos/CiudadesAbiertas-logo.svg');

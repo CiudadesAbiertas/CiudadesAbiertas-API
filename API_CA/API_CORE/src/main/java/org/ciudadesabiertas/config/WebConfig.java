@@ -47,6 +47,8 @@ import org.ciudadesabiertas.utils.StringToDateConverter;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.ciudadesabiertas.utils.converters.CSVConverter;
+import org.ciudadesabiertas.utils.converters.GEOJSONConverter;
+import org.ciudadesabiertas.utils.converters.GEORSSConverter;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -121,7 +123,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 
 	@Autowired
 	private ApplicationContext applicationContext;
-
+	
 	// para poder servir recursos
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry)
@@ -142,7 +144,10 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		mediaType(Constants.FORMATO_JSONLD, MediaType.valueOf(RDFConverter.JSONLD)).
 		mediaType(Constants.FORMATO_TTL, MediaType.valueOf(RDFConverter.TURTLE)).
 		mediaType(Constants.FORMATO_N3, MediaType.valueOf(RDFConverter.N3)).
-		mediaType(Constants.FORMATO_RDF, MediaType.valueOf(RDFConverter.RDF_XML));
+		mediaType(Constants.FORMATO_RDF, MediaType.valueOf(RDFConverter.RDF_XML)).
+		mediaType(Constants.FORMATO_GEOJSON, MediaType.valueOf(Constants.MEDIA_TYPE_GEOJSON+";charset=UTF-8")).
+		mediaType(Constants.FORMATO_GEORSS, MediaType.valueOf(Constants.MEDIA_TYPE_GEORSS)).
+		mediaType(Constants.FORMATO_ODATA, MediaType.valueOf(Constants.MEDIA_TYPE_GEORSS));
 		
 
 	}
@@ -212,7 +217,11 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		// Añadimos JSONLD
 		converters.add(new RDFConverter<>(RDFConverter.JSONLD, env.getProperty(Constants.URI_BASE), StartVariables.context));
 
+		// Añadimos geojson		
+		converters.add(new GEOJSONConverter());		
 		
+		// Añadimos georss		
+		converters.add(new GEORSSConverter());
 
 		
 		
@@ -304,7 +313,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	@Override
 	public void addCorsMappings(CorsRegistry registry)
 	{
-		registry.addMapping("/**");
+		registry.addMapping("/**").allowedOrigins("*");
 	}
 
 	// Formateadores para Spring

@@ -35,6 +35,7 @@ import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.ExceptionUtil;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -50,6 +51,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -126,7 +128,10 @@ public class CubeDsdDimensionValueController extends GenericController implement
 		//CMG: Proceso de Validación de Parametros ahora debemos pasar los campos por metodo ya que no seran igual para todos
 		List<String> allowedParams=new ArrayList<String>();
 		allowedParams.add(Constants.AJAX_PARAM);
-				
+		allowedParams.add(Constants.PAGESIZE);
+		allowedParams.add(Constants.PAGE);
+		allowedParams.add(Constants.SORT);
+			
 		
 		ResponseEntity<?> responseErrorParams = Util.validateParams(request.getParameterMap(), availableFields,allowedParams);
 		if (responseErrorParams!=null) {
@@ -278,6 +283,9 @@ public class CubeDsdDimensionValueController extends GenericController implement
 						resultObj.setStatus(200);
 						//MD5
 						resultObj.setContentMD5(Util.generateHash( listado.get(0).toString() ));
+						
+						String selfRequest = Util.generateSelfRequest(request);		
+						resultObj.setSelf(selfRequest);
 						
 						//Cabeceras no se estaban incluyendo
 						HttpHeaders headers = Util.extractHeaders(resultObj);

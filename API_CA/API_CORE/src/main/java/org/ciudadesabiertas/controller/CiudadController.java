@@ -45,6 +45,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,12 +85,14 @@ public class CiudadController implements CiudadesAbiertasController
 	private static StringBuffer apiJsonResponse;
 
 	@RequestMapping(value = Constants.API_JSON, method = RequestMethod.GET, produces = Constants.CONTENT_TYPE_JSON_UTF8)
-	public @ResponseBody String API_JSON(HttpServletRequest request)
+	public @ResponseBody String API_JSON(HttpServletRequest request, 
+										@RequestParam(value = "a", defaultValue = "2707", required = false) String aleat)
 	{
-		log.info(Constants.API_JSON);
+		log.info(Constants.API_JSON+" "+aleat);
 				
 		if (apiJsonResponse == null)
 		{
+			log.info("[apiJsonResponse] [api.json] [LOADING...]");
 			String json = "";
 			String path = Util.getFullURL(request);
 			path = path.replace(Constants.API_JSON, Constants.SWAGGER_V2_API_DOCS);
@@ -159,7 +162,7 @@ public class CiudadController implements CiudadesAbiertasController
 			}
 			apiJsonResponse=new StringBuffer();
 			apiJsonResponse.append(json);
-			log.info("api.json response just initialized");			
+			log.info("[apiJsonResponse] [api.json] [initialized]");
 		}
 		return apiJsonResponse.toString();
 	}

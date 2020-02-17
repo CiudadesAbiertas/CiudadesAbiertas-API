@@ -694,6 +694,8 @@ public class GenericController<T> {
 	
 		List<T> listado=new ArrayList<T>();
 		
+		String selfRequest = Util.generateSelfRequest(request);		
+		((Result<T>) resultObj).setSelf(selfRequest);
 	
 		try {
 			T objP= dsService.findById(key,(Class<T>) obj.getClass(), id);
@@ -713,6 +715,7 @@ public class GenericController<T> {
 				((Result<T>) resultObj).setStatus(200);
 				//MD5
 				((Result<?>) resultObj).setContentMD5(Util.generateHash( obj.toString() ));
+				
 				
 				//Cabeceras no se estaban incluyendo
 				HttpHeaders headers = Util.extractHeaders((Result<?>) resultObj);

@@ -438,6 +438,9 @@ public class CubeDsdDimensionController extends GenericController implements Ciu
 				//MD5
 				((Result<CubeDsdDimension>) resultObj).setContentMD5(Util.generateHash( dim.toString() ));
 				
+				String selfRequest = Util.generateSelfRequest(request);		
+				((Result<CubeDsdDimension>) resultObj).setSelf(selfRequest);
+				
 				//Cabeceras no se estaban incluyendo
 				HttpHeaders headers = Util.extractHeaders((Result<CubeDsdDimension>) resultObj);
 				ResponseEntity responseEntity = new ResponseEntity<Object>(resultObj,headers, HttpStatus.OK);

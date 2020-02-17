@@ -88,7 +88,7 @@ function generateOrder(orden,names,positions)
 	}
 	
 
-	
+	//console.log(orderArray)
 	return orderArray;
 }
 
@@ -110,11 +110,11 @@ function genAttrInfo(fieldName, fieldValue)
 	}
 		
 	var dateValue="";	
-	console.log(fieldValue)
-	console.log(isDate(fieldValue))
+	//console.log(fieldValue)
+	//console.log(isDate(fieldValue))
 	if (isDate(fieldValue))
 	{
-		console.log(fieldValue)
+		//console.log(fieldValue)
 		theDate=Date.parse(fieldValue);
 		if ((fieldValue.indexOf('T00:00:00')>0)||(fieldValue.indexOf('T')<0))
 		{
@@ -122,7 +122,7 @@ function genAttrInfo(fieldName, fieldValue)
 		}else{
 			dateValue=theDate.toString('dd-MM-yyyy HH:mm:ss')
 		}
-		console.log(dateValue)
+		//console.log(dateValue)
 		dateValue=formatearFechaHora(fieldValue);
 	}
 	var numberValue="";	

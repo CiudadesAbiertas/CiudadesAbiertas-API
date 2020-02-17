@@ -426,7 +426,7 @@ public class TestUtils
 	            	 int position=lineM.indexOf(listURI)+1+listURI.length();
 	            	 String part1=lineM.substring(0,position);
 	            	 String part2=lineM.substring(position,lineM.length());	            	 
-	            	 log.error(part2);
+	            	 log.debug(part2);	            	 
 	            	 part2=Util.encodeURL(part2);	 
 	            	 urisToCheck.add(part1+part2);
 	            	 
@@ -482,15 +482,15 @@ public class TestUtils
 		formatos.add("rdf");
 		formatos.add("ttl");
 		formatos.add("jsonld");
-		formatos.add("n3");
-		//TODO descomentar para formatos geo
-		/*
+		formatos.add("n3");	
+		formatos.add("odata");	
+		
 		if (geoFormats)
 		{
 			formatos.add("geojson");
 			formatos.add("georss");	
 		}
-		*/
+		
 		return formatos;		
 	}
 	
