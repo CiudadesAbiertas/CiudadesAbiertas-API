@@ -356,22 +356,28 @@ Estos son los conjuntos de datos que la API soporta actualmente:
 Nombre del conjunto de datos | cadena a especificar en la generación del WAR
 -- | --
 Agenda cultural  | agenda
+Agenda municipal  | agendaMunicipal 
 Alojamientos | alojamiento
 Aparcamientos | aparcamiento
 Avisos, quejas y sugerencias | avisoQuejaSugerencia
 Búsqueda indexada | busquedaIndexada
 Calidad del aire | calidadAire
 Callejero | callejero
+Contratos | contratos
+DSD | dsd
 Equipamientos | equipamiento
 Instalaciones deportivas | instalacionDeportiva
 Puntos de interés turístico | interesTuristico
 Locales comerciales | localComercial
 Monumentos | monumento
 Organigrama | organigrama
+Padron | padron
 Puntos wifi | puntoWifi
 Subvenciones | subvencion
+Territorio | territorio
 Tramites | tramite
 
+Hay que tener en cuenta que los módulos Territorio y DSD son "maestros", siempre serán agregados al generar el WAR.
 
 Para realizar el proceso de generación del WAR se deben lanzar los siguientes comandos:
 
@@ -461,29 +467,37 @@ Para utilizar este tipo de operaciones sólo se tiene que saber la URL de dicha 
 
 Ejemplo: listado de subvenicones
 
-Su URL es: <http://localhost:8080/OpenCitiesAPI/subvencion>
+Su URL es: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion>
 
 Se puede parametrizar para que nos devuelva todas las subvenciones con importe igual 1000 € de la siguiente forma:
 
-<http://localhost:8080/OpenCitiesAPI/subvencion?importe=1000>
+<http://localhost:8080/OpenCitiesAPI/subvencion/subvencion?importe=1000>
 
 Podemos obtener la información en diferentes formatos:
 
-- json: <http://localhost:8080/OpenCitiesAPI/subvencion.json?importe=1000>
-- xml: <http://localhost:8080/OpenCitiesAPI/subvencion.xml?importe=1000>
-- csv: <http://localhost:8080/OpenCitiesAPI/subvencion.csv?importe=1000>
-- rdf: <http://localhost:8080/OpenCitiesAPI/subvencion.rdf?importe=1000>
-- jsonld: <http://localhost:8080/OpenCitiesAPI/subvencion.jsonld?importe=1000>
-- ttl: <http://localhost:8080/OpenCitiesAPI/subvencion.ttl?importe=1000>
-- n3: <http://localhost:8080/OpenCitiesAPI/subvencion.n3?importe=1000>
+- json: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.json?importe=1000>
+- xml: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.xml?importe=1000>
+- csv: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.csv?importe=1000>
+- rdf: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.rdf?importe=1000>
+- jsonld: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.jsonld?importe=1000>
+- ttl: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.ttl?importe=1000>
+- n3: <http://localhost:8080/OpenCitiesAPI/subvencion/subvencion.n3?importe=1000>
 
 Ahora para utilizarla se puede escribir en el navegador.
 
 También se puede solicitar con el comando curl (y especificar su formato a través de la cabecera 'accept')
 
 ```sh
-curl -X GET "http://localhost:8080/OpenCitiesAPI/subvencion?importe=1000" -H "accept: application/json"
+curl -X GET "http://localhost:8080/OpenCitiesAPI/subvencion/subvencion?importe=1000" -H "accept: application/json"
 ```
+ 
+Además de los formatos anteriores también tenemos los formatos GeoJSON y GeoRSS cuando el conjunto de datos posea datos espaciales.
+
+A continuación se muestran ambos ejemplos con Alojamientos, que contienen este tipo de datos:
+
+- geojson: <https://localhost:8080/OpenCitiesAPI/alojamiento/alojamiento.geojson>
+- georss: <https://localhost:8080/OpenCitiesAPI/alojamiento/alojamiento.georss>
+ 
  
 ### Operaciones que requieren identificación
 
@@ -553,7 +567,7 @@ Ahora que ya se tiene el token, se va a llamar a la misma URL del ejemplo anteri
 
 
 ```sh
-curl -X GET "http://localhost:8080/OpenCitiesAPI/subvencion?importe=1000 " -H "accept: application/json" -H  "Authorization: Bearer b9581394-c09c-42c5-b7d7-3f5c60e045ee"
+curl -X GET "http://localhost:8080/OpenCitiesAPI/subvencion/subvencion?importe=1000 " -H "accept: application/json" -H  "Authorization: Bearer b9581394-c09c-42c5-b7d7-3f5c60e045ee"
 ```
 
 ## Documentación de la API
@@ -849,6 +863,7 @@ Para que cuando realice la ejecución de los Test previa a la instalación de la
  - Juan Carlos Ballesteros (Localidata)
  - Carlos Martínez de la Casa (Localidata)
  - Oscar Corcho (UPM, Localidata)
+ - Hugo Lafuente (Localidata) 
 
 
 # Licencia
