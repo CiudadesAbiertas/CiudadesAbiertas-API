@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="data-bici_bicicleta">
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="1"/>
+            <column name="id" value="BIC01"/>
+            <column name="matricula" value="M001"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="mecanica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="10"/>
+            <column name="id" value="BIC10"/>
+            <column name="matricula" value="M010"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="electrica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="2"/>
+            <column name="id" value="BIC02"/>
+            <column name="matricula" value="M002"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="electrica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="3"/>
+            <column name="id" value="BIC03"/>
+            <column name="matricula" value="M003"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="mecanica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="4"/>
+            <column name="id" value="BIC04"/>
+            <column name="matricula" value="M004"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="mecanica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="5"/>
+            <column name="id" value="BIC05"/>
+            <column name="matricula" value="M005"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="electrica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="6"/>
+            <column name="id" value="BIC06"/>
+            <column name="matricula" value="M006"/>
+            <column name="estado_bicicleta" value="ocupada"/>
+			<column name="modelo_bicicleta" value="electrica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="7"/>
+            <column name="id" value="BIC07"/>
+            <column name="matricula" value="M007"/>
+            <column name="estado_bicicleta" value="ocupada"/>
+			<column name="modelo_bicicleta" value="mecanica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="8"/>
+            <column name="id" value="BIC08"/>
+            <column name="matricula" value="M008"/>
+            <column name="estado_bicicleta" value="ocupada"/>
+			<column name="modelo_bicicleta" value="mecanica"/>
+        </insert>
+        <insert tableName="bici_bicicleta">
+            <column name="ikey" value="9"/>
+            <column name="id" value="BIC09"/>
+            <column name="matricula" value="M009"/>
+            <column name="estado_bicicleta" value="disponible"/>
+			<column name="modelo_bicicleta" value="electrica"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_estacion">
+        <insert tableName="bici_estacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="EST01"/>
+            <column name="title" value="Estación Raimunro Férnandez Villaverde"/>
+            <column name="portal_id" value="PORTAL000101"/>
+            <column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+            <column name="postal_code" value="28003"/>
+            <column name="estado_estacion" value="operativa"/>
+            <column name="tipo_equipamiento" value="estacion-de-bicicletas"/>
+            <column name="fecha_alta" valueDate="2020-01-01"/>
+            <column name="fecha_baja"/>
+            <column name="observes_id" value="anclajesLibres"/>
+            <column name="observes_title" value="Anclajes libres"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_estacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="EST02"/>
+            <column name="title" value="Estación calle atocha"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="calle atocha"/>
+            <column name="postal_code" value="28021"/>
+            <column name="estado_estacion" value="operativa"/>
+            <column name="tipo_equipamiento" value="estacion-de-bicicletas"/>
+            <column name="fecha_alta" valueDate="2020-01-01"/>
+            <column name="fecha_baja"/>
+            <column name="observes_id" value="anclajesLibres"/>
+            <column name="observes_title" value="Anclajes libres"/>
+            <column name="x_etrs89" valueNumeric="440944.44800"/>
+            <column name="y_etrs89" valueNumeric="4474468.32900"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_anclaje">
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ANC01"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST01"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="10"/>
+            <column name="id" value="ANC10"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST02"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="2"/>
+            <column name="id" value="ANC02"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST01"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="3"/>
+            <column name="id" value="ANC03"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST01"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="4"/>
+            <column name="id" value="ANC04"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST01"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="5"/>
+            <column name="id" value="ANC05"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST01"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="6"/>
+            <column name="id" value="ANC06"/>
+            <column name="estado_anclaje" value="ocupado"/>
+            <column name="estacion_bicicleta_id" value="EST02"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="7"/>
+            <column name="id" value="ANC07"/>
+            <column name="estado_anclaje" value="ocupado"/>
+            <column name="estacion_bicicleta_id" value="EST02"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="8"/>
+            <column name="id" value="ANC08"/>
+            <column name="estado_anclaje" value="ocupado"/>
+            <column name="estacion_bicicleta_id" value="EST02"/>
+        </insert>
+        <insert tableName="bici_anclaje">
+            <column name="ikey" value="9"/>
+            <column name="id" value="ANC09"/>
+            <column name="estado_anclaje" value="libre"/>
+            <column name="estacion_bicicleta_id" value="EST02"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_usuario">
+        <insert tableName="bici_usuario">
+            <column name="ikey" value="1"/>
+            <column name="id" value="USU01"/>
+            <column name="anio_nacimiento" valueNumeric="1981"/>
+            <column name="sex" value="F"/>
+        </insert>
+        <insert tableName="bici_usuario">
+            <column name="ikey" value="2"/>
+            <column name="id" value="USU02"/>
+            <column name="anio_nacimiento" valueNumeric="1973"/>
+            <column name="sex" value="M"/>
+        </insert>
+        <insert tableName="bici_usuario">
+            <column name="ikey" value="3"/>
+            <column name="id" value="USU03"/>
+            <column name="anio_nacimiento" valueNumeric="2000"/>
+            <column name="sex" value="F"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_trayecto">
+        <insert tableName="bici_trayecto">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRA01"/>
+            <column name="start_date" valueDate="2020-01-09 08:00:00.0"/>
+            <column name="end_date"/>
+            <column name="usuario_id" value="USU01"/>
+            <column name="bicicleta_id" value="BIC06"/>
+            <column name="estacion_bicicleta_origen_id" value="EST02"/>
+            <column name="estacion_bicicleta_destino_id"/>
+            <column name="anclaje_origen_id" value="ANC06"/>
+            <column name="anclaje_destino_id"/>
+        </insert>
+        <insert tableName="bici_trayecto">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRA02"/>
+            <column name="start_date" valueDate="2020-01-09 09:00:00.0"/>
+            <column name="end_date"/>
+            <column name="usuario_id" value="USU02"/>
+            <column name="bicicleta_id" value="BIC07"/>
+            <column name="estacion_bicicleta_origen_id" value="EST02"/>
+            <column name="estacion_bicicleta_destino_id"/>
+            <column name="anclaje_origen_id" value="ANC07"/>
+            <column name="anclaje_destino_id"/>
+        </insert>
+        <insert tableName="bici_trayecto">
+            <column name="ikey" value="3"/>
+            <column name="id" value="TRA03"/>
+            <column name="start_date" valueDate="2020-01-09 10:00:00.0"/>
+            <column name="end_date"/>
+            <column name="usuario_id" value="USU03"/>
+            <column name="bicicleta_id" value="BIC08"/>
+            <column name="estacion_bicicleta_origen_id" value="EST02"/>
+            <column name="estacion_bicicleta_destino_id"/>
+            <column name="anclaje_origen_id" value="ANC08"/>
+            <column name="anclaje_destino_id"/>
+        </insert>
+        <insert tableName="bici_trayecto">
+            <column name="ikey" value="4"/>
+            <column name="id" value="TRA04"/>
+            <column name="start_date" valueDate="2020-01-09 07:00:00.0"/>
+            <column name="end_date" valueDate="2020-01-09 07:30:00.0"/>
+            <column name="usuario_id" value="USU01"/>
+            <column name="bicicleta_id" value="BIC01"/>
+            <column name="estacion_bicicleta_origen_id" value="EST01"/>
+            <column name="estacion_bicicleta_destino_id" value="EST01"/>
+            <column name="anclaje_origen_id" value="ANC01"/>
+            <column name="anclaje_destino_id" value="ANC01"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_punto_paso">
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="1"/>
+            <column name="id" value="PPASO01"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:00:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="2"/>
+            <column name="id" value="PPASO02"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:15:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="439247.03900"/>
+            <column name="y_etrs89" valueNumeric="4475788.14600"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="3"/>
+            <column name="id" value="PPASO03"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:30:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="3"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="4"/>
+            <column name="id" value="PPASO04"/>
+            <column name="fecha_paso" valueDate="2020-01-09 08:00:00.0"/>
+            <column name="trayecto_id" value="TRA01"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="5"/>
+            <column name="id" value="PPASO05"/>
+            <column name="fecha_paso" valueDate="2020-01-09 08:15:00.0"/>
+            <column name="trayecto_id" value="TRA01"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440944.44800"/>
+            <column name="y_etrs89" valueNumeric="4474468.32900"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="6"/>
+            <column name="id" value="PPASO06"/>
+            <column name="fecha_paso" valueDate="2020-01-09 09:00:00.0"/>
+            <column name="trayecto_id" value="TRA02"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="7"/>
+            <column name="id" value="PPASO07"/>
+            <column name="fecha_paso" valueDate="2020-01-09 09:15:00.0"/>
+            <column name="trayecto_id" value="TRA02"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440678.92700"/>
+            <column name="y_etrs89" valueNumeric="4475099.73100"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="8"/>
+            <column name="id" value="PPASO08"/>
+            <column name="fecha_paso" valueDate="2020-01-09 10:00:00.0"/>
+            <column name="trayecto_id" value="TRA03"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="9"/>
+            <column name="id" value="PPASO09"/>
+            <column name="fecha_paso" valueDate="2020-01-09 10:15:00.0"/>
+            <column name="trayecto_id" value="TRA03"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440176.19400"/>
+            <column name="y_etrs89" valueNumeric="4473788.50900"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="data-bici_observacion">
+        <insert tableName="bici_observacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="OBS01"/>
+            <column name="made_by_sensor" value="EST01"/>
+            <column name="observed_property_title" value="Anclajes libres"/>
+            <column name="observed_property_id" value="anclajesLibres"/>
+            <column name="result_time" valueDate="2020-01-09 12:14:41.0"/>
+            <column name="has_simple_result" valueNumeric="5.00"/>
+            <column name="quality" value="número de anclajes"/>
+        </insert>
+        <insert tableName="bici_observacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="OBS02"/>
+            <column name="made_by_sensor" value="EST02"/>
+            <column name="observed_property_title" value="Anclajes libres"/>
+            <column name="observed_property_id" value="anclajesLibres"/>
+            <column name="result_time" valueDate="2020-01-09 12:14:41.0"/>
+            <column name="has_simple_result" valueNumeric="2.00"/>
+            <column name="quality" value="número de anclajes"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	<changeSet id="DATA-ORGANIGRAMA-tag-1.21" author="Localidata">
+    	<tagDatabase tag="1.21" />
+  	</changeSet>  
+</databaseChangeLog>

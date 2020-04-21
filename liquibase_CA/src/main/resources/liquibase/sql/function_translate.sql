@@ -1,4 +1,4 @@
-CREATE FUNCTION Translate
+CREATE FUNCTION TranslateCA
 (     @Source      VARCHAR(8000)
    , @ReplaceCharOrder    VARCHAR(8000)
    , @ReplaceWithCharOrder   VARCHAR(8000)

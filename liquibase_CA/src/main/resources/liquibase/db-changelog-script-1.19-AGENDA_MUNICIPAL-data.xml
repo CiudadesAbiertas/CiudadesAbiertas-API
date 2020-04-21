@@ -121,7 +121,7 @@
         <insert tableName="agenda_m_document">
 			<column name="ikey" value="0001"/>
             <column name="id" value="AGMDOC0001"/>
-            <column name="encoding_format" value="texto"/>           
+            <column name="encoding_format" value="text/plain"/>           
             <column name="name" value="Inscripcion Evento"/>
 			<column name="url"/>
 			<column name="event_id" value="AGM0001"/>
@@ -129,7 +129,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0002"/>
             <column name="id" value="AGMDOC0002"/>
-            <column name="encoding_format" value="imagen"/>           
+            <column name="encoding_format" value="image/png"/>           
             <column name="name" value="Fotografia para la Inscripcion Evento"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0001"/>
@@ -137,7 +137,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0003"/>
             <column name="id" value="AGMDOC0003"/>
-            <column name="encoding_format" value="imagen"/>           
+            <column name="encoding_format" value="image/png"/>           
             <column name="name" value="Fotocopia DNI"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0001"/>
@@ -146,7 +146,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0004"/>
             <column name="id" value="AGMDOC0004"/>
-            <column name="encoding_format" value="texto"/>           
+            <column name="encoding_format" value="text/plain"/>           
             <column name="name" value="Inscripcion Evento"/>
 			<column name="url" />
 			<column name="event_id" value="AGM0002"/>
@@ -154,7 +154,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0005"/>
             <column name="id" value="AGMDOC0005"/>
-            <column name="encoding_format" value="imagen"/>           
+            <column name="encoding_format" value="image/png"/>           
             <column name="name" value="Fotografia para la Inscripcion Evento"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0002"/>
@@ -162,7 +162,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0006"/>
             <column name="id" value="AGMDOC0006"/>
-            <column name="encoding_format" value="imagen"/>           
+            <column name="encoding_format" value="image/png"/>           
             <column name="name" value="Fotocopia DNI"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0002"/>
@@ -171,7 +171,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0007"/>
             <column name="id" value="AGMDOC0007"/>
-            <column name="encoding_format" value="texto"/>           
+            <column name="encoding_format" value="text/plain"/>           
             <column name="name" value="Documento de cuentas IFEMA"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0003"/>
@@ -180,7 +180,7 @@
 		<insert tableName="agenda_m_document">
 			<column name="ikey" value="0008"/>
             <column name="id" value="AGMDOC0008"/>
-            <column name="encoding_format" value="texto"/>           
+            <column name="encoding_format" value="text/plain"/>           
             <column name="name" value="Documento de cuentas Club Deportivo Oña Sanchinarro"/>
 			<column name="url" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
 			<column name="event_id" value="AGM0004"/>

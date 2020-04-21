@@ -48,9 +48,10 @@
             <column name="notation" value="poblacionPorPaisNacimiento"/>
         </insert> 
 
-		<rollback>
-           delete from cube_dsd;
-       </rollback>
+
+	   	<rollback>
+			<delete tableName="cube_dsd" />
+		</rollback>	
     </changeSet>
     <changeSet author="Localidata" id="dsdDatos-2">       
         <insert tableName="cube_dsd_dimension">
@@ -138,9 +139,9 @@
             <column name="same_as"/>
         </insert>
 
-		<rollback>
-           delete from cube_dsd_dimension;
-       </rollback>
+   	   	<rollback>
+			<delete tableName="cube_dsd_dimension" />
+		</rollback>	
     </changeSet>
     
 	<changeSet author="Localidata" id="dsdDatos-3">
@@ -536,9 +537,9 @@
             <column name="top_concept_of" value="https://opendata.aragon.es/kos/iaest/nacionalidad"/>
             <column name="external_path_id" value="http://opendata.aragon.es/kos/iaest/nacionalidad/no-consta"/>
         </insert>
-		<rollback>
-           delete from cube_dsd_dimension_value;
-       </rollback>
+	   	<rollback>
+			<delete tableName="cube_dsd_dimension_value" />
+		</rollback>	
     </changeSet>
     <changeSet author="Localidata" id="dsdDatos-4">
         <insert tableName="cube_dsd_measure">
@@ -626,9 +627,9 @@
             <column name="id" value="tasaNatalidad"/>
             <column name="title" value="Tasa de natalidad"/>
         </insert>
-		<rollback>
-           delete from cube_dsd_measure;
-       </rollback>
+	   <rollback>
+			<delete tableName="cube_dsd_measure" />
+		</rollback>	
     </changeSet>
     <changeSet author="Localidata" id="dsdDatos-5">
         <insert tableName="cube_dsd_rel_dimension">
@@ -776,9 +777,9 @@
             <column name="dimension_key" value="sex"/>
         </insert>
 		
-		<rollback>
-           delete from cube_dsd_rel_dimension;
-       </rollback>
+   	   <rollback>
+			<delete tableName="cube_dsd_rel_dimension" />
+		</rollback>
     </changeSet>
     <changeSet author="Localidata" id="dsdDatos-6">
         <insert tableName="cube_dsd_rel_measure">
@@ -896,9 +897,9 @@
             <column name="cube_key" value="cuboPadron7"/>
             <column name="measure_key" value="numero-personas"/>
         </insert>
-		<rollback>
-           delete from cube_dsd_rel_measure;
-       </rollback>
+   	   <rollback>
+			<delete tableName="cube_dsd_rel_measure" />
+		</rollback>	
     </changeSet> 
 	
 	<changeSet id="TABLE-dsdDatos-1-tag-1.0.2" author="Localidata">

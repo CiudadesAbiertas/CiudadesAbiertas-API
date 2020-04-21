@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<!-- DATOS -->
+	
+   <changeSet author="Localidata" id="datos-award-1">
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW1"/>
+            <column name="id" value="AW1"/>
+            <column name="description" value="Ser el empresario que ha presentado la mejor oferta al incorporar el precio más bajo, siendo el precio el único criterio de adjudicación establecido en el Pliego de Cláusulas Administrativas Particulares."/>
+            <column name="is_supplier_for" value="B83234799"/>
+			<column name="award_date" valueDate="2018-12-11 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="131468.12"/>
+        </insert>
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW2"/>
+            <column name="id" value="AW2"/>
+            <column name="description" value="Ser el empresario que ha presentado la mejor oferta al incorporar el precio más bajo, siendo el precio el único criterio de adjudicación establecido en el Pliego de Cláusulas Administrativas Particulares y ser la única oferta presentada a este lote."/>
+            <column name="is_supplier_for" value="A28021350"/>
+			<column name="award_date" valueDate="2018-12-11 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="26260.0"/>
+        </insert>
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW3"/>
+            <column name="id" value="AW3"/>
+            <column name="description" value="Ser el empresario que ha presentado la mejor oferta al incorporar el precio más bajo, siendo el precio el único criterio de adjudicación establecido en el Pliego de Cláusulas Administrativas Particulares y ser la única oferta presentada a este lote."/>
+            <column name="is_supplier_for" value="A78608940"/>
+			<column name="award_date" valueDate="2018-11-29 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="63032.6"/>
+        </insert>
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW4"/>
+            <column name="id" value="AW4"/>
+            <column name="description" value="Ser el empresario que ha presentado la mejor oferta al incorporar el precio más bajo, siendo el precio el único criterio de adjudicación establecido en el Pliego de Cláusulas Administrativas Particulares."/>
+            <column name="is_supplier_for" value="B83234799"/>
+			<column name="award_date" valueDate="2018-12-11 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="35085.6"/>
+        </insert>
+         
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW5"/>
+            <column name="id" value="AW5"/>
+            <column name="description" value="No haber recibido ninguna oferta"/>
+            <column name="is_supplier_for"/>
+			<column name="award_date" valueDate="2018-11-16 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="0.0"/>
+        </insert>
+         
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW6"/>
+            <column name="id" value="AW6"/>
+            <column name="description" value="Ser el único licitador presentado y admitido y ser el precio el único criterio de adjudicación."/>
+            <column name="is_supplier_for" value="B80762156"/>
+			<column name="award_date" valueDate="2018-12-26 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="12045.28"/>
+        </insert>
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW7"/>
+            <column name="id" value="AW7"/>
+            <column name="description" value="Ser el único licitador presentado y ser el precio el único criterio de adjudicación."/>
+            <column name="is_supplier_for" value="B80762156"/>
+			<column name="award_date" valueDate="2018-12-26 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="5508.0"/>
+        </insert>
+        <insert tableName="contratos_award">
+            <column name="ikey" value="AW8"/>
+            <column name="id" value="AW8"/>
+            <column name="description" value="Por ser la oferta mas ventajosa en relación calidad-precio"/>
+            <column name="is_supplier_for" value="B78342615"/>
+			<column name="award_date" valueDate="2018-12-28 00:00:00.0"/>
+			<column name="value_amount" valueNumeric="29630.0"/>
+        </insert>
+
+		<rollback>
+			  <delete tableName="contratos_award" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="datos-item-2">
+        <insert tableName="contratos_item">
+            <column name="ikey" value="IT1"/>
+            <column name="id" value="IT1"/>
+            <column name="description" value="Artículos de ferretería"/>
+            <column name="has_classification" value="C1"/>
+        </insert>
+        <insert tableName="contratos_item">
+            <column name="ikey" value="IT2"/>
+            <column name="id" value="IT2"/>
+            <column name="description" value="Camillas"/>
+            <column name="has_classification" value="C2"/>
+        </insert>
+        <insert tableName="contratos_item">
+            <column name="ikey" value="IT3"/>
+            <column name="id" value="IT3"/>
+            <column name="description" value="Materiales de madera diversos para construcción"/>
+            <column name="has_classification" value="C3"/>
+        </insert>
+        <insert tableName="contratos_item">
+            <column name="ikey" value="IT4"/>
+            <column name="id" value="IT4"/>
+            <column name="description" value="Servicios de esparcimiento, culturales y deportivos"/>
+            <column name="has_classification" value="C4"/>
+        </insert>
+		<rollback>
+			  <delete tableName="contratos_item" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="datos-lot-3">
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT1"/>
+            <column name="id" value="LT1"/>
+            <column name="title" value="Material diverso"/>
+            <column name="description" value="Material diverso 1"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW1"/>
+            <column name="value_amount" valueNumeric="131468.12"/>            
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT2"/>
+            <column name="id" value="LT2"/>
+            <column name="title" value="Material auxiliar"/>
+            <column name="description" value="Material auxiliar 2"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW2"/>
+            <column name="value_amount" valueNumeric="26260.0"/>
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT3"/>
+            <column name="id" value="LT3"/>
+            <column name="title" value="Material de guarnicionería"/>
+            <column name="description" value="Material de guarnicionería 3"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW3"/>
+            <column name="value_amount" valueNumeric="63032.6"/>
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT4"/>
+            <column name="id" value="LT4"/>
+            <column name="title" value="Material madera apeos"/>
+            <column name="description" value="Material madera apeos 4"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW4"/>
+            <column name="value_amount" valueNumeric="35085.6"/>
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT5"/>
+            <column name="id" value="LT5"/>
+            <column name="title" value="Material rescate accidentes tráfico"/>
+            <column name="description" value="Material rescate accidentes tráfico 5"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW5"/>
+            <column name="value_amount" valueNumeric="0.0"/>
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT6"/>
+            <column name="id" value="LT6"/>
+            <column name="title" value="Material equipos soldadura rescate en estructuras"/>
+            <column name="description" value="Material equipos soldadura rescate en estructuras 6"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW6"/>
+            <column name="value_amount" valueNumeric="12045.28"/>
+        </insert>
+        <insert tableName="contratos_lot">
+            <column name="ikey" value="LT7"/>
+            <column name="id" value="LT7"/>
+            <column name="title" value="Material lanza térmica y equipo de plasma"/>
+            <column name="description" value="Material lanza térmica y equipo de plasma 7"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="has_supplier" value="AW7"/>
+            <column name="value_amount" valueNumeric="5508.0"/>
+        </insert>
+		<rollback>
+			<delete tableName="contratos_lot" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="datos-lot-rel-item-4">
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000001"/>
+            <column name="id" value="00000000000001"/>
+            <column name="lot_id" value="LT1"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000002"/>
+             <column name="id" value="00000000000002"/>
+            <column name="lot_id" value="LT1"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000003"/>
+            <column name="id" value="00000000000003"/>
+            <column name="lot_id" value="LT1"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000004"/>
+            <column name="id" value="00000000000004"/>
+            <column name="lot_id" value="LT2"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000005"/>
+            <column name="id" value="00000000000005"/>
+            <column name="lot_id" value="LT2"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000006"/>
+             <column name="id" value="00000000000006"/>
+            <column name="lot_id" value="LT2"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000007"/>
+              <column name="id" value="00000000000007"/>
+            <column name="lot_id" value="LT3"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000008"/>
+            <column name="id" value="00000000000008"/>
+            <column name="lot_id" value="LT3"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000009"/>
+            <column name="id" value="00000000000009"/>
+            <column name="lot_id" value="LT3"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000010"/>
+            <column name="id" value="00000000000010"/>
+            <column name="lot_id" value="LT4"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000011"/>
+            <column name="id" value="00000000000011"/>
+            <column name="lot_id" value="LT4"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000012"/>
+            <column name="id" value="00000000000012"/>
+            <column name="lot_id" value="LT4"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000013"/>
+            <column name="id" value="00000000000013"/>
+            <column name="lot_id" value="LT5"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000014"/>
+            <column name="id" value="00000000000014"/>
+            <column name="lot_id" value="LT5"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000015"/>
+            <column name="id" value="00000000000015"/>
+            <column name="lot_id" value="LT5"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000016"/>
+            <column name="id" value="00000000000016"/>
+            <column name="lot_id" value="LT6"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000017"/>
+            <column name="id" value="00000000000017"/>
+            <column name="lot_id" value="LT6"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000018"/>
+            <column name="id" value="00000000000018"/>
+            <column name="lot_id" value="LT6"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000019"/>
+             <column name="id" value="00000000000019"/>
+            <column name="lot_id" value="LT7"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000020"/>
+            <column name="id" value="00000000000020"/>
+            <column name="lot_id" value="LT7"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+        <insert tableName="contratos_lot_rel_item">
+            <column name="ikey" value="00000000000021"/>
+            <column name="id" value="00000000000021"/>
+            <column name="lot_id" value="LT7"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+		<rollback>
+			<delete tableName="contratos_lot_rel_item" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="datos-organization-5">
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="A28021350"/>
+            <column name="id" value="A28021350"/>
+            <column name="title" value="Redondo y García S.A."/>
+            <column name="URL" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="contactPoint_email" value="pepe@botello.com"/>
+			<column name="contactPoint_faxNumber" value="1123333333"/>
+			<column name="contactPoint_telephone" value="El fax no funciona llamar a 1123333335"/>
+			<column name="contactPoint_title" value="Redondo y García S.A."/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CL BLAS DE OTERO 4"/>
+            <column name="postal_code" value="28100"/>		
+			<column name="portal_id" value="PORTAL000101"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="A78608940"/>
+            <column name="id" value="A78608940"/>
+            <column name="title" value="Roal Guarnicionería S.A."/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="info@ayto.com"/>
+			<column name="contactPoint_faxNumber" value="1123333333"/>
+			<column name="contactPoint_telephone" value="1123333335"/>
+			<column name="contactPoint_title" value="Centro Cultural Anabel Segura"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CALLE BUSTAMANTE V 16"/>
+            <column name="postal_code" value="28045"/>		
+			<column name="portal_id" value="PORTAL000112"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="B78342615"/>
+            <column name="id" value="B78342615"/>
+            <column name="title" value="TRITOMA, S.L"/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="info@tritona.com"/>
+			<column name="contactPoint_faxNumber" value="333313333"/>
+			<column name="contactPoint_telephone" value="333313332"/>
+			<column name="contactPoint_title" value="Ayuntamiento de YYYYYY"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CALLE CAMARENA V 10"/>
+            <column name="postal_code" value="28047"/>		
+			<column name="portal_id" value="PORTAL000105"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="B80762156"/>
+            <column name="id" value="B80762156"/>
+            <column name="title" value="Llama y Arco S.L."/>
+            <column name="URL" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="contactPoint_email" value="datos@info.com"/>
+			<column name="contactPoint_faxNumber" value=""/>
+			<column name="contactPoint_telephone" value=""/>
+			<column name="contactPoint_title" value="Llama y Arco S.L."/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CALLE ARROYO BELINCOSO NUM 11"/>
+            <column name="postal_code" value="28030"/>		
+			<column name="portal_id" value="PORTAL000119"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="B83234799"/>
+            <column name="id" value="B83234799"/>
+            <column name="title" value="Ferretería Ferayu, S.L"/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="datos2@info.com"/>
+			<column name="contactPoint_faxNumber" value=""/>
+			<column name="contactPoint_telephone" value=""/>
+			<column name="contactPoint_title" value="Ferretería Ferayu, S.L."/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="PLAZA DONOSO V 5"/>
+            <column name="postal_code" value="28029"/>		
+			<column name="portal_id" value="PORTAL000019"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="LA0000777"/>
+            <column name="id" value="LA0000777"/>
+            <column name="title" value="Distrito de Hortaleza"/>
+            <column name="URL" value="http://www.madrid.es"/>
+			<column name="contactPoint_email" value="datos3@info.com"/>
+			<column name="contactPoint_faxNumber" value="xxx-xxxx-x-xx"/>
+			<column name="contactPoint_telephone" value="yy-y-y-yyyy"/>
+			<column name="contactPoint_title" value="Ayuntamiento de Hortaleza"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="AVENIDA MORATALAZ V 130"/>
+            <column name="postal_code" value="28030"/>		
+			<column name="portal_id" value="PORTAL000019"/>
+        </insert>
+        <insert tableName="contratos_organization">
+            <column name="ikey" value="LA0007386"/>
+            <column name="id" value="LA0007386"/>
+            <column name="title" value="Área de Gobierno de Salud, Seguridad y Emergencias"/>
+            <column name="URL" value="http://www.madrid.es"/>
+			<column name="contactPoint_email" value="datos3@info.com"/>
+			<column name="contactPoint_faxNumber" value="111-222-333"/>
+			<column name="contactPoint_telephone" value="111-222-335 y 111-222-337"/>
+			<column name="contactPoint_title" value="Área de Gobierno de Salud, Seguridad y Emergencias"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CALLE CAMARENA V 10"/>
+            <column name="postal_code" value="28047"/>		
+			<column name="portal_id" value="PORTAL000019"/>
+        </insert>
+
+		<rollback>
+			<delete tableName="contratos_organization" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="datos-process-6">
+        <insert tableName="contratos_process">
+            <column name="ikey" value="300-2018-00524"/>
+            <column name="id" value="300-2018-00524"/>
+            <column name="identifier" value="300/2018/00524"/>
+            <column name="title" value="Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid."/>
+            <column name="URL" value="https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&amp;idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D"/>
+            <column name="description" value="Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ"/>
+            <column name="has_tender" value="TN1"/>
+            <column name="is_buyer_for" value="LA0007386"/>
+        </insert>
+        <insert tableName="contratos_process">
+            <column name="ikey" value="300-2018-01097"/>
+            <column name="id" value="300-2018-01097"/>
+            <column name="identifier" value="300/2018/01097"/>
+            <column name="title" value="Certamen de teatro abierto de Hortaleza 2019"/>
+            <column name="URL" value="https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&amp;idEvl=iVfsZ9gd80oBPRBxZ4nJ%2Fg%3D%3D"/>
+            <column name="description" value="Id licitación: 300/2018/01097; Órgano de Contratación: Distrito de Hortaleza; Importe: 32871.9 EUR; Estado: ADJ"/>
+            <column name="has_tender" value="TN2"/>
+            <column name="is_buyer_for" value="A28021350"/>
+        </insert>
+		<rollback>
+			<delete tableName="contratos_process" />
+		</rollback>
+    </changeSet>       
+    <changeSet author="Localidata" id="datos-tender-7">
+        <insert tableName="contratos_tender">
+            <column name="ikey" value="TN1"/>
+            <column name="id" value="TN1"/>
+            <column name="title" value="Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid."/>
+            <column name="has_supplier"/>
+            <column name="main_proc_category" value="Goods"/>
+            <column name="additional_proc_category" value="2233"/>
+            <column name="number_of_tenderers" valueNumeric="9"/>
+            <column name="proc_method" value="Open"/>
+            <column name="proc_method_details" value="Ordinary"/>
+            <column name="tender_status" value="complete"/>
+            <!--<column name="period_duration_in_days" valueNumeric=""/>-->
+            <column name="period_end_date" valueDate="2018-10-01 00:00:00.0"/>
+            <column name="period_start_date" valueDate="2019-12-15 00:00:00.0"/>
+            <column name="value_amount" valueNumeric="283162.4"/>
+        </insert>
+        <insert tableName="contratos_tender">
+            <column name="ikey" value="TN2"/>
+            <column name="id" value="TN2"/>
+            <column name="title" value="Certamen de teatro abierto de Hortaleza 2019"/>
+            <column name="has_supplier" value="AW8"/>
+            <column name="main_proc_category" value="Services"/>
+            <column name="additional_proc_category" value="1111"/>
+            <column name="number_of_tenderers" valueNumeric="3"/>
+            <column name="proc_method" value=""/>
+            <column name="proc_method_details" value="Ordinary"/>
+            <column name="tender_status" value="complete"/>
+            <column name="period_duration_in_days" valueNumeric="119"/>
+            <column name="period_end_date" valueDate="2019-01-10 00:00:00.0"/>
+            <column name="period_start_date" valueDate="2019-04-30 00:00:00.0"/>
+            <column name="value_amount" valueNumeric="32871.9"/>
+        </insert>
+		<rollback>
+			<delete tableName="contratos_tender" />
+		</rollback>	
+    </changeSet>
+    <changeSet author="Localidata" id="datos-tender-rel-item-8">
+        <insert tableName="contratos_tender_rel_item">
+            <column name="ikey" value="00000000000001"/>
+            <column name="id" value="00000000000001"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="item_id" value="IT1"/>
+        </insert>
+		<insert tableName="contratos_tender_rel_item">
+            <column name="ikey" value="00000000000002"/>
+            <column name="id" value="00000000000002"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="item_id" value="IT2"/>
+        </insert>
+		<insert tableName="contratos_tender_rel_item">
+            <column name="ikey" value="00000000000003"/>
+            <column name="id" value="00000000000003"/>
+            <column name="tender_id" value="TN1"/>
+            <column name="item_id" value="IT3"/>
+        </insert>
+		<insert tableName="contratos_tender_rel_item">
+            <column name="ikey" value="00000000000004"/>
+            <column name="id" value="00000000000004"/>
+            <column name="tender_id" value="TN2"/>
+            <column name="item_id" value="IT4"/>
+        </insert>
+		<rollback>
+			<delete tableName="contratos_tender_rel_item" />
+		</rollback>	
+    </changeSet>
+     
+ 
+
+<!-- eliminamos foreignKeys
+    <changeSet author="Localidata" id="fk-con-34">
+        <addForeignKeyConstraint baseColumnNames="tender_id" baseTableName="contratos_lot" constraintName="contratos_lot_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-35">
+        <addForeignKeyConstraint baseColumnNames="has_supplier" baseTableName="contratos_lot" constraintName="contratos_lot_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_award"/>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="fk-con-36">
+        <addForeignKeyConstraint baseColumnNames="lot_id" baseTableName="contratos_lot_rel_item" constraintName="contratos_lot_rel_item_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_lot"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-37">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="contratos_lot_rel_item" constraintName="contratos_lot_rel_item_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_item"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-38">
+        <addForeignKeyConstraint baseColumnNames="has_tender" baseTableName="contratos_process" constraintName="contratos_process_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-39">
+        <addForeignKeyConstraint baseColumnNames="is_buyer_for" baseTableName="contratos_process" constraintName="contratos_process_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_organization"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-40">
+        <addForeignKeyConstraint baseColumnNames="has_supplier" baseTableName="contratos_tender" constraintName="contratos_tender_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_award"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-41">
+        <addForeignKeyConstraint baseColumnNames="tender_id" baseTableName="contratos_tender_rel_item" constraintName="cont_tender_r_item_ibfk_1" referencedColumnNames="id" referencedTableName="contratos_tender"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-con-42">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="contratos_tender_rel_item" constraintName="cont_tender_r_item_ibfk_2" referencedColumnNames="id" referencedTableName="contratos_item"/>
+    </changeSet>
+	   <changeSet author="Localidata" id="fk-con-33">
+        <addForeignKeyConstraint 
+		baseColumnNames="is_suplier_for" 
+		baseTableName="contratos_award" 
+		constraintName="contratos_award_ibfk_1" 
+		referencedColumnNames="id" 
+		referencedTableName="contratos_organization"/>
+    </changeSet>
+-->
+
+	<changeSet id="DATA-CONTRATOS-tag-1.20" author="Localidata">
+    	<tagDatabase tag="1.20" />
+  	</changeSet>  
+
+
+</databaseChangeLog>

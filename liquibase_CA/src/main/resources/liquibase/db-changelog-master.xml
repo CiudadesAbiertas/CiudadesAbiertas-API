@@ -110,10 +110,11 @@
   <include file="liquibase/db-changelog-script-1.17-PADRON-table.xml"/>
   <!-- DATOS -->  
   
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-mini.xml"/>
+  <!-- <include file="liquibase/db-changelog-script-1.17-PADRON-data-mini.xml"/> -->
    
-   <!--
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data.xml"/>  
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-demo.xml"/>
+   
+<!--   <include file="liquibase/db-changelog-script-1.17-PADRON-data.xml"/>  
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-2.xml"/>            
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-3.xml"/>
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-4.xml"/>
@@ -122,8 +123,8 @@
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-7.xml"/>
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-8.xml"/>
   <include file="liquibase/db-changelog-script-1.17-PADRON-data-9.xml"/>  
-  <include file="liquibase/db-changelog-script-1.17-PADRON-data-10.xml"/>
- -->
+  <include file="liquibase/db-changelog-script-1.17-PADRON-data-10.xml"/> -->
+ 
   <!-- Version 1.18 Integracion Callejero -->
   <!-- include file="liquibase/db-changelog-script-1.18-INT-CALLEJERO-ALL-update.xml"/ -->
   <include file="liquibase/db-changelog-script-1.18-INTEGRACIONES-ALL-update.xml"/>
@@ -133,9 +134,15 @@
   
   <!-- Version 1.20 CONTRATOS -->
   <include file="liquibase/db-changelog-script-1.20-CONTRATOS-table.xml"/>
-  <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data.xml"/>    
+  <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data-mini.xml"/>    
+  <!-- <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data.xml"/>  -->
   
+  <!-- Version 1.21 BICICLETA PUBLICA -->
+  <include file="liquibase/db-changelog-script-1.21-BICICLETA-PUBLICA-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.21-BICICLETA-PUBLICA-data.xml"/>   
 
+
+  
 
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

@@ -1181,8 +1181,10 @@
             <column name="image" value="http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/sala_intemperie_1.jpg"/>
         </insert>
 		<rollback>
-           delete from punto_interes_turistico where category like 'lugar interes turistico';
-       </rollback>    		
+			<delete tableName="punto_interes_turistico" >
+				 <where>category like 'lugar interes turistico'</where>
+			</delete>
+		</rollback>		   
     </changeSet>
     <changeSet id="DATA-PUNTO-INTERES-TURISTICO-tag-1.11" author="Localidata">
     	<tagDatabase tag="1.11" />		

@@ -18,7 +18,9 @@
 	            stripComments="false"
 	            endDelimiter="\nGO"
 	   />
-	   <rollback/>  
+	   <rollback>  
+		DROP FUNCTION [TranslateCA];
+	   </rollback>  
 	</changeSet>
 	
     

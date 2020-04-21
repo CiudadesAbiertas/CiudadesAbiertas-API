@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="table-bici_bicicleta">
+        <createTable tableName="bici_bicicleta">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matricula" type="VARCHAR(200)"/>
+            <column name="estado_bicicleta" type="VARCHAR(200)"/>
+			<column name="modelo_bicicleta" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_estacion">
+        <createTable tableName="bici_estacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="title" type="VARCHAR(200)"/>
+            <column name="portal_id" type="VARCHAR(50)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>
+            <column name="estado_estacion" type="VARCHAR(200)"/>
+            <column name="tipo_equipamiento" type="VARCHAR(200)"/>
+            <column name="fecha_alta" type="date"/>
+            <column name="fecha_baja" type="date"/>
+			<column name="observes_id" type="VARCHAR(100)"/>
+            <column name="observes_title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="x_etrs89" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="y_etrs89" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_anclaje">
+        <createTable tableName="bici_anclaje">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado_anclaje" type="VARCHAR(200)"/>
+            <column name="estacion_bicicleta_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_usuario">
+        <createTable tableName="bici_usuario">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="anio_nacimiento" type="INT"/>
+            <column name="sex" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_trayecto">
+        <createTable tableName="bici_trayecto">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="datetime(6)"/>
+            <column name="end_date" type="datetime(6)"/>
+            <column name="usuario_id" type="VARCHAR(50)"/>
+            <column name="bicicleta_id" type="VARCHAR(50)"/>
+            <column name="estacion_bicicleta_origen_id" type="VARCHAR(50)"/>
+            <column name="estacion_bicicleta_destino_id" type="VARCHAR(50)"/>
+            <column name="anclaje_origen_id" type="VARCHAR(50)"/>
+            <column name="anclaje_destino_id" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_punto_paso">
+        <createTable tableName="bici_punto_paso">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_paso" type="datetime(6)"/>
+            <column name="trayecto_id" type="VARCHAR(50)"/>
+            <column name="orden" type="INT"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+        </createTable>
+    </changeSet>
+	<changeSet author="Localidata" id="table-bici_observacion">
+        <createTable tableName="bici_observacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="made_by_sensor" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="observed_property_title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="observed_property_id" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="result_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_simple_result" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quality" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Localidata" id="pk-01">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk01" tableName="bici_bicicleta"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-02">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk02" tableName="bici_estacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-03">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk03" tableName="bici_anclaje"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-04">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk04" tableName="bici_usuario"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-05">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk05" tableName="bici_trayecto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-06">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk06" tableName="bici_punto_paso"/>
+    </changeSet>
+	<changeSet author="Localidata" id="pk-07">
+        <addPrimaryKey columnNames="ikey" constraintName="bicicleta_pk07" tableName="bici_observacion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="index-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_bicicleta" tableName="bici_bicicleta"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_estacion" tableName="bici_estacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_anclaje" tableName="bici_anclaje"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-04">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_usuario" tableName="bici_usuario"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-05">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_trayecto" tableName="bici_trayecto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-06">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_punto_paso" tableName="bici_punto_paso"/>
+    </changeSet>
+	<changeSet author="Localidata" id="index-id-07">
+        <addUniqueConstraint columnNames="id" constraintName="index-id-bici_observacion" tableName="bici_observacion"/>
+    </changeSet>
+	
+
+</databaseChangeLog>

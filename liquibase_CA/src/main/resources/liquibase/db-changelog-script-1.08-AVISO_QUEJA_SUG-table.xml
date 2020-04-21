@@ -7,8 +7,8 @@
                 <constraints nullable="false"/>
             </column>
             <column name="id" type="VARCHAR(50)"/>
-            <column name="service_request_name" type="VARCHAR(200)"/>
-            <column name="service_request_id" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="identifier" type="VARCHAR(50)"/>
             <column name="status" type="VARCHAR(50)"/>
             <column name="status_notes" type="VARCHAR(2000)"/>
             <column name="open_date" type="DATETIME"/>

@@ -185,7 +185,45 @@
         <addForeignKeyConstraint baseColumnNames="distrito" baseTableName="territorio_seccion" constraintName="t_seccion_ibfk_5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ikey" referencedTableName="territorio_distrito"/>
     </changeSet>
 	
+	<!-- Bicicleta Pública -->
 	 
-
+	 <changeSet author="Localidata" id="fk-bicicleta-01">
+        <addForeignKeyConstraint baseColumnNames="estacion_bicicleta_id" baseTableName="bici_anclaje" constraintName="bibileta_anclaje_ibfk_1" 
+		referencedColumnNames="id" 	referencedTableName="bici_estacion"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-02">
+        <addForeignKeyConstraint baseColumnNames="usuario_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_1" 
+		referencedColumnNames="id" 	referencedTableName="bici_usuario"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-03">
+        <addForeignKeyConstraint baseColumnNames="bicicleta_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_2" 
+		referencedColumnNames="id" 	referencedTableName="bici_bicicleta"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-04">
+        <addForeignKeyConstraint baseColumnNames="estacion_bicicleta_origen_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_3" 
+		referencedColumnNames="id" 	referencedTableName="bici_estacion"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-05">
+        <addForeignKeyConstraint baseColumnNames="estacion_bicicleta_destino_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_4" 
+		referencedColumnNames="id" 	referencedTableName="bici_estacion"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-06">
+        <addForeignKeyConstraint baseColumnNames="anclaje_origen_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_5" 
+		referencedColumnNames="id" 	referencedTableName="bici_anclaje"/>
+     </changeSet>
+	 <changeSet author="Localidata" id="fk-bicicleta-07">
+        <addForeignKeyConstraint baseColumnNames="anclaje_destino_id" baseTableName="bici_trayecto" constraintName="bicicleta_trayecto_ibfk_6" 
+		referencedColumnNames="id" 	referencedTableName="bici_anclaje"/>
+     </changeSet>
+	<changeSet author="Localidata" id="fk-bicicleta-08">
+        <addForeignKeyConstraint baseColumnNames="trayecto_id" baseTableName="bici_punto_paso" constraintName="bicicleta_punto_de_paso_ibfk_1" 
+		referencedColumnNames="id" 	referencedTableName="bici_trayecto"/>
+     </changeSet>
+	<changeSet author="Localidata" id="fk-bicicleta-09">
+        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="bici_observacion" constraintName="bicicleta_observacion_ibfk_1" 
+		referencedColumnNames="id" 	referencedTableName="bici_estacion"/>
+     </changeSet>
+	 
+  	 
 	
 </databaseChangeLog>

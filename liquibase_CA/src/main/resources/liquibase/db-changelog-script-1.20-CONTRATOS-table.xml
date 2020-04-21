@@ -16,7 +16,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="description" type="VARCHAR(4000)">
-                <constraints nullable="false"/>
             </column>
 			<column name="award_date" type="datetime(6)"/>
 			<column name="value_amount" type="DECIMAL(12, 2)"/>

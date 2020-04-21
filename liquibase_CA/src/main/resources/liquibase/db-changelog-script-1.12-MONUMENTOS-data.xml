@@ -2668,9 +2668,11 @@
             <column name="opening_hours"/>
             <column name="image"/>
         </insert>
-		<rollback>
-           delete from punto_interes_turistico where category like 'monumento';
-       </rollback>  		
+	   	<rollback>
+			<delete tableName="punto_interes_turistico" >
+				 <where>category like 'monumento'</where>
+			</delete>
+		</rollback>		   
     </changeSet>
     <changeSet id="DATA-PUNTO-MONUMENTOS-tag-1.12" author="Localidata">
     	<tagDatabase tag="1.12" />		

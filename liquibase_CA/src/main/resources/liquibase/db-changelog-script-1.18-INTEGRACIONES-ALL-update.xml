@@ -33,61 +33,75 @@
 	
 </changeSet>
 
-<changeSet author="Localidata"  id="sql-update-alojamiento"  >
-    <sql>UPDATE  alojamiento set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  alojamiento set portal_id = '';
-    </rollback>  
+
+
+<changeSet author="liquibase-docs" id="update-example">
+    <update tableName="alojamiento">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>		
 </changeSet>
 
+<changeSet author="liquibase-docs" id="sql-update-alojamiento">
+    <update tableName="alojamiento">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>		
+</changeSet>
+
+
 <changeSet author="Localidata"  id="sql-update-equipamiento"  >
-    <sql>UPDATE  equipamiento set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  equipamiento set portal_id = '';
-    </rollback>
+	<update tableName="equipamiento">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-aviso_queja_sug"  >
-    <sql>UPDATE  aviso_queja_sug set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  aviso_queja_sug set portal_id = '';
-    </rollback>
+	<update tableName="aviso_queja_sug">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-calidad_aire_estacion"  >
-    <sql>UPDATE  calidad_aire_estacion set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  calidad_aire_estacion set portal_id = '';
-    </rollback>
+	<update tableName="calidad_aire_estacion">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-punto_interes_turistico"  >
-    <sql>UPDATE  punto_interes_turistico set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  punto_interes_turistico set portal_id = '';
-    </rollback>
+	<update tableName="punto_interes_turistico">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-local_comercial"  >
-    <sql>UPDATE  local_comercial set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  local_comercial set portal_id = '';
-    </rollback>
+	<update tableName="local_comercial">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-organigrama"  >
-    <sql>UPDATE  organigrama set portal_id = 'PORTAL000098';</sql>
-	<rollback>
-         UPDATE  organigrama set portal_id = '';
-    </rollback>
+	<update tableName="organigrama">
+        <column name="portal_id" value="PORTAL000098"/>        
+    </update>
+	<rollback/>
 </changeSet>
 
 <changeSet author="Localidata"  id="sql-update-agenda"  >
-    <sql>UPDATE  agenda set equipamiento_id = 'EQ0002' where id in ('AG0001','AG0003','AG0005','AG0007','AG0009');</sql>
-	<sql>UPDATE  agenda set equipamiento_id = 'EQID0472' where id in ('AG0010','AG0013','AG0015','AG0017','AG0019');</sql>
-	<rollback>
-         UPDATE  agenda set equipamiento_id = '';
-    </rollback>  
+	<update tableName="agenda">
+        <column name="equipamiento_id" value="EQ0002"/>
+		<where>id in ('AG0001','AG0003','AG0005','AG0007','AG0009')</where>        
+    </update>
+	<update tableName="agenda">
+        <column name="equipamiento_id" value="EQID0472"/>
+		<where>id in ('AG0010','AG0013','AG0015','AG0017','AG0019')</where>        
+    </update>
+	<rollback/>	
 </changeSet>
 
 

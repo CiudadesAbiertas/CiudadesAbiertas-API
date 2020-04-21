@@ -10,8 +10,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV OLIMPICA s/n"/>
             <column name="postal_code" value="28108"/>
@@ -22,7 +22,7 @@
             <column name="email" value="aulaambiental2@aytoalcobendas.org"/>
             <column name="telephone" value="34916618096"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+			<column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours" value="Sin horario"/>
         </insert>
         <insert tableName="equipamiento">
@@ -33,8 +33,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PZ MAYOR 1"/>
             <column name="postal_code" value="28100"/>
@@ -45,7 +45,7 @@
             <column name="email"/>
             <column name="telephone" value="34916597600"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -56,8 +56,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL MALAGA 50"/>
             <column name="postal_code" value="28100"/>
@@ -68,7 +68,7 @@
             <column name="email" value="casamujer@aytoalcobendas.org"/>
             <column name="telephone" value="916543199 - 916543787"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -79,8 +79,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL CACERES 18"/>
             <column name="postal_code" value="28100"/>
@@ -91,7 +91,7 @@
             <column name="email" value="c.asociaciones@aytoalcobendas.org"/>
             <column name="telephone" value="34916537378"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -102,8 +102,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL BEGONIA 277"/>
             <column name="postal_code" value="28109"/>
@@ -114,7 +114,7 @@
             <column name="email"/>
             <column name="telephone" value="34916500878"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -125,8 +125,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL MALAGA 50"/>
             <column name="postal_code" value="28100"/>
@@ -137,7 +137,7 @@
             <column name="email"/>
             <column name="telephone" value="34916524470"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -148,8 +148,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PZ PUEBLO 1"/>
             <column name="postal_code" value="28100"/>
@@ -160,7 +160,7 @@
             <column name="email" value="cc.alcocentro@aytoalcobendas.org"/>
             <column name="telephone" value="916539246  916597600 Ext. 4347"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -171,8 +171,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV BRUSELAS DE 19"/>
             <column name="postal_code" value="28108"/>
@@ -183,7 +183,7 @@
             <column name="email" value="cc.asegura@aytoalcobendas.org"/>
             <column name="telephone" value="34914841685"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -194,8 +194,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PS CHOPERA 59"/>
             <column name="postal_code" value="28100"/>
@@ -206,7 +206,7 @@
             <column name="email" value="ccpiglesias@aytoalcobendas.org"/>
             <column name="telephone" value="34912294220"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
         </insert>
         <insert tableName="equipamiento">
@@ -217,8 +217,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL MARIANO SEBAST IZUEL 9"/>
             <column name="postal_code" value="28100"/>
@@ -229,7 +229,7 @@
             <column name="email" value="gestion.centroarte@aytoalcobendas.org"/>
             <column name="telephone" value="34912294940"/>
             <column name="url" value="http://www.centrodeartealcobendas.org"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -240,8 +240,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL LIBERTAD 6 Planta: Planta baja"/>
             <column name="postal_code" value="28100"/>
@@ -252,7 +252,7 @@
             <column name="email" value="caid@aytoalcobendas.org"/>
             <column name="telephone" value="34916637001"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -263,8 +263,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL RAMON Y CAJAL 5"/>
             <column name="postal_code"/>
@@ -275,7 +275,7 @@
             <column name="email" value="centroempresas@aytoalcobendas.org"/>
             <column name="telephone" value="34914841800"/>
             <column name="url" value="http://emprendealcobendas.org/lugar/centro-de-empresas-municipal/"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -286,8 +286,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV VALDELAPARRA 112"/>
             <column name="postal_code" value="28100"/>
@@ -298,7 +298,7 @@
             <column name="email"/>
             <column name="telephone"/>
             <column name="url"/>
-            <column name="titularidad" value="Mixta"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -309,8 +309,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL RAMON Y CAJAL 30"/>
             <column name="postal_code"/>
@@ -321,7 +321,7 @@
             <column name="email" value="centrodeformacion@aytoalcobendas.org"/>
             <column name="telephone" value="34916616487"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -332,8 +332,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL OLIVAR 5"/>
             <column name="postal_code" value="28100"/>
@@ -344,7 +344,7 @@
             <column name="email" value="cgbloise@aytoalcobendas.org"/>
             <column name="telephone" value="34916523630"/>
             <column name="url"/>
-            <column name="titularidad" value="Mixta"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -355,8 +355,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL DAOIZ 1"/>
             <column name="postal_code" value="28100"/>
@@ -367,7 +367,7 @@
             <column name="email" value="mzambrano@aytoalcobendas.org"/>
             <column name="telephone" value="34916619507"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -378,8 +378,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL NTRA SRA DEL PILAR 2"/>
             <column name="postal_code" value="28100"/>
@@ -390,7 +390,7 @@
             <column name="email" value="nslapaz@aytoalcobendas.org"/>
             <column name="telephone" value="34916526129"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -401,8 +401,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL ORENSE 7"/>
             <column name="postal_code" value="28100"/>
@@ -413,7 +413,7 @@
             <column name="email" value="conspguerra@aytoalcobendas.org"/>
             <column name="telephone" value="912414200 912414100"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
         </insert>
         <insert tableName="equipamiento">
@@ -424,8 +424,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PZ RAMON RUBIAL"/>
             <column name="postal_code" value="28100"/>
@@ -436,7 +436,7 @@
             <column name="email" value="rrubial@aytoalcobendas.org"/>
             <column name="telephone" value="34916636864"/>
             <column name="url"/>
-            <column name="titularidad" value="Privado"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -447,8 +447,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL SALVIA 135"/>
             <column name="postal_code" value="28109"/>
@@ -459,7 +459,7 @@
             <column name="email" value="urbanizaciones@aytoalcobendas.org"/>
             <column name="telephone" value="34916597602"/>
             <column name="url"/>
-            <column name="titularidad" value="Privado"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -470,8 +470,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV MIGUEL CERVANTES S/N"/>
             <column name="postal_code"/>
@@ -482,7 +482,7 @@
             <column name="email"/>
             <column name="telephone" value="34916587110"/>
             <column name="url"/>
-            <column name="titularidad" value="Privado"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -493,8 +493,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL SORIA 43"/>
             <column name="postal_code" value="28100"/>
@@ -505,7 +505,7 @@
             <column name="email"/>
             <column name="telephone" value="34916237387"/>
             <column name="url" value="http://conecta.alcobendas.org/"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -516,8 +516,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PS CHOPERA 118"/>
             <column name="postal_code"/>
@@ -528,7 +528,7 @@
             <column name="email" value="eei.elcuquillo.alcobendas@educa.madrid.org"/>
             <column name="telephone" value="34916624097"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -539,8 +539,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL PINTOR VELAZQUEZ 38"/>
             <column name="postal_code"/>
@@ -551,7 +551,7 @@
             <column name="email" value="eichopera@aytoalcobendas.org"/>
             <column name="telephone" value="34916617508"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -562,8 +562,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV CAMILO-JOSE CELA 26"/>
             <column name="postal_code"/>
@@ -574,7 +574,7 @@
             <column name="email" value="valdelaparra@aytoalcobendas.org"/>
             <column name="telephone" value="34912290820"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -585,8 +585,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL RUPERTO CHAPI 22"/>
             <column name="postal_code" value="28100"/>
@@ -597,7 +597,7 @@
             <column name="email" value="emusicaydanza@aytoalcobendas.org"/>
             <column name="telephone" value="34916597600"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours" value="Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00"/>
         </insert>
         <insert tableName="equipamiento">
@@ -608,8 +608,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV OLIMPICA 22"/>
             <column name="postal_code" value="28100"/>
@@ -620,7 +620,7 @@
             <column name="email"/>
             <column name="telephone" value="34918263017"/>
             <column name="url" value="http://www.alcobendas.org"/>
-            <column name="titularidad" value="Privado"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -631,8 +631,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV. MAGIA 4"/>
             <column name="postal_code" value="28100"/>
@@ -643,7 +643,7 @@
             <column name="email"/>
             <column name="telephone"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -654,8 +654,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV OLIMPICA"/>
             <column name="postal_code"/>
@@ -666,7 +666,7 @@
             <column name="email"/>
             <column name="telephone"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -677,8 +677,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV OLIMPICA 14"/>
             <column name="postal_code"/>
@@ -689,7 +689,7 @@
             <column name="email" value="cm.laesfera@aytoalcobendas.org"/>
             <column name="telephone" value="34914840687"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -700,8 +700,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL JOSE ECHEGARAY 16 Bloque: Parque Empresarial Casablanca Portal: Edificio A-1 Escalera: Local 1-1"/>
             <column name="postal_code"/>
@@ -712,7 +712,7 @@
             <column name="email" value="laboratorio@aytoalcobendas.org"/>
             <column name="telephone" value="34916544550"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -723,8 +723,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AVDA. BARAJAS s/n"/>
             <column name="postal_code" value="28108"/>
@@ -735,7 +735,7 @@
             <column name="email" value="ludoteca.pmd@aytoalcobendas.org"/>
             <column name="telephone" value="34916587110"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -746,8 +746,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV OLIMPICA"/>
             <column name="postal_code"/>
@@ -758,7 +758,7 @@
             <column name="email"/>
             <column name="telephone" value="34917652041"/>
             <column name="url" value="http://www.luisvallejoestudiobonsai.com/"/>
-            <column name="titularidad" value="Mixta"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -769,8 +769,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="PZ PUEBLO 1"/>
             <column name="postal_code"/>
@@ -781,7 +781,7 @@
             <column name="email"/>
             <column name="telephone" value="91 6597600 Ext.: 4349"/>
             <column name="url"/>
-            <column name="titularidad" value="Publica"/>
+           <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -792,8 +792,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL RUPERTO CHAPI 18"/>
             <column name="postal_code" value="28100"/>
@@ -804,7 +804,7 @@
             <column name="email" value="juventud@aytoalcobendas.org"/>
             <column name="telephone" value="34916590957"/>
             <column name="url" value="http://www.imaginalcobendas.org/"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -815,8 +815,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL LIBERTAD 6"/>
             <column name="postal_code" value="28100"/>
@@ -827,7 +827,7 @@
             <column name="email" value="pbs@aytoalcobendas.org"/>
             <column name="telephone" value="34916637001"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -838,8 +838,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV VALDELAPARRA 124"/>
             <column name="postal_code"/>
@@ -850,7 +850,7 @@
             <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
             <column name="telephone" value="092 914904070"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -861,8 +861,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL LIBERTAD 8"/>
             <column name="postal_code"/>
@@ -873,7 +873,7 @@
             <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
             <column name="telephone" value="092 914904070"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -884,8 +884,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV BRUSELAS DE 43"/>
             <column name="postal_code"/>
@@ -896,7 +896,7 @@
             <column name="email" value="direccionsegciudadana@aytoalcobendas.org"/>
             <column name="telephone" value="092 914904070"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -907,8 +907,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL MANUEL DE FALLA 63"/>
             <column name="postal_code"/>
@@ -919,7 +919,7 @@
             <column name="email"/>
             <column name="telephone" value="34916538336"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -930,8 +930,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AVDA. BARAJAS s/n"/>
             <column name="postal_code" value="28108"/>
@@ -942,7 +942,7 @@
             <column name="email"/>
             <column name="telephone" value="34916587110"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -953,8 +953,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL GABRIEL GARCÿA MÿRQUEZ 24"/>
             <column name="postal_code" value="28100"/>
@@ -965,7 +965,7 @@
             <column name="email"/>
             <column name="telephone" value="34917652025"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -976,8 +976,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL RUPERTO CHAPI 18"/>
             <column name="postal_code"/>
@@ -988,7 +988,7 @@
             <column name="email" value="oij@imaginalcobendas.org"/>
             <column name="telephone" value="34916590957"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -999,8 +999,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="CL BLAS DE OTERO 4"/>
             <column name="postal_code" value="28100"/>
@@ -1011,7 +1011,7 @@
             <column name="email" value="teatro@aytoalcobendas.org"/>
             <column name="telephone" value="34916597721"/>
             <column name="url" value="http://www.teatroalcobendas.org"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours"/>
         </insert>
         <insert tableName="equipamiento">
@@ -1022,8 +1022,8 @@
             <column name="tipo_equipamiento" value="equipamiento municipal"/>
             <column name="municipio_id" value="28006"/>
             <column name="municipio_title" value="Alcobendas"/>
-            <column name="provincia_id" value="28"/>
-            <column name="autonomia_id" value="13"/>
+            <column name="provincia_id" value="Madrid"/>
+            <column name="autonomia_id" value="Comunidad-Madrid"/>
             <column name="pais_id" value="España"/>
             <column name="street_address" value="AV MAGIA DE LA 4"/>
             <column name="postal_code"/>
@@ -1034,12 +1034,14 @@
             <column name="email" value="upa@aytoalcobendas.org"/>
             <column name="telephone" value="34916626062"/>
             <column name="url"/>
-            <column name="titularidad" value="Publico"/>
+            <column name="titularidad_publica" valueBoolean="true"/>
             <column name="opening_hours" value="Sin horario"/>
         </insert>
-        <rollback>
-           delete from equipamiento where tipo_equipamiento like 'equipamiento municipal';
-       </rollback>        	      
+	   	<rollback>
+			<delete tableName="equipamiento" >
+				 <where>tipo_equipamiento like 'equipamiento municipal'</where>
+			</delete>
+		</rollback>	   
     </changeSet>
     <changeSet id="DATA-EQUIPAMIENTO-tag-1.02" author="Localidata">
     	<tagDatabase tag="1.02" />
