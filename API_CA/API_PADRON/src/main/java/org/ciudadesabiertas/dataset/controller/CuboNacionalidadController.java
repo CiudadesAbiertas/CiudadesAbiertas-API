@@ -59,6 +59,7 @@ import com.github.tennaito.rsql.jpa.JpaCriteriaQueryVisitor;
 import cz.jirutka.rsql.parser.ast.RSQLVisitor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
@@ -74,7 +75,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Cubo Nacionalidad",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón", tags= {"Padrón - Cubo de datos Nacionalidad"})
+@Api(value="Cubo Nacionalidad",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón"+SwaggerConstants.VOCABULARIO_A_HREF+CuboPadronConstants.observationVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Padrón - Cubo de datos Nacionalidad"})
 public class CuboNacionalidadController<T> extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String QUERY = "/padron/datacube/nacionalidad/query";	
@@ -151,7 +152,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CuboNacionalidadResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -160,11 +161,16 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, CuboNacionalidadSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 						
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -183,7 +189,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	
 	
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -192,11 +198,16 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, CuboNacionalidadSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,			 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -211,7 +222,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 		
 
 	@SuppressWarnings({ "unchecked" })
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CuboNacionalidadResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -220,7 +231,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_PADRON_NACIONALIDAD) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -233,7 +244,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 
 	}
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CuboNacionalidadResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -242,7 +253,7 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_PADRON_NACIONALIDAD) String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -299,8 +310,10 @@ public class CuboNacionalidadController<T> extends GenericController implements 
 	@RequestMapping(value={QUERY, VERSION_1+QUERY}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> datacubeSearch(HttpServletRequest request, 
 			CubeQuerySearch cubeQuerySearch,
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+				@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+				@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[search][" + QUERY + "]");

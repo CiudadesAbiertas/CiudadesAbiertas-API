@@ -654,9 +654,11 @@ En caso de que este parámetro tenga información se omitirán los datos de los 
 
 A continuación se muestrán una serie de consultas a través de este parámetro:
 
-q=areaNombre=="Salud" and importe>10000
+ - q=areaNombre=="Salud" and importe>10000
 
-q=importe<10000 and adjudicatarioId=in=(08029713e,21406767t)
+ - q=importe<10000 and adjudicatarioId=in=(08029713e,21406767t)
+
+ - q=title=="*cafe*" and aforo>30 and tipoSituacion=="activo"
 
 ### Parámetro para consultas agrupadas
 

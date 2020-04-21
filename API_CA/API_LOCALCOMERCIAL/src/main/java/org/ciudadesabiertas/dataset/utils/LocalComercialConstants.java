@@ -25,5 +25,10 @@ package org.ciudadesabiertas.dataset.utils;
 public class LocalComercialConstants
 {
 	public static final String KEY="localComercial";
+	
+	public static final String localComercialVocabURL="http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial/index-es.html#LocalComercial";
+	public static final String agrupacionComercialVocabURL="http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial/index-es.html#AgrupacionComercial";
+	public static final String licenciaAperturaVocabURL="http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial/index-es.html#LicenciaApertura";
+	public static final String terrazaVocabURL="http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial#Terraza";
 
 }

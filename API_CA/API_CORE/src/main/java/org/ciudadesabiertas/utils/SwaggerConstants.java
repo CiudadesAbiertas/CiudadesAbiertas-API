@@ -33,8 +33,10 @@ public class SwaggerConstants
 	public static final String PETICION_INCORRECTA = "Petición incorrecta";
 	public static final String RESULTADO_DE_BUSQUEDA_O_LISTADO = "Resultado de búsqueda o listado";	
 	public static final String RESULTADO_DE_INSERCION = "Resultado de inserción";
-	public static final String FORMATOS_CONSULTA_RESPONSE_GROUPBY = "application/json, application/xml, text/csv";
-	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = "application/json, application/xml, text/csv, application/geo+json, application/atom+xml, application/ld+json, text/turtle, application/rdf+xml, text/n3";
+	public static final String FORMATOS_CONSULTA_RESPONSE_GROUPBY = "application/json, application/xml, text/csv";	
+	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO = "application/json, application/xml, text/csv, application/ld+json, text/turtle, application/rdf+xml, text/n3";
+	public static final String FORMATOS_CONSULTA_RESPONSE_NO_HTML = FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO + ", application/geo+json, application/atom+xml";
+	public static final String FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO = FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO+ ", text/html";
 	public static final String FORMATOS_CONSULTA_RESPONSE_FULL = FORMATOS_CONSULTA_RESPONSE_NO_HTML+ ", text/html";
 	public static final String FORMATOS_CONSULTA_INDEXADA_RESPONSE = "application/json, application/xml";
 	public static final String DESCRIPCION_BUSQUEDA = "Permite realizar la operación de listado y búsquedas a través de diferentes parámetros";
@@ -77,7 +79,20 @@ public class SwaggerConstants
 	public static final String DESCRIPCION_BUSQUEDA_DATASET_NAME_SOLR = "Búsqueda de todos los datasetName cargados en SOLR";
 	
 	
-	//Parametros a Documentar
+	//Parametros a Documentar	
+	public static final String PARAM_Q= "Parámetro para especificar una consulta de tipo RSQL. <a href='https://github.com/CiudadesAbiertas/CiudadesAbiertas-API/tree/master/API_CA#par%C3%A1metro-de-consultas-rsql' target='rsqlQuery'>Ejemplos de consultas RSQL</a>";
+	public static final String PARAM_FIELDS= "Parámetro para especificar que atributos se quieren solicitar. Ejemplo: id,title";
+	public static final String PARAM_FIELDS_GROUP_BY= "Parámetro para especificar que atributos se quieren solicitar. Ejemplo: title,count(id)";
+	public static final String PARAM_FIELD = "Parámetro para especificar que atributo se quiere solicitar.  Ejemplo: title";
+	public static final String PARAM_PAGE = "Parámetro para especificar la página que se quiere solicitar";
+	public static final String PARAM_PAGESIZE = "Parámetro para especificar el tamaño de página";
+	public static final String PARAM_SORT = "Parámetro para espeficicar el orden de la consulta";
+	public static final String PARAM_METERS = "Parámetro para espeficicar los metros del radio de búsqueda";
+	public static final String PARAM_CONDICION_ADICCIONAL = "Parámetro para agregar una condición adicional a la petición. Ejemplo: title = 'Texto de prueba 1'";
+	public static final String PARAM_WHERE = "Parámetro para especificar un filtro sobre los campos";
+	public static final String PARAM_GROUP = "Parámetro para espeficicar el campo o los campos por lo que se agrupará la búsqueda";
+	public static final String PARAM_HAVING = "Parámetro para especificar el filtro sobre las operaciones de agrupación. Ejemplo COUNT(id) > 5";
+	public static final String PARAM_ID= "Parámetro para especificar el identificador del registro";
 	public static final String PARAM_ID_TEXT= "id del Objeto necesario para ejecutar la operación";
 	public static final String PARAM_SUBVENCION_TEXT= "Objeto (Subvención) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_EQUIPAMIENTO_TEXT= "Objeto (Equipamiento) en formato json necesario para poder realizar la operación";
@@ -109,8 +124,64 @@ public class SwaggerConstants
 	public static final String PARAM_IS_HOSTED_BY_TEXT= "Código de la estación donde se encuentra el sensor";
 	
 	
-	public static final String PARAM_SRID= "Sistema de referencia para generar las coordenadas proyectadas (X e Y)";
+	public static final String PARAM_SRID= "Sistema de referencia para generar las coordenadas";
 	
+	//Ejemplos id
+	public static final String PARAM_ID_SECCION_CENSAL = " Ejemplo: 2800601001";
+	public static final String PARAM_ID_BARRIO = " Ejemplo: 28006011";
+	public static final String PARAM_ID_DISTRITO = " Ejemplo: 2800601";
+	public static final String PARAM_ID_MUNICIPIO = " Ejemplo: 28006";
+	public static final String PARAM_ID_PROVINCIA = " Ejemplo: Madrid";
+	public static final String PARAM_ID_AUTONOMIA = " Ejemplo: Comunidad-Madrid";
+	public static final String PARAM_ID_PAIS = " Ejemplo: España";
+	public static final String PARAM_ID_SUBVENCION = " Ejemplo: S0001";
+	public static final String PARAM_ID_LOCAL_COMERCIAL = " Ejemplo: 270002391";
+	public static final String PARAM_ID_AGRUPACION_COMERCIAL = " Ejemplo: 99000214";
+	public static final String PARAM_ID_LICENCIA = " Ejemplo: 270002391-106-2003-01539";
+	public static final String PARAM_ID_TERRAZA = " Ejemplo: 1355";
+	public static final String PARAM_ID_AGENDA_CULTURAL = " Ejemplo: AG0001";
+	public static final String PARAM_ID_EQUIPAMIENTO = " Ejemplo: EQ0001";
+	public static final String PARAM_ID_APARCAMIENTO = " Ejemplo: EQAP0001";
+	public static final String PARAM_ID_INSTALACION_DEPORTIVA = " Ejemplo: EQID0001";
+	public static final String PARAM_ID_PUNTOS_WIFI = " Ejemplo: EQPW0001";
+	public static final String PARAM_ID_AVI_QUE_SUG = " Ejemplo: AQSA0002";
+	public static final String PARAM_ID_CALIDAD_AIRE_ESTACION = " Ejemplo: STAT04";
+	public static final String PARAM_ID_CALIDAD_AIRE_OBSERVACION = " Ejemplo: OBS0001";
+	public static final String PARAM_ID_CALIDAD_AIRE_SENSOR = " Ejemplo: SENSOR0001";
+	public static final String PARAM_ID_CALIDAD_AIRE_SENSOR_OBS = " Ejemplo: dioxidoDeAzufre";
+	public static final String PARAM_ID_ORGANIGRAMA = " Ejemplo: 10100";
+	public static final String PARAM_ID_CALLEJERO_PORTAL = " Ejemplo: PORTAL000001";
+	public static final String PARAM_ID_CALLEJERO_TRAMO = " Ejemplo: TRA000001";
+	public static final String PARAM_ID_CALLEJERO_VIA = " Ejemplo: 114600";
+	public static final String PARAM_ID_PUNTO_INTERES_TURISTICO = " Ejemplo: PIT0001";
+	public static final String PARAM_ID_ALOJAMIENTO = " Ejemplo: ALJ0001";
+	public static final String PARAM_ID_MONUMENTO = " Ejemplo: PITM0001";
+	public static final String PARAM_ID_TRAMITE = " Ejemplo: TR0001";
+	public static final String PARAM_ID_CONTRATOS_AWARD = " Ejemplo: AW1";
+	public static final String PARAM_ID_CONTRATOS_ITEM = " Ejemplo: IT1";
+	public static final String PARAM_ID_CONTRATOS_LOT = " Ejemplo: LT1";
+	public static final String PARAM_ID_CONTRATOS_ITEM_LOT = " Ejemplo: 00000000000001";
+	public static final String PARAM_ID_CONTRATOS_ORGANIZATION = " Ejemplo: A28021350";
+	public static final String PARAM_ID_CONTRATOS_TENDER = " Ejemplo: TN1";
+	public static final String PARAM_ID_CONTRATOS_ITEM_TENDER = " Ejemplo: 00000000000001";
+	public static final String PARAM_ID_CONTRATOS_PROCESS = " Ejemplo: 300-2018-00524";
+	public static final String PARAM_ID_AGENDA_EVENTO = " Ejemplo: AGM0001";
+	public static final String PARAM_ID_AGENDA_ROL = " Ejemplo: AGMROL0001";
+	public static final String PARAM_ID_AGENDA_DOCUMENTO = " Ejemplo: AGMDOC0001";
+	public static final String PARAM_ID_CUBE_DSD = " Ejemplo: poblacionPorEdadGruposQuinquenales";
+	public static final String PARAM_ID_CUBE_DIMENSION_ID = " Ejemplo: edadGruposQuinquenales";
+	public static final String PARAM_ID_CUBE_DIMENSION_VALUE = " Ejemplo: 05-a-09";
+	public static final String PARAM_ID_CUBE_MEASURE_ID = " Ejemplo: tasaNatalidad";
+	public static final String PARAM_ID_PADRON_EDAD_QUINQUENAL = " Ejemplo: obs1";
+	public static final String PARAM_ID_PADRON_EDAD = " Ejemplo: obs1";
+	public static final String PARAM_ID_PADRON_ESTUDIOS = " Ejemplo: obs12";
+	public static final String PARAM_ID_PADRON_INDICADORES = " Ejemplo: obs11";
+	public static final String PARAM_ID_PADRON_NACIONALIDAD = " Ejemplo: obs11";
+	public static final String PARAM_ID_PADRON_PAIS_NACIMIENTO = " Ejemplo: obs1";
+	public static final String PARAM_ID_PADRON_PROCEDENCIA = " Ejemplo: obs1";
+	
+	//Ejemplos condicionAdicional
+	public static final String PARAM_COND_ADI_BARRIO = " Ejemplo: distrito = 2800601";
 	
 	//Información Superior
 	public static final String EMAIL_CONTACTO = "contacto@ciudadesabiertas.es";
@@ -125,4 +196,8 @@ public class SwaggerConstants
 	
 	//Subvencion agrupadas
 	public static final String AGRUPADAS_OPER_PERMITIDAS= "SUM,COUNT,AVG,MAX,MIN";
+	
+	
+	public static final String VOCABULARIO_A_HREF_END = "' class='enlaceVocabulario' target='vocabulario'>Vocabulario</a>";
+	public static final String VOCABULARIO_A_HREF = " <a href='";
 }

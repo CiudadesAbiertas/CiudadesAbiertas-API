@@ -56,10 +56,10 @@ public class EquipamientoGeoSearch extends Equipamiento implements  Serializable
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X del equipamiento. Ejemplo: 446090.00034")
 	private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y del equipamiento. Ejemplo: 4488109.99956")
 	private BigDecimal yETRS89;
 
 

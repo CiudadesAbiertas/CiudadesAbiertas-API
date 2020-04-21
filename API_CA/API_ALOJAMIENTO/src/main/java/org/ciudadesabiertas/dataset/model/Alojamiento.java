@@ -71,7 +71,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic=false)
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESTURISMO, propiedad = "Alojamiento")
+@Rdf(contexto = Context.ESALOJ, propiedad = "Alojamiento")
 @PathId(value="/alojamiento/alojamiento")
 public class Alojamiento implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
 
@@ -84,151 +84,170 @@ public class Alojamiento implements java.io.Serializable, GeoModel, RDFModel, IC
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del alojamiento. Ejemplo: ALJ0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del alojamiento. Ejemplo: B&amp;B Hotel Madrid Centro Puerta del Sol")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 		  
+	@ApiModelProperty(value = "Categoría de un alojamiento. Ejemplo: Hoteles 3 estrellas")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="categoria", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESALOJ, propiedad = "categoria")
 	private String categoria; 	 
 	
+	@ApiModelProperty(value = "Propiedad que representa si el lugar de interés turístico está en un lugar accesible o no. Ejemplo: true")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESTURISMO, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
 	private Boolean accesible;	
 	
+	@ApiModelProperty(value = "Propiedad que representa el tipo de accesibilidad del lugar, zona o itinerario. Ejemplo: Variada")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESTURISMO, propiedad = "tipoAccesibilidad")
 	private String tipoAccesibilidad;
-			
+	
+	@ApiModelProperty(value = "Correo eletrónico de un alojamiento. Ejemplo: hotel.puertadelsol@hotelbb.com")
 	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)	
-	private String municipioId;
+	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
+	private String email;
 	
+	@ApiModelProperty(value = "Teléfono de un alojamiento. Ejemplo: (+34) 914 890 591")
 	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
+	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
+	private String telephone;
 	
+	@ApiModelProperty(value = "Fax de un alojamiento. Ejemplo: (+34) 914 890 591")
 	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
-	private String distritoId;
+	@CsvBindByName(column="faxNumber", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "faxNumber")
+	private String faxNumber;
 	
+	@ApiModelProperty(value = "Web de un alojamiento. Ejemplo: http://www.esmadrid.com/alojamientos/bb-hotel-madrid-centro-puerta-sol")
 	@CsvBindByPosition(position=9)
-	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
-	private String barrioId;
+	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
+	private String url;
 	
+	@ApiModelProperty(value = "Número de habitaciones de un alojamiento. Ejemplo: 100")
 	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="numHabitaciones", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESALOJ, propiedad = "numHabitaciones", typeURI=Context.XSD_URI+"int")
+	private Integer numHabitaciones;
+	
+	@ApiModelProperty(value = "Número de camas de un alojamiento. Ejemplo: 190")
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="numCamas", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESALOJ, propiedad = "numCamas", typeURI=Context.XSD_URI+"int")
+	private Integer numCamas;
+  
+	@ApiModelProperty(value = "Fecha en que se modificó el recurso. Ejemplo: 2018-11-27T00:00:00")
+	@CsvBindByPosition(position=12)
+	@CsvBindByName(column="modified", format=Constants.DATE_FORMAT)		
+	@Rdf(contexto = Context.DCT, propiedad = "modified",typeURI=Context.XSD_URI+"date" )
+	private Date modified;	
+	
+	@ApiModelProperty(value = "Imágen de un alojamiento. Ejemplo: http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/bb_hotel_madrid_centro_puerta_del_sol.jpg")
+	@CsvBindByPosition(position=13)
+	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
+	@IsUri
+	private String image;
+	
+	@ApiModelProperty(value = "Calle de un alojamiento. Ejemplo: de la Montera, 10 - 12")
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;
 
-	@CsvBindByPosition(position=11)
+	@ApiModelProperty(value = "Código postal de un alojamiento. Ejemplo: 28013")
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
-	@CsvBindByPosition(position=12)
+	@ApiModelProperty(value = "Identificador de la calle de un alojamiento. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
 	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
 	private String portalId;
 	
-	@ApiModelProperty(hidden = true)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
-	private String portalIdIsolated;
-		
-	
-	@CsvBindByPosition(position=13)
+	@ApiModelProperty(value = "Coordenada X de un alojamiento. Ejemplo: 440396.51166")
+	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;	
 	
-	@CsvBindByPosition(position=14)
+	@ApiModelProperty(value = "Coordenada Y de un alojamiento. Ejemplo: 4474341.38044")
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=19)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=16)
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
-		
-	@CsvBindByPosition(position=17)
-	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
-	private String email;
 	
-	@CsvBindByPosition(position=18)
-	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
-	private String telephone;
-	
-	@CsvBindByPosition(position=19)
-	@CsvBindByName(column="faxNumber", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "faxNumber")
-	private String faxNumber;
-	
-	@CsvBindByPosition(position=20)
-	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
-	private String url;
-	
+	@ApiModelProperty(value = "Identificador del municipio de un alojamiento. Ejemplo: 28079")
 	@CsvBindByPosition(position=21)
-	@CsvBindByName(column="numHabitaciones", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESALOJ, propiedad = "numHabitaciones", typeURI=Context.XSD_URI+"int")
-	private Integer numHabitaciones;
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)	
+	private String municipioId;
 	
+	@ApiModelProperty(value = "Nombre del municipio de un alojamiento. Ejemplo: Madrid")
 	@CsvBindByPosition(position=22)
-	@CsvBindByName(column="numCamas", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESALOJ, propiedad = "numCamas", typeURI=Context.XSD_URI+"int")
-	private Integer numCamas;
-  
-		
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identificador del barrio de un alojamiento. Ejemplo: 280796062")
 	@CsvBindByPosition(position=23)
-	@CsvBindByName(column="modified", format=Constants.DATE_FORMAT)		
-	@Rdf(contexto = Context.ESALOJ, propiedad = "modified",typeURI=Context.XSD_URI+"date" )
-	private Date modified;	
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
+	private String barrioId;
 	
-	
+	@ApiModelProperty(value = "Identificador del distrito de un alojamiento. Ejemplo: 28079606")
 	@CsvBindByPosition(position=24)
-	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
-	@IsUri
-	private String image;
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+
+	@ApiModelProperty(hidden = true)
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
 	
+	@ApiModelProperty(value = "Descripción de un alojamiento. Ejemplo: <p><strong>Próximo a la céntrica Puerta del Sol se encuentra este hotel de tres estrellas que dispone de 74 habitaciones</p>")
 	@CsvBindByPosition(position=25)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;
 	
 	private Double distance;	
-	
 
 	public Alojamiento() {
 	}

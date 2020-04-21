@@ -42,7 +42,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Table(name = "cube_dsd_dimension_value")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonPropertyOrder(alphabetic=false)
-@JsonIgnoreProperties({Constants.IKEY})
+@JsonIgnoreProperties({Constants.IKEY})	
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @PathId(value=CubeDsdDimensionValueController.RECORD)
 public class CubeDsdDimensionValue implements java.io.Serializable, RDFModel, PathIdComplex {
@@ -54,16 +54,19 @@ public class CubeDsdDimensionValue implements java.io.Serializable, RDFModel, Pa
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del valor de la dimensión. Ejemplo: 05-a-09")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del valor de la dimensión. Ejemplo: De 5 a 9 años")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "SKOS al que pertenece el valor de la dimensión. Ejemplo: https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="topConceptOf", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SKOS, propiedad = "topConceptOf")

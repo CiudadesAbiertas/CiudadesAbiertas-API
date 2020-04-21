@@ -25,4 +25,6 @@ package org.ciudadesabiertas.dataset.util;
 public class OrganigramaConstants
 {
 	public static final String KEY="organigrama";
+	
+	public static final String organizationVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/organizacion/index-en.html";
 }

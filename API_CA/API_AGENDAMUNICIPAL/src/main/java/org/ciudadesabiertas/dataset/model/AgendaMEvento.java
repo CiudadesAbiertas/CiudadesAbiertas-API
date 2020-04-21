@@ -68,29 +68,35 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESAGM, propiedad = "Evento")
-@PathId(value="/agendaMunicipal/evento")
+@PathId(value="/agenda-municipal/evento")
 public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 4694265619899971301L;
+	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador del evento. Ejemplo: AGM0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del evento. Ejemplo: Acto de entrega de los Premios Los Leones de EL ESPAÑOL. Global")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Web del evento. Ejemplo: https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&vgnextfmt=default")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
 	private String url;
 	
+	@ApiModelProperty(value = "Fecha de comienzo del evento. Ejemplo: 2019-12-06T10:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName (column = "startDate")	
 	@CsvDate(Constants.DATE_FORMAT)
@@ -98,6 +104,7 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "startDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date startDate;
 	
+	@ApiModelProperty(value = "Fecha de fin del evento. Ejemplo: 2019-12-10T20:00:00")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName (column = "endDate")	
 	@CsvDate(Constants.DATE_FORMAT)
@@ -105,73 +112,21 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "endDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date endDate;
 	
+	@ApiModelProperty(value = "Nombre del lugar del evento. Ejemplo: Auditorio del Comité Olímpico Español")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="locationTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "locationTitle")
 	private String locationTitle;
 	
+	@ApiModelProperty(value = "Nombre del equipamiento del evento. Ejemplo: Teatro Auditorio Ciudad de Alcobendas")
 	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")		
-	private String streetAddress;
-	
-	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
-	private String postalCode;
-	
-	@CsvBindByPosition(position=9)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
-	
-	@Transient
-	@ApiModelProperty(hidden = true)
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
-	private String portalIdIsolated;
-	
-	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")	
-	private String municipioId;
-	
-	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
-	
-	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
-	private String barrioId;
-	
-	@CsvBindByPosition(position=13)
-	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
-	private String barrioTitle;
-	
-	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")	
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
-	private String distritoId;
-	
-	@CsvBindByPosition(position=15)
-	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
-	private String distritoTitle;
-	
-	
-	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="equipamientoTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	@RdfBlankNode(tipo=Context.ESEQUIP_URI+"Equipamiento", propiedad=Context.ESEQUIP_URI+"equipamiento", nodoId="equipamiento")
 	private String equipamientoTitle;
 	
-	@CsvBindByPosition(position=17)
+	@ApiModelProperty(value = "Identificador del equipamiento del evento. Ejemplo: EQ0044")
+	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="equipamientoId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESEQUIP, propiedad = "equipamiento")
 	@RdfExternalURI(inicioURI="/equipamiento/equipamiento/",finURI="equipamientoId", urifyLevel = 1)
@@ -183,41 +138,111 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@RdfBlankNode(tipo=Context.ESEQUIP_URI+"Equipamiento", propiedad=Context.ESEQUIP_URI+"equipamiento", nodoId="equipamiento")
 	private String equipamientoIdIsolated;
 	
-	@CsvBindByPosition(position=18)
+	@ApiModelProperty(value = "Un evento del que este evento es parte. Por ejemplo, una colección de actuaciones musicales individuales podría tener un festival de música como su superevento.. Ejemplo: AGM0001")
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="superEventId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "superEvent")
-	@RdfExternalURI(inicioURI="/agendaMunicipal/evento/",finURI="superEventId", urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/agenda-municipal/evento/",finURI="superEventId", urifyLevel = 1)
 	private String superEventId;
 	
-	@CsvBindByPosition(position=19)
+	@ApiModelProperty(value = "Reuniones con carácter de lobby en donde una persona física, jurídica y entidades sin personalidad que pretenda influir en la normativa y en las políticas municipales y en las decisiones de impacto general, lo hacen a través de encuentros con concejales, directivos y personal eventual municipal. Ejemplo: false")
+	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="reunionLobby", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGENDA, propiedad = "reunionLobby", typeURI=Context.XSD_URI+"boolean")
 	private Boolean reunionLobby;
 	
-	@CsvBindByPosition(position=20)
+	@ApiModelProperty(value = "Tipología que define a qué categoría pertenece el evento. Los tipos de evento se representan mediante una lista de conceptos. Ejemplo: evento-con-medio-de-comunicacion")
+	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="tipoEvento", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "tipoEvento")		
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/agenda-municipal/tipo-evento/", finURI="tipoEvento", urifyLevel=2)
 	private String tipoEvento;
 	
-	@CsvBindByPosition(position=21)
+	@ApiModelProperty(value = "Tipo de asistencia al evento: público, privado o restringido. Ejemplo: privado")
+	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="tipoAcceso", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "tipoAcceso")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/agenda-municipal/tipo-acceso/", finURI="tipoAcceso", urifyLevel=2)
 	private String tipoAcceso;
 	
-	@CsvBindByPosition(position=22)
+	@ApiModelProperty(value = "Para los eventos de órganos colegiados, tipo de sesión puede ser ordinaria, extraordinaria o extraordinaria urgente. Ejemplo: extraordinaria")
+	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="tipoSesion", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "tipoSesion")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/agenda-municipal/tipo-sesion/", finURI="tipoSesion", urifyLevel=2)
 	private String tipoSesion;
 		
-	@CsvBindByPosition(position=23)
+	@ApiModelProperty(value = "Canal del evento. Ejemplo: presencial")
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="canal", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "canal")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/agenda-municipal/canal/", finURI="canal", urifyLevel=2)
 	private String canal;
 	
+	@ApiModelProperty(value = "Calle del evento. Ejemplo: CL BLAS DE OTERO 4")
+	@CsvBindByPosition(position=15)
+	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")		
+	private String streetAddress;
+	
+	@ApiModelProperty(value = "Código postal del evento. Ejemplo: 28100")
+	@CsvBindByPosition(position=16)
+	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
+	private String postalCode;
+	
+	@ApiModelProperty(value = "Identificador de la calle del evento. Ejemplo: PORTAL000119")
+	@CsvBindByPosition(position=17)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
+	@ApiModelProperty(value = "Identificador del municipio del evento. Ejemplo: 28006")
+	@CsvBindByPosition(position=18)
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")	
+	private String municipioId;
+	
+	@ApiModelProperty(value = "Nombre del municipio del evento. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position=19)
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identificador del barrio del evento. Ejemplo: 28006011")
+	@CsvBindByPosition(position=20)
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
+	private String barrioId;
+	
+	@ApiModelProperty(value = "Nombre del barrio del evento. Ejemplo: 28006011")
+	@CsvBindByPosition(position=21)
+	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
+	private String barrioTitle;
+	
+	@ApiModelProperty(value = "Identificador del distrito del evento. Ejemplo: 2800601")
+	@CsvBindByPosition(position=22)
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")	
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
+	private String distritoId;
+	
+	@ApiModelProperty(value = "Nombre del distrito del evento. Ejemplo: Unico")
+	@CsvBindByPosition(position=23)
+	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
+	private String distritoTitle;
+	
+	@ApiModelProperty(value = "Descripción del evento. Ejemplo: Descripcion Acto de entrega de los Premios Los Leones de EL ESPAÑOL. Global")
 	@CsvBindByPosition(position=24)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")

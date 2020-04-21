@@ -60,7 +60,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic = false)
 @JsonIgnoreProperties({ Constants.IKEY })
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESCJR, propiedad = "Tramo")
+@Rdf(contexto = Context.ESCJR, propiedad = "TramoVia")
 @PathId(value = "/callejero/tramo")
 public class CallejeroTramoVia implements java.io.Serializable, RDFModel
 {
@@ -72,55 +72,61 @@ public class CallejeroTramoVia implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador del tramo. Ejemplo: TRA000001")
 	@CsvBindByPosition(position = 1)
 	@CsvBindByName(column = Constants.IDENTIFICADOR, format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
-
+	
+	@ApiModelProperty(value = "Nombre del tramo. Ejemplo: Tramo comprendido entre el número 1 hasta el 33 de la/del Calle Bravo Murillo")
 	@CsvBindByPosition(position = 2)
 	@CsvBindByName(column = "title", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 
-	
+	@ApiModelProperty(value = "Validez del elemento en su ciclo de vida (versión). Puede ser histórico, vigente o provisional. Ejemplo: vigente")
 	@CsvBindByPosition(position = 3)
 	@CsvBindByName(column = "estado", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "estado")
 	@RdfExternalURI(inicioURI= "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/territorio/tipoEstado/", finURI="estado")
-	private String estado;
+	private String estado; 
 	
+	@ApiModelProperty(value = "Una junta administrativa rige los intereses peculiares de un pueblo que, en unión con otros, forma un municipio. En determinados municipios pueden existir subdivisiones de este concepto. Ejemplo: Chamberí")
 	@CsvBindByPosition(position = 4)
 	@CsvBindByName(column = "juntaAdministrativa", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "juntaAdministrativa")		
 	private String juntaAdministrativa;
 	
+	@ApiModelProperty(value = "Número de la vía donde comienza el tramo. Un tramo puede tener uno o dos números iniciales. Puede indicar el par y el impar del tramo de la calle. Ejemplo: 1")
 	@CsvBindByPosition(position = 5)
 	@CsvBindByName(column = "numeroInicioTramo", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "numeroInicioTramo")
 	private String numeroInicioTramo;
 	
+	@ApiModelProperty(value = "Número de la vía donde finaliza el tramo. Un tramo puede tener uno o dos números finales. Puede indicar el par y el impar del tramo de la calle. Puede tener el valor \"FINAL\", para indicar que el tramo acaba al final de la calle. Ejemplo: 33")
 	@CsvBindByPosition(position = 6)
 	@CsvBindByName(column = "numeroFinTramo", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "numeroFinTramo")
 	private String numeroFinTramo;
 	
+	@ApiModelProperty(value = "Vía de comunicación construida para la circulación. En su definición según el modelo de direcciones de la Administración General del Estado, Incluye calles, carreteras de todo tipo, caminos, vías de agua, pantalanes, etc. Asimismo, incluye la pseudovía., es decir todo aquello que complementa o sustituye a la vía. En nuestro caso, este término se utiliza para hacer referencia a las vías urbanas. Ejemplo: 114600")
 	@CsvBindByPosition(position = 7)
 	@CsvBindByName(column = "via", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "via")
 	@RdfExternalURI(inicioURI= "/callejero/via/", finURI="via")	
 	private String via;
 	
-	
+	@ApiModelProperty(value = "Identificador del municipio del tramo. Ejemplo: 28079")
 	@CsvBindByPosition(position = 8)
-	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	private String municipioTitle;
-	
-	@CsvBindByPosition(position = 9)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
-
+	
+	@ApiModelProperty(value = "Nombre del municipio del tramo. Ejemplo: Madrid")
+	@CsvBindByPosition(position = 9)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
 
 	public CallejeroTramoVia()

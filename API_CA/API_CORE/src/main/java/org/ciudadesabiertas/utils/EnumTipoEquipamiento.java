@@ -25,9 +25,9 @@ package org.ciudadesabiertas.utils;
 public enum EnumTipoEquipamiento
 {	
 	EQUIPAMIENTO("equipamiento municipal","/equipamiento/equipamiento"),
-	WIFI("punto wifi","/puntoWifi/puntoWifi"),
+	WIFI("punto wifi","/punto-wifi/punto-wifi"),
     APARCAMIENTO("aparcamiento publico", "/aparcamiento/aparcamiento"),
-    DEPORTES("instalacion deportiva", "/instalacionDeportiva/instalacionDeportiva");
+    DEPORTES("instalacion deportiva", "/instalacion-deportiva/instalacion-deportiva");
 	
 	
 	private final String tipo;

@@ -87,11 +87,14 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout"
+        layout: "StandaloneLayout",
+        onComplete: function(swaggerApi, swaggerUi) {
+        	configuraEnlaces();
+        } 
       })
       // End Swagger UI call region
 
-      console.log(ui);
+      //console.log(ui);
       
       window.ui = ui
       
@@ -99,6 +102,22 @@
       $('.topbar-wrapper a:first-child span').text('Ciudades Abiertas');      
       $('.topbar').show();
       //document.getElementsByClassName('topbar-wrapper')[0].getElementsByTagName('img')[0].src = "CiudadesAbiertas-logo.svg";
+      
+     
+      
+  	
+    }
+    
+    //Funcion que provoca un click adicional en la capa que contiene el enlace
+    function configuraEnlaces()
+    {	
+    	var listaEnlacesVocab=$(".enlaceVocabulario");
+    	$(".enlaceVocabulario").each(function( index ) {    		
+    		$(this).click(function() {
+    	      	  $(this).closest("div").click();
+            })
+    	});    	
+    
     }
   </script>
   </body>

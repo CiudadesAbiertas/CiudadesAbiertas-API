@@ -69,40 +69,43 @@ public class CallejeroVia implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private String ikey;
 
+	@ApiModelProperty(value = "Identificador de la vía. Ejemplo: 114600")
 	@CsvBindByPosition(position = 1)
 	@CsvBindByName(column = Constants.IDENTIFICADOR, format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 
+	@ApiModelProperty(value = "Nombre de la vía. Ejemplo: BRAVO MURILLO")
 	@CsvBindByPosition(position = 2)
 	@CsvBindByName(column = "title", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Tipo de vía. Ejemplo: CALLE")
 	@CsvBindByPosition(position = 5)
 	@CsvBindByName(column = "tipoVia", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "tipoVia")
 	@RdfExternalURI(inicioURI= "http://vocab.linkeddata.es/datosabiertos/kos/urbanismo-infraestructuras/tipo-via/", finURI="tipoVia")
 	private String tipoVia;
 	
-	
+	@ApiModelProperty(value = "Validez del elemento en su ciclo de vida. Ejemplo: vigente")
 	@CsvBindByPosition(position = 6)
 	@CsvBindByName(column = "estado", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "estado")
 	@RdfExternalURI(inicioURI= "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/territorio/tipoEstado/", finURI="estado")
 	private String estado;
 	
+	@ApiModelProperty(value = "Identificador del municipio del local comercial. Ejemplo: 28079")
 	@CsvBindByPosition(position = 7)
-	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	private String municipioTitle;
-
-	@CsvBindByPosition(position = 8)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
-
-
+	
+	@ApiModelProperty(value = "Nombre del municipio del local comercial. Ejemplo: Madrid")
+	@CsvBindByPosition(position = 8)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
 
 	public CallejeroVia()

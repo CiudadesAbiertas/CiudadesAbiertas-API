@@ -135,3 +135,62 @@ html
 .capaLogos__navbar__items:last-child::after {
  content:none
 }
+
+
+.parameters-col_name
+{
+	width: 20%;
+}
+
+
+/*Ocultamos textos de placeholder*/
+
+input::placeholder {
+    color: transparent !important;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: transparent;  
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: transparent;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: transparent;
+}
+
+
+input::-moz-placeholder {
+  color: transparent;
+}
+
+h4 small div.markdown, h4 small div.markdown p
+{
+	text-align: right;
+	margin-top:0 !important;
+	margin-bottom:0 !important;
+}
+
+td.parameters-col_description input
+{	
+	padding-bottom:0 !important;
+	margin-bottom:1px !important;
+}
+
+.enlaceVocabulario
+{
+	color:#007bff;
+	text-decoration: none;
+	background-color: transparent;
+	font-weight: bold;
+	
+}
+
+.enlaceVocabulario:hover
+{
+	color: #0056B3;
+    text-decoration: underline;
+}

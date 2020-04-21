@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -34,17 +36,20 @@ public class ProvinciaSearch  implements  Serializable, DatasetSearch<Provincia>
 	@JsonIgnore
 	private static final long serialVersionUID = -7461201144397876766L;
 	
-
+	@ApiModelProperty(value = "Identificador de la provincia. Ejemplo: 28")
 	private String id;
 
+	@ApiModelProperty(value = "Nombre de la provincia. Ejemplo: Madrid")
 	private String title;
 	
+	@ApiModelProperty(value = "Nombre de la provincia urificado para URLs. Ejemplo: Madrid")
 	private String identifier;
 	
-	private String pais;
-	
+	@ApiModelProperty(value = "Autonomía (Comunidad Autónoma o Ciudad Autónoma) a la que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Comunidad-Madrid")
 	private String autonomia;	
 	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
+	private String pais;
 	
 	
 	public String getAutonomia() {

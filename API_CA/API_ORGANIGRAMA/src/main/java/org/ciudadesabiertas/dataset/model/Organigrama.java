@@ -78,171 +78,194 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel, IC
 	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
-
+	
+	@ApiModelProperty(value = "Identificador de la organización. Ejemplo: 10100")
 	@CsvBindByPosition(position = 1)
 	@CsvBindByName(column = Constants.IDENTIFICADOR, format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
-
+	
+	@ApiModelProperty(value = "Nombre de la organización. Ejemplo: ALCALDIA")
 	@CsvBindByPosition(position = 2)
 	@CsvBindByName(column = "title", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
-
+	
+	@ApiModelProperty(value = "Organización, al nivel máximo de jerarquía de que depende otra organización. Ejemplo: 1")
 	@CsvBindByPosition(position = 3)
 	@CsvBindByName(column = "unidadRaiz", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ORGES, propiedad = "unidadRaiz")
 	@RdfExternalURI(inicioURI = "/organigrama/organizacion/", finURI = "unidadRaiz")
 	private String unidadRaiz;
-
+	
+	@ApiModelProperty(value = "Organización de la que es parte esta unidad, por ejemplo, un departamento incluido en una organización formal más amplia. Ejemplo: 2")
 	@CsvBindByPosition(position = 4)
 	@CsvBindByName(column = "unitOf", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ORG, propiedad = "unitOf")
 	@RdfExternalURI(inicioURI = "/organigrama/organizacion/", finURI = "unitOf")
 	private String unitOf;
-
+	
+	@ApiModelProperty(value = "Secuencial que identifica el nivel jerárquico relativo de la organización dentro de la entidad a la que pertenece. Para la raíz de un nivel de administración, este campo deberá ser 0. Para la unidad principal (de máximo nivel) de cualquier Ministerio, Comunidad Autónoma o Entidad Local el campo tomará el valor 1. Más allá de esto, el número se irá incrementando según convenga. Ejemplo: 3")
 	@CsvBindByPosition(position = 5)
 	@CsvBindByName(column = "nivelJerarquico")
 	@Rdf(contexto = Context.ORGES, propiedad = "nivelJerarquico", typeURI = Context.XSD_URI + "int")
 	private Integer nivelJerarquico;
-
+	
+	@ApiModelProperty(value = "Persona que es jefe o jefa, representante, director o directora de la organización. Ejemplo: SANTISTEVE ROCHE, PEDRO")
 	@CsvBindByPosition(position = 6)
 	@CsvBindByName(column = "headOfName", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.FOAF, propiedad = "name")
 	@RdfBlankNode(tipo = Context.FOAF_URI + "Agent", propiedad = Context.ORG_URI + "headOf", nodoId = "agentNode")
 	private String headOfName;
-
+	
+	@ApiModelProperty(value = "La fecha en que se fundó esta organización. Ejemplo: 1950-01-01T00:00:00")
 	@CsvBindByPosition(position = 7)
 	@CsvBindByName(column = "foundingDate", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "foundingDate", typeURI = Context.XSD_URI + "date")
 	private Date foundingDate;
-
+	
+	@ApiModelProperty(value = "La fecha en que se disolvió esta organización. Ejemplo: 2020-03-11T13:44:58.976Z")
 	@CsvBindByPosition(position = 8)
 	@CsvBindByName(column = "dissolutionDate", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "dissolutionDate", typeURI = Context.XSD_URI + "date")
-	private Date dissolutionDate;
-
+	private Date dissolutionDate; 
+	
+	@ApiModelProperty(value = "Identificador del estatus o situación jurídico/funcional de una organización. Ejemplo: V")
 	@CsvBindByPosition(position = 9)
 	@CsvBindByName(column = "estadoEntidadId")
 	@Rdf(contexto = Context.ORGES, propiedad = "estadoEntidad")
 	@RdfExternalURI(inicioURI = "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/organizacion/estado-entidad/", finURI = "estadoEntidadId")
 	private String estadoEntidadId;
-
+	
+	@ApiModelProperty(value = "Nombre del estatus o situación jurídico/funcional de una organización. Ejemplo: Vigente")
 	@CsvBindByPosition(position = 10)
 	@CsvBindByName(column = "estadoEntidadTitle")
 	private String estadoEntidadTitle;
-
+	
+	@ApiModelProperty(value = "Identificador del nivel territorial de administración al que pertenece la organización. Ejemplo: 3")
 	@CsvBindByPosition(position = 11)
 	@CsvBindByName(column = "nivelAdministracionId")
 	@Rdf(contexto = Context.ORGES, propiedad = "nivelAdministracion")
 	@RdfExternalURI(inicioURI = "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/organizacion/nivel-administracion/", finURI = "nivelAdministracionId")
 	private String nivelAdministracionId;
-
+	
+	@ApiModelProperty(value = "Nombre del nivel territorial de administración al que pertenece la organización. Ejemplo: Administración local")
 	@CsvBindByPosition(position = 12)
 	@CsvBindByName(column = "nivelAdministracionTitle")
 	private String nivelAdministracionTitle;
-
+	
+	@ApiModelProperty(value = "Identificador del tipo de entidad. Ejemplo: AY")
 	@CsvBindByPosition(position = 13)
 	@CsvBindByName(column = "tipoEntidadId")
 	@Rdf(contexto = Context.ORGES, propiedad = "tipoEntidad")
 	@RdfExternalURI(inicioURI = "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/organizacion/tipo-entidad/", finURI = "tipoEntidadId")
 	private String tipoEntidadId;
-
+	
+	@ApiModelProperty(value = "Nombre del tipo de entidad. Ejemplo: Ayuntamiento")
 	@CsvBindByPosition(position = 14)
 	@CsvBindByName(column = "tipoEntidadTitle")
 	private String tipoEntidadTitle;
-
+	
+	@ApiModelProperty(value = "Teléfono de la organización. Ejemplo: 976721100")
 	@CsvBindByPosition(position = 15)
+	@CsvBindByName(column = "telephone", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
+	private String telephone;
+	
+	@ApiModelProperty(value = "Fax de la organización. Ejemplo: 976724677")
+	@CsvBindByPosition(position = 16)
+	@CsvBindByName(column = "faxNumber", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "faxNumber")
+	private String faxNumber;
+	
+	@ApiModelProperty(value = "Correo electrónico de la organización. Ejemplo: gm-cha@zaragoza.es")
+	@CsvBindByPosition(position = 17)
+	@CsvBindByName(column = "email", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
+	private String email;
+	
+	@ApiModelProperty(value = "Web de la organización. Ejemplo: http://www.zaragoza.es/sede/portal/organizacion/corporacion/luisa-broto")
+	@CsvBindByPosition(position = 18)
+	@CsvBindByName(column = "url", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
+	private String url;
+	
+	@ApiModelProperty(value = "Imagen de la organización. Ejemplo: https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/jose_luis_martinez_guijarro.jpg")
+	@CsvBindByPosition(position = 19)
+	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
+	@IsUri
+	private String image;
+	
+	@ApiModelProperty(value = "Calle de la organización. Ejemplo: PL. NTRA. SRA. PILAR 18")
+	@CsvBindByPosition(position = 20)
 	@CsvBindByName(column = "streetAddress", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo = Context.SCHEMA_URI + "PostalAddress", propiedad = Context.SCHEMA_URI + "address", nodoId = "address")
 	private String streetAddress;
-
-	@CsvBindByPosition(position = 16)
+	
+	@ApiModelProperty(value = "Código postal de la organización. Ejemplo: 50003")
+	@CsvBindByPosition(position = 21)
 	@CsvBindByName(column = "postalCode", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")
 	@RdfBlankNode(tipo = Context.SCHEMA_URI + "PostalAddress", propiedad = Context.SCHEMA_URI + "address", nodoId = "address")
 	private String postalCode;
-
-	@CsvBindByPosition(position = 17)
-	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
-	private String municipioId;
-
-	@CsvBindByPosition(position = 18)
-	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
-	private String municipioTitle;
-
-	@CsvBindByPosition(position=19)
+	
+	@ApiModelProperty(value = "Identificador de la calle de la organización. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=22)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(value = "Coordenada X de la organización. Ejemplo: 676840.38")
+	@CsvBindByPosition(position=23)
 	@CsvBindByName(column="xETRS89")	
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;
 	
-	
-	@CsvBindByPosition(position=20)
+	@ApiModelProperty(value = "Coordenada Y de la organización. Ejemplo: 4613965.9")
+	@CsvBindByPosition(position=24)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=21)
+	@CsvBindByPosition(position=25)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=22)
+	@CsvBindByPosition(position=26)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-
-
-	@CsvBindByPosition(position = 23)
-	@CsvBindByName(column = "telephone", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
-	private String telephone;
-
-	@CsvBindByPosition(position = 24)
-	@CsvBindByName(column = "faxNumber", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "faxNumber")
-	private String faxNumber;
-
-	@CsvBindByPosition(position = 25)
-	@CsvBindByName(column = "email", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
-	private String email;
-
-	@CsvBindByPosition(position = 26)
-	@CsvBindByName(column = "url", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
-	private String url;
+	@ApiModelProperty(value = "Identificador del municipio de la organización. Ejemplo: 50297")
+	@CsvBindByPosition(position = 27)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
+	private String municipioId;
 	
-	@CsvBindByPosition(position=27)
-	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
-	@IsUri
-	private String image;
-	
+	@ApiModelProperty(value = "Nombre del municipio de la organización. Ejemplo: Zaragoza")
 	@CsvBindByPosition(position = 28)
-	@CsvBindByName(column = "purpose", format = Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ORG, propiedad = "purpose")
-	private String purpose;
-	
-	@CsvBindByPosition(position=29)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
 	@ApiModelProperty(hidden = true)	
 	@Rdf(contexto = Context.DCT, propiedad = "identifier")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String portalIdIsolated;
 	
+	@ApiModelProperty(value = "Finalidad u objetivo de la organización. Ejemplo: a) La organización, coordinación y dirección de los actos protocolarios")
+	@CsvBindByPosition(position = 29)
+	@CsvBindByName(column = "purpose", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ORG, propiedad = "purpose")
+	private String purpose;
 	
 	
 	private Double distance;

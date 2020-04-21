@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 public class DifferentSQLforDatabases {
 	
 	public static final String TRANSLATE_ORACLE = "TRANSLATE(UPPER(";
-	public static final String TRANSLATE_SQLSERVER = "dbo.TRANSLATE(UPPER(";	
+	public static final String TRANSLATE_SQLSERVER = StartVariables.db_schema+".translateCA(UPPER(";	
 	public static final String TRANSLATE_END = "),'ÂÁÀÄÃÊÉÈËÎÍÌÏÔÓÒÖÕÛÚÙÜÑ', 'AAAAAEEEEIIIIOOOOOUUUUN')";	
 
 

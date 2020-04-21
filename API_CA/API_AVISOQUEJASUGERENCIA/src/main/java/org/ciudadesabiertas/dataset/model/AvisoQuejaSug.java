@@ -71,7 +71,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.OPEN311, propiedad = "ServiceRequest")
-@PathId(value="/avisoQuejaSugerencia/avisoQuejaSugerencia")
+@PathId(value="/aviso-queja-sugerencia/aviso-queja-sugerencia")
 public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
 
 	@JsonIgnore
@@ -81,107 +81,111 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador de la solicitudes de servicio. Ejemplo: AQSA0002")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre de la solicitudes de servicio enviadas. Ejemplo: AVISO-ALUMBRADO PUBLICO EXTERIOR")
 	@CsvBindByPosition(position=2)
-	@CsvBindByName(column="serviceRequestName", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "serviceRequestName")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")
-	private String serviceRequestName;
+	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = "title")
+	private String title;
 	
+	@ApiModelProperty(value = "Identidicador de la solicitudes de servicio. Ejemplo: 0-2")
 	@CsvBindByPosition(position=3)
-	@CsvBindByName(column="serviceRequestId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "serviceRequestId")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")
-	private String serviceRequestId;
+	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = Constants.IDENTIFIER)
+	private String identifier;
 	
+	@ApiModelProperty(value = "Texto, que representa el estado de la solicitud de servicio. Ejemplo: abierto")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="stat", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "status")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")	
+	@Rdf(contexto = Context.OPEN311, propiedad = "status")	
 	private String stat;
 	
+	@ApiModelProperty(value = "Texto, explicando por qué se cambió el estado al estado actual o detalles adicionales sobre el estado actual. Ejemplo: abierto")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="statusNotes", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OPEN311, propiedad = "statusNotes")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")	
 	private String statusNotes;
 	
+	@ApiModelProperty(value = "Fecha, que representa la fecha de apertura de las solicitudes enviadas. Ejemplo: 2018-01-01T01:30:45")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName (column = "openDate")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasOpenDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date openDate;
 	
+	@ApiModelProperty(value = "Fecha, que representa la fecha de cierre de las solicitudes enviadas. Ejemplo: 2020-03-11T10:57:02")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName (column = "closeDate")	
 	@CsvDate(Constants.DATE_FORMAT)
-	//@RdfMultiple({@Rdf(contexto = Context.TIME, propiedad = "hasCloseDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.TIME, propiedad = "time",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasCloseDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date closeDate;
 	
+	@ApiModelProperty(value = "Fecha, que representa la fecha de cierre de las solicitudes enviadas. Ejemplo: 2020-03-11T10:57:02")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName (column = "updateDate")	
 	@CsvDate(Constants.DATE_FORMAT)
-	//@RdfMultiple({@Rdf(contexto = Context.TIME, propiedad = "hasUpdateDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.TIME, propiedad = "time",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasUpdateDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date updateDate;
 	
-	@CsvBindByPosition(position=20)
+	@ApiModelProperty(value = "Esta propiedad de datos proporciona más información sobre la solicitud de servicio. Ejemplo: AVISO-R RECOGIDA ANIMALES MUERTOS E-RECOGIDA DE ANIMALES MUERTOS")
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="details", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OPEN311, propiedad = "details")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")	
 	private String details;
 	
-	@CsvBindByPosition(position=9)
+	@ApiModelProperty(value = "Representa cómo se realizó la solicitud de servicio. Ejemplo: PRESENCIAL/TELEFONICOES")
+	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="source", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "source")
-	//@RdfBlankNode(tipo=Context.OPEN311_URI+"ServiceRequest", propiedad=Context.OPEN311_URI+"serviceRequest", nodoId="ServiceRequest")	
+	@Rdf(contexto = Context.OPEN311, propiedad = "source")	
 	private String source;
 	
-	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
-	private String municipioId;
-	
+	@ApiModelProperty(value = "texto, que muestra el tipo de solicitud de servicio. Ejemplo: ALUMBRADO - 02. CALLE APAGADA (>1 FAROLA)")
 	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
+	@CsvBindByName(column="typeName", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.OPEN311, propiedad = "311TypeName")
+	@RdfBlankNode(tipo=Context.OPEN311_URI+"Type", propiedad=Context.OPEN311_URI+"has311Type", nodoId="Type")	
+	private String typeName;
 	
+	@ApiModelProperty(value = "Representa el código único de cada tipo de solicitud de servicio. Ejemplo: 3745")
 	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
-	private String barrioId;
+	@CsvBindByName(column="typeCode", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.OPEN311, propiedad = "311TypeCode")
+	@RdfBlankNode(tipo=Context.OPEN311_URI+"Type", propiedad=Context.OPEN311_URI+"has311Type", nodoId="Type")	
+	private String typeCode; 
 	
+	@ApiModelProperty(value = "Calle de la solicitud de servicio. Ejemplo: CALLE ISLA DE AROSA 1 --")
 	@CsvBindByPosition(position=13)
-	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
-	private String distritoId;
-	
-	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;
 	
-	@CsvBindByPosition(position=15)
+	@ApiModelProperty(value = "Código postal de la solicitud de servicio. Ejemplo: 28035")
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
+	@ApiModelProperty(value = "Identificador de la solicitud de servicio. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=15)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(value = "Coordenada X de la solicitud de servicio. Ejemplo: 439399.64")
 	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="xETRS89")	
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de la solicitud de servicio. Ejemplo: 4481455.07")
 	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89", typeURI=Context.XSD_URI+"double")
@@ -201,25 +205,32 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
+	@ApiModelProperty(value = "Identificador del municipio de la solicitud de servicio. Ejemplo: 28079")
+	@CsvBindByPosition(position=18)
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
+	private String municipioId;
+	
+	@ApiModelProperty(value = "Nombre del municipio de la solicitud de servicio")
+	@CsvBindByPosition(position=19)
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identificador del barrio de la solicitud de servicio. Ejemplo: 280796062")
 	@CsvBindByPosition(position=20)
-	@CsvBindByName(column="typeName", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "311TypeName")
-	@RdfBlankNode(tipo=Context.OPEN311_URI+"Type", propiedad=Context.OPEN311_URI+"has311Type", nodoId="Type")	
-	private String typeName;
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
+	private String barrioId;
 	
+	@ApiModelProperty(value = "Identificador del distrito de la solicitud de servicio. Ejemplo: 28079606")
 	@CsvBindByPosition(position=21)
-	@CsvBindByName(column="typeCode", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.OPEN311, propiedad = "311TypeCode")
-	@RdfBlankNode(tipo=Context.OPEN311_URI+"Type", propiedad=Context.OPEN311_URI+"has311Type", nodoId="Type")	
-	private String typeCode;
-	
-	@CsvBindByPosition(position=22)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
-	
-	
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+
 	@ApiModelProperty(hidden = true)	
 	@Rdf(contexto = Context.DCT, propiedad = "identifier")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
@@ -240,8 +251,8 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 		super();
 		this.ikey = copia.ikey;
 		this.id = copia.id;
-		this.serviceRequestName = copia.serviceRequestName;
-		this.serviceRequestId = copia.serviceRequestId;
+		this.title = copia.title;
+		this.identifier = copia.identifier;
 		this.stat = copia.stat;
 		this.statusNotes = copia.statusNotes;
 		this.openDate = copia.openDate;
@@ -284,22 +295,22 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 		this.id = id;
 	}
 
-	@Column(name = "service_request_name", length = 200)
-	public String getServiceRequestName() {
-		return this.serviceRequestName;
+	@Column(name = "title", length = 200)
+	public String getTitle() {
+		return this.title;
 	}
 
-	public void setServiceRequestName(String serviceRequestName) {
-		this.serviceRequestName = serviceRequestName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	@Column(name = "service_request_id", length = 50)
-	public String getServiceRequestId() {
-		return this.serviceRequestId;
+	@Column(name = "identifier", length = 50)
+	public String getIdentifier() {
+		return this.identifier;
 	}
 
-	public void setServiceRequestId(String serviceRequestId) {
-		this.serviceRequestId = serviceRequestId;
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
 	}
 
 	@Column(name = "status", length = 50)
@@ -519,8 +530,8 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 
 	@Override
 	public String toString() {
-		return "AvisoQuejaSug [ikey=" + ikey + ", id=" + id + ", serviceRequestName=" + serviceRequestName
-				+ ", serviceRequestId=" + serviceRequestId + ", stat=" + stat + ", statusNotes=" + statusNotes
+		return "AvisoQuejaSug [ikey=" + ikey + ", id=" + id + ", title=" + title
+				+ ", identifier=" + identifier + ", stat=" + stat + ", statusNotes=" + statusNotes
 				+ ", openDate=" + openDate + ", closeDate=" + closeDate + ", updateDate=" + updateDate + ", details="
 				+ details + ", source=" + source + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
 				+ ", barrioId=" + barrioId + ", distritoId=" + distritoId + ", address=" + streetAddress + ", postalCode="
@@ -539,12 +550,12 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 			this.id = copia.id;
 		}
 						
-		if (attributesToSet.contains("serviceRequestName")) {
-			this.serviceRequestName = copia.serviceRequestName;		
+		if (attributesToSet.contains("title")) {
+			this.title = copia.title;		
 		}
 		
-		if (attributesToSet.contains("serviceRequestId")) {
-			this.serviceRequestId = copia.serviceRequestId;		
+		if (attributesToSet.contains("identifier")) {
+			this.identifier = copia.identifier;		
 		}
 		
 		if (attributesToSet.contains("stat")) {
@@ -663,8 +674,8 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 			result.add("Id is not valid [Id:" + this.getId() + "]");
 		}
 
-		if (!Util.validValue(this.getServiceRequestId())) {
-			result.add("ServiceRequestId is not valid [Title:" + this.getServiceRequestId() + "]");
+		if (!Util.validValue(this.getIdentifier())) {
+			result.add("Identifier is not valid [Identifier:" + this.getIdentifier() + "]");
 		}
 
 		if (!Util.validValue(this.getStat())) {

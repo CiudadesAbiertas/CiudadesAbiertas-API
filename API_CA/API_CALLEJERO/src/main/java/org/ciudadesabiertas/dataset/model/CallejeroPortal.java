@@ -76,34 +76,40 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del portal. Ejemplo: PORTAL000001")
 	@CsvBindByPosition(position = 1)
 	@CsvBindByName(column = Constants.IDENTIFICADOR, format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;	
 	
+	@ApiModelProperty(value = "Vía a la que pertenece un fenómeno. Ejemplo: 114600")
 	@CsvBindByPosition(position = 2)
 	@CsvBindByName(column = "via", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "via")
 	@RdfExternalURI(inicioURI= "/callejero/via/", finURI="via")	
 	private String via;
 	
+	@ApiModelProperty(value = "Calle del portal. Ejemplo: CALLE DE BRAVO MURILLO NUMERO 1")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;	
 	
+	@ApiModelProperty(value = "Código postal del portal. Ejemplo: 28015")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 
+	@ApiModelProperty(value = "Coordenada X del portal. Ejemplo: 440242.56")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="xETRS89", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;
 	
+	@ApiModelProperty(value = "Coordenada Y del portal. Ejemplo: 4476174.2")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="yETRS89", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89", typeURI=Context.XSD_URI+"double")
@@ -123,35 +129,40 @@ public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-	@CsvBindByPosition(position=9)
-	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)	
-	private String barrioId;
-	
-	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
-	private String distritoId;
-	
-	
+	@ApiModelProperty(value = "Identificador del municipio del portal. Ejemplo: 28079")
 	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
+	@ApiModelProperty(value = "Nombre del municipio del portal. Ejemplo: Madrid")
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
 	private String municipioTitle;
 	
+	@ApiModelProperty(value = "Identificador del barrio del portal. Ejemplo: 280796062")
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)	
+	private String barrioId;
+	
+	@ApiModelProperty(value = "Identificador del distrito del portal. Ejemplo: 28079606")
+	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+	
+	@ApiModelProperty(value = "Identificador de la provincia del portal. Ejemplo: Madrid")
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="provinciaId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
 	@RdfExternalURI(inicioURI="/territorio/provincia/",finURI="provinciaId" ,urifyLevel = 1)	
 	private String provinciaId;
-
+	
+	@ApiModelProperty(value = "Identificador de la comunidad autónoma del portal. Ejemplo: Comunidad-Madrid")
 	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="autonomiaId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")		

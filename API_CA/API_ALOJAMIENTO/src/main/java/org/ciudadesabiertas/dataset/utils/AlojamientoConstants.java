@@ -27,4 +27,6 @@ public class AlojamientoConstants
 {
 	public static final String KEY="alojamiento";
 	
+	public static final String alojamientoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#Alojamiento";
+	
 }

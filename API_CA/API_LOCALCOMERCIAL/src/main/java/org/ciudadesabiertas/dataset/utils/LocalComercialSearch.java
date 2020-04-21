@@ -56,9 +56,10 @@ public class LocalComercialSearch extends LocalComercial implements  Serializabl
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del local comercial. Ejemplo: 441201.60999147")
     private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del local comercial. Ejemplo: 4479589.52997752")
 	private BigDecimal yETRS89;
 
 

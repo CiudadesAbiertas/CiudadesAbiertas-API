@@ -49,11 +49,13 @@ public class CubeDsdMeasure implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private String ikey;		
 	
+	@ApiModelProperty(value = "Identificador de la medida. Ejemplo: tasaNatalidad")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;	
 	
+	@ApiModelProperty(value = "Nombre de la medida. Ejemplo: Tasa de natalidad")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")

@@ -50,6 +50,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -72,31 +73,33 @@ public class Autonomia implements java.io.Serializable, RDFModel, Territorio {
 	@JsonIgnore
 	private static final long serialVersionUID = 1206783006546204906L;
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	
-	
+	@ApiModelProperty(value = "Identificador de la autonomía. Ejemplo: 13")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	@CustomId(id = "identifier")	
 	private String id;
 	
-	
+	@ApiModelProperty(value = "Nombre de la autonomía. Ejemplo: Comunidad de Madrid")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Nombre de la autonomía urificado para URLs. Ejemplo: Comunidad-Madrid")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="identifier", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "identifier")
 	private String identifier;
 	
-	
 	@JsonIgnore
 	private Pais paisObject;
 	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
 	@Transient
 	@CsvBindByPosition(position=4)	
 	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)	

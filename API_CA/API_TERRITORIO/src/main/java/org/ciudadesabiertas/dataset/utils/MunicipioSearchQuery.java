@@ -76,8 +76,7 @@ public class MunicipioSearchQuery  extends MunicipioSearch {
 
 	public MunicipioSearchQuery toTransform(MunicipioSearch obj) {
 		this.setAutonomia(obj.getAutonomia());
-		this.setId(obj.getId());
-		this.setIdentifier(obj.getIdentifier());		
+		this.setId(obj.getId());		
 		this.setProvincia(obj.getProvincia());
 		this.setPais(obj.getPais());
 		this.setTitle(obj.getTitle());				

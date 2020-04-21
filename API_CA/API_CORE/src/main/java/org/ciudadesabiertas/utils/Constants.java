@@ -141,6 +141,8 @@ public class Constants
 	public static final String DEFAULT_LAT_LON_VALUE="EPSG:4258";
 	
 	public static final String OPERACIONES_ESCRITURA="operaciones.escritura";
+	public static final String OPERACIONES_HEAD="operaciones.head";
+	public static final String OPERACIONES_AUTORIZACION="operaciones.autorization";
 	
 	
 	
@@ -148,6 +150,7 @@ public class Constants
 	public static final String DB_DRIVER="db.driver";
 	public static final String DB_JNDI_NAME="db.jndi.name";
 	public static final String DB_URL="db.url";
+	public static final String DB_SCHEMA="db.schema";
 	public static final String DB_USER="db.user";
 	public static final String DB_PASSWORD="db.password";
 	public static final String DB_INITIAL_SIZE="db.initialSize";
@@ -159,6 +162,7 @@ public class Constants
 	public static final String DB_HIBERNATE_SHOW_SQL="hibernate.show_sql";
 	public static final String DB_HIBERNATE_FORMAT_SQL="hibernate.format_sql";
 	public static final String DB_HIBERNATE_USE_SQL_COMMENTS="hibernate.use_sql_comments";
+	public static final String DB_HIBERNATE_DEFAULT_SCHEMA="hibernate.default_schema";
 	
 	
 	//Propiedad URIBase

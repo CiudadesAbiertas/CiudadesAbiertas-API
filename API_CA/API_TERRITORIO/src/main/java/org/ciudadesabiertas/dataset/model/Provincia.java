@@ -50,6 +50,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -73,46 +74,47 @@ public class Provincia implements java.io.Serializable, RDFModel, Territorio {
 	@JsonIgnore
 	private static final long serialVersionUID = 6935852887763616111L;
 
-
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	
-	
+	@ApiModelProperty(value = "Identificador de la provincia. Ejemplo: 28")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	@CustomId(id = "identifier")	
 	private String id;
 	
-	
+	@ApiModelProperty(value = "Nombre de la provincia. Ejemplo: Madrid")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Nombre de la provincia urificado para URLs. Ejemplo: Madrid")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="identifier", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "identifier")
 	private String identifier;
 	
-	
 	@JsonIgnore
 	private Autonomia autonomiaObject;
 	
-	@Transient
-	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "pais")
-	@RdfExternalURI(inicioURI="/territorio/pais/", finURI="pais", urifyLevel=1)
-	private String pais;
-	
+	@ApiModelProperty(value = "Autonomía (Comunidad Autónoma o Ciudad Autónoma) a la que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Comunidad-Madrid")
 	@Transient
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
 	@RdfExternalURI(inicioURI="/territorio/autonomia/", finURI="autonomia", urifyLevel=1)
 	private String autonomia;
-
+	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
+	@Transient
+	@CsvBindByPosition(position=4)
+	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "pais")
+	@RdfExternalURI(inicioURI="/territorio/pais/", finURI="pais", urifyLevel=1)
+	private String pais;
 	
 	@Transient
 	@CsvBindByPosition(position=6)

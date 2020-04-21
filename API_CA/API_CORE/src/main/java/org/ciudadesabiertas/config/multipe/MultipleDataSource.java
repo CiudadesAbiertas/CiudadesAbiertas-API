@@ -48,6 +48,7 @@ public class MultipleDataSource
 	private Map<String, String> drivers;
 	private Map<String, String> show_sql;
 	private Map<String, String> format_sql;
+	private Map<String, String> defaultSchema;
 	
 	private static final Logger log = LoggerFactory.getLogger(MultipleDataSource.class);
 	
@@ -77,6 +78,7 @@ public class MultipleDataSource
 		drivers = new HashMap<String, String>();
 		show_sql = new HashMap<String, String>();
 		format_sql = new HashMap<String, String>();
+		defaultSchema = new HashMap<String, String>();
 
 		log.info("[MultipleDataSource] [multipleConf:"+multipleConf+"]");
 		for (Map.Entry<String, Properties> entry : multipleConf.getDatabasesConfig().entrySet())
@@ -108,6 +110,12 @@ public class MultipleDataSource
 				drivers.put(key, p.getProperty(Constants.DB_DRIVER));
 				show_sql.put(key, p.getProperty(Constants.DB_HIBERNATE_SHOW_SQL));
 				format_sql.put(key, p.getProperty(Constants.DB_HIBERNATE_FORMAT_SQL));
+				
+				if (p.getProperty(Constants.DB_SCHEMA)!=null)
+				{
+					defaultSchema.put(key, p.getProperty(Constants.DB_SCHEMA));
+				}
+				
 				log.debug("[BasicDataSource] [ds:"+ds+"]");
 			
 			}
@@ -135,6 +143,12 @@ public class MultipleDataSource
 				drivers.put(key, p.getProperty(Constants.DB_DRIVER));
 				show_sql.put(key, p.getProperty(Constants.DB_HIBERNATE_SHOW_SQL));
 				format_sql.put(key, p.getProperty(Constants.DB_HIBERNATE_FORMAT_SQL));
+				
+				if (p.getProperty(Constants.DB_HIBERNATE_DEFAULT_SCHEMA)!=null)
+				{
+					defaultSchema.put(key, p.getProperty(Constants.DB_HIBERNATE_DEFAULT_SCHEMA));
+				}
+				
 				log.debug("[MultipleDataSource] [JndiObjectFactoryBean:"+bean+"]");
 			}
 
@@ -214,6 +228,14 @@ public class MultipleDataSource
 
 	public Map<String, DataSource> getJndis() {
 		return jndis;
+	}
+
+	public Map<String, String> getDefaultSchema() {
+		return defaultSchema;
+	}
+
+	public void setDefaultSchema(Map<String, String> defaultSchema) {
+		this.defaultSchema = defaultSchema;
 	}
 	
 	

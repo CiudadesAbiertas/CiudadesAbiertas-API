@@ -33,12 +33,15 @@ import io.swagger.annotations.ApiParam;
  */
 public class GroupBySearch {
 	
-	@ApiParam(required = true, name = "fields")
+	@ApiParam(required = true, name = "fields", value = SwaggerConstants.PARAM_FIELDS_GROUP_BY)
 	private String fields;
+	@ApiParam(value=SwaggerConstants.PARAM_WHERE)
 	private String where;
+	@ApiParam(value=SwaggerConstants.PARAM_SORT)
 	private String sort;
-	@ApiParam(required = true, name = "group")
+	@ApiParam(required = true, name = "group", value = SwaggerConstants.PARAM_GROUP)
 	private String group;
+	@ApiParam(value=SwaggerConstants.PARAM_HAVING)
 	private String having;
 
 	

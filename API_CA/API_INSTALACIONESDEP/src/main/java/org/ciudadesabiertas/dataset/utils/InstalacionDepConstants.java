@@ -32,4 +32,6 @@ public class InstalacionDepConstants
 	public static final String [] TIPO_EQUIPAMIENTO_TEST = {
 			TIPO_EQUIPAMIENTO
 	};
+	
+	public static final String equipamientoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento-municipal/index-en.html#http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento-municipal#Equipamiento";
 }

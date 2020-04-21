@@ -85,6 +85,12 @@ public class MultipleSessionFactory {
 			prop.put(Constants.DB_HIBERNATE_SHOW_SQL, multipleDataSource.getShow_sql().get(key));
 			prop.put(Constants.DB_HIBERNATE_DIALECT, multipleDataSource.getDialects().get(key));					
 			
+			if (multipleDataSource.getDefaultSchema().get(key)!=null)
+			{
+				prop.put(Constants.DB_HIBERNATE_DEFAULT_SCHEMA, multipleDataSource.getDefaultSchema().get(key));
+			}
+			
+			
 			if (multipleDataSource.getDataSources().get(key)!=null) {
 				
 				

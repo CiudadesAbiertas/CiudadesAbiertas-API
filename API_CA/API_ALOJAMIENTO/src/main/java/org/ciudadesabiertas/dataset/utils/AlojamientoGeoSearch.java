@@ -56,10 +56,10 @@ public class AlojamientoGeoSearch extends Alojamiento implements  Serializable, 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X de un alojamiento. Ejemplo: 440396.51166")
 	private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y de un alojamiento. Ejemplo: 4474341.38044")
 	private BigDecimal yETRS89;
 
 

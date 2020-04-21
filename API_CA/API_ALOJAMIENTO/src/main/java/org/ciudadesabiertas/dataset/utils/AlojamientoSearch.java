@@ -55,9 +55,10 @@ public class AlojamientoSearch extends Alojamiento implements  Serializable, Dat
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X de un alojamiento. Ejemplo: 440396.51166")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de un alojamiento. Ejemplo: 4474341.38044")
 	private BigDecimal yETRS89;
 
 

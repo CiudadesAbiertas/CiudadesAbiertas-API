@@ -118,8 +118,8 @@ public class AvisoQuejaSugTest {
     	String aqsADD = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
-    		    +"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
+    		    +"\"identifier\" : \"0-52\","
     		    +"\"stat\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -164,8 +164,8 @@ public class AvisoQuejaSugTest {
     	String aqsADD = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
-    		    +"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
+    		    +"\"identifier\" : \"0-52\","
     		    +"\"stat\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -197,8 +197,8 @@ public class AvisoQuejaSugTest {
     	String aqsUpdate = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"XXXXX AVISO-R RECOGIDA ANIMALES MUERTOS E XXXXX\","
-    		    +"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"XXXXX AVISO-R RECOGIDA ANIMALES MUERTOS E XXXXX\","
+    		    +"\"identifier\" : \"0-52\","
     		    +"\"stat\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -244,8 +244,8 @@ public class AvisoQuejaSugTest {
     	String aqsUpdate = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"XXXXX AVISO-R RECOGIDA ANIMALES MUERTOS E XXXXX\","
-    		    +"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"XXXXX AVISO-R RECOGIDA ANIMALES MUERTOS E XXXXX\","
+    		    +"\"identifier\" : \"0-52\","
     		    +"\"stat\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -348,8 +348,8 @@ public class AvisoQuejaSugTest {
     	String obj = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
-    		    +"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
+    		    +"\"identifier\" : \"0-52\","
     		    +"\"stat\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -382,8 +382,8 @@ public class AvisoQuejaSugTest {
     	String obj = "{"    			
     			+"\"id\" : \""+id+"\","
     		    +"\"cityName\" : \"Madrid\","
-    		    +"\"serviceRequestName\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
-    		    //+"\"serviceRequestId\" : \"0-52\","
+    		    +"\"title\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\","
+    		    //+"\"identifier\" : \"0-52\","
     		    +"\"status\" : \"abierto\","
     		    +"\"statusNotes\" : \"abierto\","
     		    +"\"openDate\" : \"2018-01-01T00:59:30\","
@@ -436,7 +436,7 @@ public class AvisoQuejaSugTest {
     
     @Test    
     public void test21_List_Sort_200() throws Exception {
-    	String sort="?sort=-id,serviceRequestId";
+    	String sort="?sort=-id,identifier";
         this.mockMvc.perform(MockMvcRequestBuilders.get(AvisoQuejaSugController.LIST+".json"+sort)).andExpect(MockMvcResultMatchers.status().is(200));
     }
     

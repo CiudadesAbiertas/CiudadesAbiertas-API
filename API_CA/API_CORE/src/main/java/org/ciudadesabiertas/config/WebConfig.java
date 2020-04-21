@@ -16,6 +16,7 @@
 
 package org.ciudadesabiertas.config;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
@@ -41,9 +42,9 @@ import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.config.multipe.MultipleDataSource;
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.StringToNumberConverter;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.StringToDateConverter;
+import org.ciudadesabiertas.utils.StringToNumberConverter;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.ciudadesabiertas.utils.converters.CSVConverter;
@@ -91,6 +92,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import io.swagger.annotations.ApiModelProperty;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -242,6 +244,9 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	{
 
 		BasicDataSource ds = new BasicDataSource();
+		
+		StartVariables.db_schema=env.getProperty(Constants.DB_SCHEMA);
+		
 		//Basic
 		if ((Util.validValue(env.getProperty(Constants.DB_DRIVER))&&(Util.validValue(env.getProperty(Constants.DB_URL)))))
 		{
@@ -250,6 +255,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			ds.setUsername(env.getProperty(Constants.DB_USER));
 			ds.setPassword(Util.checkAndSetEncodedProperty(env.getProperty(Constants.DB_PASSWORD)));
 	
+			
+			
 			ds.setInitialSize(Integer.parseInt(env.getProperty(Constants.DB_INITIAL_SIZE)));
 			ds.setMaxActive(Integer.parseInt(env.getProperty(Constants.DB_MAX_ACTIVE)));
 			ds.setMaxIdle(Integer.parseInt(env.getProperty(Constants.DB_MAX_IDLE)));
@@ -295,7 +302,20 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	{
 
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
-		builder.scanPackages("org.ciudadesabiertas.users.model").scanPackages("org.ciudadesabiertas.model").scanPackages(Constants.PAQUETE_MODELO_CONJUNTOS_DATOS).addProperties(getHibernateProperties());
+		
+		Properties hibernateProperties = getHibernateProperties();
+		
+		if (Util.validValue(StartVariables.db_schema))
+		{
+			hibernateProperties.put(Constants.DB_HIBERNATE_DEFAULT_SCHEMA, StartVariables.db_schema);
+		}
+		
+		
+		builder
+			.scanPackages("org.ciudadesabiertas.users.model")
+			.scanPackages("org.ciudadesabiertas.model")
+			.scanPackages(Constants.PAQUETE_MODELO_CONJUNTOS_DATOS)
+			.addProperties(hibernateProperties);
 
 		return builder.buildSessionFactory();
 	}
@@ -619,11 +639,37 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			// get matching classes defined in the package
 			final Set<BeanDefinition> classes = provider.findCandidateComponents("org.ciudadesabiertas.dataset.model");
 	
-
+			boolean ikeyError=false;
 			for (BeanDefinition bean: classes) 
 			{
 				Map<String,String> mapaJavaNameColumna=new HashMap<String,String>();
 			    Class<?> clazz = Class.forName(bean.getBeanClassName());
+			    Field[] fields=Class.forName(clazz.getName()).getDeclaredFields();			    
+			    for (Field field : fields) 
+			    {
+	                if (field.getName().equals("ikey")) {
+	                	boolean fail=false;
+	                	ApiModelProperty annotation = field.getAnnotation(ApiModelProperty.class);
+	                    if (annotation!=null)
+	                    {
+	                    	if ((annotation.hidden()==false))
+	                    	{
+	                    		fail=true;
+	                    	}
+	                    }
+	                    else 
+	                    {
+	                    	fail=true;
+	                    }
+	                    if (fail)
+	                    {
+	                    	ikeyError=true;
+	                    	log.error("ikeyError: se esta exponiendo el ikey in the class: "+bean.getBeanClassName());
+	                    }
+	                }	                
+	            }
+			    
+			    
 			    log.debug(clazz.getName());
 			    Method[] methods=Class.forName(clazz.getName()).getDeclaredMethods();
 			    for (Method method : methods) 
@@ -641,7 +687,12 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	                }	                
 	            }
 			    mapaClasesColumnas.put(clazz.getName(), mapaJavaNameColumna);
+			}			
+			if (ikeyError==false)
+			{
+			    	log.info("Campos ikey sin exponer en todos los modelos");
 			}
+			
 		}
 		catch (Exception e)
 		{

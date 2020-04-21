@@ -57,9 +57,10 @@ public class MonumentoSearch extends PuntoInteresTuristico implements  Serializa
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del lugar de interés turístico. Ejemplo: 441054.00088")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del lugar de interés turístico. Ejemplo: 4474477.11792")
 	private BigDecimal yETRS89;
 
 

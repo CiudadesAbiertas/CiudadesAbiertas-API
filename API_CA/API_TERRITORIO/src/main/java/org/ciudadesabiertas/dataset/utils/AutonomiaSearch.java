@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -34,13 +36,16 @@ public class AutonomiaSearch implements  Serializable, DatasetSearch<Autonomia> 
 	@JsonIgnore
 	private static final long serialVersionUID = -7461261144397876766L;
 	
-
+	@ApiModelProperty(value = "Identificador de la autonomía. Ejemplo: 13")
 	private String id;
-
+	
+	@ApiModelProperty(value = "Nombre de la autonomía. Ejemplo: Comunidad de Madrid")
 	private String title;
 	
+	@ApiModelProperty(value = "Nombre de la autonomía urificado para URLs. Ejemplo: Comunidad-Madrid")
 	private String identifier;
 	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
 	private String pais;
 	
 	

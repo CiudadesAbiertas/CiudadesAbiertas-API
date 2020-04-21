@@ -34,6 +34,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @ApiModel
@@ -50,16 +51,17 @@ public class Barrio implements java.io.Serializable, RDFModel, Territorio {
 	private static final long serialVersionUID = 3232850887763616111L;
 
 
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
 	
-	
+	@ApiModelProperty(value = "Identificador del barrio. Ejemplo: 28006011")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)	
 	private String id;
 	
-	
+	@ApiModelProperty(value = "Nombre del barrio. Ejemplo: Barrio de prueba 1")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
@@ -68,33 +70,38 @@ public class Barrio implements java.io.Serializable, RDFModel, Territorio {
 	@JsonIgnore
 	private Distrito distritoObject;
 	
+	@ApiModelProperty(value = "Identificador del distrito al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: 2800601")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
 	private String distritoId;
 	
+	@ApiModelProperty(value = "Nombre del distrito al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Distrito 1")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
 	@RdfExternalURI(inicioURI="/territorio/distrito/", finURI="distritoId", urifyLevel=1)
 	private String distritoTitle;
 	
+	@ApiModelProperty(value = "Identificador del municipio al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: 28006")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
 	private String municipioId;
 	
+	@ApiModelProperty(value = "Nombre del municipio al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Alcobendas")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/", finURI="municipioId", urifyLevel=1)
 	private String municipioTitle;
 	
+	@ApiModelProperty(value = "Cada una de las grandes divisiones de un territorio o Estado, sujeta por lo común a una autoridad administrativa. Ejemplo: Madrid")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
 	@RdfExternalURI(inicioURI="/territorio/provincia/", finURI="provincia", urifyLevel=1)
 	private String provincia;
 	
-	
+	@ApiModelProperty(value = "Autonomía (Comunidad Autónoma o Ciudad Autónoma) a la que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Comunidad-Madrid")
 	@Transient
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
@@ -102,6 +109,7 @@ public class Barrio implements java.io.Serializable, RDFModel, Territorio {
 	@RdfExternalURI(inicioURI="/territorio/autonomia/", finURI="autonomia", urifyLevel=1)
 	private String autonomia;
 	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
 	@Transient
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)

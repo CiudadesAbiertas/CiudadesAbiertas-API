@@ -72,7 +72,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESTURISMO, propiedad = "LugarInteresTuristico")
-@PathId(value="/puntoInteresTuristico/puntoInteresTuristico")
+@PathId(value="/punto-interes-turistico/punto-interes-turistico")
 public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RDFModel,MultiURI, ICallejero {
 
 	@JsonIgnore
@@ -82,171 +82,200 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del lugar de interés turístico. Ejemplo: PIT0001, PITM0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del lugar de interés turístico. Ejemplo: Histohuellas")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Categoría del lugar de interés turístico. Ejemplo: lugar interes turistico")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="category", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "category")
 	private String category;
 	
+	@ApiModelProperty(value = "Propiedad que representa si el lugar de interés turístico está en un lugar accesible o no. Ejemplo: true")
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")	
-	private String municipioId;
+	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
+	private Boolean accesible;	
 	
+	@ApiModelProperty(value = "Propiedad que representa el tipo de accesibilidad del lugar, zona o itinerario. Ejemplo: Variada")
 	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
+	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "tipoAccesibilidad")
+	private String tipoAccesibilidad;
 	
+	@ApiModelProperty(value = "Correo electrónico del lugar de interés turístico. Ejemplo: info@histohuellas.es")
 	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
-	private String distritoId;
+	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
+	private String email;
 	
+	@ApiModelProperty(value = "Correo electrónico del lugar de interés turístico. Ejemplo: (+34) 665 63 17 74")
 	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
-	private String barrioId;
+	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
+	private String telephone;
 	
+	@ApiModelProperty(value = "Web del lugar de interés turístico. Ejemplo: http://www.esmadrid.com/informacion-turistica/histohuellas")
 	@CsvBindByPosition(position=8)
+	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
+	private String url;
+	
+	@ApiModelProperty(value = "Siglo al que pertenece el lugar o zona de interés turístico. Ejemplo: XII")
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="siglo", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "siglo")
+	private String siglo;
+	
+	@ApiModelProperty(value = "Estilo artístico del lugar o zona de interés turístico. Ejemplo: Romanico")
+	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="estiloArtistico", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "estiloArtistico")
+	private String estiloArtistico;
+	
+	@ApiModelProperty(value = "Coste de mantenimiento asociado al lugar o zona de interés cultural. Ejemplo: 19800.98")
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="costeMantenimiento", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "costeMantenimiento", typeURI=Context.XSD_URI+"double")
+	private BigDecimal costeMantenimiento;
+	
+	@ApiModelProperty(value = "Ingresos obtenidos en el lugar o zona de interés turístico. Ejemplo: 126980.02")
+	@CsvBindByPosition(position=12)
+	@CsvBindByName(column="ingresosObtenidos", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "ingresosObtenidos", typeURI=Context.XSD_URI+"double")
+	private BigDecimal ingresosObtenidos;
+	
+	@ApiModelProperty(value = "Afluencia de público en un lugar o zona de interés turístico. Ejemplo: Jovenes y Adultos")
+	@CsvBindByPosition(position=13)
+	@CsvBindByName(column="afluenciaPublico", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "afluenciaPublico")
+	private String afluenciaPublico;
+	
+	@ApiModelProperty(value = "Fecha en la que el lugar o zona fue declarado bien de interés cultural. Ejemplo: 2019-03-25T00:00:00")
+	@CsvBindByPosition(position=14)
+	@CsvBindByName(column="fechaDeclaracionBien", format=Constants.DATE_FORMAT)		
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "fechaDeclaracionBien",typeURI=Context.XSD_URI+"date" )
+	private Date fechaDeclaracionBien;
+	
+	@ApiModelProperty(value = "Descripción sobre la forma de acceder al lugar turístico. Ejemplo: Ascensores y Escaleras Mecánicas")
+	@CsvBindByPosition(position=15)
+	@CsvBindByName(column="modoAcceso", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "modoAcceso")
+	private String modoAcceso;
+	
+	@ApiModelProperty(value = "Medio de transporte que se puede utilizar para acceder al lugar, zona o itinerario de interés turístico. Ejemplo: Autobuses, cernanias y Metro")
+	@CsvBindByPosition(position=16)
+	@CsvBindByName(column="medioTransporte", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "medioTransporte")
+	private String medioTransporte;
+	
+	@ApiModelProperty(value = "Detalle sobre la historia del lugar. Ejemplo: Compuesta por un grupo de licenciados en Historia")
+	@CsvBindByPosition(position=17)
+	@CsvBindByName(column="notaHistorica", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESTURISMO, propiedad = "notaHistorica")
+	private String notaHistorica;
+	
+	@ApiModelProperty(value = "El horario del lugar de interés turístico. Ejemplo: <p>Lun &ndash; vier: 8:00 &ndash; 20:00 h</p><p>Sábado: 10:00 &ndash; 20:00 h</p><p>Domingo: 10:00 &ndash; 15:00 h</p>")
+	@CsvBindByPosition(position=18)	
+	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
+	private String openingHours;
+	
+	@ApiModelProperty(value = "Imagen del lugar de interés turístico. Ejemplo: http://www.esmadrid.com/sites/default/files/recursosturisticos/infoturistica/histohuellas_5.jpg")
+	@CsvBindByPosition(position=19)
+	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
+	@IsUri
+	private String image;
+	
+	@ApiModelProperty(value = "Calle del lugar de interés turístico. Ejemplo: Mayor")
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;
 	
-	@CsvBindByPosition(position=9)
+	@ApiModelProperty(value = "Código postal del lugar de interés turístico. Ejemplo: 28012")
+	@CsvBindByPosition(position=21)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
-	@CsvBindByPosition(position=10)
+	@ApiModelProperty(value = "Identificador de la calle del lugar de interés turístico. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=22)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(value = "Coordenada X del lugar de interés turístico. Ejemplo: 440291.26773")
+	@CsvBindByPosition(position=23)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;	
 	
-	@CsvBindByPosition(position=11)
+	@ApiModelProperty(value = "Coordenada Y del lugar de interés turístico. Ejemplo: 4474254.64478")
+	@CsvBindByPosition(position=24)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=12)
+	@CsvBindByPosition(position=25)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=13)
+	@CsvBindByPosition(position=26)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="accesible", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "accesible", typeURI=Context.XSD_URI+"boolean")
-	private Boolean accesible;	
-	
-	@CsvBindByPosition(position=15)
-	@CsvBindByName(column="tipoAccesibilidad", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "tipoAccesibilidad")
-	private String tipoAccesibilidad;
-		
-	@CsvBindByPosition(position=16)
-	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
-	private String email;
-	
-	@CsvBindByPosition(position=17)
-	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
-	private String telephone;
-	
-	@CsvBindByPosition(position=18)
-	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
-	private String url;
-	
-	@CsvBindByPosition(position=19)
-	@CsvBindByName(column="siglo", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "siglo")
-	private String siglo;
-	
-	@CsvBindByPosition(position=20)
-	@CsvBindByName(column="estiloArtistico", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "estiloArtistico")
-	private String estiloArtistico;
-	
-	@CsvBindByPosition(position=21)
-	@CsvBindByName(column="costeMantenimiento", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "costeMantenimiento", typeURI=Context.XSD_URI+"double")
-	private BigDecimal costeMantenimiento;
-	
-	@CsvBindByPosition(position=22)
-	@CsvBindByName(column="ingresosObtenidos", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "ingresosObtenidos", typeURI=Context.XSD_URI+"double")
-	private BigDecimal ingresosObtenidos;
-	
-	@CsvBindByPosition(position=23)
-	@CsvBindByName(column="afluenciaPublico", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "afluenciaPublico")
-	private String afluenciaPublico;
-	
-	@CsvBindByPosition(position=24)
-	@CsvBindByName(column="fechaDeclaracionBien", format=Constants.DATE_FORMAT)		
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "fechaDeclaracionBien",typeURI=Context.XSD_URI+"date" )
-	private Date fechaDeclaracionBien;
-	
-	@CsvBindByPosition(position=25)
-	@CsvBindByName(column="modoAcceso", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "modoAcceso")
-	private String modoAcceso;
-	
-	@CsvBindByPosition(position=26)
-	@CsvBindByName(column="medioTransporte", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "medioTransporte")
-	private String medioTransporte;
-	
+	@ApiModelProperty(value = "Identificador del municipio del lugar de interés turístico. Ejemplo: 28079")
 	@CsvBindByPosition(position=27)
-	@CsvBindByName(column="notaHistorica", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTURISMO, propiedad = "notaHistorica")
-	private String notaHistorica;
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")	
+	private String municipioId;
 	
-	@CsvBindByPosition(position=28)	
-	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
-	private String openingHours;
+	@ApiModelProperty(value = "Nombre del municipio del lugar de interés turístico. Ejemplo: Madrid")
+	@CsvBindByPosition(position=28)
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
-	@CsvBindByPosition(position=29)
-	@CsvBindByName(column="image", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "image")
-	@IsUri
-	private String image;
-	
+	@ApiModelProperty(value = "Identificador del barrio del lugar de interés turístico. Ejemplo: 280796062")
 	@CsvBindByPosition(position=30)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
+	private String barrioId;
+	
+	@ApiModelProperty(value = "Identificador del distrito del lugar de interés turístico. Ejemplo: 28079606")
+	@CsvBindByPosition(position=29)
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
+	private String distritoId;
 	
 	@ApiModelProperty(hidden = true)	
 	@Rdf(contexto = Context.DCT, propiedad = "identifier")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String portalIdIsolated;
 	
+	@ApiModelProperty(value = "Descripción del lugar de interés turístico. Ejemplo: Compuesta por un grupo de licenciados en Historia e Historia del Arte")
 	@CsvBindByPosition(position=31)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")

@@ -49,4 +49,12 @@ public class TerritorioConstants
 	public static final String FIELD_DISTRITO="distritoId";
 	public static final String FIELD_DISTRITO_RSQL="distritoObject.id";
 	
+	public static final String seccionCensalVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#SeccionCensal";
+	public static final String barrioVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Barrio";
+	public static final String distritoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Distrito";
+	public static final String municipioVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Municipio";
+	public static final String provinciaVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Provincia";
+	public static final String autonomiaVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Autonomia";
+	public static final String paisVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Pais";
+	
 }

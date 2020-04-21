@@ -56,7 +56,7 @@ public class AparcamientoUtilTest
 			"    \"email\" : \"ciudadesAbiertas@ciudadesAbiertas.com\",\r\n" +
 			"    \"telephone\" : \"555 67 67\",\r\n" +
 			"    \"url\" : \"http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a50e15cbed51c010VgnVCM2000000c205a0aRCRD\",\r\n" + 
-			"    \"titularidad\" : \"AYTO MADRID\",\r\n" + 
+			"    \"titularidadPublica\" : true,\r\n" + 
 			"    \"openingHours\" : \"Sin Horario\",\r\n" + 
 			"    \"description\" : \"Plazas: 318 públicas y 298 para residentes Abierto 24 horas Admite Tarjeta BonoRed Titularidad: Ayuntamiento de Madrid\",\r\n" + 
 			"    \"xETRS89\" : 440654.00047,\r\n" + 

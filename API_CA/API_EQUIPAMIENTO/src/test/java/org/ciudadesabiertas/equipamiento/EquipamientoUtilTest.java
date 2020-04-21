@@ -58,7 +58,7 @@ public class EquipamientoUtilTest
 			"    \"email\" : \"aulaambiental2@aytoalcobendas.org\",\r\n" + 
 			"    \"telephone\" : \"34916618096\",\r\n" +
 			"    \"url\" : \"http://www.ciudadesabiertas.es\",\r\n" + 
-			"    \"titularidad\" : \"Publico\",\r\n" + 
+			"    \"titularidadPublica\" : true,\r\n" + 
 			"    \"openingHours\" : \"Sin horario\",\r\n" + 
 			"    \"description\" : \"Datos de interés Servicios principales Equipamiento ambiental situado en el Jardín de la Vega donde se desarrollan actividades y programas relacionados con la Educación Ambiental. Proyecto Coches compartidos Accesos Coche Autobús:  151 / 152C  / 153  /154C / 158 / 166      Metro. Estación La Moraleja Más información sobre transportes  Horario Del 1/10 al 31/03: lunes a viernes de 16:30 a 18:30 h. Del 1/04 al 30/06: lunes a viernes de 17:00 a 20:00 h. Del 1/07 al 30/09: lunes a viernes de 10:00 a 13:00 h.\",\r\n" + 
 			"    \"xETRS89\" : 446175.61012,\r\n" + 

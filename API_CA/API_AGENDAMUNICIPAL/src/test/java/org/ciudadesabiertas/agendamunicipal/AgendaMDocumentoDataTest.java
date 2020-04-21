@@ -85,7 +85,7 @@ public class AgendaMDocumentoDataTest
 	{
 		String paramField="encodingFormat";
 
-		String value = "texto";
+		String value = "text/plain";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 

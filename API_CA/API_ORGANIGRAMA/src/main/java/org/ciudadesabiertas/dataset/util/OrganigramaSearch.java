@@ -55,9 +55,10 @@ public class OrganigramaSearch extends Organigrama implements  Serializable, Dat
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X de la organización. Ejemplo: 676840.38")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de la organización. Ejemplo: 4613965.9")
 	private BigDecimal yETRS89;
 
 

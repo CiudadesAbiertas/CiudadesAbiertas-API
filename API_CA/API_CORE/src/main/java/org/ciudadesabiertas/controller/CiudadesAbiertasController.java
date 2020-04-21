@@ -18,7 +18,6 @@ package org.ciudadesabiertas.controller;
 
 import java.util.ArrayList;
 
-import org.ciudadesabiertas.exception.NotFoundException;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.slf4j.Logger;
@@ -89,11 +88,20 @@ public interface CiudadesAbiertasController
 	
 	@ExceptionHandler(value = {java.lang.IllegalStateException.class})
 	@ResponseStatus(HttpStatus.NOT_FOUND)
+	default @ResponseBody ResponseEntity<?> handleIllegalStateException(Exception ex) {
+		log.error("[handleIllegalStateException][ERROR:"+ex.getMessage()+"]");
+		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("NOT FOUND",HttpStatus.NOT_FOUND.value()),HttpStatus.NOT_FOUND);
+		return responseEntity;
+	}
+	
+	@ExceptionHandler(value = {org.springframework.web.servlet.NoHandlerFoundException.class})
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	default @ResponseBody ResponseEntity<?> handleNotFoundException(Exception ex) {
 		log.error("[handleNotFoundException][ERROR:"+ex.getMessage()+"]");
 		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("NOT FOUND",HttpStatus.NOT_FOUND.value()),HttpStatus.NOT_FOUND);
 		return responseEntity;
 	}
+	
 	
 
 }

@@ -32,8 +32,8 @@ import org.ciudadesabiertas.dataset.utils.TramiteResult;
 import org.ciudadesabiertas.dataset.utils.TramiteSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
@@ -75,7 +75,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Tramite",description = "Conjunto de operaciones relacionadas con el conjunto de datos Tramite", tags= {"Tramite"})
+@Api(value="Tramite",description = "Conjunto de operaciones relacionadas con el conjunto de datos Tramite"+SwaggerConstants.VOCABULARIO_A_HREF+TramiteConstants.procedimientoVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Tramite"})
 public class TramiteController extends GenericController implements CiudadesAbiertasController
 {
 	public static final String LIST = "/tramite/tramite";
@@ -128,8 +128,10 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+				@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+				@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -204,11 +206,16 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, TramiteSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,						
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -234,11 +241,16 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, TramiteSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,			
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -283,7 +295,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAMITE) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
 			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_EQUIPAMIENTO_TEXT) 
 			@RequestBody Tramite obj)
@@ -308,7 +320,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAMITE) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
@@ -330,7 +342,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
-													@PathVariable String id)
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAMITE) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -351,7 +363,7 @@ public class TramiteController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAMITE) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId	)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");

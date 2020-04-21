@@ -45,6 +45,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -66,41 +67,46 @@ public class CuboEstudios implements java.io.Serializable, RDFModel, DataCubeMod
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;
-	
+
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador de la observación. Ejemplo: obs12")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;	
 	
+	@ApiModelProperty(value = "Conjunto de datos de la observación. Ejemplo: poblacionPorNivelEstudio")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.SKOS, propiedad = "notation")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/padron/datacube/", finURI="dataset", propiedad=Context.QB_URI+"dataset")
 	private String dataset;
 	
+	@ApiModelProperty(value = "DSD de la observación. Ejemplo: poblacionPorNivelEstudio")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.QB, propiedad = "structure")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/data-cube/data-structure-definition/", finURI="dsd", propiedad=Context.QB_URI+"structure")
 	private String dsd;
 
-	
+	@ApiModelProperty(value = "El nivel más alto de un programa educativo que la persona ha completado con éxito. Ejemplo: 43")
 	@CsvBindByPosition(position=2)		
 	@CsvBindByName(column="tipo_nivel_estudio", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "educationLev")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/", finURI="tipoNivelEstudio", urifyLevel=1)
 	private String tipoNivelEstudio;	
 	
+	@ApiModelProperty(value = "El período de tiempo o punto en el tiempo al que se refiere la observación. Ejemplo: 2016")
 	@CsvBindByPosition(position=3)		
 	@CsvBindByName(column="refPeriod", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "refPeriod")
 	@RdfExternalURI(inicioURI="http://reference.data.gov.uk/id/year/", finURI="refPeriod", urifyLevel=1)
 	private String refPeriod;		
 	
-
+	@ApiModelProperty(value = "Numero de personas de la observación. Ejemplo: 56647")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")

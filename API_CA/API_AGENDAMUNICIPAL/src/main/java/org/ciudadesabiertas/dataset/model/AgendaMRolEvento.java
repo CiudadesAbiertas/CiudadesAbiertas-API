@@ -66,55 +66,63 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto =  Context.ESAGM, propiedad = "RolIntegranteEvento")
-@PathId(value="/agendaMunicipal/rolEvento")
+@PathId(value="/agenda-municipal/rol-evento")
 public class AgendaMRolEvento implements java.io.Serializable, RDFModel {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 4691260619899971301L;
+	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador del rol integrante evento. Ejemplo: AGMROL0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre completo del integrante evento. Ejemplo: JOSE ANIORTE RUEDA")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="agentName", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.FOAF, propiedad = "name")
 	@RdfBlankNode(tipo = Context.FOAF_URI + "Agent", propiedad = Context.ESAGM_URI + "integra", nodoId = "agentNode")
 	private String agentName;
 	
+	@ApiModelProperty(value = "Nombre del integrante evento. Ejemplo: JOSE")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="nombre", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "nombre")	
 	@RdfBlankNode(tipo = Context.ESAGM_URI + "Persona", propiedad = Context.ESAGM_URI + "integra", nodoId = "agentNode")
 	private String nombre;
 	
+	@ApiModelProperty(value = "Apellido primero del integrante evento. Ejemplo: ANIORTE")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="apellido1", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "apellido1")	
 	@RdfBlankNode(tipo = Context.ESAGM_URI + "Persona", propiedad = Context.ESAGM_URI + "integra", nodoId = "agentNode")
 	private String apellido1;
 	
+	@ApiModelProperty(value = "Apellido segundo del integrante evento. Ejemplo: RUEDA")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="apellido2", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "apellido2")	
 	@RdfBlankNode(tipo = Context.ESAGM_URI + "Persona", propiedad = Context.ESAGM_URI + "integra", nodoId = "agentNode")
 	private String apellido2;
 	
+	@ApiModelProperty(value = "Identificador de la organización a la que pertenece el agente en calidad de miembro. Ejemplo: 61028")
 	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="organizationTitle", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	@RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ORG_URI+"organization", nodoId="organization")
-	private String organizationTitle;
-	
-	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="organizationId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "organization")
 	@RdfExternalURI(inicioURI="/organigrama/organizacion/",finURI="organizationId", urifyLevel = 1)
 	private String organizationId;
 	
+	@ApiModelProperty(value = "Nombre de la organización a la que pertenece el agente en calidad de miembro. Ejemplo: UNIDAD DE COORDINACION DE PROGRAMAS Y CENTROS")
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="organizationTitle", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = "title")
+	@RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ORG_URI+"organization", nodoId="organization")
+	private String organizationTitle;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
@@ -122,33 +130,38 @@ public class AgendaMRolEvento implements java.io.Serializable, RDFModel {
 	@RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ORG_URI+"organization", nodoId="organization")
 	private String organizationIdIsolated;
 	
+	@ApiModelProperty(value = "Función que una persona o agente desempeña en el seno de una organización. Ejemplo: DELEGADO/A DE AREA DE GOBIERNO")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="role", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESAGM, propiedad = "role")
 	private String role;
 	
+	@ApiModelProperty(value = "El rol que puede tener un integrante de un evento. Ejemplo: titular")
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="rol", format=Constants.STRING_FORMAT)			
 	@Rdf(contexto = Context.ESAGM, propiedad = "rol")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/agenda-municipal/rol-integrante/", finURI="rol", urifyLevel=2)	
 	private String rol;
 	
+	@ApiModelProperty(value = "Fecha y hora de inicio de asistencia de un integrante de un evento. Ejemplo: 2019-12-06T10:10:00")
 	@CsvBindByPosition(position=10)
 	@CsvBindByName (column = "inicioAsistencia")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "inicioAsistencia",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date inicioAsistencia;
 	
+	@ApiModelProperty(value = "Fecha y hora de fin de asistencia de un integrante de un evento. Ejemplo: 2019-12-06T11:15:00")
 	@CsvBindByPosition(position=11)
 	@CsvBindByName (column = "finAsistencia")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "finAsistencia",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date finAsistencia;
 	
+	@ApiModelProperty(value = "Evento en el que participa un integrante con un rol. Ejemplo: AGM0001")
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="eventId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESAGM, propiedad = "event")
-	@RdfExternalURI(inicioURI="/agendaMunicipal/evento/",finURI="eventId", urifyLevel = 1)
+	@Rdf(contexto = Context.ESAGM, propiedad = "evento")
+	@RdfExternalURI(inicioURI="/agenda-municipal/evento/",finURI="eventId", urifyLevel = 1)
 	private String eventId;
 
 	public AgendaMRolEvento() {

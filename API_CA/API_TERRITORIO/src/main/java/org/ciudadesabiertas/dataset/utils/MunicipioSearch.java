@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -33,19 +35,21 @@ public class MunicipioSearch  implements  Serializable, DatasetSearch<Municipio>
 
 	@JsonIgnore
 	private static final long serialVersionUID = -7461261144397876766L;
-
+	
+	@ApiModelProperty(value = "Identificador del distrito. Ejemplo: 28006")
 	private String id;
-
+	
+	@ApiModelProperty(value = "Nombre del distrito. Ejemplo: Alcobendas")
 	private String title;
 	
-	private String identifier;
-	
-	private String pais;
-	
-	private String autonomia;
-	
+	@ApiModelProperty(value = "Cada una de las grandes divisiones de un territorio o Estado, sujeta por lo común a una autoridad administrativa. Ejemplo: Madrid")
 	private String provincia;
 	
+	@ApiModelProperty(value = "Autonomía (Comunidad Autónoma o Ciudad Autónoma) a la que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Comunidad-Madrid")
+	private String autonomia;
+	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
+	private String pais;
 	
 
 	public String getProvincia() {
@@ -81,14 +85,6 @@ public class MunicipioSearch  implements  Serializable, DatasetSearch<Municipio>
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getIdentifier() {
-		return identifier;
-	}
-
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
 	}
 
 	public String getPais() {

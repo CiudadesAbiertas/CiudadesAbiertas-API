@@ -55,10 +55,10 @@ public class CalidadAireEstacionGeoSearch extends CalidadAireEstacion implements
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X de la estación. Ejemplo: 439582.03357")
     private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y de la estación. Ejemplo: 4475019.12562")
 	private BigDecimal yETRS89;
 
 

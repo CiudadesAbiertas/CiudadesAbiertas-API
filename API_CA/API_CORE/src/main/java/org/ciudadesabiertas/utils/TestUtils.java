@@ -412,7 +412,7 @@ public class TestUtils
     	List<String> urisToCheck=new ArrayList<String>();
     	
         for (String line : lines) {             
-             if (line.contains(listURI))
+             if (line.contains(listURI)&&(line.startsWith("<htt")))
              {
             	 if ((line.contains("/geometry")==false))
             	 {
@@ -430,6 +430,7 @@ public class TestUtils
 	            	 part2=Util.encodeURL(part2);	 
 	            	 urisToCheck.add(part1+part2);
 	            	 
+	            	 break;
 	            	 
 	            	 //Encodeo la ñ
 	            	 //lineM=lineM.replace("Ã±", "%C3%B1");          	 

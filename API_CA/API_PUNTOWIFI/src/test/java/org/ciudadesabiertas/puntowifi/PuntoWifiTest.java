@@ -133,7 +133,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"aulaambiental2@aytoalcobendas.org\","
         	    +"\"telephone\" : \"34916618096\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""   
         	  +"}";
     	
@@ -180,7 +180,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"aulaambiental2@aytoalcobendas.org\","
         	    +"\"telephone\" : \"34916618096\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""   
         	  +"}";
     	
@@ -215,7 +215,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
         	    +"\"telephone\" : \"Sin Numero de tlfno.\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""  
         	  +"}";
     	
@@ -264,7 +264,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
         	    +"\"telephone\" : \"Sin Numero de tlfno.\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""   
         	  +"}";
     	
@@ -370,7 +370,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
         	    +"\"telephone\" : \"Sin Numero de tlfno.\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""   
         	  +"}";
     	
@@ -405,7 +405,7 @@ public class PuntoWifiTest {
         	    +"\"yETRS89\" : 4472390.03112,"
         	    +"\"email\" : \"modificacion@aytoalcobendas.org\","
         	    +"\"telephone\" : \"Sin Numero de tlfno.\","
-        	    +"\"titularidad\" : \"Publico\"," 
+        	    +"\"titularidadPublica\" : true," 
         	    +"\"openingHours\" : \"Horario de Pruebas\""   
         	  +"}";
     	

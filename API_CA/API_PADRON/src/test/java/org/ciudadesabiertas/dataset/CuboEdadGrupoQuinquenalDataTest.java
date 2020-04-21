@@ -186,7 +186,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure"};
 		String [] value = {"refPeriod","AVG","numeroPersonas"};           
         JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);               
+		assertTrue(records.size() == 4);               
     }
 	    
 	    
@@ -196,7 +196,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure"};
 		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 5);
+		assertTrue(records.size() == 84);
     }
 	    
 	    
@@ -206,7 +206,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure","where"};
 		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas","refPeriod=2016"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 5);
+		assertTrue(records.size() == 21);
     }
     
 	

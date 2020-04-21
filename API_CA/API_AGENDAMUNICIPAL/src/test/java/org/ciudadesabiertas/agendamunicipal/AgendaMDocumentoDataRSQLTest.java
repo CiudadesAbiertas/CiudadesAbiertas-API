@@ -85,7 +85,7 @@ public class AgendaMDocumentoDataRSQLTest
 	{
 	
 		
-		String value = "encodingFormat=='texto'";
+		String value = "encodingFormat=='text/plain'";
 
 		String paramField = "q";
 

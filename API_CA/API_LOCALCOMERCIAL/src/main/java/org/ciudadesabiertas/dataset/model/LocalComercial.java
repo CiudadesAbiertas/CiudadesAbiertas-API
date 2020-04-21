@@ -71,7 +71,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCOM, propiedad = "LocalComercial")
-@PathId(value="/localComercial/localComercial")
+@PathId(value="/local-comercial/local-comercial")
 public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel, ICallejero
 {
 	@JsonIgnore
@@ -80,161 +80,176 @@ public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel,
 	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
-		
+	
+	@ApiModelProperty(value = "Identificador del local comercial. Ejemplo: 270002391")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del local comercial. Ejemplo: OGAME")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
-	
+	@ApiModelProperty(value = "Teléfono del local comercial. Ejemplo: 919999991")
 	@CsvBindByPosition(position=3)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
-	private String municipioId;
+	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
+	private String telephone;
 	
+	@ApiModelProperty(value = "URL del local comercial. Ejemplo: http://api.ciudadesabiertas.org/id=270002391")
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
-	
-
+	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
+	private String url;	
+		 
+	@ApiModelProperty(value = "Tipo de actividad económica que se realiza en un local comercia. Ejemplo: 90")
 	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="tipoActividadEconomica")
+	@Rdf(contexto = Context.ESCOM, propiedad = "tipoActividadEconomica")
+	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/cnae/Division/", finURI="tipoActividadEconomica", urifyLevel=0)
+	private String tipoActividadEconomica;
+	
+	@ApiModelProperty(value = "El nombre comercial es todo aquel signo que puede ser representado gráficamente y, que identifica a una empresa en el tráfico mercantil distinguiéndola de las demás empresas que van a desarrollar actividades idénticas o similares. Ejemplo: Nombre Comercial OGAME")
+	@CsvBindByPosition(position=6)
+	@CsvBindByName(column="nombreComercial")
+	@Rdf(contexto = Context.ESCOM, propiedad = "nombreComercial")
+	private String nombreComercial;
+	
+	@ApiModelProperty(value = "Signo o denominación que sirve para dar a conocer al público un establecimiento comercial y para distinguirlo de otros destinados a actividades idénticas o similares. Ejemplo: Rotulo OGAME")
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="rotulo")
+	@Rdf(contexto = Context.ESCOM, propiedad = "rotulo")
+	private String rotulo;
+	
+	@ApiModelProperty(value = "Capacidad del local, expresada como el número de personas que caben en él. Ejemplo: 3")
+	@CsvBindByPosition(position=8)
+	@CsvBindByName(column="aforo")
+	@Rdf(contexto = Context.ESCOM, propiedad = "aforo", typeURI=Context.XSD_URI+"int")
+	private Integer aforo;
+	
+	@ApiModelProperty(value = "Tipos de situación en los que se puede encontrar un local comercial. Ejemplo: activo")
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="tipoSituacion")
+	@Rdf(contexto = Context.ESCOM, propiedad = "tipoSituacion")
+	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-situacion/", finURI="tipoSituacion", urifyLevel=1)
+	private String tipoSituacion;
+
+	@ApiModelProperty(value = "Un local comercial puede tener los siguientes tipos de acceso: puerta de calle, interior, o piso. Ejemplo: puerta de calle")
+	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="tipoAcceso")
+	@Rdf(contexto = Context.ESCOM, propiedad = "tipoAcceso")
+	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-acceso/", finURI="tipoAcceso", urifyLevel=1)
+	private String tipoAcceso;
+
+	@ApiModelProperty(value = "La referencia catastral es el identificador oficial y obligatorio de los bienes inmuebles. Ejemplo: 9872023 VH5797S 0001 WX")
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="referenciaCatastral")
+	@Rdf(contexto = Context.ESCOM, propiedad = "referenciaCatastral")
+	private String referenciaCatastral;
+	
+	@ApiModelProperty(value = "El local comercial puede tener una o varias licencias de funcionamiento a lo largo de su historia. Ejemplo: 270002391-106-2003-01539")
+	@CsvBindByPosition(position=12)
+	@CsvBindByName(column="tieneLicenciaApertura")
+	@Rdf(contexto = Context.ESCOM, propiedad = "tieneLicenciaApertura")
+	@RdfExternalURI(inicioURI= "/local-comercial/licencia-actividad/", finURI="tieneLicenciaApertura")	
+	private String tieneLicenciaApertura;
+	
+	@ApiModelProperty(value = "Un local comercial puede tener una terraza asociada. Ejemplo: 4932")
+	@CsvBindByPosition(position=13)
+	@CsvBindByName(column="tieneTerraza")
+	@Rdf(contexto = Context.ESCOM, propiedad = "tieneTerraza")
+	@RdfExternalURI(inicioURI= "/local-comercial/terraza/", finURI="tieneTerraza")
+	private String tieneTerraza;
+	
+	@ApiModelProperty(value = "Cualquier entidad (por ejemplo, un local comercial) puede pertenecer a una agrupación comercial. Ejemplo: 99000221")
+	@CsvBindByPosition(position=14)
+	@CsvBindByName(column="agrupacionComercial")
+	@Rdf(contexto = Context.ESCOM, propiedad = "agrupacionComercial")
+	@RdfExternalURI(inicioURI= "/local-comercial/agrupacion-comercial/", finURI="agrupacionComercial")
+	private String agrupacionComercial;
+	
+	@ApiModelProperty(value = "Calle del local comercial. Ejemplo: Calle Bravo Murillo Num 360")
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String streetAddress;
 	
-	@CsvBindByPosition(position=6)
+	@ApiModelProperty(value = "Código postal del local comercial. Ejemplo: 28039")
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
+	@ApiModelProperty(value = "Identificador de la calle del local comercial. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=17)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
 	
-	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
-	private String barrioId;
-	
-	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
-	private String distritoId;
-	
-	
-	@CsvBindByPosition(position=9)
+	@ApiModelProperty(value = "Coordenada X del local comercial. Ejemplo: 441201.60999147")
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="xETRS89")	
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;
 	
-	
-	@CsvBindByPosition(position=10)
+	@ApiModelProperty(value = "Coordenada Y del local comercial. Ejemplo: 4479589.52997752")
+	@CsvBindByPosition(position=19)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89", typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=11)
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=12)
+	@CsvBindByPosition(position=21)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-	@CsvBindByPosition(position=13)
-	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
-	private String telephone;
-	
-	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
-	private String url;	
-		 
-	@CsvBindByPosition(position=15)
-	@CsvBindByName(column="tipoActividadEconomica")
-	@Rdf(contexto = Context.ESCOM, propiedad = "tipoActividadEconomica")
-	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/cnae/Division/", finURI="tipoActividadEconomica", urifyLevel=0)
-	private String tipoActividadEconomica;
-	
-	@CsvBindByPosition(position=16)
-	@CsvBindByName(column="nombreComercial")
-	@Rdf(contexto = Context.ESCOM, propiedad = "nombreComercial")
-	private String nombreComercial;
-		
-	@CsvBindByPosition(position=17)
-	@CsvBindByName(column="rotulo")
-	@Rdf(contexto = Context.ESCOM, propiedad = "rotulo")
-	private String rotulo;
-	
-	@CsvBindByPosition(position=18)
-	@CsvBindByName(column="aforo")
-	@Rdf(contexto = Context.ESCOM, propiedad = "aforo", typeURI=Context.XSD_URI+"int")
-	private Integer aforo;
-	
-	@CsvBindByPosition(position=19)
-	@CsvBindByName(column="tipoSituacion")
-	@Rdf(contexto = Context.ESCOM, propiedad = "tipoSituacion")
-	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-situacion/", finURI="tipoSituacion", urifyLevel=1)
-	private String tipoSituacion;
-
-	@CsvBindByPosition(position=20)
-	@CsvBindByName(column="tipoAcceso")
-	@Rdf(contexto = Context.ESCOM, propiedad = "tipoAcceso")
-	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-acceso/", finURI="tipoAcceso", urifyLevel=1)
-	private String tipoAcceso;
-		 
-	@CsvBindByPosition(position=21)
-	@CsvBindByName(column="referenciaCatastral")
-	@Rdf(contexto = Context.ESCOM, propiedad = "referenciaCatastral")
-	private String referenciaCatastral;
-	
-	
-	
+	@ApiModelProperty(value = "Identificador del municipio del local comercial. Ejemplo: 28079")
 	@CsvBindByPosition(position=22)
-	@CsvBindByName(column="tieneLicenciaApertura")
-	@Rdf(contexto = Context.ESCOM, propiedad = "tieneLicenciaApertura")
-	@RdfExternalURI(inicioURI= "/localComercial/licenciaActividad/", finURI="tieneLicenciaApertura")	
-	private String tieneLicenciaApertura;
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
+	private String municipioId;
 	
+	@ApiModelProperty(value = "Nombre del municipio del local comercial. Ejemplo: Madrid")
 	@CsvBindByPosition(position=23)
-	@CsvBindByName(column="tieneTerraza")
-	@Rdf(contexto = Context.ESCOM, propiedad = "tieneTerraza")
-	@RdfExternalURI(inicioURI= "/localComercial/terraza/", finURI="tieneTerraza")
-	private String tieneTerraza;
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
-	
+	@ApiModelProperty(value = "Identificador del barrio del local comercial. Ejemplo: 280796062")
 	@CsvBindByPosition(position=24)
-	@CsvBindByName(column="agrupacionComercial")
-	@Rdf(contexto = Context.ESCOM, propiedad = "agrupacionComercial")
-	@RdfExternalURI(inicioURI= "/localComercial/agrupacionComercial/", finURI="agrupacionComercial")
-	private String agrupacionComercial;
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
+	private String barrioId;
 	
+	@ApiModelProperty(value = "Identificador del distrito del local comercial. Ejemplo: 28079606")
 	@CsvBindByPosition(position=25)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
-	
-	
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+		
 	@ApiModelProperty(hidden = true)
 	@Rdf(contexto = Context.DCT, propiedad = "identifier")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String portalIdIsolated;
 	
+	@ApiModelProperty(value = "Descripción del local comercial. Ejemplo: Descripcion OGAME")
 	@CsvBindByPosition(position=26)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")

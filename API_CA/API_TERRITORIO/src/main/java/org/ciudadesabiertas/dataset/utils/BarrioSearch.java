@@ -23,6 +23,8 @@ import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -33,22 +35,35 @@ public class BarrioSearch  implements  Serializable, DatasetSearch<Barrio> {
 
 	@JsonIgnore
 	private static final long serialVersionUID = -7462261144307876766L;
-
+	
+	@ApiModelProperty(value = "Identificador del barrio. Ejemplo: 28006011")
 	private String id;
-
+	
+	@ApiModelProperty(value = "Nombre del barrio. Ejemplo: Barrio de prueba 1")
 	private String title;
 	
-	private String identifier;
+	@ApiModelProperty(value = "Identificador del distrito al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: 2800601")
+	private String distritoId;
 	
-	private String pais;
-	
-	private String autonomia;
-	
+	@ApiModelProperty(value = "Identificador del municipio al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: 28006")
 	private String municipioId;
 	
+	@ApiModelProperty(value = "Cada una de las grandes divisiones de un territorio o Estado, sujeta por lo común a una autoridad administrativa. Ejemplo: Madrid")
 	private String provincia;
 	
-	private String distritoId;
+	@ApiModelProperty(value = "Autonomía (Comunidad Autónoma o Ciudad Autónoma) a la que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: Comunidad-Madrid")
+	private String autonomia;
+	
+	@ApiModelProperty(value = "País al que pertenece un fenómeno geográfico o una entidad administrativa. Ejemplo: España")
+	private String pais;
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public String getDistritoId() {
@@ -100,14 +115,6 @@ public class BarrioSearch  implements  Serializable, DatasetSearch<Barrio> {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getIdentifier() {
-		return identifier;
-	}
-
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
 	}
 
 	public String getPais() {

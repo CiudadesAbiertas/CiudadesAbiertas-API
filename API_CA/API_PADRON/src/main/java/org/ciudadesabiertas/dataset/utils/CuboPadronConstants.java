@@ -25,4 +25,7 @@ package org.ciudadesabiertas.dataset.utils;
 public class CuboPadronConstants
 {
 	public static final String KEY="padron";	
+	
+	public static final String observationVocabURL = "http://purl.org/linked-data/cube#Observation";
+	
 }

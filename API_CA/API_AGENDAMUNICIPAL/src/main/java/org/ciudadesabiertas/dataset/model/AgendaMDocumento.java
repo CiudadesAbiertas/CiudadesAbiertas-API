@@ -45,6 +45,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -60,41 +61,45 @@ import io.swagger.annotations.ApiModel;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.SCHEMA, propiedad = "DigitalDocument")
-@PathId(value="/agendaMunicipal/documento")
+@PathId(value="/agenda-municipal/documento")
 public class AgendaMDocumento implements java.io.Serializable, RDFModel {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 7605654834265875116L;
-	
+
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador de la documentación. Ejemplo: AGMDOC0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	@RdfTripleExtenal(sujetoInicioURI="/agendaMunicipal/evento/", sujetoFinURI="eventId", propiedadURI=Context.ESAGM_URI+"/documentacion", objetoInicioURI="/agendaMunicipal/documento/", objetoFinURI="id")
+	@RdfTripleExtenal(sujetoInicioURI="/agenda-municipal/evento/", sujetoFinURI="eventId", propiedadURI=Context.ESAGM_URI+"documentacion", objetoInicioURI="/agenda-municipal/documento/", objetoFinURI="id")
 	private String id;
 	
+	@ApiModelProperty(value = "Formato de la codificación de la documentación. Ejemplo: texto")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="encodingFormat", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "encodingFormat")	
 	private String encodingFormat;
 	
+	@ApiModelProperty(value = "Nombre de la documentación. Ejemplo: Inscripcion Evento")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="name", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "name")	
 	private String name;
 	
+	@ApiModelProperty(value = "URL de la documentación. Ejemplo: https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
 	@IsUri
 	private String url;
 	
+	@ApiModelProperty(value = "Evento relacionado con la documentación. Ejemplo: AGM0001")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="eventId", format=Constants.STRING_FORMAT)
-	//@Rdf(contexto = Context.ESAGM, propiedad = "event")
-	//@RdfExternalURI(inicioURI="/agendaMunicipal/evento/",finURI="eventId", urifyLevel = 1)
 	private String eventId;
 
 	public AgendaMDocumento() {

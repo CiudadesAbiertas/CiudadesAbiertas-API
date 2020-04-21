@@ -77,7 +77,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Organigrama",description = "Conjunto de operaciones el conjunto de datos Organigrama", tags= {"Organigrama"})
+@Api(value="Organigrama",description = "Conjunto de operaciones el conjunto de datos Organigrama"+SwaggerConstants.VOCABULARIO_A_HREF+OrganigramaConstants.organizationVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Organigrama"})
 public class OrganigramaController extends GenericController implements CiudadesAbiertasController
 {	
 
@@ -207,11 +207,16 @@ public class OrganigramaController extends GenericController implements Ciudades
 	   })
 	@RequestMapping(value= {GEO_LIST,  VERSION_1+GEO_LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> geoList(HttpServletRequest request,	OrganigramaGeoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields,			
-			@RequestParam(value = Constants.METERS, required = true) String meters,
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,			
+			@RequestParam(value = Constants.METERS, required = true) 
+				@ApiParam(value=SwaggerConstants.PARAM_METERS) String meters,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[geoList][" + LIST + "]");
@@ -233,11 +238,16 @@ public class OrganigramaController extends GenericController implements Ciudades
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, OrganigramaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,		
 						
@@ -266,13 +276,18 @@ public class OrganigramaController extends GenericController implements Ciudades
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, OrganigramaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -315,9 +330,9 @@ public class OrganigramaController extends GenericController implements Ciudades
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+				@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_ORGANIGRAMA) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_ORGANIGRAMA_TEXT) 
+				@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_ORGANIGRAMA_TEXT) 
 			@RequestBody Organigrama obj)
 	{
 
@@ -339,7 +354,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_ORGANIGRAMA) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
@@ -363,7 +378,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	            
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id,@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_ORGANIGRAMA) String id,@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -384,7 +399,7 @@ public class OrganigramaController extends GenericController implements Ciudades
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_ORGANIGRAMA) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -426,9 +441,11 @@ public class OrganigramaController extends GenericController implements Ciudades
 	@RequestMapping(value=SEARCHGROUP, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> groupBySearch(HttpServletRequest request, 
 															GroupBySearch groupBySearch,
-															@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId,
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+			@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[search][" + SEARCHGROUP + "]");

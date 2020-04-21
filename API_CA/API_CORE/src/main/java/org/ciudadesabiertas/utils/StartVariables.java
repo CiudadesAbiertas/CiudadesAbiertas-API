@@ -64,4 +64,7 @@ public class StartVariables
 		//VBLE para el control de las FK
 		public static boolean activeFK = true;
 		
+		//db.schema		
+		public static String db_schema = "";
+		
 }

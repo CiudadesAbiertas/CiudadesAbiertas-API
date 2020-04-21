@@ -16,11 +16,14 @@
 
 package org.ciudadesabiertas.config;
 
+import org.ciudadesabiertas.utils.ResultError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,6 +38,15 @@ public class ControllerExceptionHandler
 {
 
 	private static final Logger log = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+	
+	@ExceptionHandler(value = {org.springframework.web.servlet.NoHandlerFoundException.class})
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public  @ResponseBody ResponseEntity<?> processMethodNotFoundException(Exception exception)
+	{
+		log.error("[handleNotFoundException][ERROR:"+exception.getMessage()+"]");
+		ResponseEntity<?> responseEntity=new ResponseEntity<Object>(new ResultError("NOT FOUND",HttpStatus.NOT_FOUND.value()),HttpStatus.NOT_FOUND);
+		return responseEntity;
+	}
 
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

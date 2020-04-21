@@ -46,6 +46,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -68,24 +69,28 @@ public class Pais  implements java.io.Serializable, RDFModel, Territorio {
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador del país. Ejemplo: 724")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	@CustomId(id = "title")	
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del país. Ejemplo: España")
 	@CsvBindByPosition(position=2)
+	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = "title")
+	private String title;
+	
+	@ApiModelProperty(value = "Nombre del país urificado para URLs. Ejemplo: España")
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="identifier", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "identifier")
 	private String identifier;
-	
-	@CsvBindByPosition(position=3)
-	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = "title")
-	private String title;	
 		
 	@Transient
 	@CsvBindByPosition(position=4)

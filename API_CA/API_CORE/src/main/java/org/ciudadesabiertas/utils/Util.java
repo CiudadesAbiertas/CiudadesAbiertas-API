@@ -25,7 +25,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
@@ -847,6 +846,10 @@ public class Util
 			{
 				headers.add(Constants.HEADER_LOCATION, red.replace(aURL.getPath(), aURL.getPath()+".georss"));
 			}
+			else {
+				//Sin formato definido o valido se devuelve por defecto JSON
+				headers.add(Constants.HEADER_LOCATION, red.replace(aURL.getPath(), aURL.getPath()+".json"));
+			}
 		}
 		if (headers.size()>0)
 		{
@@ -1193,6 +1196,25 @@ public class Util
 		
 		return result;
 		
+	}
+	
+	// Clase para validar los campos asociados al RDF implementando excepcions
+	// {{"subvencionId","organizationId","orgIdObligadoPrestacion","distritoId","prorrogaId"},{"instrumenta","gestionadoPor",
+	// "obligadoPrestacionesAyuntamiento","gestionadoPor","esProrrogaDe"}}
+	public static boolean validatorFieldRDF(String field, String anotation, String[][] exceptionFileds) {
+
+		if (exceptionFileds != null && exceptionFileds.length > 0) {
+			if (Util.exitString(exceptionFileds[0], field)) {
+				int indice = Util.searchString(exceptionFileds[0], field);
+				String anotationAux = exceptionFileds[1][indice];
+				if (anotation.equals(anotationAux)) {
+					return true;
+				}
+			}
+		}
+
+		return validatorFieldRDF(field, anotation);
+
 	}
 	
 	public static boolean isUrlParam(String valor) {
@@ -1645,6 +1667,11 @@ public class Util
 	
 	public static boolean isEquipamientoIntegration() {
 		String nameControler="EquipamientoController";
+		return exitController(nameControler);
+	}
+	
+	public static boolean isSubvencionIntegration() {
+		String nameControler="SubvencionController";
 		return exitController(nameControler);
 	}
 	

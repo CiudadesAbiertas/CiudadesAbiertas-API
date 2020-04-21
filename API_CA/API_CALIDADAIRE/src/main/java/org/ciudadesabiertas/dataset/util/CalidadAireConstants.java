@@ -26,5 +26,12 @@ public class CalidadAireConstants
 {
 	public static final String KEY="calidadAire";
 	
-	public static final String sensorIdPath="/calidadAire/estacion/{isHostedBy}/sensor/{observesId}";
+	public static final String sensorIdPath="/calidad-aire/estacion/{isHostedBy}/sensor/{observesId}";
+	
+	public static final String airQualityStationVocabURL="http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire/index-en.html#AirQualityStation";
+	
+	public static final String airQualityObservationVocabURL="http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire/index-en.html#AirQualityObservation";
+	
+	public static final String airQualitySensorVocabURL="http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire/index-en.html#AirQualitySensor";
+	
 }

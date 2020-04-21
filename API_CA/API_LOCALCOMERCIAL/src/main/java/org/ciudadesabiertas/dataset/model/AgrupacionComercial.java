@@ -61,7 +61,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCOM, propiedad = "AgrupacionComercial")
-@PathId(value="/localComercial/agrupacionComercial")
+@PathId(value="/local-comercial/agrupacion-comercial")
 public class AgrupacionComercial implements java.io.Serializable, RDFModel
 {
 
@@ -72,16 +72,19 @@ public class AgrupacionComercial implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private String ikey;
 		
+	@ApiModelProperty(value = "Identificador de la agrupación comercial. Ejemplo: 99000214")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre de la agrupación comercial. Ejemplo: GALERIA DE ALIMENTACION EL CARMEN")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Tipo de agrupación comercial. Ejemplo: galeria de alimentacion")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="tipoAgrupacionComercial", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "tipoAgrupacionComercial")

@@ -57,10 +57,10 @@ public class LocalComercialGeoSearch extends LocalComercial implements  Serializ
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X del local comercial. Ejemplo: 441201.60999147")
     private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y del local comercial. Ejemplo: 4479589.52997752")
 	private BigDecimal yETRS89;
 
 

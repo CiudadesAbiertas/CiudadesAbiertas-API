@@ -35,7 +35,6 @@ import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.ExceptionUtil;
 import org.ciudadesabiertas.utils.RequestType;
-import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -51,13 +50,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
@@ -105,7 +104,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CubeDsdDimensionValueResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -114,7 +113,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> listDimension(HttpServletRequest request,
-			@PathVariable String dimensionId,
+			@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[list][" + LIST + "]["+dimensionId+"]");	
@@ -203,7 +202,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 
 
 	
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -211,7 +210,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
-	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request,@PathVariable String dimensionId,			
+	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request,@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -222,7 +221,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	
 
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CubeDsdDimensionValueResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -231,7 +230,9 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> findByDimensionAndId(HttpServletRequest request, @PathVariable String dimensionId,  @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> findByDimensionAndId(HttpServletRequest request, 
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId, 
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_VALUE) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -311,7 +312,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	}
 	
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CubeDsdResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -320,7 +321,9 @@ public class CubeDsdDimensionValueController extends GenericController implement
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String dimensionId,  @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, 
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId,  
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_VALUE) String id)
 	{
 		log.info("[recordHead][" + RECORD + "]");
 		return findByDimensionAndId(request, dimensionId, id);		

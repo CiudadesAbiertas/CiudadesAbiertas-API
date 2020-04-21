@@ -412,24 +412,45 @@ public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessag
 				{
 					JSONObject geometry=(JSONObject) hasGeometry.get("geometry");
 					if (geometry!=null)
-					{
-						JSONArray poligons=(JSONArray) geometry.get("coordinates");					
+					{	
+						log.debug("territorioId: "+((Territorio)record).getId());		
+						JSONArray poligons=(JSONArray) geometry.get("coordinates");
+						log.debug("poligonos: "+poligons.size());		
 						for (int i=0;i<poligons.size();i++)
 						{
 							JSONArray actualPoligon = (JSONArray) poligons.get(i);
-							log.info("poligono: "+i);					
+							log.debug("\tpoligono: "+i);
+							log.debug("\t\tvertices: "+actualPoligon.size());
+							LinearRing linearRing = new LinearRing();
+							PositionList positionList = new PositionList();		
+							boolean isArray=false;
 							for (int j=0;j<actualPoligon.size();j++)
 							{						
 								JSONArray vertices=(JSONArray) actualPoligon.get(j);
-								PositionList positionList = new PositionList();
-								log.info("vertices: "+vertices.size());		
-								for (int k=0;k<vertices.size();k++)
+								
+								if (vertices.get(0) instanceof JSONArray)
 								{
-									JSONArray punto=(JSONArray) vertices.get(k);							
-									positionList.add((Double) punto.get(1), (Double)punto.get(0));
-								}			
-								lineRingArray.add(new LinearRing(positionList));
+									isArray=true;
+									positionList = new PositionList();	
+									for (int k=0;k<vertices.size();k++)
+									{
+										JSONArray punto=(JSONArray) vertices.get(k);							
+										positionList.add((Double) punto.get(1), (Double)punto.get(0));
+									}			
+									lineRingArray.add(new LinearRing(positionList));
+								}
+								else
+								{
+									positionList.add((Double) vertices.get(1), (Double)vertices.get(0));
+								}
 							}
+							if (isArray==false)
+							{
+								linearRing.setPositionList(positionList);
+								lineRingArray.add(linearRing);
+								log.debug("\tlinea creada con "+positionList.size()+" puntos");
+							}
+							
 						}
 					}				
 				}				

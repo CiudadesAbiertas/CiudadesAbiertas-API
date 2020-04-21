@@ -269,10 +269,10 @@ public class EquipamientoDataRSQLTest
 	
 	
 	@Test
-	public void test_Busqueda_titularidad() throws Exception
+	public void test_Busqueda_titularidadPublica() throws Exception
 	{
 
-		String value = "titularidad=='Publico'";
+		String value = "titularidadPublica==true";
 		
 		
 
@@ -280,7 +280,7 @@ public class EquipamientoDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 37);
+		assertTrue(total == 45);
 	}
 	
 	@Test

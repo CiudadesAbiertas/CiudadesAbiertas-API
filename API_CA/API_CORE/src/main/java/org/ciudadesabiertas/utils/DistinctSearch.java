@@ -19,9 +19,10 @@ package org.ciudadesabiertas.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -33,9 +34,11 @@ import io.swagger.annotations.ApiParam;
  */
 public class DistinctSearch {
 	
-	@ApiParam(required = true, name = "field")
+	@ApiParam(required = true, name = "field", value = SwaggerConstants.PARAM_FIELD )
 	private String field;	
 	
+	//@ApiModelProperty(value = SwaggerConstants.PARAM_CONDICION_ADICCIONAL)
+	@ApiModelProperty(hidden = true)
 	private String condicionAdicional;
 	
 	public DistinctSearch()

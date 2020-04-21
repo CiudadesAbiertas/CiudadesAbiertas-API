@@ -32,8 +32,8 @@ import org.ciudadesabiertas.dataset.util.CallejeroTramoViaResult;
 import org.ciudadesabiertas.dataset.util.CallejeroTramoViaSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
@@ -75,7 +75,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="CallejeroTramo",description = "Conjunto de operaciones sobre tramos del conjunto de datos Callejero", tags= {"Callejero - Tramo"})
+@Api(value="CallejeroTramo",description = "Conjunto de operaciones sobre tramos del conjunto de datos Callejero"+SwaggerConstants.VOCABULARIO_A_HREF+CallejeroConstants.tramoViaVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Callejero - Tramo"})
 public class CallejeroTramoViaController extends GenericController implements CiudadesAbiertasController
 {	
 
@@ -118,7 +118,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	protected DatasetService<CallejeroTramoVia> service;
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -128,8 +128,10 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+				@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+				@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -199,11 +201,16 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, CallejeroTramoViaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,	
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,	
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -218,7 +225,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	}
 
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -227,11 +234,16 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, CallejeroTramoViaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,			
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -274,7 +286,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_CALLEJERO_TRAMO) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
 			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_CALLEJEROTRAMO_TEXT) 
 			@RequestBody CallejeroTramoVia obj)
@@ -298,7 +310,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_CALLEJERO_TRAMO) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
@@ -323,7 +335,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
-													@PathVariable String id)
+													@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CALLEJERO_TRAMO) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -334,7 +346,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 
 	}
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CallejeroTramoViaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -343,7 +355,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CALLEJERO_TRAMO) String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -355,7 +367,7 @@ public class CallejeroTramoViaController extends GenericController implements Ci
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { TRANSFORM,
 			VERSION_1 + TRANSFORM }, method = RequestMethod.POST, consumes = SwaggerConstants.FORMATOS_ADD_REQUEST)
-	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = {
+	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = {
 			@Authorization(value = Constants.APIKEY) })
 	@ApiResponses({
 			@ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA, response = CallejeroTramoViaResult.class),

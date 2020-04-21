@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
 
 
@@ -35,15 +36,15 @@ import io.swagger.annotations.ApiParam;
  */
 public class CubeQuerySearch {
 	
-	@ApiParam(required = true, name = "dimension")
+	@ApiParam(required = true, name = "dimension", value="Dimensión/es de la consulta. Ejemplo: refPeriod")
 	private List<String> dimension;
-	
-	private String where;
-	@ApiParam(required = true, name = "measure")
+	@ApiParam(required = true, name = "measure", value="Medida/s de la consulta. Ejemplo: numeroPersonas")
 	private String measure;
-	@ApiParam(required = true, name = "group", allowableValues=SwaggerConstants.AGRUPADAS_OPER_PERMITIDAS)
+	@ApiParam(required = true, name = "group", allowableValues=SwaggerConstants.AGRUPADAS_OPER_PERMITIDAS, value="Operación de agrupación de la consulta")
 	private String group;
-	
+	@ApiModelProperty(value = "Filtro de la consulta. Ejemplo: refPeriod=2016")
+	private String where;
+	@ApiModelProperty(value = "Orden de la consulta. Ejemplo: refPeriod")
 	private String sort;
 	
 	

@@ -24,7 +24,7 @@ package org.ciudadesabiertas.utils;
  */
 public enum EnumCategoryPuntoInteres
 {	
-	PUNTOINTERESTURISTICO("lugar interés turístico","/puntoInteresTuristico/puntoInteresTuristico"),
+	PUNTOINTERESTURISTICO("lugar interés turístico","/punto-interes-turistico/punto-interes-turistico"),
 	MONUMENTO("monumento","/monumento/monumento");
     
 	

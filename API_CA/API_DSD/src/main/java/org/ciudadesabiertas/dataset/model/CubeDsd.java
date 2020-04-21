@@ -71,23 +71,24 @@ public class CubeDsd  implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador de la estructura de un conjunto de datos. Ejemplo: poblacionPorEdadGruposQuinquenales")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 		
+	@ApiModelProperty(value = "Nombre de la estructura de un conjunto de datos. Ejemplo: Estructura de los datos relacionados con la edad de los habitantes registrados en el padrón municipal según rangos quinquenales")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
-
+	@ApiModelProperty(value = "Notación de la estructura de un conjunto de datos. Ejemplo: poblacionPorEdadGruposQuinquenales")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="notation", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SKOS, propiedad = "notation")
 	private String notation;
 	
-
 	@Transient	
 	@RdfList(propiedad=Context.QB_URI+"component")
 	@RdfBlankNode(propiedad=Context.QB_URI+"dimension")

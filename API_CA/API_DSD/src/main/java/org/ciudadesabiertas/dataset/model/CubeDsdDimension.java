@@ -53,28 +53,31 @@ public class CubeDsdDimension implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador de la dimensión. Ejemplo: edadGruposQuinquenales")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
-	
+	@ApiModelProperty(value = "Nombre de la dimensión. Ejemplo: Edad (grupos quinquenales)")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Notación de la dimensión. Ejemplo: edad-grupos-quinquenales")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="notation", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SKOS, propiedad = "notation")
-	private String notation;
+	private String notation;	
 	
+	@ApiModelProperty(value = "Esquema de la dimensión. Ejemplo: https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales")	
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="conceptScheme", format=Constants.STRING_FORMAT)		
 	@RangeSKOS()
 	private String conceptScheme;	
 	
-	
+	@ApiModelProperty(value = "Propiedad que determina que dos individuos dados son iguales. Ejemplo: http://opendata.aragon.es/def/iaest/dimension#edad-grupos-quinquenales")
 	@Rdf(contexto = Context.OWL, propiedad = "sameAs")
 	@IsUri
 	private String sameAs;	

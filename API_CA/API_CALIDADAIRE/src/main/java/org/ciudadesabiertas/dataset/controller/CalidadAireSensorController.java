@@ -34,9 +34,9 @@ import org.ciudadesabiertas.dataset.util.CalidadAireSensorResult;
 import org.ciudadesabiertas.dataset.util.CalidadAireSensorSearch;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ExceptionUtil;
+import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
@@ -80,22 +80,22 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="CalidadAireSensor",description = "Conjunto de operaciones sobre sensores del conjunto de datos Calidad del Aire", tags= {"Calidad del Aire - Sensor"})
+@Api(value="CalidadAireSensor",description = "Conjunto de operaciones sobre sensores del conjunto de datos Calidad del Aire"+SwaggerConstants.VOCABULARIO_A_HREF+CalidadAireConstants.airQualitySensorVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Calidad del Aire - Sensor"})
 public class CalidadAireSensorController extends GenericController implements CiudadesAbiertasController
 {	
 
-	public static final String LIST = "/calidadAire/sensor";
+	public static final String LIST = "/calidad-aire/sensor";
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = "/calidadAire/estacion/{isHostedBy}/sensor/{observesId}";
+	public static final String RECORD = "/calidad-aire/estacion/{isHostedBy}/sensor/{observesId}";
 	
-	public static final String TRANSFORM = "/calidadAire/sensor/transform";
+	public static final String TRANSFORM = LIST+"/transform";
 	
-	public static final String ADD = "/calidadAire/sensor";
-	public static final String UPDATE = "/calidadAire/estacion/{isHostedBy}/sensor/{observesId}";
-	public static final String CONTEXTO = "/calidadAire";
-	public static final String DELETE = "/calidadAire/estacion/{isHostedBy}/sensor/{observesId}";
+	public static final String ADD = LIST;
+	public static final String UPDATE = "/calidad-aire/estacion/{isHostedBy}/sensor/{observesId}";
+	public static final String CONTEXTO = "/calidad-aire";
+	public static final String DELETE = "/calidad-aire/estacion/{isHostedBy}/sensor/{observesId}";
 	
 	public static final String MODEL_VIEW_LIST = "calidadAire/sensorList";
 	public static final String MODEL_VIEW_ID = "calidadAire/sensorId";
@@ -126,7 +126,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	protected DatasetService<CalidadAireEstacion> calidadAireEstacionService;
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -198,7 +198,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CalidadAireSensorResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -207,11 +207,16 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, CalidadAireSensorSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,						
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -226,7 +231,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	}	
 	
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -372,8 +377,8 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(			 
-			@PathVariable(Constants.IS_HOSTED_BY) String isHostedBy,			 
-			@PathVariable(Constants.OBSERVES_ID) String observesId, 
+			@PathVariable(Constants.IS_HOSTED_BY) @ApiParam(required=true, value="Relación entre un sensor y una estación, una muestra o una plataforma, en la que está montado o alojado."+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_ESTACION) String isHostedBy,			 
+			@PathVariable(Constants.OBSERVES_ID) @ApiParam(required=true, value="Identificador de la relación entre un sensor y una propiedad observable que es capaz de detectar."+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_SENSOR_OBS) String observesId, 
 			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_CALIDADAIRESENSOR_TEXT) 
 			@RequestBody CalidadAireSensor obj)
 	{
@@ -497,7 +502,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	public @ResponseBody ResponseEntity<?> delete(
 			@ApiParam(required = true, name = Constants.IS_HOSTED_BY, value = SwaggerConstants.PARAM_IS_HOSTED_BY_TEXT) 
 			@PathVariable(Constants.IS_HOSTED_BY) String isHostedBy,
-			@ApiParam(required = true, name = Constants.OBSERVES_ID, value = SwaggerConstants.PARAM_OBSERVES_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.OBSERVES_ID, value = SwaggerConstants.PARAM_OBSERVES_ID_TEXT+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_SENSOR_OBS) 
 			@PathVariable(Constants.OBSERVES_ID) String observesId)
 	{
 
@@ -566,7 +571,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	
 
 	//CMG
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CalidadAireSensorResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -576,7 +581,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	            
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String isHostedBy, @PathVariable String observesId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
+													@PathVariable @ApiParam(required = true, value= SwaggerConstants.PARAM_IS_HOSTED_BY_TEXT+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_ESTACION) String isHostedBy,
+													@PathVariable @ApiParam(required = true, value= SwaggerConstants.PARAM_OBSERVES_ID_TEXT+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_SENSOR_OBS) String observesId)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -636,7 +643,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 
 	}
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CalidadAireSensorResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -645,7 +652,9 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String isHostedBy,@PathVariable String observesId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, 
+														@PathVariable @ApiParam(required = true, value= SwaggerConstants.PARAM_IS_HOSTED_BY_TEXT+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_ESTACION) String isHostedBy,
+														@PathVariable @ApiParam(required = true, value= SwaggerConstants.PARAM_OBSERVES_ID_TEXT+SwaggerConstants.PARAM_ID_CALIDAD_AIRE_SENSOR_OBS) String observesId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -677,7 +686,7 @@ public class CalidadAireSensorController extends GenericController implements Ci
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value={TRANSFORM,  VERSION_1+TRANSFORM}, method = RequestMethod.POST, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST)
-	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CalidadAireSensorResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),

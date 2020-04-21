@@ -25,4 +25,6 @@ package org.ciudadesabiertas.dataset.utils;
 public class SubvencionConstants
 {
 	public static final String KEY="subvencion";
+	
+	public static final String subvencionVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/subvencion/index-en.html#Subvencion";
 }

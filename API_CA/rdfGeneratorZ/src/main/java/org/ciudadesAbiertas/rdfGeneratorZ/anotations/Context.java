@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Context {
-	public static final String ESEQUIP_URI = "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#";
+	public static final String ESEQUIP_URI = "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento-municipal#";
 	public static final String GEO_URI = "http://www.w3.org/2003/01/geo/wgs84_pos#";
 	public static final String XSD_URI = "http://www.w3.org/2001/XMLSchema#";
 	public static final String ORG_URI = "http://www.w3.org/ns/org#";
@@ -40,7 +40,7 @@ public class Context {
 	public static final String SF_URI = "http://www.opengis.net/ont/sf#";
 	public static final String GEOSPARQL_URI = "http://www.opengis.net/ont/geosparql#";
 	public static final String ESAGM_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/agenda-municipal#";
-	public static final String OCDS_URI = "https://theybuyforyou.eu/ontology/ocds/";		
+	public static final String OCDS_URI = "http://data.tbfy.eu/ontology/ocds#";		
 	public static final String ESBICI_URI = "http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#";
 	public static final String ESCONV_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/convenio#";
 	

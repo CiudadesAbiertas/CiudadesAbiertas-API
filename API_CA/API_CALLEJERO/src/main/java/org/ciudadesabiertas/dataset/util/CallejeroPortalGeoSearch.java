@@ -54,10 +54,10 @@ public class CallejeroPortalGeoSearch extends CallejeroPortal implements  Serial
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X del portal. Ejemplo: 440242.56")
     private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y del portal. Ejemplo: 4476174.2")
 	private BigDecimal yETRS89;
 
 

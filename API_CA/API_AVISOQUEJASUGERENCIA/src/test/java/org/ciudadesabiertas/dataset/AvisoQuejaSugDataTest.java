@@ -79,9 +79,9 @@ public class AvisoQuejaSugDataTest
 	}
 
 	@Test
-	public void test_Busqueda_serviceRequestName() throws Exception
+	public void test_Busqueda_title() throws Exception
 	{
-		String paramField="serviceRequestName";
+		String paramField="title";
 
 		String value = "AVISO-R RECOGIDA ANIMALES MUERTOS*";
 
@@ -92,9 +92,9 @@ public class AvisoQuejaSugDataTest
 	
 	
 	@Test
-	public void test_Busqueda_serviceRequestId() throws Exception
+	public void test_Busqueda_identifier() throws Exception
 	{
-		String paramField="serviceRequestId";
+		String paramField="identifier";
 
 		String value = "0-52";
 
@@ -324,7 +324,7 @@ public class AvisoQuejaSugDataTest
 	public void test_Busqueda_geo_fields() throws Exception
 	{
 		String [] paramField= {"xETRS89","yETRS89","meters","fields"};
-		String [] value = {"439908","4466975","50","id,serviceRequestName,source,distance"};
+		String [] value = {"439908","4466975","50","id,title,source,distance"};
 		JSONArray records = TestUtils.extractRecords(AvisoQuejaSugController.GEO_LIST, paramField, value, mockMvc);
 		assertTrue(records.size() == 2);	
 	}

@@ -49,6 +49,7 @@ public class PuntoInteresTuristicoSearch extends PuntoInteresTuristico implement
 	@ApiModelProperty(hidden = true)
 	private BigDecimal longitud;
 	
+	
 	@ApiModelProperty(hidden = true)
 	private BigDecimal x;
 	
@@ -58,9 +59,10 @@ public class PuntoInteresTuristicoSearch extends PuntoInteresTuristico implement
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del lugar de interés turístico. Ejemplo: 440291.26773")
     private BigDecimal xETRS89;	
 	
-	
+    @ApiModelProperty(value = "Coordenada Y del lugar de interés turístico. Ejemplo: 4474254.64478")
 	private BigDecimal yETRS89;
 
 

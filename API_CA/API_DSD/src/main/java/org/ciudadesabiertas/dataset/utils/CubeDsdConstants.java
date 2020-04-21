@@ -25,4 +25,9 @@ package org.ciudadesabiertas.dataset.utils;
 public class CubeDsdConstants
 {
 	public static final String KEY="cubeDsd";
+	
+	public static final String dataStructureDefinitionVocabURL="http://purl.org/linked-data/cube#DataStructureDefinition";
+	public static final String dimensionPropertyVocabURL="http://purl.org/linked-data/cube#DimensionProperty";
+	public static final String measurePropertyVocabURL="http://purl.org/linked-data/cube#MeasureProperty";
+	
 }

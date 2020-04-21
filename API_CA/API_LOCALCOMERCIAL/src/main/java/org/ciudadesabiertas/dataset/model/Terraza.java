@@ -63,7 +63,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCOM, propiedad = "Terraza")
-@PathId(value="/localComercial/terraza")
+@PathId(value="/local-comercial/terraza")
 public class Terraza implements java.io.Serializable, RDFModel
 {
 	@JsonIgnore
@@ -73,37 +73,44 @@ public class Terraza implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador de la terraza. Ejemplo: 1355")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Número de mesas autorizadas para la terraza. Ejemplo: 5")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="numeroMesasAutorizadas")
 	@Rdf(contexto = Context.ESCOM, propiedad = "numeroMesasAutorizadas", typeURI=Context.XSD_URI+"int")
 	private Integer numeroMesasAutorizadas;
 	
+	@ApiModelProperty(value = "Número de sillas autorizadas para la terraza. Ejemplo: 10")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="numeroSillasAutorizadas")
 	@Rdf(contexto = Context.ESCOM, propiedad = "numeroSillasAutorizadas", typeURI=Context.XSD_URI+"int")
 	private Integer numeroSillasAutorizadas;
 	
+	@ApiModelProperty(value = "Periodo de funcionamiento de la terraza, que puede ser anual o estacional. Ejemplo: Anual")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName (column = "periodoFuncionamiento", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "periodoFuncionamiento")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/periodo-funcionamiento/", finURI="periodoFuncionamiento", urifyLevel=2)
 	private String periodoFuncionamiento;
 	
+	@ApiModelProperty(value = "Superficie en metros cuadrados ocupada por la terraza. Ejemplo: 4.23")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName (column = "superficie")
 	@Rdf(contexto = Context.ESCOM, propiedad = "superficie", typeURI=Context.XSD_URI+"double")
 	private BigDecimal superficie;
 	
+	@ApiModelProperty(value = "El horario de la terraza. Ejemplo: Lunes a jueves: de 10:00:00 hasta 01:00:00. Viernes y sábados: de 10:00:00 hasta 02:00:00")
 	@CsvBindByPosition(position=6)	
 	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
 	private String openingHours;
 	
+	@ApiModelProperty(value = "Descripción de la terraza. Ejemplo: Acera")
 	@CsvBindByPosition(position=7)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")

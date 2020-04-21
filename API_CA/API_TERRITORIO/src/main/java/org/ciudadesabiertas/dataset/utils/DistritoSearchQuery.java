@@ -87,7 +87,6 @@ public class DistritoSearchQuery extends DistritoSearch   {
 	public DistritoSearchQuery toTransform(DistritoSearch obj) {
 		this.setAutonomia(obj.getAutonomia());
 		this.setId(obj.getId());
-		this.setIdentifier(obj.getIdentifier());
 		this.setMunicipioId(obj.getMunicipioId());
 		this.setProvincia(obj.getProvincia());
 		this.setPais(obj.getPais());

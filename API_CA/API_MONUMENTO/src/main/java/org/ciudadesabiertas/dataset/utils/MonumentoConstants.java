@@ -31,4 +31,7 @@ public class MonumentoConstants
 	public static final String [] CATEGORY_TEST = {
 			CATEGORY
 	};
+	
+	public static final String lugarInteresTuristicoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico";
+	
 }

@@ -99,7 +99,6 @@ public class SeccionCensalSearchQuery  extends SeccionCensalSearch {
 	public SeccionCensalSearchQuery toTransform(SeccionCensalSearch obj) {
 		
 		this.setId(obj.getId());
-		this.setIdentifier(obj.getIdentifier());	
 		this.setTitle(obj.getTitle());		
 		this.setPais(obj.getPais());
 		this.setAutonomia(obj.getAutonomia());

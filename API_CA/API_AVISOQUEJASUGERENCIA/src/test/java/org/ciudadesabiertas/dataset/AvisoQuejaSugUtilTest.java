@@ -43,8 +43,8 @@ public class AvisoQuejaSugUtilTest
 	
 	private static final String testJSON = "{\r\n" + 
 			"    \"id\" : \"AQSA0001\",\r\n" + 
-			"    \"serviceRequestName\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\",\r\n" + 
-			"    \"serviceRequestId\" : \"0-52\",\r\n" + 
+			"    \"title\" : \"AVISO-R RECOGIDA ANIMALES MUERTOS E\",\r\n" + 
+			"    \"identifier\" : \"0-52\",\r\n" + 
 			"    \"stat\" : \"abierto\",\r\n" + 
 			"    \"statusNotes\" : \"abierto\",\r\n" + 
 			"    \"openDate\" : \"2018-01-01T00:59:30\",\r\n" +

@@ -19,12 +19,12 @@ package org.ciudadesabiertas.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.ciudadesabiertas.model.Ciudad;
@@ -34,8 +34,6 @@ import org.ciudadesabiertas.utils.HttpUtil;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Util;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +46,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -69,6 +70,7 @@ public class CiudadController implements CiudadesAbiertasController
 
 	private static final Logger log = LoggerFactory.getLogger(CiudadesAbiertasController.class);
 
+	
 	@Autowired
 	private Environment env;
 	
@@ -84,6 +86,7 @@ public class CiudadController implements CiudadesAbiertasController
 	//JCBH here we store the api.json response, I used singleton pattern
 	private static StringBuffer apiJsonResponse;
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = Constants.API_JSON, method = RequestMethod.GET, produces = Constants.CONTENT_TYPE_JSON_UTF8)
 	public @ResponseBody String API_JSON(HttpServletRequest request, 
 										@RequestParam(value = "a", defaultValue = "2707", required = false) String aleat)
@@ -92,6 +95,7 @@ public class CiudadController implements CiudadesAbiertasController
 				
 		if (apiJsonResponse == null)
 		{
+			
 			log.info("[apiJsonResponse] [api.json] [LOADING...]");
 			String json = "";
 			String path = Util.getFullURL(request);
@@ -104,9 +108,13 @@ public class CiudadController implements CiudadesAbiertasController
 			headers.add(hContent);
 
 			boolean escritura = false;
+			boolean head = false;
+			boolean autorization = false;
 			try
 			{
 				escritura = Boolean.parseBoolean(env.getProperty(Constants.OPERACIONES_ESCRITURA));
+				head = Boolean.parseBoolean(env.getProperty(Constants.OPERACIONES_HEAD));
+				autorization = Boolean.parseBoolean(env.getProperty(Constants.OPERACIONES_AUTORIZACION));
 			} catch (Exception e)
 			{
 				log.info("Error reading " + Constants.OPERACIONES_ESCRITURA + " .Only read operations");
@@ -136,35 +144,127 @@ public class CiudadController implements CiudadesAbiertasController
 			{
 				json=json.replace(tomcatContext, newContext);
 			}
+
+			try
+			{
+				json=cleanAllowEmptyValue(json);
+			}
+			catch (Exception e)
+			{
+				log.error("Error cleaning attributes of AllowEmptyValue",e);
+			}
 			
-			if (escritura)
+			
+			if (escritura && head && autorization)
 			{
 				json = Util.jsonPrettyPrint(json);
 			} 
 			else
 			{
-				JSONObject stringToJSONObject = Util.stringToJSONObject(json);
+				Gson gson = new Gson();
+				TreeMap<String, Object> map = gson.fromJson(json, TreeMap.class);
 				
-				JSONObject paths = (JSONObject) stringToJSONObject.get("paths");
+				if (autorization==false)
+				{
+					map.remove("securityDefinitions");
+				}
+				
+				LinkedTreeMap paths = (LinkedTreeMap) map.get("paths");
+				
 				for (Object key : paths.keySet())
 				{
 					// based on you key types
 					String keyStr = (String) key;
-					JSONObject localPath = (JSONObject) paths.get(keyStr);
-					localPath.remove("put");
-					localPath.remove("post");
-					localPath.remove("delete");
+					LinkedTreeMap localPath = (LinkedTreeMap) paths.get(keyStr);
+					
+					if (escritura==false)
+					{					
+						localPath.remove("put");
+						localPath.remove("post");
+						localPath.remove("delete");
+					}
+					if (head==false)
+					{					
+						localPath.remove("head");						
+					}
+					
+					if (autorization==false)
+					{
+						Set<String> operaciones = localPath.keySet();
+						for (String keyOperaciones : operaciones)
+						{
+							((LinkedTreeMap)localPath.get(keyOperaciones)).remove("security");
+							List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
+							List parametersWithouSecurity = new ArrayList();
+							
+							for (int i=0;i<parameters.size();i++)
+							{
+								LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
+								if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals("Authorization")==false))
+								{
+									parametersWithouSecurity.add(parameters.get(i));
+								}
+							}							
+							((LinkedTreeMap)localPath.get(keyOperaciones)).put("parameters", parametersWithouSecurity);
+							
+						}
+					}
+					
 					paths.put(keyStr, localPath);
-				}
-				stringToJSONObject.put("paths", paths);
-
-				json = Util.jsonPrettyPrint(stringToJSONObject.toString());
+				}			
+								
+				map.put("paths", paths);
+				
+				
+				
+				String sortedJson = gson.toJson(map);
+				
+				json = Util.jsonPrettyPrint(sortedJson.toString());
+				
+				
 			}
+				
+			
+			
+			
 			apiJsonResponse=new StringBuffer();
 			apiJsonResponse.append(json);
 			log.info("[apiJsonResponse] [api.json] [initialized]");
 		}
 		return apiJsonResponse.toString();
+	}
+
+	private String cleanAllowEmptyValue(String json) {
+		Gson gson = new Gson();
+		TreeMap<String, Object> map = gson.fromJson(json, TreeMap.class);
+		
+		LinkedTreeMap definitions = (LinkedTreeMap) map.get("definitions");
+		
+		
+		for (Object key : definitions.keySet())
+		{	
+			String keyStr = (String) key;
+			if (keyStr.equals("Map«string,object»")==false)
+			{
+				log.info("Cleaning "+key);
+				LinkedTreeMap localDefinition = (LinkedTreeMap) definitions.get(keyStr);
+				LinkedTreeMap properties = (LinkedTreeMap)localDefinition.get("properties");
+				for (Object propertyKey : properties.keySet())
+				{	
+					String keyP = (String) propertyKey;
+					LinkedTreeMap localProperty = (LinkedTreeMap) properties.get(keyP);
+					localProperty.remove("allowEmptyValue");
+					
+					properties.put(keyP, localProperty);
+				}
+				localDefinition.put("properties",properties);
+				definitions.put(keyStr,localDefinition);		
+			}
+		}			
+						
+		map.put("definitions", definitions);
+		
+		return gson.toJson(map);
 	}
 
 	@RequestMapping(value = "/swagger")

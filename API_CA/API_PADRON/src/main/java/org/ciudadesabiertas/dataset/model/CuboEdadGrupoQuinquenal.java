@@ -46,6 +46,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -62,84 +63,99 @@ import io.swagger.annotations.ApiModel;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.QB, propiedad = "Observation")
-@PathId(value="/padron/datacube/edadGrupoQuinquenal/observation")
+@PathId(value="/padron/datacube/edad-grupo-quinquenal/observation")
 public class CuboEdadGrupoQuinquenal implements java.io.Serializable, RDFModel, DataCubeModel {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;
-	
+
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador de la observación. Ejemplo: obs1")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;	
 	
+	@ApiModelProperty(value = "Conjunto de datos de la observación. Ejemplo: poblacionPorEdadGruposQuinquenales")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.SKOS, propiedad = "notation")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/padron/datacube/", finURI="dataset", propiedad=Context.QB_URI+"dataset")
 	private String dataset;
 	
+	@ApiModelProperty(value = "DSD de la observación. Ejemplo: poblacionPorEdadGruposQuinquenales")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.QB, propiedad = "structure")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/data-cube/data-structure-definition/", finURI="dsd", propiedad=Context.QB_URI+"structure")
 	private String dsd;
 	
+	@ApiModelProperty(value = "El estado de ser hombre o mujer. Ejemplo: sex-F")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "sexo")
 	@RdfExternalURI(inicioURI="http://purl.org/linked-data/sdmx/2009/code#",finURI="sex")
 	private String sex;
 	
-	@CsvBindByPosition(position=3)	
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
-	private String municipioId;
-	
-	@CsvBindByPosition(position=4)	
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
-	private String municipioTitle;
-
-	
-	@CsvBindByPosition(position=5)	
-	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
-	private String distritoId;
-	
-	@CsvBindByPosition(position=6)	
-	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
-	private String distritoTitle;
-	
-	@CsvBindByPosition(position=7)	
-	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
-	private String barrioId;
-	
-	@CsvBindByPosition(position=8)	
-	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
-	private String barrioTitle;
-	
-	@CsvBindByPosition(position=9)	
-	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
-	@RdfExternalURI(inicioURI="/territorio/seccionCensal/", finURI="seccionCensalId", urifyLevel=1)
-	private String seccionCensalId;
-	
-	@CsvBindByPosition(position=10)	
-	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
-	private String seccionCensalTitle;	
-	
-	@CsvBindByPosition(position=11)		
+	@ApiModelProperty(value = "El período de tiempo o punto en el tiempo al que se refiere la observación. Ejemplo: 2016")
+	@CsvBindByPosition(position=3)		
 	@CsvBindByName(column="refPeriod", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "refPeriod")
 	@RdfExternalURI(inicioURI="http://reference.data.gov.uk/id/year/", finURI="refPeriod", urifyLevel=1)
 	private String refPeriod;		
 	
-	@CsvBindByPosition(position=12)
+	@ApiModelProperty(value = "Edad por grupos quinquenales de la observación. Ejemplo: 00-a-04")
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="edad", format=Constants.STRING_FORMAT)
 	@RdfDinamico(inicioURI="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/", finURI="edadGruposQuinquenales", propiedad=Context.IAESTDIMENSION_URI+"edad-grupos-quinquenales")
 	private String edadGruposQuinquenales;
 	
+	@ApiModelProperty(value = "Identificador del municipio de la observación. Ejemplo: 28006")
+	@CsvBindByPosition(position=5)	
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
+	private String municipioId;
+	
+	@ApiModelProperty(value = "Nombre del municipio de la observación. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position=6)	
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
+	private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identificador del distrito de la observación. Ejemplo: 2800601")
+	@CsvBindByPosition(position=7)	
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
+	private String distritoId;
+	
+	@ApiModelProperty(value = "Nombre del distrito de la observación. Ejemplo: Distrito 1")
+	@CsvBindByPosition(position=8)	
+	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
+	private String distritoTitle;
+	
+	@ApiModelProperty(value = "Identificador del barrio de la observación. Ejemplo: 28006011")
+	@CsvBindByPosition(position=9)	
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	private String barrioId;
+	
+	@ApiModelProperty(value = "Nombre del barrio de la observación. Ejemplo: Barrio 1")
+	@CsvBindByPosition(position=10)	
+	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
+	private String barrioTitle;
+	
+	@ApiModelProperty(value = "Identificador de la sección censal de la observación. Ejemplo: 2800601020")
+	@CsvBindByPosition(position=11)	
+	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
+	@RdfExternalURI(inicioURI="/territorio/seccion-censal/", finURI="seccionCensalId", urifyLevel=1)
+	private String seccionCensalId;
+	
+	@ApiModelProperty(value = "Nombre de la sección censal de la observación. Ejemplo: Sección Censal 20")
+	@CsvBindByPosition(position=12)	
+	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
+	private String seccionCensalTitle;	
+	
+	@ApiModelProperty(value = "Numero de personas de la observación. Ejemplo: 56647")
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")
@@ -147,12 +163,12 @@ public class CuboEdadGrupoQuinquenal implements java.io.Serializable, RDFModel, 
 	
 	public void asignaCubo()
 	{
-		dataset="poblacionPorEdad";
+		dataset="poblacionPorEdadGruposQuinquenales";
 	}
 	
 	public void asignaDSD()
 	{
-		dsd="poblacionPorEdad";
+		dsd="poblacionPorEdadGruposQuinquenales";
 	}
 	
 	public CuboEdadGrupoQuinquenal()

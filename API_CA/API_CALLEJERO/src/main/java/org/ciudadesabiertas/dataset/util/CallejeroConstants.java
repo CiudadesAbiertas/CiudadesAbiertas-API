@@ -25,4 +25,11 @@ package org.ciudadesabiertas.dataset.util;
 public class CallejeroConstants
 {
 	public static final String KEY="callejero";
+	
+	public static final String portalVocabURL="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero/index-en.html#Portal";
+	
+	public static final String tramoViaVocabURL="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero/index-en.html#TramoVia";
+	
+	public static final String viaVocabURL="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via";
+	
 }

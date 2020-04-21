@@ -80,20 +80,20 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Licencia",description = "Conjunto de operaciones sobre licencias del conjunto de datos Local Comercial", tags= {"Local Comercial - Licencia de Actividad"})
+@Api(value="Licencia",description = "Conjunto de operaciones sobre licencias del conjunto de datos Local Comercial"+SwaggerConstants.VOCABULARIO_A_HREF+LocalComercialConstants.licenciaAperturaVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Local Comercial - Licencia de Actividad"})
 public class LicenciaController extends GenericController implements CiudadesAbiertasController
 {
-	public static final String LIST = "/localComercial/licenciaActividad";
+	public static final String LIST = "/local-comercial/licencia-actividad";
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = "/localComercial/licenciaActividad/{id}";	
+	public static final String RECORD = LIST+"/{id}";	
 	
-	public static final String TRANSFORM = "/localComercial/licenciaActividad/transform";
+	public static final String TRANSFORM = LIST+"/transform";
 	
-	public static final String ADD = "/localComercial/licenciaActividad";
-	public static final String UPDATE = "/localComercial/licenciaActividad/{id}";
-	public static final String DELETE = "/localComercial/licenciaActividad/{id}";
+	public static final String ADD = LIST;
+	public static final String UPDATE = RECORD;
+	public static final String DELETE = RECORD;
 	
 	
 	public static final String MODEL_VIEW_LIST = "localComercial/licenciaActividadList";
@@ -125,7 +125,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	private DatasetService<LocalComercial> localComercialService;
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -135,8 +135,10 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+			@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+	  			@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -192,7 +194,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	}
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=LicenciaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -201,11 +203,16 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, LicenciaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,				
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,				
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -220,7 +227,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	}
 
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -229,11 +236,16 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, LicenciaSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
@@ -278,7 +290,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(			 
-			@PathVariable String id, 
+			@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_LICENCIA) String id, 
 			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_LICENCIAACTIVIDAD_TEXT) 
 			@RequestBody LicenciaActividad obj)
 	{
@@ -301,7 +313,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(			 
-			@PathVariable String id)
+			@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_LICENCIA) String id)
 	{
 
 		log.info("[delete][" + DELETE + "]");
@@ -379,7 +391,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=LicenciaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -388,7 +400,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,  @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,  @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_LICENCIA) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");	
@@ -400,7 +412,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	}	
 	
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=LicenciaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -409,7 +421,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_LICENCIA) String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -421,7 +433,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { TRANSFORM,
 			VERSION_1 + TRANSFORM }, method = RequestMethod.POST, consumes = SwaggerConstants.FORMATOS_ADD_REQUEST)
-	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = {
+	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = {
 			@Authorization(value = Constants.APIKEY) })
 	@ApiResponses({
 			@ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA, response = LicenciaResult.class),

@@ -99,7 +99,6 @@ public class BarrioSearchQuery  extends BarrioSearch {
 	public BarrioSearchQuery toTransform(BarrioSearch obj) {
 		
 		this.setId(obj.getId());
-		this.setIdentifier(obj.getIdentifier());	
 		this.setTitle(obj.getTitle());		
 		this.setPais(obj.getPais());
 		this.setAutonomia(obj.getAutonomia());

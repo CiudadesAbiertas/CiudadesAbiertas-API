@@ -26,4 +26,5 @@ public class TramiteConstants
 {
 	public static final String KEY="tramite";
 	
+	public static final String procedimientoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/servicio#Procedimiento";
 }

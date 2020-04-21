@@ -46,6 +46,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -67,91 +68,106 @@ public class CuboProcedencia implements java.io.Serializable, RDFModel, DataCube
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;
-	
+
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
+	@ApiModelProperty(value = "Identificador de la observación. Ejemplo: obs1")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;	
 	
+	@ApiModelProperty(value = "Conjunto de datos de la observación. Ejemplo: poblacionPorProcedencia")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.SKOS, propiedad = "notation")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/padron/datacube/", finURI="dataset", propiedad=Context.QB_URI+"dataset")
 	private String dataset;
 	
+	@ApiModelProperty(value = "DSD de la observación. Ejemplo: poblacionPorProcedencia")
 	@Transient
 	@JsonIgnore
 	@Rdf(contexto = Context.QB, propiedad = "structure")
 	@RdfExternalURI(tipo=Context.QB_URI+"DataSet",inicioURI="/data-cube/data-structure-definition/", finURI="dsd", propiedad=Context.QB_URI+"structure")
 	private String dsd;
-
-	@CsvBindByPosition(position=2)	
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
-	private String municipioId;
 	
-	@CsvBindByPosition(position=3)	
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
-	private String municipioTitle;
-
-	
-	@CsvBindByPosition(position=4)	
-	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
-	private String distritoId;
-	
-	@CsvBindByPosition(position=5)	
-	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
-	private String distritoTitle;
-	
-	@CsvBindByPosition(position=6)	
-	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
-	private String barrioId;
-	
-	@CsvBindByPosition(position=7)	
-	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
-	private String barrioTitle;
-	
-	@CsvBindByPosition(position=8)	
-	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
-	@RdfExternalURI(inicioURI="/territorio/seccionCensal/", finURI="seccionCensalId", urifyLevel=1)
-	private String seccionCensalId;
-	
-	@CsvBindByPosition(position=9)	
-	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
-	private String seccionCensalTitle;	
-	
-	@CsvBindByPosition(position=10)		
+	@ApiModelProperty(value = "El período de tiempo o punto en el tiempo al que se refiere la observación. Ejemplo: 2016")
+	@CsvBindByPosition(position=2)		
 	@CsvBindByName(column="refPeriod", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "refPeriod")
 	@RdfExternalURI(inicioURI="http://reference.data.gov.uk/id/year/", finURI="refPeriod", urifyLevel=1)
 	private String refPeriod;		
 	
-	@CsvBindByPosition(position=11)
+	@ApiModelProperty(value = "Edad por grupos quinquenales de la observación. Ejemplo: 00-a-04")
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="edad", format=Constants.STRING_FORMAT)
 	@RdfDinamico(inicioURI="https://opendata.aragon.es/kos/iaest/edad-grupos-quinquenales/", finURI="edadGruposQuinquenales", propiedad=Context.IAESTDIMENSION_URI+"edad-grupos-quinquenales")
 	private String edadGruposQuinquenales;
 	
-	
-	@CsvBindByPosition(position=12)		
+	@ApiModelProperty(value = "El nivel más alto de un programa educativo que la persona ha completado con éxito. Ejemplo: 43")
+	@CsvBindByPosition(position=4)		
 	@CsvBindByName(column="tipo_nivel_estudio", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION , propiedad = "educationLev")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/demografia/padron-municipal/tipo-nivel-estudio/", finURI="tipoNivelEstudio", urifyLevel=1)
 	private String tipoNivelEstudio;	
 		
-	@CsvBindByPosition(position=13)		
+	@ApiModelProperty(value = "Municipio de procedencia de la observación. Ejemplo: 15030")
+	@CsvBindByPosition(position=5)		
 	@CsvBindByName(column="municipio_procedencia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESPAD , propiedad = "municipio-procedencia")
 	private String municipioProcedencia;
 	
-	@CsvBindByPosition(position=14)		
+	@ApiModelProperty(value = "Provincia de procedencia de la observación. Ejemplo: a-coruna")
+	@CsvBindByPosition(position=6)		
 	@CsvBindByName(column="provincia_procedencia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESPAD , propiedad = "provincia-procedencia")
 	private String provinciaProcedencia;
+
+	@ApiModelProperty(value = "Identificador del municipio de la observación. Ejemplo: 28006")
+	@CsvBindByPosition(position=7)	
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
+	private String municipioId;
 	
+	@ApiModelProperty(value = "Nombre del municipio de la observación. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position=8)	
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
+	private String municipioTitle;
+
+	@ApiModelProperty(value = "Identificador del distrito de la observación. Ejemplo: 2800601")
+	@CsvBindByPosition(position=9)	
+	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
+	private String distritoId;
 	
+	@ApiModelProperty(value = "Nombre del distrito de la observación. Ejemplo: Distrito 1")
+	@CsvBindByPosition(position=10)	
+	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
+	private String distritoTitle;
+	
+	@ApiModelProperty(value = "Identificador del barrio de la observación. Ejemplo: 28006011")
+	@CsvBindByPosition(position=11)	
+	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	private String barrioId;
+	
+	@ApiModelProperty(value = "Nombre del barrio de la observación. Ejemplo: Barrio 1")
+	@CsvBindByPosition(position=12)	
+	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
+	private String barrioTitle;
+	
+	@ApiModelProperty(value = "Identificador de la sección censal de la observación. Ejemplo: 2800601020")
+	@CsvBindByPosition(position=13)	
+	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
+	@RdfExternalURI(inicioURI="/territorio/seccion-censal/", finURI="seccionCensalId", urifyLevel=1)
+	private String seccionCensalId;
+	
+	@ApiModelProperty(value = "Nombre de la sección censal de la observación. Ejemplo: Sección Censal 20")
+	@CsvBindByPosition(position=14)	
+	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
+	private String seccionCensalTitle;	
+	
+	@ApiModelProperty(value = "Numero de personas de la observación. Ejemplo: 19076")
 	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")

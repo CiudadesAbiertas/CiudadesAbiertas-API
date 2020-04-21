@@ -81,24 +81,57 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	@ApiModelProperty(hidden = true)
 	@JsonIgnore	
 	private String ikey;
-	 	 	
-	 @CsvBindByPosition(position=1)
-	 @CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	 private String id;
 	 
-	 @CsvBindByPosition(position=2)
-	 @CsvBindByName(column="title", format=Constants.STRING_FORMAT)
+	@ApiModelProperty(value = "Identificador de la subvención. Ejemplo: S0001")
+	@CsvBindByPosition(position=1)
+	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
+	private String id;
+	
+	@ApiModelProperty(value = "Nombre de la subvención. Ejemplo: SUBVENCIÓN NOMINATIVA UCCI ACTIVIDADES GENERALES")
+	@CsvBindByPosition(position=2)
+	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = "title")
+	private String title;	 
+	
+	@ApiModelProperty(value = "Identificador de la propiedad que identifica al adjudicatario de una subvención. Ejemplo: G81628679")
+	@CsvBindByPosition(position=3)
+	@CsvBindByName (column = "adjudicatarioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
+	//@RdfExternalURI(tipo=Context.OWL_URI+"Thing",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/adjudicatario/", finURI="adjudicatarioId", propiedad=Context.ESSUBV_URI+"adjudicatario")
+	@RdfBlankNode(tipo=Context.OWL_URI+"Thing", propiedad=Context.ESSUBV_URI+"adjudicatario", nodoId="adjudicatario")
+	private String adjudicatarioId;
+	 
+	@ApiModelProperty(value = "Nombre de la propiedad que identifica al adjudicatario de una subvención. Ejemplo: FUNDACION REAL FABRICA DE TAPICES.")
+	 @CsvBindByPosition(position=4)
+	 @CsvBindByName (column = "adjudicatarioTitle", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = "title")
-	 private String title;	 
+	 //@RdfExternalURI(tipo=Context.OWL_URI+"Thing",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/adjudicatario/", finURI="adjudicatarioId", propiedad=Context.ESSUBV_URI+"adjudicatario")
+	 @RdfBlankNode(tipo=Context.OWL_URI+"Thing", propiedad=Context.ESSUBV_URI+"adjudicatario", nodoId="adjudicatario")
+	 private String adjudicatarioTitle;
+	
+	@ApiModelProperty(value = "Importe de la subvención concedida. Ejemplo: 150000.00")
+	 @CsvBindByPosition(position=5)
+	 @Rdf(contexto = Context.ESSUBV, propiedad = "importe", typeURI=Context.XSD_URI+"double")
+	 @CsvBindByName (column = "importe")
+	 private BigDecimal importe;
 	 
-	 @CsvBindByPosition(position=3)
+	@ApiModelProperty(value = "Fecha en la que se ha adjudicado la subvención. Ejemplo: 2016-04-25T00:00:00")
+	 @CsvBindByPosition(position=6)
+	 @CsvBindByName (column = "fechaAdjudicacion")	
+	 @CsvDate(Constants.DATE_FORMAT)
+	 @Rdf(contexto = Context.ESSUBV, propiedad = "fechaAdjudicacion", typeURI=Context.XSD_URI+"date")
+	 private Date fechaAdjudicacion;
+	 
+	@ApiModelProperty(value = "Identificador del Área del ayuntamiento que concede la subvención. Ejemplo: A05003369")
+	 @CsvBindByPosition(position=7)
 	 @CsvBindByName (column = "areaId", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	 @RdfExternalURI(inicioURI="/organigrama/organizacion/", finURI="areaId", propiedad=Context.ESSUBV_URI+"area")
 	 private String areaId;
 	 
-	 @CsvBindByPosition(position=4)
+	@ApiModelProperty(value = "Nombre del Área del ayuntamiento que concede la subvención. Ejemplo: ÁREA DE GOBIERNO DE CULTURA Y DEPORTE")
+	 @CsvBindByPosition(position=8)
 	 @CsvBindByName (column = "areaTitle", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = "title")
 	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"area", nodoId="area")
@@ -110,37 +143,14 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"area", nodoId="area")
 	 private String areaIdIsolated;
 	 
-	 
-	 @CsvBindByPosition(position=5)
-	 @CsvBindByName (column = "municipioId", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	 @RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
-	 private String municipioId;
-	 
-	 @CsvBindByPosition(position=6)
-	 @CsvBindByName (column = "municipioTitle", format=Constants.STRING_FORMAT)
-	 private String municipioTitle;
-	 
-	 @CsvBindByPosition(position=7)
-	 @CsvBindByName (column = "adjudicatarioId", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
-	 //@RdfExternalURI(tipo=Context.OWL_URI+"Thing",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/adjudicatario/", finURI="adjudicatarioId", propiedad=Context.ESSUBV_URI+"adjudicatario")
-	 @RdfBlankNode(tipo=Context.OWL_URI+"Thing", propiedad=Context.ESSUBV_URI+"adjudicatario", nodoId="adjudicatario")
-	 private String adjudicatarioId;
-	 
-	 @CsvBindByPosition(position=8)
-	 @CsvBindByName (column = "adjudicatarioTitle", format=Constants.STRING_FORMAT)
-	 @Rdf(contexto = Context.DCT, propiedad = "title")
-	 //@RdfExternalURI(tipo=Context.OWL_URI+"Thing",inicioURI=Metavariables.uriBase+Metavariables.contexto+"/adjudicatario/", finURI="adjudicatarioId", propiedad=Context.ESSUBV_URI+"adjudicatario")
-	 @RdfBlankNode(tipo=Context.OWL_URI+"Thing", propiedad=Context.ESSUBV_URI+"adjudicatario", nodoId="adjudicatario")
-	 private String adjudicatarioTitle;
-	 
+	@ApiModelProperty(value = "Identificador de la entidad que financia la subvención. Ejemplo: A05003369")
 	 @CsvBindByPosition(position=9)
 	 @CsvBindByName (column = "entidadFinanciadoraId", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	 @RdfExternalURI(inicioURI="/organigrama/organizacion/", finURI="entidadFinanciadoraId", propiedad=Context.ESSUBV_URI+"entidadFinanciadora")
 	 private String entidadFinanciadoraId;
 	 
+	@ApiModelProperty(value = "Nombre de la entidad que financia la subvención. Ejemplo: ÁREA DE GOBIERNO DE CULTURA Y DEPORTES")
 	 @CsvBindByPosition(position=10)
 	 @CsvBindByName (column = "entidadFinanciadoraTitle", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.DCT, propiedad = "title")	 
@@ -152,41 +162,45 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	 @Rdf(contexto = Context.DCT, propiedad = "identifier")
 	 @RdfBlankNode(tipo=Context.ORG_URI+"Organization", propiedad=Context.ESSUBV_URI+"entidadFinanciadora", nodoId="entidadFinanciadora")
 	 private String entidadFinanciadoraIdIsolated;
-	 
-	 
-	 @CsvBindByPosition(position=11)
-	 @Rdf(contexto = Context.ESSUBV, propiedad = "importe", typeURI=Context.XSD_URI+"double")
-	 @CsvBindByName (column = "importe")
-	 private BigDecimal importe;
-	 
-	 @CsvBindByPosition(position=12)
-	 @CsvBindByName (column = "fechaAdjudicacion")	
-	 @CsvDate(Constants.DATE_FORMAT)
-	 @Rdf(contexto = Context.ESSUBV, propiedad = "fechaAdjudicacion", typeURI=Context.XSD_URI+"date")
-	 private Date fechaAdjudicacion;	 
 	
-	 @CsvBindByPosition(position=13)
+	@ApiModelProperty(value = "Línea de financiación de la subvención. Ejemplo: Medio ambiente y sostenibilidad")
+	 @CsvBindByPosition(position=11)
 	 @CsvBindByName (column = "lineaFinanciacion", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "lineaFinanciacion", typeURI=Context.XSD_URI+"string")
 	 private String lineaFinanciacion;
 	 
-	 @CsvBindByPosition(position=14)
+	@ApiModelProperty(value = "Bases reguladoras de la subvención. Ejemplo: https://www.bocm.es/boletin/CM_Orden_BOCM/2015/12/30/BOCM-20151230-29.PDF")
+	 @CsvBindByPosition(position=12)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "basesReguladoras")
 	 @IsUri()
 	 @CsvBindByName (column = "basesReguladoras", format=Constants.STRING_FORMAT)
 	 private String basesReguladoras;
-	 
-	 @CsvBindByPosition(position=15)
+	
+	@ApiModelProperty(value = "Tipo de instrumento utilizado por la subvención. Ejemplo: GARANTÍA")
+	 @CsvBindByPosition(position=13)
 	 @CsvBindByName (column = "tipoInstrumento", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.ESSUBV, propiedad = "tipoInstrumento")
 	 @RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/subvencion/tipo-instrumento/", finURI="tipoInstrumento", urifyLevel=2)
 	 private String tipoInstrumento;
 	
-	 @CsvBindByPosition(position=16)
+	@ApiModelProperty(value = "Aplicacion presupuestaria de la subvención. Ejemplo: 2016-G/33601/48099")
+	 @CsvBindByPosition(position=14)
 	 @CsvBindByName (column = "aplicacionPresupuestaria", format=Constants.STRING_FORMAT)
 	 @Rdf(contexto = Context.ESPRESUP, propiedad = "aplicacionPresupuestaria")
 	 private String aplicacionPresupuestaria;
-
+	 
+	@ApiModelProperty(value = "Identificador del municipio de la subvencion. Ejemplo: 28079")
+	 @CsvBindByPosition(position=15)
+	 @CsvBindByName (column = "municipioId", format=Constants.STRING_FORMAT)
+	 @Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	 @RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
+	 private String municipioId;
+	 
+	@ApiModelProperty(value = "Nombre del municipio de la subvencion. Ejemplo: MADRID")
+	 @CsvBindByPosition(position=16)
+	 @CsvBindByName (column = "municipioTitle", format=Constants.STRING_FORMAT)
+	 private String municipioTitle;
+	 
 	public Subvencion()
 	{
 	}

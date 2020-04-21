@@ -103,7 +103,7 @@ public class CubeDsdMeasureDao  {
 		Session opennedSession = null;
 		
 		Query query = null;
-		String queryText="FROM CubeDsdMeasure where cubeDsd = :cDsd";
+		String queryText="FROM CubeDsdRelMeasure where cubeDsd = :cDsd";
 		if (multipleSessionFactory.getKeys().contains(key))
 		{
 			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);

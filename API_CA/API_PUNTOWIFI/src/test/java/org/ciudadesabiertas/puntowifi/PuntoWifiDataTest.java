@@ -173,7 +173,7 @@ public class PuntoWifiDataTest
 		
 		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"28","*EQPW003*"};
+		String [] value = {"Madrid","*EQPW003*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -186,7 +186,7 @@ public class PuntoWifiDataTest
 
 		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"13","*EQPW004*"};
+		String [] value = {"Comunidad-Madrid","*EQPW004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -327,13 +327,13 @@ public class PuntoWifiDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_titularidad() throws Exception
+	public void test_Busqueda_titularidadPublica() throws Exception
 	{
 
 		
-		String [] paramField= {"titularidad","id"};
+		String [] paramField= {"titularidadPublica","id"};
 
-		String [] value = {"AYTO MADRID","*EQPW004*"};
+		String [] value = {"true","*EQPW004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 

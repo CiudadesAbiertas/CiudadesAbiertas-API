@@ -26,4 +26,6 @@ package org.ciudadesabiertas.dataset.utils;
 public class AgendaConstants
 {
 	public static final String KEY="agenda";
+	
+	public static final String eventoVocabURL="http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda/index-en.html#Evento";
 }

@@ -75,143 +75,165 @@ public class Tramite implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del trámite. Ejemplo: TR0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del trámite. Ejemplo: Apoyo a la Formación en las Asociaciones juveniles")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
-	@CsvBindByPosition(position=3)	
-	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
-	private String description;
-	
-	
-	@CsvBindByPosition(position=4)
+	@ApiModelProperty(value = "Web del trámite. Ejemplo: https://sede.mjusticia.gob.es/cs/Satellite/Sede/es/tramites/certificado-nacimiento")
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
 	private String url;
 		  
-	@CsvBindByPosition(position=5)
+	@ApiModelProperty(value = "Esta propiedad vincula un servicio público con sus formularios de solicitud. Ejemplo: https://www.zaragoza.es/sedeservicio/tramite/impreso-instancia/36")
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="impreso", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "impreso")	
 	private String impreso;
 	
-	@CsvBindByPosition(position=6)
+	@ApiModelProperty(value = "La propiedad detalleTramitacionEnLinea vincula un servicio telefónico a las Reglas bajo las cuales opera. Ejemplo: <p>Los datos se dan por tel&eacute;fono bajo la responsabilidad del solicitante.</p>")
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="detalleTramitacionTelefono", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "detalleTramitacionTelefono")		
 	private String detalleTramitacionTelefono;
 	
-	@CsvBindByPosition(position=7)
+	@ApiModelProperty(value = "La propiedad detalleTramitacionPresencial vincula un servicio basado en la presencia a la (s) Regla (s) bajo las cuales opera. Ejemplo: <p>Se exigir&aacute; la presentaci&oacute;n de los documentos acreditativos de los datos solicitados.</p>")
+	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="detalleTramitacionPresencial", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "detalleTramitacionPresencial")	
 	private String detalleTramitacionPresencial;
 	
-	@CsvBindByPosition(position=8)
+	@ApiModelProperty(value = "La propiedad detalleTramitacionEnLinea vincula un servicio en línea con las Reglas bajo las cuales opera. Ejemplo: <strong>Por el interesado:</strong> documento de identidad (DNI / NIE / tarjeta de residencia / pasaporte).")
+	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="detalleTramitacionEnLinea", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "detalleTramitacionEnLinea")
 	private String detalleTramitacionEnLinea;
 	
-	@CsvBindByPosition(position=9)
+	@ApiModelProperty(value = "La propiedad detalleTramitacionEnLinea vincula un servicio en línea con las Reglas bajo las cuales opera. Ejemplo: Escrito o instancia modelo general al efecto en el que figuren los datos identificativos de la entidad beneficiaria")
+	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="detalleTramitacionCorreoPostal", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "detalleTramitacionCorreoPostal")
 	private String detalleTramitacionCorreoPostal;
 	
-	@CsvBindByPosition(position=10)
+	@ApiModelProperty(value = "Indica si permite la tramitación en linea. Ejemplo: false")
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="permiteTramitacionEnLinea", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "permiteTramitacionEnLinea", typeURI=Context.XSD_URI+"boolean")	
 	private Boolean permiteTramitacionEnLinea;
 	
-	@CsvBindByPosition(position=11)
+	@ApiModelProperty(value = "Indica si permite la tramitación presencial. Ejemplo: false")
+	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="permiteTramitacionPresencial", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "permiteTramitacionPresencial", typeURI=Context.XSD_URI+"boolean")	
 	private Boolean permiteTramitacionPresencial;
 	
-	@CsvBindByPosition(position=12)
+	@ApiModelProperty(value = "Indica si permite la tramitación por teléfono. Ejemplo: false")
+	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="permiteTramitacionTelefono", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "permiteTramitacionTelefono", typeURI=Context.XSD_URI+"boolean")	
 	private Boolean permiteTramitacionTelefono;
 	
-	@CsvBindByPosition(position=13)
+	@ApiModelProperty(value = "Indica si permite la tramitación por correo postal. Ejemplo: false")
+	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="permiteTramitacionTelefono", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "permiteTramitationCorreoPostal", typeURI=Context.XSD_URI+"boolean")
 	private Boolean permiteTramitationCorreoPostal;
 	
-	@CsvBindByPosition(position=14)
+	@ApiModelProperty(value = "Representa una regla que debe ser seguida por un servicio público. Ejemplo: https://www.zaragoza.es/sede/servicio/normativa/145")
+	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="normativa", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "normativa")
 	private String normativa;
 	
-	@CsvBindByPosition(position=15)
+	@ApiModelProperty(value = "Órgano de un trámite. Ejemplo: Organo superior")
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="organo", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "organo")
 	private String organo;
 	
-	@CsvBindByPosition(position=16)
+	@ApiModelProperty(value = "Información sobre el pago (fecha, monto, lugar) para un Servicio Público. Ejemplo: El alta en el servicio lleva consigo la exigencia de las tasas por &quot;establecimiento de puntos de suministro&quot;")
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="pago", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "pago")
 	private String pago;
 	
-	@CsvBindByPosition(position=17)
+	@ApiModelProperty(value = "Esta propiedad vincula un servicio público con sus requisitos. Ejemplo: Los servicios de consulta y de reproducci&oacute;n de fondos est&aacute;n sujetos a la normativa vigente")
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="requisitos", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "requisitos")
 	private String requisitos;
 	
-	@CsvBindByPosition(position=18)
+	@ApiModelProperty(value = "La propiedad que determina que dos individuos dados son iguales. Ejemplo: http://www.zaragoza.es/api/recurso/sector-publico/procedimiento-tramite/5503")
+	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="sameAs", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OWL, propiedad = "sameAs")
 	private String sameAs;
 	
-	@CsvBindByPosition(position=19)
+	@ApiModelProperty(value = "Materia de un trámite. Ejemplo: Salud")
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="materia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "materia")
 	private String materia;
 	
-	@CsvBindByPosition(position=20)
+	@ApiModelProperty(value = "Esta propiedad representa la fecha límite para comenzar un Servicio Público. Ejemplo: 2019-01-08T23:59:59")
+	@CsvBindByPosition(position=19)
 	@CsvBindByName (column = "fechaPlazoInicio")	
 	@CsvDate(Constants.DATE_FORMAT)		
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaPlazoInicio",typeURI=Context.XSD_URI+"date" )
 	private Date fechaPlazoInicio;
 	
-	@CsvBindByPosition(position=21)
+	@ApiModelProperty(value = "Esta propiedad representa la fecha límite para terminar un servicio público.. Ejemplo: 2019-12-08T23:59:59")
+	@CsvBindByPosition(position=20)
 	@CsvBindByName (column = "fechaPlazoFin")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaPlazoFin",typeURI=Context.XSD_URI+"date" )
 	private Date fechaPlazoFin;
 	
-
-	@CsvBindByPosition(position=22)
+	@ApiModelProperty(value = "Fecha en la que se deben resolver las solicitudes (en formato fecha/duración). Ejemplo: 2019-06-11T09:00:00")
+	@CsvBindByPosition(position=21)
 	@CsvBindByName (column = "fechaRespuesta")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaRespuesta",typeURI=Context.XSD_URI+"date" )
 	private Date fechaRespuesta;
 
-	@CsvBindByPosition(position=23)
+	@ApiModelProperty(value = "Fecha en la que se deben resolver las solicitudes (en formato textual). Ejemplo: Once de mayo de dos mil diecinueve a las nueve en punto")
+	@CsvBindByPosition(position=22)
 	@CsvBindByName (column = "fechaRespuestaTexto")
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaRespuestaTexto" )
 	private String fechaRespuestaTexto;
 	
-	@CsvBindByPosition(position=24)
+	@ApiModelProperty(value = "Fecha en la que se deben presentar las solicitudes (en formato fecha). Ejemplo: 2019-05-04T11:05:00")
+	@CsvBindByPosition(position=23)
 	@CsvBindByName (column = "fechaPresentacion")	
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaPresentacion",typeURI=Context.XSD_URI+"date" )	
 	private Date fechaPresentacion;
 
-	@CsvBindByPosition(position=25)
+	@ApiModelProperty(value = "Fecha en la que se deben presentar las solicitudes (en formato textual). Ejemplo: Cuatro de abril de dos mil diecinueve a las once y cinco")
+	@CsvBindByPosition(position=24)
 	@CsvBindByName (column = "fechaPresentacionTexto")
 	@Rdf(contexto = Context.ESSRVC, propiedad = "fechaPresentacionTexto" )
 	private String fechaPresentacionTexto;
 	
-	@CsvBindByPosition(position=26)
+	@ApiModelProperty(value = "Situación que ocurre si no hay respuesta de la entidad que está a cargo de un Servicio Público. Ejemplo: NEGATIVO")
+	@CsvBindByPosition(position=25)
 	@CsvBindByName (column = "efectoSilencioAdministrativo")
 	@Rdf(contexto = Context.ESSRVC, propiedad = "efectoSilencioAdministrativo" )
 	private String efectoSilencioAdministrativo;
 	
-		
+	@ApiModelProperty(value = "Descripción de un trámite. Ejemplo: <p>Solicitud de permiso para realizar acampadas en suelo municipal.</p>")
+	@CsvBindByPosition(position=26)	
+	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
+	private String description;
 
 	public Tramite() {
 	}

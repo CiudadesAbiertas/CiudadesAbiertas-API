@@ -46,19 +46,19 @@ public class AvisoQuejaSugSearch extends AvisoQuejaSug implements  Serializable,
 	@ApiModelProperty(hidden = true)
 	private BigDecimal longitud;
 	
-	@ApiModelProperty(hidden = true)
+	@ApiModelProperty(hidden = true, value = "Coordenada X de la solicitud de servicio. Ejemplo: 439399.64")
 	private BigDecimal x;
 	
-	@ApiModelProperty(hidden = true)
+	@ApiModelProperty(hidden = true, value = "Coordenada Y de la solicitud de servicio. Ejemplo: 4481455.07")
 	private BigDecimal y;
 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	
+	@ApiModelProperty(value = "Coordenada X de la solicitud de servicio. Ejemplo: 439399.64")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de la solicitud de servicio. Ejemplo: 4481455.07")
 	private BigDecimal yETRS89;
 
 

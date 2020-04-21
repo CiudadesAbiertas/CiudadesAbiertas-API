@@ -378,6 +378,11 @@ public class AgendaMRolEventoTest {
     	
     	Field[] declaredFields = (AgendaMRolEvento.class).getDeclaredFields();
     	
+    	String [][] exceptionFields = {
+				{"eventId"},
+				{"evento"}};
+	
+    	
     	boolean checkFields=true;
     	
     	for (Field f:declaredFields)
@@ -385,7 +390,7 @@ public class AgendaMRolEventoTest {
     		Rdf annotation=f.getAnnotation(Rdf.class);
     		if (annotation!=null)
     		{        		        		
-    			if (!Util.validatorFieldRDF(f.getName(), annotation.propiedad()))
+    			if (!Util.validatorFieldRDF(f.getName(), annotation.propiedad(),exceptionFields))
     			{
     				log.info(f.getName()+" vs. "+annotation.propiedad() );
     				checkFields=false;

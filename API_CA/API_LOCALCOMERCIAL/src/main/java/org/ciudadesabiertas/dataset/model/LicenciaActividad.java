@@ -66,8 +66,8 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic=false)
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESCOM, propiedad = "Licencia")
-@PathId(value="/localComercial/licenciaActividad")
+@Rdf(contexto = Context.ESCOM, propiedad = "LicenciaApertura")
+@PathId(value="/local-comercial/licencia-actividad")
 public class LicenciaActividad implements java.io.Serializable, RDFModel
 {	
 	private static final long serialVersionUID = -6739471497337390438L;
@@ -75,56 +75,66 @@ public class LicenciaActividad implements java.io.Serializable, RDFModel
 	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;
-		
+	
+	@ApiModelProperty(value = "Identificador de la licencia de actividad (sin caracteres especiales). Ejemplo: 270002391-106-2003-01539")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Identificador de la licencia de actividad (con caracteres especiales). Ejemplo: 270002391/106-2003-01539")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = Constants.IDENTIFIER)
 	private String identifier;
 
+	@ApiModelProperty(value = "Referencia de la licencia de actividad. Ejemplo: 106-2003-01539")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="referencia", format=Constants.STRING_FORMAT)	
 	private String referencia;	
 	
+	@ApiModelProperty(value = "Una licencia de apertura está asociada a un local comercial o a una terraza. Ejemplo: 270002391")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="asociadaA", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "asociadaA")
-	@RdfExternalURI(inicioURI="/localComercial/localComercial/", finURI="asociadaA")
+	@RdfExternalURI(inicioURI="/local-comercial/local-comercial/", finURI="asociadaA")
 	private String asociadaA;
 	
+	@ApiModelProperty(value = "Una licencia autoriza la realización de una o varias actividades económicas. Ejemplo: 90")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="autorizaActividadEconomica", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "autorizaActividadEconomica")
 	private String autorizaActividadEconomica;
 	
+	@ApiModelProperty(value = "Estado de tramitación de la licencia. Ejemplo: concedida")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="estadoTramitacion", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "estadoTramitacion")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/comercio/tipo-estado-tramite-licencia/", finURI="estadoTramitacion", urifyLevel=1)
 	private String estadoTramitacion;
 	
+	@ApiModelProperty(value = "Fecha en la que se ha resuelto la solicitud de la licencia. Ejemplo: 2003-03-13T00:00:00")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="fechaAlta", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaAlta", typeURI=Context.XSD_URI+"date")
 	private Date fechaAlta;
 	
+	@ApiModelProperty(value = "Fecha en la que se ha notificado el cese de la actividad económica. Ejemplo: 2040-02-16T00:00:00")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="fechaCese", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaCese", typeURI=Context.XSD_URI+"date")
 	private Date fechaCese;
 	
+	@ApiModelProperty(value = "Fecha en la que se ha solicitado la licencia. Ejemplo: 2010-02-16T00:00:00")
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="fechaSolicitud", format=Constants.STRING_FORMAT)
 	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "fechaSolicitud", typeURI=Context.XSD_URI+"date")
 	private Date fechaSolicitud;
 	
+	@ApiModelProperty(value = "Una licencia se otorga a un titular. Ejemplo: Mario Gomez Gomez")
 	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="seOtorgaA", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCOM, propiedad = "seOtorgaA")	

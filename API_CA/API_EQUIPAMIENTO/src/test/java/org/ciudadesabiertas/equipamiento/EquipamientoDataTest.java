@@ -169,7 +169,7 @@ public class EquipamientoDataTest
 		
 		String [] paramField= {"provinciaId","id"};
 
-		String [] value = {"28","*EQ004*"};
+		String [] value = {"Madrid","*EQ004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -182,7 +182,7 @@ public class EquipamientoDataTest
 
 		String [] paramField= {"autonomiaId","id"};
 
-		String [] value = {"13","*EQ004*"};
+		String [] value = {"Comunidad-Madrid","*EQ004*"};
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -329,16 +329,16 @@ public class EquipamientoDataTest
 	}
 	
 	@Test
-	public void test_Busqueda_titularidad() throws Exception
+	public void test_Busqueda_titularidadPublica() throws Exception
 	{
 
-		String value = "Publico";
+		String value = "true";
 		
-		String paramField="titularidad";
+		String paramField="titularidadPublica";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 37);
+		assertTrue(records.size() == 45);
 	}
 	
 	@Test

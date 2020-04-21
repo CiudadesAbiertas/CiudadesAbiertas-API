@@ -55,9 +55,11 @@ public class EquipamientoSearch extends Equipamiento implements  Serializable, D
 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
-		
+	
+	@ApiModelProperty(value = "Coordenada X del equipamiento. Ejemplo: 446090.00034")
 	private BigDecimal xETRS89;
 	
+	@ApiModelProperty(value = "Coordenada Y del equipamiento. Ejemplo: 4488109.99956")
 	private BigDecimal yETRS89;
 
 

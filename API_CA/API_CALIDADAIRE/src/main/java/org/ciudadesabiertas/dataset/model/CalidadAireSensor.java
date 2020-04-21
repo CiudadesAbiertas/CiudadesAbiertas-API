@@ -74,20 +74,24 @@ public class CalidadAireSensor implements java.io.Serializable, RDFModel, PathId
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del sensor. Ejemplo: SENSOR0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column="id", format=Constants.STRING_FORMAT)
 	private String id;
 	
+	@ApiModelProperty(value = "Relación entre un sensor y una estación, una muestra o una plataforma, en la que está montado o alojado. Ejemplo: STAT04")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="isHostedBy", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "isHostedBy")
-	@RdfExternalURI(inicioURI= "/calidadAire/estacion/", finURI="isHostedBy")
+	@RdfExternalURI(inicioURI= "/calidad-aire/estacion/", finURI="isHostedBy")
 	private String isHostedBy;
 	
+	@ApiModelProperty(value = "Nombre de la relación entre un sensor y una propiedad observable que es capaz de detectar. Ejemplo: Dióxido de Azufre")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="observesTitle", format=Constants.STRING_FORMAT)	
 	private String observesTitle;
 	
+	@ApiModelProperty(value = "Identificador de la relación entre un sensor y una propiedad observable que es capaz de detectar. Ejemplo: dioxidoDeAzufre")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="observesId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observes")
@@ -213,6 +217,7 @@ public class CalidadAireSensor implements java.io.Serializable, RDFModel, PathId
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);		
 		prefixes.put(Context.DUL, Context.DUL_URI);
+		prefixes.put(Context.ESAIR, Context.ESAIR_URI);
 		return prefixes;
 	}
 	

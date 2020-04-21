@@ -53,10 +53,11 @@ public class PuntoWifiGeoSearch extends Equipamiento implements  Serializable, D
 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
-
+	
+	@ApiModelProperty(value = "Coordenada X del equipamiento. Ejemplo: 441594.00046")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del equipamiento. Ejemplo: 4472432.11778")
 	private BigDecimal yETRS89;
 
 

@@ -78,12 +78,12 @@ public class AvisoQuejaSugDataRSQLTest
 	}
 	
 	@Test
-	public void test_Busqueda_RSQL_service_request_id() throws Exception
+	public void test_Busqueda_RSQL_identifier() throws Exception
 	{
 
 		String paramField = "q";
 
-		String value = "serviceRequestId=='0-33'";
+		String value = "identifier=='0-33'";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		
@@ -94,10 +94,10 @@ public class AvisoQuejaSugDataRSQLTest
 	
 
 	@Test
-	public void test_Busqueda_serviceRequestName() throws Exception
+	public void test_Busqueda_title() throws Exception
 	{
 
-		String value = "serviceRequestName=='*AVISO-R RECOGIDA ANIMALES MUERTOS*'";
+		String value = "title=='*AVISO-R RECOGIDA ANIMALES MUERTOS*'";
 
 		String paramField = "q";
 

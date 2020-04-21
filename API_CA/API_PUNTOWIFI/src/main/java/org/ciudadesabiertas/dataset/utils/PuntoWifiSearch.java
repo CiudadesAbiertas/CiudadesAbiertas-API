@@ -42,6 +42,7 @@ public class PuntoWifiSearch extends Equipamiento implements  Serializable, Data
 	@ApiModelProperty(hidden = true)
 	private String portalIdIsolated;	
 	
+	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;
 	
 	@ApiModelProperty(hidden = true)
@@ -55,10 +56,11 @@ public class PuntoWifiSearch extends Equipamiento implements  Serializable, Data
 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
-
+	
+	@ApiModelProperty(value = "Coordenada X del equipamiento. Ejemplo: 441594.00046")
 	private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del equipamiento. Ejemplo: 4472432.11778")
 	private BigDecimal yETRS89;
 
 

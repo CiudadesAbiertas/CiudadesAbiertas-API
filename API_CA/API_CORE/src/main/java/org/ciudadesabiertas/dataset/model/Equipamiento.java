@@ -80,135 +80,155 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 	@JsonIgnore
 	private String ikey;
 	
+	@ApiModelProperty(value = "Identificador del equipamiento. Ejemplo: EQ0001, EQAP0001, EQID0001, EQPW0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Nombre del equipamiento. Ejemplo: Aula de Educación Ambiental")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
+	@ApiModelProperty(value = "Tipo de equipamiento. Ejemplo: equipamiento municipal")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="tipoEquipamiento", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESEQUIP, propiedad = "tipo-equipamiento")	
+	@Rdf(contexto = Context.ESEQUIP, propiedad = "tipoEquipamiento")	
 	private String tipoEquipamiento;
 	
+	@ApiModelProperty(value = "Email del equipamiento. Ejemplo: aulaambiental2@aytoalcobendas.org")
 	@CsvBindByPosition(position=4)
+	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
+	private String email;
+	
+	@ApiModelProperty(value = "Telefono del equipamiento. Ejemplo: 34916618096")
+	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
+	private String telephone;
+	
+	@ApiModelProperty(value = "Web del equipamiento. Ejemplo: http://www.centrodeartealcobendas.org")
+	@CsvBindByPosition(position=6)
+	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
+	@IsUri
+	private String url;
+	
+	@ApiModelProperty(value = "Valor booleano que representa si el equipamiento es de carácter público (true) o privado (false). Ejemplo: true")
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="titularidadPublica", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESEQUIP, propiedad = "titularidadPublica")
+	private Boolean titularidadPublica;
+		
+	@ApiModelProperty(value = "El horario del equipamiento. Ejemplo: Abierto L/M/X/J/V de 09:00 a 14:00 y de 16:00 a 20:00")
+	@CsvBindByPosition(position=8)	
+	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
+	private String openingHours;
+	
+	@ApiModelProperty(value = "Calle del equipamiento. Ejemplo: CL ORENSE 7")
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String streetAddress;
 	
-	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
-	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
-	private String portalId;
-	
-	@ApiModelProperty(hidden = true)	
-	@Rdf(contexto = Context.DCT, propiedad = "identifier")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
-	private String portalIdIsolated;
-	
-	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "pais")	
-	@RdfExternalURI(inicioURI="/territorio/pais/",finURI="paisId", urifyLevel = 1)
-	private String paisId;
-	
-	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
-	@RdfExternalURI(inicioURI="/territorio/autonomia/",finURI="autonomiaId", urifyLevel = 1)
-	private String autonomiaId;
-	
-	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
-	@RdfExternalURI(inicioURI="/territorio/provincia/",finURI="provinciaId", urifyLevel = 1)
-	private String provinciaId;
-	
-	@CsvBindByPosition(position=9)
-	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")
-	private String municipioId;
-	
+	@ApiModelProperty(value = "Código postal del equipamiento. Ejemplo: 28100")
 	@CsvBindByPosition(position=10)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
-	private String municipioTitle;
-	
-	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
-	private String distritoId;
-	
-	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)
-	private String barrioId;
-		
-	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")	
 	private String postalCode;
 	
-	@CsvBindByPosition(position=14)
+	@ApiModelProperty(value = "Identificador de la calle del equipamiento. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
+	private String portalId;
+	
+	@ApiModelProperty(value = "Coordenada X del equipamiento. Ejemplo: 446090.00034")
+	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal x;	
 	
-	@CsvBindByPosition(position=15)
+	@ApiModelProperty(value = "Coordenada Y del equipamiento. Ejemplo: 4488109.99956")
+	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
 	private BigDecimal y;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=16)
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=17)
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
-	@CsvBindByPosition(position=18)
-	@CsvBindByName(column="email", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "email")
-	private String email;
+	@ApiModelProperty(value = "Identificador del barrio del equipamiento. Ejemplo: 28006011")
+	@CsvBindByPosition(position=22)
+	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")		
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)
+	private String barrioId;
 	
-	@CsvBindByPosition(position=19)
-	@CsvBindByName(column="telephone", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "telephone")
-	private String telephone;
-	
-	@CsvBindByPosition(position=20)
-	@CsvBindByName(column="url", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "url")
-	@IsUri
-	private String url;
-	
+	@ApiModelProperty(value = "Identificador del distrito del equipamiento. Ejemplo: 2800601")
 	@CsvBindByPosition(position=21)
-	@CsvBindByName(column="titularidad", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESEQUIP, propiedad = "titularidad")
-	private String titularidad;
-		
-	@CsvBindByPosition(position=22)	
-	@CsvBindByName(column="openingHours", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "openingHours")
-	private String openingHours;
-
-
+	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
+	private String distritoId;
+	
+	@ApiModelProperty(value = "Identificador del municipio del equipamiento. Ejemplo: 28006")
+	@CsvBindByPosition(position=19)
+	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId")
+	private String municipioId;
+	
+	@ApiModelProperty(value = "Nombre del municipio del equipamiento. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position=20)
+	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identificador de la provincia del equipamiento. Ejemplo: Madrid")
+	@CsvBindByPosition(position=18)
+	@CsvBindByName(column="provincia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "provincia")
+	@RdfExternalURI(inicioURI="/territorio/provincia/",finURI="provinciaId", urifyLevel = 1)
+	private String provinciaId;
+	
+	@ApiModelProperty(value = "Identificador de la comunidad autónoma del equipamiento. Ejemplo: Comunidad-Madrid")
+	@CsvBindByPosition(position=17)
+	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
+	@RdfExternalURI(inicioURI="/territorio/autonomia/",finURI="autonomiaId", urifyLevel = 1)
+	private String autonomiaId;
+	
+	@ApiModelProperty(value = "Identificador del pais del equipamiento. Ejemplo: España")
+	@CsvBindByPosition(position=16)
+	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "pais")	
+	@RdfExternalURI(inicioURI="/territorio/pais/",finURI="paisId", urifyLevel = 1)
+	private String paisId;
+	
+	@ApiModelProperty(hidden = true)	
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
+	
+	@ApiModelProperty(value = "Descripción del equipamiento. Ejemplo: Servicios principales Terapia ocupacional: Trabajo Cognitivo")
 	@CsvBindByPosition(position=23)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
@@ -242,7 +262,7 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.email = eq.email;
 		this.telephone = eq.telephone;
 		this.url = eq.url;
-		this.titularidad = eq.titularidad;
+		this.titularidadPublica = eq.titularidadPublica;
 		this.openingHours = eq.openingHours;
 		this.portalId = eq.portalId;
 	}
@@ -402,13 +422,13 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		this.url = url;
 	}
 
-	@Column(name = "titularidad", length = 400)
-	public String getTitularidad() {
-		return this.titularidad;
+	@Column(name = "titularidad_publica")
+	public Boolean getTitularidadPublica() {
+		return this.titularidadPublica;
 	}
 
-	public void setTitularidad(String titularidad) {
-		this.titularidad = titularidad;
+	public void setTitularidadPublica(Boolean titularidadPublica) {
+		this.titularidadPublica = titularidadPublica;
 	}
 	
 	@Column(name = "opening_hours", length = 400)
@@ -559,8 +579,8 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 		if (attributesToSet.contains("url")) {
 			this.url = copia.url;
 		}
-		if (attributesToSet.contains("titularidad")) {
-			this.titularidad = copia.titularidad;			
+		if (attributesToSet.contains("titularidadPublica")) {
+			this.titularidadPublica = copia.titularidadPublica;			
 		}
 		
 		if (attributesToSet.contains("openingHours")) {
@@ -584,7 +604,7 @@ public class Equipamiento implements java.io.Serializable, GeoModel, RDFModel, M
 				+ municipioId + ", municipioTitle=" + municipioTitle + ", distritoId=" + distritoId + ", barrioId="
 				+ barrioId + ", postalCode=" + postalCode + ", x=" + x + ", y=" + y + ", latitud=" + latitud
 				+ ", longitud=" + longitud + ", email=" + email + ", telephone=" + telephone + ", url=" + url
-				+ ", titularidad=" + titularidad + ", openingHours=" + openingHours + ", description=" + description
+				+ ", titularidadPublica=" + titularidadPublica + ", openingHours=" + openingHours + ", description=" + description
 				+ ", distance=" + distance + "]";
 	}
 

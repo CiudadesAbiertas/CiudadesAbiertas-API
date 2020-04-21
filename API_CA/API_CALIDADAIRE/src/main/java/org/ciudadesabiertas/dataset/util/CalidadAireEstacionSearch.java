@@ -55,9 +55,10 @@ public class CalidadAireEstacionSearch extends CalidadAireEstacion implements  S
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X de la estación. Ejemplo: 439582.03357")
     private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de la estación. Ejemplo: 4475019.12562")
 	private BigDecimal yETRS89;
 
 

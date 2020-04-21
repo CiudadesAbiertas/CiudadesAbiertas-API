@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.ciudadesabiertas.controller.CiudadesAbiertasController;
 import org.ciudadesabiertas.controller.GenericController;
 import org.ciudadesabiertas.dataset.model.CubeDsd;
@@ -61,6 +62,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
@@ -75,7 +77,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="DSD",description = "Conjunto de operaciones relacionadas con las definiciones de estructuras de datos (DSD - Datacubes)", tags= {"DSD - Cubo de Datos"})
+@Api(value="DSD",description = "Conjunto de operaciones relacionadas con las definiciones de estructuras de datos (DSD - Datacubes)"+SwaggerConstants.VOCABULARIO_A_HREF+CubeDsdConstants.dataStructureDefinitionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"DSD - Cubo de Datos"})
 public class CubeDsdController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/data-cube/data-structure-definition";
@@ -112,7 +114,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	private CubeDsdMeasureService cubeDsdMeasureService;
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CubeDsdResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -199,7 +201,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	}
 	
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -242,7 +244,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	
 	
 	@SuppressWarnings({ "unchecked" })
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CubeDsdResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -251,7 +253,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String cubeId)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DSD) String cubeId)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -288,7 +290,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	}
 	
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=CubeDsdResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -297,7 +299,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String cubeId)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DSD) String cubeId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -343,7 +345,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 		
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_DIMENSION, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_DIMENSION, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CubeDsdDimensionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -352,7 +354,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {LIST_BY_DIMENSION,  VERSION_1+LIST_BY_DIMENSION}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> listDataCubeByDimension(HttpServletRequest request,
-			@PathVariable String dimensionId,
+			@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[list][" + LIST_BY_DIMENSION + "]");	
@@ -479,7 +481,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 		return mv;
 	}
 	
-	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_DIMENSION, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_DIMENSION, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -487,8 +489,9 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {LIST_BY_DIMENSION,  VERSION_1+LIST_BY_DIMENSION}, method = {RequestMethod.HEAD})	
-	public @ResponseBody ResponseEntity<?> listDataCubeByDimensionHead(HttpServletRequest request,@PathVariable String dimensionId,	
-			@RequestHeader HttpHeaders headersRequest)
+	public @ResponseBody ResponseEntity<?> listDataCubeByDimensionHead(HttpServletRequest request,
+																			@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_DIMENSION_ID) String dimensionId,	
+																			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listDimensionHead][" + LIST + "]");		
@@ -513,7 +516,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_MEDIDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_MEDIDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=CubeDsdDimensionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -522,7 +525,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	   })
 	@RequestMapping(value= {LIST_BY_MEASURE,  VERSION_1+LIST_BY_MEASURE}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> listDataCubeByMeasure(HttpServletRequest request,
-			@PathVariable String measureId,						
+			@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_MEASURE_ID) String measureId,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[list][" + LIST_BY_MEASURE + "]");	
@@ -588,7 +591,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	
 	
 	
-	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_MEDIDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_CUBO_POR_MEDIDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -596,7 +599,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {LIST_BY_MEASURE,  VERSION_1+LIST_BY_MEASURE}, method = {RequestMethod.HEAD})	
-	public @ResponseBody ResponseEntity<?> listDataCubeByMeasureHead(HttpServletRequest request,@PathVariable String measureId,
+	public @ResponseBody ResponseEntity<?> listDataCubeByMeasureHead(HttpServletRequest request,@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CUBE_MEASURE_ID) String measureId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 

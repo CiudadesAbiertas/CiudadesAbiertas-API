@@ -25,4 +25,9 @@ package org.ciudadesabiertas.dataset.utils;
 public class AgendaMunicipalConstants
 {
 	public static final String KEY="agendaMunicipal";
+	
+	public static final String eventoVocabURL = "http://vocab.ciudadesabiertas.es/def/sector-publico/agenda-municipal/index-es.html#Evento";
+	public static final String rolIntegranteEventoVocabURL = "http://vocab.ciudadesabiertas.es/def/sector-publico/agenda-municipal#RolIntegranteEvento";
+	public static final String digitalDocumentVocabURL = "http://schema.org/DigitalDocument";
+	
 }

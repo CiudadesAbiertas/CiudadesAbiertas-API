@@ -54,9 +54,10 @@ public class CallejeroPortalSearch extends CallejeroPortal implements  Serializa
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del portal. Ejemplo: 440242.56")
     private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del portal. Ejemplo: 4476174.2")
 	private BigDecimal yETRS89;
 
 

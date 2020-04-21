@@ -25,4 +25,6 @@ package org.ciudadesabiertas.dataset.utils;
 public class AvisoQuejaSugConstants
 {
 	public static final String KEY="avisoQuejaSug";
+	
+	public static final String serviceRequestVocabURL="http://ontology.eil.utoronto.ca/open311.html#d4e1584";
 }

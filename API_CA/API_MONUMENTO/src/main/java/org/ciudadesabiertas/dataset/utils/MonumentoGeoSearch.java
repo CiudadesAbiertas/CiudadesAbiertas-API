@@ -55,11 +55,11 @@ public class MonumentoGeoSearch extends PuntoInteresTuristico implements  Serial
 
 	@ApiModelProperty(hidden = true)
 	private Double distance;
-	
-	@ApiModelProperty(required=true)
+
+	@ApiModelProperty(required=true, value = "Coordenada X del lugar de interés turístico. Ejemplo: 441054.00088")
 	private BigDecimal xETRS89;	
-	
-	@ApiModelProperty(required=true)
+
+	@ApiModelProperty(required=true, value = "Coordenada Y del lugar de interés turístico. Ejemplo: 4474477.11792")
 	private BigDecimal yETRS89;
 
 

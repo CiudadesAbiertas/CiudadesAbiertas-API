@@ -68,7 +68,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @RdfMultiple({@Rdf(contexto = Context.SOSA, propiedad = "Observation"),@Rdf(contexto = Context.ESAIR, propiedad = "AirQualityObservation")})
-@PathId(value="/calidadAire/observacion")
+@PathId(value="/calidad-aire/observacion")
 public class CalidadAireObservacion implements java.io.Serializable, RDFModel
 {	
 	
@@ -79,38 +79,45 @@ public class CalidadAireObservacion implements java.io.Serializable, RDFModel
 	@JsonIgnore
 	private String ikey;
 		
+	@ApiModelProperty(value = "Identificador de la observación. Ejemplo: OBS0001")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
+	@ApiModelProperty(value = "Relación entre un sensor y una observación realizada por el sensor. Ejemplo: STAT04")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="madeBySensor", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "madeBySensor")
-	@RdfExternalURI(inicioURI= "/calidadAire/estacion/", finURI="madeBySensor")
+	@RdfExternalURI(inicioURI= "/calidad-aire/estacion/", finURI="madeBySensor")
 	private String madeBySensor;
 	
+	@ApiModelProperty(value = "Nombre de la relación que vincula una Observación a la propiedad que se observó. Ejemplo: Dióxido de Azufre")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="observedPropertyTitle", format=Constants.STRING_FORMAT)	
 	private String observedPropertyTitle;	
 
+	@ApiModelProperty(value = "Identificador de la relación que vincula una Observación a la propiedad que se observó. Ejemplo: dioxidoDeAzufre")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="observedPropertyId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observedProperty")
 	@RdfExternalURI(inicioURI= Context.SOSA_URI, finURI="observedPropertyId")
 	private String observedPropertyId;
 	
+	@ApiModelProperty(value = "Fecha del instante en que se completó la actividad de Observación, Actuación o Muestreo. Ejemplo: 2019-03-27T01:00:00")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="resultTime", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "resultTime",typeURI=Context.XSD_URI+"dateTime" )
 	private Date resultTime;
 	
+	@ApiModelProperty(value = "Relación que vincula una Observación o Actuación o acto de Muestreo y un Resultado o Muestra. Ejemplo: 6")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName (column = "hasDataValue")
 	@Rdf(contexto = Context.DUL, propiedad = "hasDataValue",typeURI=Context.XSD_URI+"float" )
 	@RdfBlankNode(tipo=Context.SOSA_URI+"Result", propiedad=Context.SOSA_URI+"hasResult", nodoId="result")
 	private BigDecimal hasDataValue;
 	
+	@ApiModelProperty(value = "Texto descriptivo de la unidad de medida de la observación. Ejemplo: Microgramo por metro cúbico")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName (column = "quality")
 	@Rdf(contexto = Context.DUL, propiedad = "quality")	
@@ -274,6 +281,9 @@ public class CalidadAireObservacion implements java.io.Serializable, RDFModel
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);		
 		prefixes.put(Context.DUL, Context.DUL_URI);
+		prefixes.put(Context.ESAIR, Context.ESAIR_URI);
+		
+		
 		
 		return prefixes;
 	}

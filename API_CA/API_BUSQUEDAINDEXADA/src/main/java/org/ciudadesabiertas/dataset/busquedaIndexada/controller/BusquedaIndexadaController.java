@@ -65,9 +65,9 @@ import springfox.documentation.annotations.ApiIgnore;
 @Api(value="BusquedaIndexada",description = "Búsqueda sobre conjuntos de datos indexados en Solr", tags= {"Búsqueda Indexada"})
 public class BusquedaIndexadaController implements CiudadesAbiertasController
 {
-	public static final String SOLR_LIST = "/busquedaIndexada";
+	public static final String SOLR_LIST = "/busqueda-indexada";
 		
-	public static final String SOLR_SEARCH_DATASET = "/busquedaDatasetName";
+	public static final String SOLR_SEARCH_DATASET = "/busqueda-dataset-name";
 	
 	public static final String VERSION_1 = "v1/";
 	
