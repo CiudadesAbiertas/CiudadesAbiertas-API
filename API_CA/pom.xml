@@ -57,7 +57,8 @@
 				<module>API_PADRON</module>
 				<module>API_TERRITORIO</module>
 				<module>API_AGENDAMUNICIPAL</module>
-				<module>API_BICICLETAPUBLICA</module>				
+				<module>API_CONTRATOS</module>
+				<module>API_BICICLETAPUBLICA</module>
 				<!-- 
 				<module>API_PLANTILLA</module>
 				 -->
@@ -279,6 +280,18 @@
 				<module>API_TERRITORIO</module>
 				<module>API_DSD</module>	
 				<module>API_AGENDAMUNICIPAL</module>				
+			</modules>
+		</profile>
+
+		<profile>
+			<id>contratos</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_CONTRATOS</module>				
 			</modules>
 		</profile>
 		

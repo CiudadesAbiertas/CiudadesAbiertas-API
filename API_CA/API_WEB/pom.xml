@@ -201,7 +201,13 @@
 			  			<artifactId>org.ciudadesabiertas.agendamunicipal</artifactId>
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
-			  
+			  	
+			  	<!--  Dependencia contratos-->
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.contratos</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
 			  	
 			  	<!-- Dependencia bicicletamunicipal-->
 			    <dependency>
@@ -210,7 +216,7 @@
 			       <version>0.0.1-SNAPSHOT</version> 
 			    </dependency>
 			    
-			   
+
 			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
@@ -451,7 +457,17 @@
 		</profile>
 		
 		
-		
+		<profile>
+			<id>contratos</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.contratos</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
 		
 		<profile>
 			<id>bicicletaPublica</id>
