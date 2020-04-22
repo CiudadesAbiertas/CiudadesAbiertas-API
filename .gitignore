@@ -155,3 +155,10 @@ liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-7
 liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-8.xml
 liquibase_CA/src/main/resources/liquibase/db-changelog-script-1.17-PADRON-data-9.xml
 liquibase_CA/target/
+API_CA/API_AGENDAMUNICIPAL/target/API_AGENDAMUNICIPAL.jar
+API_CA/API_AGENDAMUNICIPAL/target/
+API_CA/API_BICICLETAPUBLICA/target/
+API_CA/API_AGENDAMUNICIPAL/src/test/resources/config.properties
+API_CA/API_AGENDAMUNICIPAL/src/test/resources/logback.xml
+API_CA/API_BICICLETAPUBLICA/src/test/resources/config.properties
+API_CA/API_BICICLETAPUBLICA/src/test/resources/logback.xml
