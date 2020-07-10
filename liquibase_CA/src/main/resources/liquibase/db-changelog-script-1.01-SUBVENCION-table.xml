@@ -21,7 +21,9 @@
             <column name="linea_financiacion" type="VARCHAR(200)"/>
             <column name="bases_reguladoras" type="VARCHAR(400)"/>
             <column name="tipo_instrumento" type="VARCHAR(100)"/>
-            <column name="aplicacion_presupuestaria" type="VARCHAR(100)"/>   
+            <column name="aplicacion_presupuestaria" type="VARCHAR(100)"/> 
+			<column defaultValueNumeric="0" name="nominativa" type="BIT"/>		
+			<column name="tipo_procedimiento" type="VARCHAR(100)"/>			
         </createTable>  
         <rollback>
             <dropTable tableName="subvencion"/>            

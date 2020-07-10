@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">	
+    <changeSet author="Localidata" id="table-presupuesto">
+        <createTable tableName="presupuesto">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>            
+            <column name="fecha_aprobacion_pleno" type="datetime(6)"/>
+            <column name="estado_prorroga" type="BIT(1)"/>                
+            <column name="anio_fiscal" type="VARCHAR(4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="liquidacion" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto"/>            
+       </rollback>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="table-presupuesto_liquidacion">
+        <createTable tableName="presupuesto_liquidacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resultado_presupuestario" type="DECIMAL(12, 2)"/>
+            <column name="ajustes" type="DECIMAL(12, 2)"/>
+            <column name="resultado_ajustado" type="DECIMAL(12, 2)"/>
+            <column name="fecha_aprobacion_liquid" type="datetime(6)"/>            
+        </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto_liquidacion"/>            
+       </rollback>
+    </changeSet>
+    
+    
+     <changeSet author="Localidata" id="table-presupuesto_gasto">
+        <createTable tableName="presupuesto_gasto">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credito_presupuestario_inicial" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clasificacion_organica" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clasificacion_programa" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clasificacion_economica_gasto" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="presupuesto" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-presupuesto_ingreso">
+        <createTable tableName="presupuesto_ingreso">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prevision_inicial" type="DECIMAL(12, 2)" />
+            <column name="clasificacion_organica" type="VARCHAR(50)" />
+            <column name="clasif_economica_ingreso" type="VARCHAR(50)" />
+            <column name="presupuesto" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-presupuesto_ejecucion_gasto">
+        <createTable tableName="presupuesto_ejecucion_gasto">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credito_modificaciones" type="DECIMAL(12, 2)"/>
+            <column name="credito_definitivo_vigente" type="DECIMAL(12, 2)"/>
+            <column name="credito_autorizado" type="DECIMAL(12, 2)"/>
+            <column name="total_gasto_comprometido" type="DECIMAL(12, 2)"/>
+            <column name="credito_disponible" type="DECIMAL(12, 2)"/>
+            <column name="credito_retenido" type="DECIMAL(12, 2)"/>
+            <column name="obligaciones_reconocidas_netas" type="DECIMAL(12, 2)"/>
+            <column name="pagos" type="DECIMAL(12, 2)"/>
+            <column name="obligaciones_pend_31_dic" type="DECIMAL(12, 2)"/>
+            <column name="periodo_ejecucion_beginning" type="VARCHAR(50)"/>
+            <column name="periodo_ejecucion_end" type="VARCHAR(50)"/>
+            <column name="presupuesto_gasto" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="remanente_credito" type="DECIMAL(12, 2)"/>
+        </createTable>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-presupuesto_ejecucion_ingreso">
+        <createTable tableName="presupuesto_ejecucion_ingreso">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prevision_modificaciones" type="DECIMAL(12, 2)"/>
+            <column name="prevision_definitiva" type="DECIMAL(12, 2)"/>
+            <column name="derechos_reconocidos" type="DECIMAL(12, 2)"/>
+            <column name="derechos_anulados" type="DECIMAL(12, 2)"/>
+            <column name="derechos_cancelados" type="DECIMAL(12, 2)"/>
+            <column name="derechos_reconocidos_netos" type="DECIMAL(12, 2)"/>
+            <column name="recaudacion_neta" type="DECIMAL(12, 2)"/>
+            <column name="derechos_pend_cobro_31_dic" type="DECIMAL(12, 2)"/>
+            <column name="periodo_ejecucion_beginning" type="VARCHAR(50)"/>
+            <column name="periodo_ejecucion_end" type="VARCHAR(50)"/>
+            <column name="presupuesto_ingreso" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="exceso_defecto_prevision" type="DECIMAL(12, 2)"/>
+        </createTable>
+    </changeSet>
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-presupuesto">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_presupuesto" tableName="presupuesto"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-presupuesto_liquidacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_presupu_liquidacion" tableName="presupuesto_liquidacion"/>
+    </changeSet>    
+    <changeSet author="Localidata" id="PK-table-presupuesto_gasto">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_presupuesto_gasto" tableName="presupuesto_gasto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-presupuesto_ingreso">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_presupuesto_ingreso" tableName="presupuesto_ingreso"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-presupuesto_ejecucion_gasto">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_ejecucion_gasto" tableName="presupuesto_ejecucion_gasto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-presupuesto_ejecucion_ingreso">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_ejecucion_ingreso" tableName="presupuesto_ejecucion_ingreso"/>
+    </changeSet>
+
+	<!-- UNIQUE -->
+	<changeSet author="Localidata" id="unique-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-presupuesto" tableName="presupuesto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-liquidacion" tableName="presupuesto_liquidacion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="unique-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-pre_gasto" tableName="presupuesto_gasto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-pre_ingreso" tableName="presupuesto_ingreso"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-eje_gasto" tableName="presupuesto_ejecucion_gasto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-06">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-eje_ingreso" tableName="presupuesto_ejecucion_ingreso"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	
+	<changeSet author="Localidata" id="INDEX-presupuesto-1">
+        <createIndex indexName="index_liqui_id_presupuesto" tableName="presupuesto">
+            <column name="liquidacion"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-presupuesto-2">
+        <createIndex indexName="index_presu_gasto_id_pre" tableName="presupuesto_gasto">
+            <column name="presupuesto"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-presupuesto-3">
+        <createIndex indexName="index_presu_ingreso_id_pre" tableName="presupuesto_ingreso">
+            <column name="presupuesto"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-presupuesto-4">
+        <createIndex indexName="index_ejecu_gasto_id_pre_gasto" tableName="presupuesto_ejecucion_gasto">
+            <column name="presupuesto_gasto"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-presupuesto-5">
+        <createIndex indexName="index_eje_ing_id_pre_ing" tableName="presupuesto_ejecucion_ingreso">
+            <column name="presupuesto_ingreso"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

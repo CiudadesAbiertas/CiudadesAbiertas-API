@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="data-presupuesto_liquidacion">
+        <insert tableName="presupuesto_liquidacion">
+            <column name="ikey" value="LIQUID01"/>
+            <column name="id" value="LIQUID01"/>
+            <column name="resultado_presupuestario" valueNumeric="100000000.12"/>
+            <column name="ajustes" valueNumeric="5000.45"/>
+            <column name="resultado_ajustado" valueNumeric="3453.23"/>
+            <column name="fecha_aprobacion_liquid" valueDate="2020-04-12 00:00:00.0"/>            
+        </insert>
+        
+        <rollback>
+			  <delete tableName="presupuesto_liquidacion" />
+		</rollback>
+    </changeSet>
+    
+    <changeSet author="Localidata" id="data-presupuesto">
+        <insert tableName="presupuesto">
+            <column name="ikey" value="PRESUP01"/>
+            <column name="id" value="PRESUP01"/>
+            <column name="fecha_aprobacion_pleno" valueDate="2020-01-15 00:00:00.0"/>
+            <column name="estado_prorroga" valueBoolean="false"/>
+            <column name="anio_fiscal" value="2020"/>
+            <column name="liquidacion" value="LIQUID01"/>
+        </insert>
+        
+        <rollback>
+			  <delete tableName="presupuesto" />
+		</rollback>
+        
+    </changeSet>
+    
+    
+    <changeSet author="Localidata" id="presupuesto-pres_gasto">
+        <insert tableName="presupuesto_gasto">
+            <column name="ikey" value="PREGASTO01"/>
+            <column name="id" value="PREGASTO01"/>
+            <column name="credito_presupuestario_inicial" valueNumeric="100000.01"/>
+            <column name="clasificacion_organica" value="002"/>
+            <column name="clasificacion_programa" value="23270"/>
+            <column name="clasificacion_economica_gasto" value="22602"/>
+            <column name="presupuesto" value="PRESUP01"/>
+        </insert>
+        <insert tableName="presupuesto_gasto">
+            <column name="ikey" value="PREGASTO02"/>
+            <column name="id" value="PREGASTO02"/>
+            <column name="credito_presupuestario_inicial" valueNumeric="65000.00"/>
+            <column name="clasificacion_organica" value="002"/>
+            <column name="clasificacion_programa" value="23270"/>
+            <column name="clasificacion_economica_gasto" value="22606"/>
+            <column name="presupuesto" value="PRESUP01"/>
+        </insert>
+        
+        <rollback>
+			  <delete tableName="presupuesto_gasto" />
+		</rollback>
+        
+    </changeSet>
+	
+	<changeSet author="Localidata" id="presupuesto-pres_ingreso">
+        <insert tableName="presupuesto_ingreso">
+            <column name="ikey" value="PREINGRESO01"/>
+            <column name="id" value="PREINGRESO01"/>
+            <column name="prevision_inicial" valueNumeric="90000.01"/>
+            <column name="clasificacion_organica" value="002"/>
+            <column name="clasif_economica_ingreso" value="220.01"/>
+            <column name="presupuesto" value="PRESUP01"/>
+        </insert>
+        <insert tableName="presupuesto_ingreso">
+            <column name="ikey" value="PREINGRESO02"/>
+            <column name="id" value="PREINGRESO02"/>
+            <column name="prevision_inicial" valueNumeric="10000.01"/>
+            <column name="clasificacion_organica" value="150"/>
+            <column name="clasif_economica_ingreso" value="111"/>
+            <column name="presupuesto" value="PRESUP01"/>
+        </insert>
+		
+		 <rollback>
+			  <delete tableName="presupuesto_ingreso" />
+		</rollback>
+    </changeSet>
+   
+   <changeSet author="Localidata" id="presupuesto-ejec_gasto">
+        <insert tableName="presupuesto_ejecucion_gasto">
+            <column name="ikey" value="EJEGASTO01"/>
+            <column name="id" value="EJEGASTO01"/>
+            <column name="credito_modificaciones" valueNumeric="0.00"/>
+            <column name="credito_definitivo_vigente" valueNumeric="57543.00"/>
+            <column name="credito_autorizado" valueNumeric="65439.00"/>
+            <column name="total_gasto_comprometido" valueNumeric="75439.00"/>
+            <column name="credito_disponible" valueNumeric="68.00"/>
+            <column name="credito_retenido" valueNumeric="0.00"/>
+            <column name="obligaciones_reconocidas_netas" valueNumeric="65371.00"/>
+            <column name="pagos" valueNumeric="0.00"/>
+            <column name="obligaciones_pend_31_dic" valueNumeric="0.00"/>
+            <column name="periodo_ejecucion_beginning" value="2019-01"/>
+            <column name="periodo_ejecucion_end" value="2019-11"/>
+            <column name="presupuesto_gasto" value="PREGASTO01"/>
+			<column name="remanente_credito" valueNumeric="67543.00"/>
+        </insert>
+        <insert tableName="presupuesto_ejecucion_gasto">
+            <column name="ikey" value="EJEGASTO02"/>
+            <column name="id" value="EJEGASTO02"/>
+            <column name="credito_modificaciones" valueNumeric="0.00"/>
+            <column name="credito_definitivo_vigente" valueNumeric="47543.00"/>
+            <column name="credito_autorizado" valueNumeric="55439.00"/>
+            <column name="total_gasto_comprometido" valueNumeric="65439.00"/>
+            <column name="credito_disponible" valueNumeric="68.00"/>
+            <column name="credito_retenido" valueNumeric="0.00"/>
+            <column name="obligaciones_reconocidas_netas" valueNumeric="65371.00"/>
+            <column name="pagos" valueNumeric="0.00"/>
+            <column name="obligaciones_pend_31_dic" valueNumeric="0.00"/>
+            <column name="periodo_ejecucion_beginning" value="2019-02"/>
+            <column name="periodo_ejecucion_end" value="2019-10"/>
+            <column name="presupuesto_gasto" value="PREGASTO02"/>
+			<column name="remanente_credito" valueNumeric="57543.00"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="presupuesto_ejecucion_gasto" />
+		</rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="presupuesto-ejec_ingreso">
+        <insert tableName="presupuesto_ejecucion_ingreso">
+            <column name="ikey" value="EJEINGRESO01"/>
+            <column name="id" value="EJEINGRESO01"/>
+            <column name="prevision_modificaciones" valueNumeric="0.00"/>
+            <column name="prevision_definitiva" valueNumeric="57543.00"/>
+            <column name="derechos_reconocidos" valueNumeric="65439.00"/>
+            <column name="derechos_anulados" valueNumeric="75439.00"/>
+            <column name="derechos_cancelados" valueNumeric="68.00"/>
+            <column name="derechos_reconocidos_netos" valueNumeric="65371.00"/>
+            <column name="recaudacion_neta" valueNumeric="65371.00"/>
+            <column name="derechos_pend_cobro_31_dic" valueNumeric="0.00"/>
+            <column name="periodo_ejecucion_beginning" value="2019-01"/>
+            <column name="periodo_ejecucion_end" value="2019-11"/>
+            <column name="presupuesto_ingreso" value="PREINGRESO01"/>
+			<column name="exceso_defecto_prevision" valueNumeric="67543.00"/>
+        </insert>
+        <insert tableName="presupuesto_ejecucion_ingreso">
+            <column name="ikey" value="EJEINGRESO02"/>
+            <column name="id" value="EJEINGRESO02"/>
+            <column name="prevision_modificaciones" valueNumeric="0.00"/>
+            <column name="prevision_definitiva" valueNumeric="47543.00"/>
+            <column name="derechos_reconocidos" valueNumeric="55439.00"/>
+            <column name="derechos_anulados" valueNumeric="65439.00"/>
+            <column name="derechos_cancelados" valueNumeric="0.00"/>
+            <column name="derechos_reconocidos_netos" valueNumeric="65371.00"/>
+            <column name="recaudacion_neta" valueNumeric="65371.00"/>
+            <column name="derechos_pend_cobro_31_dic" valueNumeric="0.00"/>
+            <column name="periodo_ejecucion_beginning" value="2019-02"/>
+            <column name="periodo_ejecucion_end" value="2019-10"/>
+            <column name="presupuesto_ingreso" value="PREINGRESO02"/>
+			<column name="exceso_defecto_prevision" valueNumeric="57543.00"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="presupuesto_ejecucion_ingreso" />
+		</rollback>
+    </changeSet>
+
+    <changeSet id="DATA-CONVENIO-tag-1.23" author="Localidata">
+    	<tagDatabase tag="1.23" />
+  	</changeSet>  
+</databaseChangeLog>

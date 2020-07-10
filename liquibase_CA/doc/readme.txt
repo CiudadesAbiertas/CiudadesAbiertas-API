@@ -3,6 +3,9 @@ El fichero de configuracion se encuentra en:
 
 Generar todo el esquema de BBDD
 	mvn liquibase:update
+	
+Escribe todas las SQLs en un fichero (\target\liquibase\migrate.sql) necesarias para hacer el update
+	mvn liquibase:updateSQL
 
 Exportar estructuras de datos a partir de BBDD existente:
 	mvn liquibase:generateChangeLog

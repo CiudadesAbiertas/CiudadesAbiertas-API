@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+		
+	<changeSet author="Localidata" id="data-trafico_dispositivo_medicion">
+        <insert tableName="trafico_dispositivo_medicion">
+            <column name="ikey" value="TRAFDISMED01"/>
+            <column name="id" value="TRAFDISMED01"/>
+            <column name="description" value="Dispositivo que detecta los cambios que se producen en un campo electromagnético cuando circula un vehículo (masa metálica) sobre un punto determinado de la calzada. Registra el número total de vehículos que pasan y pueden clasificarlos por su longitud, número de ejes y masas."/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="2"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="lazo-magnetico"/>
+            <column name="monitorea" value="TRAFTRAM01"/>
+            <column name="en_servicio" valueBoolean="false"/>
+            <column name="frecuencia_medicion" value="P1m"/>
+            <column name="observes" value="carga"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="trafico_dispositivo_medicion">
+            <column name="ikey" value="TRAFDISMED02"/>
+            <column name="id" value="TRAFDISMED02"/>
+            <column name="description" value="C. GRAN VIA;San Bernardo-Garcia Molinas;San Bernardo"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="lazo-magnetico"/>
+            <column name="monitorea" value="TRAFTRAM02"/>
+            <column name="en_servicio" valueBoolean="true"/>
+            <column name="frecuencia_medicion" value="P1m"/>
+            <column name="observes" value="carga"/>
+            <column name="x_etrs89" valueNumeric="439247.03900"/>
+            <column name="y_etrs89" valueNumeric="4475788.14600"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_dispositivo_medicion" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-trafico_incidencia">
+        <insert tableName="trafico_incidencia">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFINCI01"/>
+            <column name="description" value="Corte de calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+            <column name="tipo_incidencia" value="obra"/>
+            <column name="date_posted" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="end_date" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="start_date" valueDate="2020-03-31 23:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="recurrencia" value="Sin recurrencia"/>
+            <column name="incidencia_tramo" value="TRAFTRAM01"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+        <insert tableName="trafico_incidencia">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFINCI02"/>
+            <column name="description" value="Corte de calles entre el paseo de Prado y calle Génova"/>
+            <column name="tipo_incidencia" value="obra"/>
+            <column name="date_posted" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="end_date" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="start_date" valueDate="2020-03-31 23:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="2"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="recurrencia" value="Sin recurrencia"/>
+            <column name="incidencia_tramo" value="TRAFTRAM02"/>
+            <column name="x_etrs89" valueNumeric="440124.43000"/>
+            <column name="y_etrs89" valueNumeric="4474637.27000"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_incidencia" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-trafico_observacion">
+        <insert tableName="trafico_observacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFOBS01"/>
+            <column name="observed_property" value="intensidad"/>
+            <column name="result_time" valueDate="2020-04-01 12:45:00.0"/>
+            <column name="has_simple_result" valueNumeric="30.00"/>
+            <column name="has_feature_interest" value="TRAFTRAM01"/>
+            <column name="validada" valueBoolean="false"/>
+            <column name="phenomenon_time_beginning" value="2020-04-01 12:45:00"/>
+            <column name="phenomenon_time_end" value="2020-04-01 12:46:00"/>
+            <column name="unidad_medida" value="Número total de vehículos"/>
+        </insert>
+        <insert tableName="trafico_observacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFOBS02"/>
+            <column name="observed_property" value="velocidad"/>
+            <column name="result_time" valueDate="2020-04-01 12:45:00.0"/>
+            <column name="has_simple_result" valueNumeric="97.00"/>
+            <column name="has_feature_interest" value="TRAFTRAM02"/>
+            <column name="validada" valueBoolean="false"/>
+            <column name="phenomenon_time_beginning" value="2020-04-01 12:45:00"/>
+            <column name="phenomenon_time_end" value="2020-04-01 12:46:00"/>
+            <column name="unidad_medida" value="kilometros por segundo"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_observacion" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-trafico_observacion_dispostivo">
+        <insert tableName="trafico_observacion_dispostivo">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFOBSDIPS01"/>
+            <column name="id_observacion" value="TRAFOBS02"/>
+            <column name="made_by_sensor" value="TRAFDISMED01"/>
+        </insert>
+        <insert tableName="trafico_observacion_dispostivo">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFOBSDIPS02"/>
+            <column name="id_observacion" value="TRAFOBS02"/>
+            <column name="made_by_sensor" value="TRAFDISMED02"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_observacion_dispostivo" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-trafico_tramo">
+        <insert tableName="trafico_tramo">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFTRAM01"/>
+            <column name="description" value="Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+            <column name="x_etrs89_inicio_tramo" valueNumeric="440124.33000"/>
+            <column name="y_etrs89_inicio_tramo" valueNumeric="4474637.17000"/>
+            <column name="x_etrs89_fin_tramo" valueNumeric="440124.43000"/>
+            <column name="y_etrs89_fin_tramo" valueNumeric="4474637.27000"/>
+        </insert>
+        <insert tableName="trafico_tramo">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFTRAM02"/>
+            <column name="description" value="Calles entre Paseo del prado y calle Génova"/>
+            <column name="x_etrs89_inicio_tramo" valueNumeric="440124.43000"/>
+            <column name="y_etrs89_inicio_tramo" valueNumeric="4474637.27000"/>
+            <column name="x_etrs89_fin_tramo" valueNumeric="440124.53000"/>
+            <column name="y_etrs89_fin_tramo" valueNumeric="4474637.37000"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_tramo" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-trafico_tramo_via">
+        <insert tableName="trafico_tramo_via">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFTRAVIA01"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+            <column name="id_via" value="496400"/>
+			<column name="title_via" value=""/>
+			<column name="tipo_via" value=""/>
+        </insert>
+        <insert tableName="trafico_tramo_via">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFTRAVIA02"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+            <column name="id_via" value=""/>
+			<column name="title_via" value="BRAVO MURILLO"/>
+			<column name="tipo_via" value="CALLE"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_tramo_via" />
+		</rollback>
+    </changeSet>
+	
+    <changeSet id="DATA-TRAFICO-tag-1.24" author="Localidata">
+    	<tagDatabase tag="1.24" />
+  	</changeSet>  
+</databaseChangeLog>

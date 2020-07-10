@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">	
+	
+	<changeSet author="Localidata" id="table-trafico_dispositivo_medicion">
+        <createTable tableName="trafico_dispositivo_medicion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="num_sentidos" type="INT"/>
+            <column name="num_carriles" type="INT"/>
+            <column name="urbano" type="BIT(1)"/>
+            <column name="tipo_equipo_trafico" type="VARCHAR(200)"/>
+            <column name="monitorea" type="VARCHAR(50)"/>
+            <column name="en_servicio" type="BIT(1)"/>
+            <column name="frecuencia_medicion" type="VARCHAR(200)"/>
+            <column name="observes" type="VARCHAR(200)"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_dispositivo_medicion"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-trafico_incidencia">
+        <createTable tableName="trafico_incidencia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="tipo_incidencia" type="VARCHAR(200)"/>
+            <column name="date_posted" type="datetime(6)"/>
+            <column name="end_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="num_sentidos" type="INT"/>
+            <column name="num_carriles" type="INT"/>
+            <column name="es_recurrente" type="BIT(1)"/>
+            <column name="fecha_fin_prevista" type="datetime(6)"/>
+            <column name="recurrencia" type="VARCHAR(200)"/>
+            <column name="incidencia_tramo" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="x_etrs89" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="y_etrs89" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_incidencia"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-trafico_observacion">
+        <createTable tableName="trafico_observacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="observed_property" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="result_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_simple_result" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_feature_interest" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="validada" type="BIT(1)"/>
+            <column name="phenomenon_time_beginning" type="VARCHAR(200)"/>
+            <column name="phenomenon_time_end" type="VARCHAR(200)"/>
+            <column name="unidad_medida" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_observacion"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-trafico_observacion_dispostivo">
+        <createTable tableName="trafico_observacion_dispostivo">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_observacion" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="made_by_sensor" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_observacion_dispostivo"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-trafico_tramo">
+        <createTable tableName="trafico_tramo">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="x_etrs89_inicio_tramo" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="y_etrs89_inicio_tramo" type="DECIMAL(13, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="x_etrs89_fin_tramo" type="DECIMAL(13, 5)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="y_etrs89_fin_tramo" type="DECIMAL(13, 5)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_tramo"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-trafico_tramo_via">
+        <createTable tableName="trafico_tramo_via">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_tramo" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_via" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+			<column name="title_via" type="VARCHAR(400)">
+                <constraints nullable="true"/>
+            </column>
+			<column name="tipo_via" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_tramo_via"/>            
+       </rollback>
+    </changeSet>
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-trafico_dispositivo_medicion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_dispositivo" tableName="trafico_dispositivo_medicion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-trafico_incidencia">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_incidencia" tableName="trafico_incidencia"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-trafico_observacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_observacio" tableName="trafico_observacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-trafico_observacion_dispostivo">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_observacion_disp" tableName="trafico_observacion_dispostivo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-trafico_tramo">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_tramo" tableName="trafico_tramo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-trafico_tramo_via">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_tramo_via" tableName="trafico_tramo_via"/>
+    </changeSet>
+	
+	<!-- UNIQUE -->
+	<changeSet author="Localidata" id="unique-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_disp" tableName="trafico_dispositivo_medicion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_incid" tableName="trafico_incidencia"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_obs" tableName="trafico_observacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_obs_dis" tableName="trafico_observacion_dispostivo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_tramo" tableName="trafico_tramo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-06">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_tra_via" tableName="trafico_tramo_via"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	<changeSet author="Localidata" id="INDEX-trafico-1">
+        <createIndex indexName="index_tramo_id_disp" tableName="trafico_dispositivo_medicion">
+            <column name="monitorea"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-2">
+        <createIndex indexName="index_tramo_id_inc" tableName="trafico_incidencia">
+            <column name="incidencia_tramo"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-3">
+        <createIndex indexName="index_tramo_id_obs" tableName="trafico_observacion">
+            <column name="has_feature_interest"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-4">
+        <createIndex indexName="index_obs_id_obs_di" tableName="trafico_observacion_dispostivo">
+            <column name="id_observacion"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-5">
+        <createIndex indexName="index_disp_id_obs_di" tableName="trafico_observacion_dispostivo">
+            <column name="made_by_sensor"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-6">
+        <createIndex indexName="index_tramo_id_travia" tableName="trafico_tramo_via">
+            <column name="id_tramo"/>
+        </createIndex>
+    </changeSet>
+	
+</databaseChangeLog>

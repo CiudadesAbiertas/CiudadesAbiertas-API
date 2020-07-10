@@ -224,6 +224,87 @@
 		referencedColumnNames="id" 	referencedTableName="bici_estacion"/>
      </changeSet>
 	 
-  	 
+  	 <!-- FK CONVENIOS -->
+	<changeSet author="Localidata" id="fk-convenio-1">
+        <addForeignKeyConstraint baseColumnNames="convenio_id" baseTableName="convenio_documentacion" constraintName="fk_convenio_doc_id" 
+		referencedColumnNames="id" referencedTableName="convenio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-convenio-2">
+        <addForeignKeyConstraint baseColumnNames="es_variacion_id" baseTableName="convenio" constraintName="fk_convenio_prorroga" 
+		referencedColumnNames="id" referencedTableName="convenio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-convenio-3">
+        <addForeignKeyConstraint baseColumnNames="convenio_id" baseTableName="convenio_susc_entidad" constraintName="fk_convenio_susc_entidad_id" 
+		referencedColumnNames="id" referencedTableName="convenio"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-convenio-4">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="convenio_susc_entidad" constraintName="fk_convenio_susc_org_id" 
+		referencedColumnNames="id" referencedTableName="convenio_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-convenio-5">
+        <addForeignKeyConstraint baseColumnNames="convenio_id" baseTableName="conv_rel_firmante_ayto" constraintName="fk_con_rel_firma_ayto_id" 
+		referencedColumnNames="id" referencedTableName="convenio"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="fk-convenio-6">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="conv_rel_firmante_ayto" constraintName="fk_con_rel_firma_ayto_org" 
+		referencedColumnNames="id" referencedTableName="convenio_organization"/>
+    </changeSet>
+	
+    <changeSet author="Localidata" id="fk-convenio-7">
+        <addForeignKeyConstraint baseColumnNames="entidad_id" baseTableName="conv_rel_firmante_entidad" constraintName="fk_con_rel_firma_ent_id" 
+		referencedColumnNames="id" referencedTableName="convenio_susc_entidad"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-convenio-8">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="conv_rel_firmante_entidad" constraintName="fk_con_rel_firma_ent_org" 
+		referencedColumnNames="id" referencedTableName="convenio_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="fk-convenio-9">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="convenio" constraintName="fk_convenio_org" 
+		referencedColumnNames="id" referencedTableName="convenio_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="fk-convenio-10">
+        <addForeignKeyConstraint baseColumnNames="org_id_obligado_presta" baseTableName="convenio" constraintName="fk_convenio_org_obliga" 
+		referencedColumnNames="id" referencedTableName="convenio_organization"/>
+    </changeSet>
+	
+    <!-- FK PRESUPUESTOS -->
+	<changeSet author="Localidata" id="fk-presupuesto-1">
+        <addForeignKeyConstraint baseColumnNames="liquidacion" baseTableName="presupuesto" constraintName="presupuesto_liquidacion_ibfk_1" referencedColumnNames="id" referencedTableName="presupuesto_liquidacion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-presupuesto-2">
+        <addForeignKeyConstraint baseColumnNames="presupuesto" baseTableName="presupuesto_gasto" constraintName="presupuesto_gasto_ibfk_1" referencedColumnNames="id" referencedTableName="presupuesto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-presupuesto-3">
+        <addForeignKeyConstraint baseColumnNames="presupuesto" baseTableName="presupuesto_ingreso" constraintName="presupuesto_ingreso_ibfk_1" referencedColumnNames="id" referencedTableName="presupuesto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-presupuesto-4">
+        <addForeignKeyConstraint baseColumnNames="presupuesto_gasto" baseTableName="presupuesto_ejecucion_gasto" constraintName="pres_ejecucion_gasto_ibfk_1" referencedColumnNames="id" referencedTableName="presupuesto_gasto"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-presupuesto-5">
+        <addForeignKeyConstraint baseColumnNames="presupuesto_ingreso" baseTableName="presupuesto_ejecucion_ingreso" constraintName="pres_ejecucion_ingreso_ibfk_1" referencedColumnNames="id" referencedTableName="presupuesto_ingreso"/>
+    </changeSet>
+    
+    <!-- FK TRAFICO -->
+	<changeSet author="Localidata" id="fk-trafico-1">
+        <addForeignKeyConstraint baseColumnNames="monitorea" baseTableName="trafico_dispositivo_medicion" constraintName="traf_disp_medicion_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-2">
+        <addForeignKeyConstraint baseColumnNames="incidencia_tramo" baseTableName="trafico_incidencia" constraintName="trafico_incidencia_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-3">
+        <addForeignKeyConstraint baseColumnNames="has_feature_interest" baseTableName="trafico_observacion" constraintName="trafico_observacion_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-4">
+        <addForeignKeyConstraint baseColumnNames="id_observacion" baseTableName="trafico_observacion_dispostivo" constraintName="traf_obse_dispostivo_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_observacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-5">
+        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="trafico_observacion_dispostivo" constraintName="traf_obse_dispostivo_ibfk_2" referencedColumnNames="id" referencedTableName="trafico_dispositivo_medicion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-6">
+        <addForeignKeyConstraint baseColumnNames="id_tramo" baseTableName="trafico_tramo_via" constraintName="trafico_tramo_via_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
+    </changeSet>
 	
 </databaseChangeLog>

@@ -140,9 +140,18 @@
   <!-- Version 1.21 BICICLETA PUBLICA -->
   <include file="liquibase/db-changelog-script-1.21-BICICLETA-PUBLICA-table.xml"/>
   <include file="liquibase/db-changelog-script-1.21-BICICLETA-PUBLICA-data.xml"/>   
-
-
   
+   <!-- Version 1.22 CONVENIO -->
+  <include file="liquibase/db-changelog-script-1.22-CONVENIO-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.22-CONVENIO-data.xml"/>
+
+  <!-- Version 1.23 PRESUPUESTO -->
+  <include file="liquibase/db-changelog-script-1.23-PRESUPUESTO-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.23-PRESUPUESTO-data.xml"/>
+  
+  <!-- Version 1.24 TRAFICO -->
+  <include file="liquibase/db-changelog-script-1.24-TRAFICO-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.24-TRAFICO-data.xml"/>
 
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

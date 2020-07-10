@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="data-convenio">   			
+        <insert tableName="convenio">
+            <column name="ikey" value="1"/>
+            <column name="id" value="CONV001"/>
+            <column name="title" value="CONVENIO PRUEBAS 1"/>
+            <column name="description" value="DESC CONVENIO PRUEBAS 1"/>
+            <column name="objeto" value="TEXTO DESCRIPTIVO DEL OBJETIVO DEL CONVENIO"/>
+            <column name="fecha_inicio" valueDate="2020-01-01 00:00:00.0"/>
+            <column name="fecha_finalizacion" valueDate="2021-01-01 00:00:00.0"/>
+            <column name="fecha_suscripcion" valueDate="2020-02-01 00:00:00.0"/>
+            <column name="fecha_resolucion_fin" valueDate="2020-06-01 00:00:00.0"/>
+            <column name="fecha_incorporacion" valueDate="2020-03-01 00:00:00.0"/>
+            <column name="obligacion_economica_ayto" valueNumeric="1200000.80"/>
+            <column name="tipo_convenio" value="tipo-convenio-1"/>
+			<column name="tipo_variacion" value=""/>
+            <column name="modalidad" value="modalidad-convenio-1"/>
+            <column name="materia" value="tipo-materia-1"/>
+            <column name="fecha_adjudicacion_sub" valueDate="2020-02-11 00:00:00.0"/>
+            <column name="importe_subv" valueNumeric="320000.80"/>
+            <column name="adjudicatario_title_sub" value="Pedro Ruiz Gomez"/>
+            <column name="subvencion_id" value="SUBV001"/>
+            <column name="organization_id" value="ORG0001"/>   
+			<column name="org_id_obligado_presta" value="ORG0002"/>			
+            <column name="gestionado_por_organization" valueBoolean="true"/>
+            <column name="gestionado_por_distrito" valueBoolean="false"/>            
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Unico"/>
+            <column name="es_variacion_id"/>
+        </insert>
+        <insert tableName="convenio">
+            <column name="ikey" value="2"/>
+            <column name="id" value="CONV002"/>
+            <column name="title" value="CONVENIO PRUEBAS 2"/>
+            <column name="description" value="DESC CONVENIO PRUEBAS 2"/>
+            <column name="objeto" value="TEXTO DESCRIPTIVO DEL OBJETIVO DEL CONVENIO"/>
+            <column name="fecha_inicio" valueDate="2019-12-01 00:00:00.0"/>
+            <column name="fecha_finalizacion" valueDate="2020-12-31 00:00:00.0"/>
+            <column name="fecha_suscripcion" valueDate="2020-01-01 00:00:00.0"/>
+            <column name="fecha_resolucion_fin" valueDate="2020-02-01 00:00:00.0"/>
+            <column name="fecha_incorporacion" valueDate="2020-01-01 00:00:00.0"/>
+            <column name="obligacion_economica_ayto" valueNumeric="4200000.80"/>
+            <column name="tipo_convenio" value="tipo-convenio-2"/>
+			<column name="tipo_variacion" value="prorroga"/>
+            <column name="modalidad" value="modalidad-convenio-2"/>
+            <column name="materia" value="tipo-materia-2"/>
+            <column name="fecha_adjudicacion_sub" valueDate="2020-01-10 00:00:00.0"/>
+            <column name="importe_subv" valueNumeric="400000.80"/>
+            <column name="adjudicatario_title_sub" value="Otro xx iz Gomez"/>
+            <column name="subvencion_id" value="SUBV002"/>
+            <column name="organization_id" value="ORG0001"/>
+			<column name="org_id_obligado_presta" value="ORG0003"/>	
+            <column name="gestionado_por_organization" valueBoolean="true"/>
+            <column name="gestionado_por_distrito" valueBoolean="false"/>            
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Unico"/>
+            <column name="es_variacion_id" value="CONV001"/>
+        </insert>
+        <insert tableName="convenio">
+            <column name="ikey" value="3"/>
+            <column name="id" value="CONV003"/>
+            <column name="title" value="CONVENIO PRUEBAS 3"/>
+            <column name="description" value="DESC CONVENIO PRUEBAS 3"/>
+            <column name="objeto" value="TEXTO DESCRIPTIVO DEL OBJETIVO DEL CONVENIO"/>
+            <column name="fecha_inicio" valueDate="2020-01-05 00:00:00.0"/>
+            <column name="fecha_finalizacion" valueDate="2020-12-31 00:00:00.0"/>
+            <column name="fecha_suscripcion" valueDate="2020-01-25 00:00:00.0"/>
+            <column name="fecha_resolucion_fin" valueDate="2020-02-11 00:00:00.0"/>
+            <column name="fecha_incorporacion" valueDate="2020-03-01 00:00:00.0"/>
+            <column name="obligacion_economica_ayto" valueNumeric="2500000.00"/>
+            <column name="tipo_convenio" value="tipo-convenio-2"/>
+			<column name="tipo_variacion" value="adenda"/>
+            <column name="modalidad" value="modalidad-convenio-2"/>
+            <column name="materia" value="tipo-materia-2"/>
+            <column name="fecha_adjudicacion_sub" valueDate="2020-01-10 00:00:00.0"/>
+            <column name="importe_subv" valueNumeric="350000.00"/>
+            <column name="adjudicatario_title_sub" value="Otro MAS xxxxxxx"/>
+            <column name="subvencion_id" value="SUBV001"/>
+            <column name="organization_id" value="ORG0001"/> 
+			<column name="org_id_obligado_presta" value="ORG0003"/>			
+            <column name="gestionado_por_organization" valueBoolean="false"/>
+            <column name="gestionado_por_distrito" valueBoolean="true"/>
+            <column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+            <column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Unico"/>
+            <column name="es_variacion_id" value="CONV001"/>
+        </insert>        
+        <rollback/>        	      
+    </changeSet>
+	
+	<changeSet author="Localidata" id="data-convenio_documentacion">
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="CONVDOC001"/>
+            <column name="encoding_format" value="application/pdf"/>
+            <column name="name" value="documento del convenio 1"/>
+            <column name="url" value="https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&amp;amp;vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&amp;amp;vgnextfmt=default"/>
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="CONVDOC002"/>
+            <column name="encoding_format" value="image/png"/>
+            <column name="name" value="Imagen del borrador 1"/>
+            <column name="url" value="https://sede.madrid.es/UnidadesDescentralizadas/DistritoVillaverde/Actividades/FIESTAS19/ficheros/2.png"/>
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="3"/>
+            <column name="id" value="CONVDOC003"/>
+            <column name="encoding_format" value="application/pdf"/>
+            <column name="name" value="documento del convenio 2"/>
+            <column name="url" value="https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&amp;amp;vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&amp;amp;vgnextfmt=default"/>
+            <column name="convenio_id" value="CONV002"/>
+        </insert>
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="4"/>
+            <column name="id" value="CONVDOC004"/>
+            <column name="encoding_format" value="image/png"/>
+            <column name="name" value="Imagen del borrador 2"/>
+            <column name="url" value="https://sede.madrid.es/UnidadesDescentralizadas/DistritoVillaverde/Actividades/FIESTAS19/ficheros/2.png"/>
+            <column name="convenio_id" value="CONV002"/>
+        </insert>
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="5"/>
+            <column name="id" value="CONVDOC005"/>
+            <column name="encoding_format" value="application/pdf"/>
+            <column name="name" value="documento del convenio 3"/>
+            <column name="url" value="https://sede.madrid.es/portal/site/tramites/menuitem.5dd4485239c96e10f7a72106a8a409a0/?vgnextoid=e83703a8a6e82410vgnvcm2000000c205a0arcrd&amp;amp;vgnextchannel=e81965dd72ede410vgnvcm1000000b205a0arcrd&amp;amp;vgnextfmt=default"/>
+            <column name="convenio_id" value="CONV003"/>
+        </insert>
+        <insert tableName="convenio_documentacion">
+            <column name="ikey" value="6"/>
+            <column name="id" value="CONVDOC006"/>
+            <column name="encoding_format" value="image/png"/>
+            <column name="name" value="Imagen del borrador 3"/>
+            <column name="url" value="https://sede.madrid.es/UnidadesDescentralizadas/DistritoVillaverde/Actividades/FIESTAS19/ficheros/2.png"/>
+            <column name="convenio_id" value="CONV003"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="data-convenio_susc_entidad">
+        <insert tableName="convenio_susc_entidad">
+            <column name="ikey" value="1"/>
+            <column name="id" value="CONVSUSENT001"/>
+            <column name="entidad_suscriptora" value="Localidata"/>
+            <column name="obli_economica_entidad" valueNumeric="200000.00"/>
+            <column name="organization_id" value="ORGLOC0010"/>                       
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="convenio_susc_entidad">
+            <column name="ikey" value="2"/>
+            <column name="id" value="CONVSUSENT002"/>
+            <column name="entidad_suscriptora" value="Entidad Suscriptora 2"/>
+            <column name="obli_economica_entidad" valueNumeric="100000.00"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="convenio_susc_entidad">
+            <column name="ikey" value="3"/>
+            <column name="id" value="CONVSUSENT003"/>
+            <column name="entidad_suscriptora" value="Localidata"/>
+            <column name="obli_economica_entidad" valueNumeric="100000.00"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="convenio_id" value="CONV002"/>
+        </insert>        
+		<insert tableName="convenio_susc_entidad">
+            <column name="ikey" value="4"/>
+            <column name="id" value="CONVSUSENT004"/>
+            <column name="entidad_suscriptora" value="Entidad Suscriptora 2"/>
+            <column name="obli_economica_entidad" valueNumeric="108000.00"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="convenio_id" value="CONV002"/>
+        </insert>
+        <insert tableName="convenio_susc_entidad">
+            <column name="ikey" value="5"/>
+            <column name="id" value="CONVSUSENT005"/>
+            <column name="entidad_suscriptora" value="Localidata"/>
+            <column name="obli_economica_entidad" valueNumeric="80000.00"/>
+            <column name="organization_id" value="ORGLOC0010"/>           
+            <column name="convenio_id" value="CONV003"/>
+        </insert>				
+		<rollback/>
+    </changeSet>
+	
+	 <changeSet author="Localidata" id="data-conv_rel_firmante_ayto">
+        <insert tableName="conv_rel_firmante_ayto">
+            <column name="ikey" value="1"/>
+            <column name="id" value="CONVRELFIRMAYTO001"/>
+            <column name="firmante_role" value="Alcaldesa, Alcaldía de Madrid"/>
+            <column name="organization_id" value="ORG0001"/>
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_ayto">
+            <column name="ikey" value="2"/>
+            <column name="id" value="CONVRELFIRMAYTO002"/>
+            <column name="firmante_role" value="Concejal de Deportes"/>
+            <column name="organization_id" value="ORG0003"/>            
+            <column name="convenio_id" value="CONV001"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_ayto">
+            <column name="ikey" value="3"/>
+            <column name="id" value="CONVRELFIRMAYTO003"/>
+            <column name="firmante_role" value="Concejal Servicios Sociales"/>
+            <column name="organization_id" value="ORG0002"/>            
+            <column name="convenio_id" value="CONV002"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_ayto">
+            <column name="ikey" value="4"/>
+            <column name="id" value="CONVRELFIRMAYTO004"/>
+            <column name="firmante_role" value="Alcaldesa, Alcaldía de Madrid"/>
+            <column name="organization_id" value="ORG0001"/>            
+            <column name="convenio_id" value="CONV003"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_ayto">
+            <column name="ikey" value="5"/>
+            <column name="id" value="CONVRELFIRMAYTO005"/>
+            <column name="firmante_role" value="Concejal de Deportes"/>
+            <column name="organization_id" value="ORG0003"/>            
+            <column name="convenio_id" value="CONV003"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="data-conv_rel_firmante_entidad">
+        <insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="1"/>
+            <column name="id" value="CONVRELFIRMENTIDAD001"/>
+            <column name="firmante_role" value="Presidente Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT001"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="2"/>
+            <column name="id" value="CONVRELFIRMENTIDAD002"/>
+            <column name="firmante_role" value="VicePresidente Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT001"/>
+        </insert>
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="3"/>
+            <column name="id" value="CONVRELFIRMENTIDAD003"/>
+            <column name="firmante_role" value="Presidente Otra Entidad"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="entidad_id" value="CONVSUSENT002"/>
+        </insert>
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="4"/>
+            <column name="id" value="CONVRELFIRMENTIDAD004"/>
+            <column name="firmante_role" value="Delegado Otra Entidad"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="entidad_id" value="CONVSUSENT002"/>
+        </insert>
+		
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="5"/>
+            <column name="id" value="CONVRELFIRMENTIDAD005"/>
+            <column name="firmante_role" value="Presidente Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT003"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="6"/>
+            <column name="id" value="CONVRELFIRMENTIDAD006"/>
+            <column name="firmante_role" value="Delegado Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT003"/>
+        </insert>
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="7"/>
+            <column name="id" value="CONVRELFIRMENTIDAD007"/>
+            <column name="firmante_role" value="Presidente Otra Entidad"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="entidad_id" value="CONVSUSENT004"/>
+        </insert>
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="8"/>
+            <column name="id" value="CONVRELFIRMENTIDAD008"/>
+            <column name="firmante_role" value="Delegado Otra Entidad"/>
+            <column name="organization_id" value="ORGOTRA0011"/>            
+            <column name="entidad_id" value="CONVSUSENT004"/>
+        </insert>
+		
+		<insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="9"/>
+            <column name="id" value="CONVRELFIRMENTIDAD009"/>
+            <column name="firmante_role" value="Presidente Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT005"/>
+        </insert>
+        <insert tableName="conv_rel_firmante_entidad">
+            <column name="ikey" value="10"/>
+            <column name="id" value="CONVRELFIRMENTIDAD010"/>
+            <column name="firmante_role" value="Delegado Localidata"/>
+            <column name="organization_id" value="ORGLOC0010"/>            
+            <column name="entidad_id" value="CONVSUSENT005"/>
+        </insert>
+        
+		<rollback/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="datos-convenio_organization">
+        
+		<insert tableName="convenio_organization">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ORG0001"/>
+            <column name="title" value="Alcaldia Ayto XXX"/>
+            <column name="URL" value="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png"/>
+			<column name="contactPoint_email" value="info@aytoxxx.com"/>
+			<column name="contactPoint_faxNumber" value="1123333333"/>
+			<column name="contactPoint_telephone" value="1123333335"/>
+			<column name="contactPoint_title" value="Centro Cultural Ayto XXX"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>			
+            <column name="street_address" value="CALLE BUSTAMANTE V 16"/>
+			<column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>		
+            <column name="postal_code" value="28045"/>		
+			<column name="portal_id" value="PORTAL000112"/>
+			<column name="classification" value="tipo-clasificación2"/>			
+        </insert>
+		<insert tableName="convenio_organization">
+            <column name="ikey" value="2"/>
+            <column name="id" value="ORG0002"/>
+            <column name="title" value="Concejalia de Cultura Ayto XXX"/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="info@cultura.aytoxxx.com"/>
+			<column name="contactPoint_faxNumber" value="1023333333"/>
+			<column name="contactPoint_telephone" value="1023333335"/>
+			<column name="contactPoint_title" value="Centro Cultural Ayto XXX"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>	
+			<column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>			
+            <column name="street_address" value="CALLE BUSTAMANTE V 16"/>
+            <column name="postal_code" value="28045"/>		
+			<column name="portal_id" value="PORTAL000112"/>
+			<column name="classification" value="tipo-clasificación3"/>			
+        </insert>
+		<insert tableName="convenio_organization">
+            <column name="ikey" value="3"/>
+            <column name="id" value="ORG0003"/>
+            <column name="title" value="Deportes Ayto XXX"/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="info@deportes.aytoxxx.com"/>
+			<column name="contactPoint_faxNumber" value="1023333333"/>
+			<column name="contactPoint_telephone" value="1023333335"/>
+			<column name="contactPoint_title" value="Centro Cultural Ayto XXX"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>		
+			<column name="distrito_id" value="2800601"/>
+            <column name="distrito_title" value="Distrito 1"/>
+            <column name="street_address" value="CALLE BUSTAMANTE V 16"/>
+            <column name="postal_code" value="28045"/>		
+			<column name="portal_id" value="PORTAL000112"/>
+			<column name="classification" value="tipo-clasificación3"/>			
+        </insert>
+		<insert tableName="convenio_organization">
+            <column name="ikey" value="4"/>
+            <column name="id" value="ORGLOC0010"/>
+            <column name="title" value="Localidata S.L."/>
+            <column name="URL" value="https://www.localidata.com/"/>
+			<column name="contactPoint_email" value="info@localidata.com"/>
+			<column name="contactPoint_faxNumber" />
+			<column name="contactPoint_telephone" />
+			<column name="contactPoint_title" value="C/ Agustín de Betancourt 21, Floor"/>
+			<column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>	
+			<column name="distrito_id" value="2800301"/>
+            <column name="distrito_title" value="Distrito 1"/>			
+            <column name="street_address" value="C/ Agustín de Betancourt 21, Floor"/>
+            <column name="postal_code" value="28003"/>		
+			<column name="portal_id" value="PORTAL000112"/>
+			<column name="classification" value="tipo-clasificación3"/>			
+        </insert>		
+		<insert tableName="convenio_organization">
+            <column name="ikey" value="5"/>
+            <column name="id" value="ORGOTRA0011"/>
+            <column name="title" value="OTRAS ENTIDADES S.L."/>
+            <column name="URL" value=""/>
+			<column name="contactPoint_email" value="info@otras.com"/>
+			<column name="contactPoint_faxNumber" />
+			<column name="contactPoint_telephone" />
+			<column name="contactPoint_title" value=""/>
+			<column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>	
+			<column name="distrito_id" value="2800301"/>
+            <column name="distrito_title" value="Distrito 1"/>			
+            <column name="street_address" value=""/>
+            <column name="postal_code" value="28003"/>		
+			<column name="portal_id" value="PORTAL000100"/>
+			<column name="classification" value="tipo-clasificación4"/>			
+        </insert>
+        	
+		<rollback>
+			  <delete tableName="convenio_organization" />
+		</rollback>
+    </changeSet>
+	
+		
+    <changeSet id="DATA-CONVENIO-tag-1.22" author="Localidata">
+    	<tagDatabase tag="1.22" />
+  	</changeSet>  
+</databaseChangeLog>

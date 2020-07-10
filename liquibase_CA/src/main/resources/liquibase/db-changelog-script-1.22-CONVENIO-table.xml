@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">	
+    <changeSet author="Localidata" id="table-convenio">
+        <createTable tableName="convenio">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            
+            <column name="objeto" type="VARCHAR(400)"/>
+            <column name="fecha_inicio" type="datetime(6)"/>
+            <column name="fecha_finalizacion" type="datetime(6)"/>
+            <column name="fecha_suscripcion" type="datetime(6)"/>
+            <column name="fecha_resolucion_fin" type="datetime(6)"/>
+            <column name="fecha_incorporacion" type="datetime(6)"/>
+            <column name="obligacion_economica_ayto" type="DECIMAL(12, 2)"/>
+            <column name="tipo_convenio" type="VARCHAR(100)"/>
+			<column name="tipo_variacion" type="VARCHAR(100)"/>
+            <column name="modalidad" type="VARCHAR(100)"/>
+            <column name="materia" type="VARCHAR(100)"/>
+            <column name="fecha_adjudicacion_sub" type="datetime(6)"/>
+            <column name="importe_subv" type="DECIMAL(12, 2)"/>
+            <column name="adjudicatario_title_sub" type="VARCHAR(200)"/>
+            <column name="subvencion_id" type="VARCHAR(50)"/>
+            <column name="organization_id" type="VARCHAR(50)"/>
+			<column name="org_id_obligado_presta" type="VARCHAR(50)"/>            
+            <column defaultValueNumeric="0" name="gestionado_por_organization" type="BIT(1)"/>
+            <column defaultValueNumeric="0" name="gestionado_por_distrito" type="BIT(1)"/>            
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(200)"/>
+            <column name="es_variacion_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="convenio"/>            
+       </rollback>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="table-convenio_documentacion">
+        <createTable tableName="convenio_documentacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="encoding_format" type="VARCHAR(400)"/>
+            <column name="name" type="VARCHAR(400)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="convenio_id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="convenio_documentacion"/>            
+       </rollback>
+    </changeSet>
+	
+    <changeSet author="Localidata" id="table-convenio_susc_entidad">
+        <createTable tableName="convenio_susc_entidad">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entidad_suscriptora" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="obli_economica_entidad" type="DECIMAL(12, 2)"/>
+            <column name="organization_id" type="VARCHAR(50)"/>            
+            <column name="convenio_id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="convenio_susc_entidad"/>            
+       </rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-convenio_rel_firmante_ayto">
+        <createTable tableName="conv_rel_firmante_ayto">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firmante_role" type="VARCHAR(200)"/>
+            <column name="organization_id" type="VARCHAR(50)"/>            
+            <column name="convenio_id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="conv_rel_firmante_ayto"/>            
+       </rollback>
+    </changeSet>
+	
+    <changeSet author="Localidata" id="table-convenio_rel_firmante_entidad">
+        <createTable tableName="conv_rel_firmante_entidad">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firmante_role" type="VARCHAR(200)"/>
+            <column name="organization_id" type="VARCHAR(50)"/>            
+            <column name="entidad_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="conv_rel_firmante_entidad"/>            
+       </rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="tabla-convenio_organization">
+        <createTable tableName="convenio_organization">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL" type="VARCHAR(400)"/>
+			<column name="contactPoint_email" type="VARCHAR(200)"/>
+			<column name="contactPoint_faxNumber" type="VARCHAR(200)"/>
+			<column name="contactPoint_telephone" type="VARCHAR(200)"/>
+			<column name="contactPoint_title" type="VARCHAR(400)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>	
+			<column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(200)"/>			
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>				
+			<column name="portal_id" type="varchar(50)"/>
+			<column name="classification" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="convenio_organization"/>            
+       </rollback>
+    </changeSet>
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-convenio">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_convenio" tableName="convenio"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-convenio_documentacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_convenio_document" tableName="convenio_documentacion"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-convenio_susc_entidad">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_conv_susc_ent" tableName="convenio_susc_entidad"/>
+    </changeSet>	
+	<changeSet author="Localidata" id="PK-table-conv_rel_firmante_ayto">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_conv_rel_fir_ayto" tableName="conv_rel_firmante_ayto"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-conv_rel_firmante_entidad">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_conv_rel_fir_entidad" tableName="conv_rel_firmante_entidad"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-convenio_organization">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_convenio_organization" tableName="convenio_organization"/>
+    </changeSet>
+
+	<!-- UNIQUE -->
+	 <changeSet author="Localidata" id="unique-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-convenio" tableName="convenio"/>
+    </changeSet>
+	
+	 <changeSet author="Localidata" id="unique-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-conv_doc" tableName="convenio_documentacion"/>
+    </changeSet>
+	
+	 <changeSet author="Localidata" id="unique-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-con_susc_ent" tableName="convenio_susc_entidad"/>
+    </changeSet>
+	
+	 <changeSet author="Localidata" id="unique-id-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-conv_rel_f_ayto" tableName="conv_rel_firmante_ayto"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-conv_rel_f_ent" tableName="conv_rel_firmante_entidad"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-06">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-conv_organization" tableName="convenio_organization"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	
+	<changeSet author="Localidata" id="INDEX-convenio-1">
+        <createIndex indexName="index_convenio_id_conv" tableName="convenio">
+            <column name="es_variacion_id"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-convenio-3">
+        <createIndex indexName="index_distrito_id_conv" tableName="convenio">
+            <column name="distrito_id"/>
+        </createIndex>
+    </changeSet>
+	  <changeSet author="Localidata" id="INDEX-convenio-4">
+        <createIndex indexName="index_municipio_id_conv" tableName="convenio">
+            <column name="municipio_id"/>
+        </createIndex>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-convenio-5">
+        <createIndex indexName="index_convenio_org" tableName="convenio">
+            <column name="organization_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-16">
+        <createIndex indexName="index_convenio_org_pres" tableName="convenio">
+            <column name="org_id_obligado_presta"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-6">
+        <createIndex indexName="index_sub_id_convenio" tableName="convenio">
+            <column name="subvencion_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-7">
+        <createIndex indexName="index_con_id_con_doc" tableName="convenio_documentacion">
+            <column name="convenio_id"/>
+        </createIndex>
+    </changeSet>
+	 
+	
+    <changeSet author="Localidata" id="INDEX-convenio-8">
+        <createIndex indexName="index_con_id_sus_conv_e" tableName="convenio_susc_entidad">
+            <column name="convenio_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-9">
+        <createIndex indexName="index_con_id_sus_conv_org" tableName="convenio_susc_entidad">
+            <column name="organization_id"/>
+        </createIndex>
+    </changeSet>
+    
+  
+	
+	<changeSet author="Localidata" id="INDEX-convenio-11">
+        <createIndex indexName="i_con_id_rel_fi_ayto_con" tableName="conv_rel_firmante_ayto">
+            <column name="convenio_id"/>
+        </createIndex>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="INDEX-convenio-12">
+        <createIndex indexName="i_con_id_rel_fi_ayto_org" tableName="conv_rel_firmante_ayto">
+            <column name="organization_id"/>
+        </createIndex>
+    </changeSet>	
+	
+	<changeSet author="Localidata" id="INDEX-convenio-13">
+        <createIndex indexName="i_con_id_rel_fi_entidad" tableName="conv_rel_firmante_entidad">
+            <column name="entidad_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-14">
+        <createIndex indexName="i_con_id_rel_fi_ent_org" tableName="conv_rel_firmante_entidad">
+            <column name="organization_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-convenio-15">
+        <createIndex indexName="i_con_id_rel_fi_organiza" tableName="convenio_organization">
+            <column name="portal_id"/>
+        </createIndex>
+    </changeSet>
+	
+
+</databaseChangeLog>
