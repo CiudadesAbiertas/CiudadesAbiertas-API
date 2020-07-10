@@ -38,6 +38,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.jena.ext.com.google.common.base.Charsets;
+import org.ciudadesAbiertas.rdfGeneratorZ.TransformadorBasicoRdf;
 import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.config.multipe.MultipleDataSource;
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
@@ -576,6 +577,23 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			StartVariables.activeFK = Boolean.TRUE;
 		}
 		log.info("ACTIVE FOREIGN KEY: " + StartVariables.activeFK);
+		
+		if (env.getProperty("presupuestos.urlSkos.clasificacionEconomicaGasto")!=null)
+		{
+			StartVariables.presupuestosUrlSkosClasificacionEconomicaGasto=env.getProperty("presupuestos.urlSkos.clasificacionEconomicaGasto");
+		}
+		if (env.getProperty("presupuestos.urlSkos.clasificacionPrograma")!=null)
+		{
+			StartVariables.presupuestosUrlSkosClasificacionPrograma=env.getProperty("presupuestos.urlSkos.clasificacionPrograma");
+		}
+		if (env.getProperty("presupuestos.urlSkos.clasificacionOrganica")!=null)
+		{
+			StartVariables.presupuestosUrlSkosClasificacionOrganica=env.getProperty("presupuestos.urlSkos.clasificacionOrganica");			
+		}
+		TransformadorBasicoRdf.variables.put("clasificacionEconomicaIngreso",StartVariables.presupuestosUrlSkosClasificacionEconomicaIngreso);
+		TransformadorBasicoRdf.variables.put("clasificacionEconomicaGasto",StartVariables.presupuestosUrlSkosClasificacionEconomicaGasto);
+		TransformadorBasicoRdf.variables.put("clasificacionPrograma",StartVariables.presupuestosUrlSkosClasificacionPrograma);
+		TransformadorBasicoRdf.variables.put("clasificacionOrganica",StartVariables.presupuestosUrlSkosClasificacionOrganica);
 	}
 
 	

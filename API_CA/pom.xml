@@ -22,7 +22,7 @@
 		<junit-version>4.12</junit-version>
 		<pmdVersion>6.8.0</pmdVersion>
 		<oracleDriverVersion>11.2.0.3</oracleDriverVersion>
-		<mysqlDriverVersion>5.1.47</mysqlDriverVersion>
+		<mysqlDriverVersion>8.0.20</mysqlDriverVersion>
 		<sqlServerDriverVersion>7.0.0.jre8</sqlServerDriverVersion>	
 		<geoRss.Rome.version>1.12.2</geoRss.Rome.version>	
 	</properties>
@@ -59,6 +59,9 @@
 				<module>API_AGENDAMUNICIPAL</module>
 				<module>API_CONTRATOS</module>
 				<module>API_BICICLETAPUBLICA</module>
+				<module>API_CONVENIO</module>
+				<module>API_PRESUPUESTO</module>
+				<module>API_TRAFICO</module>
 				<!-- 
 				<module>API_PLANTILLA</module>
 				 -->
@@ -306,7 +309,44 @@
 				<module>API_BICICLETAPUBLICA</module>				
 			</modules>
 		</profile>
-			
+		
+		<profile>
+			<id>convenio</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_CONVENIO</module>				
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>presupuesto</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_PRESUPUESTO</module>				
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>trafico</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_TRAFICO</module>				
+			</modules>
+		</profile>
+
+		
 		<!-- Perfil para el conjunto de datos Plantilla -->
 		<!-- 
 		<profile>
@@ -329,8 +369,8 @@
 
 
 	<modules>		
-		<module>rdfGeneratorZ</module>    
-  </modules>
+		<module>rdfGeneratorZ</module>
+ 	 </modules>
   
   	<build>	
 		<plugins>

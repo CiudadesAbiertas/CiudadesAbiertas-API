@@ -47,6 +47,7 @@ import org.ciudadesabiertas.utils.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -85,6 +86,9 @@ public class GenericController<T> {
 	@Autowired
 	protected Environment env;
 	
+	@Autowired
+	private ApplicationContext applicationContext;
+	
 	public static boolean activeFK = StartVariables.activeFK;
 	
 	
@@ -110,7 +114,26 @@ public class GenericController<T> {
 		
 		String ajaxURL=request.getRequestURL().toString().replace(Constants.EXT_HTML, Constants.EXT_JSON);
 		
+		String tomcatHost=request.getServerName()+":"+request.getServerPort();
+		String actualHost=StartVariables.serverPort;			
 		
+		String tomcatContext = applicationContext.getApplicationName();
+		String newContext=StartVariables.context;
+		
+		if (tomcatHost.equals(actualHost)==false)
+		{
+		    ajaxURL=ajaxURL.replace(tomcatHost, actualHost);	
+		}
+		if (Util.validValue(newContext))
+		{   
+		    ajaxURL=ajaxURL.replace(tomcatContext, newContext);
+		}
+		if (StartVariables.uriBase.startsWith("https"))
+		{
+		    ajaxURL=ajaxURL.replace("http://", "https://");
+		    ajaxURL=ajaxURL.replace("http://", "https://");	
+		}
+						
 		if (Util.validValue(srId))
 		{
 			if (CoordinateTransformer.isValidSrId(srId))
@@ -146,6 +169,31 @@ public class GenericController<T> {
 		String theURL=request.getRequestURL().toString().replace(Constants.EXT_HTML, Constants.EXT_JSON);
 		String recordURL=request.getRequestURL().toString().replace(Constants.EXT_HTML, "");
 		
+		String tomcatHost=request.getServerName()+":"+request.getServerPort();
+		String actualHost=StartVariables.serverPort;			
+		
+		String tomcatContext = applicationContext.getApplicationName();
+		String newContext=StartVariables.context;
+		
+		if (tomcatHost.equals(actualHost)==false)
+		{		   
+		    theURL=theURL.replace(tomcatHost, actualHost);
+		    recordURL=recordURL.replace(tomcatHost, actualHost);
+		   
+		    theURL=theURL.replace(tomcatHost, actualHost);
+		   
+		}
+		if (Util.validValue(newContext))
+		{   
+		    
+		    theURL=theURL.replace(tomcatContext, newContext);
+		    recordURL=recordURL.replace(tomcatContext, newContext);	
+		}
+		if (StartVariables.uriBase.startsWith("https"))
+		{
+		    theURL=theURL.replace("http://", "https://");
+		    recordURL=recordURL.replace("http://", "https://");	
+		}
 		
 		if (Util.validValue(srId))
 		{
@@ -704,9 +752,15 @@ public class GenericController<T> {
 			{
 				Util.generaCoordenadasAll(srId, (GeoModel)objP);
 			}			
+			
+			
+			
 			if (objP!=null)
 			{	
 				listado.add(objP);
+				//CMG: Correccion rapida para los conjuntos de datos de Padron - 07/07/2020
+				Util.generaDataCubeInfo(listado);
+				
 				((Result<?>) resultObj).setPage(1);
 				((Result<?>) resultObj).setPageRecords(1);
 				((Result<?>) resultObj).setPageSize(1);
@@ -1400,7 +1454,10 @@ public class GenericController<T> {
 			HttpServletRequest request) throws Exception {
 
 			
-		Util.generaCoordenadasAll(StartVariables.SRID_XY_APP, srId, listado);		
+		Util.generaCoordenadasAll(StartVariables.SRID_XY_APP, srId, listado);	
+		
+		//CMG : Correccion para los cubos  07/07/2020
+		Util.generaDataCubeInfo(listado);
 				
 		
 		Map<String, String> pMCalculation = Util.pageMetadataCalculation(request,  result.getTotalRecords(), numPageSize, env.getProperty(Constants.URI_BASE), env.getProperty(Constants.STR_CONTEXTO));

@@ -246,7 +246,7 @@ public class LicenciaController extends GenericController implements CiudadesAbi
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{

@@ -69,6 +69,8 @@ public class TransformadorBasicoRdf {
 	
 	private Map<String,String> prefixes=new LinkedHashMap<String,String>();
 	
+	public static Map<String,String> variables=new LinkedHashMap<String,String>();
+	
 	
 	public TransformadorBasicoRdf(String uriBase, String context)
 	{
@@ -539,7 +541,14 @@ public class TransformadorBasicoRdf {
 									String tipo=obtenerTipoAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
 									int urifyLevel=obtenerUrifyLevelAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
 									boolean capitalize=obtenerCapitalizeAnotacionExternalRDF(field.getAnnotation(RdfExternalURI.class));
-										
+									String variable=field.getAnnotation(RdfExternalURI.class).variable();
+									String variableValue=null;
+									//Si se ha asignado, cambiamos el valor de inicioURI
+									if (variable.equals("")==false)
+									{
+										variableValue=variables.get(variable);
+										inicioURI=variableValue;
+									}
 									
 									
 									if (!inicioURI.equals(""))
@@ -1336,6 +1345,8 @@ public class TransformadorBasicoRdf {
 	private String obtenerFinURIKeyAnotacionExternalRDF(RdfExternalURI ann) {
 		return ann.finURI();
 	}
+	
+	
 	
 	private String obtenerFinURIKeyAnotacionDinamicRDF(RdfDinamico ann) {
 		return ann.finURI();

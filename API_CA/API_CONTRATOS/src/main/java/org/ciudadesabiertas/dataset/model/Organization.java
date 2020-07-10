@@ -115,7 +115,7 @@ public class Organization implements java.io.Serializable, RDFModel, ICallejero 
 	
 	@ApiModelProperty(value = "Nombre del contacto de la organización. Ejemplo: Área de Gobierno de Salud, Seguridad y Emergencias")
 	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="contactPointEmail", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="contactPointTitle", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "title")
 	@RdfBlankNode(tipo=Context.OCDS_URI+"ContactPoint", propiedad=Context.SCHEMA_URI+"contactPoint", nodoId="contactPoint")
 	private String contactPointTitle;

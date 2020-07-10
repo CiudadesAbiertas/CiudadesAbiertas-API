@@ -244,7 +244,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
 				@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -306,7 +306,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) 
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
 				@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -335,7 +335,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required=true,value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_MUNICIPIO) String id,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -380,7 +380,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
 	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required=true,value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_MUNICIPIO) String id,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -401,7 +401,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 	@RequestMapping(value= {GEOMETRY,  VERSION_1+GEOMETRY}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<Object> geometry(HttpServletRequest request, 
 													@PathVariable @ApiParam(required=true,value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_MUNICIPIO) String id,
-													@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
+													@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
 	{
 
 		log.info("[record][" + GEOMETRY + "]");

@@ -188,7 +188,7 @@ public class TerrazaLocalComercialController extends GenericController implement
 	@RequestMapping(value = { RECORD + Constants.EXT_HTML,
 			VERSION_1 + RECORD + Constants.EXT_HTML }, method = RequestMethod.GET)
 	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId) {
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
 		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
@@ -244,7 +244,7 @@ public class TerrazaLocalComercialController extends GenericController implement
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-			@RequestParam(value = Constants.SRID, defaultValue = Constants.DOCUMENTATION_SRID, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest) {
 		log.info("[listHead][" + LIST + "]");
 		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);

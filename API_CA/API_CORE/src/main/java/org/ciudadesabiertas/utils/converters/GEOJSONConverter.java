@@ -192,7 +192,7 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 		
 		for (BeanUtil bean:listData)
 		{
-			if (bean.getFieldName().equals("hasGeometry"))
+			if (bean.getFieldName().equals("hasGeometry")&& (bean.getValue()!=null))
 			{										
 				geometry=(JSONObject) bean.getValue();				
 			}
@@ -227,22 +227,22 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 		{		
 			if (Constants.SUPPORTED_XY_SRIDS.contains(petitionSrId))
 			{
-				if (bean.getFieldName().equals("x"))
+				if (bean.getFieldName().equals("x")&& (bean.getValue()!=null))
 				{
 					lat=(BigDecimal) bean.getValue();
 				}
 
-				else if (bean.getFieldName().equals("y"))
+				else if (bean.getFieldName().equals("y")&& (bean.getValue()!=null))
 				{
 					lon=(BigDecimal) bean.getValue();
 				}
 									
 			}else {
-				if (bean.getFieldName().equals("latitud"))
+				if (bean.getFieldName().equals("latitud")&& (bean.getValue()!=null))
 				{
 					lat=(BigDecimal) bean.getValue();
 				}
-				else if (bean.getFieldName().equals("longitud"))
+				else if (bean.getFieldName().equals("longitud")&& (bean.getValue()!=null))
 				{
 					lon=(BigDecimal) bean.getValue();
 				}

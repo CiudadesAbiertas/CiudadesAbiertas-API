@@ -178,9 +178,13 @@ public class CiudadController implements CiudadesAbiertasController
 					LinkedTreeMap localPath = (LinkedTreeMap) paths.get(keyStr);
 					
 					if (escritura==false)
-					{					
+					{			
+						
 						localPath.remove("put");
-						localPath.remove("post");
+						if (keyStr.endsWith("transform")==false)
+						{
+							localPath.remove("post");
+						}
 						localPath.remove("delete");
 					}
 					if (head==false)
@@ -208,6 +212,24 @@ public class CiudadController implements CiudadesAbiertasController
 							((LinkedTreeMap)localPath.get(keyOperaciones)).put("parameters", parametersWithouSecurity);
 							
 						}
+					}
+					
+					Set<String> operaciones = localPath.keySet();
+					for (String keyOperaciones : operaciones)
+					{
+					
+						List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
+						
+						for (int i=0;i<parameters.size();i++)
+						{
+							LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
+							if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals(Constants.SRID)))
+							{								
+								localParam.put("default", Constants.SRID_SWAGGER);
+							}
+						}							
+						
+						
 					}
 					
 					paths.put(keyStr, localPath);

@@ -47,6 +47,7 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.regex.Pattern;
 
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
@@ -88,6 +89,11 @@ public class Util
 	public static  SimpleDateFormat dateFormatter = new SimpleDateFormat(Constants.DATE_FORMAT);
 
 	private static BasicTextEncryptor textEncryptor;
+	
+	public static Pattern DATE_PATTERN = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
+	
+	public static Pattern DATE_PATTERN_B = Pattern.compile("^\\d{2}-\\d{2}-\\d{4}$");
+	
 	
 	//Parser utilizado solo para pretty print
 	private static JsonParser prettyPrintParser = new JsonParser();
@@ -1657,6 +1663,11 @@ public class Util
 	
 	public static boolean isCallejeroIntegration() {
 		String nameControlerTerritorio="CallejeroPortalController";
+		return exitController(nameControlerTerritorio);
+	}
+	
+	public static boolean isCallejeroViaIntegration() {
+		String nameControlerTerritorio="CallejeroViaController";
 		return exitController(nameControlerTerritorio);
 	}
 	

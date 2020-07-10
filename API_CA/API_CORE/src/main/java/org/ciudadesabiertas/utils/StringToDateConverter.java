@@ -45,7 +45,15 @@ public class StringToDateConverter implements Converter<String, Date> {
 		
 		if ((theDate==null)&&(source.length()==10))
 		{
-			theDate=Util.getFecha(source, Constants.DATE_FORMAT);
+			if (Util.DATE_PATTERN.matcher(source).matches())
+			{
+				theDate=Util.getFecha(source, Constants.DATE_FORMAT);
+			}
+			else if (Util.DATE_PATTERN_B.matcher(source).matches())
+			{
+				theDate=Util.getFecha(source, Constants.DATE_FORMAT_B);
+			}
+			
 		}
 		
 		return theDate;

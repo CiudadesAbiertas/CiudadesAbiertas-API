@@ -47,6 +47,7 @@ public class Constants
 	public static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 	public static final String DATE_TIME_FORMAT_B = "yyyy-MM-dd HH:mm:ss";
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
+	public static final String DATE_FORMAT_B = "dd-MM-yyyy";
 	public static final String TIME_FORMAT = "HH:mm:ss";
 	
 	public static final String INTERNAL_ERROR = "Internal error";
@@ -134,7 +135,9 @@ public class Constants
 	public static final String SUPPORTED_SRIDS = "EPSG:25830,EPSG:25829,EPSG:25828,EPSG:25831,EPSG:23030,EPSG:23029,EPSG:23028,EPSG:23031,EPSG:4258,EPSG:4230,EPSG:4326,EPSG:4082,EPSG:4083";
 	public static final String SUPPORTED_XY_SRIDS="EPSG:25830,EPSG:25829,EPSG:25828,EPSG:25831,EPSG:23030,EPSG:23029,EPSG:23028,EPSG:23031,EPSG:4082,EPSG:4083";
 	public static final String DEFAULT_XY_VALUE="EPSG:25830";
-	public static final String DOCUMENTATION_SRID= "EPSG:4326";
+	public static final String SRID_DEFECTO= "";
+	public static final String SRID_SWAGGER= "EPSG:4326";
+	
 	
 	
 	public static final String SUPPORTED_LAT_LON_SRIDS="EPSG:4258,EPSG:4230,EPSG:4326";

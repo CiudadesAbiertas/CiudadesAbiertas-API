@@ -43,6 +43,7 @@ public class Context {
 	public static final String OCDS_URI = "http://data.tbfy.eu/ontology/ocds#";		
 	public static final String ESBICI_URI = "http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#";
 	public static final String ESCONV_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/convenio#";
+	public static final String ESTRAF_URI = "http://vocab.ciudadesabiertas.es/def/transporte/trafico#";
 	
 	public static final String RDF = "rdf";
 	public static final String RDFS = "rdfs";
@@ -104,6 +105,7 @@ public class Context {
 	public static final String OCDS = "ocds";
 	public static final String ESBICI = "esbici";
 	public static final String ESCONV = "esconv";
+	public static final String ESTRAF = "estraf";
 	
 	
 	
@@ -170,6 +172,7 @@ public class Context {
         listado.put(OCDS, new Context(OCDS_URI,OCDS));
         listado.put(ESBICI, new Context(ESBICI_URI,ESBICI));
         listado.put(ESCONV, new Context(ESCONV_URI,ESCONV));
+        listado.put(ESTRAF, new Context(ESTRAF_URI,ESTRAF));
         
     }
 	

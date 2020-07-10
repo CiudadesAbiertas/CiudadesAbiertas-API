@@ -84,13 +84,13 @@ public class PlantillaController extends GenericController implements CiudadesAb
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = "/plantilla/plantilla/{id}";
+	public static final String RECORD = LIST+ "/{id}";
 	
-	public static final String TRANSFORM = "/plantilla/plantilla/transform";
+	public static final String TRANSFORM = LIST+"/transform";
 	
-	public static final String ADD = "/plantilla/plantilla";
-	public static final String UPDATE = "/plantilla/plantilla/{id}";
-	public static final String DELETE = "/plantilla/plantilla/{id}";
+	public static final String ADD = LIST;
+	public static final String UPDATE = RECORD;
+	public static final String DELETE = RECORD;
 	
 	public static final String MODEL_VIEW_LIST = "plantilla/list";
 	public static final String MODEL_VIEW_ID = "plantilla/id";

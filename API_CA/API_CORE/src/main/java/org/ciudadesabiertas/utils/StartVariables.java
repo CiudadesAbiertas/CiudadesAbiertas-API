@@ -67,4 +67,11 @@ public class StartVariables
 		//db.schema		
 		public static String db_schema = "";
 		
+		//Variables SKOS Presupuestos
+		public static String presupuestosUrlSkosClasificacionEconomicaIngreso="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/economica-ingreso";
+		public static String presupuestosUrlSkosClasificacionEconomicaGasto="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/economica-gasto/madrid/";
+		public static String presupuestosUrlSkosClasificacionPrograma="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/programas-gasto/madrid/";
+		public static String presupuestosUrlSkosClasificacionOrganica="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/organica/madrid/";
+
+		
 }

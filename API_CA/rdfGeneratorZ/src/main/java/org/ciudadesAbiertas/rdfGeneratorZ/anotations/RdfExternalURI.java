@@ -14,6 +14,7 @@ public @interface RdfExternalURI {
 	String propiedad() default "";
 	String tipo() default "";
 	String separador() default "";
+	String variable() default "";
 	
 	
 }

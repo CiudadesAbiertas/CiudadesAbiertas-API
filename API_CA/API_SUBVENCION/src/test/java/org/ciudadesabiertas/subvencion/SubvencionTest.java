@@ -124,9 +124,10 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
-    	
-    			+"}";
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","    	
+				+"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
+			+"  }";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.post(SubvencionController.ADD)
@@ -167,9 +168,11 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
+    		    +"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
     	
-    			+"}";
+    		+"}";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.post(SubvencionController.ADD)
@@ -198,9 +201,10 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
-    	
-    			+"}";
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
+    		    +"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
+    		+"}";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.put(SubvencionController.ADD+"/"+id)
@@ -243,9 +247,10 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
-    	
-    			+"}";
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
+    		    +"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
+    		+"}";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.put(SubvencionController.ADD+"/"+id)
@@ -345,9 +350,11 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
-    	
-    			+"}";
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
+    		    +"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
+    		    
+    		+"}";
     	
     	String subvencionTransform = new String (obj.getBytes(),"UTF-8");
     	 
@@ -377,9 +384,11 @@ public class SubvencionTest {
     		    +"\"lineaFinanciacion\": \"LINEA 1\","
     		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
     		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\""
+    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
+    		    +"\"nominativa\" : true," 
+				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
     	
-    			+"}";
+    		+"}";
     	
     	String subvencionTransform = new String (obj.getBytes(),"UTF-8");
     	 

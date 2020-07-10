@@ -200,6 +200,19 @@ public class Subvencion implements java.io.Serializable, RDFModel
 	 @CsvBindByPosition(position=16)
 	 @CsvBindByName (column = "municipioTitle", format=Constants.STRING_FORMAT)
 	 private String municipioTitle;
+	
+	@ApiModelProperty(value = "Identifica si una subvención es nominativa o no. Ejemplo: true")
+	@CsvBindByPosition(position=17)
+	@CsvBindByName(column="nominativa", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESSUBV, propiedad = "nominativa", typeURI=Context.XSD_URI+"boolean")
+	private Boolean nominativa;
+	
+	@ApiModelProperty(value = "Tipo de procedimiento utilizado por la subvención. Ejemplo: subvencion-nominativa")
+	 @CsvBindByPosition(position=18)
+	 @CsvBindByName (column = "tipoProcedimiento", format=Constants.STRING_FORMAT)
+	 @Rdf(contexto = Context.ESSUBV, propiedad = "tipoProcedimiento")
+	 @RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/subvencion/tipo-procedimiento/", finURI="tipoProcedimiento", urifyLevel=2)
+	 private String tipoProcedimiento;
 	 
 	public Subvencion()
 	{
@@ -234,6 +247,8 @@ public class Subvencion implements java.io.Serializable, RDFModel
 		this.basesReguladoras = copia.basesReguladoras;
 		this.tipoInstrumento = copia.tipoInstrumento;
 		this.aplicacionPresupuestaria = copia.aplicacionPresupuestaria;
+		this.nominativa = copia.nominativa;
+		this.tipoProcedimiento = copia.tipoProcedimiento;
 	}
 	
 	//Constructor copia con lista de attributos a settear
@@ -290,6 +305,13 @@ public class Subvencion implements java.io.Serializable, RDFModel
 		if (attributesToSet.contains("aplicacionPresupuestaria")) {
 			this.aplicacionPresupuestaria = copia.aplicacionPresupuestaria;
 		}
+		if (attributesToSet.contains("nominativa")) {
+			this.nominativa = copia.nominativa;
+		}
+		if (attributesToSet.contains("tipoProcedimiento")) {
+			this.tipoProcedimiento = copia.tipoProcedimiento;
+		}
+		
 	}
 	
 
@@ -483,6 +505,26 @@ public class Subvencion implements java.io.Serializable, RDFModel
 		this.aplicacionPresupuestaria = aplicacionPresupuestaria;
 	}
 	
+	@Column(name = "nominativa")
+	public Boolean getNominativa() {
+		return this.nominativa;
+	}
+
+	public void setNominativa(Boolean nominativa) {
+		this.nominativa = nominativa;
+	}
+	
+	@Column(name = "tipo_procedimiento", nullable = false, length = 100)
+	public String getTipoProcedimiento()
+	{
+		return this.tipoProcedimiento;
+	}
+
+	public void setTipoProcedimiento(String tipoProcedimiento)
+	{
+		this.tipoProcedimiento = tipoProcedimiento;
+	}
+	
 
 	@Transient
 	public String getAreaIdIsolated() {
@@ -523,20 +565,22 @@ public class Subvencion implements java.io.Serializable, RDFModel
 		return prefixes;
 	}
 
+		
+	
+	
 	@Override
 	public String toString() {
-		return "Subvencion [id=" + id + ", title=" + title + ", areaId=" + areaId
-				+ ", areaTitle=" + areaTitle + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
-				+ ", adjudicatarioId=" + adjudicatarioId + ", adjudicatarioTitle=" + adjudicatarioTitle
-				+ ", entidadFinanciadoraId=" + entidadFinanciadoraId + ", entidadFinanciadoraTitle="
-				+ entidadFinanciadoraTitle + ", importe=" + importe + ", fechaAdjudicacion=" + fechaAdjudicacion
-				+ ", lineaFinanciacion=" + lineaFinanciacion + ", basesReguladoras=" + basesReguladoras + ", tipoInstrumento=" + tipoInstrumento
-				+ ", aplicacionPresupuestaria=" + aplicacionPresupuestaria + "]";
+		return "Subvencion [id=" + id + ", title=" + title + ", adjudicatarioId=" + adjudicatarioId
+				+ ", adjudicatarioTitle=" + adjudicatarioTitle + ", importe=" + importe + ", fechaAdjudicacion="
+				+ fechaAdjudicacion + ", areaId=" + areaId + ", areaTitle=" + areaTitle + ", areaIdIsolated="
+				+ areaIdIsolated + ", entidadFinanciadoraId=" + entidadFinanciadoraId + ", entidadFinanciadoraTitle="
+				+ entidadFinanciadoraTitle + ", entidadFinanciadoraIdIsolated=" + entidadFinanciadoraIdIsolated
+				+ ", lineaFinanciacion=" + lineaFinanciacion + ", basesReguladoras=" + basesReguladoras
+				+ ", tipoInstrumento=" + tipoInstrumento + ", aplicacionPresupuestaria=" + aplicacionPresupuestaria
+				+ ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", nominativa=" + nominativa
+				+ ", tipoProcedimiento=" + tipoProcedimiento + "]";
 	}
 
-	
-	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T cloneModel(T copia, List<String> listado) {

@@ -321,7 +321,31 @@ public class SubvencionDataRSQLTest
 		assertTrue(total == 5);
 	}
 	
+	@Test
+	public void test_Busqueda_tipoProcedimiento() throws Exception
+	{
+
+		String value = "tipoProcedimiento=='subvencion-directa'";
+
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 1659);
+	}
 	
+	@Test
+	public void test_Busqueda_Nominativa() throws Exception
+	{
+
+		String value = "nominativa=='true'";
+
+		String paramField = "q";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 5205);
+	}
 
 	
 

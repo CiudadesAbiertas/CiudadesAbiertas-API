@@ -328,6 +328,32 @@ public class SubvencionDataTest
 	}
 	
 	@Test
+	public void test_Busqueda_tipoProcedimiento() throws Exception
+	{
+
+		String value = "subvencion-directa";
+		
+		String paramField="tipoProcedimiento";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 1659);
+	}
+	
+	@Test
+	public void test_Busqueda_Nominativa() throws Exception
+	{
+
+		String value = "true";
+		
+		String paramField="nominativa";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 5205);
+	}
+	
+	@Test
 	public void test_Head_MD5() throws Exception
 	{
 

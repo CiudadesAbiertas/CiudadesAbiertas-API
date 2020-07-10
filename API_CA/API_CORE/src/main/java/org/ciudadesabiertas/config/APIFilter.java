@@ -90,11 +90,23 @@ public class APIFilter implements Filter
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication auth = securityContext.getAuthentication();
 		
+		HttpServletResponse hResponse = (HttpServletResponse) response;   
+		HttpServletRequest hRequest = (HttpServletRequest) request; 
+		
+		//Metodo OPTIONs para peticiones AJAX
+		if ("OPTIONS".equalsIgnoreCase(hRequest.getMethod())) {
+			log.info("OPTIONS petition");
+            hResponse.setStatus(HttpServletResponse.SC_OK);   
+            hResponse.setHeader("Access-Control-Allow-Origin", "*"); 
+            hResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+            hResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");           
+            return;
+        }
+		
+		
 		boolean continuar = true;
 	
-		
-		
-		String theURL=Util.getFullURL((HttpServletRequest)request);
+		String theURL=Util.getFullURL(hRequest);
 		log.debug(theURL);
 		
 		if (theURL.length()>Constants.maxSizeURL)
@@ -108,13 +120,14 @@ public class APIFilter implements Filter
 		if (theURL.contains(Constants.RESOURCES) ||
 			theURL.contains(Constants.SWAGGER)	|| 
 			theURL.contains(Constants.API_JSON) ||
-			theURL.contains(Constants.API_DOCS) )
+			theURL.contains(Constants.API_DOCS) ||
+			theURL.contains(hRequest.getContextPath()) )
 		{
 			chain.doFilter(request, response);
 		}
 		else 
 		{ 
-			if (Util.validURL((HttpServletRequest)request)==false)
+			if (Util.validURL(hRequest)==false)
 			{
 				sendBadRequestError(request, response);
 				return;
@@ -133,7 +146,7 @@ public class APIFilter implements Filter
 				log.info("Anonymous petition or wrong context");
 				continuar = estadisticaService.controlRequesPerSecondUser(Constants.ANONYMOUS_USER);	
 				//Si queremos controlar que no acceda a BBDD para insertar la estadistica si se ha sobrepasado el limite por el if aqui
-				statisticsControl((HttpServletRequest) request, true, Constants.ANONYMOUS_USER);
+				statisticsControl(hRequest, true, Constants.ANONYMOUS_USER);
 			// Si no es anonimo
 			} else
 			{
@@ -141,12 +154,12 @@ public class APIFilter implements Filter
 				log.info("Petition by " + details.getUsername());
 				continuar = estadisticaService.controlRequesPerSecondUser(details.getUsername());	
 				//Si queremos controlar que no acceda a BBDD para insertar la estadistica si se ha sobrepasado el limite por el if aqui				
-				statisticsControl((HttpServletRequest) request, true, details.getUsername());		
+				statisticsControl(hRequest, true, details.getUsername());		
 			}
 			
 			if (continuar)	{
 				try
-				{
+				{ 
 					chain.doFilter(request, response);
 				}
 				catch (RuntimeException runEx)
@@ -318,20 +331,22 @@ public class APIFilter implements Filter
 	@SuppressWarnings("unchecked")
 	private void createResponseError(ServletRequest request, ServletResponse response,Exception errorObj,String uri) throws IOException {
 		
-		String contextPath = ((HttpServletRequest) request).getServletPath();
+		HttpServletRequest hRequest=(HttpServletRequest) request;
+		HttpServletResponse hResponse=(HttpServletResponse) response;
+		String contextPath = hRequest.getServletPath();
 		String contentType = "";
-		if (((HttpServletRequest) request).getHeader(Constants.HEADDER_ACCEPT) != null)
+		if (hRequest.getHeader(Constants.HEADDER_ACCEPT) != null)
 		{
-			contentType = ((HttpServletRequest) request).getHeader(Constants.HEADDER_ACCEPT);
+			contentType = hRequest.getHeader(Constants.HEADDER_ACCEPT);
 		}
 
 		if (errorObj instanceof BadRequestException)
 		{
-			((HttpServletResponse) response).setStatus(HttpServletResponse.SC_BAD_REQUEST);		
+			hResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);		
 		}
 		else if (errorObj instanceof InternalErrorException)
 		{
-			((HttpServletResponse) response).setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);		
+			hResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);		
 		}
 		
 		response.setCharacterEncoding(Constants.ENCODING_UTF8);

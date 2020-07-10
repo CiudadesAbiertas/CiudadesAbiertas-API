@@ -49,6 +49,10 @@ public class TokenInterceptor implements HandlerInterceptor {
 			
 		log.info("preHandle");
 		semaphore.acquire();
+		
+		//Para que se devuelva en peticiones post javascript el CORS
+		response.setHeader("Access-Control-Allow-Origin", "*"); 
+		
 		return true;
 	}
 
@@ -57,6 +61,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
 		//por aqui solo pasa cuando la identificación ha ido bien
 		log.info("postHandle");
+	
 	}
 
 	@Override
@@ -64,6 +69,8 @@ public class TokenInterceptor implements HandlerInterceptor {
 		
 		log.info("afterCompletion");
 		semaphore.release();
+		
+	
 	}
 	
 	

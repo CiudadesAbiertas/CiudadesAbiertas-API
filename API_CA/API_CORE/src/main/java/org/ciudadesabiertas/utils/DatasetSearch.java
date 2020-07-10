@@ -50,7 +50,7 @@ public interface DatasetSearch<T>  {
 			numbers.add("int");
 			numbers.add("double");
 			numbers.add("long");
-			numbers.add("long");	
+			numbers.add("float");	
 		}
 		
 		

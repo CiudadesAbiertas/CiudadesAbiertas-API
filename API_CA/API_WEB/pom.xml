@@ -64,7 +64,7 @@
 			  	<dependency>
 					<groupId>API_CA</groupId>
   					<artifactId>org.ciudadesabiertas.subvencion</artifactId>
-  			 		<version>0.0.1-SNAPSHOT</version> 
+  			 		<version>0.0.2-PRIORITY_FIELDS</version> 
   				</dependency>
   				
   				<!--  Dependencia Equipamiento -->
@@ -216,7 +216,26 @@
 			       <version>0.0.1-SNAPSHOT</version> 
 			    </dependency>
 			    
-
+			    <!-- Dependencia convenios-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.convenio</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	 <!-- Dependencia presupuesto-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.presupuesto</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			  	<!-- Dependencia trafico-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.trafico</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
 			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
@@ -481,6 +500,42 @@
 			 </dependencies>
 		</profile>
 		
+		<profile>
+			<id>convenio</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.convenio</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>presupuesto</id>
+			<dependencies>			
+			  	<dependency>
+					<groupId>API_CA</groupId>
+	  				<artifactId>org.ciudadesabiertas.presupuesto</artifactId>
+	  				<version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+		
+		<profile>
+			<id>trafico</id>
+			<dependencies>			
+			  	<dependency>
+					<groupId>API_CA</groupId>
+	  				<artifactId>org.ciudadesabiertas.trafico</artifactId>
+	  				<version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
+			 </dependencies>
+		</profile>
+			
 		
 		<!-- Perfil para el conjunto de datos plantilla --> 
 		<!-- 
