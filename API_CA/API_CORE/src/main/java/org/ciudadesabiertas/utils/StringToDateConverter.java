@@ -75,7 +75,7 @@ public class StringToDateConverter implements Converter<String, Date> {
 			}			
 		}else {
 		  log.error("Wrong Size, returning actual date");
-		  theDate=new Date();
+		  //theDate=new Date();
 		}
 		
 		return theDate;
