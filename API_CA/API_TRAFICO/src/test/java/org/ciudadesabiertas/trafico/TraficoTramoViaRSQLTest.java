@@ -108,30 +108,4 @@ public class TraficoTramoViaRSQLTest
 		assertTrue(records.size() == 1);
 	}
 	
-	@Test
-	public void test_Busqueda_titleVia() throws Exception
-	{		
-		
-		String value = "titleVia=='BRAVO MURILLO'";
-
-		String paramField = "q";
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_tipoVia() throws Exception
-	{		
-		
-		String value = "tipoVia=='CALLE'";
-
-		String paramField = "q";
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
 }

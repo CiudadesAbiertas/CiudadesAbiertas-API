@@ -146,7 +146,7 @@ public class TraficoDispositivoMedicionRSQLTest
 		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test
@@ -179,13 +179,13 @@ public class TraficoDispositivoMedicionRSQLTest
 	public void test_Busqueda_frecuencia_medicion() throws Exception
 	{		
 		
-		String value = "frecuenciaMedicion=='P1m'";
+		String value = "frecuenciaMedicion=='5 minutos'";
 
 		String paramField = "q";
 		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test

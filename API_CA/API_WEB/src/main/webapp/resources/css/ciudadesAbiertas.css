@@ -59,5 +59,9 @@ a:hover {
 }
 
 
-
+.table-no-overflow {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+	
 

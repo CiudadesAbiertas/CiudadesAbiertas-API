@@ -52,12 +52,13 @@ public class TraficoDispositivoMedicionGeoSearch extends TraficoDispositivoMedic
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X del dispositivo. Ejemplo: 440654.00047")
 	private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y del dispositivo. Ejemplo: 4475352.11778")
 	private BigDecimal yETRS89;
 
+	
 
 	public BigDecimal getxETRS89()
 	{
@@ -81,5 +82,7 @@ public class TraficoDispositivoMedicionGeoSearch extends TraficoDispositivoMedic
 	{		
 		setY(yETRS89);
 	}
+	
+	
 	
 }

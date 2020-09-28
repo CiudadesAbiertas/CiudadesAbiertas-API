@@ -81,7 +81,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Anclaje",description = "Conjunto de operaciones relacionadas con el conjunto de datos Bicicleta pública", tags= {"Bicicleta pública - Anclaje"})
+@Api(value="Anclaje",description = "Conjunto de operaciones relacionadas con el conjunto de datos Bicicleta pública"+SwaggerConstants.VOCABULARIO_A_HREF+BicicletaPublicaConstants.bicicletaVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Bicicleta pública - Anclaje"})
 public class BicicletaPublicaAnclajeController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/bicicleta-publica/anclaje";

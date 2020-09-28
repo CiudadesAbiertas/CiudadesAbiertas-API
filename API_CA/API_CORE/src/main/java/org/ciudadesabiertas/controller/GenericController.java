@@ -30,6 +30,7 @@ import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.NotFoundException;
 import org.ciudadesabiertas.model.GeoModel;
 import org.ciudadesabiertas.model.ICallejero;
+import org.ciudadesabiertas.model.ITramoIncidencia;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -999,6 +1000,13 @@ public class GenericController<T> {
 			return negotiationResponseEntity;
 		}
 		
+		//CMG CONTROL PARA LOS CAMPOS HORA
+		String validarHora = ((RDFModel) search).validarParam();
+		if (validarHora!=null) {
+			BadRequestException e=new BadRequestException(validarHora);
+			return ExceptionUtil.checkException(e);
+		}
+		
 		//CMG: Verificacion de formato para las llamadas GEOS
 		if (Util.isGeoLocationPetition(availableFields, request)) {
 			//Validamos que tenga campos lat o long			
@@ -1039,6 +1047,8 @@ public class GenericController<T> {
 		
 		if (Util.validValue(rsqlQ))
 		{
+			rsqlQ=rsqlQ.replace(Constants.XETRS89Fin, Constants.FinX);
+			rsqlQ=rsqlQ.replace(Constants.YETRS89Fin, Constants.FinY);
 			rsqlQ=rsqlQ.replace(Constants.XETRS89, Constants.X.toLowerCase());
 			rsqlQ=rsqlQ.replace(Constants.YETRS89, Constants.Y.toLowerCase());
 		}
@@ -1798,7 +1808,44 @@ public class GenericController<T> {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	public  ResponseEntity<?> integraTramoTrafico(ResponseEntity<T> list,HttpServletRequest request){
+		
+		HttpStatus statusCode = list.getStatusCode();
+		
+		if (statusCode.is2xxSuccessful())
+		{
+			boolean isSemantic=Util.isSemanticPetition(request);				
+			
+			if (isSemantic) {
+				
+				Object body = list.getBody();
+				
+				Result<T> result=((Result<T>)body);
+				
+				List<T> records = result.getRecords();
+				
+				
+				if (Util.isTraficoIntegration()) {
+					log.debug("[integraTrafico] isTraficoIntegration ");
+					for (T objTramo :records) {							  
+						if ( Util.validValue(((ITramoIncidencia) objTramo).getIncidenciaEnTramo())){
+							((ITramoIncidencia) objTramo).setIncidenciaTramoDescription(null);
+							
+						}
+					}
+				}else {
+					log.debug("[integraCallejero] Not isCallejeroIntegration ");
+					for (T objTramo:records) {	
+						((ITramoIncidencia) objTramo).setIncidenciaEnTramoIdIsolated(((ITramoIncidencia) objTramo).getIncidenciaEnTramo());
+						((ITramoIncidencia) objTramo).setIncidenciaEnTramo(null);		
+					}
+				}
+			}
+		}
 	
+		return list;
+	}
 }
 
 

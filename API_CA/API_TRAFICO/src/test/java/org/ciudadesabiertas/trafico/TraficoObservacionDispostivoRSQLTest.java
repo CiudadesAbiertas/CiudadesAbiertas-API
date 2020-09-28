@@ -107,5 +107,5 @@ public class TraficoObservacionDispostivoRSQLTest
 
 		assertTrue(records.size() == 1);
 	}
-	
+
 }

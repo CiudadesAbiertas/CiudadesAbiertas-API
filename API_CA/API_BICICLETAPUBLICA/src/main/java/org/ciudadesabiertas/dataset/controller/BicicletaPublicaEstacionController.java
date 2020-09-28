@@ -80,7 +80,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Estación",description = "Conjunto de operaciones relacionadas con el conjunto de datos Bicicleta pública", tags= {"Bicicleta pública - Estación"})
+@Api(value="Estación",description = "Conjunto de operaciones relacionadas con el conjunto de datos Bicicleta pública"+SwaggerConstants.VOCABULARIO_A_HREF+BicicletaPublicaConstants.bicicletaVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Bicicleta pública - Estación"})
 public class BicicletaPublicaEstacionController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/bicicleta-publica/estacion";
@@ -164,7 +164,9 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
-			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort)
+			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 				
 		log.info("[listHTML][" + LIST + ".html]");
@@ -176,7 +178,7 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 			params+=search.toUrlParam();
 		}		
 		
-		return listHTML(mv, request, NO_HAY_SRID, page, pageSize, sort, params, MODEL_VIEW_LIST);
+		return listHTML(mv, request, srId, page, pageSize, sort, params, MODEL_VIEW_LIST);
 	}
 	
 	
@@ -189,11 +191,11 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
-		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
+		return recordHTML(mv, request, srId, id, MODEL_VIEW_ID);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -239,7 +241,8 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-						
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -249,7 +252,7 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 		
 		RSQLVisitor<CriteriaQuery<BicicletaPublicaEstacion>, EntityManager> visitor = new JpaCriteriaQueryVisitor<BicicletaPublicaEstacion>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new BicicletaPublicaEstacion(), new BicicletaPublicaEstacionResult(), 
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new BicicletaPublicaEstacion(), new BicicletaPublicaEstacionResult(), 
 					 availableFields, getKey(), visitor,service);
 	}
 
@@ -271,11 +274,13 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listHead][" + LIST + "]");		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, headersRequest);
 
 	}
 	
@@ -362,14 +367,14 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new BicicletaPublicaEstacion(),new BicicletaPublicaEstacionResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		return record(request, id, new BicicletaPublicaEstacion(),new BicicletaPublicaEstacionResult(), srId, nameController, RECORD, service,getKey());
 
 	}
 	
@@ -382,11 +387,11 @@ public class BicicletaPublicaEstacionController extends GenericController implem
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
-		return record(request, id);
+		return record(request, id, srId);
 		
 	}
 

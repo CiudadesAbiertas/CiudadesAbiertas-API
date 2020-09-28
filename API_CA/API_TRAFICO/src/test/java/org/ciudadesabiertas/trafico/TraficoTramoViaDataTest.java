@@ -106,30 +106,6 @@ public class TraficoTramoViaDataTest
 		assertTrue(records.size() == 1);
 	}
 	
-	@Test
-	public void test_Busqueda_titleVia() throws Exception
-	{
-		String paramField="titleVia";
-
-		String value = "BRAVO MURILLO";
-
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_tipoVia() throws Exception
-	{
-		String paramField="tipoVia";
-
-		String value = "CALLE";
-
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
 	
 	@Test
 	public void test_Head_MD5() throws Exception
@@ -156,7 +132,7 @@ public class TraficoTramoViaDataTest
 
 		long total = TestUtils.extractTotalDistinct(TraficoTramoViaController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 3);
 	}
 	
 

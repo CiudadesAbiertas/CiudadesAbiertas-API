@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.logging.LogManager;
 import java.util.regex.Pattern;
 
@@ -594,6 +595,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		TransformadorBasicoRdf.variables.put("clasificacionEconomicaGasto",StartVariables.presupuestosUrlSkosClasificacionEconomicaGasto);
 		TransformadorBasicoRdf.variables.put("clasificacionPrograma",StartVariables.presupuestosUrlSkosClasificacionPrograma);
 		TransformadorBasicoRdf.variables.put("clasificacionOrganica",StartVariables.presupuestosUrlSkosClasificacionOrganica);
+	
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 	}
 
 	

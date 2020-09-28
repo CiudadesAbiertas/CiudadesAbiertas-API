@@ -375,11 +375,7 @@ public class TraficoObservacionDispostivoTest {
     	assertTrue(checkAllFormats);    	    	
     }
     
-    @Test
-    public void test26_List_RDF_200() throws Exception {    	
-    	String theURI = TestUtils.checkRDFURI(this.mockMvc,TraficoObservacionDispostivoController.LIST);        
-        this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
-    }
+
 
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
@@ -388,7 +384,5 @@ public class TraficoObservacionDispostivoTest {
     }
     
     
-    
-
     
 }

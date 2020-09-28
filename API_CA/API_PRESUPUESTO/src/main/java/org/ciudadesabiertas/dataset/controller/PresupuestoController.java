@@ -74,7 +74,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Presupuesto",description = "Conjunto de operaciones sobre Presupuesto del conjunto de datos Presupuesto", tags= {"Presupuesto - Presupuesto"})
+@Api(value="Presupuesto",description = "Conjunto de operaciones sobre Presupuesto del conjunto de datos Presupuesto"+SwaggerConstants.VOCABULARIO_A_HREF+PresupuestoConstants.presupuestoVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Presupuesto - Presupuesto"})
 public class PresupuestoController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/presupuesto/presupuesto";

@@ -53,9 +53,10 @@ public class BicicletaPublicaPuntoPasoSearch extends BicicletaPublicaPuntoPaso i
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del punto de paso. Ejemplo: 440654.00047")
     private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y del punto de paso. Ejemplo: 4475352.11778")
 	private BigDecimal yETRS89;
 
 

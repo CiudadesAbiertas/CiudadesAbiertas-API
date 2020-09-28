@@ -44,6 +44,15 @@ public class Context {
 	public static final String ESBICI_URI = "http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#";
 	public static final String ESCONV_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/convenio#";
 	public static final String ESTRAF_URI = "http://vocab.ciudadesabiertas.es/def/transporte/trafico#";
+	public static final String NOISE_URI = "http://vocab.ciudadesabiertas.es/def/medio-ambiente/contaminacion-acustica#";
+	
+	public static final String TMCOMMONS_URI = "http://w3id.org/transmodel/commons#";
+	public static final String TMKOSCOMMONS_URI = "http://w3id.org/transmodel/kos/commons/";
+	public static final String TMJOURNEY_URI = "http://w3id.org/transmodel/journeys#";
+	public static final String TMKOSJOURNEY_URI = "http://w3id.org/transmodel/kos/journeys/";
+	public static final String TMORG_URI = "http://w3id.org/transmodel/organisations#";
+	public static final String ESAUTOB_URI = "http://vocab.ciudadesabiertas.es/def/transporte/autobus#";
+	
 	
 	public static final String RDF = "rdf";
 	public static final String RDFS = "rdfs";
@@ -106,8 +115,13 @@ public class Context {
 	public static final String ESBICI = "esbici";
 	public static final String ESCONV = "esconv";
 	public static final String ESTRAF = "estraf";
-	
-	
+	public static final String NOISE = "noise";
+	public static final String TMCOMMONS = "tmcommons";
+	public static final String TMKOSCOMMONS = "tmkoscommons";
+	public static final String TMJOURNEY = "tmjourney";
+	public static final String TMKOSJOURNEY = "tmkosjourney";
+	public static final String TMORG = "tmorg";
+	public static final String ESAUTOB = "esautob";
 	
 	
 	public static final Map<String, Context> listado = new HashMap<String, Context>();
@@ -173,7 +187,15 @@ public class Context {
         listado.put(ESBICI, new Context(ESBICI_URI,ESBICI));
         listado.put(ESCONV, new Context(ESCONV_URI,ESCONV));
         listado.put(ESTRAF, new Context(ESTRAF_URI,ESTRAF));
+        listado.put(NOISE, new Context(NOISE_URI,NOISE));
         
+        listado.put(TMCOMMONS, new Context(TMCOMMONS_URI,TMCOMMONS));
+        listado.put(TMKOSCOMMONS, new Context(TMKOSCOMMONS_URI,TMKOSCOMMONS));
+        listado.put(TMJOURNEY, new Context(TMJOURNEY_URI,TMJOURNEY));
+        listado.put(TMKOSJOURNEY, new Context(TMKOSJOURNEY_URI,TMKOSJOURNEY));
+        listado.put(TMORG, new Context(TMORG_URI,TMORG));
+        listado.put(ESAUTOB, new Context(ESAUTOB_URI,ESAUTOB));
+
     }
 	
 	private String uri;

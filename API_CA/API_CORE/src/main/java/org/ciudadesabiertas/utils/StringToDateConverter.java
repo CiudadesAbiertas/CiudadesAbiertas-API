@@ -18,8 +18,11 @@ package org.ciudadesabiertas.utils;
 
 import java.util.Date;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
+
+
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -29,11 +32,28 @@ import org.springframework.core.convert.converter.Converter;
  */
 public class StringToDateConverter implements Converter<String, Date> {
 
+
+	private static final Logger log = LoggerFactory.getLogger(StringToDateConverter.class);
+
+
 	@Override
 	public Date convert(String source)
 	{		
+	  	log.debug("transforming string to date/time: "+source);
+	  
 		Date theDate=null;
 		
+//		//TIME
+//		if (source.length()==8)
+//		{
+//			theDate=Util.getFecha(source, Constants.TIME_FORMAT);
+//		}
+//		else if (source.length()==5)
+//		{
+//			theDate=Util.getFecha(source, Constants.TIME_FORMAT_SHORT);
+//		}
+		
+		//FECHAS
 		if (source.length()==19)
 		{
 			theDate=Util.getFecha(source, Constants.DATE_TIME_FORMAT);
@@ -43,7 +63,7 @@ public class StringToDateConverter implements Converter<String, Date> {
 			}
 		}
 		
-		if ((theDate==null)&&(source.length()==10))
+		else if ((theDate==null)&&(source.length()==10))
 		{
 			if (Util.DATE_PATTERN.matcher(source).matches())
 			{
@@ -52,8 +72,10 @@ public class StringToDateConverter implements Converter<String, Date> {
 			else if (Util.DATE_PATTERN_B.matcher(source).matches())
 			{
 				theDate=Util.getFecha(source, Constants.DATE_FORMAT_B);
-			}
-			
+			}			
+		}else {
+		  log.error("Wrong Size, returning actual date");
+		  theDate=new Date();
 		}
 		
 		return theDate;

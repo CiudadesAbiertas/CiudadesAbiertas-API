@@ -44,6 +44,7 @@ import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
 import org.ciudadesabiertas.utils.SwaggerConstants;
@@ -53,6 +54,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,6 +123,10 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(TraficoTramo.class);
+	{
+		availableFields.add(Constants.XETRS89Fin);
+		availableFields.add(Constants.YETRS89Fin);
+	}
 
 	private static final Logger log = LoggerFactory.getLogger(TraficoTramoController.class);
 		
@@ -147,11 +153,16 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value= {GEO_LIST,  VERSION_1+GEO_LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> geoList(HttpServletRequest request,	TraficoTramoGeoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields,			
-			@RequestParam(value = Constants.METERS, required = true) String meters,			
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 			
+			@RequestParam(value = Constants.METERS, required = true)
+				@ApiParam(value=SwaggerConstants.PARAM_METERS, required = true) String meters,			
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,	
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -176,8 +187,10 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+			@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -200,10 +213,16 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	@RequestMapping(value= {LIST+Constants.EXT_HTML, VERSION_1+LIST+Constants.EXT_HTML}, method = RequestMethod.GET)	
 	public ModelAndView listHTML(
 			ModelAndView mv, HttpServletRequest request,TraficoTramoSearch search, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
-			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
-			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort)
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,
+			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
+			@RequestParam(value = Constants.SORT, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 				
 		log.info("[listHTML][" + LIST + ".html]");
@@ -215,7 +234,7 @@ public class TraficoTramoController extends GenericController implements Ciudade
 			params+=search.toUrlParam();
 		}		
 		
-		return listHTML(mv, request, NO_HAY_SRID, page, pageSize, sort, params, MODEL_VIEW_LIST);
+		return listHTML(mv, request, srId, page, pageSize, sort, params, MODEL_VIEW_LIST);
 	}
 	
 	
@@ -228,11 +247,11 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request,  @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
-		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
+		return recordHTML(mv, request, srId, id, MODEL_VIEW_ID);
 	}
 	
 	
@@ -246,12 +265,19 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, TraficoTramoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-						
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,  
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
+			
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -261,8 +287,9 @@ public class TraficoTramoController extends GenericController implements Ciudade
 		
 		RSQLVisitor<CriteriaQuery<TraficoTramo>, EntityManager> visitor = new JpaCriteriaQueryVisitor<TraficoTramo>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new TraficoTramo(), new TraficoTramoResult(), 
-					 availableFields, getKey(), visitor,service);
+		ResponseEntity<TraficoTramo> list = list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new TraficoTramo(), new TraficoTramoResult(), 
+				 availableFields, getKey(), visitor,service);
+		return integraUbicacion(list, request);
 	}
 
 
@@ -278,16 +305,23 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, TraficoTramoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,  
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listHead][" + LIST + "]");		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, headersRequest);
 
 	}
 	
@@ -302,7 +336,7 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> add(			
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 			
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOTRAMO_TEXT) 			
 			@RequestBody TraficoTramo obj 
 			)
 	{
@@ -326,9 +360,9 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAFICO_TRAMO) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOTRAMO_TEXT) 
 			@RequestBody TraficoTramo obj)
 	{
 
@@ -350,7 +384,7 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAFICO_TRAMO) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
@@ -374,14 +408,15 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,  @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAFICO_TRAMO) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
-				
-		return record(request, id, new TraficoTramo(),new TraficoTramoResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		
+		ResponseEntity<TraficoTramo> record = record(request, id, new TraficoTramo(),new TraficoTramoResult(), srId, nameController, RECORD, service,getKey());
+		return integraUbicacion(record, request);
 
 	}
 	
@@ -394,11 +429,11 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request,  @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAFICO_TRAMO) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS)  String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
-		return record(request, id);
+		return record(request, id, srId);
 		
 	}
 
@@ -411,7 +446,7 @@ public class TraficoTramoController extends GenericController implements Ciudade
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> transform(
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) @RequestBody TraficoTramo obj) {
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOTRAMO_TEXT) @RequestBody TraficoTramo obj) {
 
 		log.info("[transform]");
 
@@ -479,7 +514,7 @@ public class TraficoTramoController extends GenericController implements Ciudade
 					long rowcountInc = incidenciaService.rowcount(getKey(), TraficoIncidencia.class, search2);
 					
 					TraficoObservacionSearch search3 = new TraficoObservacionSearch();
-					search3.setHasFeatureInterest(tramoId);
+					search3.setHasFeatureOfInterest(tramoId);
 					long rowcountObs = observacionService.rowcount(getKey(), TraficoObservacion.class, search3);
 					
 					TraficoTramoViaSearch search4 = new TraficoTramoViaSearch();
@@ -502,6 +537,42 @@ public class TraficoTramoController extends GenericController implements Ciudade
 		}
 		
 		return errors;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private ResponseEntity<?> integraUbicacion(ResponseEntity<TraficoTramo> list,  HttpServletRequest request) {
+
+		HttpStatus statusCode = list.getStatusCode();
+
+		if (statusCode.is2xxSuccessful()) {
+			boolean isSemantic = Util.isSemanticPetition(request);
+
+			if (isSemantic) {
+
+				Object body = list.getBody();
+
+				Result<TraficoTramo> result = ((Result<TraficoTramo>) body);
+
+				List<TraficoTramo> records = result.getRecords();
+
+				for (TraficoTramo traficoTramo : records) {
+					if ( Util.validValue(traficoTramo.getX() )) {
+						traficoTramo.setUbicacionX(traficoTramo.getX());;
+					}
+					if ( Util.validValue(traficoTramo.getY() )) {
+						traficoTramo.setUbicacionY(traficoTramo.getY());;
+					}
+					if ( Util.validValue(traficoTramo.getLatitud() )) {
+						traficoTramo.setUbicacionLatitud(traficoTramo.getLatitud());;
+					}
+					if ( Util.validValue(traficoTramo.getLongitud() )) {
+						traficoTramo.setUbicacionLongitud(traficoTramo.getLongitud());;
+					}
+				}
+			}
+		}
+
+		return list;
 	}
 	
 }

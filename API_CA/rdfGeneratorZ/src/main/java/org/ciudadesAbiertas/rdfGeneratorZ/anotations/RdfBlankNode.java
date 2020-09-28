@@ -9,4 +9,6 @@ public @interface RdfBlankNode {
 	String nodoId() default "";	
 	String propiedad() default "";
 	String tipo() default "";
+	String inicioURI() default "";
+	
 }

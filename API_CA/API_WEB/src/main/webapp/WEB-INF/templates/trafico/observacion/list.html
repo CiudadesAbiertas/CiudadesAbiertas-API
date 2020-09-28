@@ -30,7 +30,7 @@
 	  	<h1>Tráfico - Listado de observaciones</h1>
 	  </div>
 	  <div class="row">
-	  	<div class="table-responsive">
+	  	<div class="table-responsive table-no-overflow">
 	        <table id="tablaPrincipal" class="table">
 	        	<thead>
 	        	 <tr>
@@ -209,7 +209,9 @@ $(document).ready(function() {
             { "data": "id","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 $(nTd).html("<a href='"+recordURL+"/"+oData.id+".html'>"+oData.id+"</a>");            
             }},
-			{ "data": "observedProperty"},			
+			{ "data": "observedProperty","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+				  $(nTd).html("<a href='"+contextRoot+"trafico/propiedad-medicion/"+oData.observedProperty+".html'>"+oData.observedProperty+"</a>");               
+        	}},			
           	{ "data": "resultTime" },
           	{ "data": "hasSimpleResult" },
           	{ "data": "hasFeatureInterest","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {

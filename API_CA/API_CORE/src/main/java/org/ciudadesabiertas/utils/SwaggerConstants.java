@@ -112,6 +112,7 @@ public class SwaggerConstants
 	public static final String PARAM_TERRAZA_TEXT= "Objeto (Terraza) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_ORGANIGRAMA_TEXT= "Objeto (Organigrama) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_PLANTILLA_TEXT= "Objeto (Plantilla) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_REL_LINEA_INCIDENCIA= "Objeto (RelLineaIncidencia) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_CUBO_PADRON_DISTRITO_EDAD_TEXT= "Objeto (Observación del Cubo de Datos de Padron: Distrito y Edad) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_CONTRATO_PROCESS_TEXT= "Licitación (Contratos) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_BICICLETAPUBLICABICICLETA_TEXT= "Objeto (BicicletaPublicaBicicleta) en formato json necesario para poder realizar la operación";
@@ -119,13 +120,37 @@ public class SwaggerConstants
 	public static final String PARAM_BICICLETAPUBLICAANCLAJE_TEXT= "Objeto (BicicletaPublicaAnclaje) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_BICICLETAPUBLICAUSUARIO_TEXT= "Objeto (BicicletaPublicaUsuario) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_BICICLETAPUBLICATRAYECTO_TEXT= "Objeto (BicicletaPublicaTrayecto) en formato json necesario para poder realizar la operación";
-	
+	public static final String PARAM_TRAFICODISPMEDI_TEXT= "Objeto (TraficoDispositivoMedicion) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOEQUIPO_TEXT= "Objeto (TraficoEquipo) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOINCIDENCIA_TEXT= "Objeto (TraficoIncidencia) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOOBSERVACION_TEXT= "Objeto (TraficoObservacion) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOOBSEDISP_TEXT= "Objeto (TraficoObservacionDispostivo) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOPORPINTE_TEXT= "Objeto (TraficoProperInterval) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOTRAMO_TEXT= "Objeto (TraficoTramo) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_TRAFICOTRAMOVIA_TEXT= "Objeto (TraficoTramoVia) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_INCIDENCIA_TEXT= "Objeto (Incidencia) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_OBSERVES_ID_TEXT= "Código del elemento que se está obervando";
 	public static final String PARAM_IS_HOSTED_BY_TEXT= "Código de la estación donde se encuentra el sensor";
 	
+	//Convenio
+	public static final String PARAM_CONVENIO_TEXT= "Objeto (Convenio) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONVENIODOCUMENTO_TEXT= "Objeto (Documento Convenio) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONVENIOORGANIZATION_TEXT= "Objeto (Organización Convenio) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONVENIOSUSCENTIDAD_TEXT= "Objeto (Suscripción Entidad Convenio) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONVENIOSRELFIRAYTO_TEXT= "Objeto (Firmante Ayuntamiento Convenio) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_CONVENIOSRELFIRENTIDAD_TEXT= "Objeto (Firmante Entidad Convenio) en formato json necesario para poder realizar la operación";
 	
 	public static final String PARAM_SRID= "Sistema de referencia para generar las coordenadas";
 	
+	public static final String PARAM_BUS_AUTHORITY_TEXT= "Objeto (Authority) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BUS_PARADA_TEXT= "Objeto (Parada) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BUS_LINEA_TEXT= "Objeto (Línea) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_BUS_JOURNEYPATTERN_TEXT = "Objeto (Journeypattern) en formato json necesario para poder realizar la operación";
+	
+	
+	public static final String PARAM_BUS_STOP_POINT_IN_JOURNEY_PATTERN_TEXT = "Objeto (StopPointInJourneyPattern) en formato json necesario para poder realizar la operación";
+	
+
 	//Ejemplos id
 	public static final String PARAM_ID_SECCION_CENSAL = " Ejemplo: 2800601001";
 	public static final String PARAM_ID_BARRIO = " Ejemplo: 28006011";
@@ -134,7 +159,7 @@ public class SwaggerConstants
 	public static final String PARAM_ID_PROVINCIA = " Ejemplo: Madrid";
 	public static final String PARAM_ID_AUTONOMIA = " Ejemplo: Comunidad-Madrid";
 	public static final String PARAM_ID_PAIS = " Ejemplo: España";
-	public static final String PARAM_ID_SUBVENCION = " Ejemplo: S0001";
+	public static final String PARAM_ID_SUBVENCION = " Ejemplo: S0001";	
 	public static final String PARAM_ID_LOCAL_COMERCIAL = " Ejemplo: 270002391";
 	public static final String PARAM_ID_AGRUPACION_COMERCIAL = " Ejemplo: 99000214";
 	public static final String PARAM_ID_LICENCIA = " Ejemplo: 270002391-106-2003-01539";
@@ -179,6 +204,28 @@ public class SwaggerConstants
 	public static final String PARAM_ID_PADRON_NACIONALIDAD = " Ejemplo: obs11";
 	public static final String PARAM_ID_PADRON_PAIS_NACIMIENTO = " Ejemplo: obs1";
 	public static final String PARAM_ID_PADRON_PROCEDENCIA = " Ejemplo: obs1";
+	public static final String PARAM_ID_CONVENIO = " Ejemplo: CONV001";
+	public static final String PARAM_ID_CONVENIODOCUMENTO = " Ejemplo: CONVDOC001";
+	public static final String PARAM_ID_CONVENIOORGANIZATION = " Ejemplo: ORG0001";
+	public static final String PARAM_ID_CONVENIOSUSENTIDAD = " Ejemplo: CONVSUSENT001";
+	public static final String PARAM_ID_CONVENIOSRELFIRAYTO = " Ejemplo: CONVRELFIRMAYTO001";
+	public static final String PARAM_ID_CONVENIOSRELFIRENTIDAD = " Ejemplo: CONVRELFIRMENTIDAD001";
+	public static final String PARAM_ID_TRAFICO_DISP_MEDI = " Ejemplo: TRAFDISMED01";
+	public static final String PARAM_ID_TRAFICO_EQUIPO = " Ejemplo: TRAFEQUI01";
+	public static final String PARAM_ID_TRAFICO_INCIDENCIA = " Ejemplo: TRAFINCI01";
+	public static final String PARAM_ID_TRAFICO_OBSERACION = " Ejemplo: TRAFOBS01";
+	public static final String PARAM_ID_TRAFICO_OBSEDISP = " Ejemplo: TRAFOBSDIPS01";
+	public static final String PARAM_ID_TRAFICO_PROP_INTE = " Ejemplo: 468a5a615f32d0dbee5937f86acf58b3";
+	public static final String PARAM_ID_TRAFICO_PROP_MEDI = " Ejemplo: carga";
+	public static final String PARAM_ID_TRAFICO_TRAMO = " Ejemplo: TRAFTRAM01";
+	public static final String PARAM_ID_TRAFICO_TRAM_VIA = " Ejemplo: TRAFTRAVIA01";
+	public static final String PARAM_ID_BUS_AUTHORITY = " Ejemplo: TRAFTRAVIA01";
+	public static final String PARAM_ID_BUS_LINEA = "Ejemplo: 138";
+	public static final String PARAM_ID_BUS_INCIDENCIA = "Ejemplo: BUSINCI01";
+	public static final String PARAM_ID_BUS_REL_LINEA_INCIDENCIA = "Ejemplo: RELINCI01";
+	public static final String PARAM_ID_BUS_JOURNEYPATTERN = "Ejemplo: JPAT01"; 	
+	public static final String PARAM_ID_BUS_STOP_POINT_IN_JOURNEY_PATTERN = "Ejemplo: 6a2-1918";
+	
 	
 	//Ejemplos condicionAdicional
 	public static final String PARAM_COND_ADI_BARRIO = " Ejemplo: distrito = 2800601";
@@ -200,4 +247,8 @@ public class SwaggerConstants
 	
 	public static final String VOCABULARIO_A_HREF_END = "' class='enlaceVocabulario' target='vocabulario'>Vocabulario</a>";
 	public static final String VOCABULARIO_A_HREF = " <a href='";
+	
+	
+	
+
 }

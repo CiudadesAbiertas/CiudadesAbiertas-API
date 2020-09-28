@@ -29,10 +29,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.CustomId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfTripleExtenal;
 import org.ciudadesabiertas.model.GeoModel;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -59,37 +61,37 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Entity
 @ApiModel
-@Table(name = "trafico_observacion_dispostivo")
+@Table(name = "trafico_observacion_disp")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonPropertyOrder(alphabetic=false)
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESTRAF, propiedad = "ObservacionTrafico")
-@PathId(value="/trafico/observacion-dispostivo")
+@PathId(value="/trafico/observacion")
 public class TraficoObservacionDispostivo  implements java.io.Serializable, RDFModel {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
 	@ApiModelProperty(value = "Referencia inequívoca al recurso dentro de un contexto dado. Ejemplo: TRAFOBSDIPS01")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
-//	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
+	@CustomId(id = "traficoObservacionId")
 	private String id;
 	
 	@ApiModelProperty(value = "Una descripción del recurso dentro de un contexto dado. Ejemplo: TRAFOBS02")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="traficoObservacionId", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String traficoObservacionId;
 	
-	@ApiModelProperty(value = "Coordenada X del equipo de tráfico. Ejemplo: TRAFDISMED01")
+	@ApiModelProperty(value = "Relación entre una Observación y un Sensor que realiza la Observación.. Ejemplo: TRAFDISMED01")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="madeBySensor")
 	@Rdf(contexto = Context.SOSA, propiedad = "madeBySensor")
+	@RdfExternalURI(inicioURI = "/trafico/dispositivo-medicion/", finURI = "madeBySensor", urifyLevel = 1)
 	private String madeBySensor;	
 	
 
@@ -173,12 +175,6 @@ public class TraficoObservacionDispostivo  implements java.io.Serializable, RDFM
 	public Map<String,String> prefixes()
 	{
 		Map<String,String> prefixes=new HashMap<String,String>();				
-		prefixes.put(Context.XSD, Context.XSD_URI);
-		prefixes.put(Context.DCT, Context.DCT_URI);	
-		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
-		prefixes.put(Context.GEO, Context.GEO_URI);	
-		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);		
-		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);
 		
 		return prefixes;

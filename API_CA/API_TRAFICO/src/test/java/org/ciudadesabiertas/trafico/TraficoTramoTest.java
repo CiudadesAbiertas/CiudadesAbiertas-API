@@ -19,6 +19,8 @@ package org.ciudadesabiertas.trafico;
 import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -119,7 +121,9 @@ public class TraficoTramoTest {
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
     	    	    	
     	traficoADD = new String (traficoADD.getBytes(),"UTF-8");	
@@ -152,7 +156,9 @@ public class TraficoTramoTest {
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
     	
     	traficoADD = new String (traficoADD.getBytes(),"UTF-8");	
@@ -172,8 +178,10 @@ public class TraficoTramoTest {
     	String obj = "{"   			
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"xETRS89\": 440125.33000,\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440125.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
 
     	String traficoUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -207,7 +215,9 @@ public class TraficoTramoTest {
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
     	
     	String traficoUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -299,7 +309,9 @@ public class TraficoTramoTest {
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
     	
     	String traficoTransform = new String (obj.getBytes(),"UTF-8");	
@@ -320,7 +332,9 @@ public class TraficoTramoTest {
 //    			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
     			+ "}";
     	
     	String traficoTransform = new String (obj.getBytes(),"UTF-8");	
@@ -337,19 +351,23 @@ public class TraficoTramoTest {
     public void test20_Database_and_vocabulary() throws Exception {
     	
     	Field[] declaredFields = (TraficoTramo.class).getDeclaredFields();
+    	String[] fieldsToIngore = { "finX","finY","ubicacionX", "ubicacionY" };
+    	ArrayList<String> ignoreList = new ArrayList<String>(Arrays.asList(fieldsToIngore));
     	
     	boolean checkFields=true;
     	
     	for (Field f:declaredFields)
     	{
-    		Rdf annotation=f.getAnnotation(Rdf.class);
-    		if (annotation!=null)
-    		{        		        		
-    			if (!Util.validatorFieldRDF(f.getName(), annotation.propiedad()))
-    			{
-    				log.info(f.getName()+" vs. "+annotation.propiedad() );
-    				checkFields=false;
-    			}
+    		if(!ignoreList.contains(f.getName())) {
+	    		Rdf annotation=f.getAnnotation(Rdf.class);
+	    		if (annotation!=null)
+	    		{        		        		
+	    			if (!f.getName().equals("") && !f.getName().equals("") && !Util.validatorFieldRDF(f.getName(), annotation.propiedad()))
+	    			{
+	    				log.info(f.getName()+" vs. "+annotation.propiedad() );
+	    				checkFields=false;
+	    			}
+	    		}
     		}
     	}
     	

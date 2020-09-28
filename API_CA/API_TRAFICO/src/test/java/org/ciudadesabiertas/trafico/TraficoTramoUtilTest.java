@@ -40,13 +40,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class TraficoTramoUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance", "finLatitud","finLongitud","ubicacionLatitud","ubicacionLongitud" };
 	
 	private static final String testJSON = " {\r\n" 
 			+ "	  \"id\": \"TEST01_TRAFTRAM01\",\r\n" 
 			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
 			+ "   \"xETRS89\": 440124.33000,\r\n"
-			+ "   \"yETRS89\": 4474637.17000\r\n"
+			+ "   \"yETRS89\": 4474637.17000,\r\n"
+			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
+			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
 			+ "    }";
 
 	@Test

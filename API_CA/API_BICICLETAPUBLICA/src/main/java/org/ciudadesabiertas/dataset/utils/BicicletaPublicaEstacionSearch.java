@@ -56,9 +56,10 @@ public class BicicletaPublicaEstacionSearch extends BicicletaPublicaEstacion imp
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X de la estación. Ejemplo: 440654.00047")
     private BigDecimal xETRS89;	
 	
-	
+	@ApiModelProperty(value = "Coordenada Y de la estación. Ejemplo: 4475352.11778")
 	private BigDecimal yETRS89;
 
 

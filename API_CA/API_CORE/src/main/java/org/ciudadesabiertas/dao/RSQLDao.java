@@ -168,7 +168,7 @@ public class RSQLDao  {
     		Node rootNode;
     		CriteriaQuery<T> query;
 
-    		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();    	
+    		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();  
     		
     		rootNode = new RSQLParser(operators).parse(queryString);
     		    		  		

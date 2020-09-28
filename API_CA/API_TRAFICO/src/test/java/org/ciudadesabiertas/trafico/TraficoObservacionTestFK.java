@@ -79,11 +79,9 @@ public class TraficoObservacionTestFK {
 	    			+ "   \"observedProperty\": \"intensidad\",\r\n"
 	    			+ "   \"resultTime\": \"2020-04-01T12:45:00.000000\",\r\n"
 	    			+ "   \"hasSimpleResult\": 30.00,\r\n"
-	    			+ "   \"hasFeatureInterest\": \"TRAFTRAM01\",\r\n"
+	    			+ "   \"hasFeatureOfInterest\": \"TRAFTRAM01\",\r\n"
 	    			+ "   \"validada\": \"true\",\r\n"
-	    			+ "   \"phenomenonTimeBeginning\": \"2020-04-01T12:45:00\",\r\n"
-	    			+ "   \"phenomenonTimeEnd\": \"2020-04-01T12:46:00\",\r\n"
-	    			+ "   \"unidadMedida\": \"Número total de vehículos\"\r\n"
+	    			+ "   \"phenomenonTime\": \"468a5a615f32d0dbee5937f86acf58b3\"\r\n"
 	    			+ "}";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -111,11 +109,9 @@ public class TraficoObservacionTestFK {
 	    			+ "   \"observedProperty\": \"intensidad\",\r\n"
 	    			+ "   \"resultTime\": \"2020-04-01T12:45:00.000000\",\r\n"
 	    			+ "   \"hasSimpleResult\": 30.00,\r\n"
-	    			+ "   \"hasFeatureInterest\": \"TRAFTRAM01_KO\",\r\n"
+	    			+ "   \"hasFeatureOfInterest\": \"TRAFTRAM01_KO\",\r\n"
 	    			+ "   \"validada\": \"true\",\r\n"
-	    			+ "   \"phenomenonTimeBeginning\": \"2020-04-01T12:45:00\",\r\n"
-	    			+ "   \"phenomenonTimeEnd\": \"2020-04-01T12:46:00\",\r\n"
-	    			+ "   \"unidadMedida\": \"Número total de vehículos\"\r\n"
+	    			+ "   \"phenomenonTime\": \"468a5a615f32d0dbee5937f86acf58b3\"\r\n"
 	    			+ "}";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -142,11 +138,9 @@ public class TraficoObservacionTestFK {
 	    			+ "   \"observedProperty\": \"intensidad\",\r\n"
 	    			+ "   \"resultTime\": \"2020-04-01T12:45:00.000000\",\r\n"
 	    			+ "   \"hasSimpleResult\": 30.00,\r\n"
-	    			+ "   \"hasFeatureInterest\": \"TRAFTRAM01_KO\",\r\n"
+	    			+ "   \"hasFeatureOfInterest\": \"TRAFTRAM01_KO\",\r\n"
 	    			+ "   \"validada\": \"true\",\r\n"
-	    			+ "   \"phenomenonTimeBeginning\": \"2020-04-01T12:45:00\",\r\n"
-	    			+ "   \"phenomenonTimeEnd\": \"2020-04-01T12:46:00\",\r\n"
-	    			+ "   \"unidadMedida\": \"Número total de vehículos\"\r\n"
+	    			+ "   \"phenomenonTime\": \"468a5a615f32d0dbee5937f86acf58b3\"\r\n"
 	    			+ "}"; 	
 	    	
 	    	String itemUPDATE = new String (item.getBytes(),"UTF-8");	

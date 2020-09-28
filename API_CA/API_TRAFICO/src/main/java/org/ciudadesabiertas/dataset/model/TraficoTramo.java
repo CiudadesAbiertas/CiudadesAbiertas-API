@@ -31,7 +31,10 @@ import javax.persistence.Transient;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -64,11 +67,12 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESTRAF, propiedad = "Tramo")
 @PathId(value="/trafico/tramo")
-public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
+public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, RDFModel {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
@@ -85,30 +89,96 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 	private String description;
 	
 	@ApiModelProperty(value = "Coordenada X del equipo de tráfico. Ejemplo: 440124.33000")
-	@CsvBindByPosition(position=11)
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
 	private BigDecimal x;	
 	
 	@ApiModelProperty(value = "Coordenada Y del equipo de tráfico. Ejemplo: 4474637.17000")
+	@CsvBindByPosition(position=4)
+	@CsvBindByName(column="yETRS89")
+	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
+	private BigDecimal y;
+		
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="latitud")
+	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
+	private BigDecimal latitud;
+	
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@CsvBindByPosition(position=6)
+	@CsvBindByName(column="longitud")
+	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
+	private BigDecimal longitud;
+	
+	@ApiModelProperty(value = "Coordenada xETRS89Fin del equipo de tráfico. Ejemplo: 440124.43000")
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="xETRS89Fin")
+	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"finTramo", nodoId="finTramo")
+	private BigDecimal finX;	
+	
+	@ApiModelProperty(value = "Coordenada yETRS89Fin del equipo de tráfico. Ejemplo: 4474637.27000")
+	@CsvBindByPosition(position=8)
+	@CsvBindByName(column="yETRS89Fin")
+	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"finTramo", nodoId="finTramo")
+	private BigDecimal finY;
+		
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="latitudFin")
+	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"finTramo", nodoId="finTramo")
+	private BigDecimal finLatitud;
+	
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@CsvBindByPosition(position=10)
+	@CsvBindByName(column="longitudFin")
+	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"finTramo", nodoId="finTramo")
+	private BigDecimal finLongitud;
+	
+	@Transient
+	@ApiModelProperty(value = "Coordenada X de la ubicación del tramo de tráfico. Ejemplo: 440124.33000")
+	@CsvBindByPosition(position=11)
+	@CsvBindByName(column="xETRS89")
+	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
+	private BigDecimal ubicacionX;	
+	
+	@Transient
+	@ApiModelProperty(value = "Coordenada Y de la ubicación del tramo de tráfico. Ejemplo: 4474637.17000")
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
-	private BigDecimal y;
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
+	private BigDecimal ubicacionY;
 		
 	@Transient
 	@ApiModelProperty(hidden = true)
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
-	private BigDecimal latitud;
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
+	private BigDecimal ubicacionLatitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
 	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
-	private BigDecimal longitud;
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
+	private BigDecimal ubicacionLongitud;
 	
 	private Double distance;
 	
@@ -127,7 +197,15 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 		this.y = copia.y;
 		this.latitud = copia.latitud;
 		this.longitud = copia.longitud;
+		this.finX = copia.finX;
+		this.finY = copia.finY;
+		this.finLatitud = copia.finLatitud;
+		this.finLongitud = copia.finLongitud;	
 		this.distance = copia.distance;
+		this.ubicacionX = copia.x;
+		this.ubicacionY = copia.y;
+		this.ubicacionLatitud = copia.latitud;
+		this.ubicacionLongitud = copia.longitud;
 	}
 
 	public TraficoTramo(TraficoTramo copia, List<String> attributesToSet)
@@ -143,11 +221,18 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 		}
 		if (attributesToSet.contains("xETRS89")) {
 			this.x = copia.x;
+			this.ubicacionX = copia.x;
 		}
 		if (attributesToSet.contains("yETRS89")) {
 			this.y = copia.y;
+			this.ubicacionY = copia.y;
 		}
-		
+		if (attributesToSet.contains("xETRS89Fin")) {
+			this.finX = copia.finX;
+		}
+		if (attributesToSet.contains("yETRS89Fin")) {
+			this.finY = copia.finY;
+		}
 		
 	}
 
@@ -231,8 +316,93 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 		this.longitud = longitud;
 	}
 
+	@JsonProperty("xETRS89Fin")
+	@Column(name = "x_etrs89_fin_tramo", precision = 13, scale = 5)
+	public BigDecimal getFinX()
+	{
+		return finX;
+	}
 	
 	
+	public void setFinX(BigDecimal finX)
+	{
+		this.finX = finX;
+	}
+	
+	@JsonProperty("yETRS89Fin")
+	@Column(name = "y_etrs89_fin_tramo", precision = 13, scale = 5)
+	public BigDecimal getFinY()
+	{
+		return finY;
+	}
+	
+	
+	public void setFinY(BigDecimal finY)
+	{
+		this.finY = finY;
+	}
+	
+	@Transient
+	public BigDecimal getFinLatitud() {
+		return this.finLatitud;
+	}
+	
+	@Transient
+	public void setFinLatitud(BigDecimal finLatitud) {
+		this.finLatitud = finLatitud;
+	}
+	
+	@Transient
+	public BigDecimal getFinLongitud() {
+		return this.finLongitud;
+	}
+	
+	@Transient
+	public void setFinLongitud(BigDecimal finLongitud) {
+		this.finLongitud = finLongitud;
+	}
+	
+	@Transient
+	public BigDecimal getUbicacionX() {
+		return ubicacionX;
+	}
+
+	@Transient
+	public void setUbicacionX(BigDecimal ubicacionX) {
+		this.ubicacionX = ubicacionX;
+	}
+
+	@Transient
+	public BigDecimal getUbicacionY() {
+		return ubicacionY;
+	}
+
+	@Transient
+	public void setUbicacionY(BigDecimal ubicacionY) {
+		this.ubicacionY = ubicacionY;
+	}
+
+	@Transient
+	public BigDecimal getUbicacionLatitud() {
+		return ubicacionLatitud;
+	}
+
+	@Transient
+	public void setUbicacionLatitud(BigDecimal ubicacionLatitud) {
+		this.ubicacionLatitud = ubicacionLatitud;
+	}
+
+	@Transient
+	public BigDecimal getUbicacionLongitud() {
+		return ubicacionLongitud;
+	}
+
+	@Transient
+	public void setUbicacionLongitud(BigDecimal ubicacionLongitud) {
+		this.ubicacionLongitud = ubicacionLongitud;
+	}
+
+
 	@Transient
 	public Double getDistance() {
 		return distance;
@@ -247,7 +417,10 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 	@Override
 	public String toString() {
 		return "TraficoTramo [ikey=" + ikey + ", id=" + id + ", description=" + description + ", x=" + x + ", y=" + y
-				+ ", latitud=" + latitud + ", longitud=" + longitud + ", distance=" + distance + "]";
+				+ ", latitud=" + latitud + ", longitud=" + longitud + ", finX=" + finX + ", finY=" + finY
+				+ ", finLatitud=" + finLatitud + ", finLongitud=" + finLongitud + ", ubicacionX=" + ubicacionX
+				+ ", ubicacionY=" + ubicacionY + ", ubicacionLatitud=" + ubicacionLatitud + ", ubicacionLongitud="
+				+ ubicacionLongitud + ", distance=" + distance + "]";
 	}
 
 	public Map<String,String> prefixes()
@@ -258,8 +431,9 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, RDFModel {
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
 		prefixes.put(Context.GEO, Context.GEO_URI);	
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);		
+		prefixes.put(Context.GEOSPARQL, Context.GEOSPARQL_URI);	
+		prefixes.put(Context.SF, Context.SF_URI);
 		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
-		prefixes.put(Context.SOSA, Context.SOSA_URI);
 		
 		return prefixes;
 	}

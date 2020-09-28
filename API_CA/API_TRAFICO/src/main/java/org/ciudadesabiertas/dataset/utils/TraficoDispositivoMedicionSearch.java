@@ -17,11 +17,14 @@
 package org.ciudadesabiertas.dataset.utils;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.ciudadesabiertas.dataset.model.TraficoDispositivoMedicion;
 import org.ciudadesabiertas.utils.DatasetSearch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
@@ -34,7 +37,50 @@ public class TraficoDispositivoMedicionSearch extends TraficoDispositivoMedicion
 	@JsonIgnore
 	private static final long serialVersionUID = -1286906960223335790L;
 	
+	@ApiModelProperty(hidden = true)
+	private String portalIdIsolated;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal latitud;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal longitud;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal x;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal y;
 
+	@ApiModelProperty(hidden = true)
+	private Double distance;
 	
+	@ApiModelProperty(value = "Coordenada X del dispositivo. Ejemplo: 440654.00047")
+    private BigDecimal xETRS89;	
 	
+	@ApiModelProperty(value = "Coordenada Y del dispositivo. Ejemplo: 4475352.11778")
+	private BigDecimal yETRS89;
+	
+	public BigDecimal getxETRS89()
+	{
+		return xETRS89;
+	}
+
+
+	public void setxETRS89(BigDecimal xETRS89)
+	{	
+		setX(xETRS89);
+	}
+
+
+	public BigDecimal getyETRS89()
+	{
+		return yETRS89;
+	}
+
+
+	public void setyETRS89(BigDecimal yETRS89)
+	{		
+		setY(yETRS89);
+	}
 }

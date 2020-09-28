@@ -118,9 +118,7 @@ public class TraficoTramoViaTest {
     	String traficoADD = "{"   			
     			+ "	  \"id\": \""+id+"\",\r\n" 
     			+ "   \"idTramo\": \"TRAFTRAM01\",\r\n"
-    			+ "   \"idVia\": \"496400\",\r\n"
-    			+ "   \"titleVia\": \"\",\r\n"
-    			+ "   \"tipoVia\": \"\"\r\n"
+    			+ "   \"idVia\": \"496400\"\r\n"
     			+ "}";
     	    	    	
     	traficoADD = new String (traficoADD.getBytes(),"UTF-8");	
@@ -311,11 +309,11 @@ public class TraficoTramoViaTest {
     
     @Test    
     public void test19_Post_Transform_NO_OK() throws Exception {
-//    	String id ="TEST01_TRASFORM_BICI0001";
+    	String id ="TEST02_TRASFORM_TRAFTRAVIA01";
     	
     	String obj = "{"   			
-//    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"idTramo\": \"TRAFTRAM01\",\r\n"
+    			+ "	  \"id\": \""+id+"\",\r\n" 
+//    			+ "   \"idTramo\": \"TRAFTRAM01\",\r\n"
     			+ "   \"idVia\": \"496400\"\r\n"
     			+ "}";
     	
@@ -377,11 +375,6 @@ public class TraficoTramoViaTest {
     	assertTrue(checkAllFormats);    	    	
     }
     
-    @Test
-    public void test26_List_RDF_200() throws Exception {    	
-    	String theURI = TestUtils.checkRDFURI(this.mockMvc,TraficoTramoViaController.LIST);        
-        this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
-    }
 
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	

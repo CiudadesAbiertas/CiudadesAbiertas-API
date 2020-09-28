@@ -127,7 +127,7 @@ public class TraficoObservacionRSQLTest
 	public void test_Busqueda_hasFeatureInterest() throws Exception
 	{		
 		
-		String value = "hasFeatureInterest=='TRAFTRAM01'";
+		String value = "hasFeatureOfInterest=='TRAFTRAM01'";
 
 		String paramField = "q";
 		
@@ -150,36 +150,10 @@ public class TraficoObservacionRSQLTest
 	}
 	
 	@Test
-	public void test_Busqueda_phenomenonTimeBeginning() throws Exception
+	public void test_Busqueda_phenomenonTime() throws Exception
 	{		
 		
-		String value = "phenomenonTimeBeginning=='2020-04-01 12:45:00'";
-
-		String paramField = "q";
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 2);
-	}
-	
-	@Test
-	public void test_Busqueda_phenomenonTimeEnd() throws Exception
-	{		
-		
-		String value = "phenomenonTimeEnd=='2020-04-01 12:46:00'";
-
-		String paramField = "q";
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 2);
-	}
-	
-	@Test
-	public void test_Busqueda_unidadMedida() throws Exception
-	{		
-		
-		String value = "unidadMedida=='Número total de vehículos'";
+		String value = "phenomenonTime=='468a5a615f32d0dbee5937f86acf58b3'";
 
 		String paramField = "q";
 		

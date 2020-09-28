@@ -33,6 +33,8 @@ import javax.persistence.TemporalType;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -69,6 +71,7 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
@@ -82,12 +85,13 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="observedProperty", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observedProperty")
+	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observedProperty",capitalize=false, urifyLevel = 1)
 	private String observedProperty;
 	
 	@ApiModelProperty(value = "Esta propiedad establece la fecha/hora de la observación. Ejemplo: 2020-04-01 12:45:00")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="resultTime")
-	@Rdf(contexto = Context.SOSA, propiedad = "resultTime")
+	@Rdf(contexto = Context.SOSA, propiedad = "resultTime" ,typeURI=Context.XSD_URI+"dateTime")
 	private Date resultTime;	
 	
 	@ApiModelProperty(value = "Esta propiedad muestra el resultado de la observación. Ejemplo: 30.00")
@@ -99,33 +103,23 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	@ApiModelProperty(value = "Una relación entre una Observación y la entidad para la que se ha observado. Ejemplo: TRAFTRAM01")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="hasFeatureInterest")
-	@Rdf(contexto = Context.SOSA, propiedad = "hasFeatureInterest")
-	private String hasFeatureInterest;
+	@Rdf(contexto = Context.SOSA, propiedad = "hasFeatureOfInterest")
+	@RdfExternalURI(inicioURI="/trafico/tramo/",finURI="hasFeatureOfInterest", urifyLevel = 1)
+	private String hasFeatureOfInterest;
 		
 	@ApiModelProperty(value = "Esta propiedad permite conocer si se ha producido una validación de la observación o no. Ejemplo: 0")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="validada")
-	@Rdf(contexto = Context.ESTRAF, propiedad = "validada")
+	@Rdf(contexto = Context.ESTRAF, propiedad = "validada", typeURI=Context.XSD_URI+"boolean")
 	private Boolean validada;
 	
-	@ApiModelProperty(value = "Esta propiedad establece el intervalo de tiempo de la observación. Ejemplo: 2020-04-01 12:45:00")
+	@ApiModelProperty(value = "Esta propiedad establece el intervalo de tiempo de la observación. Ejemplo: TRAPROINT01")
 	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="phenomenonTimeBeginning")
-	@Rdf(contexto = Context.SOSA, propiedad = "phenomenonTime")
-	private String phenomenonTimeBeginning;
+	@CsvBindByName(column="phenomenonTime")
+	@Rdf(contexto = Context.TIME, propiedad = "phenomenonTime" )
+	@RdfExternalURI(inicioURI="/trafico/proper-interval/",finURI="phenomenonTime", urifyLevel = 1)
+	private String phenomenonTime;
 
-	@ApiModelProperty(value = "Esta propiedad establece el intervalo de tiempo de la observación. Ejemplo: 2020-04-01 12:46:00")
-	@CsvBindByPosition(position=7)
-	@CsvBindByName(column="phenomenonTimeEnd")
-	@Rdf(contexto = Context.SOSA, propiedad = "phenomenonTime")
-	private String phenomenonTimeEnd;
-	
-	@ApiModelProperty(value = "Esta propiedad permite describir la unidad de medida de la medición del Dispositivo de Medición de Tráfico. Ejemplo: Número total de vehículos")
-	@CsvBindByPosition(position=8)
-	@CsvBindByName(column="unidadMedida")
-	@Rdf(contexto = Context.ESTRAF, propiedad = "unidadMedida")
-	private String unidadMedida;
-	
 	public TraficoObservacion()
 	{
 	}	
@@ -137,11 +131,9 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 		this.observedProperty = copia.observedProperty;
 		this.resultTime = copia.resultTime;
 		this.hasSimpleResult = copia.hasSimpleResult;
-		this.hasFeatureInterest = copia.hasFeatureInterest;
+		this.hasFeatureOfInterest = copia.hasFeatureOfInterest;
 		this.validada = copia.validada;
-		this.phenomenonTimeBeginning = copia.phenomenonTimeBeginning;
-		this.phenomenonTimeEnd = copia.phenomenonTimeEnd;
-		this.unidadMedida = copia.unidadMedida;
+		this.phenomenonTime = copia.phenomenonTime;
 	}
 
 
@@ -162,20 +154,14 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 		if (attributesToSet.contains("hasSimpleResult")) {
 			this.hasSimpleResult = copia.hasSimpleResult;
 		}
-		if (attributesToSet.contains("hasFeatureInterest")) {
-			this.hasFeatureInterest = copia.hasFeatureInterest;
+		if (attributesToSet.contains("hasFeatureOfInterest")) {
+			this.hasFeatureOfInterest = copia.hasFeatureOfInterest;
 		}
 		if (attributesToSet.contains("validada")) {
 			this.validada = copia.validada;
 		}
-		if (attributesToSet.contains("phenomenonTimeBeginning")) {
-			this.phenomenonTimeBeginning = copia.phenomenonTimeBeginning;
-		}
-		if (attributesToSet.contains("phenomenonTimeEnd")) {
-			this.phenomenonTimeEnd = copia.phenomenonTimeEnd;
-		}
-		if (attributesToSet.contains("unidadMedida")) {
-			this.unidadMedida = copia.unidadMedida;
+		if (attributesToSet.contains("phenomenonTime")) {
+			this.phenomenonTime = copia.phenomenonTime;
 		}
 	}
 
@@ -228,12 +214,12 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	}
 	
 	@Column(name = "has_feature_interest", unique = true, nullable = false, length = 50)
-	public String getHasFeatureInterest() {
-		return hasFeatureInterest;
+	public String getHasFeatureOfInterest() {
+		return hasFeatureOfInterest;
 	}
 
-	public void setHasFeatureInterest(String hasFeatureInterest) {
-		this.hasFeatureInterest = hasFeatureInterest;
+	public void setHasFeatureOfInterest(String hasFeatureInterest) {
+		this.hasFeatureOfInterest = hasFeatureInterest;
 	}
 
 
@@ -246,51 +232,30 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 		this.validada = validada;
 	}
 
-	@Column(name = "phenomenon_time_beginning", length = 200)
-	public String getPhenomenonTimeBeginning() {
-		return this.phenomenonTimeBeginning;
+	@Column(name = "phenomenon_time", length = 200)
+	public String getPhenomenonTime() {
+		return this.phenomenonTime;
 	}
 
-	public void setPhenomenonTimeBeginning(String phenomenonTimeBeginning) {
-		this.phenomenonTimeBeginning = phenomenonTimeBeginning;
-	}
-
-	@Column(name = "phenomenon_time_end", length = 200)
-	public String getPhenomenonTimeEnd() {
-		return this.phenomenonTimeEnd;
-	}
-
-	public void setPhenomenonTimeEnd(String phenomenonTimeEnd) {
-		this.phenomenonTimeEnd = phenomenonTimeEnd;
-	}
-
-	@Column(name = "unidad_medida", length = 200)
-	public String getUnidadMedida() {
-		return this.unidadMedida;
-	}
-
-	public void setUnidadMedida(String unidadMedida) {
-		this.unidadMedida = unidadMedida;
+	public void setPhenomenonTime(String phenomenonTime) {
+		this.phenomenonTime = phenomenonTime;
 	}
 
 	@Override
 	public String toString() {
 		return "TraficoObservacion [ikey=" + ikey + ", id=" + id + ", observedProperty=" + observedProperty
-				+ ", resultTime=" + resultTime + ", hasSimpleResult=" + hasSimpleResult + ", hasFeatureInterest="
-				+ hasFeatureInterest + ", validada=" + validada + ", phenomenonTimeBeginning=" + phenomenonTimeBeginning
-				+ ", phenomenonTimeEnd=" + phenomenonTimeEnd + ", unidadMedida=" + unidadMedida + "]";
+				+ ", resultTime=" + resultTime + ", hasSimpleResult=" + hasSimpleResult + ", hasFeatureOfInterest="
+				+ hasFeatureOfInterest + ", validada=" + validada + ", phenomenonTime=" + phenomenonTime + "]";
 	}
 
 	public Map<String,String> prefixes()
 	{
 		Map<String,String> prefixes=new HashMap<String,String>();				
 		prefixes.put(Context.XSD, Context.XSD_URI);
-		prefixes.put(Context.DCT, Context.DCT_URI);	
-		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
-		prefixes.put(Context.GEO, Context.GEO_URI);	
-		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);		
+		prefixes.put(Context.DCT, Context.DCT_URI);			
 		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);
+		prefixes.put(Context.TIME, Context.TIME_URI);
 		
 		return prefixes;
 	}

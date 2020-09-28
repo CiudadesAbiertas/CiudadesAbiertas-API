@@ -19,6 +19,8 @@ package org.ciudadesabiertas.model;
 import java.util.List;
 import java.util.Map;
 
+import org.ciudadesabiertas.utils.RegularExpressions;
+
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
@@ -40,5 +42,12 @@ public interface RDFModel {
 	public List<String> validate();
 	
 	public Map<String,String> prefixes();
+	
+	public default String validarParam() {
+		String result=null;
+		
+		
+		return result;
+	}
 
 }

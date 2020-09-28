@@ -25,4 +25,6 @@ package org.ciudadesabiertas.dataset.utils;
 public class PresupuestoConstants
 {
 	public static final String KEY="presupuesto";
+	
+	public static final String presupuestoVocabURL="https://preview.ciudadesabiertas.linkeddata.es/presupuesto/index-es.html";
 }

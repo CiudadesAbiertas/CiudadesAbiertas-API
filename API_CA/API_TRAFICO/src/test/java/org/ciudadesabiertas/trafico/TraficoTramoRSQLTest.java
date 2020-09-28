@@ -120,4 +120,30 @@ public class TraficoTramoRSQLTest
 
 		assertTrue(records.size() == 1);
 	}
+	
+	@Test
+	public void test_Busqueda_x_etrs89_fin() throws Exception
+	{		
+		
+		String value = "xETRS89Fin==440124.43";
+
+		String paramField = "q";
+		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 1);
+	}
+	
+	@Test
+	public void test_Busqueda_y_etrs89_fin() throws Exception
+	{		
+		
+		String value = "yETRS89Fin==4474637.27";
+
+		String paramField = "q";
+		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 1);
+	}
 }

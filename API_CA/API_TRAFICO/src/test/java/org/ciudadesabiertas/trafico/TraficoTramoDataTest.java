@@ -98,7 +98,7 @@ public class TraficoTramoDataTest
 	@Test
 	public void test_Busqueda_x_etrs89() throws Exception
 	{
-		String paramField="x";
+		String paramField="xETRS89";
 
 		String value = "440124.33";
 
@@ -110,9 +110,33 @@ public class TraficoTramoDataTest
 	@Test
 	public void test_Busqueda_y_etrs89() throws Exception
 	{
-		String paramField="y";
+		String paramField="yETRS89";
 
 		String value = "4474637.17";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 1);
+	}
+	
+	@Test
+	public void test_Busqueda_x_etrs89_fin() throws Exception
+	{
+		String paramField="xETRS89Fin";
+
+		String value = "440124.43";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 1);
+	}
+	
+	@Test
+	public void test_Busqueda_y_etrs8_fin() throws Exception
+	{
+		String paramField="yETRS89Fin";
+
+		String value = "4474637.27";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -132,6 +156,23 @@ public class TraficoTramoDataTest
 		JSONObject obj=(JSONObject) records.get(0);
 
 		boolean checkXY=((obj.get("xETRS89")!=null)&&(obj.get("yETRS89")!=null));
+		
+		assertTrue(checkXY == true);
+	}
+	
+	@Test
+	public void test_Busqueda_id_getXFin_getYFin() throws Exception
+	{
+
+		String [] paramField= {"srId","id"};
+
+		String [] value = {"EPSG:25830","TRAFTRAM01"};
+		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		
+		JSONObject obj=(JSONObject) records.get(0);
+
+		boolean checkXY=((obj.get("xETRS89Fin")!=null)&&(obj.get("yETRS89Fin")!=null));
 		
 		assertTrue(checkXY == true);
 	}

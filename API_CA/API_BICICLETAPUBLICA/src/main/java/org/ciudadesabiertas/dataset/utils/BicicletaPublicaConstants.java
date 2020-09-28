@@ -26,4 +26,6 @@ package org.ciudadesabiertas.dataset.utils;
 public class BicicletaPublicaConstants
 {
 	public static final String KEY="bicicletaPublica";
+	
+	public static final String bicicletaVocabURL="http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica/doc/index-es.html";
 }

@@ -134,8 +134,10 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+				@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+				@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -204,12 +206,16 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, ConvenioDocumentoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
-						
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,   
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,						
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -236,11 +242,16 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, ConvenioDocumentoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,  
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort, 
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -260,7 +271,7 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> add(			
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 			
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_CONVENIODOCUMENTO_TEXT) 			
 			@RequestBody ConvenioDocumento obj 
 			)
 	{
@@ -288,7 +299,7 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	public @ResponseBody ResponseEntity<?> update(
 			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_CONVENIODOCUMENTO_TEXT) 
 			@RequestBody ConvenioDocumento obj)
 	{
 
@@ -334,7 +345,9 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
+			@PathVariable 
+			@ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CONVENIODOCUMENTO) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -354,7 +367,9 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, 
+			@PathVariable 
+			@ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_CONVENIODOCUMENTO) String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -371,7 +386,7 @@ public class ConvenioDocumentoController extends GenericController implements Ci
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> transform(
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) @RequestBody ConvenioDocumento obj) {
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_CONVENIODOCUMENTO_TEXT) @RequestBody ConvenioDocumento obj) {
 
 		log.info("[transform]");
 

@@ -77,9 +77,7 @@ public class TraficoTramoViaTestFK {
 	    	String item = " {\n"
 	    			+ "	  \"id\": \""+id+"\",\r\n" 
 	    			+ "   \"idTramo\": \"TRAFTRAM01\",\r\n"
-	    			+ "   \"idVia\": \"496400\",\r\n"
-	    			+ "   \"titleVia\": \"\",\r\n"
-	    			+ "   \"tipoVia\": \"\"\r\n"
+	    			+ "   \"idVia\": \"496400\"\r\n"
 	    			+ "}";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -105,9 +103,7 @@ public class TraficoTramoViaTestFK {
 	    	String item = " {\n"
 	    			+ "	  \"id\": \""+id+"\",\r\n" 
 	    			+ "   \"idTramo\": \"TRAFTRAM01_KO\",\r\n"
-	    			+ "   \"idVia\": \"496400\",\r\n"
-	    			+ "   \"titleVia\": \"\",\r\n"
-	    			+ "   \"tipoVia\": \"\"\r\n"
+	    			+ "   \"idVia\": \"496400\"\r\n"
 	    			+ "}";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -133,9 +129,7 @@ public class TraficoTramoViaTestFK {
 	    	String item = " {\n"
 	    			+ "	  \"id\": \""+id+"\",\r\n" 
 	    			+ "   \"idTramo\": \"TRAFTRAM01_KO\",\r\n"
-	    			+ "   \"idVia\": \"496400\",\r\n"
-	    			+ "   \"titleVia\": \"\",\r\n"
-	    			+ "   \"tipoVia\": \"\"\r\n"
+	    			+ "   \"idVia\": \"496400\"\r\n"
 	    			+ "}";
 	    	
 	    	String itemUPDATE = new String (item.getBytes(),"UTF-8");	

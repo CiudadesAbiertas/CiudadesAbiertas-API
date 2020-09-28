@@ -247,6 +247,15 @@ function formatearFechaHora(fieldValue){
 	return dateValue;
 }
 
+function formatearHora(fieldValue){
+	theDate=Date.parse(fieldValue);
+	var dateValue;
+	
+	dateValue=theDate.toString('HH:mm:ss')
+	
+	return dateValue;
+}
+
 
 //load a locale
 numeral.register('locale', 'es', {

@@ -30,7 +30,7 @@
 	  	<h1>Tráfico - Listado dispositivos de medición</h1>
 	  </div>
 	  <div class="row">
-	  	<div class="table-responsive">
+	  	<div class="table-responsive table-no-overflow">
 	        <table id="tablaPrincipal" class="table">
 	        	<thead>
 	        	 <tr>
@@ -224,7 +224,9 @@ $(document).ready(function() {
         	}},
 			{ "data": "enServicio" },
 			{ "data": "frecuenciaMedicion" },
-			{ "data": "observes" },
+			{ "data": "observes","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+				  $(nTd).html("<a href='"+contextRoot+"trafico/propiedad-medicion/"+oData.observes+".html'>"+oData.observes+"</a>");               
+        	} },
           	{ "data": "xETRS89" },
           	{ "data": "yETRS89" }
 			

@@ -53,9 +53,11 @@ import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.model.DataCubeModel;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.json.simple.JSONObject;
@@ -1063,7 +1065,58 @@ public class Util
 				}
 			}//fin if validValue(srId)
 			
-		}//fin if isGeomodel
+		}//fin if isGeomodel 
+		
+		if(isObjectITrafico(listado)) 
+		{
+			String target = StartVariables.SRID_LAT_LON_APP;
+			//Comprobamos el srId si es para x e y o Lat y lon
+			if (validValue(srId) && CoordinateTransformer.comprobarSrIdLatLon(srId)) {
+				target = srId;
+				isTransformacionXY = false;
+			}
+			//1 obtenemos lat y lon Siempre se genera esta transformación, activamos true, para que permita la transformacion
+			CoordinateTransformer ct1 = new CoordinateTransformer(source,target);
+						
+			for (int i=0;i<listado.size();i++)		
+			{
+				ITrafico iTrafico = (ITrafico) listado.get(i);
+				if ((validValue(iTrafico.getFinX()))&&(validValue(iTrafico.getFinY())))
+				{
+					BigDecimal x = iTrafico.getFinX();
+					BigDecimal y = iTrafico.getFinY();		
+					//Alternamos posición X e Y
+					double[] transformCoordinates = ct1.transformCoordinates(y.doubleValue(), x.doubleValue());	
+					//Alternamos la salida del vector para Lat y lon
+					iTrafico.setFinLatitud(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+					iTrafico.setFinLongitud(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+				}
+			}
+			
+
+			
+			//Es necesario comprobar si debe aplicar transformación a las X e Y ya que puede ser que no sea el caso
+			if (validValue(srId) && isTransformacionXY) {
+				// 2 transformamos x e y segun el parametro srId y las coordenadas lat / long
+				// generadas anteriormente.
+				CoordinateTransformer ct2 = new CoordinateTransformer(source, srId);
+
+				for (int i = 0; i < listado.size(); i++) {
+					ITrafico iTrafico = (ITrafico) listado.get(i);
+					if ((validValue(iTrafico.getFinX()))&&(validValue(iTrafico.getFinY())))
+					{
+						BigDecimal x = iTrafico.getFinX();
+						BigDecimal y = iTrafico.getFinY();		
+						
+						double[] transformCoordinates = ct2.transformCoordinates(x.doubleValue(), y.doubleValue());	
+						
+						iTrafico.setFinX(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+						iTrafico.setFinY(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+					}
+				}
+			}//fin if validValue(srId)
+		//fin if isObjectDobleGeoModel	
+		}
 		
 	}
 	
@@ -1380,6 +1433,25 @@ public class Util
 		return result;
 	}
 	
+	/**
+	 * Metodo para ver si los objetos de un listado extienden de DobleGeomodel.
+	 * @param listado
+	 * @return
+	 */
+	public static boolean isObjectITrafico(List listado) {
+		boolean result=false;
+		if (listado!=null && listado.size()>0) {
+			try {
+				ITrafico aux=(ITrafico) listado.get(0);
+				result = true;
+			}catch (Exception e) {
+				log.info("[isObjectITrafico] [listado] No is a object ITrafico");
+				result = false;
+			}//Fin control
+		}
+		return result;
+	}
+	
 	
 
 	/**
@@ -1661,6 +1733,11 @@ public class Util
 		return semantic;
 	}
 	
+	public static boolean isTraficoIntegration() {
+		String nameControler="TraficoTramoController";
+		return exitController(nameControler);
+	}
+	
 	public static boolean isCallejeroIntegration() {
 		String nameControlerTerritorio="CallejeroPortalController";
 		return exitController(nameControlerTerritorio);
@@ -1742,6 +1819,28 @@ public class Util
 	    }
 	    memberValues.put(key,newValue);
 	    return oldValue;
+	}
+	
+	//Metodo para reemplazar los Time en RSQL
+	public static final String parserTimeByRSQL(String queryString) {
+		String result = queryString;
+		if (queryString!=null && !"".equals(queryString)) {
+			ArrayList<Pair<String, String>> changesTime = RegularExpressions.getTimesWithDatesForRSQL(queryString);
+		
+			if (changesTime.size()>0)
+			{
+				log.info("before queryString: "+queryString);
+			
+				for (Pair<String,String> pair:changesTime)
+				{
+					result=result.replaceAll(pair.getKey(), pair.getValue());
+				}	
+			
+				log.info("after where: "+result);
+			}
+		}
+		
+		return result;
 	}
 	
 	public static void main(String[] args)

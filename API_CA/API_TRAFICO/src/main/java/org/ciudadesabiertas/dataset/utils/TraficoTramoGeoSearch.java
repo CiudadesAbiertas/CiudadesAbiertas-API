@@ -52,11 +52,29 @@ public class TraficoTramoGeoSearch extends TraficoTramo implements  Serializable
 	@ApiModelProperty(hidden = true)
 	private Double distance;
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada X del inicio del tramo. Ejemplo: 440124.33000")
 	private BigDecimal xETRS89;	
 	
-	@ApiModelProperty(required=true)
+	@ApiModelProperty(required=true, value = "Coordenada Y del inicio del tramo. Ejemplo: 4474637.17000")
 	private BigDecimal yETRS89;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal finLatitud;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal finLongitud;	
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal finX;
+	
+	@ApiModelProperty(hidden = true)
+	private BigDecimal finY;
+	
+	@ApiModelProperty(required=true, value = "Coordenada X del fin del tramo. Ejemplo: 440124.43000")
+	private BigDecimal xETRS89Fin;	
+	
+	@ApiModelProperty(required=true, value = "Coordenada Y del fin del tramo. Ejemplo: 4474637.27000")
+	private BigDecimal yETRS89Fin;
 
 
 	public BigDecimal getxETRS89()
@@ -80,6 +98,29 @@ public class TraficoTramoGeoSearch extends TraficoTramo implements  Serializable
 	public void setyETRS89(BigDecimal yETRS89)
 	{		
 		setY(yETRS89);
+	}
+	
+	public BigDecimal getxETRS89Fin()
+	{
+		return xETRS89Fin;
+	}
+
+
+	public void setxETRS89Fin(BigDecimal xETRS89Fin)
+	{	
+		setFinX(xETRS89Fin);
+	}
+
+
+	public BigDecimal getyETRS89Fin()
+	{
+		return yETRS89Fin;
+	}
+
+
+	public void setyETRS89Fin(BigDecimal yETRS89Fin)
+	{		
+		setFinY(yETRS89Fin);
 	}
 	
 }

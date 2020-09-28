@@ -662,6 +662,13 @@ public class TransformadorBasicoRdf {
 								String nodo = obtenerIdNodoBlanco(field.getAnnotation(RdfBlankNode.class));
 								String tipo = obtenerTipoNodoBlanco(field.getAnnotation(RdfBlankNode.class));
 								String propiedad = obtenerPropiedadNodoBlanco(field.getAnnotation(RdfBlankNode.class));
+								String inicioURI = field.getAnnotation(RdfBlankNode.class).inicioURI();
+															
+								if (inicioURI.startsWith("/"))
+								{
+									inicioURI=uriBase+context+inicioURI;
+								}
+								valor=inicioURI+valor;							
 								
 								Resource blankNodeResource=mapaNodosEnBlanco.get(nodo);
 								
@@ -670,9 +677,15 @@ public class TransformadorBasicoRdf {
 								{
 									model.add(blankNodeResource, RDF.type, model.createResource(tipo));
 								}
+								
 								if (typeURI.equals(""))
 								{
+								  if ((valor!=null)&&(valor.toString().startsWith("http")))
+								  {
+									model.add(blankNodeResource, entityProp, model.createResource(valor.toString()));
+								  }else {
 									model.add(blankNodeResource, entityProp, valor.toString());
+								  }
 								}
 								else 
 								{									
@@ -897,7 +910,14 @@ public class TransformadorBasicoRdf {
 		}										
 		else if (typeURI.endsWith("time"))
 		{
-			String fechaFormateada=Funciones.formateadorHora.format(valor);
+		    String fechaFormateada="";
+		  	String valorStr=(String)valor;
+		  	if (valorStr.length()==8)
+		  	{
+		  	  fechaFormateada=valorStr;
+		  	}else {
+		  	  fechaFormateada=Funciones.formateadorHora.format(valor);
+		  	}			
 			model.add(resource, entityProp, model.createTypedLiteral(fechaFormateada,typeURI));
 		}
 		else {

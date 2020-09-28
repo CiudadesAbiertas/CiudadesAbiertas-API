@@ -49,6 +49,7 @@ public class Constants
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final String DATE_FORMAT_B = "dd-MM-yyyy";
 	public static final String TIME_FORMAT = "HH:mm:ss";
+	public static final String TIME_FORMAT_SHORT = "HH:mm";
 	
 	public static final String INTERNAL_ERROR = "Internal error";
 	
@@ -230,8 +231,12 @@ public class Constants
 	
 	public static final String X = "X";
 	public static final String Y = "Y";
+	public static final String FinX = "finX";
+	public static final String FinY = "finY";
 	public static final String XETRS89 = "xETRS89";
 	public static final String YETRS89 = "yETRS89";
+	public static final String XETRS89Fin = "xETRS89Fin";
+	public static final String YETRS89Fin = "yETRS89Fin";
 	public static final String METERS = "meters";
 	public static final String DISTANCE = "distance";
 	

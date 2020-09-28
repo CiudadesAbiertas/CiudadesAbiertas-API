@@ -139,7 +139,7 @@ public class TraficoDispositivoMedicionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test
@@ -171,11 +171,11 @@ public class TraficoDispositivoMedicionDataTest
 	{
 		String paramField="frecuenciaMedicion";
 
-		String value = "P1m";
+		String value = "5 minutos";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test
@@ -193,7 +193,7 @@ public class TraficoDispositivoMedicionDataTest
 	@Test
 	public void test_Busqueda_x_etrs89() throws Exception
 	{
-		String paramField="x";
+		String paramField="xETRS89";
 
 		String value = "440124.33";
 
@@ -205,7 +205,7 @@ public class TraficoDispositivoMedicionDataTest
 	@Test
 	public void test_Busqueda_y_etrs89() throws Exception
 	{
-		String paramField="y";
+		String paramField="yETRS89";
 
 		String value = "4474637.17";
 

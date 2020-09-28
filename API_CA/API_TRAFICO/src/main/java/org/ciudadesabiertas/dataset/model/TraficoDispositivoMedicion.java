@@ -33,7 +33,9 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -64,17 +66,18 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic=false)
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@Rdf(contexto = Context.ESTRAF, propiedad = "DispositivoMedicionTrafico")
+@RdfMultiple({@Rdf(contexto = Context.ESTRAF, propiedad = "DispositivoMedicionTrafico"), @Rdf(contexto = Context.ESTRAF, propiedad = "EquipoTrafico"), @Rdf(contexto = Context.SOSA, propiedad = "Sensor")})
 @PathId(value="/trafico/dispositivo-medicion")
 public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoModel, RDFModel {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
 	
+	@ApiModelProperty(hidden = true)
 	@JsonIgnore
 	private String ikey;	
 	
-	@ApiModelProperty(value = "Referencia inequívoca al recurso dentro de un contexto dado. Ejemplo: TRAFEQUI01")
+	@ApiModelProperty(value = "Referencia inequívoca al recurso dentro de un contexto dado. Ejemplo: TRAFDISMED01")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
@@ -89,13 +92,13 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@ApiModelProperty(value = "Número de sentidos de circulación. Ejemplo: 2")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="numSentidos")
-	@Rdf(contexto = Context.ESTRAF, propiedad = "numSentidos", typeURI=Context.XSD_URI+"int")
+	@Rdf(contexto = Context.ESTRAF, propiedad = "numSentidos", typeURI=Context.XSD_URI+"integer")
 	private Integer numSentidos;	
 	
 	@ApiModelProperty(value = "Número de carriles de circulación. Ejemplo: 2")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="numCarriles")
-	@Rdf(contexto = Context.ESTRAF, propiedad = "numCarriles", typeURI=Context.XSD_URI+"int")
+	@Rdf(contexto = Context.ESTRAF, propiedad = "numCarriles", typeURI=Context.XSD_URI+"integer")
 	private Integer numCarriles;
 	
 	@ApiModelProperty(value = "Esta propiedad permite describir si el dispositivo es urbano o no. Ejemplo: true")
@@ -108,42 +111,47 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="tipoEquipoTrafico", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESTRAF, propiedad = "tipoEquipoTrafico")
+	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/transporte/trafico/tipo-equipo-trafico/", finURI="tipoEquipoTrafico", urifyLevel=2)
 	private String tipoEquipoTrafico;
 	
-	@ApiModelProperty(value = "Relación del Equipo de Tráfico con el tramo que monitorea. Ejemplo: 123456")
+	@ApiModelProperty(value = "Relación del Equipo de Tráfico con el tramo que monitorea. Ejemplo: TRAFTRAM01")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="monitorea", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESTRAF, propiedad = "monitorea")
+	@RdfExternalURI(inicioURI="/trafico/tramo/",finURI="monitorea", urifyLevel = 1)
 	private String monitorea;
 	
-	@ApiModelProperty(value = "Pendiente. Ejemplo: true")
+	@ApiModelProperty(value = "Esta propiedad permite conocer si el dispositivo funciona o no. Ejemplo: true")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="enServicio", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.ESTRAF, propiedad = "enServicio")
+	@Rdf(contexto = Context.ESTRAF, propiedad = "enServicio", typeURI=Context.XSD_URI+"boolean")
 	private Boolean enServicio;
 	
-	@ApiModelProperty(value = "Pendiente. Ejemplo: P1H")
+	@ApiModelProperty(value = "Esta propiedad permite conocer la frecuencia de medición del dispositivo. Ejemplo: 5 minutos")
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="frecuenciaMedicion", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESTRAF, propiedad = "frecuenciaMedicion")
 	private String frecuenciaMedicion;
 	
-	@ApiModelProperty(value = "Pendiente. Ejemplo: carga")
+	@ApiModelProperty(value = "Relación entre un sensor y una propiedad observable que es capaz de detectar. Ejemplo: carga")
 	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="observes", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observes")
+	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observes",capitalize=false, urifyLevel = 1)
 	private String observes;
 	
 	@ApiModelProperty(value = "Coordenada X del equipo de tráfico. Ejemplo: 440124.33000")
 	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="xETRS89")
+	@CsvBindByName(column="xETRS89Inicio")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal x;	
 	
 	@ApiModelProperty(value = "Coordenada Y del equipo de tráfico. Ejemplo: 4474637.17000")
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal y;
 		
 	@Transient
@@ -151,6 +159,7 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal latitud;
 	
 	@Transient
@@ -158,7 +167,10 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
+	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal longitud;
+	
+	
 	
 	private Double distance;
 	
@@ -183,7 +195,8 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		this.x = copia.x;
 		this.y = copia.y;
 		this.latitud = copia.latitud;
-		this.longitud = copia.longitud;		
+		this.longitud = copia.longitud;	
+		
 	}
 
 	
@@ -228,6 +241,7 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		if (attributesToSet.contains("yETRS89")) {
 			this.y = copia.y;
 		}
+		
 		
 		
 	}
@@ -398,11 +412,11 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 
 	@Override
 	public String toString() {
-		return "TraficoEquipo [ikey=" + ikey + ", id=" + id + ", description=" + description + ", numSentidos="
-				+ numSentidos + ", numCarriles=" + numCarriles + ", urbano=" + urbano + ", tipoEquipoTrafico="
-				+ tipoEquipoTrafico + ", monitorea=" + monitorea + ", enServicio=" + enServicio
-				+ ", frecuenciaMedicion=" + frecuenciaMedicion + ", observes=" + observes + ", x=" + x + ", y=" + y + ", latitud=" + latitud + ", longitud=" + longitud
-				+ ", distance=" + distance + "]";
+		return "TraficoDispositivoMedicion [ikey=" + ikey + ", id=" + id + ", description=" + description
+				+ ", numSentidos=" + numSentidos + ", numCarriles=" + numCarriles + ", urbano=" + urbano
+				+ ", tipoEquipoTrafico=" + tipoEquipoTrafico + ", monitorea=" + monitorea + ", enServicio=" + enServicio
+				+ ", frecuenciaMedicion=" + frecuenciaMedicion + ", observes=" + observes + ", x=" + x + ", y=" + y
+				+ ", latitud=" + latitud + ", longitud=" + longitud + ", distance=" + distance + "]";
 	}
 
 	public Map<String,String> prefixes()
@@ -412,7 +426,9 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		prefixes.put(Context.DCT, Context.DCT_URI);	
 		prefixes.put(Context.SCHEMA, Context.SCHEMA_URI);		
 		prefixes.put(Context.GEO, Context.GEO_URI);	
-		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);		
+		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);
+		prefixes.put(Context.GEOSPARQL, Context.GEOSPARQL_URI);	
+		prefixes.put(Context.SF, Context.SF_URI);
 		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);
 		

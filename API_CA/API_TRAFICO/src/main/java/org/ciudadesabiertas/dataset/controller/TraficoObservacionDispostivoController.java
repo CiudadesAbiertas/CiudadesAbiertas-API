@@ -82,7 +82,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Api(value="TraficoObservacionDispostivo",description = "Conjunto de operaciones relacionadas con el conjunto de datos Trafico"+SwaggerConstants.VOCABULARIO_A_HREF+TraficoConstants.traficoVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Tráfico - Observacion Dispostivo"})
 public class TraficoObservacionDispostivoController extends GenericController implements CiudadesAbiertasController 
 {
-	public static final String LIST = "/trafico/observacion-dispostivo";
+	public static final String LIST = "/trafico/observacion-dispositivo";
 	
 	public static final String GEO_LIST = LIST+ "/geo";
 	
@@ -116,6 +116,10 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(TraficoObservacionDispostivo.class);
+	{
+		availableFields.add(Constants.XETRS89Fin);
+		availableFields.add(Constants.YETRS89Fin);
+	}
 
 	private static final Logger log = LoggerFactory.getLogger(TraficoObservacionDispostivoController.class);
 		
@@ -139,8 +143,10 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, VERSION_1+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
-															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
+			@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -163,10 +169,14 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	@RequestMapping(value= {LIST+Constants.EXT_HTML, VERSION_1+LIST+Constants.EXT_HTML}, method = RequestMethod.GET)	
 	public ModelAndView listHTML(
 			ModelAndView mv, HttpServletRequest request,TraficoObservacionDispostivoSearch search, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
-			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
-			@RequestParam(value = Constants.SORT, defaultValue = "", required = false) String sort)
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,
+			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
+			@RequestParam(value = Constants.SORT, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort)
 	{
 				
 		log.info("[listHTML][" + LIST + ".html]");
@@ -209,11 +219,16 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, TraficoObservacionDispostivoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 						
 			@RequestHeader HttpHeaders headersRequest)
 	{
@@ -241,11 +256,16 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	   })
 	@RequestMapping(value= {LIST,  VERSION_1+LIST}, method = {RequestMethod.HEAD})	
 	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, TraficoObservacionDispostivoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,	
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false)
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -265,7 +285,7 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> add(			
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 			
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOOBSEDISP_TEXT) 			
 			@RequestBody TraficoObservacionDispostivo obj 
 			)
 	{
@@ -291,9 +311,9 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	   })
 	@RequestMapping(value={UPDATE,  VERSION_1+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAFICO_OBSEDISP) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) 
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOOBSEDISP_TEXT) 
 			@RequestBody TraficoObservacionDispostivo obj)
 	{
 
@@ -317,7 +337,7 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	   })
 	@RequestMapping(value={DELETE,  VERSION_1+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT+SwaggerConstants.PARAM_ID_TRAFICO_OBSEDISP) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
@@ -340,7 +360,7 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request,@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAFICO_OBSEDISP) String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
@@ -360,7 +380,7 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request,@PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_TRAFICO_OBSEDISP) String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -377,7 +397,7 @@ public class TraficoObservacionDispostivoController extends GenericController im
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> transform(
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_PLANTILLA_TEXT) @RequestBody TraficoObservacionDispostivo obj) {
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_TRAFICOOBSEDISP_TEXT) @RequestBody TraficoObservacionDispostivo obj) {
 
 		log.info("[transform]");
 
