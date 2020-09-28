@@ -180,7 +180,6 @@ API_CA/API_AGENDAMUNICIPAL/src/test/resources/config.properties
 API_CA/API_AGENDAMUNICIPAL/src/test/resources/logback.xml
 API_CA/API_BICICLETAPUBLICA/src/test/resources/config.properties
 API_CA/API_BICICLETAPUBLICA/src/test/resources/logback.xml
-
 API_CA/API_CONVENIO/.classpath
 API_CA/API_CONVENIO/.gitignore
 API_CA/API_CONVENIO/.project
@@ -199,3 +198,5 @@ API_CA/API_TRAFICO/src/test/resources/logback.xml
 API_CA/API_CONVENIO/src/test/resources/config.properties
 API_CA/API_PRESUPUESTO/src/test/resources/config.properties
 API_CA/API_TRAFICO/src/test/resources/config.properties
+API_CA/API_CONTRATOS/target/
+
