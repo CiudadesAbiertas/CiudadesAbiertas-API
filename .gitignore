@@ -196,3 +196,4 @@ API_CA/API_TRAFICO/.gitignore
 API_CA/API_TRAFICO/.project
 API_CA/API_TRAFICO/.settings/
 API_CA/API_TRAFICO/src/test/resources/logback.xml
+API_CA/API_CONTRATOS/target/
