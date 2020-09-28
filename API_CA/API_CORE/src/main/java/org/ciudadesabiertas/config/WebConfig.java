@@ -596,7 +596,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		TransformadorBasicoRdf.variables.put("clasificacionPrograma",StartVariables.presupuestosUrlSkosClasificacionPrograma);
 		TransformadorBasicoRdf.variables.put("clasificacionOrganica",StartVariables.presupuestosUrlSkosClasificacionOrganica);
 	
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+		
 	}
 
 	
