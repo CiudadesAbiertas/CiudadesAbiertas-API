@@ -121,9 +121,7 @@
             <column name="made_by_sensor" value="TRAFDISMED02"/>
         </insert>
 		
-		<rollback>
-			  <delete tableName="trafico_observacion_dispostivo" />
-		</rollback>
+		<rollback/>
     </changeSet>
     <changeSet author="Localidata" id="data-trafico_tramo">
         <insert tableName="trafico_tramo">

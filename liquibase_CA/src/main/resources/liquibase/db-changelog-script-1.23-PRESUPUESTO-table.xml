@@ -69,6 +69,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto_gasto"/>            
+        </rollback>
     </changeSet>
 	
 	<changeSet author="Localidata" id="table-presupuesto_ingreso">
@@ -86,6 +89,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto_ingreso"/>            
+        </rollback>
     </changeSet>
 	
 	<changeSet author="Localidata" id="table-presupuesto_ejecucion_gasto">
@@ -112,6 +118,9 @@
             </column>
 			<column name="remanente_credito" type="DECIMAL(12, 2)"/>
         </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto_ejecucion_gasto"/>            
+        </rollback>
     </changeSet>
 	
 	<changeSet author="Localidata" id="table-presupuesto_ejecucion_ingreso">
@@ -137,6 +146,9 @@
             </column>
 			<column name="exceso_defecto_prevision" type="DECIMAL(12, 2)"/>
         </createTable>
+		<rollback>
+            <dropTable tableName="presupuesto_ejecucion_ingreso"/>            
+        </rollback>
     </changeSet>
 	
 	<!-- PRIMARY KEY -->

@@ -39,17 +39,17 @@
             </column>
             <column name="description" type="VARCHAR(4000)"/>
             <column name="tipo_incidencia" type="VARCHAR(200)"/>
-            <column name="date_posted" type="datetime(6)"/>
-            <column name="end_date" type="datetime(6)">
+            <column name="date_posted" type="DATETIME"/>
+            <column name="end_date" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
-            <column name="start_date" type="datetime(6)">
+            <column name="start_date" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
             <column name="num_sentidos" type="INT"/>
             <column name="num_carriles" type="INT"/>
             <column name="es_recurrente" type="BIT(1)"/>
-            <column name="fecha_fin_prevista" type="datetime(6)"/>
+            <column name="fecha_fin_prevista" type="DATETIME"/>
             <column name="recurrencia" type="VARCHAR(200)"/>
             <column name="incidencia_tramo" type="VARCHAR(50)">
                 <constraints nullable="false"/>
@@ -76,7 +76,7 @@
             <column name="observed_property" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="result_time" type="datetime(6)">
+            <column name="result_time" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
             <column name="has_simple_result" type="DECIMAL(12, 2)">

@@ -298,13 +298,15 @@
         <addForeignKeyConstraint baseColumnNames="has_feature_interest" baseTableName="trafico_observacion" constraintName="trafico_observacion_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
     </changeSet>
 	<changeSet author="Localidata" id="fk-trafico-4">
-        <addForeignKeyConstraint baseColumnNames="id_observacion" baseTableName="trafico_observacion_dispostivo" constraintName="traf_obse_dispostivo_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_observacion"/>
+        <addForeignKeyConstraint baseColumnNames="id_observacion" baseTableName="trafico_observacion_disp" constraintName="traf_obse_dispostivo_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_observacion"/>
     </changeSet>
 	<changeSet author="Localidata" id="fk-trafico-5">
-        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="trafico_observacion_dispostivo" constraintName="traf_obse_dispostivo_ibfk_2" referencedColumnNames="id" referencedTableName="trafico_dispositivo_medicion"/>
+        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="trafico_observacion_disp" constraintName="traf_obse_dispostivo_ibfk_2" referencedColumnNames="id" referencedTableName="trafico_dispositivo_medicion"/>
     </changeSet>
 	<changeSet author="Localidata" id="fk-trafico-6">
         <addForeignKeyConstraint baseColumnNames="id_tramo" baseTableName="trafico_tramo_via" constraintName="trafico_tramo_via_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
     </changeSet>
+	
+	
 	
 </databaseChangeLog>

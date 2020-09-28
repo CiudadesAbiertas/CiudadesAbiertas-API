@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+		
+	<changeSet author="Localidata" id="borrado-trafico_tramo_via">
+		<delete tableName="trafico_tramo_via" />
+		<rollback/>
+	</changeSet>
+    
+	<changeSet author="Localidata" id="modificaciones-trafico_tramo_via">
+        		
+		<insert tableName="trafico_tramo_via">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFTRAVIA01"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+            <column name="id_via" value="496400"/>
+        </insert>
+        <insert tableName="trafico_tramo_via">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFTRAVIA02"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+			<column name="title_via" value="BRAVO MURILLO"/>
+			<column name="tipo_via" value="CALLE"/>
+        </insert>
+		<rollback>
+			  <delete tableName="trafico_tramo_via" />
+		</rollback>
+
+    </changeSet>
+	
+    <changeSet id="DATA-TRAFICO-tag-1.24.1" author="Localidata">
+    	<tagDatabase tag="1.24.1" />
+  	</changeSet>  
+</databaseChangeLog>
