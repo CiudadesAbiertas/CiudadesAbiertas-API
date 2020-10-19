@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">	
+	
+	<changeSet author="Localidata" id="data-cont_acus_estacion_medida">
+		<insert tableName="cont_acus_estacion_medida">
+            <column name="ikey" value="CONTACUSTESTMED001"/>
+            <column name="id" value="CONTACUSTESTMED001"/>
+            <column name="title" value="Dispositivo que detecta los ruidos I."/>
+            <column name="fecha_alta" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="fecha_baja" valueDate="2020-07-30 09:00:00.0"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+			<column name="street_address" value="CL BLAS DE OTERO 4"/>
+			<column name="equipamiento_id" value="EQ0044"/>
+			<column name="equipamiento_title" value="Teatro Auditorio Ciudad de Alcobendas"/>
+			<column name="tipo_equipamiento" value="Aparato de medición A.C.M.E"/>
+			<column name="observes" value="nivelRuido"/>			
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+        </insert>
+		<insert tableName="cont_acus_estacion_medida">
+            <column name="ikey" value="CONTACUSTESTMED002"/>
+            <column name="id" value="CONTACUSTESTMED002"/>
+            <column name="title" value="Dispositivo que detecta los ruidos II"/>
+            <column name="fecha_alta" valueDate="2020-04-15 08:00:00.0"/>
+			<column name="postal_code" value="28100"/>
+			<column name="portal_id" value="PORTAL000105"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Cortes"/>
+			<column name="barrio_id" value="280796062"/>
+            <column name="distrito_title" value="Centro"/>
+			<column name="distrito_id" value="28079606"/>
+			<column name="street_address" value="CL PERCEBE, 42"/>
+			<column name="equipamiento_id" value="EQID0004"/>
+			<column name="equipamiento_title" value="Instalación Deportiva Municipal Básica Alameda de Osuna I"/>
+			<column name="tipo_equipamiento" value="Aparato de medición A.C.M.E"/>
+			<column name="observes" value="nivelRuido"/>
+            <column name="x_etrs89" valueNumeric="440124.32000"/>
+            <column name="y_etrs89" valueNumeric="4474637.27000"/>
+        </insert>
+		<rollback>
+			  <delete tableName="cont_acus_estacion_medida" />
+		</rollback>
+        
+    </changeSet>
+	
+	
+    <changeSet author="Localidata" id="data-cont_acus_observacion">	
+		<insert tableName="cont_acus_observacion">
+            <column name="ikey" value="CONTACUSTOBVD001"/>
+            <column name="id" value="CONTACUSTOBVD001"/>
+            <column name="observed_property" value="nivelRuido"/>
+			<column name="result_time" valueDate="2020-04-15 08:00:00.0"/>
+			<column name="has_simple_result" valueNumeric="135.01"/>
+			<column name="validada" valueBoolean="false"/>
+			<column name="tipo_medicion" value="LAS50"/>
+			<column name="tipo_emisor_predominante" value="ferrocarriles"/>
+			<column name="tipo_intervalo_referencia" value="D"/> 
+			<column name="made_by_sensor" value="CONTACUSTESTMED001"/>
+			
+        </insert>
+		<insert tableName="cont_acus_observacion">
+            <column name="ikey" value="CONTACUSTOBVD002"/>
+            <column name="id" value="CONTACUSTOBVD002"/>
+            <column name="observed_property" value="nivelRuido"/>
+			<column name="result_time" valueDate="2020-05-15 08:00:00.0"/>
+			<column name="has_simple_result" valueNumeric="105.01"/>
+			<column name="validada" valueBoolean="false"/>
+			<column name="tipo_medicion" value="LAS50"/>
+			<column name="tipo_emisor_predominante" value="coches"/>
+			<column name="tipo_intervalo_referencia" value="D"/> 
+			<column name="made_by_sensor" value="CONTACUSTESTMED002"/>
+        </insert>
+        <rollback>
+			  <delete tableName="cont_acus_observacion" />
+		</rollback>
+    </changeSet>
+	
+	
+    <changeSet author="Localidata" id="data-cont_acus_propiedad">
+	
+		<insert tableName="cont_acus_propiedad">
+            <column name="ikey" value="CONTACUSTPROP001"/>
+            <column name="id" value="nivelRuido"/>
+            <column name="description" value="nivelRuido"/>			
+        </insert>
+		<insert tableName="cont_acus_propiedad">
+            <column name="ikey" value="CONTACUSTPROP002"/>
+            <column name="id" value="nivelVibracion"/>
+            <column name="description" value="nivelVibracion"/>			
+        </insert>
+		<rollback>
+			  <delete tableName="cont_acus_propiedad" />
+		</rollback>
+        
+    </changeSet>
+    
+	
+	<changeSet id="DATA-CONT_ACUSTICA-tag-1.25" author="Localidata">
+    	<tagDatabase tag="1.25" />
+  	</changeSet>  
+	
+	
+	
+	
+	
+</databaseChangeLog>

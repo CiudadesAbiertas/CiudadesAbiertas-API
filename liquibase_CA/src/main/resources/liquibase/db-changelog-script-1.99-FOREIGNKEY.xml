@@ -307,6 +307,16 @@
         <addForeignKeyConstraint baseColumnNames="id_tramo" baseTableName="trafico_tramo_via" constraintName="trafico_tramo_via_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
     </changeSet>
 	
-	
+	<!-- FK CONTAMINACION ACUSTICA -->
+	<changeSet author="Localidata" id="fk-cont_acustica-1">
+        <addForeignKeyConstraint baseColumnNames="observes" baseTableName="cont_acus_estacion_medida" constraintName="cont_acustica_ibfk_1" referencedColumnNames="id" referencedTableName="cont_acus_propiedad"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-cont_acustica-2">
+        <addForeignKeyConstraint baseColumnNames="made_by_sensor" baseTableName="cont_acus_observacion" constraintName="cont_acustica_ibfk_2" referencedColumnNames="id" referencedTableName="cont_acus_estacion_medida"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-cont_acustica-3">
+        <addForeignKeyConstraint baseColumnNames="observed_property" baseTableName="cont_acus_observacion" constraintName="cont_acustica_ibfk_3" referencedColumnNames="id" referencedTableName="cont_acus_propiedad"/>
+    </changeSet>
+
 	
 </databaseChangeLog>

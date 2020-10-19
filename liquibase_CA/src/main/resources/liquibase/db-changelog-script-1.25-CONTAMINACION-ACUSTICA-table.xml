@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">	
+	
+	<changeSet author="Localidata" id="table-cont_acus_estacion_medida">
+        <createTable tableName="cont_acus_estacion_medida">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(4000)"/>
+			<column name="fecha_alta" type="datetime(6)"/>
+            <column name="fecha_baja" type="datetime(6)"/>
+			<column name="postal_code" type="VARCHAR(10)"/>
+            <column name="portal_id" type="VARCHAR(50)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+			<column name="street_address" type="VARCHAR(200)"/>
+			<column name="equipamiento_id" type="VARCHAR(50)"/>
+            <column name="equipamiento_title" type="VARCHAR(400)"/>
+			<column name="tipo_equipamiento" type="VARCHAR(200)"/>
+			<column name="observes" type="VARCHAR(50)"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cont_acus_estacion_medida"/>            
+       </rollback>
+    </changeSet>
+	
+	
+    <changeSet author="Localidata" id="table-cont_acus_observacion">
+        <createTable tableName="cont_acus_observacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="observed_property" type="VARCHAR(50)"/>
+			<column name="result_time" type="datetime(6)"/>
+			<column name="has_simple_result" type="DECIMAL(12, 2)"/>
+			<column defaultValueNumeric="0" name="validada" type="BIT"/>			
+            <column name="tipo_medicion" type="VARCHAR(200)"/>
+			<column name="tipo_emisor_predominante" type="VARCHAR(200)"/>
+			<column name="tipo_intervalo_referencia" type="VARCHAR(200)"/> 
+			<column name="made_by_sensor" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cont_acus_observacion"/>            
+       </rollback>
+    </changeSet>
+	
+	
+    <changeSet author="Localidata" id="table-cont_acus_propiedad">
+        <createTable tableName="cont_acus_propiedad">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="cont_acus_propiedad"/>            
+       </rollback>
+    </changeSet>
+    
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-cont_acus_estacion_medida">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_cont_acus_es_med" tableName="cont_acus_estacion_medida"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-cont_acus_observacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_cont_acus_observacion" tableName="cont_acus_observacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-cont_acus_propiedad">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_cont_acus_propiedad_con" tableName="cont_acus_propiedad"/>
+    </changeSet>
+	
+	
+	<!-- UNIQUE -->
+	<changeSet author="Localidata" id="unique-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-con_acus_es_m" tableName="cont_acus_estacion_medida"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-cont_acus_ob" tableName="cont_acus_observacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-cont_acus_prop" tableName="cont_acus_propiedad"/>
+    </changeSet>
+	
+	
+	<!-- INDEX -->
+	<changeSet author="Localidata" id="INDEX-contaminacion-1">
+        <createIndex indexName="index_cont_portal_id" tableName="cont_acus_estacion_medida">
+            <column name="portal_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-contaminacion-2">
+        <createIndex indexName="index_cont_equip_id" tableName="cont_acus_estacion_medida">
+            <column name="equipamiento_id"/>
+        </createIndex>
+    </changeSet>
+	
+	
+</databaseChangeLog>

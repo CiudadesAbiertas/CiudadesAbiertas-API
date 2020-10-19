@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="Localidata" id="bici_estacion_table_2">	
+		<addColumn tableName="bici_estacion" >	
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="bici_estacion"> 	
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>
+				<column name="distrito_id" type="VARCHAR(50)"/>
+				<column name="distrito_title" type="VARCHAR(400)"/>
+				<column name="barrio_id" type="VARCHAR(50)"/>
+				<column name="barrio_title" type="VARCHAR(400)"/>    
+			</dropColumn>
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="bici_punto_paso_table_2">	
+		<addColumn tableName="bici_punto_paso" >
+			<column name="portal_id" type="VARCHAR(50)"/>
+			<column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+		</addColumn>
+		<rollback>
+			<dropColumn tableName="bici_punto_paso">
+				<column name="portal_id" type="VARCHAR(50)"/>
+				<column name="street_address" type="VARCHAR(200)"/>
+				<column name="postal_code" type="VARCHAR(10)"/>
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>
+				<column name="distrito_id" type="VARCHAR(50)"/>
+				<column name="distrito_title" type="VARCHAR(400)"/>
+				<column name="barrio_id" type="VARCHAR(50)"/>
+				<column name="barrio_title" type="VARCHAR(400)"/>
+			</dropColumn>
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

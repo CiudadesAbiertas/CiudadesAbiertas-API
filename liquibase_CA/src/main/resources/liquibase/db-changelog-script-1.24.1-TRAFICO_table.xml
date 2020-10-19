@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+		
+		<changeSet author="Localidata" id="mod-1-tra_obs">
+        		
+		<renameColumn  
+            newColumnName="phenomenon_time"  
+            oldColumnName="phenomenon_time_beginning"  
+			columnDataType="VARCHAR(200)"			
+            tableName="trafico_observacion"/>
+		<rollback>
+			<renameColumn  
+            newColumnName="phenomenon_time_beginning"  
+            oldColumnName="phenomenon_time"  
+			columnDataType="VARCHAR(200)"			
+            tableName="trafico_observacion"/>
+		</rollback>
+	</changeSet>
+	
+		<changeSet author="Localidata" id="mod-2-tra_obs">
+		<dropColumn  columnName="phenomenon_time_end"    
+            tableName="trafico_observacion"/>  
+		<rollback>
+			<addColumn 	tableName="trafico_observacion" >
+				<column name="phenomenon_time_end" 
+					position="2"  
+					type="varchar(200)">  
+				</column>
+			</addColumn>  
+		</rollback>
+	</changeSet>	
+	
+	
+	<changeSet author="Localidata" id="mod-3-tra_obs">
+		<delete tableName="trafico_observacion" />
+		<modifyDataType  
+            columnName="has_simple_result"  
+            newDataType="VARCHAR(200)"
+			tableName="trafico_observacion"/>
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="mod-4-tra_obs">
+		<dropColumn  columnName="unidad_medida"    
+            tableName="trafico_observacion"/>  
+		<rollback>
+			<addColumn 	tableName="trafico_observacion" >
+				<column name="unidad_medida" 
+					type="varchar(200)">  
+				</column>
+			</addColumn>  
+		</rollback>
+	</changeSet>
+	
+	
+	
+	
+	
+	<changeSet author="Localidata" id="mod-tra_obs_disp">
+		<renameTable  
+            newTableName="trafico_observacion_disp"  
+            oldTableName="trafico_observacion_dispostivo"  
+            />
+		<rollback>
+			<renameTable  
+				newTableName="trafico_observacion_dispostivo"  
+				oldTableName="trafico_observacion_disp"  
+				/>
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-tra_equipo">
+        <createTable tableName="trafico_equipo">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="num_sentidos" type="INT"/>
+            <column name="num_carriles" type="INT"/>
+            <column name="urbano" type="BIT(1)"/>
+            <column name="tipo_equipo_trafico" type="VARCHAR(200)"/>
+            <column name="monitorea" type="VARCHAR(50)"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_equipo"/>            
+       </rollback>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-tra_propiedad_med">
+        <createTable tableName="trafico_propiedad_medicion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="description" type="VARCHAR(4000)"/>
+            <column name="unidad_medida" type="VARCHAR(200)"/>
+
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_propiedad_medicion"/>            
+        </rollback>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-tra_prop_inte">
+        <createTable tableName="trafico_proper_interval">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_beginning" type="DATETIME"/>
+			<column name="has_end" type="DATETIME"/>
+
+        </createTable>
+		<rollback>
+            <dropTable tableName="trafico_proper_interval"/>            
+        </rollback>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="mod-2-tra_inc">
+		<dropColumn  columnName="start_date"   
+            tableName="trafico_incidencia">  
+		</dropColumn> 
+		<rollback>
+			<addColumn 	tableName="trafico_incidencia" >
+				<column name="start_date" 
+					type="DATETIME">  
+					<constraints nullable="true"/>
+				</column>
+			</addColumn>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="mod-3-tra_inc">
+		<dropColumn  columnName="end_date"   
+            tableName="trafico_incidencia">  
+		</dropColumn> 
+		<rollback>
+			<addColumn 	tableName="trafico_incidencia" >
+				<column name="end_date" 
+					type="DATETIME">  
+					<constraints nullable="true"/>
+				</column>
+			</addColumn>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="inte_terr_dispo">	
+		<addColumn tableName="trafico_dispositivo_medicion" >
+			<column name="portal_id" type="VARCHAR(50)"/>
+			<column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>			
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="trafico_dispositivo_medicion"> 
+				<column name="portal_id" type="VARCHAR(50)"/>
+				<column name="street_address" type="VARCHAR(200)"/>
+				<column name="postal_code" type="VARCHAR(10)"/>			
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>
+				<column name="distrito_id" type="VARCHAR(50)"/>
+				<column name="distrito_title" type="VARCHAR(400)"/>
+				<column name="barrio_id" type="VARCHAR(50)"/>
+				<column name="barrio_title" type="VARCHAR(400)"/>    
+			</dropColumn>
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="inte_terr_inci">	
+		<addColumn tableName="trafico_incidencia" >
+			<column name="portal_id" type="VARCHAR(50)"/>
+			<column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>			
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+			
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="trafico_incidencia"> 
+				<column name="portal_id" type="VARCHAR(50)"/>
+				<column name="street_address" type="VARCHAR(200)"/>
+				<column name="postal_code" type="VARCHAR(10)"/>			
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>
+				<column name="distrito_id" type="VARCHAR(50)"/>
+				<column name="distrito_title" type="VARCHAR(400)"/>
+				<column name="barrio_id" type="VARCHAR(50)"/>
+				<column name="barrio_title" type="VARCHAR(400)"/>   
+ 
+			</dropColumn>
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="inte_terr_tramo">	
+		<addColumn tableName="trafico_tramo" >					
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>            
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="trafico_tramo"> 		
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>  			
+			</dropColumn>
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="inte_terr_tramo_via">	
+		<addColumn tableName="trafico_tramo_via" >		
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="trafico_tramo_via"> 		
+				<column name="municipio_id" type="VARCHAR(50)"/>
+				<column name="municipio_title" type="VARCHAR(200)"/>  			
+			</dropColumn>
+		</rollback>
+	</changeSet>
+
+</databaseChangeLog>

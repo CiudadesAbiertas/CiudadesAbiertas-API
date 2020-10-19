@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	
+
+	
+	<changeSet author="Localidata" id="bor-tra_obs">
+		<delete tableName="trafico_observacion" />
+		<rollback/>
+	</changeSet>	
+	
+	
+	<changeSet author="Localidata" id="mod-5-tra_obs">	
+		<insert tableName="trafico_observacion">
+            <column name="ikey" value="TRAFOBS01"/>
+            <column name="id" value="TRAFOBS01"/>
+            <column name="observed_property" value="intensidad"/>
+            <column name="result_time" valueDate="2020-04-01 12:45:00.0"/>
+            <column name="has_simple_result" valueNumeric="30.00"/>
+            <column name="has_feature_interest" value="TRAFTRAM01"/>
+            <column name="validada" valueBoolean="false"/>
+            <column name="phenomenon_time" value="468a5a615f32d0dbee5937f86acf58b3"/>
+        </insert>
+        <insert tableName="trafico_observacion">
+            <column name="ikey" value="TRAFOBS02"/>
+            <column name="id" value="TRAFOBS02"/>
+            <column name="observed_property" value="velocidad"/>
+            <column name="result_time" valueDate="2020-04-01 12:45:00.0"/>
+            <column name="has_simple_result" valueNumeric="97.00"/>
+            <column name="has_feature_interest" value="TRAFTRAM02"/>
+            <column name="validada" valueBoolean="false"/>
+            <column name="phenomenon_time" value="79f474b097fa31a50fbb9c17357b22d8"/>
+        </insert>
+		<rollback>
+			<delete tableName="trafico_observacion" />
+		</rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="bor-tra_tramo_via">
+		<delete tableName="trafico_tramo_via" />
+		<rollback/>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="mod-3-tra_tramo_via">
+		<insert tableName="trafico_tramo_via">
+            <column name="ikey" value="TRAFTRAVIA01"/>
+            <column name="id" value="TRAFTRAVIA01"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+            <column name="id_via" value="496400"/>
+			<column name="tipo_via" value="CALLE"/>
+			<column name="title_via" value="MAUDES"/>
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+        </insert>
+        <insert tableName="trafico_tramo_via">
+            <column name="ikey" value="TRAFTRAVIA02"/>
+            <column name="id" value="TRAFTRAVIA02"/>
+            <column name="id_tramo" value="TRAFTRAM01"/>
+			<column name="id_via" value="627700"/>
+			<column name="tipo_via" value="CALLE"/>
+			<column name="title_via" value="RAIMUNDO FERNÁNDEZ VILLAVERDE"/>
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+        </insert>
+		<insert tableName="trafico_tramo_via">
+            <column name="ikey" value="3"/>
+            <column name="id" value="TRAFTRAVIA03"/>
+            <column name="id_tramo" value="TRAFTRAM02"/>
+			<column name="id_via" value="114600"/>
+			<column name="tipo_via" value="CALLE"/>
+			<column name="title_via" value="BRAVO MURILLO"/>
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+        </insert>
+		<rollback>
+			 <delete tableName="trafico_tramo_via" />
+		</rollback>
+    </changeSet>
+	
+
+	
+
+	
+	<changeSet author="Localidata" id="bor-tra_disp_med">
+		<delete tableName="trafico_dispositivo_medicion" />
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="mod-tra_disp_med">
+        				
+		<insert tableName="trafico_dispositivo_medicion">
+            <column name="ikey" value="TRAFDISMED01"/>
+            <column name="id" value="TRAFDISMED01"/>
+            <column name="description" value="Dispositivo que detecta los cambios que se producen en un campo electromagnético cuando circula un vehículo (masa metálica) sobre un punto determinado de la calzada. Registra el número total de vehículos que pasan y pueden clasificarlos por su longitud, número de ejes y masas."/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="2"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="lazo-magnetico"/>
+            <column name="monitorea" value="TRAFTRAM01"/>
+            <column name="en_servicio" valueBoolean="false"/>
+            <column name="frecuencia_medicion" value="5 minutos"/>
+            <column name="observes" value="carga"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000012"/>
+			<column name="street_address" value="Bravo Murillo 265"/>
+			<column name="postal_code" value="28039"/>			
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="28079606"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="280796062"/>
+			<column name="barrio_title" value="Cuatro Caminos"/>    
+        </insert>
+        <insert tableName="trafico_dispositivo_medicion">
+            <column name="ikey" value="TRAFDISMED02"/>
+            <column name="id" value="TRAFDISMED02"/>
+            <column name="description" value="C. GRAN VIA;San Bernardo-Garcia Molinas;San Bernardo"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="detector-bluetooth"/>
+            <column name="monitorea" value="TRAFTRAM02"/>
+            <column name="en_servicio" valueBoolean="true"/>
+            <column name="frecuencia_medicion" value="3 minutos"/>
+            <column name="observes" value="carga"/>
+            <column name="x_etrs89" valueNumeric="439247.03900"/>
+            <column name="y_etrs89" valueNumeric="4475788.14600"/>
+			<column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>   
+        </insert>
+		<rollback>
+			  <delete tableName="trafico_dispositivo_medicion" />
+		</rollback>
+    </changeSet>
+	
+	
+	
+	<changeSet author="Localidata" id="data-trafico_equipo">
+        <insert tableName="trafico_equipo">
+            <column name="ikey" value="TRAFEQUI01"/>
+            <column name="id" value="TRAFEQUI01"/>
+            <column name="description" value="C. GRAN VIA;C. Alcalá"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="2"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="radar"/>
+            <column name="monitorea" value="TRAFTRAM01"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+        </insert>
+        <insert tableName="trafico_equipo">
+            <column name="ikey" value="TRAFEQUI02"/>
+            <column name="id" value="TRAFEQUI02"/>
+            <column name="description" value="C. GRAN VIA;San Bernardo-Garcia Molinas;San Bernardo"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="urbano" valueBoolean="true"/>
+            <column name="tipo_equipo_trafico" value="lector-matricula"/>
+            <column name="monitorea" value="TRAFTRAM02"/>
+            <column name="x_etrs89" valueNumeric="439247.03900"/>
+            <column name="y_etrs89" valueNumeric="4475788.14600"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_equipo" />
+		</rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="PK-table-trafico_equipo">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_equipo" tableName="trafico_equipo"/>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-07">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_equi" tableName="trafico_equipo"/>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="INDEX-trafico-7">
+        <createIndex indexName="index_tramo_id_equip" tableName="trafico_equipo">
+            <column name="monitorea"/>
+        </createIndex>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-trafico-7">
+        <addForeignKeyConstraint baseColumnNames="monitorea" baseTableName="trafico_equipo" constraintName="traf_equipo_ibfk_1" referencedColumnNames="id" referencedTableName="trafico_tramo"/>
+		<rollback/>
+    </changeSet>
+	
+	
+	
+	<changeSet author="Localidata" id="data-tra_propiedad_med">
+        <insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED01"/>
+            <column name="id" value="carga"/>
+			<column name="description" value="Propiedad de medición de carga"/>
+            <column name="unidad_medida" value="Porcentaje"/>
+        </insert>
+        <insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED02"/>
+            <column name="id" value="velocidad"/>
+			<column name="description" value="Propiedad de medición de velocidad"/>
+            <column name="unidad_medida" value="Kilómetros por hora"/>
+        </insert>
+		<insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED03"/>
+            <column name="id" value="composicion"/>
+			<column name="description" value="Propiedad de medición de composicion"/>
+            <column name="unidad_medida" value="Unidad de medida de composicion"/>
+        </insert>
+		<insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED04"/>
+            <column name="id" value="intensidad"/>
+			<column name="description" value="Propiedad de medición de intensidad"/>
+            <column name="unidad_medida" value="vehículos por hora"/>
+        </insert>
+		<insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED05"/>
+            <column name="id" value="nivel"/>
+			<column name="description" value="Propiedad de medición de nivel"/>
+            <column name="unidad_medida" value="Unidad de medida de nivel"/>
+        </insert>
+		<insert tableName="trafico_propiedad_medicion">
+            <column name="ikey" value="TRAPROMED06"/>
+            <column name="id" value="ocupacion"/>
+			<column name="description" value="Propiedad de medición de ocupacion"/>
+            <column name="unidad_medida" value="Número de vehículos"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_propiedad_medicion" />
+		</rollback>
+    </changeSet>
+
+	<changeSet author="Localidata" id="PK-table-tra_propiedad">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_propiedad" tableName="trafico_propiedad_medicion"/>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-08">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_pro" tableName="trafico_propiedad_medicion"/>
+		<rollback/>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="data-tra_prop_inte">
+        <insert tableName="trafico_proper_interval">
+            <column name="ikey" value="TRAPROINT01"/>
+            <column name="id" value="468a5a615f32d0dbee5937f86acf58b3"/>
+            <column name="has_beginning" valueDate="2020-03-31 23:00:00"/>
+			<column name="has_end" valueDate="2020-03-31 23:01:00"/>
+        </insert>
+		<insert tableName="trafico_proper_interval">
+            <column name="ikey" value="TRAPROINT02"/>
+            <column name="id" value="79f474b097fa31a50fbb9c17357b22d8"/>
+            <column name="has_beginning" valueDate="2020-04-01 23:58:00"/>
+			<column name="has_end" valueDate="2020-04-01 23:59:00"/>
+        </insert>
+		
+		<rollback>
+			  <delete tableName="trafico_proper_interval" />
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="PK-table-tra_prop_inte">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_trafico_phenomenon" tableName="trafico_proper_interval"/>
+		<rollback/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-09">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-traf_phen" tableName="trafico_proper_interval"/>
+		<rollback/>
+    </changeSet>
+	
+	
+		
+	
+	<changeSet author="Localidata" id="data-inci_terri">
+		<delete tableName="trafico_incidencia" />		
+        <insert tableName="trafico_incidencia">
+            <column name="ikey" value="1"/>
+            <column name="id" value="TRAFINCI01"/>
+            <column name="description" value="Corte de calle"/>
+            <column name="tipo_incidencia" value="obra"/>
+            <column name="date_posted" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="recurrencia" value="Sin recurrencia"/>
+            <column name="incidencia_tramo" value="TRAFTRAM01"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL00011"/>
+			<column name="street_address" value="Bravo Murillo 111"/>
+			<column name="postal_code" value="28039"/>			
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="28079606"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="280796062"/>
+			<column name="barrio_title" value="Cuatro Caminos"/>   
+		</insert>
+        <insert tableName="trafico_incidencia">
+            <column name="ikey" value="2"/>
+            <column name="id" value="TRAFINCI02"/>
+            <column name="description" value="Corte de calle"/>
+            <column name="tipo_incidencia" value="obra"/>
+            <column name="date_posted" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="2"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="recurrencia" value="Sin recurrencia"/>
+            <column name="incidencia_tramo" value="TRAFTRAM02"/>
+            <column name="x_etrs89" valueNumeric="440124.43000"/>
+            <column name="y_etrs89" valueNumeric="4474637.27000"/>
+			<column name="portal_id" value="PORTAL00015"/>
+			<column name="street_address" value="Bravo Murillo 113"/>
+			<column name="postal_code" value="28039"/>			
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="28079606"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="280796062"/>
+			<column name="barrio_title" value="Cuatro Caminos"/>
+        </insert>		
+		<rollback/>
+    </changeSet>
+	
+	 <changeSet author="Localidata" id="data-tramo_terri">
+		<update tableName="trafico_tramo">			
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>  	
+			<where>id='TRAFTRAM01'</where>			
+        </update>
+        <update tableName="trafico_tramo">		
+			<column name="municipio_id" value="28079"/>
+			<column name="municipio_title" value="Madrid"/>
+			<where>id='TRAFTRAM02'</where>				
+        </update>		
+		<rollback/>
+    </changeSet>
+	
+    <changeSet id="DATA-TRAFICO-tag-1.24.1" author="Localidata">
+    	<tagDatabase tag="1.24.1" />
+  	</changeSet>  
+	
+</databaseChangeLog>
