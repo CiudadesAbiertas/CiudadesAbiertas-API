@@ -237,7 +237,14 @@
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
 			  	
+			  	<!-- Dependencia contaminación acústica-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.contaminacionacustica</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
 			  	
+			  			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
 			  	<dependency>
@@ -631,4 +638,10 @@
 		      </plugin>
 		</plugins>
   </build>
+  <repositories>
+  		<repository>
+			<id>UPM_ALZIR</id>
+			<url>https://alzir.dia.fi.upm.es/repo</url>
+		</repository>
+  </repositories>
 </project>

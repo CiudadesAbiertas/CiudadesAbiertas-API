@@ -260,14 +260,14 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	@CsvBindByPosition(position=30)
 	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Identificador del distrito del lugar de interés turístico. Ejemplo: 28079606")
 	@CsvBindByPosition(position=29)
 	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
 	private String distritoId;
 	
 	@ApiModelProperty(hidden = true)	

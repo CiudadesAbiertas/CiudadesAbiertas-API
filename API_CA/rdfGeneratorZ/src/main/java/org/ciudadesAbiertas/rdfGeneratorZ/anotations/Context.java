@@ -2,6 +2,7 @@ package org.ciudadesAbiertas.rdfGeneratorZ.anotations;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Context {
 	public static final String ESEQUIP_URI = "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento-municipal#";
@@ -218,5 +219,16 @@ public class Context {
 	}
 	public void setPrefijo(String prefijo) {
 		this.prefijo = prefijo;
+	}
+	
+	public static void virtuosoPrefixes(String[] args) {
+	  //virtuoso DB.DBA.XML_SET_NS_DECL ('locn','http://www.w3.org/ns/locn#', 2);
+	  for (Entry<String, Context> entry : listado.entrySet()) {
+		String prefix=entry.getKey();
+		String uri=((Context)entry.getValue()).getUri();
+	    
+		System.out.println("virtuoso DB.DBA.XML_SET_NS_DECL ('"+prefix+"','"+uri+"', 2)");
+	  }
+	  
 	}
 }

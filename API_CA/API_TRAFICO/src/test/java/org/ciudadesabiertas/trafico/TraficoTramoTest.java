@@ -117,14 +117,26 @@ public class TraficoTramoTest {
     @Test    
     public void test04_Add() throws Exception {
     	String id ="TEST01_TRAFTRAM01";
-    	String traficoADD = "{"   			
-    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+    	String traficoADD = "{\r\n" + 
+    		"      \"id\": \"TEST01_TRAFTRAM01\",\r\n" + 
+    		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+    		"      \"latitud\": 40.42020937,\r\n" + 
+    		"      \"longitud\": -3.70579377,\r\n" + 
+    		"      \"finLatitud\": 40.42021028,\r\n" + 
+    		"      \"finLongitud\": -3.7057926,\r\n" + 
+    		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+    		"      \"postalCode\": \"28039\",\r\n" + 
+    		"      \"municipioId\": \"madrid\",\r\n" + 
+    		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+    		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+    		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+    		"      \"distritoId\": \"tetuan\",\r\n" + 
+    		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+    		"      \"xETRS89\": 440124.33,\r\n" + 
+    		"      \"yETRS89\": 4474637.17,\r\n" + 
+    		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+    		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+    		"    }";
     	    	    	
     	traficoADD = new String (traficoADD.getBytes(),"UTF-8");	
     	
@@ -152,14 +164,26 @@ public class TraficoTramoTest {
     @Test    
     public void test06_Add_NO_OK_409() throws Exception {
     	String id ="TEST01_TRAFTRAM01";
-    	String traficoADD = "{"   			
-    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+    	String traficoADD = "{\r\n" + 
+    		"      \"id\": \"TEST01_TRAFTRAM01\",\r\n" + 
+    		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+    		"      \"latitud\": 40.42020937,\r\n" + 
+    		"      \"longitud\": -3.70579377,\r\n" + 
+    		"      \"finLatitud\": 40.42021028,\r\n" + 
+    		"      \"finLongitud\": -3.7057926,\r\n" + 
+    		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+    		"      \"postalCode\": \"28039\",\r\n" + 
+    		"      \"municipioId\": \"madrid\",\r\n" + 
+    		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+    		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+    		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+    		"      \"distritoId\": \"tetuan\",\r\n" + 
+    		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+    		"      \"xETRS89\": 440124.33,\r\n" + 
+    		"      \"yETRS89\": 4474637.17,\r\n" + 
+    		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+    		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+    		"    }";
     	
     	traficoADD = new String (traficoADD.getBytes(),"UTF-8");	
     	
@@ -175,14 +199,26 @@ public class TraficoTramoTest {
     public void test07_Update() throws Exception {
     	String id ="TEST01_TRAFTRAM01";
     	  			
-    	String obj = "{"   			
-    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440125.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440125.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+    	String obj = "{\r\n" + 
+    		"      \"id\": \"TEST01_TRAFTRAM01\",\r\n" + 
+    		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+    		"      \"latitud\": 40.42020937,\r\n" + 
+    		"      \"longitud\": -3.70579377,\r\n" + 
+    		"      \"finLatitud\": 40.42021028,\r\n" + 
+    		"      \"finLongitud\": -3.7057926,\r\n" + 
+    		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+    		"      \"postalCode\": \"28039\",\r\n" + 
+    		"      \"municipioId\": \"madrid\",\r\n" + 
+    		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+    		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+    		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+    		"      \"distritoId\": \"tetuan\",\r\n" + 
+    		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+    		"      \"xETRS89\": 440124.33,\r\n" + 
+    		"      \"yETRS89\": 4474637.17,\r\n" + 
+    		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+    		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+    		"    }";
 
     	String traficoUPDATE = new String (obj.getBytes(),"UTF-8");	
     	
@@ -211,14 +247,26 @@ public class TraficoTramoTest {
     @Test    
     public void test09_Update_NO_OK_404() throws Exception {
     	String id ="TEST01_NOOK_EQ0001";
-    	String obj = "{"   			
-    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+    	String obj = "{\r\n" + 
+    		"      \"id\": \"TEST01_NOOK_EQ0001\",\r\n" + 
+    		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+    		"      \"latitud\": 40.42020937,\r\n" + 
+    		"      \"longitud\": -3.70579377,\r\n" + 
+    		"      \"finLatitud\": 40.42021028,\r\n" + 
+    		"      \"finLongitud\": -3.7057926,\r\n" + 
+    		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+    		"      \"postalCode\": \"28039\",\r\n" + 
+    		"      \"municipioId\": \"madrid\",\r\n" + 
+    		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+    		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+    		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+    		"      \"distritoId\": \"tetuan\",\r\n" + 
+    		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+    		"      \"xETRS89\": 440124.33,\r\n" + 
+    		"      \"yETRS89\": 4474637.17,\r\n" + 
+    		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+    		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+    		"    }";
     	
     	String traficoUPDATE = new String (obj.getBytes(),"UTF-8");	
     	
@@ -305,14 +353,26 @@ public class TraficoTramoTest {
     public void test18_Post_Transform() throws Exception {
     	String id ="TEST01_TRASFORM_TRAFTRAM01";
     	
-    	String obj = "{"   			
-    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+    	String obj = "{\r\n" + 
+    		"      \"id\": \"TEST01_TRASFORM_TRAFTRAM01\",\r\n" + 
+    		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+    		"      \"latitud\": 40.42020937,\r\n" + 
+    		"      \"longitud\": -3.70579377,\r\n" + 
+    		"      \"finLatitud\": 40.42021028,\r\n" + 
+    		"      \"finLongitud\": -3.7057926,\r\n" + 
+    		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+    		"      \"postalCode\": \"28039\",\r\n" + 
+    		"      \"municipioId\": \"madrid\",\r\n" + 
+    		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+    		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+    		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+    		"      \"distritoId\": \"tetuan\",\r\n" + 
+    		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+    		"      \"xETRS89\": 440124.33,\r\n" + 
+    		"      \"yETRS89\": 4474637.17,\r\n" + 
+    		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+    		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+    		"    }";
     	
     	String traficoTransform = new String (obj.getBytes(),"UTF-8");	
     	
@@ -328,14 +388,26 @@ public class TraficoTramoTest {
     public void test19_Post_Transform_NO_OK() throws Exception {
 //    	String id ="TEST01_TRASFORM_BICI0001";
     	
-    	String obj = "{"   			
-//    			+ "	  \"id\": \""+id+"\",\r\n" 
-    			+ "   \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n"
-    			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000,\r\n"
-    			+ "   \"xETRS89Fin\": 440124.43000,\r\n"
-    			+ "   \"yETRS89Fin\": 4474637.27000\r\n"
-    			+ "}";
+      String obj = "{\r\n" + 
+  	//	"      \"id\": \"TEST01_TRASFORM_TRAFTRAM01\",\r\n" + 
+  		"      \"description\": \"Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia\",\r\n" + 
+  		"      \"latitud\": 40.42020937,\r\n" + 
+  		"      \"longitud\": -3.70579377,\r\n" + 
+  		"      \"finLatitud\": 40.42021028,\r\n" + 
+  		"      \"finLongitud\": -3.7057926,\r\n" + 
+  		"      \"streetAddress\": \"Bravo Murillo 45\",\r\n" + 
+  		"      \"postalCode\": \"28039\",\r\n" + 
+  		"      \"municipioId\": \"madrid\",\r\n" + 
+  		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+  		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+  		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+  		"      \"distritoId\": \"tetuan\",\r\n" + 
+  		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+  		"      \"xETRS89\": 440124.33,\r\n" + 
+  		"      \"yETRS89\": 4474637.17,\r\n" + 
+  		"      \"xETRS89Fin\": 440124.43,\r\n" + 
+		"      \"yETRS89Fin\": 4474637.27\r\n" + 
+  		"    }";
     	
     	String traficoTransform = new String (obj.getBytes(),"UTF-8");	
     	

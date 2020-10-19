@@ -22,7 +22,6 @@ import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.TraficoPropiedadMedicionController;
 import org.ciudadesabiertas.utils.TestUtils;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

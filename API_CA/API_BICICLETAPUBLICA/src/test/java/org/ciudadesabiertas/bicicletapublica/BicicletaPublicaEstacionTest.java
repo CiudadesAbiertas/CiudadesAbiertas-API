@@ -128,7 +128,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
     	    	    	
     	estacionADD = new String (estacionADD.getBytes(),"UTF-8");	
@@ -170,7 +176,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
     	
     	estacionADD = new String (estacionADD.getBytes(),"UTF-8");	
@@ -200,7 +212,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
 
     	String bicicletaUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -243,7 +261,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
     	
     	String estacionUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -344,7 +368,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
     	
     	String estacionTransform = new String (obj.getBytes(),"UTF-8");	
@@ -374,7 +404,13 @@ public class BicicletaPublicaEstacionTest {
     			+ "   \"observesId\": \"anclajesLibres\",\r\n"
     			+ "   \"observesTitle\": \"Anclajes libres\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "      \"municipioId\": \"28006\",\r\n" +
+    			"      \"municipioTitle\": \"Alcobendas\",\r\n" +
+    			"      \"barrioId\": \"28006011\",\r\n" +
+    			"      \"barrioTitle\": \"Norte\",\r\n" +
+    			"      \"distritoId\": \"2800601\",\r\n" +
+    			"      \"distritoTitle\": \"Unico\"\r\n"
     			+ "}";
     	
     	String bicicletaTransform = new String (obj.getBytes(),"UTF-8");	

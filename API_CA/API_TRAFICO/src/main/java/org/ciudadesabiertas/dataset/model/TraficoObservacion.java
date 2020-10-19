@@ -33,7 +33,6 @@ import javax.persistence.TemporalType;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -85,7 +84,7 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="observedProperty", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observedProperty")
-	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observedProperty",capitalize=false, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observedProperty", urifyLevel = 1)
 	private String observedProperty;
 	
 	@ApiModelProperty(value = "Esta propiedad establece la fecha/hora de la observación. Ejemplo: 2020-04-01 12:45:00")

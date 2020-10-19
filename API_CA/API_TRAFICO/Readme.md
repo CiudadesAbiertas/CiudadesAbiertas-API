@@ -3,7 +3,14 @@
 
 Este módulo integra el vocabulario de contratos para las consultas semánticas (RDF)  y contine los siguiente (sub)módulos:
 -	TraficoDispositivoMedicion
+-	TraficoEquipo
+-	TraficoIncidencia
+-	TraficoObservacion
+-	TraficoObservacionDispostivo
+-	TraficoProperInterval
+-	TraficoPropiedadMedicion
 - 	TraficoTramo
+-	TraficoTramoVia
 
 ## Configuración del Módulo
 
@@ -124,8 +131,6 @@ Si no se incluyen todos o algunos de estos parámetros se aplica la configuraci�
 - Auntentificación **Basic** para peticiones de: Alta, Baja y Modificación.
 
 
-Readme
-
 ### Módulo TraficoDispositivoMedicion
 
 Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
@@ -137,16 +142,95 @@ Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los
 -   **TraficoDispositivo_DELETE**: Baja de un dispositivo de medición
 -   **TraficoDispositivo_TRANSFORM**: Transformador de un dispositivo de medición externo (a través de JSON)
 
+### Módulo TraficoEquipo
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoEquipo_LIST**: Listado de equipos
+-   **TraficoEquipo_RECORD**: Ficha de un equipo
+-   **TraficoEquipo_ADD**: Alta de un equipo
+-   **TraficoEquipo_UPDATE**: Modificación de un equipo
+-   **TraficoEquipo_DELETE**: Baja de un equipo
+-   **TraficoEquipo_TRANSFORM**: Transformador de un equipo externo (a través de JSON)
+
+
+### Módulo TraficoIncidencia
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoIncidencia_LIST**: Listado de incidencias
+-   **TraficoIncidencia_RECORD**: Ficha de una incidencia
+-   **TraficoIncidencia_ADD**: Alta de una incidencia
+-   **TraficoIncidencia_UPDATE**: Modificación de una incidencia
+-   **TraficoIncidencia_DELETE**: Baja de una incidencia
+-   **TraficoIncidencia_TRANSFORM**: Transformador de una incidencia externo (a través de JSON)
+
+### Módulo TraficoObservacion
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoObservacion_LIST**: Listado de observaciones
+-   **TraficoObservacion_RECORD**: Ficha de una observación
+-   **TraficoObservacion_ADD**: Alta de una observación
+-   **TraficoObservacion_UPDATE**: Modificación de una observación
+-   **TraficoObservacion_DELETE**: Baja de una observación
+-   **TraficoObservacion_TRANSFORM**: Transformador de una observación externo (a través de JSON)
+
+### Módulo TraficoObservacionDispostivo
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoObservacionDispostivo_LIST**: Listado de observaciones dispositivo
+-   **TraficoObservacionDispostivo_RECORD**: Ficha de una observación dispositivo
+-   **TraficoObservacionDispostivo_ADD**: Alta de una observación dispositivo
+-   **TraficoObservacionDispostivo_UPDATE**: Modificación de una observación dispositivo
+-   **TraficoObservacionDispostivo_DELETE**: Baja de una observación dispositivo
+-   **TraficoObservacionDispostivo_TRANSFORM**: Transformador de una observación dispositivo externo (a través de JSON)
+
+### Módulo TraficoProperInterval
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoProperInterval_LIST**: Listado de propiedades intervalo
+-   **TraficoProperInterval_RECORD**: Ficha de una propiedad intervalo
+-   **TraficoProperInterval_ADD**: Alta de una propiedad intervalo
+-   **TraficoProperInterval_UPDATE**: Modificación de una propiedad intervalo
+-   **TraficoProperInterval_DELETE**: Baja de una propiedad intervalo
+-   **TraficoProperInterval_TRANSFORM**: Transformador de una propiedad intervalo externo (a través de JSON)
+
+### Módulo TraficoPropiedadMedicion
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoPropiedadMedicion_LIST**: Listado de propiedades medición
+-   **TraficoPropiedadMedicion_RECORD**: Ficha de una propiedad medición
+-   **TraficoPropiedadMedicion_ADD**: Alta de una propiedad medición
+-   **TraficoPropiedadMedicion_UPDATE**: Modificación de una propiedad medición
+-   **TraficoPropiedadMedicion_DELETE**: Baja de una propiedad medición
+-   **TraficoPropiedadMedicion_TRANSFORM**: Transformador de una propiedad medición externo (a través de JSON)
+
 ### Módulo TraficoTramo
 
 Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
 
--   **TraficoTramo_LIST**: Listado de ConvenioDocumento
--   **TraficoTramo_RECORD**: Ficha de un ConvenioDocumento
--   **TraficoTramo_ADD**: Alta de un local ConvenioDocumento
--   **TraficoTramo_UPDATE**: Modificación de un ConvenioDocumento
--   **TraficoTramo_DELETE**: Baja de un ConvenioDocumento
--   **TraficoTramo_TRANSFORM**: Transformador de un ConvenioDocumento externo (a través de JSON)
+-   **TraficoTramo_LIST**: Listado de tramos
+-   **TraficoTramo_RECORD**: Ficha de un tramo
+-   **TraficoTramo_ADD**: Alta de un tramo
+-   **TraficoTramo_UPDATE**: Modificación de un tramo
+-   **TraficoTramo_DELETE**: Baja de un tramo
+-   **TraficoTramo_TRANSFORM**: Transformador de un tramo externo (a través de JSON)
+
+### Módulo TraficoTramoVia
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados.
+
+-   **TraficoTramoVia_LIST**: Listado de relaciones tramo vía
+-   **TraficoTramoVia_RECORD**: Ficha de una relación tramo vía
+-   **TraficoTramoVia_ADD**: Alta de una relación tramo vía
+-   **TraficoTramoVia_UPDATE**: Modificación de una relación tramo vía
+-   **TraficoTramoVia_DELETE**: Baja de una relación tramo vía
+-   **TraficoTramoVia_TRANSFORM**: Transformador de una relación tramo vía externo (a través de JSON)
+
 
 
 **NOTA:** Si alguna etiqueta de identificación de servicio no se incluyera en los parametros se le aplicaria la configuración por defecto asociada al mismo.

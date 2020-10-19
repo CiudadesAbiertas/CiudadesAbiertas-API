@@ -40,22 +40,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class TraficoDispositivoMedicionUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance", "portalIdIsolated" };
 	
-	private static final String testJSON = " {\r\n" 
-			+ "	  \"id\": \"TEST01_TRAFDISMED0001\",\r\n" 
-			+ "   \"description\": \"Dispositivo que detecta los cambios que se producen en un campo electromagnético cuando circula un vehículo (masa metálica) sobre un punto determinado de la calzada. Registra el número total de vehículos que pasan y pueden clasificarlos por su longitud, número de ejes y masas.\",\r\n"
-			+ "   \"numSentidos\": 2,\r\n"
-			+ "   \"numCarriles\": 2,\r\n"
-			+ "   \"urbano\": \"true\",\r\n"
-			+ "   \"tipoEquipoTrafico\": \"lazo-magnetico\",\r\n"
-			+ "   \"monitorea\": \"TRAFTRAM01\",\r\n"
-			+ "   \"enServicio\": \"false\",\r\n"
-			+ "   \"frecuenciaMedicion\": \"P1m\",\r\n"
-			+ "   \"observes\": \"carga\",\r\n"
-			+ "   \"xETRS89\": 440124.33000,\r\n"
-			+ "   \"yETRS89\": 4474637.17000\r\n"
-			+ "    }";
+	private static final String testJSON = "{\r\n" + 
+		"      \"id\": \"TRAFDISMED02\",\r\n" + 
+		"      \"description\": \"C. GRAN VIA;San Bernardo-Garcia Molinas;San Bernardo\",\r\n" + 
+		"      \"numSentidos\": 2,\r\n" + 
+		"      \"numCarriles\": 8,\r\n" + 
+		"      \"urbano\": true,\r\n" + 
+		"      \"tipoEquipoTrafico\": \"detector-bluetooth\",\r\n" + 
+		"      \"monitorea\": \"TRAFTRAM02\",\r\n" + 
+		"      \"enServicio\": true,\r\n" + 
+		"      \"frecuenciaMedicion\": \"3 minutos\",\r\n" + 
+		"      \"observes\": \"carga\",\r\n" + 
+		"      \"latitud\": 40.43051427,\r\n" + 
+		"      \"longitud\": -3.71624419,\r\n" + 
+		"      \"portalId\": \"PORTAL000010\",\n" + 
+		"      \"streetAddress\": \"Bravo Murillo 267\",\r\n" + 
+		"      \"postalCode\": \"28039\",\r\n" + 
+		"      \"municipioId\": \"madrid\",\r\n" + 
+		"      \"municipioTitle\": \"Madrid\",\r\n" + 
+		"      \"barrioId\": \"bellas-vistas\",\r\n" + 
+		"      \"barrioTitle\": \"Bellas Vistas\",\r\n" + 
+		"      \"distritoId\": \"tetuan\",\r\n" + 
+		"      \"distritoTitle\": \"Tetuán\",\r\n" + 
+		"      \"xETRS89\": 439247.039,\r\n" + 
+		"      \"yETRS89\": 4475788.146\r\n" + 
+		"    }";
 
 	@Test
 	public void constructorCopia() throws JsonParseException, JsonMappingException, IOException, IllegalArgumentException, IllegalAccessException

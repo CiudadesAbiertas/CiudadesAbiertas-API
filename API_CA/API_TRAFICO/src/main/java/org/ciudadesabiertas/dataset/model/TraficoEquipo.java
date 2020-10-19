@@ -33,9 +33,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
-import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -151,6 +149,18 @@ public class TraficoEquipo  implements java.io.Serializable, GeoModel, RDFModel 
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal longitud;
 	
+	@ApiModelProperty(value = "Identificador del municipio de la incidencia. Ejemplo: 28006")
+	@CsvBindByPosition(position = 12)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
+	private String municipioId;
+
+	@ApiModelProperty(value = "Nombre del municipio de la incidencia. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position = 13)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
+	
 	
 	
 	private Double distance;
@@ -174,7 +184,8 @@ public class TraficoEquipo  implements java.io.Serializable, GeoModel, RDFModel 
 		this.y = copia.y;
 		this.latitud = copia.latitud;
 		this.longitud = copia.longitud;	
-		
+		this.municipioId = copia.municipioId;	
+		this.municipioTitle = copia.municipioTitle;
 	}
 
 	
@@ -210,6 +221,15 @@ public class TraficoEquipo  implements java.io.Serializable, GeoModel, RDFModel 
 		if (attributesToSet.contains("yETRS89")) {
 			this.y = copia.y;
 		}
+		
+		if (attributesToSet.contains("municipioId")) {
+			this.municipioId = copia.municipioId;
+		}
+
+		if (attributesToSet.contains("municipioTitle")) {
+			this.municipioTitle = copia.municipioTitle;
+		}	
+	
 		
 	}
 
@@ -349,13 +369,34 @@ public class TraficoEquipo  implements java.io.Serializable, GeoModel, RDFModel 
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
+	
+	@Column(name = "municipio_id", length = 50)
+	public String getMunicipioId() {
+		return this.municipioId;
+	}
+
+	public void setMunicipioId(String municipioId) {
+		this.municipioId = municipioId;
+	}
+
+	@Column(name = "municipio_title", length = 200)
+	public String getMunicipioTitle() {
+		return this.municipioTitle;
+	}
+
+	public void setMunicipioTitle(String municipioTitle) {
+		this.municipioTitle = municipioTitle;
+	}
+
+	
 
 	@Override
 	public String toString() {
-		return "TraficoEquipo [ikey=" + ikey + ", id=" + id + ", description=" + description + ", numSentidos="
-				+ numSentidos + ", numCarriles=" + numCarriles + ", urbano=" + urbano + ", tipoEquipoTrafico="
-				+ tipoEquipoTrafico + ", monitorea=" + monitorea + ", x=" + x + ", y=" + y + ", latitud=" + latitud
-				+ ", longitud=" + longitud + ", distance=" + distance + "]";
+		return "TraficoEquipo [id=" + id + ", description=" + description + ", numSentidos=" + numSentidos
+				+ ", numCarriles=" + numCarriles + ", urbano=" + urbano + ", tipoEquipoTrafico=" + tipoEquipoTrafico
+				+ ", monitorea=" + monitorea + ", x=" + x + ", y=" + y + ", latitud=" + latitud + ", longitud="
+				+ longitud + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + ", distance="
+				+ distance + "]";
 	}
 
 	public Map<String,String> prefixes()

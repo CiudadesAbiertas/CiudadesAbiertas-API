@@ -1,37 +1,30 @@
 /**
- * Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
  * 
- * This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
- * 
- * Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
- * You may not use this work except in compliance with the Licence.
- * You may obtain a copy of the Licence at:
- * 
- * https://joinup.ec.europa.eu/software/page/eupl
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the Licence for the specific language governing permissions and limitations under the Licence.
  */
-
 package org.ciudadesabiertas.trafico;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.TraficoTramoController;
 import org.ciudadesabiertas.utils.TestUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.TestContextManager;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -40,177 +33,83 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
- * @author Hugo Lafuente (Localidata)
+ * @author Hugo Lafuente Matesanz (Localidata)
  * @author Oscar Corcho (UPM, Localidata)
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(Parameterized.class)
 @ContextConfiguration(classes = { WebConfig.class })
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TraficoTramoDataTest
-{
+public class TraficoTramoDataTest {
 
-	@Autowired
-	private WebApplicationContext wac;
+private static final Logger log = LoggerFactory.getLogger(TraficoTramoDataTest.class);
 
-	JSONParser parser = new JSONParser();
+@Autowired
+private WebApplicationContext wac;
 
-	private MockMvc mockMvc;
+private MockMvc mockMvc;
 
-	private String listURL=TraficoTramoController.LIST;
-	
+private String listURL = TraficoTramoController.LIST;
 
-	@Before
-	public void setup() throws Exception
-	{
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-	}
+// Manually config for spring to use Parameterised
+private TestContextManager testContextManager;
+
+@Parameter(value = 0)
+public String paramName;
+
+@Parameter(value = 1)
+public String value;
+
+@Parameter(value = 2)
+public Integer expected;
+
+// Posibles valores que tomaran los parámetros anteriores
+@Parameters(name = "{index}: test {0}")
+public static Collection<Object[]> data() {
+  Collection<Object[]> params = new ArrayList<>();
+  params.add(new Object[] { "id", "TRAFTRAM01", 1 });
+  params.add(new Object[] { "description", "Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia",  1 });
+  params.add(new Object[] { "xETRS89", "440124.33", 1 });
+  params.add(new Object[] { "yETRS89", "4474637.17", 1 });
+  params.add(new Object[] { "xETRS89Fin", "440124.43", 1 });
+  params.add(new Object[] { "yETRS89Fin", "4474637.27", 1 });
+  params.add(new Object[] { "municipioId", "28079", 2 });
+  params.add(new Object[] { "municipioTitle", "Madrid", 2 });
+  params.add(new Object[] { "xETRS89", "440124.33", 1 });
+  params.add(new Object[] { "yETRS89", "4474637.17", 1 });
 
 
-	@Test
-	public void test_Busqueda_Id() throws Exception
-	{
+  return params;
+}
 
-		String paramField="id";
-		
-		String value = "TRAFTRAM01";
+@Before
+public void setup() throws Exception {
+  this.testContextManager = new TestContextManager(getClass());
+  this.testContextManager.prepareTestInstance(this);
+  this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+}
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+@Test
+public void test_evaluador_DATA() throws Exception {
 
-		assertTrue(records.size() == 1);
+  JSONArray records = TestUtils.extractRecords(listURL, paramName, value, mockMvc);
+  try {
+	assertTrue(records.size() == expected);
+  } catch (AssertionError e) {
+	log.error("Assertion error");
+	log.error("  Param: " + paramName);
+	log.error("  Value: " + value);
+	log.error("  Expected: " + expected);
 
-	}
+	throw new AssertionError("Incorrect value on expected " + paramName + ": " + records.size(), new Throwable("Expected: " + expected));
+  }
+}
 
-	@Test
-	public void test_Busqueda_description() throws Exception
-	{
-		String paramField="description";
 
-		String value = "Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_x_etrs89() throws Exception
-	{
-		String paramField="xETRS89";
 
-		String value = "440124.33";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_y_etrs89() throws Exception
-	{
-		String paramField="yETRS89";
-
-		String value = "4474637.17";
-
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_x_etrs89_fin() throws Exception
-	{
-		String paramField="xETRS89Fin";
-
-		String value = "440124.43";
-
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_y_etrs8_fin() throws Exception
-	{
-		String paramField="yETRS89Fin";
-
-		String value = "4474637.27";
-
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_id_getX_getY() throws Exception
-	{
-
-		String [] paramField= {"srId","id"};
-
-		String [] value = {"EPSG:25830","TRAFTRAM01"};
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		
-		JSONObject obj=(JSONObject) records.get(0);
-
-		boolean checkXY=((obj.get("xETRS89")!=null)&&(obj.get("yETRS89")!=null));
-		
-		assertTrue(checkXY == true);
-	}
-	
-	@Test
-	public void test_Busqueda_id_getXFin_getYFin() throws Exception
-	{
-
-		String [] paramField= {"srId","id"};
-
-		String [] value = {"EPSG:25830","TRAFTRAM01"};
-		
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		
-		JSONObject obj=(JSONObject) records.get(0);
-
-		boolean checkXY=((obj.get("xETRS89Fin")!=null)&&(obj.get("yETRS89Fin")!=null));
-		
-		assertTrue(checkXY == true);
-	}
-	
-	@Test
-	public void test_Head_MD5() throws Exception
-	{
-
-		String value = "TRAFDISMED01";
-		
-		String paramField="id";
-
-		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);
-		
-		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
-
-		assertTrue(md5_content.equals(md5_head));
-	}
-	
-	@Test
-	public void test_Busqueda_distinct() throws Exception
-	{
-		
-		String paramField="field";
-		
-		String value = "id";
-
-		long total = TestUtils.extractTotalDistinct(TraficoTramoController.SEARCH_DISTINCT, paramField, value, mockMvc);
-
-		assertTrue(total == 2);
-	}
-	
-
-	
-
-	
-	
-	
-	
 
 }

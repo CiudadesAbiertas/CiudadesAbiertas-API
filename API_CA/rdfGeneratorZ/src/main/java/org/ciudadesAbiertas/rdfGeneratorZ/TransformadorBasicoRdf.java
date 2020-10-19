@@ -910,9 +910,14 @@ public class TransformadorBasicoRdf {
 		}										
 		else if (typeURI.endsWith("time"))
 		{
-		    
-			String  fechaFormateada=Funciones.formateadorHora.format(valor);
-		  				
+			String  fechaFormateada = "";
+			String str_valor = valor.toString();
+			if (str_valor!=null && str_valor.length()==8) {
+				fechaFormateada = str_valor;
+			}else {
+				fechaFormateada=Funciones.formateadorHora.format(valor);
+			}
+			  		
 			model.add(resource, entityProp, model.createTypedLiteral(fechaFormateada,typeURI));
 		}
 		else {

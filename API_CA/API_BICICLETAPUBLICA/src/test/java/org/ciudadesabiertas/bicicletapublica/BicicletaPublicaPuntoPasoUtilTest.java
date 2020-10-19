@@ -40,7 +40,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BicicletaPublicaPuntoPasoUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance" };
+	private static final String[] fieldsToIngore = { "ikey", "latitud","longitud","distance", "portalIdIsolated" };
 	
 	private static final String testJSON = " {\r\n" + 
 			"      \"id\": \"TEST01_PPASO0001\",\r\n" 
@@ -48,7 +48,16 @@ public class BicicletaPublicaPuntoPasoUtilTest
 			+ "   \"trayectoId\": \"TRA04\",\r\n"
 			+ "   \"orden\": \"1\",\r\n"
 			+ "   \"xETRS89\": 440124.33000,\r\n"
-			+ "   \"yETRS89\": 4474637.17000\r\n"
+			+ "   \"yETRS89\": 4474637.17000,\r\n"
+			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+			+ "   \"postalCode\": \"28003\",\r\n"
+			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+			+ "   \"distritoId\": \"tetuan\",\r\n"
+			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+			+ "   \"municipioId\": \"madrid\",\r\n"
+			+ "   \"municipioTitle\": \"Madrid\"\r\n"
 			+ "    }";
 
 	@Test

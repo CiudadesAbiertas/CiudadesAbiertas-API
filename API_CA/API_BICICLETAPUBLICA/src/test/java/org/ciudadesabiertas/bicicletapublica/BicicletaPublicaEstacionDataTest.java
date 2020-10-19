@@ -301,7 +301,90 @@ public class BicicletaPublicaEstacionDataTest
 		assertTrue(records.size() == 1);	
 	}
 	
+	@Test
+	public void test_Busqueda_barrioId() throws Exception
+	{
+			
+		String [] paramField= {"barrioId"};
+
+		
+		String [] value = {"bellas-vistas"};
+
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 2);
+	}
 	
+	@Test
+	public void test_Busqueda_barrioTitle() throws Exception
+	{
+			
+		String [] paramField= {"barrioTitle"};
+
+		
+		String [] value = {"Bellas Vistas"};
+
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 2);
+	}
+	
+	@Test
+	public void test_Busqueda_distritoId() throws Exception
+	{			
+		
+		String [] paramField= {"distritoId"};
+
+		
+		String [] value = {"tetuan"};
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 2);
+	}
+	
+	@Test
+	public void test_Busqueda_distritoTitle() throws Exception
+	{			
+		
+		String [] paramField= {"distritoTitle"};
+
+		
+		String [] value = {"Tetuán"};
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 2);
+	}
+	
+	@Test
+	public void test_Busqueda_municipioId() throws Exception
+	{
+		String [] paramField= {"municipioId"};
+
+		String [] value = {"madrid"};
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 2);
+			
+	}
+	
+	
+	@Test
+	public void test_Busqueda_municipioNombre() throws Exception
+	{		
+		
+		String [] paramField= {"municipioTitle"};
+
+		String [] value = {"Madrid"};
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 2);
+	}
 	
 
 }

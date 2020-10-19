@@ -121,7 +121,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
     	    	    	
     	puntoPasoADD = new String (puntoPasoADD.getBytes(),"UTF-8");	
@@ -156,7 +165,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
     	
     	puntoPasoADD = new String (puntoPasoADD.getBytes(),"UTF-8");	
@@ -179,7 +197,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
 
     	String bicicletaUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -215,7 +242,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
     	
     	String puntoPasoUPDATE = new String (obj.getBytes(),"UTF-8");	
@@ -309,7 +345,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
     	
     	String puntoPasoTransform = new String (obj.getBytes(),"UTF-8");	
@@ -332,7 +377,16 @@ public class BicicletaPublicaPuntoPasoTest {
     			+ "   \"trayectoId\": \"TRA04\",\r\n"
     			+ "   \"orden\": \"1\",\r\n"
     			+ "   \"xETRS89\": 440124.33000,\r\n"
-    			+ "   \"yETRS89\": 4474637.17000\r\n"
+    			+ "   \"yETRS89\": 4474637.17000,\r\n"
+    			+ "   \"portalId\": \"PORTAL000101\",\r\n"
+    			+ "   \"streetAddress\": \"CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43\",\r\n"
+    			+ "   \"postalCode\": \"28003\",\r\n"
+    			+ "   \"barrioId\": \"bellas-vistas\",\r\n"
+    			+ "   \"barrioTitle\": \"Bellas Vistas\",\r\n"
+    			+ "   \"distritoId\": \"tetuan\",\r\n"
+    			+ "   \"distritoTitle\": \"Tetuán\",\r\n"
+    			+ "   \"municipioId\": \"madrid\",\r\n"
+    			+ "   \"municipioTitle\": \"Madrid\"\r\n"
     			+ "}";
     	
     	String bicicletaTransform = new String (obj.getBytes(),"UTF-8");	

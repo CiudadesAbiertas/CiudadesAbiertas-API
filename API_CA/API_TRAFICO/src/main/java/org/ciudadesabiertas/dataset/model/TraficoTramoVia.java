@@ -33,7 +33,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfTripleExtenal;
+import org.ciudadesabiertas.model.ICallejeroVia;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -64,7 +64,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({Constants.IKEY})
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @PathId(value="/trafico/tramo")
-public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
+public class TraficoTramoVia  implements java.io.Serializable, RDFModel, ICallejeroVia {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
@@ -91,19 +91,32 @@ public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
 	@RdfExternalURI(inicioURI = "/callejero/via/", finURI = "idVia", urifyLevel = 1)
 	private String idVia;	
 	
-	@ApiModelProperty(value = "Vía del tramo. Ejemplo: Calle Bravo Murillo")
+	@ApiModelProperty(value = "Nombre de la vía. Ejemplo: BRAVO MURILLO")
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
-	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.ESTRAF_URI+"via", nodoId="via")
-	private String streetAddress;
+	@CsvBindByName(column="titleVia")
+	@Rdf(contexto = Context.DCT, propiedad = "title")
+	@RdfBlankNode(tipo=Context.ESCJR_URI+"Via", propiedad=Context.ESTRAF_URI+"via", nodoId="via")
+	private String titleVia;
 	
-	@ApiModelProperty(value = "Nombre del municipio de la vía. Ejemplo: Madrid")
-	@CsvBindByPosition(position=23)
-	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
+	@ApiModelProperty(value = "Tipo de vía. Ejemplo: CALLE")
+	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="tipoVia")
+	@Rdf(contexto = Context.ESCJR, propiedad = "tipoVia")
+	@RdfBlankNode(tipo=Context.ESCJR_URI+"Via", propiedad=Context.ESTRAF_URI+"via", nodoId="via")
+	private String tipoVia;
+	
+	@ApiModelProperty(value = "Identificador del municipio del tramo. Ejemplo: 28006")
+	@CsvBindByPosition(position = 6)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
-	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.ESTRAF_URI+"via", nodoId="via")
+	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
+	private String municipioId;
+
+	@ApiModelProperty(value = "Nombre del municipio del tramo. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position = 7)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
 	private String municipioTitle;
+
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
@@ -121,6 +134,8 @@ public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
 		this.id = copia.id;
 		this.idTramo = copia.idTramo;
 		this.idVia = copia.idVia;
+		this.municipioId = copia.municipioId;
+		this.municipioTitle = copia.municipioTitle;
 	}
 
 	public TraficoTramoVia(TraficoTramoVia copia, List<String> attributesToSet)
@@ -137,6 +152,16 @@ public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
 		if (attributesToSet.contains("idVia")) {
 			this.idVia = copia.idVia;
 		}		
+		
+		if (attributesToSet.contains("municipioId")) {
+			this.municipioId = copia.municipioId;
+		}
+		
+		if (attributesToSet.contains("municipioTitle")) {
+			this.municipioTitle = copia.municipioTitle;
+		}	
+		
+		
 		
 	}
 
@@ -183,27 +208,47 @@ public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
 		this.idVia = idVia;
 	}
 	
-	@Column(name = "street_address", length = 200)
-	public String getStreetAddress()
+	@Column(name = "title_via", length = 400)
+	public String getTitleVia()
 	{
-		return this.streetAddress;
+		return this.titleVia;
 	}
 
-	public void setStreetAddress(String streetAddress)
+	public void setTitleVia(String titleVia)
 	{
-		this.streetAddress = streetAddress;
+		this.titleVia = titleVia;
 	}
 	
-	@Column(name = "municipio_title", length = 200)
-	public String getMunicipioTitle()
+	@Column(name = "tipo_via", length = 50)
+	public String getTipoVia()
 	{
+		return this.tipoVia;
+	}
+
+	public void setTipoVia(String tipoVia)
+	{
+		this.tipoVia = tipoVia;
+	}
+	
+	@Column(name = "municipio_id", length = 50)
+	public String getMunicipioId() {
+		return this.municipioId;
+	}
+
+	public void setMunicipioId(String municipioId) {
+		this.municipioId = municipioId;
+	}
+
+	@Column(name = "municipio_title", length = 200)
+	public String getMunicipioTitle() {
 		return this.municipioTitle;
 	}
 
-	public void setMunicipioTitle(String municipioTitle)
-	{
+	public void setMunicipioTitle(String municipioTitle) {
 		this.municipioTitle = municipioTitle;
 	}
+
+	
 	
 	@Transient
 	public String getIdViaIsolated() {
@@ -215,12 +260,15 @@ public class TraficoTramoVia  implements java.io.Serializable, RDFModel {
 		this.idViaIsolated = idViaIsolated;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "TraficoTramoVia [ikey=" + ikey + ", id=" + id + ", idTramo=" + idTramo + ", idVia=" + idVia
-				+ ", streetAddress=" + streetAddress + ", municipioTitle=" + municipioTitle + ", idViaIsolated="
-				+ idViaIsolated + "]";
+		return "TraficoTramoVia [id=" + id + ", idTramo=" + idTramo + ", idVia=" + idVia + ", titleVia=" + titleVia
+				+ ", tipoVia=" + tipoVia + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle + "]";
 	}
+
 
 	public Map<String,String> prefixes()
 	{

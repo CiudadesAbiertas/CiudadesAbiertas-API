@@ -36,9 +36,7 @@ public class TraficoDispositivoMedicionSearch extends TraficoDispositivoMedicion
 
 	@JsonIgnore
 	private static final long serialVersionUID = -1286906960223335790L;
-	
-	@ApiModelProperty(hidden = true)
-	private String portalIdIsolated;
+
 	
 	@ApiModelProperty(hidden = true)
 	private BigDecimal latitud;

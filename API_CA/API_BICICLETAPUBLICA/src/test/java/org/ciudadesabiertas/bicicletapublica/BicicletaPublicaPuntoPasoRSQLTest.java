@@ -59,6 +59,7 @@ public class BicicletaPublicaPuntoPasoRSQLTest
 
 	private String listURL=BicicletaPublicaPuntoPasoController.LIST;
 	
+	String paramField = "q";
 
 	@Before
 	public void setup() throws Exception
@@ -138,5 +139,110 @@ public class BicicletaPublicaPuntoPasoRSQLTest
 		String value = "yETRS89==4474637.17000";	
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);		
 		assertTrue(total == 5);
+	}
+	
+	@Test
+	public void test_Busqueda_portal_id() throws Exception
+	{
+
+		String value = "portalId=='PORTAL000101'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+
+	}
+	
+	@Test
+	public void test_Busqueda_street_address() throws Exception
+	{
+
+		String value = "streetAddress=='CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+
+	}
+	
+	@Test
+	public void test_Busqueda_postal_code() throws Exception
+	{
+
+		String value = "postalCode=='28003'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+
+	}
+	
+	@Test
+	public void test_Busqueda_barrioId() throws Exception
+	{
+		
+
+		String value ="barrioId=='bellas-vistas'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+	}
+	
+	@Test
+	public void test_Busqueda_barrioTitle() throws Exception
+	{
+
+		String value ="barrioTitle=='Bellas Vistas'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+	}
+	
+	@Test
+	public void test_Busqueda_distritoId() throws Exception
+	{			
+
+		String value ="distritoId=='tetuan'";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 9);
+	}
+	
+	@Test
+	public void test_Busqueda_distritoTitle() throws Exception
+	{			
+		
+		String value ="distritoTitle=='Tetuán'";
+
+		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+
+		assertTrue(total == 9);
+	}
+	
+	@Test
+	public void test_Busqueda_municipioId() throws Exception
+	{
+		
+		String value ="municipioId=='madrid'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
+			
+	}
+	
+	
+	@Test
+	public void test_Busqueda_municipioNombre() throws Exception
+	{		
+
+		String value ="municipioTitle=='Madrid'";
+
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+
+		assertTrue(records.size() == 9);
 	}
 }

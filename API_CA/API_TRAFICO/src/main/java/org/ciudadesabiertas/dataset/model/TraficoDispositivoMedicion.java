@@ -35,7 +35,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
-import org.ciudadesabiertas.model.ITrafico;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -68,7 +68,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @RdfMultiple({@Rdf(contexto = Context.ESTRAF, propiedad = "DispositivoMedicionTrafico"), @Rdf(contexto = Context.ESTRAF, propiedad = "EquipoTrafico"), @Rdf(contexto = Context.SOSA, propiedad = "Sensor")})
 @PathId(value="/trafico/dispositivo-medicion")
-public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoModel, RDFModel {
+public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
@@ -137,7 +137,7 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="observes", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "observes")
-	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observes",capitalize=false, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/trafico/propiedad-medicion/",finURI="observes", urifyLevel = 1)
 	private String observes;
 	
 	@ApiModelProperty(value = "Coordenada X del equipo de tráfico. Ejemplo: 440124.33000")
@@ -170,9 +170,71 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal longitud;
 	
+	@ApiModelProperty(value = "Identificador de la calle de la autoridad. Ejemplo: PORTAL000098")
+	@CsvBindByPosition(position = 15)
+	@CsvBindByName(column = "portalId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
+	@RdfExternalURI(inicioURI = "/callejero/portal/", finURI = "portalId", urifyLevel = 1)
+	private String portalId;
 	
+	@ApiModelProperty(value = "Calle del equipo de tráfico. Ejemplo: CL ORENSE 7")
+	@CsvBindByPosition(position = 16)
+	@CsvBindByName(column = "streetAddress", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
+	@RdfBlankNode(tipo = Context.SCHEMA_URI + "PostalAddress", propiedad = Context.SCHEMA_URI + "address", nodoId = "address")
+	private String streetAddress;
+
+	@ApiModelProperty(value = "Código postal del equipo de tráfico. Ejemplo: 28100")
+	@CsvBindByPosition(position = 17)
+	@CsvBindByName(column = "postalCode", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")
+	@RdfBlankNode(tipo = Context.SCHEMA_URI + "PostalAddress", propiedad = Context.SCHEMA_URI
+			+ "address", nodoId = "address")
+	private String postalCode;
+
+	@ApiModelProperty(value = "Identificador del municipio del equipo de tráfico. Ejemplo: 28006")
+	@CsvBindByPosition(position = 18)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
+	private String municipioId;
+
+	@ApiModelProperty(value = "Nombre del municipio del equipo de tráfico. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position = 19)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
+
+	@ApiModelProperty(value = "Identificador del barrio del equipo de tráfico. Ejemplo: 28006011")
+	@CsvBindByPosition(position = 20)
+	@CsvBindByName(column = "barrio", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
+	@RdfExternalURI(inicioURI = "/territorio/barrio/", finURI = "barrioId", urifyLevel = 1)
+	private String barrioId;
+
+	@ApiModelProperty(value = "Nombre del barrio del equipo de tráfico. Ejemplo: 28006011")
+	@CsvBindByPosition(position = 21)
+	@CsvBindByName(column = "barrioTitle", format = Constants.STRING_FORMAT)
+	private String barrioTitle;
+
+	@ApiModelProperty(value = "Identificador del distrito del equipo de tráfico. Ejemplo: 2800601")
+	@CsvBindByPosition(position = 22)
+	@CsvBindByName(column = "distrito", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI = "/territorio/distrito/", finURI = "distritoId", urifyLevel = 1)
+	private String distritoId;
+
+	@ApiModelProperty(value = "Nombre del distrito del equipo de tráfico. Ejemplo: Unico")
+	@CsvBindByPosition(position = 23)
+	@CsvBindByName(column = "distritoTitle", format = Constants.STRING_FORMAT)
+	private String distritoTitle;
 	
 	private Double distance;
+	
+	@Transient
+	@ApiModelProperty(hidden = true)
+	@Rdf(contexto = Context.DCT, propiedad = "identifier")
+	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
+	private String portalIdIsolated;
 	
 
 	public TraficoDispositivoMedicion()
@@ -196,10 +258,22 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		this.y = copia.y;
 		this.latitud = copia.latitud;
 		this.longitud = copia.longitud;	
-		
+		  this.streetAddress = copia.streetAddress;
+		  this.postalCode = copia.postalCode;
+		  this.municipioId = copia.municipioId;
+		  this.municipioTitle = copia.municipioTitle;
+		  this.barrioId = copia.barrioId;
+		  this.barrioTitle = copia.barrioTitle;
+		  this.distritoId = copia.distritoId;
+		  this.distritoTitle = copia.distritoTitle;
+		  this.portalId = copia.portalId;
 	}
 
 	
+	
+	
+
+
 	public TraficoDispositivoMedicion(TraficoDispositivoMedicion copia, List<String> attributesToSet)
 	{
 		if (attributesToSet.contains(Constants.IKEY)) {
@@ -242,7 +316,41 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 			this.y = copia.y;
 		}
 		
+		if (attributesToSet.contains("streetAddress")) {
+			this.streetAddress = copia.streetAddress;
+		}
 		
+		if (attributesToSet.contains("postalCode")) {
+			this.postalCode = copia.postalCode;
+		}
+		
+		if (attributesToSet.contains("municipioId")) {
+			this.municipioId = copia.municipioId;
+		}
+		
+		if (attributesToSet.contains("municipioTitle")) {
+			this.municipioTitle = copia.municipioTitle;
+		}	
+		
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = copia.barrioId;
+		}		
+		
+		if (attributesToSet.contains("barrioTitle")) {
+			this.barrioTitle = copia.barrioTitle;
+		}		
+		
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = copia.distritoId;
+		}
+				
+		if (attributesToSet.contains("distritoTitle")) {
+			this.distritoTitle = copia.distritoTitle;
+		}
+
+		if (attributesToSet.contains("portalId")) {
+			this.portalId = copia.portalId;
+		}
 		
 	}
 
@@ -377,6 +485,79 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		this.y = y;
 	}
 	
+	
+	@Column(name = "street_address", length = 200)
+	public String getStreetAddress() {
+	  return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+	  this.streetAddress = streetAddress;
+	}
+
+	@Column(name = "postal_code", length = 10)
+	public String getPostalCode() {
+	  return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+	  this.postalCode = postalCode;
+	}
+
+	@Column(name = "municipio_id", length = 50)
+	public String getMunicipioId() {
+		return this.municipioId;
+	}
+
+	public void setMunicipioId(String municipioId) {
+		this.municipioId = municipioId;
+	}
+
+	@Column(name = "municipio_title", length = 200)
+	public String getMunicipioTitle() {
+		return this.municipioTitle;
+	}
+
+	public void setMunicipioTitle(String municipioTitle) {
+		this.municipioTitle = municipioTitle;
+	}
+
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId() {
+		return this.distritoId;
+	}
+
+	public void setDistritoId(String distritoId) {
+		this.distritoId = distritoId;
+	}
+
+	@Column(name = "distrito_title", length = 200)
+	public String getDistritoTitle() {
+		return this.distritoTitle;
+	}
+
+	public void setDistritoTitle(String distritoTitle) {
+		this.distritoTitle = distritoTitle;
+	}
+	
+	@Column(name = "barrio_title", length = 400)
+	public String getBarrioTitle() {
+		return this.barrioTitle;
+	}
+
+	public void setBarrioTitle(String barrioTitle) {
+		this.barrioTitle = barrioTitle;
+	}
+	
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId() {
+		return this.barrioId;
+	}
+
+	public void setBarrioId(String barrioId) {
+		this.barrioId = barrioId;
+	}
+
 	@Transient
 	public BigDecimal getLatitud() {
 		return this.latitud;
@@ -409,14 +590,38 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
+	
+	@Column(name = "portal_id", length = 50)
+	public String getPortalId() {
+		return this.portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
+	
+	@Transient
+	public String getPortalIdIsolated() {
+		return portalIdIsolated;
+	}
+
+
+	public void setPortalIdIsolated(String portalIdIsolated) {
+		this.portalIdIsolated = portalIdIsolated;
+	}
+
+	
 
 	@Override
 	public String toString() {
-		return "TraficoDispositivoMedicion [ikey=" + ikey + ", id=" + id + ", description=" + description
-				+ ", numSentidos=" + numSentidos + ", numCarriles=" + numCarriles + ", urbano=" + urbano
-				+ ", tipoEquipoTrafico=" + tipoEquipoTrafico + ", monitorea=" + monitorea + ", enServicio=" + enServicio
-				+ ", frecuenciaMedicion=" + frecuenciaMedicion + ", observes=" + observes + ", x=" + x + ", y=" + y
-				+ ", latitud=" + latitud + ", longitud=" + longitud + ", distance=" + distance + "]";
+		return "TraficoDispositivoMedicion [id=" + id + ", description=" + description + ", numSentidos=" + numSentidos
+				+ ", numCarriles=" + numCarriles + ", urbano=" + urbano + ", tipoEquipoTrafico=" + tipoEquipoTrafico
+				+ ", monitorea=" + monitorea + ", enServicio=" + enServicio + ", frecuenciaMedicion="
+				+ frecuenciaMedicion + ", observes=" + observes + ", x=" + x + ", y=" + y + ", latitud=" + latitud
+				+ ", longitud=" + longitud + ", portalId=" + portalId + ", streetAddress=" + streetAddress
+				+ ", postalCode=" + postalCode + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
+				+ ", barrioId=" + barrioId + ", barrioTitle=" + barrioTitle + ", distritoId=" + distritoId
+				+ ", distritoTitle=" + distritoTitle + "]";
 	}
 
 	public Map<String,String> prefixes()
@@ -431,6 +636,7 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		prefixes.put(Context.SF, Context.SF_URI);
 		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
 		prefixes.put(Context.SOSA, Context.SOSA_URI);
+		prefixes.put(Context.ESADM, Context.ESADM_URI);
 		
 		return prefixes;
 	}
@@ -463,6 +669,9 @@ public class TraficoDispositivoMedicion  implements java.io.Serializable, GeoMod
 		
 		return result;
 	}
+
+
+	
 	
 
 

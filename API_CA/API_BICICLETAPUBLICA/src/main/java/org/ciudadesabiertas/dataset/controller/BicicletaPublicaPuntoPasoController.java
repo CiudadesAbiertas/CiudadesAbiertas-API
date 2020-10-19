@@ -252,8 +252,10 @@ public class BicicletaPublicaPuntoPasoController extends GenericController imple
 		
 		RSQLVisitor<CriteriaQuery<BicicletaPublicaPuntoPaso>, EntityManager> visitor = new JpaCriteriaQueryVisitor<BicicletaPublicaPuntoPaso>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new BicicletaPublicaPuntoPaso(), new BicicletaPublicaPuntoPasoResult(), 
-					 availableFields, getKey(), visitor,service);
+		ResponseEntity<BicicletaPublicaPuntoPaso> list = list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new BicicletaPublicaPuntoPaso(), new BicicletaPublicaPuntoPasoResult(), 
+				 availableFields, getKey(), visitor,service);
+		
+		return (ResponseEntity<BicicletaPublicaPuntoPaso>) integraCallejero(list, request);
 	}
 
 
@@ -281,7 +283,6 @@ public class BicicletaPublicaPuntoPasoController extends GenericController imple
 
 		log.info("[listHead][" + LIST + "]");		
 		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, headersRequest);
-
 	}
 	
 	@SuppressWarnings({ "unchecked" })
@@ -377,8 +378,10 @@ public class BicicletaPublicaPuntoPasoController extends GenericController imple
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
-				
-		return record(request, id, new BicicletaPublicaPuntoPaso(),new BicicletaPublicaPuntoPasoResult(), srId, nameController, RECORD, service,getKey());
+		
+		ResponseEntity<BicicletaPublicaPuntoPaso> record = record(request, id, new BicicletaPublicaPuntoPaso(),new BicicletaPublicaPuntoPasoResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		
+		return (ResponseEntity<BicicletaPublicaPuntoPaso>) integraCallejero(record, request);
 
 	}
 	

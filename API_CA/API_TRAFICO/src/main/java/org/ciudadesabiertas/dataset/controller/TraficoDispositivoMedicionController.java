@@ -271,8 +271,10 @@ public class TraficoDispositivoMedicionController extends GenericController impl
 		
 		RSQLVisitor<CriteriaQuery<TraficoDispositivoMedicion>, EntityManager> visitor = new JpaCriteriaQueryVisitor<TraficoDispositivoMedicion>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new TraficoDispositivoMedicion(), new TraficoDispositivoMedicionResult(), 
+		ResponseEntity<TraficoDispositivoMedicion> list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new TraficoDispositivoMedicion(), new TraficoDispositivoMedicionResult(), 
 					 availableFields, getKey(), visitor,service);
+		
+		return (ResponseEntity<TraficoDispositivoMedicion>) integraCallejero(list, request);
 	}
 
 
@@ -401,8 +403,9 @@ public class TraficoDispositivoMedicionController extends GenericController impl
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new TraficoDispositivoMedicion(),new TraficoDispositivoMedicionResult(), srId, nameController, RECORD, service,getKey());
+		ResponseEntity<TraficoDispositivoMedicion> record= record(request, id, new TraficoDispositivoMedicion(),new TraficoDispositivoMedicionResult(), srId, nameController, RECORD, service,getKey());
 
+		return (ResponseEntity<TraficoDispositivoMedicion>) integraCallejero(record, request);
 	}
 	
 	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })

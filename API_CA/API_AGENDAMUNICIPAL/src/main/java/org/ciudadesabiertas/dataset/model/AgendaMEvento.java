@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.ICallejero;
+import org.ciudadesabiertas.model.IEquipamiento;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -69,7 +70,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESAGM, propiedad = "Evento")
 @PathId(value="/agenda-municipal/evento")
-public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero {
+public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero, IEquipamiento {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 4694265619899971301L;
@@ -222,7 +223,7 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="barrio", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")	
-	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId",capitalize=true, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Nombre del barrio del evento. Ejemplo: 28006011")
@@ -234,7 +235,7 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@CsvBindByPosition(position=22)
 	@CsvBindByName(column="distrito", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")	
-	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId",capitalize=true, urifyLevel = 1)
+	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)
 	private String distritoId;
 	
 	@ApiModelProperty(value = "Nombre del distrito del evento. Ejemplo: Unico")

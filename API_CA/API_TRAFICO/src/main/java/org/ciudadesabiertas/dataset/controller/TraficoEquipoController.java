@@ -104,13 +104,13 @@ public class TraficoEquipoController extends GenericController implements Ciudad
 	
 	//Carga por defecto de las peticiones
 	static {
-		listRequestType.add(new RequestType("TraficoDispositivo_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("TraficoDispositivo_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("TraficoDispositivo_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
 		
-		listRequestType.add(new RequestType("TraficoDispositivo_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("TraficoDispositivo_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("TraficoDispositivo_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("TraficoEquipo_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
 		
 	}
 	

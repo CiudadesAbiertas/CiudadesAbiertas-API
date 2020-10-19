@@ -200,3 +200,9 @@ API_CA/API_PRESUPUESTO/src/test/resources/config.properties
 API_CA/API_TRAFICO/src/test/resources/config.properties
 API_CA/API_CONTRATOS/target/
 
+API_CA/API_CONTAMINACIONACUSTICA/.classpath
+API_CA/API_CONTAMINACIONACUSTICA/.gitignore
+API_CA/API_CONTAMINACIONACUSTICA/.project
+API_CA/API_CONTAMINACIONACUSTICA/.settings/
+API_CA/API_CONTAMINACIONACUSTICA/src/test/resources/logback.xml
+API_CA/API_CONTAMINACIONACUSTICA/src/test/resources/config.properties

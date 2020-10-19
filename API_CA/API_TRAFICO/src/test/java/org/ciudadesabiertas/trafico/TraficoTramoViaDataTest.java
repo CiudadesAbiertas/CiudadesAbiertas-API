@@ -136,8 +136,20 @@ public class TraficoTramoViaDataTest
 	}
 	
 
-	
+	@Test
+	public void test_Busqueda_municipio() throws Exception
+	{
 
+		String [] paramField= {"municipioId","municipioTitle"};
+
+		String [] value = {"28079","Madrid"};
+		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		
+		assertTrue(records.size() == 3);
+	}
+
+	
 	
 	
 	

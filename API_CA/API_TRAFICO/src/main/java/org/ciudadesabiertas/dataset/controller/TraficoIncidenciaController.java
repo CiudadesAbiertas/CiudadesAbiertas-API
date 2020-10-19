@@ -271,8 +271,10 @@ public class TraficoIncidenciaController extends GenericController implements Ci
 		
 		RSQLVisitor<CriteriaQuery<TraficoIncidencia>, EntityManager> visitor = new JpaCriteriaQueryVisitor<TraficoIncidencia>();
 		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new TraficoIncidencia(), new TraficoIncidenciaResult(), 
+		ResponseEntity<TraficoIncidencia> list= list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new TraficoIncidencia(), new TraficoIncidenciaResult(), 
 					 availableFields, getKey(), visitor,service);
+		
+		return (ResponseEntity<TraficoIncidencia>) integraCallejero(list, request);
 	}
 
 
@@ -401,8 +403,9 @@ public class TraficoIncidenciaController extends GenericController implements Ci
 
 		log.debug("[parmam][id:" + id + "]");
 				
-		return record(request, id, new TraficoIncidencia(),new TraficoIncidenciaResult(), srId, nameController, RECORD, service,getKey());
+		ResponseEntity<TraficoIncidencia> record= record(request, id, new TraficoIncidencia(),new TraficoIncidenciaResult(), srId, nameController, RECORD, service,getKey());
 
+		return (ResponseEntity<TraficoIncidencia>) integraCallejero(record, request);
 	}
 	
 	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })

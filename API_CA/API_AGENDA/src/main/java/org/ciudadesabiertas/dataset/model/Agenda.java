@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
+import org.ciudadesabiertas.model.IEquipamiento;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -70,7 +71,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESAGENDA, propiedad = "Evento")
 @PathId(value="/agenda-cultural/evento")
-public class Agenda implements java.io.Serializable,RDFModel {
+public class Agenda implements java.io.Serializable,RDFModel, IEquipamiento {
 	
 
 	@JsonIgnore

@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -72,7 +73,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @RdfMultiple({@Rdf(contexto = Context.ESBICI, propiedad = "EstacionBicicleta"),@Rdf(contexto = Context.ESEQUIP, propiedad = "Equipamiento")})
 @PathId(value="/bicicleta-publica/estacion")
-public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel, RDFModel {
+public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
@@ -176,6 +177,42 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
+	@ApiModelProperty(value = "Identificador del municipio de la estación. Ejemplo: 28006")
+	@CsvBindByPosition(position = 7)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
+	private String municipioId;
+
+	@ApiModelProperty(value = "Nombre del municipio de la estación. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position = 8)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
+
+	@ApiModelProperty(value = "Identificador del barrio de la estación. Ejemplo: 28006011")
+	@CsvBindByPosition(position = 9)
+	@CsvBindByName(column = "barrio", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
+	@RdfExternalURI(inicioURI = "/territorio/barrio/", finURI = "barrioId", urifyLevel = 1)
+	private String barrioId;
+
+	@ApiModelProperty(value = "Nombre del barrio de la estación. Ejemplo: 28006011")
+	@CsvBindByPosition(position = 10)
+	@CsvBindByName(column = "barrioTitle", format = Constants.STRING_FORMAT)
+	private String barrioTitle;
+
+	@ApiModelProperty(value = "Identificador del distrito de la estación. Ejemplo: 2800601")
+	@CsvBindByPosition(position = 11)
+	@CsvBindByName(column = "distrito", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
+	@RdfExternalURI(inicioURI = "/territorio/distrito/", finURI = "distritoId", urifyLevel = 1)
+	private String distritoId;
+
+	@ApiModelProperty(value = "Nombre del distrito de la estación. Ejemplo: Unico")
+	@CsvBindByPosition(position = 12)
+	@CsvBindByName(column = "distritoTitle", format = Constants.STRING_FORMAT)
+	private String distritoTitle;
+	
 	private Double distance;
 
 	public BicicletaPublicaEstacion()
@@ -199,6 +236,12 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 		this.observesTitle = copia.observesTitle;
 		this.x = copia.x;
 		this.y = copia.y;
+		this.municipioId = copia.municipioId;
+		this.municipioTitle = copia.municipioTitle;
+		this.barrioId = copia.barrioId;
+		this.barrioTitle = copia.barrioTitle;
+		this.distritoId = copia.distritoId;
+		this.distritoTitle = copia.distritoTitle;
 	}
 
 	
@@ -248,6 +291,24 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 		}
 		if (attributesToSet.contains("y")) {
 			this.y = copia.y;
+		}
+		if (attributesToSet.contains("municipioId")) {
+			this.municipioId = copia.municipioId;
+		}
+		if (attributesToSet.contains("municipioTitle")) {
+			this.municipioTitle = copia.municipioTitle;
+		}
+		if (attributesToSet.contains("barrioId")) {
+			this.barrioId = copia.barrioId;
+		}
+		if (attributesToSet.contains("barrioTitle")) {
+			this.barrioTitle = copia.barrioTitle;
+		}
+		if (attributesToSet.contains("distritoId")) {
+			this.distritoId = copia.distritoId;
+		}
+		if (attributesToSet.contains("distritoTitle")) {
+			this.distritoTitle = copia.distritoTitle;
 		}
 		
 		
@@ -429,6 +490,60 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 		this.longitud = longitud;
 	}
 	
+	@Column(name = "municipio_id", length = 50)
+	public String getMunicipioId() {
+		return this.municipioId;
+	}
+
+	public void setMunicipioId(String municipioId) {
+		this.municipioId = municipioId;
+	}
+
+	@Column(name = "municipio_title", length = 200)
+	public String getMunicipioTitle() {
+		return this.municipioTitle;
+	}
+
+	public void setMunicipioTitle(String municipioTitle) {
+		this.municipioTitle = municipioTitle;
+	}
+
+	@Column(name = "distrito_id", length = 50)
+	public String getDistritoId() {
+		return this.distritoId;
+	}
+
+	public void setDistritoId(String distritoId) {
+		this.distritoId = distritoId;
+	}
+
+	@Column(name = "distrito_title", length = 200)
+	public String getDistritoTitle() {
+		return this.distritoTitle;
+	}
+
+	public void setDistritoTitle(String distritoTitle) {
+		this.distritoTitle = distritoTitle;
+	}
+	
+	@Column(name = "barrio_title", length = 400)
+	public String getBarrioTitle() {
+		return this.barrioTitle;
+	}
+
+	public void setBarrioTitle(String barrioTitle) {
+		this.barrioTitle = barrioTitle;
+	}
+	
+	@Column(name = "barrio_id", length = 50)
+	public String getBarrioId() {
+		return this.barrioId;
+	}
+
+	public void setBarrioId(String barrioId) {
+		this.barrioId = barrioId;
+	}
+	
 	@Transient
 	public void setDistance(Double distance) {
 		this.distance = distance;
@@ -459,6 +574,8 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 		prefixes.put(Context.TIME, Context.TIME_URI);
 		prefixes.put(Context.GEO, Context.GEO_URI);
 		prefixes.put(Context.GEOCORE, Context.GEOCORE_URI);
+		prefixes.put(Context.ESADM, Context.ESADM_URI);
+		prefixes.put(Context.SOSA, Context.SOSA_URI);
 		
 		return prefixes;
 	}

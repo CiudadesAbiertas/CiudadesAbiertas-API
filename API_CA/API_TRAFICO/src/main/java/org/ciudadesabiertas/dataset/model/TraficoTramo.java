@@ -32,7 +32,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
-import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
+import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.GeoModel;
 import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.model.RDFModel;
@@ -82,20 +82,20 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
-	@ApiModelProperty(value = "Una descripción del recurso dentro de un contexto dado. Ejemplo: Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia")
+	@ApiModelProperty(value = "Una descripción del tramo. Ejemplo: Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;
 	
-	@ApiModelProperty(value = "Coordenada X del equipo de tráfico. Ejemplo: 440124.33000")
+	@ApiModelProperty(value = "Coordenada X del tramo. Ejemplo: 440124.33000")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="xETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
 	private BigDecimal x;	
 	
-	@ApiModelProperty(value = "Coordenada Y del equipo de tráfico. Ejemplo: 4474637.17000")
+	@ApiModelProperty(value = "Coordenada Y del tramo. Ejemplo: 4474637.17000")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="yETRS89")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
@@ -118,14 +118,14 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"inicioTramo", nodoId="inicioTramo")
 	private BigDecimal longitud;
 	
-	@ApiModelProperty(value = "Coordenada xETRS89Fin del equipo de tráfico. Ejemplo: 440124.43000")
+	@ApiModelProperty(value = "Coordenada xETRS89Fin del tramo. Ejemplo: 440124.43000")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="xETRS89Fin")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "xETRS89",typeURI=Context.XSD_URI+"double")
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.ESTRAF_URI+"finTramo", nodoId="finTramo")
 	private BigDecimal finX;	
 	
-	@ApiModelProperty(value = "Coordenada yETRS89Fin del equipo de tráfico. Ejemplo: 4474637.27000")
+	@ApiModelProperty(value = "Coordenada yETRS89Fin del tramo. Ejemplo: 4474637.27000")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="yETRS89Fin")
 	@Rdf(contexto = Context.GEOCORE, propiedad = "yETRS89",typeURI=Context.XSD_URI+"double")
@@ -180,8 +180,20 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 	@RdfBlankNode(tipo=Context.SF_URI+"Point", propiedad=Context.GEOSPARQL_URI+"hasGeometry", nodoId="hasGeometry")
 	private BigDecimal ubicacionLongitud;
 	
-	private Double distance;
+	@ApiModelProperty(value = "Identificador del municipio del tramo. Ejemplo: 28006")
+	@CsvBindByPosition(position = 15)
+	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
+	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
+	private String municipioId;
+
+	@ApiModelProperty(value = "Nombre del municipio del tramo. Ejemplo: Alcobendas")
+	@CsvBindByPosition(position = 16)
+	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
+	private String municipioTitle;
 	
+	private Double distance;
+		
 
 	public TraficoTramo()
 	{
@@ -206,6 +218,10 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 		this.ubicacionY = copia.y;
 		this.ubicacionLatitud = copia.latitud;
 		this.ubicacionLongitud = copia.longitud;
+		
+		  this.municipioId = copia.municipioId;
+		  this.municipioTitle = copia.municipioTitle;
+		  		 
 	}
 
 	public TraficoTramo(TraficoTramo copia, List<String> attributesToSet)
@@ -233,6 +249,19 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 		if (attributesToSet.contains("yETRS89Fin")) {
 			this.finY = copia.finY;
 		}
+		
+		
+		
+		if (attributesToSet.contains("municipioId")) {
+			this.municipioId = copia.municipioId;
+		}
+		
+		if (attributesToSet.contains("municipioTitle")) {
+			this.municipioTitle = copia.municipioTitle;
+		}	
+		
+		
+		
 		
 	}
 
@@ -413,15 +442,39 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
+	
+	
+
+	@Column(name = "municipio_id", length = 50)
+	public String getMunicipioId() {
+		return this.municipioId;
+	}
+
+	public void setMunicipioId(String municipioId) {
+		this.municipioId = municipioId;
+	}
+
+	@Column(name = "municipio_title", length = 200)
+	public String getMunicipioTitle() {
+		return this.municipioTitle;
+	}
+
+	public void setMunicipioTitle(String municipioTitle) {
+		this.municipioTitle = municipioTitle;
+	}
+
+	
 
 	@Override
 	public String toString() {
-		return "TraficoTramo [ikey=" + ikey + ", id=" + id + ", description=" + description + ", x=" + x + ", y=" + y
-				+ ", latitud=" + latitud + ", longitud=" + longitud + ", finX=" + finX + ", finY=" + finY
-				+ ", finLatitud=" + finLatitud + ", finLongitud=" + finLongitud + ", ubicacionX=" + ubicacionX
-				+ ", ubicacionY=" + ubicacionY + ", ubicacionLatitud=" + ubicacionLatitud + ", ubicacionLongitud="
-				+ ubicacionLongitud + ", distance=" + distance + "]";
+		return "TraficoTramo [id=" + id + ", description=" + description + ", x=" + x + ", y=" + y + ", latitud="
+				+ latitud + ", longitud=" + longitud + ", finX=" + finX + ", finY=" + finY + ", finLatitud="
+				+ finLatitud + ", finLongitud=" + finLongitud + ", ubicacionX=" + ubicacionX + ", ubicacionY="
+				+ ubicacionY + ", ubicacionLatitud=" + ubicacionLatitud + ", ubicacionLongitud=" + ubicacionLongitud
+				+ ", distance=" + distance + ", municipioId=" + municipioId + ", municipioTitle=" + municipioTitle
+				+ "]";
 	}
+
 
 	public Map<String,String> prefixes()
 	{
@@ -434,7 +487,9 @@ public class TraficoTramo  implements java.io.Serializable, GeoModel, ITrafico, 
 		prefixes.put(Context.GEOSPARQL, Context.GEOSPARQL_URI);	
 		prefixes.put(Context.SF, Context.SF_URI);
 		prefixes.put(Context.ESTRAF, Context.ESTRAF_URI);
-		
+		prefixes.put(Context.ESADM, Context.ESADM_URI);
+		prefixes.put(Context.ESCJR, Context.ESCJR_URI);
+	
 		return prefixes;
 	}
 

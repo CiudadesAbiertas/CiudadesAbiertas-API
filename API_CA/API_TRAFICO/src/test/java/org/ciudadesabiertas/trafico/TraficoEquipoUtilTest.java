@@ -51,7 +51,9 @@ public class TraficoEquipoUtilTest
 			+ "   \"tipoEquipoTrafico\": \"radar\",\r\n"
 			+ "   \"monitorea\": \"TRAFTRAM01\",\r\n"
 			+ "   \"xETRS89\": 440124.33000,\r\n"
-			+ "   \"yETRS89\": 4474637.17000\r\n"
+			+ "   \"yETRS89\": 4474637.17000,\r\n"
+			+ "   \"municipioId\": 28079,\r\n"  
+			+ "   \"municipioTitle\": \"Madrid\"\r\n"  
 			+ "    }";
 
 	@Test

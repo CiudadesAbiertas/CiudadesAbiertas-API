@@ -196,6 +196,19 @@ public class TraficoEquipoDataTest
 	}
 	
 	@Test
+	public void test_Busqueda_municipio() throws Exception
+	{
+
+		String [] paramField= {"municipioId","municipioTitle"};
+
+		String [] value = {"28006","Alcobendas"};
+		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		
+		assertTrue(records.size() == 2);
+	}
+	
+	@Test
 	public void test_Head_MD5() throws Exception
 	{
 

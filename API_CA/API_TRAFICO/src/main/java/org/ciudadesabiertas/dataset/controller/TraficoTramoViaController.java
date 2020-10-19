@@ -494,8 +494,8 @@ public class TraficoTramoViaController extends GenericController implements Ciud
 				if (Util.isCallejeroViaIntegration()) {
 					for (TraficoTramoVia traficoTramoVia : records) {
 						if ( Util.validValue(traficoTramoVia.getIdVia() )) {
-							traficoTramoVia.setStreetAddress(null);
-							traficoTramoVia.setMunicipioTitle(null);
+							traficoTramoVia.setTitleVia(null);
+							traficoTramoVia.setTipoVia(null);
 						}
 					}
 				} else {
