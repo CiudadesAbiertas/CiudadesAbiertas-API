@@ -317,6 +317,70 @@
 	<changeSet author="Localidata" id="fk-cont_acustica-3">
         <addForeignKeyConstraint baseColumnNames="observed_property" baseTableName="cont_acus_observacion" constraintName="cont_acustica_ibfk_3" referencedColumnNames="id" referencedTableName="cont_acus_propiedad"/>
     </changeSet>
-
+	
+	<!-- FK AUTOBUS -->
+	<changeSet author="Localidata" id="fk-bus-1">
+        <addForeignKeyConstraint baseColumnNames="specifying" baseTableName="bus_daytypeassignment" constraintName="bus_daytypassi_ibfk_1" referencedColumnNames="id" referencedTableName="bus_daytype"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-2">
+        <addForeignKeyConstraint baseColumnNames="for_the_definition_of" baseTableName="bus_daytypeassignment" constraintName="bus_daytypeassi_ibfk_2" referencedColumnNames="id" referencedTableName="bus_servicecalendar"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-3">
+        <addForeignKeyConstraint baseColumnNames="determined_by" baseTableName="bus_headwayjourneygroup" constraintName="bus_headjourgrou_ibfk_1" referencedColumnNames="id" referencedTableName="bus_headwayinterval"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-4">
+        <addForeignKeyConstraint baseColumnNames="on_id" baseTableName="bus_journeypattern" constraintName="bus_jourpatt_ibfk_1" referencedColumnNames="id" referencedTableName="bus_route"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-5">
+        <addForeignKeyConstraint baseColumnNames="generado_por_incidencia" baseTableName="bus_journeypattern" constraintName="bus_jourpatt_ibfk_2" referencedColumnNames="id" referencedTableName="bus_incidencia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-6">
+        <addForeignKeyConstraint baseColumnNames="operating" baseTableName="bus_linea" constraintName="bus_linea_ibfk_1" referencedColumnNames="id" referencedTableName="bus_operator"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-7">
+        <addForeignKeyConstraint baseColumnNames="cabecera_linea" baseTableName="bus_linea" constraintName="bus_linea_ibfk_2" referencedColumnNames="id" referencedTableName="bus_parada"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-8">
+        <addForeignKeyConstraint baseColumnNames="final_linea" baseTableName="bus_linea" constraintName="bus_linea_ibfk_3" referencedColumnNames="id" referencedTableName="bus_parada"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-9">
+        <addForeignKeyConstraint baseColumnNames="in_id" baseTableName="bus_pointonroute" constraintName="bus_poinonrout_ibfk_1" referencedColumnNames="id" referencedTableName="bus_route"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-10">
+        <addForeignKeyConstraint baseColumnNames="functional_centroid_for" baseTableName="bus_pointonroute" constraintName="bus_poinonrout_ibfk_2" referencedColumnNames="id" referencedTableName="bus_parada"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-11">
+        <addForeignKeyConstraint baseColumnNames="has_feature_of_interest" baseTableName="bus_realtime_passing_time" constraintName="bus_realpasstime_ibfk_1" referencedColumnNames="id" referencedTableName="bus_stoppointinjourneypattern"/>
+    </changeSet>
+	<changeSet author="Localidata" id="fk-bus-12">
+        <addForeignKeyConstraint baseColumnNames="linea" baseTableName="bus_rel_linea_incidencia" constraintName="bus_rel_line_inci_ibfk_1" referencedColumnNames="id" referencedTableName="bus_linea"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-13">
+        <addForeignKeyConstraint baseColumnNames="afectada_incidencia" baseTableName="bus_rel_linea_incidencia" constraintName="bus_rel_line_inci_ibfk_2" referencedColumnNames="id" referencedTableName="bus_incidencia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-14">
+        <addForeignKeyConstraint baseColumnNames="on_id" baseTableName="bus_route" constraintName="bus_route_ibfk_1" referencedColumnNames="id" referencedTableName="bus_linea"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-15">
+        <addForeignKeyConstraint baseColumnNames="in_id" baseTableName="bus_stoppointinjourneypattern" constraintName="bus_stoppoinjourpatt_ibfk_1" referencedColumnNames="id" referencedTableName="bus_journeypattern"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-16">
+        <addForeignKeyConstraint baseColumnNames="functional_centroid_for" baseTableName="bus_scheduled_stop_point" constraintName="bus_stoppoinjourpatt_ibfk_2" referencedColumnNames="id" referencedTableName="bus_parada"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-17">
+        <addForeignKeyConstraint baseColumnNames="made_using" baseTableName="bus_vehiclejourney" constraintName="bus_vehijour_ibfk_1" referencedColumnNames="id" referencedTableName="bus_journeypattern"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-18">
+        <addForeignKeyConstraint baseColumnNames="worked_on" baseTableName="bus_vehiclejourney" constraintName="bus_vehijour_ibfk_2" referencedColumnNames="id" referencedTableName="bus_daytype"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-19">
+        <addForeignKeyConstraint baseColumnNames="composed_of" baseTableName="bus_vehiclejourney" constraintName="bus_vehijour_ibfk_3" referencedColumnNames="id" referencedTableName="bus_headwayjourneygroup"/>
+    </changeSet>
+    <changeSet author="Localidata" id="fk-bus-20">
+        <addForeignKeyConstraint baseColumnNames="serving_pt_for" baseTableName="bus_operator" constraintName="bus_ope_ibfk_1" referencedColumnNames="id" referencedTableName="bus_authority"/>
+    </changeSet>
+	  <changeSet author="Localidata" id="fk-bus-21">
+        <addForeignKeyConstraint baseColumnNames="viewed_as" baseTableName="bus_stoppointinjourneypattern" constraintName="bus_route_p_ibfk_1" referencedColumnNames="id" referencedTableName="bus_scheduled_stop_point"/>
+    </changeSet>
 	
 </databaseChangeLog>

@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="table-bus_auth">
+        <createTable tableName="bus_authority">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telephone" type="VARCHAR(200)"/>
+            <column name="email" type="VARCHAR(200)"/>
+            <column name="url" type="VARCHAR(400)"/>           
+            <column name="legal_name" type="VARCHAR(200)"/>
+            <column name="alternate_name" type="VARCHAR(200)"/>
+			
+			<column name="portal_id" type="VARCHAR(50)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>			
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+			
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_authority"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_daytype">
+        <createTable tableName="bus_daytype">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="short_name" type="VARCHAR(200)"/>
+            <column name="earliest_time" type="VARCHAR(8)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_daytype"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_daytypeassi">
+        <createTable tableName="bus_daytypeassignment">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_assignment" type="datetime"/>
+            <column name="is_available" type="BIT(1)"/>
+            <column name="specifying" type="VARCHAR(50)"/>
+            <column name="for_the_definition_of" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_daytypeassignment"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_headinte">
+        <createTable tableName="bus_headwayinterval">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="minimum_headway_interval" type="VARCHAR(50)"/>
+            <column name="maximum_headway_interval" type="VARCHAR(50)"/>
+            <column name="scheduled_headway_interval" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_headwayinterval"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_headjourgrou">
+        <createTable tableName="bus_headwayjourneygroup">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_departure_time" type="VARCHAR(8)"/>
+            <column name="last_departure_time" type="VARCHAR(8)"/>
+            <column name="determined_by" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_headwayjourneygroup"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_inci">
+        <createTable tableName="bus_incidencia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="tipo_incidencia" type="VARCHAR(50)"/>
+            <column name="date_posted" type="datetime"/>
+            <column name="num_sentidos" type="INT"/>
+            <column name="num_carriles" type="INT"/>
+            <column name="es_recurrente" type="BIT(1)"/>
+            <column name="fecha_fin_prevista" type="datetime"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="incidencia_tramo_id" type="VARCHAR(50)"/>
+            <column name="incidencia_tramo_description" type="VARCHAR(4000)"/>
+			
+			<column name="portal_id" type="VARCHAR(50)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>			
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_incidencia"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_jourpatt">
+        <createTable tableName="bus_journeypattern">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="distance" type="DOUBLE"/>
+            <column name="on_id" type="VARCHAR(50)"/>
+            <column name="generado_por_incidencia" type="VARCHAR(50)"/>
+            <column name="front_text" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_journeypattern"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_linea">
+        <createTable tableName="bus_linea">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="short_name" type="VARCHAR(200)"/>
+            <column name="cabecera_linea" type="VARCHAR(50)"/>
+            <column name="final_linea" type="VARCHAR(50)"/>
+            <column name="distance" type="DECIMAL(12, 2)"/>
+            <column name="operating" type="VARCHAR(50)"/>
+            <column name="colour" type="VARCHAR(200)"/>
+            <column name="text_colour" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_linea"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_oper">
+        <createTable tableName="bus_operator">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="serving_pt_for" type="VARCHAR(50)"/>
+            <column name="telephone" type="VARCHAR(200)"/>
+            <column name="email" type="VARCHAR(200)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            
+            <column name="legal_name" type="VARCHAR(200)"/>
+            <column name="alternate_name" type="VARCHAR(200)"/>
+			
+			<column name="portal_id" type="VARCHAR(50)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>	
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_operator"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_parada">
+        <createTable tableName="bus_parada">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="url" type="VARCHAR(400)"/>
+            <column name="wifi" type="BIT(1)"/>
+            <column name="panel_electronico" type="BIT(1)"/>
+            <column name="zona" type="VARCHAR(10)"/>
+            <column name="x_etrs89" type="DECIMAL(13, 5)"/>
+            <column name="y_etrs89" type="DECIMAL(13, 5)"/>
+			
+            <column name="portal_id" type="VARCHAR(50)"/>
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(400)"/>
+			<column name="barrio_id" type="VARCHAR(50)"/>
+            <column name="barrio_title" type="VARCHAR(400)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_parada"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_poinonrout">
+        <createTable tableName="bus_pointonroute">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_point" type="INT"/>
+            <column name="distance_from_start" type="DECIMAL(12, 2)"/>
+            <column name="in_id" type="VARCHAR(50)"/>
+            <column name="functional_centroid_for" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_pointonroute"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_realtimepass">
+        <createTable tableName="bus_realtime_passing_time">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="result_time" type="datetime"/>
+            <column name="expected_arrival_time" type="VARCHAR(50)"/>
+            <column name="has_feature_of_interest" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_realtime_passing_time"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_rel_line_inci">
+        <createTable tableName="bus_rel_linea_incidencia">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="linea" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="afectada_incidencia" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_rel_linea_incidencia"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_route">
+        <createTable tableName="bus_route">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="direction_type" type="VARCHAR(200)"/>
+            <column name="on_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_route"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_servcale">
+        <createTable tableName="bus_servicecalendar">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="description" type="VARCHAR(4000)"/>
+            <column name="short_name" type="VARCHAR(200)"/>
+            <column name="from_day" type="datetime"/>
+            <column name="to_day" type="datetime"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_servicecalendar"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_stoppoinjourpatt">
+        <createTable tableName="bus_stoppointinjourneypattern">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_stop" type="INT"/>
+            <column name="stop_use" type="VARCHAR(200)"/>
+            <column name="in_id" type="VARCHAR(50)"/>
+            <column name="viewed_as" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_stoppointinjourneypattern"/>            
+       </rollback>
+    </changeSet>
+	    <changeSet author="Localidata" id="table-bus_schestoppoin">
+        <createTable tableName="bus_scheduled_stop_point">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>           
+            <column name="functional_centroid_for" type="VARCHAR(50)"/>
+            <column name="alighting" type="BIT(1)"/>
+            <column name="boarding" type="BIT(1)"/>
+            <column name="title_stop_area" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_scheduled_stop_point"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-bus_vehijour">
+        <createTable tableName="bus_vehiclejourney">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="journey_duration" type="VARCHAR(50)"/>
+            <column name="departure_time" type="VARCHAR(8)"/>
+            <column name="made_using" type="VARCHAR(50)"/>
+            <column name="worked_on" type="VARCHAR(50)"/>
+            <column name="composed_of" type="VARCHAR(50)"/>
+            <column name="direction_type" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="bus_vehiclejourney"/>            
+       </rollback>
+    </changeSet>
+	
+	
+	
+	<!-- PRIMARY KEY -->
+    <changeSet author="Localidata" id="PK_table-01">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_auth" tableName="bus_authority"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-02">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_daytype" tableName="bus_daytype"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-03">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_daytypassi" tableName="bus_daytypeassignment"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-04">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_headinte" tableName="bus_headwayinterval"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-05">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_headjourgrou" tableName="bus_headwayjourneygroup"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-06">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_incidencia" tableName="bus_incidencia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-07">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_jourpatt" tableName="bus_journeypattern"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-08">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_linea" tableName="bus_linea"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-09">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_operator" tableName="bus_operator"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-10">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_parada" tableName="bus_parada"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-11">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_poinonrout" tableName="bus_pointonroute"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-12">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_realtimepasstime" tableName="bus_realtime_passing_time"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-13">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_rel_line_inci" tableName="bus_rel_linea_incidencia"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-14">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_route" tableName="bus_route"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-15">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_servcale" tableName="bus_servicecalendar"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-16">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_stoppoininjourpatt" tableName="bus_stoppointinjourneypattern"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK_table-17">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_vehijour" tableName="bus_vehiclejourney"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK_table-18">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_bus_schestop_point" tableName="bus_scheduled_stop_point"/>
+    </changeSet>
+	
+	<!-- UNIQUE -->
+	<changeSet author="Localidata" id="unique-id-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_authority" tableName="bus_authority"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_operator" tableName="bus_operator"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_linea" tableName="bus_linea"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_rel_line_inci" tableName="bus_rel_linea_incidencia"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_route" tableName="bus_route"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-06">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_incidencia" tableName="bus_incidencia"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-07">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_poinonrout" tableName="bus_pointonroute"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-08">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_jourpatt" tableName="bus_journeypattern"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-09">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_stopoiinjoupat" tableName="bus_stoppointinjourneypattern"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-10">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_parada" tableName="bus_parada"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-11">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_vehijour" tableName="bus_vehiclejourney"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-12">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_realpasstime" tableName="bus_realtime_passing_time"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-13">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_headjourgroup" tableName="bus_headwayjourneygroup"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-14">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_headinte" tableName="bus_headwayinterval"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-15">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_servicale" tableName="bus_servicecalendar"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-16">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_daytypeassi" tableName="bus_daytypeassignment"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-17">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_daytype" tableName="bus_daytype"/>
+    </changeSet>
+	<changeSet author="Localidata" id="unique-id-18">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-bus_schestoppoin" tableName="bus_scheduled_stop_point"/>
+    </changeSet>	
+	
+
+	<!-- INDEX -->
+    <changeSet author="Localidata" id="INDEX-bus-1">
+        <createIndex indexName="index_bus_afectada_incidencia" tableName="bus_rel_linea_incidencia">
+            <column name="afectada_incidencia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-2">
+        <createIndex indexName="index_bus_cabecera_linea" tableName="bus_linea">
+            <column name="cabecera_linea"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-3">
+        <createIndex indexName="index_bus_composed_of" tableName="bus_vehiclejourney">
+            <column name="composed_of"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-4">
+        <createIndex indexName="index_bus_determined_by" tableName="bus_headwayjourneygroup">
+            <column name="determined_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-5">
+        <createIndex indexName="index_bus_final_linea" tableName="bus_linea">
+            <column name="final_linea"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-6">
+        <createIndex indexName="index_bus_for_the_defi_of" tableName="bus_daytypeassignment">
+            <column name="for_the_definition_of"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-7">
+        <createIndex indexName="index_bus_func_cent_for_1" tableName="bus_pointonroute">
+            <column name="functional_centroid_for"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-9">
+        <createIndex indexName="index_bus_gene_por_inci" tableName="bus_journeypattern">
+            <column name="generado_por_incidencia"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-10">
+        <createIndex indexName="index_bus_has_feat_of_inte" tableName="bus_realtime_passing_time">
+            <column name="has_feature_of_interest"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-12">
+        <createIndex indexName="index_bus_in_1" tableName="bus_pointonroute">
+            <column name="in_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-13">
+        <createIndex indexName="index_bus_in_2" tableName="bus_stoppointinjourneypattern">
+            <column name="in_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-14">
+        <createIndex indexName="index_bus_made_using" tableName="bus_vehiclejourney">
+            <column name="made_using"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-15">
+        <createIndex indexName="index_bus_on_1" tableName="bus_journeypattern">
+            <column name="on_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-16">
+        <createIndex indexName="index_bus_on_id_2" tableName="bus_route">
+            <column name="on_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-17">
+        <createIndex indexName="index_bus_operating" tableName="bus_linea">
+            <column name="operating"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-18">
+        <createIndex indexName="index_bus_serving_pt_for" tableName="bus_operator">
+            <column name="serving_pt_for"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-19">
+        <createIndex indexName="index_bus_specifying" tableName="bus_daytypeassignment">
+            <column name="specifying"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="INDEX-bus-20">
+        <createIndex indexName="index_bus_worked_on" tableName="bus_vehiclejourney">
+            <column name="worked_on"/>
+        </createIndex>
+    </changeSet>
+	 <changeSet author="Localidata" id="INDEX-bus-21">
+        <createIndex indexName="index_bus_centroid_route" tableName="bus_scheduled_stop_point">
+            <column name="functional_centroid_for"/>
+        </createIndex>
+    </changeSet>
+	 <changeSet author="Localidata" id="INDEX-bus-22">
+        <createIndex indexName="index_bus_journew_viewed" tableName="bus_stoppointinjourneypattern">
+            <column name="viewed_as"/>
+        </createIndex>
+    </changeSet>
+	
+	
+	
+	
+</databaseChangeLog>

@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Localidata" id="data-autobus_authority">
+        <insert tableName="bus_authority">
+            <column name="ikey" value="BUSAUTH01"/>
+            <column name="id" value="crtm"/>
+            <column name="telephone" value="+34 91 406 88 10"/>
+            <column name="email" value="info@crtm.es"/>
+            <column name="url" value="https://www.crtm.es"/>
+            <column name="legal_name" value="Consorcio de transportes de Madrid"/>
+            <column name="alternate_name" value="CRTM"/>
+			<column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_authority" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_daytype">
+        <insert tableName="bus_daytype">
+            <column name="ikey" value="BUSDAYTYP01"/>
+            <column name="id" value="laborable"/>
+            <column name="title" value="Día laborable"/>
+            <column name="description" value="Horario general para el servicio de EMT en día laborable."/>
+            <column name="short_name" value="Laborables"/>
+            <column name="earliest_time" value="05:30:00"/>
+        </insert>
+        <insert tableName="bus_daytype">
+            <column name="ikey" value="BUSDAYTYP02"/>
+            <column name="id" value="festivo"/>
+            <column name="title" value="Día festivo"/>
+            <column name="description" value="Horario general para el servicio de EMT en día festivo."/>
+            <column name="short_name" value="Festivos"/>
+            <column name="earliest_time" value="06:30:00"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_daytype" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_daytypeassignment">
+        <insert tableName="bus_daytypeassignment">
+            <column name="ikey" value="BUSDAYASS01"/>
+            <column name="id" value="2020-01-02-CAL01-laborable"/>
+            <column name="date_assignment" valueDate="2020-01-02 00:00:00.0"/>
+            <column name="is_available" valueBoolean="true"/>
+            <column name="specifying" value="laborable"/>
+            <column name="for_the_definition_of" value="2020"/>
+        </insert>
+        <insert tableName="bus_daytypeassignment">
+            <column name="ikey" value="BUSDAYASS02"/>
+            <column name="id" value="2020-02-02-CAL01-laborable"/>
+            <column name="date_assignment" valueDate="2020-02-02 00:00:00.0"/>
+            <column name="is_available" valueBoolean="true"/>
+            <column name="specifying" value="laborable"/>
+            <column name="for_the_definition_of" value="2020"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_daytypeassignment" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_headwayinterval">
+        <insert tableName="bus_headwayinterval">
+            <column name="ikey" value="BUSHEAINT01"/>
+            <column name="id" value="6-laborable"/>
+            <column name="minimum_headway_interval" value="P7M"/>
+            <column name="maximum_headway_interval" value="P20M"/>
+            <column name="scheduled_headway_interval" value="Cada 7 - 20 min."/>
+        </insert>
+        <insert tableName="bus_headwayinterval">
+            <column name="ikey" value="BUSHEAINT02"/>
+            <column name="id" value="66-laborable"/>
+            <column name="minimum_headway_interval" value="P5M"/>
+            <column name="maximum_headway_interval" value="P15M"/>
+            <column name="scheduled_headway_interval" value="Cada 5 - 15 min."/>
+        </insert>
+        <insert tableName="bus_headwayinterval">
+            <column name="ikey" value="BUSHEAINT03"/>
+            <column name="id" value="138-laborable"/>
+            <column name="minimum_headway_interval" value="P10M"/>
+            <column name="maximum_headway_interval" value="P30M"/>
+            <column name="scheduled_headway_interval" value="Cada 10 - 30 min."/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_headwayinterval" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_headwayjourneygroup">
+        <insert tableName="bus_headwayjourneygroup">
+            <column name="ikey" value="BUSHEAJOU01"/>
+            <column name="id" value="6a1-laborable"/>
+            <column name="first_departure_time" value="06:15:00"/>
+            <column name="last_departure_time" value="23:30:00"/>
+            <column name="determined_by" value="6-laborable"/>
+        </insert>
+        <insert tableName="bus_headwayjourneygroup">
+            <column name="ikey" value="BUSHEAJOU02"/>
+            <column name="id" value="66a1-laborable"/>
+            <column name="first_departure_time" value="06:15:00"/>
+            <column name="last_departure_time" value="23:30:00"/>
+            <column name="determined_by" value="66-laborable"/>
+        </insert>
+        <insert tableName="bus_headwayjourneygroup">
+            <column name="ikey" value="BUSHEAJOU03"/>
+            <column name="id" value="138a1-laborable"/>
+            <column name="first_departure_time" value="06:15:00"/>
+            <column name="last_departure_time" value="23:30:00"/>
+            <column name="determined_by" value="138-laborable"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_headwayjourneygroup" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_incidencia">
+        <insert tableName="bus_incidencia">
+            <column name="ikey" value="29059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSINC01"/>
+            <column name="description" value="Corte de calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+            <column name="tipo_incidencia" value="obras"/>
+            <column name="date_posted" valueDate="2020-03-31 08:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-05-03 23:59:00.0"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="incidencia_tramo_id" value="TRAFTRAM01"/>
+            <column name="incidencia_tramo_description" value="Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+			<column name="street_address" value="Calle Pruebas, 4"/>
+            <column name="postal_code" value="28006"/>
+			<column name="portal_id" value="PORTAL000119"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+		</insert>
+        <insert tableName="bus_incidencia">
+            <column name="ikey" value="30059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSINC02"/>
+            <column name="description" value="Corte de calles entre Gran Vía y la Plaza de Callao"/>
+            <column name="tipo_incidencia" value="obras"/>
+            <column name="date_posted" valueDate="2020-04-30 08:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="4"/>
+            <column name="num_carriles" valueNumeric="6"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-06-03 23:59:00.0"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="incidencia_tramo_id" value="TRAFTRAM01"/>
+            <column name="incidencia_tramo_description" value="Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+			<column name="street_address" value="Calle Pruebas, 64"/>
+            <column name="postal_code" value="28006"/>
+			<column name="portal_id" value="PORTAL000117"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+		</insert>
+        <insert tableName="bus_incidencia">
+            <column name="ikey" value="18059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSINC03"/>
+            <column name="description" value="Corte de calles entre el cruce de Alcalá y  la Plaza de Sol"/>
+            <column name="tipo_incidencia" value="obras"/>
+            <column name="date_posted" valueDate="2020-02-28 08:00:00.0"/>
+            <column name="num_sentidos" valueNumeric="2"/>
+            <column name="num_carriles" valueNumeric="8"/>
+            <column name="es_recurrente" valueBoolean="false"/>
+            <column name="fecha_fin_prevista" valueDate="2020-07-03 23:59:00.0"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="incidencia_tramo_id" value="TRAFTRAM01"/>
+            <column name="incidencia_tramo_description" value="Calles entre el cruce de Alcalá con Gran Vía y la Plaza de la Independencia"/>
+			<column name="street_address" value="Calle Pruebas, xx"/>
+            <column name="postal_code" value="28006"/>
+			<column name="portal_id" value="PORTAL000121"/>
+			<column name="municipio_id" value="28006"/>
+            <column name="municipio_title" value="Alcobendas"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28006011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2800601"/>
+		</insert>
+		<rollback>
+			  <delete tableName="bus_incidencia" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_journeypattern">
+        <insert tableName="bus_journeypattern">
+            <column name="ikey" value="BUSJOUPAT01"/>
+            <column name="id" value="6a2"/>
+            <column name="title" value="6a2"/>
+            <column name="distance" valueNumeric="11.19"/>
+            <column name="on_id" value="6a"/>
+            <column name="generado_por_incidencia" value="BUSINC01"/>
+            <column name="front_text" value="Benavente"/>
+        </insert>
+        <insert tableName="bus_journeypattern">
+            <column name="ikey" value="BUSJOUPAT02"/>
+            <column name="id" value="66a2"/>
+            <column name="title" value="66a2"/>
+            <column name="distance" valueNumeric="12.14"/>
+            <column name="on_id" value="66a"/>
+            <column name="generado_por_incidencia" value="BUSINC02"/>
+            <column name="front_text" value="Cuatro Caminos"/>
+        </insert>
+        <insert tableName="bus_journeypattern">
+            <column name="ikey" value="BUSJOUPAT03"/>
+            <column name="id" value="138a2"/>
+            <column name="title" value="138a2"/>
+            <column name="distance" valueNumeric="14.94"/>
+            <column name="on_id" value="138a"/>
+            <column name="generado_por_incidencia" value="BUSINC03"/>
+            <column name="front_text" value="San Ignacio de Loyola"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_journeypattern" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_linea">
+        <insert tableName="bus_linea">
+            <column name="ikey" value="BUSLIN01"/>
+            <column name="id" value="6"/>
+            <column name="description" value="La línea 6 de la EMT de Madrid une la plaza de Jacinto Benavente con el barrio de Orcasitas, en el distrito de Usera."/>
+            <column name="title" value="Línea 6"/>
+            <column name="url" value="https://www.emtmadrid.es/Bloques-EMT/EMT-BUS/Mi-linea-(1).aspx?linea=6&amp;lang=es-ES"/>
+            <column name="short_name" value="6"/>
+            <column name="cabecera_linea" value="1918"/>
+            <column name="final_linea" value="5359"/>
+            <column name="distance" valueNumeric="51"/>
+            <column name="operating" value="emt"/>
+            <column name="colour" value="Azul"/>
+            <column name="text_colour" value="Negro"/>
+        </insert>
+        <insert tableName="bus_linea">
+            <column name="ikey" value="BUSLIN02"/>
+            <column name="id" value="138"/>
+            <column name="description" value="La línea 138 de la EMT de Madrid une el Hospital Clínico San Carlos con la Colonia San Ignacio de Loyola, atravesando el eje Valmojado-Sepúlveda-Caramuel y el intercambiador de Aluche."/>
+            <column name="title" value="Línea 138"/>
+            <column name="url" value="https://www.emtmadrid.es/Bloques-EMT/EMT-BUS/Mi-linea-(1).aspx?linea=138&amp;lang=es-ES"/>
+            <column name="short_name" value="138"/>
+            <column name="cabecera_linea" value="4608"/>
+            <column name="final_linea" value="5481"/>
+            <column name="distance" valueNumeric="58.34"/>
+            <column name="operating" value="emt"/>
+            <column name="colour" value="Azul"/>
+            <column name="text_colour" value="Negro"/>
+        </insert>
+        <insert tableName="bus_linea">
+            <column name="ikey" value="BUSLIN03"/>
+            <column name="id" value="66"/>
+            <column name="description" value="La línea 66 de la EMT de Madrid une la Glorieta de Cuatro Caminos con Fuencarral."/>
+            <column name="title" value="Línea 66"/>
+            <column name="url" value="https://www.emtmadrid.es/Bloques-EMT/EMT-BUS/Mi-linea-(1).aspx?linea=66&amp;lang=es-ES"/>
+            <column name="short_name" value="66"/>
+            <column name="cabecera_linea" value="3219"/>
+            <column name="final_linea" value="5105"/>
+            <column name="distance" valueNumeric="44.4"/>
+            <column name="operating" value="emt"/>
+            <column name="colour" value="Azul"/>
+            <column name="text_colour" value="Negro"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_linea" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_operator">
+        <insert tableName="bus_operator">
+            <column name="ikey" value="BUSOPE01"/>
+            <column name="id" value="emt"/>
+            <column name="serving_pt_for" value="crtm"/>
+            <column name="telephone" value="+34 91 406 88 10"/>
+            <column name="email" value="info@emt.es"/>
+            <column name="url" value="https://www.emtmadrid.es/AtencionAlCliente/Agradecimientos"/>            
+            <column name="legal_name" value="Empresa Municipal de Transportes"/>
+            <column name="alternate_name" value="EMT"/>			
+			<column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_operator" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_parada">
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR1"/>
+            <column name="id" value="3219"/>
+            <column name="description" value="Cuatro Caminos"/>
+            <column name="title" value="Cuatro Caminos"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28079"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2"/>
+            <column name="id" value="1918"/>
+            <column name="description" value="Benavente"/>
+            <column name="title" value="Benavente"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR3"/>
+            <column name="id" value="5359"/>
+            <column name="description" value="Orcasitas"/>
+            <column name="title" value="Orcasitas"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4"/>
+            <column name="id" value="4608"/>
+            <column name="description" value="Cristo Rey"/>
+            <column name="title" value="Cristo Rey"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR5"/>
+            <column name="id" value="5481"/>
+            <column name="description" value="San Ignacio"/>
+            <column name="title" value="San Ignacio"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR6"/>
+            <column name="id" value="5105"/>
+            <column name="description" value="Fuencarral"/>
+            <column name="title" value="Fuencarral"/>
+            <column name="url" value="https://emtmadrid.es/paradas/"/>
+            <column name="wifi" valueBoolean="false"/>
+            <column name="panel_electronico" valueBoolean="true"/>
+            <column name="zona" value="A"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+            <column name="portal_id" value="PORTAL000010"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+			<column name="municipio_id" value="28079"/>
+            <column name="municipio_title" value="Madrid"/>
+			<column name="barrio_title" value="Norte"/>
+			<column name="barrio_id" value="28079011"/>
+            <column name="distrito_title" value="Unico"/>
+			<column name="distrito_id" value="2807901"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_parada" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_pointonroute">
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIROU01"/>
+            <column name="id" value="6a-1918"/>
+            <column name="order_point" valueNumeric="1"/>
+            <column name="distance_from_start" valueNumeric="0.0"/>
+            <column name="in_id" value="6a"/>
+            <column name="functional_centroid_for" value="1918"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIROU02"/>
+            <column name="id" value="66a-3219"/>
+            <column name="order_point" valueNumeric="1"/>
+            <column name="distance_from_start" valueNumeric="0.0"/>
+            <column name="in_id" value="66a"/>
+            <column name="functional_centroid_for" value="3219"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIROU03"/>
+            <column name="id" value="138a-4608"/>
+            <column name="order_point" valueNumeric="1"/>
+            <column name="distance_from_start" valueNumeric="0.0"/>
+            <column name="in_id" value="138a"/>
+            <column name="functional_centroid_for" value="4608"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_pointonroute" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_realtimepassingtime">
+        <insert tableName="bus_realtime_passing_time">
+            <column name="ikey" value="BUSREATIM01"/>
+            <column name="id" value="6a2-1918"/>
+            <column name="result_time" valueDate="2020-05-13 12:45:05.0"/>
+            <column name="expected_arrival_time" value="PT15M"/>
+            <column name="has_feature_of_interest" value="6a2-1918"/>
+        </insert>
+        <insert tableName="bus_realtime_passing_time">
+            <column name="ikey" value="BUSREATIM02"/>
+            <column name="id" value="66a2-3219"/>
+            <column name="result_time" valueDate="2020-05-13 12:35:05.0"/>
+            <column name="expected_arrival_time" value="PT10M"/>
+            <column name="has_feature_of_interest" value="66a2-3219"/>
+        </insert>
+        <insert tableName="bus_realtime_passing_time">
+            <column name="ikey" value="BUSREATIM03"/>
+            <column name="id" value="138a2-4608"/>
+            <column name="result_time" valueDate="2020-05-13 12:25:05.0"/>
+            <column name="expected_arrival_time" value="PT20M"/>
+            <column name="has_feature_of_interest" value="138a2-4608"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_realtime_passing_time" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_rel_linea_incidencia">
+        <insert tableName="bus_rel_linea_incidencia">
+            <column name="ikey" value="18059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSRELLININC01"/>
+			<column name="linea" value="6"/>
+            <column name="afectada_incidencia" value="BUSINC01"/>
+        </insert>
+        <insert tableName="bus_rel_linea_incidencia">
+            <column name="ikey" value="29059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSRELLININC02"/>
+			<column name="linea" value="66"/>
+            <column name="afectada_incidencia" value="BUSINC02"/>
+        </insert>
+        <insert tableName="bus_rel_linea_incidencia">
+            <column name="ikey" value="30059944-382A-49AA-A068-B55BF2FAC51F"/>
+            <column name="id" value="BUSRELLININC03"/>
+			<column name="linea" value="138"/>
+            <column name="afectada_incidencia" value="BUSINC03"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_rel_linea_incidencia" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_route">
+        <insert tableName="bus_route">
+            <column name="ikey" value="BUSROU01"/>
+            <column name="id" value="6a"/>
+            <column name="description" value="Línea 6, comienzo en plaza de Jacinto Benavente y final en Orcasitas"/>
+            <column name="direction_type" value="outbound"/>
+            <column name="on_id" value="6"/>
+        </insert>
+        <insert tableName="bus_route">
+            <column name="ikey" value="BUSROU02"/>
+            <column name="id" value="66a"/>
+            <column name="description" value="Línea 6, comienzo en Glorieta de Cuatro Caminos y final en Fuencarral"/>
+            <column name="direction_type" value="outbound"/>
+            <column name="on_id" value="66"/>
+        </insert>
+        <insert tableName="bus_route">
+            <column name="ikey" value="BUSROU03"/>
+            <column name="id" value="138a"/>
+            <column name="description" value="Línea 138, comienzo en Cristo Rey y final en San Ignacio de Loyola"/>
+            <column name="direction_type" value="outbound"/>
+            <column name="on_id" value="138"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_route" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_servicecalendar">
+        <insert tableName="bus_servicecalendar">
+            <column name="ikey" value="BUSSERCAL01"/>
+            <column name="id" value="2020"/>
+            <column name="title" value="Calendario de servicio de la EMT Madrid para 2020"/>
+            <column name="description" value="Calendario de servicio de la EMT Madrid para 2020"/>
+            <column name="short_name" value="Calendario Servicio EMT Madrid 2020"/>
+            <column name="from_day" valueDate="2020-01-01 00:00:00.0"/>
+            <column name="to_day" valueDate="2020-12-31 00:00:00.0"/>
+        </insert>
+        <insert tableName="bus_servicecalendar">
+            <column name="ikey" value="BUSSERCAL02"/>
+            <column name="id" value="2021"/>
+            <column name="title" value="Calendario de servicio de la EMT Madrid para 2021"/>
+            <column name="description" value="Calendario de servicio de la EMT Madrid para 2021"/>
+            <column name="short_name" value="Calendario Servicio EMT Madrid 2021"/>
+            <column name="from_day" valueDate="2021-01-01 00:00:00.0"/>
+            <column name="to_day" valueDate="2021-12-31 00:00:00.0"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_servicecalendar" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_stoppointinjourneypattern">
+        <insert tableName="bus_stoppointinjourneypattern">
+            <column name="ikey" value="BUSSTOPOI01"/>
+            <column name="id" value="6a2-1918"/>
+            <column name="order_stop" valueNumeric="1"/>
+            <column name="stop_use" value="pass-through"/>
+            <column name="in_id" value="6a2"/>
+			<column name="viewed_as" value="138a1-4608"/>			
+        </insert>
+        <insert tableName="bus_stoppointinjourneypattern">
+            <column name="ikey" value="BUSSTOPOI02"/>
+            <column name="id" value="66a2-3219"/>
+            <column name="order_stop" valueNumeric="1"/>
+            <column name="stop_use" value="pass-through"/>
+            <column name="in_id" value="66a2"/>
+			<column name="viewed_as" value="138a1-4618"/>	
+        </insert>
+        <insert tableName="bus_stoppointinjourneypattern">
+            <column name="ikey" value="BUSSTOPOI03"/>
+            <column name="id" value="138a2-4608"/>
+            <column name="order_stop" valueNumeric="1"/>
+            <column name="stop_use" value="pass-through"/>
+            <column name="in_id" value="138a2"/>
+			<column name="viewed_as" value="138a1-4628"/>				
+        </insert>
+		<rollback>
+			  <delete tableName="bus_stoppointinjourneypattern" />
+		</rollback>
+    </changeSet>
+	<changeSet author="Localidata" id="data-autobus_routePoint">
+        <insert tableName="bus_scheduled_stop_point">
+            <column name="ikey" value="RPOINT01"/>
+            <column name="id" value="138a1-4608"/>
+            <column name="functional_centroid_for" value="1918"/>
+            <column name="alighting" valueBoolean="true"/>
+            <column name="boarding" valueBoolean="false"/>
+            <column name="title_stop_area" value="Benavente"/>
+        </insert>
+        <insert tableName="bus_scheduled_stop_point">
+            <column name="ikey" value="RPOINT02"/>
+            <column name="id" value="138a1-4618"/>
+            <column name="functional_centroid_for" value="3219"/>
+            <column name="alighting" valueBoolean="true"/>
+            <column name="boarding" valueBoolean="false"/>
+            <column name="title_stop_area" value="Cuatro Caminos"/>
+        </insert>
+        <insert tableName="bus_scheduled_stop_point">
+            <column name="ikey" value="RPOINT03"/>
+            <column name="id" value="138a1-4628"/>
+            <column name="functional_centroid_for" value="4608"/>
+            <column name="alighting" valueBoolean="true"/>
+            <column name="boarding" valueBoolean="false"/>
+            <column name="title_stop_area" value="Cristo Rey"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_scheduled_stop_point" />
+		</rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="data-autobus_vehiclejourney">
+        <insert tableName="bus_vehiclejourney">
+            <column name="ikey" value="BUSVEHJOU01"/>
+            <column name="id" value="6a1"/>
+            <column name="journey_duration" value="P1D"/>
+            <column name="departure_time" value="09:00:00"/>
+            <column name="made_using" value="6a2"/>
+            <column name="worked_on" value="laborable"/>
+            <column name="composed_of" value="6a1-laborable"/>
+            <column name="direction_type" value="outbound"/>
+        </insert>
+        <insert tableName="bus_vehiclejourney">
+            <column name="ikey" value="BUSVEHJOU02"/>
+            <column name="id" value="66a1"/>
+            <column name="journey_duration" value="P1D"/>
+            <column name="departure_time" value="09:00:00"/>
+            <column name="made_using" value="66a2"/>
+            <column name="worked_on" value="laborable"/>
+            <column name="composed_of" value="66a1-laborable"/>
+            <column name="direction_type" value="outbound"/>
+        </insert>
+        <insert tableName="bus_vehiclejourney">
+            <column name="ikey" value="BUSVEHJOU03"/>
+            <column name="id" value="138a1"/>
+            <column name="journey_duration" value="P1D"/>
+            <column name="departure_time" value="09:00:00"/>
+            <column name="made_using" value="138a2"/>
+            <column name="worked_on" value="laborable"/>
+            <column name="composed_of" value="138a1-laborable"/>
+            <column name="direction_type" value="outbound"/>
+        </insert>
+		<rollback>
+			  <delete tableName="bus_vehiclejourney" />
+		</rollback>
+    </changeSet>
+	
+	<changeSet id="DATA-AUTOBUS-tag-1.26" author="Localidata">
+    	<tagDatabase tag="1.26" />
+  	</changeSet>
+</databaseChangeLog>
