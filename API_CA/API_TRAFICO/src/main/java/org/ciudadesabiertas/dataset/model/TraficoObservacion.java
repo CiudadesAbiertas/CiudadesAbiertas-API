@@ -45,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -90,6 +91,7 @@ public class TraficoObservacion  implements java.io.Serializable, RDFModel {
 	@ApiModelProperty(value = "Esta propiedad establece la fecha/hora de la observación. Ejemplo: 2020-04-01 12:45:00")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="resultTime")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "resultTime" ,typeURI=Context.XSD_URI+"dateTime")
 	private Date resultTime;	
 	

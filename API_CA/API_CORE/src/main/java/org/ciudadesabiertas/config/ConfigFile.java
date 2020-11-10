@@ -20,6 +20,7 @@ import org.ciudadesabiertas.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 
 /**
@@ -29,7 +30,11 @@ import org.springframework.core.env.Environment;
  *
  */
 @Configuration
-@PropertySource("classpath:"+Constants.CONFIG_PROPERTIES)
+
+@PropertySources({
+  @PropertySource("classpath:"+Constants.CONFIG_PROPERTIES),
+  @PropertySource(value="classpath:"+Constants.BUILD_NUMBER_PROPERTIES , ignoreResourceNotFound=true)
+})
 public class ConfigFile {
 	
 	@Autowired

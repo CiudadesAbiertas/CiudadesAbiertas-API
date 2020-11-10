@@ -90,22 +90,22 @@ public class DatasetDao<T>
 		if (key==null || "".equals(key)) {
 			key = Util.extractKeyFromModelClass(type);
 		}
-
+		Session opennedSession = null;
 		try
 		{
 			List<Criterion> criterios = new ArrayList<Criterion>();
 			Criteria criteria = null;
-			Session opennedSession = null;
+			
 
 			if (multipleSessionFactory.getKeys().contains(key))
 			{
 				log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
-				criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key));
+				criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key),key);
 				opennedSession = multipleSessionFactory.getFactories().get(key).openSession();
 				criteria = opennedSession.createCriteria(type);
 			} else
 			{
-				criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER));
+				criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER),key);
 				criteria = sessionFactory.getCurrentSession().createCriteria(type);
 			}
 
@@ -159,16 +159,18 @@ public class DatasetDao<T>
 				}
 
 				result = criteria.list();
-				if (opennedSession != null)
-				{
-					opennedSession.close();
-				}
+				
 			}
 		} catch (Exception e)
 		{
 			String msg = "executeSelect(query) [Hibernate Exception]:" + e.getMessage();
 			log.error(msg, e);
 			throw new DAOException(Constants.INTERNAL_ERROR);
+		}finally {
+			if (opennedSession != null)
+			{
+				opennedSession.close();
+			}
 		}
 		return result;
 	}
@@ -393,10 +395,10 @@ public class DatasetDao<T>
 		{
 			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
 			opennedSession = multipleSessionFactory.getFactories().get(key).openSession();
-			criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key));
+			criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key),key);
 			criteria = opennedSession.createCriteria(type);
 		}else {
-			criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER));
+			criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER),key);
 			criteria = sessionFactory.getCurrentSession().createCriteria(type);			
 		}
 		
@@ -418,16 +420,18 @@ public class DatasetDao<T>
 			}
 			
 			
-			if (opennedSession!=null)
-			{
-				opennedSession.close();
-			}
+			
 		}
 		catch (Exception e)
 		{
 			String msg="Row count error";
 			log.error(msg,e);
 			throw new DAOException(msg);
+		}finally {
+			if (opennedSession!=null)
+			{
+				opennedSession.close();
+			}
 		}
 		
 		return rowCount.longValue();
@@ -530,7 +534,7 @@ public class DatasetDao<T>
 			if (multipleSessionFactory.getKeys().contains(key))
 			{
 				log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
-				criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key));
+				criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key),key);
 				//Los criterios geograficos aquí no se utilizan para buscar, son el punto inicial de la búsqueda
 				eliminaCriteriosGeograficos(criterios);
 				
@@ -542,7 +546,7 @@ public class DatasetDao<T>
 			} 
 			else
 			{
-				criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER));
+				criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER),key);
 				//Los criterios geograficos aquí no se utilizan para buscar, son el punto inicial de la búsqueda
 				eliminaCriteriosGeograficos(criterios);				
 				
@@ -716,7 +720,7 @@ public class DatasetDao<T>
 		{
 			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
 			opennedSession = multipleSessionFactory.getFactories().get(key).openSession();			
-			criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key));	
+			criterios = search.obtenerCriterios(multipleDataSource.getDrivers().get(key),key);	
 			//Los criterios geograficos aquí no se utilizan para buscar, son el punto inicial de la búsqueda
 			eliminaCriteriosGeograficos(criterios);			
 			
@@ -724,7 +728,7 @@ public class DatasetDao<T>
 			String geoSQL=search.obtenerCondicionGeografica( xColumnName, yColumnName, meters);
 			criteria.add(Restrictions.sqlRestriction(geoSQL));
 		}else {
-			criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER));		
+			criterios = search.obtenerCriterios(env.getProperty(Constants.DB_DRIVER),key);		
 			//Los criterios geograficos aquí no se utilizan para buscar, son el punto inicial de la búsqueda
 			eliminaCriteriosGeograficos(criterios);
 			

@@ -156,24 +156,38 @@ public class CubeQuerySearch {
 		}else {
 			String whereClause="";
 			String dimensionClause="";
+			String groupByClause="";
 			
 			if (dimension.size()==1)
 			{
 				dimensionClause=dimension.get(0);
+				groupByClause=dimension.get(0);
+				if (dimensionClause.toLowerCase().contains("as"))
+			  	{
+				  groupByClause=dimensionClause.substring(0, dimensionClause.toLowerCase().indexOf("as")).trim();
+			  	}
 			}
 			else
 			{
 				for (String dim:dimension)
 				{
+				  	String groupByDim=dim;
+				  	if (dim.toLowerCase().contains("as"))
+				  	{
+				  	  groupByDim=dim.substring(0, dim.toLowerCase().indexOf("as")).trim();
+				  	}
 					dimensionClause+=dim+",";
+					groupByClause+=groupByDim+",";
 				}
 				dimensionClause=StringUtils.chop(dimensionClause);
+				groupByClause=StringUtils.chop(groupByClause);
 			}
 			if (Util.validValue(where))
 			{
 				whereClause="where "+where+" ";
 			}
-			result="select "+dimensionClause+" , "+group+" ("+measure+") "+"from "+tabla+" "+whereClause+" group by  "+dimensionClause ;
+			
+			result="select "+dimensionClause+" , "+group+" ("+measure+")  as "+group+" from "+tabla+" "+whereClause+" group by  "+groupByClause ;
 		}
 		return result;
 	}

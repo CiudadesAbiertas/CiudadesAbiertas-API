@@ -130,14 +130,14 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 	
 	@CsvBindByPosition(position=8)
 	@CsvBindByName (column = "fechaAlta")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	//@RdfMultiple({@Rdf(contexto = Context.ESAGM, propiedad = "startDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaInicio",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.ESEQUIP, propiedad = "fechaAlta",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaAlta;
 	
 	@CsvBindByPosition(position=9)
 	@CsvBindByName (column = "fechaBaja")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	//@RdfMultiple({@Rdf(contexto = Context.ESAGM, propiedad = "endDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaFin",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "fechaBaja",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaBaja;
@@ -165,51 +165,51 @@ public class BicicletaPublicaEstacion  implements java.io.Serializable, GeoModel
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=5)
+	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=6)
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
 	@ApiModelProperty(value = "Identificador del municipio de la estación. Ejemplo: 28006")
-	@CsvBindByPosition(position = 7)
+	@CsvBindByPosition(position = 16)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId")
 	private String municipioId;
 
 	@ApiModelProperty(value = "Nombre del municipio de la estación. Ejemplo: Alcobendas")
-	@CsvBindByPosition(position = 8)
+	@CsvBindByPosition(position = 17)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
 	private String municipioTitle;
 
 	@ApiModelProperty(value = "Identificador del barrio de la estación. Ejemplo: 28006011")
-	@CsvBindByPosition(position = 9)
+	@CsvBindByPosition(position = 18)
 	@CsvBindByName(column = "barrio", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
 	@RdfExternalURI(inicioURI = "/territorio/barrio/", finURI = "barrioId", urifyLevel = 1)
 	private String barrioId;
 
 	@ApiModelProperty(value = "Nombre del barrio de la estación. Ejemplo: 28006011")
-	@CsvBindByPosition(position = 10)
+	@CsvBindByPosition(position = 19)
 	@CsvBindByName(column = "barrioTitle", format = Constants.STRING_FORMAT)
 	private String barrioTitle;
 
 	@ApiModelProperty(value = "Identificador del distrito de la estación. Ejemplo: 2800601")
-	@CsvBindByPosition(position = 11)
+	@CsvBindByPosition(position = 20)
 	@CsvBindByName(column = "distrito", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
 	@RdfExternalURI(inicioURI = "/territorio/distrito/", finURI = "distritoId", urifyLevel = 1)
 	private String distritoId;
 
 	@ApiModelProperty(value = "Nombre del distrito de la estación. Ejemplo: Unico")
-	@CsvBindByPosition(position = 12)
+	@CsvBindByPosition(position = 21)
 	@CsvBindByName(column = "distritoTitle", format = Constants.STRING_FORMAT)
 	private String distritoTitle;
 	

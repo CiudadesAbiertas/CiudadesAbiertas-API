@@ -75,7 +75,7 @@ public class Award implements java.io.Serializable,  RDFModel {
 	@ApiModelProperty(value = "Fecha de adjudicación. Ejemplo: 2018-12-26 00:00:00.0")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName (column = "awardDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.OCDS, propiedad = "awardDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date awardDate;
 	

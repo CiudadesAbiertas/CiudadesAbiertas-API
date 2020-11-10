@@ -19,7 +19,7 @@
 
 <Context path="/">
 
-<!--
+<!--  ORACLE
    <Resource name="jdbc/agenda"
    	   factory="org.ciudadesabiertas.factory.tomcat.EncryptedDataSourceFactory"
        auth="Container"
@@ -63,5 +63,95 @@
 	   testOnReturn="false"
 	/>
 	
+	-->
+	
+	<!--  SQLSERVER 	
+   <Resource name="jdbc/agenda"
+   	   factory="org.ciudadesabiertas.factory.tomcat.EncryptedDataSourceFactory"
+       auth="Container"
+	   type="javax.sql.DataSource"
+	   driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+       url="jdbc:sqlserver://localhost:1433;databaseName=bbdd_ciudadesAbiertas;schema=schema_ciudadesAbiertas;"
+	   username="login_ciudadesAbiertas"
+	   password="Primera1"
+	   initialSize="5"
+	   maxActive="10"
+	   minIdle="0"
+	   maxIdle="5"
+	   maxWait="30000"
+	   validationQuery="Select 1"
+	   testWhileIdle="true"
+	   timeBetweenEvictionRunsMillis="60000"
+	   numTestsPerEvictionRun="5"
+	   minEvictableIdleTimeMillis="90000"
+	   testOnBorrow="false"
+	   testOnReturn="false"
+	/>
+	
+	<Resource name="jdbc/subvencion"
+   	   factory="org.ciudadesabiertas.factory.tomcat.EncryptedDataSourceFactory"
+       auth="Container"
+	   type="javax.sql.DataSource"
+	   driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+       url="jdbc:sqlserver://localhost:1433;databaseName=bbdd_ciudadesAbiertas;schema=schema_ciudadesAbiertas;"
+	   username="login_ciudadesAbiertas"
+	   password="Primera1"
+	   initialSize="5"
+	   maxActive="10"
+	   minIdle="0"
+	   maxIdle="5"
+	   maxWait="30000"
+	   validationQuery="Select 1"
+	   testWhileIdle="true"
+	   timeBetweenEvictionRunsMillis="60000"
+	   numTestsPerEvictionRun="5"
+	   minEvictableIdleTimeMillis="90000"
+	   testOnBorrow="false"
+	   testOnReturn="false"
+	/>
+	
+	<Resource name="jdbc/equipamiento"
+   	   factory="org.ciudadesabiertas.factory.tomcat.EncryptedDataSourceFactory"
+       auth="Container"
+	   type="javax.sql.DataSource"
+	   driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+       url="jdbc:sqlserver://localhost:1433;databaseName=bbdd_ciudadesAbiertas;schema=schema_ciudadesAbiertas;"
+	   username="login_ciudadesAbiertas"
+	   password="Primera1"
+	   initialSize="5"
+	   maxActive="10"
+	   minIdle="0"
+	   maxIdle="5"
+	   maxWait="30000"
+	   validationQuery="Select 1"
+	   testWhileIdle="true"
+	   timeBetweenEvictionRunsMillis="60000"
+	   numTestsPerEvictionRun="5"
+	   minEvictableIdleTimeMillis="90000"
+	   testOnBorrow="false"
+	   testOnReturn="false"
+	/>
+	
+	<Resource name="jdbc/API_ALL"
+   	   factory="org.ciudadesabiertas.factory.tomcat.EncryptedDataSourceFactory"
+       auth="Container"
+	   type="javax.sql.DataSource"
+	   driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+       url="jdbc:sqlserver://localhost:1433;databaseName=bbdd_ciudadesAbiertas;schema=schema_ciudadesAbiertas;"
+	   username="login_ciudadesAbiertas"
+	   password="Primera1"
+	   initialSize="5"
+	   maxActive="10"
+	   minIdle="0"
+	   maxIdle="5"
+	   maxWait="30000"
+	   validationQuery="Select 1"
+	   testWhileIdle="true"
+	   timeBetweenEvictionRunsMillis="60000"
+	   numTestsPerEvictionRun="5"
+	   minEvictableIdleTimeMillis="90000"
+	   testOnBorrow="false"
+	   testOnReturn="false"
+	/>
 	-->
 </Context>

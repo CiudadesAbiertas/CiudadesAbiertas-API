@@ -53,6 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -152,7 +153,8 @@ public class Alojamiento implements java.io.Serializable, GeoModel, RDFModel, IC
   
 	@ApiModelProperty(value = "Fecha en que se modificó el recurso. Ejemplo: 2018-11-27T00:00:00")
 	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="modified", format=Constants.DATE_FORMAT)		
+	@CsvBindByName(column="modified")	
+	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "modified",typeURI=Context.XSD_URI+"date" )
 	private Date modified;	
 	

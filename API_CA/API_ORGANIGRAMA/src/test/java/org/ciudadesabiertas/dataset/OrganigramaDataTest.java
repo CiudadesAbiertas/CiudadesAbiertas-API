@@ -323,10 +323,10 @@ public class OrganigramaDataTest
 	@Test
 	public void test_Busqueda_municipio_x() throws Exception
 	{
-		String value = "676840.38";
+		String value = "675950.94205";
 		String paramField="xETRS89";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(total == 67);
+		assertTrue(total == 2);
 	}
 	
 	@Test
@@ -341,10 +341,10 @@ public class OrganigramaDataTest
 	@Test
 	public void test_Busqueda_municipio_y() throws Exception
 	{
-		String value = "4613965.90000";
+		String value = "4611562.71288";
 		String paramField="yETRS89";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(total == 67);
+		assertTrue(total == 4);
 	}
 	
 	@Test
@@ -527,27 +527,27 @@ public class OrganigramaDataTest
 	public void test_Busqueda_geo() throws Exception
 	{
 		String [] paramField= {"xETRS89","yETRS89","meters"};
-		String [] value = {"676954","4609994","5"};
+		String [] value = {"677755","4611562","5"};
 		long total = TestUtils.extractTotal(OrganigramaController.GEO_LIST,paramField, value, mockMvc);
-		assertTrue(total == 7);	
+		assertTrue(total == 4);	
 	}
 	
 	@Test
 	public void test_Busqueda_geo_sort() throws Exception
 	{
 		String [] paramField= {"xETRS89","yETRS89","meters","sort"};
-		String [] value = {"676954","4609994","5","id"};
+		String [] value = {"677755","4611562","5","id"};
 		long total = TestUtils.extractTotal(OrganigramaController.GEO_LIST,paramField, value, mockMvc);
-		assertTrue(total == 7);	
+		assertTrue(total == 4);	
 	}
 	
 	@Test
 	public void test_Busqueda_geo_fields() throws Exception
 	{
 		String [] paramField= {"xETRS89","yETRS89","meters","fields"};
-		String [] value = {"676954","4609994","5","id,title,distance"};
+		String [] value = {"677755","4611562","5","id,title,distance"};
 		long total = TestUtils.extractTotal(OrganigramaController.GEO_LIST,paramField, value, mockMvc);
-		assertTrue(total == 7);	
+		assertTrue(total == 4);	
 	}
 	
 	

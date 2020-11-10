@@ -114,21 +114,21 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 	@ApiModelProperty(value = "Fecha, que representa la fecha de apertura de las solicitudes enviadas. Ejemplo: 2018-01-01T01:30:45")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName (column = "openDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasOpenDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date openDate;
 	
 	@ApiModelProperty(value = "Fecha, que representa la fecha de cierre de las solicitudes enviadas. Ejemplo: 2020-03-11T10:57:02")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName (column = "closeDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasCloseDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date closeDate;
 	
 	@ApiModelProperty(value = "Fecha, que representa la fecha de cierre de las solicitudes enviadas. Ejemplo: 2020-03-11T10:57:02")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName (column = "updateDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "hasUpdateDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date updateDate;
 	
@@ -206,26 +206,26 @@ public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, 
 	private BigDecimal longitud;
 	
 	@ApiModelProperty(value = "Identificador del municipio de la solicitud de servicio. Ejemplo: 28079")
-	@CsvBindByPosition(position=18)
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@ApiModelProperty(value = "Nombre del municipio de la solicitud de servicio")
-	@CsvBindByPosition(position=19)
+	@CsvBindByPosition(position=21)
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)
 	private String municipioTitle;
 	
 	@ApiModelProperty(value = "Identificador del barrio de la solicitud de servicio. Ejemplo: 280796062")
-	@CsvBindByPosition(position=20)
+	@CsvBindByPosition(position=22)
 	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
 	@RdfExternalURI(inicioURI="/territorio/barrio/",finURI="barrioId", urifyLevel = 1)		
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Identificador del distrito de la solicitud de servicio. Ejemplo: 28079606")
-	@CsvBindByPosition(position=21)
+	@CsvBindByPosition(position=23)
 	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
 	@RdfExternalURI(inicioURI="/territorio/distrito/",finURI="distritoId", urifyLevel = 1)

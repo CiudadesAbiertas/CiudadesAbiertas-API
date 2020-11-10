@@ -98,14 +98,14 @@ public class ContAcusticaEstacionMedida  implements java.io.Serializable, GeoMod
 	@ApiModelProperty(value = "Fecha de Alta de la Estación de Medida. Ejemplo: 2020-03-31 08:00:00")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName (column = "fechaAlta")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.ESEQUIP, propiedad = "fechaAlta",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaAlta;
 	
 	@ApiModelProperty(value = "Fecha de Baja de la Estación de Medida. Ejemplo: 2020-07-30 09:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName (column = "fechaBaja")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.ESEQUIP, propiedad = "fechaBaja",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaBaja;
 	

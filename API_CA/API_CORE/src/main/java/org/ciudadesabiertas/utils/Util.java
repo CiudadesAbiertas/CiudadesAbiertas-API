@@ -33,6 +33,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,6 +84,8 @@ import com.google.gson.JsonParser;
  */
 public class Util
 {
+	public static AliasToLinkedEntityMapTransformer  transformadorCamposSqlOrdenados= new AliasToLinkedEntityMapTransformer();
+
 	private static final String ISOLATED = "isolated";
 
 	private static final Logger log = LoggerFactory.getLogger(Util.class);
@@ -89,6 +93,10 @@ public class Util
 	public static  SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(Constants.DATE_TIME_FORMAT);
 	
 	public static  SimpleDateFormat dateFormatter = new SimpleDateFormat(Constants.DATE_FORMAT);
+	
+	public static  SimpleDateFormat timeFormatter = new SimpleDateFormat(Constants.TIME_FORMAT);
+	
+	public static  SimpleDateFormat dateTimeFormatterWithoutT = new SimpleDateFormat(Constants.DATE_TIME_FORMAT_B);	
 
 	private static BasicTextEncryptor textEncryptor;
 	
@@ -103,6 +111,15 @@ public class Util
 	private static Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 
 	private static JSONParser JSONParser=new JSONParser();
+	
+	
+	public static String decimalFormatterCSV(Float value)
+	{
+	    DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+	    otherSymbols.setDecimalSeparator('.');		 
+	    DecimalFormat df = new DecimalFormat("#.00", otherSymbols);
+	    return df.format(value);
+	}
 
 	public static <T> ArrayList<String> extractPropertiesFromBean(Class<T> beanClass)
 	{	
@@ -410,7 +427,13 @@ public class Util
 			 {
 				 if (!value.equals(Constants.NO_PAGINATION+""))
 				 {
-					 info.setPageSize(Integer.parseInt(value));
+					 int pageSizeRequest=Integer.parseInt(value);
+					 if (pageSizeRequest>info.getPageSize()) {
+						 log.error("[getPageInfoFromURL] pageSizeRequest["+pageSizeRequest+"] != pageSize["+info.getPageSize()+"] Se ha superado el maximo permitido");
+					 }else {
+						 info.setPageSize(pageSizeRequest);
+					 }
+					 
 				 }
 			 }
 			 else if (entry.getKey().equals("page"))

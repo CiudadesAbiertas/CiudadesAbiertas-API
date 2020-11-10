@@ -39,7 +39,9 @@ public interface DatasetSearch<T>  {
 
 	static List<String> numbers=new ArrayList<String>(); 
 	
-	default List<Criterion> obtenerCriterios (String driver) {
+	
+	
+	default List<Criterion> obtenerCriterios (String driver, String key) {
 		
 		List<Criterion> condiciones = new ArrayList<Criterion>();
 		
@@ -67,7 +69,7 @@ public interface DatasetSearch<T>  {
 								valor = Util.decodeURL(valor);
 							}
 						}
-						Criterion c1 = new LikeNoAccents(obj.getFieldName(), valor.replace("*", "%"),Util.getDatabaseTypeFromDriver(driver));
+						Criterion c1 = new LikeNoAccents(obj.getFieldName(), valor.replace("*", "%"),Util.getDatabaseTypeFromDriver(driver), key);
 						condiciones.add(c1);
 					}else if (Constants.TYPE_CLASS_CLASS.equals(obj.getTypeName())) {
 						//No hacemos nada

@@ -79,14 +79,14 @@ public class Presupuesto  implements java.io.Serializable, RDFModel  {
 	
 	
 	@ApiModelProperty(value = "Ejercicio fiscal. Período de 12 meses entre el 1 de enero y 31 de diciembre.")
-	@CsvBindByPosition(position=3)
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="anioFiscal", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESPRESUP, propiedad = "anioFiscal", typeURI=Context.XSD_URI+"gYear")
 	private String anioFiscal;
 	
 	
 	@ApiModelProperty(value = "Identificador de la liquidación con la que se corresponde este presupuesto.")
-	@CsvBindByPosition(position=3)
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="liquidacion", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESPRESUP, propiedad = "liquidacion")
 	@RdfExternalURI(inicioURI="/presupuesto/liquidacion/",finURI="liquidacion", urifyLevel = 1)

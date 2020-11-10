@@ -31,6 +31,14 @@
   <packaging>war</packaging>
   <name>API_WEB</name>
   <url>http://maven.apache.org</url>
+  
+  
+   <scm>
+  		<connection>scm:git:ssh://localidata@github.com/CiudadesAbiertas/CiudadesAbiertas-API.git</connection>
+		<url>https://github.com/CiudadesAbiertas/CiudadesAbiertas-API</url>
+	</scm>
+  
+  
   <dependencies>
     
     <!--  Dependencia CORE  -->
@@ -244,7 +252,13 @@
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
 			  	
-			  			  	
+			  	<!-- Dependencia bus-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.bus</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
 			  	<dependency>
@@ -555,6 +569,17 @@
 			 </dependencies>
 		</profile>
 		
+		<profile>
+			<id>bus</id>
+			<dependencies>			
+			  	<dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.bus</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			 </dependencies>
+		</profile>
+		
 		
 		
 			
@@ -609,6 +634,59 @@
 	             </execution>
 	           </executions>
 	         </plugin>
+	         <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<format>{0,number}</format>
+					<items>
+						<item>buildNumber</item>
+					</items>
+					<addOutputDirectoryToResources>true</addOutputDirectoryToResources>	
+									
+					<attach>true</attach>
+				</configuration>
+			</plugin>
+			
+			
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-config</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/resources</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${basedir}</directory>
+									<includes>
+										<include>buildNumber.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+						
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
            	    <artifactId>maven-war-plugin</artifactId>
@@ -623,6 +701,14 @@
 			              <targetPath>META-INF</targetPath>
 			              <filtering>true</filtering>
 	           			 </webResource>
+	           			  <webResource>
+				              <directory>${basedir}</directory>
+				              <includes>
+				                <include>buildNumber.properties</include>
+				              </includes>
+				              <targetPath>WEB-INF/classes</targetPath>
+				              <filtering>true</filtering>
+	           			 </webResource>	           			 
 	           			  <!-- <webResource>
 				              <directory>${basedir}/src/main/resources</directory>
 				              override the destination directory for this resource
@@ -638,4 +724,12 @@
 		      </plugin>
 		</plugins>
   </build>
+  <!-- 
+  <repositories>
+  		<repository>
+			<id>UPM_ALZIR</id>
+			<url>https://alzir.dia.fi.upm.es/repo</url>
+		</repository>
+  </repositories>
+   -->
 </project>

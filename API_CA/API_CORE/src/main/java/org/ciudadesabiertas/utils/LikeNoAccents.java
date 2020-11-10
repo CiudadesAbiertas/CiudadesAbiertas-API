@@ -16,6 +16,7 @@
 
 package org.ciudadesabiertas.utils;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.CriteriaQuery;
@@ -43,12 +44,14 @@ public class LikeNoAccents implements Criterion {
     private final String propertyName;
     private final Object value;
     private final String database;
+    private final String databaseKey;
 
-    public LikeNoAccents(String propertyName, Object value, String databaseType)
+    public LikeNoAccents(String propertyName, Object value, String databaseType, String databaseKey)
 	{
         this.propertyName = propertyName;
         this.value = value;
     	this.database = databaseType;
+    	this.databaseKey = databaseKey;
 	}
 
 	@Override
@@ -81,7 +84,7 @@ public class LikeNoAccents implements Criterion {
         {	//TEXT Description
         	//theSQLString= "dbo.TRANSLATE(UPPER(convert(varchar(5000),"+ columns[0] +")),'ÂÁÀÄÃÊÉÈËÎÍÌÏÔÓÒÖÕÛÚÙÜÑ', 'AAAAAEEEEIIIIOOOOOUUUUN') like ?";
         	//VARCHAR DESCRIPTION
-        	theSQLString= DifferentSQLforDatabases.TRANSLATE_SQLSERVER+ "this_."+columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
+        	theSQLString= DifferentSQLforDatabases.getTranslateSQLServer(databaseKey)+ "this_."+columnName + DifferentSQLforDatabases.TRANSLATE_END+" like ?";
         }
         else if (database.equals(Constants.MYSQL))
         {

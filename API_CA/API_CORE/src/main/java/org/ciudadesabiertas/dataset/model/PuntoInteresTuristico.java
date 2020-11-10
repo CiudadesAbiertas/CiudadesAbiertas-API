@@ -54,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -162,7 +163,8 @@ public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RD
 	
 	@ApiModelProperty(value = "Fecha en la que el lugar o zona fue declarado bien de interés cultural. Ejemplo: 2019-03-25T00:00:00")
 	@CsvBindByPosition(position=14)
-	@CsvBindByName(column="fechaDeclaracionBien", format=Constants.DATE_FORMAT)		
+	@CsvBindByName(column="fechaDeclaracionBien")	
+	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.ESTURISMO, propiedad = "fechaDeclaracionBien",typeURI=Context.XSD_URI+"date" )
 	private Date fechaDeclaracionBien;
 	

@@ -208,7 +208,7 @@ public class RSQLDao  {
     		{
 	    		if (sqlString.contains("lower("))
 	    		{
-	    			sqlString=DifferentSQLforDatabases.rsqlTransFormLower(sqlString, env.getProperty(Constants.DB_DRIVER));
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormLower(sqlString, env.getProperty(Constants.DB_DRIVER), key);
 	    			log.debug("translated SQL: "+sqlString);
 	    		}
 	    		if (sqlString.contains("BD"))
@@ -223,13 +223,13 @@ public class RSQLDao  {
 	    		//en el if pongo =in= pero lo que pasamos es el sqlString con ' in'  (cuidado con esto)
 	    		if (queryString.contains("=in="))
 	    		{
-	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," in ");
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," in ", key);
 	    			log.info("translated SQL: "+sqlString);
 	    		}
 	    		//en el if pongo =out= pero lo que pasamos es el sqlString con ' not in'  (cuidado con esto)
 	    		if (queryString.contains("=out="))
 	    		{
-	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," not in ");
+	    			sqlString=DifferentSQLforDatabases.rsqlTransFormInOut(sqlString, env.getProperty(Constants.DB_DRIVER)," not in ", key);
 	    			log.info("translated SQL: "+sqlString);
 	    		}
     		}
@@ -269,11 +269,6 @@ public class RSQLDao  {
     		
     		resultList = createQuery.getResultList();
     		
-    		if (openedSession != null)
-			{
-    			openedSession.close();
-			}
-    		
     	}
     	catch (Exception e)
     	{
@@ -283,6 +278,10 @@ public class RSQLDao  {
     	}  
     	finally
     	{
+    		if (openedSession != null)
+			{
+    			openedSession.close();
+			}
     		persistenceSession.close();
     		entityManagerPersistence.close();
     	}

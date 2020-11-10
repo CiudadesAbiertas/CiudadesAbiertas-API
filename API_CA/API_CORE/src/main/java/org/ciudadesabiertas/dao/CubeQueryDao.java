@@ -24,7 +24,6 @@ import org.ciudadesabiertas.exception.DAOException;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.CubeQuerySearch;
 import org.ciudadesabiertas.utils.DifferentSQLforDatabases;
-import org.ciudadesabiertas.utils.GroupBySearch;
 import org.ciudadesabiertas.utils.LiteralConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.hibernate.Session;
@@ -83,21 +82,19 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 					opennedSession = multipleSessionFactory.getFactories().get(key).openSession();
 										
 											
-					queryObj = opennedSession.createQuery(writeQuery(search, driver, nameClass));						
+					queryObj = opennedSession.createQuery(writeQuery(search, driver, nameClass,key));						
 				}else {						
 										
-					queryObj = sessionFactory.getCurrentSession().createQuery(writeQuery(search, driver, nameClass));	
+					queryObj = sessionFactory.getCurrentSession().createQuery(writeQuery(search, driver, nameClass,key));	
 				}
 					
 				queryObj.setFirstResult(page * pageSize);
 				queryObj.setMaxResults(pageSize);		
+				queryObj.setResultTransformer(Util.transformadorCamposSqlOrdenados);
 							
 				result =   (List<T>) queryObj.list();
 								
-				if (opennedSession!=null)
-				{
-					opennedSession.close();
-				}					
+								
 					
 			}catch ( SQLGrammarException |QuerySyntaxException | IllegalArgumentException |  NullPointerException e1)
 			{
@@ -114,7 +111,13 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 				String msg="executeSelect(query) [Hibernate Exception]:" + e1.getMessage() + " [query Fail:"+query+"]";
 				log.error(msg,e1);
 				throw new DAOException(Constants.INTERNAL_ERROR);			
-			}		
+			}finally {
+				
+				if (opennedSession!=null)
+				{
+					opennedSession.close();
+				}	
+			}
 		
 		}
 		return result;		
@@ -151,7 +154,7 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 		{
 			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
 			
-			String query = writeQuery(search, driver, nameClass);
+			String query = writeQuery(search, driver, nameClass,key);
 			
 			query="Select count(*) "+query.substring(query.indexOf("from"));
 			
@@ -162,7 +165,7 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 			queryObj  = opennedSession.createQuery(query);
 		}else {
 			
-			String query = writeQuery(search, driver, nameClass);			
+			String query = writeQuery(search, driver, nameClass,key);			
 			
 			query="Select count(*) "+query.substring(query.indexOf("from"));
 			
@@ -198,7 +201,7 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 	 * @param driver String con la información del Driver
 	 * @return String resultado
 	 */
-	private String writeQuery(CubeQuerySearch search,String driver,String nameClass) {
+	private String writeQuery(CubeQuerySearch search,String driver,String nameClass, String key) {
 		
 		log.info("[writeQuery]");
 		log.debug("[writeQuery] ][search:"+search+"] [driver:"+driver+"] [nameClass:"+nameClass+"]");
@@ -211,7 +214,7 @@ public class CubeQueryDao<T> extends DatasetDao<T>
 		
 		if (search.getWhere().contains("like"))
 		{
-			String finalWhere=DifferentSQLforDatabases.controlLikeConditions(search.getWhere(),driver);						
+			String finalWhere=DifferentSQLforDatabases.controlLikeConditions(search.getWhere(),driver, key);						
 			search.setWhere(finalWhere);
 		}
 		

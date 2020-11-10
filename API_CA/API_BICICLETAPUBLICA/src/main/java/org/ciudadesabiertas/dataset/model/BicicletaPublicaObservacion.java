@@ -45,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -97,7 +98,8 @@ public class BicicletaPublicaObservacion  implements java.io.Serializable, RDFMo
 	private String observedPropertyId;
 	
 	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="resultTime", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="resultTime")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "resultTime",typeURI=Context.XSD_URI+"dateTime" )
 	private Date resultTime;
 	

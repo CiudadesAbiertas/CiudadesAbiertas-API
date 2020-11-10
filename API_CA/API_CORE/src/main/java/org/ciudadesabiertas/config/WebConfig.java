@@ -256,8 +256,15 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			ds.setUrl(env.getProperty(Constants.DB_URL));
 			ds.setUsername(env.getProperty(Constants.DB_USER));
 			ds.setPassword(Util.checkAndSetEncodedProperty(env.getProperty(Constants.DB_PASSWORD)));
-	
 			
+		    StartVariables.db_schema = env.getProperty(Constants.DB_SCHEMA);
+		      
+		    StartVariables.databaseTypes.put(Constants.DEFAULT_DATABASE, Util.getDatabaseTypeFromDriver(env.getProperty(Constants.DB_DRIVER)));
+	
+			 if (Util.getDatabaseTypeFromDriver(env.getProperty(Constants.DB_DRIVER)).contains(Constants.SQLSERVER))
+		   	  {
+		    	StartVariables.dbSQLServeSchemas.put(Constants.DEFAULT_DATABASE, env.getProperty(Constants.DB_SCHEMA));
+		   	  }   
 			
 			ds.setInitialSize(Integer.parseInt(env.getProperty(Constants.DB_INITIAL_SIZE)));
 			ds.setMaxActive(Integer.parseInt(env.getProperty(Constants.DB_MAX_ACTIVE)));
@@ -272,27 +279,35 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			return (DataSource) ds;
 		}
 		//JNDI
-		if (Util.validValue(env.getProperty(Constants.DB_JNDI_NAME))){
+		if (Util.validValue(env.getProperty(Constants.DB_JNDI_NAME))) {
 			String keyJNDI = env.getProperty(Constants.DB_JNDI_NAME);
 
 			JndiObjectFactoryBean bean = new JndiObjectFactoryBean();
-			
+
 			String envJndi = env.getProperty(Constants.STR_ENV_JNDI_CONTEXT);
-			if (envJndi!=null && "".equals(envJndi)) {
+			if (envJndi != null && "".equals(envJndi)) {
 				bean.setJndiName(envJndi + keyJNDI);
-			}else {
+			} else {
 				bean.setJndiName(Constants.ENV_JNDI_CONTEXT + keyJNDI);
 			}
 			bean.setProxyInterface(DataSource.class);
-			//bean.setProxyInterface(BasicDataSource.class);
+			// bean.setProxyInterface(BasicDataSource.class);
 			bean.setLookupOnStartup(false);
+
+			StartVariables.db_schema = env.getProperty(Constants.DB_SCHEMA);
+			StartVariables.databaseTypes.put(Constants.DEFAULT_DATABASE,
+					Util.getDatabaseTypeFromDriver(env.getProperty(Constants.DB_DRIVER)));
+
+			if (Util.getDatabaseTypeFromDriver(env.getProperty(Constants.DB_DRIVER)).contains(Constants.SQLSERVER)) {
+				StartVariables.dbSQLServeSchemas.put(Constants.DEFAULT_DATABASE, env.getProperty(Constants.DB_SCHEMA));
+			}
+			
 			try {
 				bean.afterPropertiesSet();
 			} catch (IllegalArgumentException | NamingException e) {
-				log.error("[dataSource] [Error:"+e.getMessage()+"] ");
+				log.error("[dataSource] [Error:" + e.getMessage() + "] ");
 			}
-		
-			
+
 			return (DataSource) bean.getObject();
 		}
 		log.error("[dataSource] [Error:NO  BasicDataSource created ");
@@ -638,9 +653,17 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	private ApiInfo apiInfo()
 	{
 
-		springfox.documentation.service.Contact contact = new springfox.documentation.service.Contact(SwaggerConstants.NOMBRE_CONTACTO, SwaggerConstants.WEB_CONTACTO, SwaggerConstants.EMAIL_CONTACTO);
+	  String buildNumber=env.getProperty("buildNumber");	  
+	  if (buildNumber==null)
+	  {
+		buildNumber="";
+	  }else {
+		buildNumber="."+buildNumber;
+	  }
+	  
+	 springfox.documentation.service.Contact contact = new springfox.documentation.service.Contact(SwaggerConstants.NOMBRE_CONTACTO, SwaggerConstants.WEB_CONTACTO, SwaggerConstants.EMAIL_CONTACTO);
 
-		return new ApiInfo(SwaggerConstants.TITULO_API, SwaggerConstants.DESCRIPTION_API, SwaggerConstants.VERSION_API, SwaggerConstants.URL_WEB, contact, SwaggerConstants.TEXTO_LICENCIA, SwaggerConstants.URL_LICENCIA, Collections.emptyList());
+	 return new ApiInfo(SwaggerConstants.TITULO_API, SwaggerConstants.DESCRIPTION_API, SwaggerConstants.VERSION_API+buildNumber, SwaggerConstants.URL_WEB, contact, SwaggerConstants.TEXTO_LICENCIA, SwaggerConstants.URL_LICENCIA, Collections.emptyList());
 
 	}
 	

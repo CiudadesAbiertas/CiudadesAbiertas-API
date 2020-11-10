@@ -49,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -106,7 +107,8 @@ public class CalidadAireObservacion implements java.io.Serializable, RDFModel
 	
 	@ApiModelProperty(value = "Fecha del instante en que se completó la actividad de Observación, Actuación o Muestreo. Ejemplo: 2019-03-27T01:00:00")
 	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="resultTime", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="resultTime")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "resultTime",typeURI=Context.XSD_URI+"dateTime" )
 	private Date resultTime;
 	

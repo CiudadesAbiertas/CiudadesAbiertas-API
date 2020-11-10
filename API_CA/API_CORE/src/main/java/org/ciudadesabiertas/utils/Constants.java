@@ -27,6 +27,7 @@ import com.opencsv.CSVWriter;
 public class Constants
 {
 	public static final String CONFIG_PROPERTIES = "config.properties";
+	public static final String BUILD_NUMBER_PROPERTIES = "buildNumber.properties";
 	public static final String PAQUETE_MODELO_CONJUNTOS_DATOS = "org.ciudadesabiertas.dataset.model";
 	
 	public static final String ENCODING_UTF8 = "UTF-8";
@@ -294,5 +295,11 @@ public class Constants
 	
 	public static final int  NO_PAGINATION = 99999;
 	public static final int  NO_PAGINATION_PAGE_1 = NO_PAGINATION-1;
+	
+	
+	public static final String BASE_DE_DATOS_POR_DEFECTO = "Base de datos  por defecto";	
+	public static final String DEFAULT_DATABASE = "default";
+	
+	public static final String EXCLUSION_BUILD_NUMBER="buildNumber";
 }
 

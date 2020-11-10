@@ -100,7 +100,7 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@ApiModelProperty(value = "Fecha de comienzo del evento. Ejemplo: 2019-12-06T10:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName (column = "startDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	//@RdfMultiple({@Rdf(contexto = Context.ESAGM, propiedad = "startDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaInicio",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "startDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date startDate;
@@ -108,7 +108,7 @@ public class AgendaMEvento implements java.io.Serializable, RDFModel, ICallejero
 	@ApiModelProperty(value = "Fecha de fin del evento. Ejemplo: 2019-12-10T20:00:00")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName (column = "endDate")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	//@RdfMultiple({@Rdf(contexto = Context.ESAGM, propiedad = "endDate",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaFin",typeURI=Context.XSD_URI+"time")})
 	@RdfMultiple(@Rdf(contexto = Context.TIME, propiedad = "endDate",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date endDate;

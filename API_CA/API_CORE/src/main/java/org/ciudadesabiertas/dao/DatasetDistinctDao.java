@@ -93,10 +93,7 @@ public class DatasetDistinctDao<T> extends DatasetDao<T>
 							
 				result =   (List<Object>) queryObj.list();
 								
-				if (opennedSession!=null)
-				{
-					opennedSession.close();
-				}					
+								
 					
 			}catch ( SQLGrammarException |QuerySyntaxException | IllegalArgumentException |  NullPointerException e1)
 			{
@@ -113,7 +110,12 @@ public class DatasetDistinctDao<T> extends DatasetDao<T>
 				String msg="executeSelect(query) [Hibernate Exception]:" + e1.getMessage() + " [query Fail:"+query+"]";
 				log.error(msg,e1);
 				throw new DAOException(Constants.INTERNAL_ERROR);			
-			}		
+			}finally {
+				if (opennedSession!=null)
+				{
+					opennedSession.close();
+				}	
+			}
 		
 		}
 		return result;		

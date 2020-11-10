@@ -90,7 +90,7 @@ public class BicicletaPublicaPuntoPaso  implements java.io.Serializable, GeoMode
 	
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="fechaPaso")
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESBICI, propiedad = "fechaPaso",typeURI=Context.XSD_URI+"dateTime")
 	private Date fechaPaso;
 	
@@ -116,72 +116,72 @@ public class BicicletaPublicaPuntoPaso  implements java.io.Serializable, GeoMode
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=5)
+	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="latitud")
 	@Rdf(contexto = Context.GEO, propiedad = "lat", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal latitud;
 	
 	@Transient
 	@ApiModelProperty(hidden = true)
-	@CsvBindByPosition(position=6)
+	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="longitud")
 	@Rdf(contexto = Context.GEO, propiedad = "long", typeURI=Context.XSD_URI+"double")
 	private BigDecimal longitud;
 	
 	@ApiModelProperty(value = "Identificador de la calle del punto de paso. Ejemplo: PORTAL000119")
-	@CsvBindByPosition(position=6)
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="portalId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "portal")
 	@RdfExternalURI(inicioURI="/callejero/portal/",finURI="portalId", urifyLevel = 1)
 	private String portalId;
 	
 	@ApiModelProperty(value = "Calle del punto de paso. Ejemplo: CL BLAS DE OTERO 4")
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="streetAddress", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "streetAddress")
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String streetAddress;
 	
 	@ApiModelProperty(value = "Código postal del punto de paso. Ejemplo: 28100")
-	@CsvBindByPosition(position=8)
+	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="postalCode", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "postalCode")	
 	@RdfBlankNode(tipo=Context.SCHEMA_URI+"PostalAddress", propiedad=Context.SCHEMA_URI+"address", nodoId="address")
 	private String postalCode;
 	
 	@ApiModelProperty(value = "Identificador del municipio de la punto de paso. Ejemplo: 28006")
-	@CsvBindByPosition(position = 11)
+	@CsvBindByPosition(position = 12)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI = "/territorio/municipio/", finURI = "municipioId" )
 	private String municipioId;
 
 	@ApiModelProperty(value = "Nombre del municipio del punto de paso. Ejemplo: Alcobendas")
-	@CsvBindByPosition(position = 12)
+	@CsvBindByPosition(position = 13)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
 	private String municipioTitle;
 
 	@ApiModelProperty(value = "Identificador del barrio de la punto de paso. Ejemplo: 28006011")
-	@CsvBindByPosition(position = 13)
+	@CsvBindByPosition(position = 14)
 	@CsvBindByName(column = "barrio", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "barrio")
 	@RdfExternalURI(inicioURI = "/territorio/barrio/", finURI = "barrioId", urifyLevel = 1)
 	private String barrioId;
 
 	@ApiModelProperty(value = "Nombre del barrio del punto de paso. Ejemplo: 28006011")
-	@CsvBindByPosition(position = 14)
+	@CsvBindByPosition(position = 15)
 	@CsvBindByName(column = "barrioTitle", format = Constants.STRING_FORMAT)
 	private String barrioTitle;
 
 	@ApiModelProperty(value = "Identificador del distrito de la punto de paso. Ejemplo: 2800601")
-	@CsvBindByPosition(position = 15)
+	@CsvBindByPosition(position = 16)
 	@CsvBindByName(column = "distrito", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "distrito")
 	@RdfExternalURI(inicioURI = "/territorio/distrito/", finURI = "distritoId", urifyLevel = 1)
 	private String distritoId;
 
 	@ApiModelProperty(value = "Nombre del distrito del punto de paso. Ejemplo: Unico")
-	@CsvBindByPosition(position = 16)
+	@CsvBindByPosition(position = 17)
 	@CsvBindByName(column = "distritoTitle", format = Constants.STRING_FORMAT)
 	private String distritoTitle;
 	

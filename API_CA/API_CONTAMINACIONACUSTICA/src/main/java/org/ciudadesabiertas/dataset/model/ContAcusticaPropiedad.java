@@ -65,7 +65,7 @@ public class ContAcusticaPropiedad  implements java.io.Serializable, RDFModel {
 	private String id;
 	
 	@ApiModelProperty(value = "Descripción de la propiedad. Ejemplo: nivelRuido")
-	@CsvBindByPosition(position=19)	
+	@CsvBindByPosition(position=2)	
 	@CsvBindByName(column="description", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "description")
 	private String description;

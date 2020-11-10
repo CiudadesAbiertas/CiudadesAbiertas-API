@@ -53,6 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -106,6 +107,7 @@ public class TraficoIncidencia  implements java.io.Serializable, GeoModel, RDFMo
 	@ApiModelProperty(value = "La fecha y hora de publicación de una incidencia (en formato fecha ISO 8601). Ejemplo: 2020-03-31 08:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="datePosted")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "datePosted" ,typeURI=Context.XSD_URI+"dateTime")
 	private Date datePosted;
 	
@@ -130,6 +132,7 @@ public class TraficoIncidencia  implements java.io.Serializable, GeoModel, RDFMo
 	@ApiModelProperty(value = "La fecha y hora prevista de finalización de una incidencia planificada (en formato fecha ISO 8601). Ejemplo: 2020-05-03 23:59:00")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="fechaFinPrevista")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESTRAF, propiedad = "fechaFinPrevista" ,typeURI=Context.XSD_URI+"dateTime")
 	private Date fechaFinPrevista;
 	

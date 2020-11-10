@@ -207,3 +207,9 @@ API_CA/API_CONTAMINACIONACUSTICA/.settings/
 API_CA/API_CONTAMINACIONACUSTICA/src/test/resources/logback.xml
 API_CA/API_CONTAMINACIONACUSTICA/src/test/resources/config.properties
 API_CA/API_CONTAMINACIONACUSTICA/target/
+API_CA/API_BUS/.classpath
+API_CA/API_BUS/.gitignore
+API_CA/API_BUS/.project
+API_CA/API_BUS/.settings/
+API_CA/API_BUS/src/test/resources/logback.xml
+API_CA/API_BUS/src/test/resources/config.properties

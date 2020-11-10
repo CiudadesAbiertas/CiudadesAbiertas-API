@@ -1627,7 +1627,9 @@ public class GenericController<T> {
 		numPageSize = Integer.parseInt(pageSize);
 
 		if (numPageSize < 0 || numPageSize > Constants.maxGroupbyPageSize) {
+			log.error("[setPaginaGroupBy] numPageSize ["+numPageSize+"] < 0 o > MaxGroupbyPageSize["+Constants.maxGroupbyPageSize+"]");
 			numPageSize = Constants.defaultGroupByPageSize;
+			log.info("[setPaginaGroupBy] [numPageSize:"+Constants.defaultGroupByPageSize+"] fijado al valor de por defecto");
 		}
 
 	}

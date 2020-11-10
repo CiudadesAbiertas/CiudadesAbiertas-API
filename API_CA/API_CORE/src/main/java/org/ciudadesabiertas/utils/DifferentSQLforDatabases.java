@@ -19,7 +19,6 @@ package org.ciudadesabiertas.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.tuple.MutablePair;
@@ -44,6 +43,21 @@ public class DifferentSQLforDatabases {
 		
 
 	public static RegularExpressions regularExpressions=new RegularExpressions();
+	
+	public static String getTranslateSQLServer(String key)
+	{
+	  String schema=StartVariables.dbSQLServeSchemas.get(key);
+	  String beginFunction=".translateCA(UPPER(";	
+	  if (Util.validValue(schema))
+	  {
+		beginFunction=schema+beginFunction;
+	  }else {
+		  beginFunction=StartVariables.db_schema+beginFunction;
+	  }
+	  
+	  return beginFunction;
+		
+	}
 	
 	public static String transForm (String where, String driver) {
 		
@@ -100,12 +114,12 @@ public class DifferentSQLforDatabases {
 	}
 	
 	
-	public static String controlLikeConditions(String conditions, String driver)
+	public static String controlLikeConditions(String conditions, String driver,String key)
 	{
 		if ((driver.contains(Constants.ORACLE))||(driver.contains(Constants.SQLSERVER)))
 		{
 			ArrayList<String> firstLoop = likesControl(conditions);
-			String finalHaving = genWhereLike(firstLoop, driver);
+			String finalHaving = genWhereLike(firstLoop, driver,key);
 			return finalHaving;	
 		}
 		else
@@ -115,7 +129,7 @@ public class DifferentSQLforDatabases {
 	}
 	
 	/*Funcion que añade la funcion para eliminar acentos y no distinguir entra mayusculas y minusculas en un array con likes*/
-	private static String genWhereLike(ArrayList<String> firstLoop, String driver)
+	private static String genWhereLike(ArrayList<String> firstLoop, String driver,String key)
 	{
 		for (int i=1;i<firstLoop.size()-1;i++)
 		{							
@@ -131,9 +145,11 @@ public class DifferentSQLforDatabases {
 				else if (driver.contains(Constants.SQLSERVER))
 				{
 					//Tocamos el elemento anterior
-					firstLoop.set(i-1,TRANSLATE_SQLSERVER+ firstLoop.get(i-1) +TRANSLATE_END);
+					//firstLoop.set(i-1,TRANSLATE_SQLSERVER+ firstLoop.get(i-1) +TRANSLATE_END);
+					firstLoop.set(i-1,getTranslateSQLServer(key)+ firstLoop.get(i-1) +TRANSLATE_END);
 					//Tocamos el elemento posterior
-					firstLoop.set(i+1,TRANSLATE_SQLSERVER+ firstLoop.get(i+1) +TRANSLATE_END);
+					//firstLoop.set(i+1,TRANSLATE_SQLSERVER+ firstLoop.get(i+1) +TRANSLATE_END);
+					firstLoop.set(i+1,getTranslateSQLServer(key)+ firstLoop.get(i+1) +TRANSLATE_END);
 				}
 			}
 		}
@@ -194,7 +210,7 @@ public class DifferentSQLforDatabases {
 	/* Metodo que sustituye los campos de la select que esten dentro de la funcion lower por
 	 * la funcion translate (para borrar acentos y ñ) de cada bbdd y además pasa a mayusculas
 	 * */
-	public static String rsqlTransFormLower(String query, String driver)
+	public static String rsqlTransFormLower(String query, String driver,String key)
 	{
 		String queryT=query;
 		
@@ -213,7 +229,8 @@ public class DifferentSQLforDatabases {
 			}
 			else if (driver.contains(Constants.SQLSERVER))
 			{
-				fieldT=TRANSLATE_SQLSERVER+field+TRANSLATE_END;
+				//fieldT=TRANSLATE_SQLSERVER+field+TRANSLATE_END;
+				fieldT=getTranslateSQLServer(key)+field+TRANSLATE_END;
 				fieldsTranslated.add(fieldT);
 				changed=true;
 			}
@@ -242,7 +259,7 @@ public class DifferentSQLforDatabases {
 	 * inOrOut puede ser ' in ' o 'not in'
 	 * 
 	 * */
-	public static String rsqlTransFormInOut(String query, String driver, String inOrOut) throws Exception
+	public static String rsqlTransFormInOut(String query, String driver, String inOrOut, String key) throws Exception
 	{
 		String queryT=query;
 		
@@ -275,7 +292,7 @@ public class DifferentSQLforDatabases {
 					}
 					else if (driver.contains(Constants.SQLSERVER))
 					{
-						fieldT=TRANSLATE_SQLSERVER+"generatedAlias0."+field+TRANSLATE_END;
+						fieldT=getTranslateSQLServer(key)+"generatedAlias0."+field+TRANSLATE_END;
 						fieldsTranslated.add(fieldT);
 					}
 				}

@@ -196,18 +196,18 @@ public class OrganigramaDataRSQLTest
 	public void test_Busqueda_RSQL_x() throws Exception
 	{
 		String paramField = "q";
-		String value = "xETRS89==676840.38";		
+		String value = "xETRS89==675950.94205";		
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);		
-		assertTrue(total == 67);
+		assertTrue(total == 2);
 	}
 	
 	@Test
 	public void test_Busqueda_RSQL_y() throws Exception
 	{
 		String paramField = "q";
-		String value = "yETRS89==4613965.90000";		
+		String value = "yETRS89==4611562.71288";		
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);		
-		assertTrue(total == 67);
+		assertTrue(total == 4);
 	}
 
 	@Test

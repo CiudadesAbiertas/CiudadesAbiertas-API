@@ -16,6 +16,7 @@
 
 package org.ciudadesabiertas.utils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,5 +74,9 @@ public class StartVariables
 		public static String presupuestosUrlSkosClasificacionPrograma="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/programas-gasto/madrid/";
 		public static String presupuestosUrlSkosClasificacionOrganica="http://vocab.linkeddata.es/datosabiertos/kos/hacienda/presupuesto/organica/madrid/";
 
+		public static Map<String,String> databaseTypes = new HashMap<String,String>();
 		
+		public static Map<String,String> dbSQLServeSchemas = new HashMap<String,String>();
+		
+		public static Map<String,String> errorDatabaseTypes = new HashMap<String,String>();
 }

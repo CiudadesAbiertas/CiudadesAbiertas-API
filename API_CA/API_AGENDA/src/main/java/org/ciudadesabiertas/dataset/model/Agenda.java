@@ -103,14 +103,14 @@ public class Agenda implements java.io.Serializable,RDFModel, IEquipamiento {
 	@ApiModelProperty(value = "Fecha y hora  de inicio de un evento. Ejemplo: 2018-11-03T00:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName (column = "fechaInicio")	
-	@CsvDate(Constants.DATE_FORMAT)		
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple({@Rdf(contexto = Context.ESAGENDA, propiedad = "fechaInicio",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaInicio",typeURI=Context.XSD_URI+"time")})
 	private Date fechaInicio;
 	
 	@ApiModelProperty(value = "Fecha y hora de fin de un evento. Ejemplo: 2018-12-22T23:59:59")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName (column = "fechaFin")	
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple({@Rdf(contexto = Context.ESAGENDA, propiedad = "fechaFin",typeURI=Context.XSD_URI+"date" ),@Rdf(contexto = Context.ESAGENDA, propiedad = "horaFin",typeURI=Context.XSD_URI+"time")})
 	private Date fechaFin;
 	

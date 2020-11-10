@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -76,46 +77,47 @@ public class ContAcusticaObservacion  implements java.io.Serializable, RDFModel 
 	private String observedProperty;
 	
 	@ApiModelProperty(value = "Relación entre la observación y la estación. Ejemplo: CONTACUSTESTMED001")
-	@CsvBindByPosition(position=2)
+	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="madeBySensor", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "madeBySensor")
 	@RdfExternalURI(inicioURI="/contaminacion-acustica/estacion/",finURI="madeBySensor", urifyLevel = 1)
 	private String madeBySensor; 
 	
 	@ApiModelProperty(value = "Esta propiedad establece la fecha/hora de la observación. Ejemplo: 2020-05-15 08:00:00")
-	@CsvBindByPosition(position=3)
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="resultTime")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.SOSA, propiedad = "resultTime" ,typeURI=Context.XSD_URI+"dateTime")
 	private Date resultTime;	
 	
 	@ApiModelProperty(value = "Esta propiedad muestra el resultado de la observación. Ejemplo: 105.01")
-	@CsvBindByPosition(position=4)
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="hasSimpleResult")
 	@Rdf(contexto = Context.SOSA, propiedad = "hasSimpleResult", typeURI=Context.XSD_URI+"float")
 	private BigDecimal hasSimpleResult;
 	
 	@ApiModelProperty(value = "Esta propiedad permite conocer si se ha producido una validación de la observación o no. Ejemplo: 0")
-	@CsvBindByPosition(position=5)
+	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="validada")
 	@Rdf(contexto = Context.NOISE, propiedad = "validada", typeURI=Context.XSD_URI+"boolean")
 	private Boolean validada;
 	
 	@ApiModelProperty(value = "Tipo de medición de la observación. Ejemplo: las50")
-	@CsvBindByPosition(position=6)
+	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="tipoMedicion")
 	@Rdf(contexto = Context.NOISE, propiedad = "tipoMedicion")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/medio-ambiente/contaminacion-acustica/tipo-medicion/", finURI="tipoMedicion", urifyLevel=2)
 	private String tipoMedicion;
 	
 	@ApiModelProperty(value = "Tipo de emisor predominante de la observación. Ejemplo: coches")
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="tipoEmisorPredominante")
 	@Rdf(contexto = Context.NOISE, propiedad = "tipoEmisorPredominante")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/medio-ambiente/contaminacion-acustica/tipo-emisor-predominante/", finURI="tipoEmisorPredominante", urifyLevel=2)
 	private String tipoEmisorPredominante;
 	
 	@ApiModelProperty(value = "Tipo de intervalo de referencia de la observación. Ejemplo: d")
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="tipoIntervaloReferencia")
 	@Rdf(contexto = Context.NOISE, propiedad = "tipoIntervaloReferencia")
 	@RdfExternalURI(inicioURI="http://vocab.linkeddata.es/datosabiertos/kos/medio-ambiente/contaminacion-acustica/tipo-intervalo-referencia/", finURI="tipoIntervaloReferencia", urifyLevel=2)

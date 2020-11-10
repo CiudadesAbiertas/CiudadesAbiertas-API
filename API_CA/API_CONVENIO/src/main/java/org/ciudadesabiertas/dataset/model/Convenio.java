@@ -105,35 +105,35 @@ public class Convenio implements java.io.Serializable, RDFModel {
 	@ApiModelProperty(value = "Fecha de inicio del convenio. Ejemplo: 2020-01-01T00:00:00")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="fechaInicio")
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.ESCONV, propiedad = "fechaInicio",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaInicio;
 	
 	@ApiModelProperty(value = "Fecha de finalización del convenio. Ejemplo: 2021-01-01T00:00:00")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="fechaFinalizacion")
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@RdfMultiple(@Rdf(contexto = Context.ESCONV, propiedad = "fechaFinalizacion",typeURI=Context.XSD_URI+"dateTime" ))
 	private Date fechaFinalizacion;
 	
 	@ApiModelProperty(value = "Fecha de suscripción del convenio. Ejemplo: 2020-02-01T00:00:00")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="fechaSuscripcion")
-	@CsvDate(Constants.DATE_FORMAT)	
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESCONV, propiedad = "fechaSuscripcion", typeURI=Context.XSD_URI+"dateTime")
 	private Date fechaSuscripcion;
 	
 	@ApiModelProperty(value = "Fecha de resolución del convenio. Ejemplo: 2020-06-01T00:00:00")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="fechaResolucionFin")
-	@CsvDate(Constants.DATE_FORMAT)
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESCONV, propiedad = "fechaResolucionFinalizacion", typeURI=Context.XSD_URI+"dateTime")	
 	private Date fechaResolucionFin;
 	
 	@ApiModelProperty(value = "Fecha de incorporación del convenio. Ejemplo: 2020-03-01T00:00:00")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="fechaIncorporacion")
-	@CsvDate(Constants.DATE_FORMAT)	
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESCONV, propiedad = "fechaIncorporacion", typeURI=Context.XSD_URI+"dateTime")
 	private Date fechaIncorporacion;
 	
@@ -174,7 +174,7 @@ public class Convenio implements java.io.Serializable, RDFModel {
 	@ApiModelProperty(value = "Fecha de Adjudicación del convenio. Ejemplo: 2020-01-10T00:00:00")
 	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="fechaAdjudicacionSub")
-	@CsvDate(Constants.DATE_FORMAT)	
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.ESSUBV, propiedad = "fechaAdjudicacion", typeURI=Context.XSD_URI+"dateTime")
 	@RdfBlankNode(tipo=Context.ESSUBV_URI+"Subvencion", propiedad=Context.ESCONV_URI+"instrumenta", nodoId="instrumenta")
 	private Date fechaAdjudicacionSub;

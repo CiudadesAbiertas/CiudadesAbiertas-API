@@ -22,8 +22,13 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.Result;
 import org.springframework.http.HttpInputMessage;
@@ -111,22 +116,48 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
 		byte[] bomBytes = new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF };
 		
 		OutputStreamWriter outputStream = new OutputStreamWriter(outputMessage.getBody(),Charset.forName("UTF8"));       
-		outputStream.write(new String(bomBytes));        
-        StatefulBeanToCsv<T> beanToCsv =
-                  new StatefulBeanToCsvBuilder(outputStream)
-                  			/*.withSeparator(';')*/
-                            .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-                            .withMappingStrategy(strategy)
-                            .withEscapechar(CSVWriter.NO_ESCAPE_CHARACTER)
-                            .withLineEnd(CSVWriter.RFC4180_LINE_END)                            
-                            .build();
+		outputStream.write(new String(bomBytes));      
+		
+        StatefulBeanToCsv<T> beanToCsv = beanToCSVGenerator(strategy, outputStream);
         try {
-            beanToCsv.write(l.getRecords());
+          
+          	List records = l.getRecords();
+      		Iterator recordsIterator = records.iterator();
+      		List recordsTranslated = new ArrayList();
+      		boolean first=true;
+      		while (recordsIterator.hasNext())
+      		{ 	
+      		  Object next = recordsIterator.next();
+      		  //Si entra en este if es que viene de una select que no se mapea contra un modelo (GroupBy por ejemplo)
+      		  if (next instanceof LinkedHashMap) {			  
+    			  strategy = new DynamicMappingStrategy<T>();
+    		      strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));
+    		      
+    		      beanToCsv = beanToCSVGenerator(strategy, outputStream);
+    		     	  
+		     
+      		  }
+			  recordsTranslated.add(next);
+			}
+      		beanToCsv.write(recordsTranslated);
             outputStream.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+
+	private StatefulBeanToCsv<T> beanToCSVGenerator(ColumnPositionMappingStrategy<T> strategy, OutputStreamWriter outputStream) {
+	  StatefulBeanToCsv<T> beanToCsv =
+	            new StatefulBeanToCsvBuilder(outputStream)
+	            			/*.withSeparator(';')*/
+	                      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+	                      .withMappingStrategy(strategy)
+	                      .withEscapechar(CSVWriter.NO_ESCAPE_CHARACTER)
+	                      .withLineEnd(CSVWriter.RFC4180_LINE_END)                            
+	                      .build();
+	  return beanToCsv;
+	}
     
     @SuppressWarnings("unchecked")
     private Class<T> toBeanType (Type type) {

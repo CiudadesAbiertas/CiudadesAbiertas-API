@@ -26,7 +26,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
+
 import org.ciudadesabiertas.utils.Constants;
+import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -99,7 +101,13 @@ public class MultipleDataSource
 				ds.setMaxActive(Integer.parseInt(p.getProperty(Constants.DB_MAX_ACTIVE)));
 				ds.setMaxIdle(Integer.parseInt(p.getProperty(Constants.DB_MAX_IDLE)));
 				ds.setMinIdle(Integer.parseInt(p.getProperty(Constants.DB_MIN_IDLE)));
-	
+				
+				StartVariables.databaseTypes.put(key, Util.getDatabaseTypeFromDriver(p.getProperty(Constants.DB_DRIVER)));
+			   	
+				if (p.getProperty(Constants.DB_SCHEMA)!=null)
+				{
+					StartVariables.dbSQLServeSchemas.put(key, p.getProperty(Constants.DB_SCHEMA));
+				}
 				// Evitar cierre de conexiones después de horas sin uso
 				ds.setTestOnBorrow(true);
 				ds.setValidationQuery(p.getProperty(Constants.DB_VALIDATION_QUERY));
@@ -147,6 +155,11 @@ public class MultipleDataSource
 				if (p.getProperty(Constants.DB_HIBERNATE_DEFAULT_SCHEMA)!=null)
 				{
 					defaultSchema.put(key, p.getProperty(Constants.DB_HIBERNATE_DEFAULT_SCHEMA));
+				}
+				
+				if (p.getProperty(Constants.DB_SCHEMA)!=null)
+				{
+					StartVariables.dbSQLServeSchemas.put(key, p.getProperty(Constants.DB_SCHEMA));
 				}
 				
 				log.debug("[MultipleDataSource] [JndiObjectFactoryBean:"+bean+"]");

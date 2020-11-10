@@ -38,6 +38,13 @@ public class RegularExpressions
 	private static final String SIMPLE_DATE_REGEX = "'\\d{4}-\\d{2}-\\d{2}'";
 	//fecha en formato 'AAAA-MM-DD'T'HH:mm:ss' o 'AAAA-MM-DD HH:mm:ss'	
 	private static final String COMPLEX_DATE_REGEX = "'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}'|'\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}'";
+	
+	//fecha en formato 'AAAA-MM-DD HH:mm:ss.0'	
+	private static final String WRONG_DATE_REGEX = "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{1}";
+		
+	
+	
+	
 	//Cualquier número dentro de una cadena que  acabe en 'BD'
 	private static final String NUMBER_INSIDE_STRING_THATS_ENDS_WITH_BD = "\\p{Digit}+BD";
 	
@@ -55,7 +62,10 @@ public class RegularExpressions
 	private static Pattern patternTimeRSQL=Pattern.compile(TIME_REGEX_RSQL);
 	
 	private static Pattern patternTimeAPI=Pattern.compile(TIME_REGEX_API);
-		
+	
+	
+	private static Pattern patternWrongDate=Pattern.compile(WRONG_DATE_REGEX);
+	
 	
 	public static ArrayList<Pair<String, String>> extractChangesFullDate(String text)
 	{
@@ -147,19 +157,27 @@ public class RegularExpressions
 	
 	
 	
+	public static boolean wrongFormatDate(String text)
+	{
+		boolean result = false;
+		if (text!=null && !"".equals(text)) {
+			Matcher matcher=patternWrongDate.matcher(text);	
+			if (matcher.find()) {
+				result=true;
+			}
+		}
+		return result;
+	}
+	
+	
 	public static void main(String[] args) {
 		
 	  
+	  String text="la fecha es 1950-01-01 00:00:00.0 oh oh oh";
 	  
-	  
-	  String text="casasasfaf'23:23:00'";
-	  
-	  ArrayList<Pair<String, String>> addDateToTimesRSQL = getTimesWithDatesForRSQL(text);
-	  
-	  for (Pair<String, String> pair : addDateToTimesRSQL) {
-		System.out.println(pair);
-	  }
-	  
+	 
+	  System.out.println(wrongFormatDate(text));
+
 	  
 	  System.out.println("end");
 		

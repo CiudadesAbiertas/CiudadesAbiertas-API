@@ -82,28 +82,28 @@ public class CallejeroVia implements java.io.Serializable, RDFModel
 	private String title;
 	
 	@ApiModelProperty(value = "Tipo de vía. Ejemplo: CALLE")
-	@CsvBindByPosition(position = 5)
+	@CsvBindByPosition(position = 3)
 	@CsvBindByName(column = "tipoVia", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESCJR, propiedad = "tipoVia")
 	@RdfExternalURI(inicioURI= "http://vocab.linkeddata.es/datosabiertos/kos/urbanismo-infraestructuras/tipo-via/", finURI="tipoVia")
 	private String tipoVia;
 	
 	@ApiModelProperty(value = "Validez del elemento en su ciclo de vida. Ejemplo: vigente")
-	@CsvBindByPosition(position = 6)
+	@CsvBindByPosition(position = 4)
 	@CsvBindByName(column = "estado", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "estado")
 	@RdfExternalURI(inicioURI= "http://vocab.linkeddata.es/datosabiertos/kos/sector-publico/territorio/tipoEstado/", finURI="estado")
 	private String estado;
 	
 	@ApiModelProperty(value = "Identificador del municipio del local comercial. Ejemplo: 28079")
-	@CsvBindByPosition(position = 7)
+	@CsvBindByPosition(position = 5)
 	@CsvBindByName(column = "municipioId", format = Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESADM, propiedad = "municipio")
 	@RdfExternalURI(inicioURI="/territorio/municipio/",finURI="municipioId", urifyLevel = 1)
 	private String municipioId;
 	
 	@ApiModelProperty(value = "Nombre del municipio del local comercial. Ejemplo: Madrid")
-	@CsvBindByPosition(position = 8)
+	@CsvBindByPosition(position = 6)
 	@CsvBindByName(column = "municipioTitle", format = Constants.STRING_FORMAT)
 	private String municipioTitle;
 	

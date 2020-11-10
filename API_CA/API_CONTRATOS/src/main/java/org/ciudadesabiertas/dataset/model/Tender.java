@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -119,14 +120,16 @@ public class Tender implements java.io.Serializable,  RDFModel {
 	
 	@ApiModelProperty(value = "Fecha de finalización del pliego. Ejemplo: 2019-01-10T00:00:00")
 	@CsvBindByPosition(position=11)
-	@CsvBindByName(column="periodEndDate", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="periodEndDate")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "periodEndDate",typeURI=Context.XSD_URI+"dateTime")
 	@RdfBlankNode(tipo=Context.OCDS_URI+"Period", propiedad=Context.OCDS_URI+"hasTenderPeriod", nodoId="tenderPeriod")
 	private Date periodEndDate;
 	
 	@ApiModelProperty(value = "Fecha de comienzo del pliego. Ejemplo: 2019-04-30T00:00:00")
 	@CsvBindByPosition(position=12)
-	@CsvBindByName(column="periodStartDate", format=Constants.STRING_FORMAT)
+	@CsvBindByName(column="periodStartDate")
+	@CsvDate(Constants.DATE_TIME_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "periodStartDate",typeURI=Context.XSD_URI+"dateTime")
 	@RdfBlankNode(tipo=Context.OCDS_URI+"Period", propiedad=Context.OCDS_URI+"hasTenderPeriod", nodoId="tenderPeriod")
 	private Date periodStartDate;

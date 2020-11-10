@@ -82,21 +82,19 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 					opennedSession = multipleSessionFactory.getFactories().get(key).openSession();
 										
 											
-					queryObj = opennedSession.createQuery(writeQuery(search, driver, nameClass));						
+					queryObj = opennedSession.createQuery(writeQuery(search, driver, nameClass,key));						
 				}else {						
 										
-					queryObj = sessionFactory.getCurrentSession().createQuery(writeQuery(search, driver, nameClass));	
+					queryObj = sessionFactory.getCurrentSession().createQuery(writeQuery(search, driver, nameClass,key));	
 				}
 					
 				queryObj.setFirstResult(page * pageSize);
-				queryObj.setMaxResults(pageSize);		
+				queryObj.setMaxResults(pageSize);	
+				queryObj.setResultTransformer(Util.transformadorCamposSqlOrdenados);
 							
 				result =   (List<Object>) queryObj.list();
 								
-				if (opennedSession!=null)
-				{
-					opennedSession.close();
-				}					
+								
 					
 			}catch ( SQLGrammarException |QuerySyntaxException | IllegalArgumentException |  NullPointerException e1)
 			{
@@ -113,7 +111,12 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 				String msg="executeSelect(query) [Hibernate Exception]:" + e1.getMessage() + " [query Fail:"+query+"]";
 				log.error(msg,e1);
 				throw new DAOException(Constants.INTERNAL_ERROR);			
-			}		
+			}finally {
+				if (opennedSession!=null)
+				{
+					opennedSession.close();
+				}	
+			}
 		
 		}
 		return result;		
@@ -149,7 +152,7 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 		{
 			log.debug(LiteralConstants.TXT_CUSTOM_CONECT);
 			
-			String query = writeQuery(search, driver, nameClass);
+			String query = writeQuery(search, driver, nameClass, key);
 			
 			query="Select count(*) "+query.substring(query.indexOf("from"));
 			
@@ -160,7 +163,7 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 			queryObj  = opennedSession.createQuery(query);
 		}else {
 			
-			String query = writeQuery(search, driver, nameClass);			
+			String query = writeQuery(search, driver, nameClass, key);			
 			
 			query="Select count(*) "+query.substring(query.indexOf("from"));
 			
@@ -194,9 +197,10 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 	 * Metodo privado que transforma las condiciones del GroupBySearch en una Query
 	 * @param search GroupBySearch
 	 * @param driver String con la información del Driver
+	 * @param key String con la información del fichero de conexion
 	 * @return String resultado
 	 */
-	private String writeQuery(GroupBySearch search,String driver,String nameClass) {
+	private String writeQuery(GroupBySearch search,String driver,String nameClass, String key) {
 		
 		log.info("[writeQuery]");
 		log.debug("[writeQuery] ][search:"+search+"] [driver:"+driver+"] [nameClass:"+nameClass+"]");
@@ -209,13 +213,13 @@ public class DatasetGroupDao<T> extends DatasetDao<T>
 		
 		if (search.getWhere().contains("like"))
 		{
-			String finalWhere=DifferentSQLforDatabases.controlLikeConditions(search.getWhere(),driver);						
+			String finalWhere=DifferentSQLforDatabases.controlLikeConditions(search.getWhere(),driver,key);						
 			search.setWhere(finalWhere);
 		}
 		
 		if (search.getHaving().contains("like"))
 		{							
-			String finalHaving=DifferentSQLforDatabases.controlLikeConditions(search.getHaving(),driver);
+			String finalHaving=DifferentSQLforDatabases.controlLikeConditions(search.getHaving(),driver,key);
 			search.setHaving(finalHaving);
 		}
 		

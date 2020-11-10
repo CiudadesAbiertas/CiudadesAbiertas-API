@@ -51,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -120,13 +121,15 @@ public class Organigrama implements java.io.Serializable, GeoModel, RDFModel, IC
 	
 	@ApiModelProperty(value = "La fecha en que se fundó esta organización. Ejemplo: 1950-01-01T00:00:00")
 	@CsvBindByPosition(position = 7)
-	@CsvBindByName(column = "foundingDate", format = Constants.STRING_FORMAT)
+	@CsvBindByName(column = "foundingDate")
+	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "foundingDate", typeURI = Context.XSD_URI + "date")
 	private Date foundingDate;
 	
 	@ApiModelProperty(value = "La fecha en que se disolvió esta organización. Ejemplo: 2020-03-11T13:44:58.976Z")
 	@CsvBindByPosition(position = 8)
-	@CsvBindByName(column = "dissolutionDate", format = Constants.STRING_FORMAT)
+	@CsvBindByName(column = "dissolutionDate")
+	@CsvDate(Constants.DATE_FORMAT)
 	@Rdf(contexto = Context.SCHEMA, propiedad = "dissolutionDate", typeURI = Context.XSD_URI + "date")
 	private Date dissolutionDate; 
 	
