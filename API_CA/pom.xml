@@ -63,6 +63,7 @@
 				<module>API_PRESUPUESTO</module>
 				<module>API_TRAFICO</module>
 				<module>API_CONTAMINACIONACUSTICA</module>
+				<module>API_BUS</module>
 				<!-- 
 				<module>API_PLANTILLA</module>
 				 -->
@@ -359,6 +360,17 @@
 			</modules>
 		</profile>
 		
+		<profile>
+			<id>bus</id>
+			<modules>
+				<module>rdfGeneratorZ</module>
+				<module>API_CORE</module>
+				<module>API_WEB</module>				
+				<module>API_TERRITORIO</module>
+				<module>API_DSD</module>	
+				<module>API_BUS</module>				
+			</modules>
+		</profile>
 		
 		<!-- Perfil para el conjunto de datos Plantilla -->
 		<!-- 
