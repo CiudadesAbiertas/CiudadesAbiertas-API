@@ -68,7 +68,7 @@ public static Collection<Object[]> data() {
   params.add(new Object[] { "id=='6a2-1918'", 1 });
   params.add(new Object[] { "resultTime=='2020-05-13T12:45:05'", 1 });
   params.add(new Object[] { "expectedArrivalTime=='PT10M'", 1 });
-  params.add(new Object[] { "hasFeatureOfInterest=='138a2-4608'", 1 });
+  params.add(new Object[] { "hasFeatureOfInterest=='6a-1918'", 1 });
 
 
   return params;

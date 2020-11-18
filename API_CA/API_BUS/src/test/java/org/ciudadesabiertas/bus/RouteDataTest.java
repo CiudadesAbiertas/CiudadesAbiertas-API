@@ -84,7 +84,7 @@ public class RouteDataTest {
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 5);
 	}
 	
 	@Test

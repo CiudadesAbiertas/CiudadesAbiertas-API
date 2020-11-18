@@ -32,6 +32,7 @@ import org.ciudadesabiertas.exception.DAOException;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.TestUtils;
 import org.ciudadesabiertas.utils.Util;
+import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -109,6 +110,9 @@ public class LineaTest {
     
     @Test    
     public void test04_Add() throws Exception {
+      
+      	String geojson= "{\"geometry\":{\"coordinates\":[[[-3.70407109,40.46360278],[-3.70322916,40.46316561],[-3.70190212,40.46245208],[-3.65402412,40.44350443]]],\"type\":\"MultiLineString\"},\"type\":\"Feature\",\"properties\":{\"id\":\"11\",\"title\":\"Linea de test\"}}";
+  	      	           
     	String jsonItem =  "{\n" + 
     		"      \"id\": \"777\",\n" + 
     		"      \"description\": \"La línea 777 garantiza varios días de suerte después de recorrerla por completo.\",\n" + 
@@ -120,12 +124,11 @@ public class LineaTest {
     		"      \"textColour\": \"Negro\",\n" + 
     		"      \"operating\": \"emt\",\n" + 
     		"      \"cabeceraLinea\": \"4608\",\n" + 
-    		"      \"finalLinea\": \"5481\"\n" + 
+    		"      \"finalLinea\": \"5481\",\n" + 
+    		"      \"hasGeometry\": " +  geojson +
     		"    }";
 
-    	
     	jsonItem = new String (jsonItem.getBytes(),"UTF-8");	
-    	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.post(LineaController.ADD)
         		.contentType(MediaType.APPLICATION_JSON)

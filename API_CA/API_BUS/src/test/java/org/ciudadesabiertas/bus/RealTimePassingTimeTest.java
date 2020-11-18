@@ -113,7 +113,7 @@ public class RealTimePassingTimeTest {
     		"      \"id\": \"TEST01\",\n" + 
     		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
     		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-    		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+    		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
     		"    }";
 
     	
@@ -146,7 +146,7 @@ public class RealTimePassingTimeTest {
 		"      \"id\": \"TEST01\",\n" + 
 		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
 		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
 		"    }";
     	
     	jsonItem = new String (jsonItem.getBytes(),"UTF-8");	
@@ -166,7 +166,7 @@ public class RealTimePassingTimeTest {
     		"      \"id\": \"TEST01\",\n" + 
     		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
     		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-    		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+    		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
     		"    }";
     	String itemUpdate = new String (jsonItem.getBytes(),"UTF-8");	
     	
@@ -199,7 +199,7 @@ public class RealTimePassingTimeTest {
   		"      \"id\": \"TEST01KO\",\n" + 
   		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
   		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-  		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+  		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
   		"    }";
     	
     	String itemUpdate = new String (jsonItem.getBytes(),"UTF-8");	
@@ -290,7 +290,7 @@ public class RealTimePassingTimeTest {
       		"      \"id\": \"TEST01\",\n" + 
       		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
       		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-      		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+      		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
       		"    }";
     	
     	String RealTimePassingTimeTransform = new String (jsonItem.getBytes(),"UTF-8");	
@@ -309,7 +309,7 @@ public class RealTimePassingTimeTest {
       		"      \"id\": \"TEST01KO\",\n" + 
       		//"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
       		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-      		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+      		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
       		"    }";
     	String RealTimePassingTimeTransform = new String (jsonItem.getBytes(),"UTF-8");	
     	
@@ -382,7 +382,7 @@ public class RealTimePassingTimeTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(RealTimePassingTimeController.LIST+"/"+"138a2-4608", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(RealTimePassingTimeController.LIST+"/"+"6a2-1918", mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

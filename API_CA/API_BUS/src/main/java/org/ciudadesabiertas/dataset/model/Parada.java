@@ -17,6 +17,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -50,7 +51,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESAUTOB, propiedad = "Parada")
 @PathId(value = "/autobus/parada")
-public class Parada implements java.io.Serializable, RDFModel, ICallejero {
+public class Parada implements java.io.Serializable, RDFModel, ICallejero, IGeoModelXY {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269125191L;	

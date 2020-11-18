@@ -20,6 +20,7 @@ import static org.junit.Assert.assertFalse;
 
 import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.PointOnRouteController;
+import org.ciudadesabiertas.dataset.controller.ScheduledStopPointController;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Util;
 import org.junit.Before;
@@ -205,6 +206,7 @@ public class PointOnRouteTestFK {
         
 		}
     }
+    
     
 
     @Test    

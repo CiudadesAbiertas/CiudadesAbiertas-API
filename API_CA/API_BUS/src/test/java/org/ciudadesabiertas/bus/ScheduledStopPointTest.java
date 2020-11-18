@@ -386,7 +386,7 @@ public class ScheduledStopPointTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(ScheduledStopPointController.LIST+"/"+"138a1-4608", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(ScheduledStopPointController.LIST+"/"+"138a1-4618", mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

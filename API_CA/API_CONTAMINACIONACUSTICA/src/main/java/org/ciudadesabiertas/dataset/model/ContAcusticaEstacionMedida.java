@@ -37,7 +37,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.IEquipamiento;
 import org.ciudadesabiertas.model.RDFModel;
@@ -74,7 +74,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.NOISE, propiedad = "EstacionMedida")
 @PathId(value="/contaminacion-acustica/estacion")
-public class ContAcusticaEstacionMedida  implements java.io.Serializable, GeoModel, RDFModel, ICallejero, IEquipamiento {
+public class ContAcusticaEstacionMedida  implements java.io.Serializable, IGeoModelXY, RDFModel, ICallejero, IEquipamiento {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269125191L;	

@@ -31,6 +31,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.BeanUtil;
 import org.ciudadesabiertas.utils.Constants;
@@ -38,6 +40,9 @@ import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonFeatureMultiline;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonFeatureMultipolygon;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonResult;
 import org.jdom2.Attribute;
 import org.jdom2.CDATA;
 import org.jdom2.Element;
@@ -60,6 +65,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rometools.modules.georss.GeoRSSModule;
 import com.rometools.modules.georss.SimpleModuleImpl;
+import com.rometools.modules.georss.geometries.LineString;
 import com.rometools.modules.georss.geometries.LinearRing;
 import com.rometools.modules.georss.geometries.Polygon;
 import com.rometools.modules.georss.geometries.Position;
@@ -83,6 +89,9 @@ import com.rometools.rome.io.SyndFeedOutput;
 @Component
 public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessageConverter<L> {
 
+	private static final String MULTI_POLYGON = "MultiPolygon";
+
+	private static final String MULTI_LINE = "MultiLine";
     
     private static final String GEORSS_MIME = Constants.mimeGEORSS;
     
@@ -162,6 +171,7 @@ public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessag
 			
 			List <SyndEntry> entries = new ArrayList<SyndEntry>();
 			String petitionSrId = Util.extractSrIdFromURL(l.getSelf());
+			String typeInGeometry = null;
 			
 			if (l.getSelf().contains(".odata"))
 			{
@@ -190,13 +200,42 @@ public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessag
 							entries.addAll(entriesFromPolygons);
 						}
 					}
-					else
+					else if (record instanceof IGeoModelXY)
 					{
 						SyndEntry entry = transformGeoRSS(record,petitionSrId);
 						if (entry!=null)
 						{													
 							entries.add(entry);
 						}
+					}
+					else if (record instanceof IGeoModelGeometry)
+					{
+					  Object hasGeometry = ((IGeoModelGeometry) record).getHasGeometry();
+					  if (hasGeometry != null) 
+					  {
+						String geometry = hasGeometry.toString();
+						if (geometry.contains(MULTI_LINE)) {
+						  typeInGeometry = MULTI_LINE;
+						} else {
+						  typeInGeometry = MULTI_POLYGON;
+						}
+						
+						if ((!geometry.equals(""))&&(!geometry.equals("{}")))
+						{
+	    					if (typeInGeometry.equals(MULTI_LINE)) {
+	    					  List<SyndEntry> entriesFromPolygons = transformGeoRSSMultiline(record, petitionSrId);
+							  if (entriesFromPolygons != null) {
+								entries.addAll(entriesFromPolygons);
+							  }
+	    					} else {
+							  List<SyndEntry> entriesFromPolygons = transformGeoRSSMultipolygon(record, petitionSrId);
+							  if (entriesFromPolygons != null) {
+								entries.addAll(entriesFromPolygons);
+							  }
+	    					}
+						}
+
+					  }
 					}
 				}
 			}
@@ -512,6 +551,155 @@ public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessag
 				
 				SimpleModuleImpl geoRSSModule = new SimpleModuleImpl();
 			    geoRSSModule.setGeometry(poligon);		        
+			    entryPolygon.getModules().add(geoRSSModule);
+			     
+			    generaContent(entry, listaElementos);
+			    listEntries.add(entryPolygon);
+			}
+		}
+		        
+        
+		return listEntries;
+	}
+	
+	
+	private List<SyndEntry> transformGeoRSSMultiline(T record, String petitionSrId) throws Exception 
+	{	
+		List<SyndEntry> listEntries = new ArrayList<SyndEntry>();
+		
+		List<BeanUtil> listData = Util.obtenerBeanUtil(record);
+		
+		List<LinearRing> lineRingArray=new ArrayList<LinearRing>();	
+		
+		SyndEntry entry = new SyndEntryImpl();
+	
+		List <String> listaElementos = new ArrayList<String>();
+		
+		String beanId="";
+		String beanIdentifier="";
+		String theURI="";
+		
+		theURI = generateURI(record, theURI);
+						       
+		for (BeanUtil bean:listData)
+		{			
+			if (bean.getFieldName().equals("id"))
+			{
+				beanId=(String) bean.getValue();
+			}
+			
+			if (bean.getFieldName().equals("identifier"))
+			{
+				beanIdentifier=(String) bean.getValue();
+			}
+			
+			if (bean.getFieldName().equals("hasGeometry"))
+			{
+				JSONObject hasGeometry=(JSONObject)bean.getValue();
+				if (hasGeometry!=null)
+				{
+					JSONObject geometry=(JSONObject) hasGeometry.get("geometry");
+					if (geometry!=null)
+					{	
+						log.debug("objectId: "+((IGeoModelGeometry)record).getId());		
+						JSONArray poligons=(JSONArray) geometry.get("coordinates");
+						log.debug("lineas: "+poligons.size());		
+						for (int i=0;i<poligons.size();i++)
+						{
+							JSONArray actualPoligon = (JSONArray) poligons.get(i);
+							log.debug("\tlinea: "+i);
+							log.debug("\t\tpuntos: "+actualPoligon.size());
+							LinearRing linearRing = new LinearRing();
+							PositionList positionList = new PositionList();		
+							boolean isArray=false;
+							for (int j=0;j<actualPoligon.size();j++)
+							{						
+								JSONArray vertices=(JSONArray) actualPoligon.get(j);
+								
+								if (vertices.get(0) instanceof JSONArray)
+								{
+									isArray=true;
+									positionList = new PositionList();	
+									for (int k=0;k<vertices.size();k++)
+									{
+										JSONArray punto=(JSONArray) vertices.get(k);							
+										positionList.add((Double) punto.get(1), (Double)punto.get(0));
+									}			
+									lineRingArray.add(new LinearRing(positionList));
+								}
+								else
+								{
+									positionList.add((Double) vertices.get(1), (Double)vertices.get(0));
+								}
+							}
+							if (isArray==false)
+							{
+								linearRing.setPositionList(positionList);
+								lineRingArray.add(linearRing);
+								log.debug("\tlinea creada con "+positionList.size()+" puntos");
+							}
+							
+						}
+					}				
+				}				
+			}
+			else
+			{			
+				addFields(entry, listaElementos, bean);
+			}
+			
+		}
+		
+		if (lineRingArray.size()==0)
+		{
+			return null;
+		}
+		
+		if (record instanceof Territorio)
+		{
+			if (!beanIdentifier.equals(""))
+			{	
+				entry.setLink(theURI+beanIdentifier);
+			}
+		}
+		else
+		{		
+			entry.setLink(theURI+beanId);
+		}
+		
+		entry.setAuthor(GEORSSParser.AUTHOR_FEED_NAME);		
+		
+		if (Util.validValue(entry.getTitle())==false)
+		{
+			entry.setTitle(beanId);
+		}
+		
+		if (Util.validValue(entry.getDescription())==false)
+		{	
+			SyndContent description = new SyndContentImpl();
+	        description.setType("text/plain");
+	        CDATA valueElement = new CDATA((String)GEORSSParser.DESCRIPTION+beanId);
+	        description.setValue(valueElement.getText());
+			entry.setDescription(description);
+		}
+						
+		for (LinearRing line:lineRingArray)
+		{
+			SyndEntry entryPolygon=null;
+			try {
+				entryPolygon = (SyndEntry) entry.clone();							
+			} catch (CloneNotSupportedException e) {
+				log.error("Clonable exception",e);
+			}
+			
+			if (entryPolygon!=null)
+			{
+				LineString lineString=null;
+				lineString=new LineString();
+				lineString.setPositionList(line.getPositionList());
+				
+				SimpleModuleImpl geoRSSModule = new SimpleModuleImpl();
+			    geoRSSModule.setGeometry(lineString);		        
 			    entryPolygon.getModules().add(geoRSSModule);
 			     
 			    generaContent(entry, listaElementos);

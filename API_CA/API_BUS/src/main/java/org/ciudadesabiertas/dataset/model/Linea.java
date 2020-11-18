@@ -9,12 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.IsUri;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -46,7 +48,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESAUTOB, propiedad = "Linea")
 @PathId(value="/autobus/linea")
-public class Linea implements java.io.Serializable, RDFModel {
+public class Linea implements java.io.Serializable, RDFModel, IGeoModelGeometry {
 
 @JsonIgnore
 private static final long serialVersionUID = -607294817254888761L;
@@ -129,6 +131,15 @@ private String cabeceraLinea;
 @RdfExternalURI(inicioURI="/autobus/parada/",finURI="finalLinea", urifyLevel = 1)
 private String finalLinea;
 
+@ApiModelProperty(hidden = true)
+@JsonIgnore
+private String geometry; 
+
+
+@CsvBindByPosition(position=12)
+@CsvBindByName(column="hasGeometry", format=Constants.STRING_FORMAT)
+private Object hasGeometry; 
+
 public Linea() {
 }
 
@@ -146,6 +157,8 @@ public Linea(Linea copia) {
   this.operating = copia.operating;
   this.cabeceraLinea = copia.cabeceraLinea;
   this.finalLinea = copia.finalLinea;
+  this.geometry=copia.geometry;
+  this.hasGeometry=copia.hasGeometry;
 }
 
 public Linea(Linea copia, List<String> attributesToSet) {
@@ -198,6 +211,14 @@ public Linea(Linea copia, List<String> attributesToSet) {
   if (attributesToSet.contains("finalLinea")) {
 	this.finalLinea = copia.finalLinea;
   }
+  
+  if (attributesToSet.contains("hasGeometry")) {
+	this.hasGeometry = copia.hasGeometry;
+  }
+  
+
+  
+  
 }
 
 @Id
@@ -309,6 +330,27 @@ public String getFinalLinea() {
 public void setFinalLinea(String finalLinea) {
   this.finalLinea = finalLinea;
 }
+
+
+@Column(name = "geometry")
+public String getGeometry() {
+  return this.geometry;
+}
+
+public void setGeometry(String geometry) {
+  this.geometry = geometry;
+}
+
+@Transient
+public Object getHasGeometry() {
+	return hasGeometry;
+}
+
+@Transient
+public void setHasGeometry(Object hasGeometry) {
+	 this.hasGeometry=hasGeometry;		 
+}
+
 
 @SuppressWarnings("unchecked")
 @Override

@@ -28,8 +28,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.exception.NotFoundException;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.ITramoIncidencia;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
@@ -650,9 +651,9 @@ public class GenericController<T> {
 		try {
 			T objP= dsService.findById(key,(Class<T>) obj.getClass(), id);
 						
-			if (objP instanceof GeoModel)
+			if (objP instanceof IGeoModelXY)
 			{
-				Util.generaCoordenadasAll(srId, (GeoModel)objP);
+				Util.generaCoordenadasAll(srId, (IGeoModelXY)objP);
 			}			
 			if (objP!=null)
 			{	
@@ -749,10 +750,13 @@ public class GenericController<T> {
 		try {
 			T objP= dsService.findById(key,(Class<T>) obj.getClass(), id);
 						
-			if (objP instanceof GeoModel)
+			if (objP instanceof IGeoModelXY)
 			{
-				Util.generaCoordenadasAll(srId, (GeoModel)objP);
-			}			
+				Util.generaCoordenadasAll(srId, (IGeoModelXY)objP);
+			}else if (objP instanceof IGeoModelGeometry)
+			{
+			  	Util.generaCoordenadasAll(srId, (IGeoModelGeometry)objP);
+			}
 			
 			
 			
@@ -869,9 +873,9 @@ public class GenericController<T> {
 		try {
 			T objP= dsService.findByIdentifier(key,(Class<T>) obj.getClass(), identifier);
 						
-			if (objP instanceof GeoModel)
+			if (objP instanceof IGeoModelXY)
 			{
-				Util.generaCoordenadasAll(srId, (GeoModel)objP);
+				Util.generaCoordenadasAll(srId, (IGeoModelXY)objP);
 			}			
 			if (objP!=null)
 			{	
@@ -1325,7 +1329,7 @@ public class GenericController<T> {
 		setPaginaGroupBy(page,pageSize);
 		
 		
-		if (objModel instanceof GeoModel)
+		if (objModel instanceof IGeoModelXY)
 		{
 			groupBySearch.checkCoordinatesETRS();
 		}

@@ -26,9 +26,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ciudadesabiertas.controller.CiudadesAbiertasController;
 import org.ciudadesabiertas.controller.GenericController;
+import org.ciudadesabiertas.dataset.model.PointOnRoute;
 import org.ciudadesabiertas.dataset.model.RealTimePassingTime;
 import org.ciudadesabiertas.dataset.model.StopPointInJourneyPattern;
 import org.ciudadesabiertas.dataset.utils.BusConstants;
+import org.ciudadesabiertas.dataset.utils.PointOnRouteSearch;
 import org.ciudadesabiertas.dataset.utils.RealTimePassingTimeResult;
 import org.ciudadesabiertas.dataset.utils.RealTimePassingTimeSearch;
 import org.ciudadesabiertas.dataset.utils.StopPointInJourneyPatternSearch;
@@ -121,7 +123,7 @@ public class RealTimePassingTimeController extends GenericController implements 
 	@Autowired
 	protected DatasetService<RealTimePassingTime> service;
 	@Autowired
-	protected DatasetService<StopPointInJourneyPattern> stopPointInJourneyPatternService;
+	protected DatasetService<PointOnRoute> pointOnRouteService;
 
 	/**
 	 * Ejemplos de Llamadas a utilizar:
@@ -464,9 +466,9 @@ public class RealTimePassingTimeController extends GenericController implements 
 			{
 				if (stoppointinjourneypatternId != null)
 				{
-					StopPointInJourneyPatternSearch search=new StopPointInJourneyPatternSearch();
+				  	PointOnRouteSearch search=new PointOnRouteSearch();
 					search.setId(stoppointinjourneypatternId);
-					long rowcount = stopPointInJourneyPatternService.rowcount(getKey(), StopPointInJourneyPattern.class, search);
+					long rowcount = pointOnRouteService.rowcount(getKey(), PointOnRoute.class, search);
 					if (rowcount==0)			
 					{
 						errors.add("El punto de Parada en Patrón de Viaje '"+stoppointinjourneypatternId+"' no existe");		

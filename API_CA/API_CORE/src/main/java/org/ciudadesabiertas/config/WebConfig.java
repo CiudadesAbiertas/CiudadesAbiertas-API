@@ -38,11 +38,13 @@ import javax.persistence.Column;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.lang.ClassUtils;
 import org.apache.jena.ext.com.google.common.base.Charsets;
 import org.ciudadesAbiertas.rdfGeneratorZ.TransformadorBasicoRdf;
 import org.ciudadesabiertas.config.multipe.MultipleConf;
 import org.ciudadesabiertas.config.multipe.MultipleDataSource;
 import org.ciudadesabiertas.config.multipe.MultipleSessionFactory;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.StringToDateConverter;
@@ -683,11 +685,13 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			final Set<BeanDefinition> classes = provider.findCandidateComponents("org.ciudadesabiertas.dataset.model");
 	
 			boolean ikeyError=false;
+			boolean geoModelError=false;
 			for (BeanDefinition bean: classes) 
 			{
 				Map<String,String> mapaJavaNameColumna=new HashMap<String,String>();
 			    Class<?> clazz = Class.forName(bean.getBeanClassName());
-			    Field[] fields=Class.forName(clazz.getName()).getDeclaredFields();			    
+			    Field[] fields=Class.forName(clazz.getName()).getDeclaredFields();	
+			    List allInterfaces = ClassUtils.getAllInterfaces(clazz);
 			    for (Field field : fields) 
 			    {
 	                if (field.getName().equals("ikey")) {
@@ -709,7 +713,14 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	                    	ikeyError=true;
 	                    	log.error("ikeyError: se esta exponiendo el ikey in the class: "+bean.getBeanClassName());
 	                    }
-	                }	                
+	                }
+	                if (field.getName().equals("x")) {
+	                  if (!allInterfaces.toString().contains(IGeoModelXY.class.getCanonicalName()))
+	                  {
+	                	log.error("GeoModel error: "+clazz.getCanonicalName()+" sin interfaz GeoModel");
+	                	geoModelError=true;
+	                  }	                  
+	                }
 	            }
 			    
 			    
@@ -734,6 +745,10 @@ public class WebConfig extends WebMvcConfigurerAdapter
 			if (ikeyError==false)
 			{
 			    	log.info("Campos ikey sin exponer en todos los modelos");
+			}
+			if (geoModelError==false)
+			{
+			    	log.info("GeoModel aplicado correctamente en todos los modelos");
 			}
 			
 		}

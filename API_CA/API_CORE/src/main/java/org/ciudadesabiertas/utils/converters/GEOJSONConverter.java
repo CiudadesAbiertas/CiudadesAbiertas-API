@@ -29,14 +29,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.utils.BeanUtil;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonFeatureMultiline;
 import org.ciudadesabiertas.utils.converters.geojson.GeoJsonFeatureMultipolygon;
 import org.ciudadesabiertas.utils.converters.geojson.GeoJsonFeaturePoint;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonMultiline;
+import org.ciudadesabiertas.utils.converters.geojson.GeoJsonMultipolygon;
 import org.ciudadesabiertas.utils.converters.geojson.GeoJsonPoint;
 import org.ciudadesabiertas.utils.converters.geojson.GeoJsonResult;
 import org.json.simple.JSONObject;
@@ -69,7 +74,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessageConverter<L> {
 
     
-    private static final String GEOJSON_MIME = Constants.mimeGEOJSON;
+    private static final String MULTI_POLYGON = "MultiPolygon";
+
+	private static final String MULTI_LINE = "MultiLine";
+
+	private static final String GEOJSON_MIME = Constants.mimeGEOJSON;
     
     public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
     
@@ -121,6 +130,7 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 			
 			List newRecords=null;
 			GeoJsonResult newResult=null;
+			String typeInGeometry=null;
 			
 					
 			String petitionSrId = Util.extractSrIdFromURL(l.getSelf());
@@ -138,7 +148,7 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 					GeoJsonFeatureMultipolygon newRecord = transformToGeoJsonMultiPolygon(record,petitionSrId);				
 					newRecords.add(newRecord);
 				}
-				else
+				else if (record instanceof IGeoModelXY)
 				{
 					if (newRecords==null)
 					{
@@ -151,8 +161,56 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 						newRecords.add(newRecord);
 					}
 				}
+				else if (record instanceof IGeoModelGeometry)
+				{   
+				  Object hasGeometry = ((IGeoModelGeometry) record).getHasGeometry();
+				  if (hasGeometry != null) {
+					String geometry=hasGeometry.toString();
+					if (newRecords == null) {
+					  if (geometry.contains(MULTI_LINE)) {
+						typeInGeometry = MULTI_LINE;
+					  } else {
+						typeInGeometry = MULTI_POLYGON;
+					  }
+
+					  if (typeInGeometry.equals(MULTI_LINE)) {
+						newRecords = new ArrayList<GeoJsonFeatureMultiline>();
+						newResult = new GeoJsonResult<GeoJsonFeatureMultiline>();
+					  } else {
+						newRecords = new ArrayList<GeoJsonFeatureMultipolygon>();
+						newResult = new GeoJsonResult<GeoJsonFeatureMultipolygon>();
+					  }
+
+					}
+
+					if ((!geometry.equals(""))&&(!geometry.equals("{}")))
+					{
+    					if (typeInGeometry.equals(MULTI_LINE)) {
+    					  GeoJsonFeatureMultiline newRecord = transformToGeoJsonMultiline(record, petitionSrId);
+    					  if (newRecord != null) {
+    						newRecords.add(newRecord);
+    					  }
+    					} else {
+    					  GeoJsonFeatureMultipolygon newRecord = transformToGeoJsonMultiPolygon(record, petitionSrId);
+    					  if (newRecord != null) {
+    						newRecords.add(newRecord);
+    					  }
+    					}
+					}
+
+				  }
+				}
 			}
 			
+			if (newRecords == null)
+			{
+			  newRecords = new ArrayList();			  
+			}
+			if (newResult == null)
+			{
+				newResult = new GeoJsonResult();			  
+			}
+					
 			newResult.setFeatures(newRecords);	
 			objectMapper.writeValue(outputStream, newResult);	
 					
@@ -182,6 +240,40 @@ public class GEOJSONConverter <T, L extends Result<T>> extends AbstractHttpMessa
 
 
 	
+
+
+
+	
+	private GeoJsonFeatureMultiline transformToGeoJsonMultiline(T record, String petitionSrId) throws Exception {
+		List<BeanUtil> listData = Util.obtenerBeanUtil(record);
+		GeoJsonFeatureMultiline newRecord=new GeoJsonFeatureMultiline();
+		
+		JSONObject geometry=null;
+		
+		for (BeanUtil bean:listData)
+		{
+			if (bean.getFieldName().equals("hasGeometry")&& (bean.getValue()!=null))
+			{										
+				geometry=(JSONObject) bean.getValue();				
+			}
+			if ((ConstantsGEO.ignoreFields.contains(bean.getFieldName().toLowerCase())==false)&&(bean.getFieldName().toLowerCase().endsWith("object")==false))
+			{				
+				Map<String, Object> properties = newRecord.getProperties();
+				addField(bean, properties);
+			}
+			else 
+			{
+				log.debug(bean.getFieldName()+" ignored");
+			}
+		}
+		
+		if (geometry!=null)
+		{			
+			newRecord.setGeometry((JSONObject) geometry.get("geometry"));			
+		}
+		
+		return newRecord;
+	}
 
 
 	private GeoJsonFeatureMultipolygon transformToGeoJsonMultiPolygon(T record, String petitionSrId) throws Exception {

@@ -150,20 +150,7 @@ public class ScheduledStopPointTestFK {
 		}
     }
        
-    @Test    
-    public void test04_Delete_ERROR_FK1() throws Exception {
-    	
-    	if (activeFK == false) {
-			assertFalse(activeFK);
-		} else {    	
-	    	String id ="138a1-4608";	    	
-	    	id=Util.encodeURL(id);	    	
-	        this.mockMvc.perform(MockMvcRequestBuilders.delete(ScheduledStopPointController.ADD+"/"+id)
-	        		.contentType(MediaType.APPLICATION_JSON))
-		        .andExpect(MockMvcResultMatchers.status().isConflict());    	
-		}
-    	
-    }
+   
 
     @Test    
     public void test99_Delete() throws Exception {

@@ -34,7 +34,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -67,7 +67,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCJR, propiedad = "Portal")
 @PathId(value = "/callejero/portal")
-public class CallejeroPortal implements java.io.Serializable, RDFModel, GeoModel
+public class CallejeroPortal implements java.io.Serializable, RDFModel, IGeoModelXY
 {
 	@JsonIgnore
 	private static final long serialVersionUID = 7914312089246811989L;	

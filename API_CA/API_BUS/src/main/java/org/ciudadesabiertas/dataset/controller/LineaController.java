@@ -18,6 +18,7 @@ package org.ciudadesabiertas.dataset.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.persistence.EntityManager;
@@ -31,6 +32,7 @@ import org.ciudadesabiertas.dataset.model.Operator;
 import org.ciudadesabiertas.dataset.model.Parada;
 import org.ciudadesabiertas.dataset.model.Route;
 import org.ciudadesabiertas.dataset.utils.BusConstants;
+import org.ciudadesabiertas.dataset.utils.LineStringUtil;
 import org.ciudadesabiertas.dataset.utils.LineaResult;
 import org.ciudadesabiertas.dataset.utils.LineaSearch;
 import org.ciudadesabiertas.dataset.utils.OperatorSearch;
@@ -42,15 +44,19 @@ import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
+import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -194,7 +200,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=LineaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -213,6 +219,8 @@ public class LineaController extends GenericController implements CiudadesAbiert
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -223,13 +231,40 @@ public class LineaController extends GenericController implements CiudadesAbiert
 		RSQLVisitor<CriteriaQuery<Linea>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Linea>();
 		
 		ResponseEntity<Linea> list=list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Linea(), new LineaResult(),	availableFields, getKey(), visitor,service);
-					
+				
+		HttpStatus statusCode = list.getStatusCode();
+		
+		if (statusCode.is2xxSuccessful())
+		{
+			boolean isSemantic=Util.isSemanticPetition(request);
+		
+			Object body = list.getBody();
+		
+    		if (body!=null)
+    		{
+        		Result<Linea> result=((Result<Linea>)body);
+        		
+        		List<Linea> records = result.getRecords();
+        		
+        		if (srId.equals(""))
+    			{
+    				srId=StartVariables.SRID_XY_APP;
+    			}
+    			
+    			for (Linea linea:records) {	
+    				LineStringUtil.addPolygon(isSemantic, srId, linea);
+    			}
+    		
+    		}
+		
+		}
+		
 		return list;
 	}
 
 	
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -248,11 +283,13 @@ public class LineaController extends GenericController implements CiudadesAbiert
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize, 
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[listHead][" + LIST + "]");		
-		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
+		return list(request, search, fields, rsqlQ, page, pageSize, sort, srId, headersRequest);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -276,6 +313,21 @@ public class LineaController extends GenericController implements CiudadesAbiert
 		log.debug("[parmam][dato:" + obj + "] ");		
 		
 		List<String> erroresFK = checkClavesExternas(obj.getCabeceraLinea(), obj.getFinalLinea(), obj.getOperating() , null, Constants.BASIC_OPERATION_ADD);
+		
+		if (obj.getHasGeometry()!=null)
+		{
+		  Map geometryMap=(Map)obj.getHasGeometry();
+		  if (geometryMap.size()>0)
+		  {
+			JSONObject geometry = new JSONObject();
+			geometry.putAll(geometryMap);
+			obj.setHasGeometry(null);
+			obj.setGeometry(geometry.toJSONString());
+		  }else {
+			obj.setHasGeometry(null);
+			obj.setGeometry(null);
+		  }
+		}
 		
 		return add(obj, nameController, ADD, service,getKey(), erroresFK);
 	}
@@ -332,7 +384,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=LineaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -354,7 +406,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 
 	}
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=LineaResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -374,7 +426,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { TRANSFORM,
 			VERSION_1 + TRANSFORM }, method = RequestMethod.POST, consumes = SwaggerConstants.FORMATOS_ADD_REQUEST)
-	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = {
+	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = {
 			@Authorization(value = Constants.APIKEY) })
 	@ApiResponses({
 			@ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA, response = LineaResult.class),
@@ -394,7 +446,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),

@@ -114,7 +114,7 @@ public class StopPointInJourneyPatternTest {
     		"      \"orderStop\": 1,\n" + 
     		"      \"stopUse\": \"pass-through\",\n" + 
     		"      \"in\": \"138a2\",\n" + 
-    		"      \"viewedAs\": \"138a1-4608\"\n" + 
+    		"      \"viewedAs\": \"138a1-4618\"\n" + 
     		"    }";
 
     	
@@ -148,7 +148,7 @@ public class StopPointInJourneyPatternTest {
     		"      \"orderStop\": 1,\n" + 
     		"      \"stopUse\": \"pass-through\",\n" + 
     		"      \"in\": \"138a2\",\n" + 
-    		"      \"viewedAs\": \"138a1-4608\"\n" + 
+    		"      \"viewedAs\": \"138a1-4618\"\n" + 
     		"    }";
     	
     	jsonItem = new String (jsonItem.getBytes(),"UTF-8");	
@@ -169,7 +169,7 @@ public class StopPointInJourneyPatternTest {
     		"      \"orderStop\": 1,\n" + 
     		"      \"stopUse\": \"pass-through\",\n" + 
     		"      \"in\": \"138a2\",\n" + 
-    		"      \"viewedAs\": \"138a1-4608\"\n" + 
+    		"      \"viewedAs\": \"138a1-4618\"\n" + 
     		"    }";
     	
     	String itemUpdate = new String (jsonItem.getBytes(),"UTF-8");	
@@ -204,7 +204,7 @@ public class StopPointInJourneyPatternTest {
   		"      \"orderStop\": 1,\n" + 
   		"      \"stopUse\": \"pass-through\",\n" + 
   		"      \"in\": \"138a2\",\n" + 
-		"      \"viewedAs\": \"138a1-4608\"\n" + 
+		"      \"viewedAs\": \"138a1-4618\"\n" + 
   		"    }";
     	
     	String itemUpdate = new String (jsonItem.getBytes(),"UTF-8");	
@@ -295,7 +295,7 @@ public class StopPointInJourneyPatternTest {
 		"      \"orderStop\": 1,\n" + 
 		"      \"stopUse\": \"pass-through\",\n" + 
 		"      \"in\": \"138a2\",\n" + 
-		"      \"viewedAs\": \"138a1-4608\"\n" + 
+		"      \"viewedAs\": \"138a1-4618\"\n" + 
 		"    }";
     	
     	String AuthorityTransform = new String (jsonItem.getBytes(),"UTF-8");	
@@ -315,7 +315,7 @@ public class StopPointInJourneyPatternTest {
 		"      \"orderStop\": 1,\n" + 
 		"      \"stopUse\": \"pass-through\",\n" + 
 		"      \"in\": \"138a2\",\n" + 
-		"      \"viewedAs\": \"138a1-4608\"\n" + 
+		"      \"viewedAs\": \"138a1-4618\"\n" + 
 		"    }";
     	
     	String AuthorityTransform = new String (jsonItem.getBytes(),"UTF-8");	
@@ -389,7 +389,7 @@ public class StopPointInJourneyPatternTest {
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(StopPointInJourneyPatternController.LIST+"/"+"6a2-1918", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(StopPointInJourneyPatternController.LIST+"/"+"138a2-4608", mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
     

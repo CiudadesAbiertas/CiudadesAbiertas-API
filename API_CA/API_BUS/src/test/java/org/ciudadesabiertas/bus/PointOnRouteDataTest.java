@@ -69,7 +69,7 @@ public Integer expected;
 public static Collection<Object[]> data() {
   Collection<Object[]> params = new ArrayList<>();
   params.add(new Object[] { "id", "6a-1918", 1 });
-  params.add(new Object[] { "orderPoint","1", 3 });
+  params.add(new Object[] { "orderPoint","1", 5 });
   params.add(new Object[] { "distanceFromStart","0", 3 });
   params.add(new Object[] { "inId","6a", 1 });
   params.add(new Object[] { "functionalCentroidFor","1918", 1 });

@@ -14,30 +14,24 @@
  * See the Licence for the specific language governing permissions and limitations under the Licence.
  */
 
-package org.ciudadesabiertas.dataset.utils;
-
-import java.io.Serializable;
-
-import org.ciudadesabiertas.dataset.model.Linea;
-import org.ciudadesabiertas.utils.DatasetSearch;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import io.swagger.annotations.ApiModelProperty;
+package org.ciudadesabiertas.model;
 
 /**
  * @author Juan Carlos Ballesteros (Localidata)
  * @author Carlos Martínez de la Casa (Localidata)
- * @author Hugo Lafuente Matesanz (Localidata)
- * @author Oscar Corcho (UPM, Localidata) 
+ * @author Oscar Corcho (UPM, Localidata)
+ *
  */
-public class LineaSearch extends Linea implements  Serializable, DatasetSearch<Linea> {
+public interface IGeoModelGeometry {
 
-	@JsonIgnore
-	private static final long serialVersionUID = -1286906960223335790L;
-	
-	@ApiModelProperty(hidden = true)
-	@JsonIgnore
-	private Object hasGeometry;
-	
+  public String getId();
+
+  public String getGeometry();
+  
+  public void setGeometry(String geometry);
+  
+  public Object getHasGeometry();
+  
+  public void setHasGeometry(Object hasGeometry);
+
 }

@@ -37,7 +37,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesabiertas.model.RDFModel;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -72,7 +72,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCOM, propiedad = "LocalComercial")
 @PathId(value="/local-comercial/local-comercial")
-public class LocalComercial implements java.io.Serializable, GeoModel, RDFModel, ICallejero
+public class LocalComercial implements java.io.Serializable, IGeoModelXY, RDFModel, ICallejero
 {
 	@JsonIgnore
 	private static final long serialVersionUID = 8909539156599176499L;

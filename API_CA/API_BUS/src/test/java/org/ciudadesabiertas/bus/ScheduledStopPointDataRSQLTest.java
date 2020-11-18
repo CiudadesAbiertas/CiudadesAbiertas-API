@@ -65,11 +65,11 @@ public Integer expected;
 @Parameters(name = "{index}: test {0}")
 public static Collection<Object[]> data() {
   Collection<Object[]> params = new ArrayList<>();
-  params.add(new Object[] { "id=='138a1-4608'", 1 });
-  params.add(new Object[] { "functionalCentroidFor=='1918'", 1});
+  params.add(new Object[] { "id=='138a1-4618'", 1 });
+  params.add(new Object[] { "functionalCentroidFor=='3219'", 1});
   params.add(new Object[] { "alighting==true", 3 });
   params.add(new Object[] { "boarding==false", 3 });
-  params.add(new Object[] { "titleStopArea=='Benavente'", 1 });
+  params.add(new Object[] { "titleStopArea=='Cuatro Caminos'", 1 });
 
   return params;
 }

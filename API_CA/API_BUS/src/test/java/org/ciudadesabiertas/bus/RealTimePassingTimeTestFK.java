@@ -78,7 +78,7 @@ public class RealTimePassingTimeTestFK {
 	    		"      \"id\": \""+id+"\",\r\n" + 
 	    		"      \"resultTime\": \"2020-05-13T10:25:05\",\n" + 
 	    		"      \"expectedArrivalTime\": \"PT20M\",\n" + 
-	    		"      \"hasFeatureOfInterest\": \"138a2-4608\"\n" + 
+	    		"      \"hasFeatureOfInterest\": \"6a-1918\"\n" + 
 	    		"    }";
 	
 			item = new String(item.getBytes(), "UTF-8");

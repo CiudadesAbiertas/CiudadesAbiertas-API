@@ -39,7 +39,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
 import org.ciudadesabiertas.model.RDFModel;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -72,7 +72,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.OPEN311, propiedad = "ServiceRequest")
 @PathId(value="/aviso-queja-sugerencia/aviso-queja-sugerencia")
-public class AvisoQuejaSug implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
+public class AvisoQuejaSug implements java.io.Serializable, IGeoModelXY, RDFModel, ICallejero {
 
 	@JsonIgnore
 	private static final long serialVersionUID = -5896570841942655495L;

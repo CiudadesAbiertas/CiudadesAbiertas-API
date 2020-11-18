@@ -58,10 +58,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.ciudadesabiertas.exception.BadRequestException;
 import org.ciudadesabiertas.model.DataCubeModel;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ITrafico;
 import org.ciudadesabiertas.utils.converters.RDFConverter;
 import org.jasypt.util.text.BasicTextEncryptor;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -970,7 +972,7 @@ public class Util
 		
 		for (int i=0;i<listado.size();i++)		
 		{
-			GeoModel geomodel=(GeoModel) listado.get(i);
+			IGeoModelXY geomodel=(IGeoModelXY) listado.get(i);
 			if ((validValue(geomodel.getLatitud()))&&(validValue(geomodel.getLongitud())))
 			{
 				BigDecimal latitud = geomodel.getLatitud();
@@ -993,7 +995,7 @@ public class Util
 		
 		for (int i=0;i<listado.size();i++)		
 		{
-			GeoModel geomodel=(GeoModel) listado.get(i);
+			IGeoModelXY geomodel=(IGeoModelXY) listado.get(i);
 			if ((validValue(geomodel.getX()))&&(validValue(geomodel.getY())))
 			{
 				BigDecimal x = geomodel.getX();
@@ -1007,25 +1009,25 @@ public class Util
 		}
 	}
 	
-	public static void generaLATLONGfromXY(String source, GeoModel geomodel)
+	public static void generaLATLONGfromXY(String source, IGeoModelXY geomodel)
 	{	
-		ArrayList<GeoModel> l=new ArrayList<GeoModel>();
+		ArrayList<IGeoModelXY> l=new ArrayList<IGeoModelXY>();
 		l.add(geomodel);
 				
 		generaLATLONGfromXY(source,l);
 	}
 	
-	public static void generaXYfromLATLONG(String source,String srId, GeoModel geomodel)
+	public static void generaXYfromLATLONG(String source,String srId, IGeoModelXY geomodel)
 	{	
-		ArrayList<GeoModel> l=new ArrayList<GeoModel>();
+		ArrayList<IGeoModelXY> l=new ArrayList<IGeoModelXY>();
 		l.add(geomodel);
 				
 		generaXYfromLATLONG(source,srId,l);
 	}
 	
-	public static void generaCoordenadasAll( String srId, GeoModel geomodel)
+	public static <T> void generaCoordenadasAll( String srId, T geomodel)
 	{
-		ArrayList<GeoModel> l=new ArrayList<GeoModel>();
+		ArrayList<T> l=new ArrayList<T>();
 		l.add(geomodel);
 		generaCoordenadasAll(StartVariables.SRID_XY_APP, srId, l);
 	}
@@ -1039,7 +1041,7 @@ public class Util
 	{	
 		//control para los objetos que o extienden de GeoModel
 		boolean isTransformacionXY = true;
-		if (isObjectGeoModel(listado)) {
+		if (isObjectGeoModelXY(listado)) {
 			
 			String target = StartVariables.SRID_LAT_LON_APP;
 			//Comprobamos el srId si es para x e y o Lat y lon
@@ -1052,7 +1054,7 @@ public class Util
 						
 			for (int i=0;i<listado.size();i++)		
 			{
-				GeoModel geomodel=(GeoModel) listado.get(i);
+				IGeoModelXY geomodel=(IGeoModelXY) listado.get(i);
 				if ((validValue(geomodel.getX()))&&(validValue(geomodel.getY())))
 				{
 					BigDecimal x = geomodel.getX();
@@ -1074,7 +1076,7 @@ public class Util
 				CoordinateTransformer ct2 = new CoordinateTransformer(source, srId);
 
 				for (int i = 0; i < listado.size(); i++) {
-					GeoModel geomodel = (GeoModel) listado.get(i);
+					IGeoModelXY geomodel = (IGeoModelXY) listado.get(i);
 					if ((validValue(geomodel.getX()))&&(validValue(geomodel.getY())))
 					{
 						BigDecimal x = geomodel.getX();
@@ -1088,7 +1090,76 @@ public class Util
 				}
 			}//fin if validValue(srId)
 			
-		}//fin if isGeomodel 
+		} else if (isObjectGeoModelGeometry(listado)) {
+		  
+		  
+		  	String target = StartVariables.SRID_LAT_LON_APP;
+			//Comprobamos el srId si es para x e y o Lat y lon
+			if (validValue(srId) && CoordinateTransformer.comprobarSrIdLatLon(srId)) {
+				target = srId;
+				isTransformacionXY = false;
+			}
+			//1 obtenemos lat y lon Siempre se genera esta transformación, activamos true, para que permita la transformacion
+			CoordinateTransformer ct1 = new CoordinateTransformer(source,target);
+						
+			for (int i=0;i<listado.size();i++)		
+			{
+				IGeoModelGeometry geomodel=(IGeoModelGeometry) listado.get(i);
+		  
+				String hasGeometry=geomodel.getGeometry();
+				
+				if (validValue(hasGeometry))
+				{
+					JSONObject geoObj=Util.stringToJSONObject(hasGeometry);
+					if (geoObj!=null)
+					{
+						JSONArray features=(JSONArray) geoObj.get("features");
+						if (features!=null)
+						{
+							JSONObject actualFeature=(JSONObject)features.get(0);
+							if ( isTransformacionXY)
+							{
+    	  						if (actualFeature!=null)
+    	  						{
+    	  						  JSONObject geometry=(JSONObject)actualFeature.get("geometry");
+    	  						  JSONArray coordinates=(JSONArray)geometry.get("coordinates");
+    	  						  JSONArray coordinatesTransformed=new JSONArray();
+    	  						  for (int j=0;j<coordinates.size();j++)
+    	  						  {
+    	  							JSONArray vectorActual=(JSONArray) coordinates.get(j);
+    	  							JSONArray vectorActualTransformed=new JSONArray();
+    	  							for (int k=0;k<vectorActual.size();k++)
+    	  							{
+    	  							  JSONArray coordinate=(JSONArray) vectorActual.get(k);
+    	  							  JSONArray coordinateTransformed=new JSONArray();
+    	  							  
+    	  							  //Alternamos posición X e Y
+    	  							  double[] transformCoordinates = ct1.transformCoordinates((double)coordinate.get(1), (double)coordinate.get(0));	
+    	  							  //Alternamos la salida del vector para Lat y lon
+    	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+    	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));	
+    	  							  
+    	  							  vectorActualTransformed.add(coordinateTransformed);
+    	  							}							
+    	  							coordinatesTransformed.add(vectorActualTransformed);							
+    	  						  }
+    	  						  geometry.put("coordinates", coordinatesTransformed);
+    	  						  actualFeature.put("geometry",geometry);
+    	  						  						  
+    	  						  geomodel.setGeometry(actualFeature.toString());
+    	  						  geomodel.setHasGeometry(actualFeature);
+    	  						}
+							}
+						}
+					}
+				}
+			}//fin for
+		 
+		}//fin if
+		  
+		  
+			
+		
 		
 		if(isObjectITrafico(listado)) 
 		{
@@ -1413,7 +1484,7 @@ public class Util
 	 */
 	public static void showCoordinates(Result obj,String srId) {
 		
-		if (isObjectGeoModel(obj.getRecords())){
+		if (isObjectGeoModelXY(obj.getRecords())){
 		
 			//CMG Control para mostrar las coordenadas
 			String srIdXY=StartVariables.SRID_XY_APP;
@@ -1438,18 +1509,37 @@ public class Util
 	
 	
 	/**
-	 * Metodo para ver si los objetos de un listado extienden de Geomodel.
+	 * Metodo para ver si los objetos de un listado extienden de IGeoModelXY.
 	 * @param listado
 	 * @return
 	 */
-	public static boolean isObjectGeoModel(List listado) {
+	public static boolean isObjectGeoModelXY(List listado) {
 		boolean result=false;
 		if (listado!=null && listado.size()>0) {
 			try {
-				GeoModel aux=(GeoModel) listado.get(0);
+				IGeoModelXY aux=(IGeoModelXY) listado.get(0);
 				result = true;
 			}catch (Exception e) {
-				log.info("[isObjectGeoModel] [listado] No is a object GeoModel");
+				log.info("[isObjectGeoModelXY] [listado] No is a object IGeoModelXY");
+				result = false;
+			}//Fin control
+		}
+		return result;
+	}
+	
+	/**
+	 * Metodo para ver si los objetos de un listado extienden de IGeoModelGeometry.
+	 * @param listado
+	 * @return
+	 */
+	public static boolean isObjectGeoModelGeometry(List listado) {
+		boolean result=false;
+		if (listado!=null && listado.size()>0) {
+			try {
+			  IGeoModelGeometry aux=(IGeoModelGeometry) listado.get(0);
+				result = true;
+			}catch (Exception e) {
+				log.info("[isObjectGeoModelGeometry] [listado] No is a object GeoModelGeometry");
 				result = false;
 			}//Fin control
 		}
@@ -1585,7 +1675,7 @@ public class Util
 			obj = (JSONObject) JSONParser.parse(json);
 		} catch (ParseException e)
 		{
-			log.error("Error parsing JSONdata",e);			
+			log.error("Error parsing JSON data",e);			
 		}
 		return obj;
 		

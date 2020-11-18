@@ -39,7 +39,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -74,7 +74,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESTURISMO, propiedad = "LugarInteresTuristico")
 @PathId(value="/punto-interes-turistico/punto-interes-turistico")
-public class PuntoInteresTuristico implements java.io.Serializable, GeoModel, RDFModel,MultiURI, ICallejero {
+public class PuntoInteresTuristico implements java.io.Serializable, IGeoModelXY, RDFModel,MultiURI, ICallejero {
 
 	@JsonIgnore
 	private static final long serialVersionUID = -4486812743090306716L;

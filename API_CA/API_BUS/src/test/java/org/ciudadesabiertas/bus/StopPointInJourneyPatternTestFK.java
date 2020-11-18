@@ -79,7 +79,7 @@ public class StopPointInJourneyPatternTestFK {
 	    		"      \"orderStop\": 1,\n" + 
 	    		"      \"stopUse\": \"pass-through\",\n" + 
 	    		"      \"in\": \"138a2\",\n" + 
-	    		"      \"viewedAs\": \"138a1-4608\"\n" + 
+	    		"      \"viewedAs\": \"138a1-4618\"\n" + 
 	    		"    }";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -150,20 +150,7 @@ public class StopPointInJourneyPatternTestFK {
 		}
     }
     
-    @Test    
-    public void test04_Delete_ERROR_FK1() throws Exception {
-    	
-    	if (activeFK == false) {
-			assertFalse(activeFK);
-		} else {    	
-	    	String id ="6a2-1918";	    	
-	    	id=Util.encodeURL(id);	    	
-	        this.mockMvc.perform(MockMvcRequestBuilders.delete(StopPointInJourneyPatternController.ADD+"/"+id)
-	        		.contentType(MediaType.APPLICATION_JSON))
-		        .andExpect(MockMvcResultMatchers.status().isConflict());    	
-		}
-    	
-    }
+    
 
     @Test    
     public void test99_Delete() throws Exception {

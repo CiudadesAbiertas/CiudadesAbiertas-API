@@ -17,6 +17,7 @@ import org.ciudadesabiertas.dataset.model.Parada;
 import org.ciudadesabiertas.dataset.model.PointOnRoute;
 import org.ciudadesabiertas.dataset.model.ScheduledStopPoint;
 import org.ciudadesabiertas.dataset.utils.BusConstants;
+import org.ciudadesabiertas.dataset.utils.ParadaGeoSearch;
 import org.ciudadesabiertas.dataset.utils.ParadaResult;
 import org.ciudadesabiertas.dataset.utils.ParadaSearch;
 import org.ciudadesabiertas.dataset.utils.PointOnRouteSearch;
@@ -114,6 +115,39 @@ public static final String LIST = "/autobus/parada";
 	@Autowired
 	protected DatasetService<ScheduledStopPoint> scheduledStopPointService;
 	
+	
+	@SuppressWarnings("unchecked")
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_GEOGRAFICA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_GEOGRAFICA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiResponses({
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=ParadaResult.class),
+	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
+	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
+	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
+	   })
+	@RequestMapping(value= {GEO_LIST,  VERSION_1+GEO_LIST}, method = {RequestMethod.GET})	
+	public @ResponseBody ResponseEntity<?> geoList(HttpServletRequest request,	ParadaGeoSearch search, 
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,			
+			@RequestParam(value = Constants.METERS, required = true) 
+				@ApiParam(value=SwaggerConstants.PARAM_METERS, required = true) String meters,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestHeader HttpHeaders headersRequest)
+	{
+
+		log.info("[geoList][" + LIST + "]");
+
+		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
+		
+		
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Parada(), new ParadaResult(), availableFields, getKey(),service);
+		
+		return integraCallejero(list,request);
+	}
 	
 	@SuppressWarnings("unchecked")
 	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })

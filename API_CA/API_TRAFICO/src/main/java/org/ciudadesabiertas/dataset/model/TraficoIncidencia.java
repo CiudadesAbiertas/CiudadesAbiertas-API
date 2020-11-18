@@ -39,7 +39,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.ICallejero;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
@@ -74,7 +74,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESTRAF, propiedad = "Incidencia")
 @PathId(value="/trafico/incidencia")
-public class TraficoIncidencia  implements java.io.Serializable, GeoModel, RDFModel, ICallejero {
+public class TraficoIncidencia  implements java.io.Serializable, IGeoModelXY, RDFModel, ICallejero {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
