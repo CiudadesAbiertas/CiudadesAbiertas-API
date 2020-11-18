@@ -52,6 +52,7 @@
             <column name="email" type="VARCHAR(200)"/>
 			<column name="url" type="VARCHAR(400)"/>
 			<column name="image" type="VARCHAR(200)"/>
+			<column name="portal_id" type="VARCHAR(50)"/>
         </createTable>
          <rollback>
             <dropTable tableName="organigrama"/>            

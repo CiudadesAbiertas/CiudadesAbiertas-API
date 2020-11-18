@@ -165,6 +165,7 @@
             <column name="operating" type="VARCHAR(50)"/>
             <column name="colour" type="VARCHAR(200)"/>
             <column name="text_colour" type="VARCHAR(200)"/>
+			<column name="geometry" type="LONGTEXT"/>
         </createTable>
 		<rollback>
             <dropTable tableName="bus_linea"/>            

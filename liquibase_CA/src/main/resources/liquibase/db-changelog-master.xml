@@ -169,8 +169,6 @@
   <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-table.xml"/>
   <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-data.xml"/>
   
-  <!-- 1.98.2 Modificación de ORGANIGRAMA --> 
-  <include file="liquibase/db-changelog-script-1.98.2-ORGANIGRAMA-data.xml"/>
   
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

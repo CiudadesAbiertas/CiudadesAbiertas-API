@@ -350,11 +350,7 @@
         <addForeignKeyConstraint baseColumnNames="functional_centroid_for" baseTableName="bus_pointonroute" constraintName="bus_poinonrout_ibfk_2" referencedColumnNames="id" referencedTableName="bus_parada"/>
     </changeSet>
     <changeSet author="Localidata" id="fk-bus-11">
-        <addForeignKeyConstraint baseColumnNames="has_feature_of_interest" baseTableName="bus_realtime_passing_time" constraintName="bus_realpasstime_ibfk_1" referencedColumnNames="id" referencedTableName="bus_stoppointinjourneypattern"/>
-    </changeSet>
-	<changeSet author="Localidata" id="fk-bus-12">
-        <addForeignKeyConstraint baseColumnNames="linea" baseTableName="bus_rel_linea_incidencia" constraintName="bus_rel_line_inci_ibfk_1" referencedColumnNames="id" referencedTableName="bus_linea"/>
-    </changeSet>
+        <addForeignKeyConstraint baseColumnNames="has_feature_of_interest" baseTableName="bus_realtime_passing_time" constraintName="bus_realpasstime_ibfk_1" referencedColumnNames="id" referencedTableName="bus_pointonroute"/></changeSet>
     <changeSet author="Localidata" id="fk-bus-13">
         <addForeignKeyConstraint baseColumnNames="afectada_incidencia" baseTableName="bus_rel_linea_incidencia" constraintName="bus_rel_line_inci_ibfk_2" referencedColumnNames="id" referencedTableName="bus_incidencia"/>
     </changeSet>

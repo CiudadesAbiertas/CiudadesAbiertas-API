@@ -21,9 +21,11 @@
 	<addColumn tableName="local_comercial">
         <column name="portal_id" type="varchar(50)"/>
     </addColumn>
+	<!--
 	<addColumn tableName="organigrama">
         <column name="portal_id" type="varchar(50)"/>
     </addColumn>
+	-->
 	<!--I. EQUIPAMIENTO -->
 	<addColumn tableName="agenda">
         <column name="equipamiento_id" type="varchar(50)"/>
@@ -85,12 +87,14 @@
 	<rollback/>
 </changeSet>
 
+<!--
 <changeSet author="Localidata"  id="sql-update-organigrama"  >
 	<update tableName="organigrama">
         <column name="portal_id" value="PORTAL000098"/>        
     </update>
 	<rollback/>
 </changeSet>
+-->
 
 <changeSet author="Localidata"  id="sql-update-agenda"  >
 	<update tableName="agenda">

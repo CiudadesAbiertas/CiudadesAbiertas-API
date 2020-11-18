@@ -241,6 +241,7 @@
             <column name="operating" value="emt"/>
             <column name="colour" value="Azul"/>
             <column name="text_colour" value="Negro"/>
+			<column name="geometry"/>
         </insert>
         <insert tableName="bus_linea">
             <column name="ikey" value="BUSLIN02"/>
@@ -255,6 +256,7 @@
             <column name="operating" value="emt"/>
             <column name="colour" value="Azul"/>
             <column name="text_colour" value="Negro"/>
+			<column name="geometry"/>
         </insert>
         <insert tableName="bus_linea">
             <column name="ikey" value="BUSLIN03"/>
@@ -269,6 +271,22 @@
             <column name="operating" value="emt"/>
             <column name="colour" value="Azul"/>
             <column name="text_colour" value="Negro"/>
+			<column name="geometry"/>
+        </insert>
+		<insert tableName="bus_linea">
+            <column name="ikey" value="BUSLIN11"/>
+            <column name="id" value="11"/>
+            <column name="description"/>
+            <column name="title" value="MARQUES DE VIANA-BARRIO BLANCO"/>
+            <column name="url" value="http://www.crtm.es/tu-transporte-publico/autobuses-emt/lineas/6__11___.aspx"/>
+            <column name="short_name" value="11"/>
+            <column name="cabecera_linea" value="697"/>
+            <column name="final_linea" value="4293"/>
+            <column name="distance"/>
+            <column name="operating"/>
+            <column name="colour"/>
+            <column name="text_colour"/>
+			<column name="geometry" valueClobFile="geo/bus_line_11.geojson"/>
         </insert>
 		<rollback>
 			  <delete tableName="bus_linea" />
@@ -425,6 +443,997 @@
             <column name="distrito_title" value="Unico"/>
 			<column name="distrito_id" value="2807901"/>
         </insert>
+		<insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2116"/>
+            <column name="id" value="2116"/>
+            <column name="description" value="Cuzco"/>
+            <column name="title" value="Cuzco"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441550.27791"/>
+            <column name="y_etrs89" valueNumeric="4478911.87784"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Plaza de Cuzco 2"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2118"/>
+            <column name="id" value="2118"/>
+            <column name="description" value="Arturo Soria-Condesa de Venadito"/>
+            <column name="title" value="Arturo Soria-Condesa de Venadito"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444910.34837"/>
+            <column name="y_etrs89" valueNumeric="4477557.83454"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de la Condesa de Venadito 19"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2119"/>
+            <column name="id" value="2119"/>
+            <column name="description" value="Condesa de Venadito"/>
+            <column name="title" value="Condesa de Venadito"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444783.58868"/>
+            <column name="y_etrs89" valueNumeric="4477450.98895"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de la Condesa de Venadito 11"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2120"/>
+            <column name="id" value="2120"/>
+            <column name="description" value="Madre Antonia París"/>
+            <column name="title" value="Madre Antonia París"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444702.33809"/>
+            <column name="y_etrs89" valueNumeric="4477217.83732"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de la Madre Antonia París 2"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2121"/>
+            <column name="id" value="2121"/>
+            <column name="description" value="Condesa de Venadito-Torrelaguna"/>
+            <column name="title" value="Condesa de Venadito-Torrelaguna"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444543.33494"/>
+            <column name="y_etrs89" valueNumeric="4477294.83938"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de la Condesa de Venadito 16"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2122"/>
+            <column name="id" value="2122"/>
+            <column name="description" value="Condesa de Venadito"/>
+            <column name="title" value="Condesa de Venadito"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444749.34223"/>
+            <column name="y_etrs89" valueNumeric="4477424.83667"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de la Condesa de Venadito SN"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2123"/>
+            <column name="id" value="2123"/>
+            <column name="description" value="Hernández de Tejada"/>
+            <column name="title" value="Hernández de Tejada"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444734.93751"/>
+            <column name="y_etrs89" valueNumeric="4477561.33683"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Hernández de Tejada 2"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR217"/>
+            <column name="id" value="217"/>
+            <column name="description" value="Arturo Soria-Gran Vía de Hortaleza"/>
+            <column name="title" value="Arturo Soria-Gran Vía de Hortaleza"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="443853.34250"/>
+            <column name="y_etrs89" valueNumeric="4479148.84806"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 212 A"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR218"/>
+            <column name="id" value="218"/>
+            <column name="description" value="Arturo Soria-López de Hoyos"/>
+            <column name="title" value="Arturo Soria-López de Hoyos"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="443984.09356"/>
+            <column name="y_etrs89" valueNumeric="4478975.84639"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria SN"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR219"/>
+            <column name="id" value="219"/>
+            <column name="description" value="Arturo Soria-López de Hoyos"/>
+            <column name="title" value="Arturo Soria-López de Hoyos"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444088.34578"/>
+            <column name="y_etrs89" valueNumeric="4478935.84504"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 200"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR220"/>
+            <column name="id" value="220"/>
+            <column name="description" value="Metro Arturo Soria"/>
+            <column name="title" value="Metro Arturo Soria"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444247.34628"/>
+            <column name="y_etrs89" valueNumeric="4478668.84301"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 167"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR221"/>
+            <column name="id" value="221"/>
+            <column name="description" value="Metro Arturo Soria"/>
+            <column name="title" value="Metro Arturo Soria"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444257.47206"/>
+            <column name="y_etrs89" valueNumeric="4478705.84287"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 182"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR222"/>
+            <column name="id" value="222"/>
+            <column name="description" value="Jefatura provincial Tráfico"/>
+            <column name="title" value="Jefatura provincial Tráfico"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444421.90986"/>
+            <column name="y_etrs89" valueNumeric="4478414.34078"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 145"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR223"/>
+            <column name="id" value="223"/>
+            <column name="description" value="Arturo Soria-Bueso Pineda"/>
+            <column name="title" value="Arturo Soria-Bueso Pineda"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444431.25423"/>
+            <column name="y_etrs89" valueNumeric="4478440.84065"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 164"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR224"/>
+            <column name="id" value="224"/>
+            <column name="description" value="Arturo Soria-Conservatorio"/>
+            <column name="title" value="Arturo Soria-Conservatorio"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444608.41084"/>
+            <column name="y_etrs89" valueNumeric="4478129.83839"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 115"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR225"/>
+            <column name="id" value="225"/>
+            <column name="description" value="Arturo Soria-Conservatorio"/>
+            <column name="title" value="Arturo Soria-Conservatorio"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444696.66162"/>
+            <column name="y_etrs89" valueNumeric="4478017.83726"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 134 A"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR226"/>
+            <column name="id" value="226"/>
+            <column name="description" value="Nuestra Señora de América"/>
+            <column name="title" value="Nuestra Señora de América"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444744.62980"/>
+            <column name="y_etrs89" valueNumeric="4477885.83665"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 103"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR227"/>
+            <column name="id" value="227"/>
+            <column name="description" value="Nuestra Señora de América"/>
+            <column name="title" value="Nuestra Señora de América"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444827.34984"/>
+            <column name="y_etrs89" valueNumeric="4477820.83558"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 124"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR2388"/>
+            <column name="id" value="2388"/>
+            <column name="description" value="Costa Rica"/>
+            <column name="title" value="Costa Rica"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442992.31603"/>
+            <column name="y_etrs89" valueNumeric="4478893.85927"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 30"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR293"/>
+            <column name="id" value="293"/>
+            <column name="description" value="Alberto Alcocer-Padre Damián"/>
+            <column name="title" value="Alberto Alcocer-Padre Damián"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441907.28715"/>
+            <column name="y_etrs89" valueNumeric="4478892.87326"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer 12"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR294"/>
+            <column name="id" value="294"/>
+            <column name="description" value="Alberto Alcocer-Padre Damián"/>
+            <column name="title" value="Alberto Alcocer-Padre Damián"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441911.28785"/>
+            <column name="y_etrs89" valueNumeric="4478935.87320"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer 15"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR295"/>
+            <column name="id" value="295"/>
+            <column name="description" value="Alberto Alcocer-Paseo de la Habana"/>
+            <column name="title" value="Alberto Alcocer-Paseo de la Habana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442147.29331"/>
+            <column name="y_etrs89" valueNumeric="4478876.87017"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer 32"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR296"/>
+            <column name="id" value="296"/>
+            <column name="description" value="Alberto Alcocer-Paseo de la Habana"/>
+            <column name="title" value="Alberto Alcocer-Paseo de la Habana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442145.29373"/>
+            <column name="y_etrs89" valueNumeric="4478910.87019"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer 31"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR297"/>
+            <column name="id" value="297"/>
+            <column name="description" value="República Dominicana"/>
+            <column name="title" value="República Dominicana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442492.30259"/>
+            <column name="y_etrs89" valueNumeric="4478883.86573"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer SN"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR298"/>
+            <column name="id" value="298"/>
+            <column name="description" value="República Dominicana"/>
+            <column name="title" value="República Dominicana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442487.30299"/>
+            <column name="y_etrs89" valueNumeric="4478921.86579"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Alberto Alcocer 49"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR299"/>
+            <column name="id" value="299"/>
+            <column name="description" value="Chile"/>
+            <column name="title" value="Chile"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442731.30858"/>
+            <column name="y_etrs89" valueNumeric="4478857.86265"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 12"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR300"/>
+            <column name="id" value="300"/>
+            <column name="description" value="Costa Rica"/>
+            <column name="title" value="Costa Rica"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442999.31562"/>
+            <column name="y_etrs89" valueNumeric="4478850.85918"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 30"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR302"/>
+            <column name="id" value="302"/>
+            <column name="description" value="José María Soler"/>
+            <column name="title" value="José María Soler"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="443273.32358"/>
+            <column name="y_etrs89" valueNumeric="4478898.85563"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 42"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR303"/>
+            <column name="id" value="303"/>
+            <column name="description" value="José María Soler"/>
+            <column name="title" value="José María Soler"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="443253.32345"/>
+            <column name="y_etrs89" valueNumeric="4478927.85588"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 29"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR314"/>
+            <column name="id" value="314"/>
+            <column name="description" value="Chile"/>
+            <column name="title" value="Chile"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="442686.30807"/>
+            <column name="y_etrs89" valueNumeric="4478906.86322"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Costa Rica 5"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR3997"/>
+            <column name="id" value="3997"/>
+            <column name="description" value="Marqués de Viana-Genciana"/>
+            <column name="title" value="Marqués de Viana-Genciana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440361.25316"/>
+            <column name="y_etrs89" valueNumeric="4479405.89295"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 73"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR3998"/>
+            <column name="id" value="3998"/>
+            <column name="description" value="Marqués de Viana-Genciana"/>
+            <column name="title" value="Marqués de Viana-Genciana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440344.49774"/>
+            <column name="y_etrs89" valueNumeric="4479443.20200"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 64"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR3999"/>
+            <column name="id" value="3999"/>
+            <column name="description" value="Marqués de Viana-Gladiolo"/>
+            <column name="title" value="Marqués de Viana-Gladiolo"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440494.25534"/>
+            <column name="y_etrs89" valueNumeric="4479308.89127"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 43"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4000"/>
+            <column name="id" value="4000"/>
+            <column name="description" value="Marqués de Viana-Gladiolo"/>
+            <column name="title" value="Marqués de Viana-Gladiolo"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440489.25578"/>
+            <column name="y_etrs89" valueNumeric="4479349.89133"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 40"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4001"/>
+            <column name="id" value="4001"/>
+            <column name="description" value="Metro Tetuán"/>
+            <column name="title" value="Metro Tetuán"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440763.26008"/>
+            <column name="y_etrs89" valueNumeric="4479134.88787"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 1"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4002"/>
+            <column name="id" value="4002"/>
+            <column name="description" value="Metro Tetuán"/>
+            <column name="title" value="Metro Tetuán"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440756.26016"/>
+            <column name="y_etrs89" valueNumeric="4479153.88795"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del  Marqués de Viana 2"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4003"/>
+            <column name="id" value="4003"/>
+            <column name="description" value="Sor Ángela de la Cruz-Infanta Mercedes"/>
+            <column name="title" value="Sor Ángela de la Cruz-Infanta Mercedes"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440848.26160"/>
+            <column name="y_etrs89" valueNumeric="4479081.88679"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Sor Ángela de la Cruz 37"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4004"/>
+            <column name="id" value="4004"/>
+            <column name="description" value="Sor Ángela de la Cruz-Infanta Mercedes"/>
+            <column name="title" value="Sor Ángela de la Cruz-Infanta Mercedes"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440853.26236"/>
+            <column name="y_etrs89" valueNumeric="4479126.88672"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Sor Ángela de la Cruz 36"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4005"/>
+            <column name="id" value="4005"/>
+            <column name="description" value="Sor Ángela de la Cruz-Orense"/>
+            <column name="title" value="Sor Ángela de la Cruz-Orense"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441155.26796"/>
+            <column name="y_etrs89" valueNumeric="4478951.88289"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Sor Ángela de la Cruz 11 A"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4006"/>
+            <column name="id" value="4006"/>
+            <column name="description" value="Sor Ángela de la Cruz-Orense"/>
+            <column name="title" value="Sor Ángela de la Cruz-Orense"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441157.29985"/>
+            <column name="y_etrs89" valueNumeric="4478993.88286"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Sor Ángela de la Cruz 20"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4007"/>
+            <column name="id" value="4007"/>
+            <column name="description" value="Sor Ángela de la Cruz-Cuzco"/>
+            <column name="title" value="Sor Ángela de la Cruz-Cuzco"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441418.27477"/>
+            <column name="y_etrs89" valueNumeric="4478938.87953"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de  Sor Ángela de la Cruz 1"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4008"/>
+            <column name="id" value="4008"/>
+            <column name="description" value="Sor Ángela de la Cruz-Cuzco"/>
+            <column name="title" value="Sor Ángela de la Cruz-Cuzco"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441302.27230"/>
+            <column name="y_etrs89" valueNumeric="4478982.88100"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Sor Ángela de la Cruz 6"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4009"/>
+            <column name="id" value="4009"/>
+            <column name="description" value="Gardenias"/>
+            <column name="title" value="Gardenias"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440157.52697"/>
+            <column name="y_etrs89" valueNumeric="4479600.10518"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Paseo de la Dirección 170"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4293"/>
+            <column name="id" value="4293"/>
+            <column name="description" value="Marqués de Viana"/>
+            <column name="title" value="Marqués de Viana"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="440191.75004"/>
+            <column name="y_etrs89" valueNumeric="4479505.89509"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle del Marqués de Viana 80"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR4331"/>
+            <column name="id" value="4331"/>
+            <column name="description" value="Jefatura Provincial Tráfico"/>
+            <column name="title" value="Jefatura Provincial Tráfico"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444557.97376"/>
+            <column name="y_etrs89" valueNumeric="4478255.33903"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Arturo Soria 148"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR5882"/>
+            <column name="id" value="5882"/>
+            <column name="description" value="Cuzco"/>
+            <column name="title" value="Cuzco"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="441586.40451"/>
+            <column name="y_etrs89" valueNumeric="4478957.87737"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Avda de Alberto Alcocer 1"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
+        
+        <insert tableName="bus_parada">
+            <column name="ikey" value="BUSPAR697"/>
+            <column name="id" value="697"/>
+            <column name="description" value="Barrio Blanco"/>
+            <column name="title" value="Barrio Blanco"/>
+            <column name="url"/>
+            <column name="wifi"/>
+            <column name="panel_electronico"/>
+            <column name="zona"/>
+            <column name="x_etrs89" valueNumeric="444528.33316"/>
+            <column name="y_etrs89" valueNumeric="4477195.83959"/>
+            <column name="portal_id"/>
+            <column name="street_address" value="Calle de Torrelaguna 48 C"/>
+            <column name="postal_code"/>
+            <column name="municipio_id"/>
+            <column name="municipio_title"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title"/>
+            <column name="barrio_id"/>
+            <column name="barrio_title"/>
+        </insert>
 		<rollback>
 			  <delete tableName="bus_parada" />
 		</rollback>
@@ -454,34 +1463,426 @@
             <column name="in_id" value="138a"/>
             <column name="functional_centroid_for" value="4608"/>
         </insert>
+		<insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-1"/>
+            <column name="id" value="6_I01_sentido_0-1"/>
+            <column name="order_point" valueNumeric="1"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="4293"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-10"/>
+            <column name="id" value="6_I01_sentido_0-10"/>
+            <column name="order_point" valueNumeric="10"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="295"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-11"/>
+            <column name="id" value="6_I01_sentido_0-11"/>
+            <column name="order_point" valueNumeric="11"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="297"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-12"/>
+            <column name="id" value="6_I01_sentido_0-12"/>
+            <column name="order_point" valueNumeric="12"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="299"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-13"/>
+            <column name="id" value="6_I01_sentido_0-13"/>
+            <column name="order_point" valueNumeric="13"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="300"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-14"/>
+            <column name="id" value="6_I01_sentido_0-14"/>
+            <column name="order_point" valueNumeric="14"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="302"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-15"/>
+            <column name="id" value="6_I01_sentido_0-15"/>
+            <column name="order_point" valueNumeric="15"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="218"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-16"/>
+            <column name="id" value="6_I01_sentido_0-16"/>
+            <column name="order_point" valueNumeric="16"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="220"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-17"/>
+            <column name="id" value="6_I01_sentido_0-17"/>
+            <column name="order_point" valueNumeric="17"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="222"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-18"/>
+            <column name="id" value="6_I01_sentido_0-18"/>
+            <column name="order_point" valueNumeric="18"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="224"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-19"/>
+            <column name="id" value="6_I01_sentido_0-19"/>
+            <column name="order_point" valueNumeric="19"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="226"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-2"/>
+            <column name="id" value="6_I01_sentido_0-2"/>
+            <column name="order_point" valueNumeric="2"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="3997"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-20"/>
+            <column name="id" value="6_I01_sentido_0-20"/>
+            <column name="order_point" valueNumeric="20"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="2118"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-21"/>
+            <column name="id" value="6_I01_sentido_0-21"/>
+            <column name="order_point" valueNumeric="21"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="2119"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-22"/>
+            <column name="id" value="6_I01_sentido_0-22"/>
+            <column name="order_point" valueNumeric="22"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="2120"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-23"/>
+            <column name="id" value="6_I01_sentido_0-23"/>
+            <column name="order_point" valueNumeric="23"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="697"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-3"/>
+            <column name="id" value="6_I01_sentido_0-3"/>
+            <column name="order_point" valueNumeric="3"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="3999"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-4"/>
+            <column name="id" value="6_I01_sentido_0-4"/>
+            <column name="order_point" valueNumeric="4"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="4001"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-5"/>
+            <column name="id" value="6_I01_sentido_0-5"/>
+            <column name="order_point" valueNumeric="5"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="4003"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-6"/>
+            <column name="id" value="6_I01_sentido_0-6"/>
+            <column name="order_point" valueNumeric="6"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="4005"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-7"/>
+            <column name="id" value="6_I01_sentido_0-7"/>
+            <column name="order_point" valueNumeric="7"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="4007"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-8"/>
+            <column name="id" value="6_I01_sentido_0-8"/>
+            <column name="order_point" valueNumeric="8"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="2116"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_0-9"/>
+            <column name="id" value="6_I01_sentido_0-9"/>
+            <column name="order_point" valueNumeric="9"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_0"/>
+            <column name="functional_centroid_for" value="293"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-1"/>
+            <column name="id" value="6_I01_sentido_1-1"/>
+            <column name="order_point" valueNumeric="1"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="697"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-10"/>
+            <column name="id" value="6_I01_sentido_1-10"/>
+            <column name="order_point" valueNumeric="10"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="219"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-11"/>
+            <column name="id" value="6_I01_sentido_1-11"/>
+            <column name="order_point" valueNumeric="11"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="217"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-12"/>
+            <column name="id" value="6_I01_sentido_1-12"/>
+            <column name="order_point" valueNumeric="12"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="303"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-13"/>
+            <column name="id" value="6_I01_sentido_1-13"/>
+            <column name="order_point" valueNumeric="13"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="2388"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-14"/>
+            <column name="id" value="6_I01_sentido_1-14"/>
+            <column name="order_point" valueNumeric="14"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="314"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-15"/>
+            <column name="id" value="6_I01_sentido_1-15"/>
+            <column name="order_point" valueNumeric="15"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="298"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-16"/>
+            <column name="id" value="6_I01_sentido_1-16"/>
+            <column name="order_point" valueNumeric="16"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="296"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-17"/>
+            <column name="id" value="6_I01_sentido_1-17"/>
+            <column name="order_point" valueNumeric="17"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="294"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-18"/>
+            <column name="id" value="6_I01_sentido_1-18"/>
+            <column name="order_point" valueNumeric="18"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="5882"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-19"/>
+            <column name="id" value="6_I01_sentido_1-19"/>
+            <column name="order_point" valueNumeric="19"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4008"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-2"/>
+            <column name="id" value="6_I01_sentido_1-2"/>
+            <column name="order_point" valueNumeric="2"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="2121"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-20"/>
+            <column name="id" value="6_I01_sentido_1-20"/>
+            <column name="order_point" valueNumeric="20"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4006"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-21"/>
+            <column name="id" value="6_I01_sentido_1-21"/>
+            <column name="order_point" valueNumeric="21"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4004"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-22"/>
+            <column name="id" value="6_I01_sentido_1-22"/>
+            <column name="order_point" valueNumeric="22"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4002"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-23"/>
+            <column name="id" value="6_I01_sentido_1-23"/>
+            <column name="order_point" valueNumeric="23"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4000"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-24"/>
+            <column name="id" value="6_I01_sentido_1-24"/>
+            <column name="order_point" valueNumeric="24"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="3998"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-25"/>
+            <column name="id" value="6_I01_sentido_1-25"/>
+            <column name="order_point" valueNumeric="25"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4009"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-26"/>
+            <column name="id" value="6_I01_sentido_1-26"/>
+            <column name="order_point" valueNumeric="26"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4293"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-3"/>
+            <column name="id" value="6_I01_sentido_1-3"/>
+            <column name="order_point" valueNumeric="3"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="2122"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-4"/>
+            <column name="id" value="6_I01_sentido_1-4"/>
+            <column name="order_point" valueNumeric="4"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="2123"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-5"/>
+            <column name="id" value="6_I01_sentido_1-5"/>
+            <column name="order_point" valueNumeric="5"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="227"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-6"/>
+            <column name="id" value="6_I01_sentido_1-6"/>
+            <column name="order_point" valueNumeric="6"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="225"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-7"/>
+            <column name="id" value="6_I01_sentido_1-7"/>
+            <column name="order_point" valueNumeric="7"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="4331"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-8"/>
+            <column name="id" value="6_I01_sentido_1-8"/>
+            <column name="order_point" valueNumeric="8"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="223"/>
+        </insert>
+        <insert tableName="bus_pointonroute">
+            <column name="ikey" value="BUSPOIRO6_I01_sentido_1-9"/>
+            <column name="id" value="6_I01_sentido_1-9"/>
+            <column name="order_point" valueNumeric="9"/>
+            <column name="distance_from_start"/>
+            <column name="in_id" value="6_I01_sentido_1"/>
+            <column name="functional_centroid_for" value="221"/>
+        </insert>
 		<rollback>
 			  <delete tableName="bus_pointonroute" />
 		</rollback>
     </changeSet>
-    <changeSet author="Localidata" id="data-autobus_realtimepassingtime">
-        <insert tableName="bus_realtime_passing_time">
-            <column name="ikey" value="BUSREATIM01"/>
-            <column name="id" value="6a2-1918"/>
-            <column name="result_time" valueDate="2020-05-13 12:45:05.0"/>
-            <column name="expected_arrival_time" value="PT15M"/>
-            <column name="has_feature_of_interest" value="6a2-1918"/>
-        </insert>
-        <insert tableName="bus_realtime_passing_time">
-            <column name="ikey" value="BUSREATIM02"/>
-            <column name="id" value="66a2-3219"/>
-            <column name="result_time" valueDate="2020-05-13 12:35:05.0"/>
-            <column name="expected_arrival_time" value="PT10M"/>
-            <column name="has_feature_of_interest" value="66a2-3219"/>
-        </insert>
-        <insert tableName="bus_realtime_passing_time">
-            <column name="ikey" value="BUSREATIM03"/>
-            <column name="id" value="138a2-4608"/>
-            <column name="result_time" valueDate="2020-05-13 12:25:05.0"/>
-            <column name="expected_arrival_time" value="PT20M"/>
-            <column name="has_feature_of_interest" value="138a2-4608"/>
-        </insert>
+	<changeSet author="Localidata" id="data-autobus_realtimepassingtime">
+			<insert tableName="bus_realtime_passing_time">
+				<column name="ikey" value="BUSREATIM01"/>
+				<column name="id" value="6a2-1918"/>
+				<column name="result_time" valueDate="2020-05-13 12:45:05.0"/>
+				<column name="expected_arrival_time" value="PT15M"/>
+				<column name="has_feature_of_interest" value="6a-1918"/>
+			</insert>
+			<insert tableName="bus_realtime_passing_time">
+				<column name="ikey" value="BUSREATIM02"/>
+				<column name="id" value="66a2-3219"/>
+				<column name="result_time" valueDate="2020-05-13 12:35:05.0"/>
+				<column name="expected_arrival_time" value="PT10M"/>
+				<column name="has_feature_of_interest" value="66a-3219"/>
+			</insert>
+			<insert tableName="bus_realtime_passing_time">
+				<column name="ikey" value="BUSREATIM03"/>
+				<column name="id" value="138a2-4608"/>
+				<column name="result_time" valueDate="2020-05-13 12:25:05.0"/>
+				<column name="expected_arrival_time" value="PT20M"/>
+				<column name="has_feature_of_interest" value="138a-4608"/>
+			</insert>
 		<rollback>
-			  <delete tableName="bus_realtime_passing_time" />
+			<delete tableName="bus_realtime_passing_time" />
 		</rollback>
     </changeSet>
     <changeSet author="Localidata" id="data-autobus_rel_linea_incidencia">
@@ -528,6 +1929,20 @@
             <column name="description" value="Línea 138, comienzo en Cristo Rey y final en San Ignacio de Loyola"/>
             <column name="direction_type" value="outbound"/>
             <column name="on_id" value="138"/>
+        </insert>
+		<insert tableName="bus_route">
+            <column name="ikey" value="BUSROU6_I01_sentido_0"/>
+            <column name="id" value="6_I01_sentido_0"/>
+            <column name="description" value="Marqués de Viana-Barrio Blanco"/>
+            <column name="direction_type" value="outbound"/>
+            <column name="on_id" value="11"/>
+        </insert>
+        <insert tableName="bus_route">
+            <column name="ikey" value="BUSROU6_I01_sentido_1"/>
+            <column name="id" value="6_I01_sentido_1"/>
+            <column name="description" value="Barrio Blanco-Marqués de Viana"/>
+            <column name="direction_type" value="outbound"/>
+            <column name="on_id" value="11"/>
         </insert>
 		<rollback>
 			  <delete tableName="bus_route" />
