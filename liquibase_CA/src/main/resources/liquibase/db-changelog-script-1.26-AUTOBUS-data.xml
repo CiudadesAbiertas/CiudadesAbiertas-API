@@ -1147,8 +1147,8 @@
             <column name="wifi"/>
             <column name="panel_electronico"/>
             <column name="zona"/>
-            <column name="x_etrs89" valueNumeric="440489.25578"/>
-            <column name="y_etrs89" valueNumeric="4479349.89133"/>
+            <column name="x_etrs89" valueNumeric="440517.54309"/>
+            <column name="y_etrs89" valueNumeric="4479309.44836"/>
             <column name="portal_id"/>
             <column name="street_address" value="Calle del Marqués de Viana 40"/>
             <column name="postal_code"/>

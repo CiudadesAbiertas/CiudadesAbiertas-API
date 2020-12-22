@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	<changeSet author="Localidata" id="table-pais-change">	
+		<addColumn 	tableName="territorio_pais" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_pais"/>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table-automia-change">	
+		<addColumn 	tableName="territorio_autonomia" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_autonomia"/>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table-provincia-change">	
+		<addColumn 	tableName="territorio_provincia" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_provincia"/>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table-municipio-change">	
+		<addColumn 	tableName="territorio_municipio" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_municipio"/>  
+		</rollback>
+	</changeSet>
+	
+    <changeSet author="Localidata" id="table-distrito-change">	
+		<addColumn 	tableName="territorio_distrito" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_distrito"/>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-barrio-change">	
+		<addColumn 	tableName="territorio_barrio" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_barrio"/>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-seccion-change">	
+		<addColumn 	tableName="territorio_seccion" >
+				<column name="geometry" 
+					type="LONGTEXT">  
+				</column>
+			</addColumn>  
+		<rollback>
+			<dropColumn  columnName="geometry"    
+            tableName="territorio_seccion"/>  
+		</rollback>
+	</changeSet>
+    
+	
+	
+</databaseChangeLog>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet author="Localidata" id="table-empleo-1">
+        <createTable tableName="empleo_boletin_oficial">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+			 <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(400)"/>
+            <column name="id_local" type="VARCHAR(200)"/>
+            <column name="title" type="VARCHAR(200)"/>
+            <column name="date_published" type="datetime(6)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_boletin_oficial"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-2">
+        <createTable tableName="empleo_convocatoria_publica">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+			 <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="description" type="VARCHAR(2000)"/>
+            <column name="date_published" type="datetime(6)"/>
+            <column name="fecha_aprobacion" type="datetime(6)"/>
+            <column name="fecha_resolucion" type="datetime(6)"/>
+            <column name="estado_plazo" type="BIT(1)"/>
+            <column name="plazos" type="VARCHAR(200)"/>
+            <column name="num_plazas_convo" type="INT"/>
+            <column name="lista_espera_ex" type="BIT(1)"/>
+            <column name="observaciones" type="VARCHAR(2000)"/>
+            <column name="disposiciones" type="VARCHAR(2000)"/>
+            <column name="requisitos" type="VARCHAR(2000)"/>
+            <column name="bases" type="VARCHAR(2000)"/>
+            <column name="bases_url" type="VARCHAR(200)"/>
+            <column name="formulario_inscripcion" type="VARCHAR(200)"/>
+            <column name="pruebas" type="VARCHAR(2000)"/>
+            <column name="grupo_profesional" type="VARCHAR(200)"/>
+            <column name="empleado_publico" type="VARCHAR(200)"/>
+            <column name="cuerpo" type="VARCHAR(200)"/>
+            <column name="modalidad" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_convocatoria_publica"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-3">
+        <createTable tableName="empleo_oferta_publica">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+           <column name="id" type="VARCHAR(50)">
+			 <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="description" type="VARCHAR(2000)"/>
+            <column name="date_modified" type="datetime(6)"/>
+            <column name="date_published" type="datetime(6)"/>
+            <column name="fecha_aprobacion" type="datetime(6)"/>
+            <column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>
+            <column name="provincia_id" type="VARCHAR(50)"/>
+            <column name="provincia_title" type="VARCHAR(200)"/>
+            <column name="autonomia_id" type="VARCHAR(50)"/>
+            <column name="autonomia_title" type="VARCHAR(200)"/>
+            <column name="boletin_oficial_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_oferta_publica"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-4">
+        <createTable tableName="empleo_plaza_turno">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+           <column name="id" type="VARCHAR(50)">
+			 <constraints nullable="false"/>
+            </column>
+            <column name="plazas_por_turno" type="INT"/>
+            <column name="turno_plaza" type="VARCHAR(200)"/>
+            <column name="convocatoria_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_plaza_turno"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-5">
+        <createTable tableName="empleo_rel_boletin_convoca">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)"/>
+            <column name="boletin_id" type="VARCHAR(50)"/>
+            <column name="convocatoria_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_rel_boletin_convoca"/>            
+       </rollback>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-6">
+        <createTable tableName="empleo_rel_oferta_convoca">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+			 <constraints nullable="false"/>
+            </column>
+            <column name="oferta_id" type="VARCHAR(50)"/>
+            <column name="convocatoria_id" type="VARCHAR(50)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="empleo_rel_oferta_convoca"/>            
+       </rollback>
+    </changeSet>
+    
+    
+    <changeSet author="Localidata" id="table-empleo-pk1">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_1" tableName="empleo_boletin_oficial"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-pk2">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_2" tableName="empleo_convocatoria_publica"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-pk3">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_3" tableName="empleo_oferta_publica"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-pk4">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_4" tableName="empleo_plaza_turno"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-pk5">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_5" tableName="empleo_rel_boletin_convoca"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-pk6">
+        <addPrimaryKey columnNames="ikey" constraintName="empleo_pk_6" tableName="empleo_rel_oferta_convoca"/>
+    </changeSet>
+	
+    <changeSet author="Localidata" id="table-empleo-u1">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_boletin_oficial_id" tableName="empleo_boletin_oficial"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-empleo-u2">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_convocatoria_publica_id" tableName="empleo_convocatoria_publica"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-empleo-u3">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_oferta_publica_id" tableName="empleo_oferta_publica"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-empleo-u4">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_plaza_turno_id" tableName="empleo_plaza_turno"/>
+    </changeSet>	
+	<changeSet author="Localidata" id="table-empleo-u5">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_rel_boletin_convoca_id" tableName="empleo_rel_boletin_convoca"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-empleo-u6">
+        <addUniqueConstraint columnNames="id" constraintName="empleo_rel_oferta_convoca_id" tableName="empleo_rel_oferta_convoca"/>
+    </changeSet>
+	
+	
+    
+	
+	
+    
+   
+   
+   <changeSet id="DATA-EMPLEO-tag-1.26" author="Localidata">
+    	<tagDatabase tag="1.26" />
+  	</changeSet>
+
+</databaseChangeLog>

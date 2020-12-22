@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	<changeSet  author="Localidata"  id="table-sub-v1">  
+		<renameTable  newTableName="subvencion_v1"  oldTableName="subvencion"/> 
+		<rollback>
+           <renameTable  newTableName="subvencion"  oldTableName="subvencion_v1"/>            
+       </rollback>
+	</changeSet>
+	
+	<changeSet  author="Localidata"  id="table-sub-v2">  
+		<modifyDataType  columnName="municipio_id"  
+            newDataType="VARCHAR(50)"  
+            tableName="subvencion_v1"/>
+		<rollback>
+           <modifyDataType  columnName="municipio_id"  
+            newDataType="VARCHAR(10)"  
+            tableName="subvencion_v1"/>           
+       </rollback>
+	</changeSet>
+	
+    <changeSet author="Localidata" id="table-sub-v3">
+        <createTable tableName="subvencion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)"/>
+            <column name="area_id" type="VARCHAR(50)"/>
+			<column name="entidad_financiadora_id" type="VARCHAR(50)"/>
+			<column name="bases_reguladoras" type="VARCHAR(400)"/>
+			<column name="tipo_instrumento" type="VARCHAR(100)"/>
+			<column name="nominativa" type="BIT"/>
+			<column name="tipo_procedimiento" type="VARCHAR(100)"/>	
+			<column name="name" type="VARCHAR(400)"/>
+			<column name="objeto" type="VARCHAR(2000)"/>
+			<column name="importe_total_concedido" type="DECIMAL(12, 2)"/>
+			<column name="fecha_acuerdo" type="DATETIME"/>
+			<column name="clasificacion_programa" type="VARCHAR(100)"/> 
+			<column name="clasificacion_eco_gasto" type="VARCHAR(100)"/> 
+			<column name="instrumenta_id" type="VARCHAR(50)"/>
+			<column name="instrumenta_title" type="VARCHAR(200)"/> 
+			<column name="tiene_tematica" type="VARCHAR(100)"/> 
+			<column name="servicio_id" type="VARCHAR(50)"/>
+			<column defaultValueNumeric="0" name="gestionado_por_organization" type="BIT"/>
+			<column name="organization_id" type="VARCHAR(50)"/>
+			<column defaultValueNumeric="0" name="gestionado_por_distrito" type="BIT"/>
+            <column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(200)"/>            	
+					
+        </createTable>  
+        <rollback>
+            <dropTable tableName="subvencion"/>            
+       </rollback>      
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-sub-v4">
+        <createTable tableName="subvencion_organization">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL" type="VARCHAR(400)"/>
+			<column name="contactPoint_email" type="VARCHAR(200)"/>
+			<column name="contactPoint_faxNumber" type="VARCHAR(200)"/>
+			<column name="contactPoint_telephone" type="VARCHAR(200)"/>
+			<column name="contactPoint_title" type="VARCHAR(400)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>	
+			<column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(200)"/>			
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>				
+			<column name="portal_id" type="varchar(50)"/>
+			<column name="classification" type="VARCHAR(200)"/>
+        </createTable>  
+        <rollback>
+            <dropTable tableName="subvencion_organization"/>            
+       </rollback>      
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-sub-v5">
+        <createTable tableName="subvencion_beneficiario">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			 <column name="tiene_beneficiario" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			 <column name="tiene_subvencion" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="importe_solicitado" type="DECIMAL(12, 2)"/>
+			<column name="importe_adjudicado" type="DECIMAL(12, 2)"/>
+			<column name="fecha_solicitud" type="DATETIME"/>
+			<column name="fecha_adjudicacion" type="DATETIME"/>	
+        </createTable>  
+        <rollback>
+            <dropTable tableName="subvencion_beneficiario"/>            
+       </rollback>      
+    </changeSet>
+    
+    <changeSet author="Localidata" id="table-sub-pk1">
+		<addPrimaryKey columnNames="ikey" constraintName="pk_subvencion_amp" tableName="subvencion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-sub-pk2">
+		<addPrimaryKey columnNames="ikey" constraintName="pk_subvencion_beneficiario" tableName="subvencion_beneficiario"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-sub-pk3">
+		<addPrimaryKey columnNames="ikey" constraintName="pk_subvencion_organization" tableName="subvencion_organization"/>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-sub-unique1">
+        <addUniqueConstraint columnNames="id" constraintName="table-sub-id1" tableName="subvencion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-sub-unique2">
+        <addUniqueConstraint columnNames="id" constraintName="table-sub-id2" tableName="subvencion_beneficiario"/>
+    </changeSet>
+
+	<changeSet author="Localidata" id="table-sub-unique3">
+        <addUniqueConstraint columnNames="id" constraintName="table-sub-id3" tableName="subvencion_organization"/>
+    </changeSet>	
+	
+	
+	
+	
+    <changeSet author="Localidata" id="table-sub-i1">
+        <createIndex indexName="area_id" tableName="subvencion">
+            <column name="area_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="table-sub-i2">
+        <createIndex indexName="entidad_financiadora_id" tableName="subvencion">
+            <column name="entidad_financiadora_id"/>
+        </createIndex>
+    </changeSet>
+   
+    
+    <changeSet author="Localidata" id="table-sub-i3">
+        <createIndex indexName="tiene_ben" tableName="subvencion_beneficiario">
+            <column name="tiene_beneficiario"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="table-sub-i4">
+        <createIndex indexName="servicio_id" tableName="subvencion">
+            <column name="servicio_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Localidata" id="table-sub-i5">
+        <createIndex indexName="tiene_sub" tableName="subvencion_beneficiario">
+            <column name="tiene_subvencion"/>
+        </createIndex>
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

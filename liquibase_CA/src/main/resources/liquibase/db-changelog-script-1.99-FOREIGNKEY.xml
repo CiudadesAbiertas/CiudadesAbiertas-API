@@ -379,4 +379,49 @@
         <addForeignKeyConstraint baseColumnNames="viewed_as" baseTableName="bus_stoppointinjourneypattern" constraintName="bus_route_p_ibfk_1" referencedColumnNames="id" referencedTableName="bus_scheduled_stop_point"/>
     </changeSet>
 	
+	
+	<!-- FK EMPLEO -->
+	
+	<changeSet author="Localidata" id="table-empleo-fk1">
+        <addForeignKeyConstraint baseColumnNames="boletin_oficial_id" baseTableName="empleo_oferta_publica" constraintName="empleo_oferta_publica_ibfk_1"  referencedColumnNames="id" referencedTableName="empleo_boletin_oficial"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-fk2">
+        <addForeignKeyConstraint baseColumnNames="convocatoria_id" baseTableName="empleo_plaza_turno" constraintName="empleo_plaza_turno_ibfk_1"  referencedColumnNames="id" referencedTableName="empleo_convocatoria_publica"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-fk3">
+        <addForeignKeyConstraint baseColumnNames="boletin_id" baseTableName="empleo_rel_boletin_convoca" constraintName="empleo_rel_bole_conv_ibfk_1"  referencedColumnNames="id" referencedTableName="empleo_boletin_oficial"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-fk4">
+        <addForeignKeyConstraint baseColumnNames="convocatoria_id" baseTableName="empleo_rel_boletin_convoca" constraintName="empleo_rel_bole_conv_ibfk_2"  referencedColumnNames="id" referencedTableName="empleo_convocatoria_publica"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-fk5">
+        <addForeignKeyConstraint baseColumnNames="oferta_id" baseTableName="empleo_rel_oferta_convoca" constraintName="empleo_rel_ofer_conv_ibfk_1" referencedColumnNames="id" referencedTableName="empleo_oferta_publica"/>
+    </changeSet>
+    <changeSet author="Localidata" id="table-empleo-fk6">
+        <addForeignKeyConstraint baseColumnNames="convocatoria_id" baseTableName="empleo_rel_oferta_convoca" constraintName="empleo_rel_ofer_conv_ibfk_2" referencedColumnNames="id" referencedTableName="empleo_convocatoria_publica"/>
+    </changeSet>
+	
+	<!-- FK AMPLIACION SUBVENCIONES -->
+	
+	
+	<changeSet author="Localidata" id="table-amp-subvencion-fk1">
+        <addForeignKeyConstraint baseColumnNames="tiene_beneficiario" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk2">
+        <addForeignKeyConstraint baseColumnNames="tiene_subvencion" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk3">
+        <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="subvencion" constraintName="subvencion_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk4">
+        <addForeignKeyConstraint baseColumnNames="entidad_financiadora_id" baseTableName="subvencion" constraintName="subvencion_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk5">
+        <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="subvencion" constraintName="subvencion_ibfk_3"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk6">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="subvencion" constraintName="subvencion_ibfk_5"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+
+	
 </databaseChangeLog>
