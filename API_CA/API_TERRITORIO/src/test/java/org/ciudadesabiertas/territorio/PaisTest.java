@@ -143,40 +143,6 @@ public class PaisTest {
     }
     
     
-    
-    @Test    
-    public void test13_Geometry() throws Exception {
-    	String id ="España";
-    	    	
-    	id=URLEncoder.encode(id, "UTF-8");
-    	
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PaisController.GEOMETRY.replace("{id}", id)+".json")
-        		.contentType(MediaType.APPLICATION_JSON))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-    
-    @Test    
-    public void test14_Geometry_HEAD() throws Exception {
-    	String id ="España";
-    	
-    	id=URLEncoder.encode(id, "UTF-8");
-    	
-        this.mockMvc.perform(MockMvcRequestBuilders.head(PaisController.GEOMETRY.replace("{id}", id)+".json")
-        		.contentType(MediaType.APPLICATION_JSON))
-	        .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-    
-    @Test    
-    public void test15_GEOMETRY_NO_OK_404() throws Exception {
-    	String id ="Andorra la bella";
-    	    	
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PaisController.GEOMETRY.replace("{id}", id)+".json")
-        		.contentType(MediaType.APPLICATION_JSON))	
-            
-	        .andExpect(MockMvcResultMatchers.status().isNotFound());
-    }
-   
     @Test    
     public void test15_List_HEAD() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.head(PaisController.LIST+".json")).andExpect(MockMvcResultMatchers.status().isOk());

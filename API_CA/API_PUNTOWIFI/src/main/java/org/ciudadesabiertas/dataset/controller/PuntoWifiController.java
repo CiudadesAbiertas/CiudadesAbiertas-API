@@ -218,11 +218,13 @@ public class PuntoWifiController extends GenericController implements CiudadesAb
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 		log.info("[geoList][" + LIST + "]");
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
-		ResponseEntity geoList= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new PuntoWifiResult(), availableFields, getKey(),service);
+		ResponseEntity geoList= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new Equipamiento(), new PuntoWifiResult(), availableFields, getKey(),service);
 		return integraCallejero(geoList,request);
 		
 	}

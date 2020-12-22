@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PaisUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "hasGeometry" };
+	private static final String[] fieldsToIngore = { "ikey", "hasGeometry", "geometry" };
 	
 	private static final String testJSON = " {\r\n" + 
 			"      \"id\": \"28\",\r\n" + 

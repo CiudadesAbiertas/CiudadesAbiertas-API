@@ -33,28 +33,33 @@ public class SubvencionUtilTest
 {
 
 
-	private static final String[] fieldsToIngore = { "ikey","areaIdIsolated","entidadFinanciadoraIdIsolated" };
+	private static final String[] fieldsToIngore = { "ikey","instrumentaIdIsolated" };
 	
-	private static final String testJSON = "{"  
-		    +"\"id\": \"2Test01186\","
-		    +"\"title\": \"subvención nominativa al ateneo 2016\","
-		    +"\"areaId\": \"A05003340\","
-		    +"\"areaTitle\": \"área de gobierno de cultura y deportes\","
-		    +"\"municipioId\": 28079,"
-		    +"\"municipioTitle\": \"madrid\","
-		    +"\"adjudicatarioId\": \"g28679801 \","
-		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-		    +"\"entidadFinanciadoraId\": \"A05003340\","
-		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-		    +"\"importe\": 750000,"
-		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-		    +"\"lineaFinanciacion\": \"LINEA 1\","
-		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-		    +"\"nominativa\" : true," 
-		    +"\"tipoProcedimiento\": \"subvencion-nominativa\""
-			+"  }";
+	private static final String testJSON = "{\r\n"
+		+ "      \"id\": \"SUB1\",\r\n"
+		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA\",\r\n"
+		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+		+ "      \"nominativa\": false,\r\n"
+		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+		+ "      \"importeTotalConcedido\": 2000,\r\n"
+		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+		+ "      \"tieneTematica\": \"deporte\",\r\n"
+		+ "      \"gestionadoPorOrganization\": false,\r\n"
+		+ "      \"organizationId\": \"A05003355\",\r\n"
+		+ "      \"gestionadoPorDistrito\": true,\r\n"
+		+ "      \"distritoId\": \"2800307\",\r\n"
+		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+		+ "      \"areaId\": \"A05003355\",\r\n"
+		+ "      \"servicioId\": \"A05003355\",\r\n"
+		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+		+ "    }";
 	
 	
 

@@ -40,6 +40,7 @@ import org.ciudadesabiertas.dataset.utils.MunicipioSearchQuery;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -129,9 +130,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 		listRequestType.add(new RequestType("MUNICIPIO_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("MUNICIPIO_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("MUNICIPIO_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.municipioFilePath, NAME_FIELD_GEOJSON);		
-	}
+		}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(Municipio.class);
 
@@ -276,7 +275,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 			}
 			
 			for (Municipio municipio:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, municipio, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)municipio);
 			}
 			
 		
@@ -362,7 +361,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 			}
 			
 			for (Municipio municipio:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, municipio, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)municipio);
 			}
 		}
 		
@@ -431,7 +430,7 @@ public class MunicipioController extends GenericController implements CiudadesAb
 			}
 			
 			Municipio municipio=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, municipio, geojson);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)municipio);
 			
 			List listado=new ArrayList();
 			

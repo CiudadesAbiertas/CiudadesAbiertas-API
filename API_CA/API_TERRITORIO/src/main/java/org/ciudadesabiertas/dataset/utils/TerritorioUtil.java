@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
 import org.json.simple.JSONArray;
@@ -19,58 +20,7 @@ public class TerritorioUtil {
 	
 	private static final Logger log = LoggerFactory.getLogger(TerritorioUtil.class);
 	
-	public static Map<String,JSONObject> readGeoJSON(String filePath, String propertyIdentifier)
-	{
-		Map<String,JSONObject> geojsonMap=new HashMap<String,JSONObject>();
-				
-		
-		File resource;
-		try {
-			resource = new ClassPathResource(filePath).getFile();			
-			File[] listFilesEPSGs = resource.listFiles();
-			for (File directory:listFilesEPSGs)
-			{
-				if (directory.isDirectory())
-				{
-					File[] listFilesGEOJSON = directory.listFiles();
-					for (File actualGeojson:listFilesGEOJSON)
-					{
-						String fileContent=FileUtils.readFileToString(actualGeojson, "utf-8");
-						JSONObject geometryObject=Util.stringToJSONObject(fileContent);
-						
-						JSONArray geometryList=(JSONArray) geometryObject.get("features");
-						
-						for (int i=0;i<geometryList.size();i++)
-						{
-							JSONObject actualGeometry=(JSONObject) geometryList.get(i);
-							JSONObject properties=(JSONObject) actualGeometry.get("properties");
-							
-							String id=(String)properties.get(propertyIdentifier);
-							
-							PairIdEPSG pair=new PairIdEPSG();
-							pair.setEPSG(directory.getName());
-							pair.setId(id.toLowerCase());
-							
-							log.debug(pair.toString());
-							
-							geojsonMap.put(pair.toString(), actualGeometry);
-						}
-						
-					}
-				}
-			}
-			
-			
-			
-			
-		} catch (IOException e) {			
-			log.error("Error reading territorio files");			
-		}
-		
-		
-		return geojsonMap;
-		
-	}
+	
 
 	public static String geojsonToWKT(String jsonString) {
 		String wkt=jsonString;
@@ -114,9 +64,14 @@ public class TerritorioUtil {
 				if (isSemantic)
 				{	
 					JSONObject geometry=(JSONObject) jsonObject.get("geometry");
-					JSONArray coordinates=(JSONArray) geometry.get("coordinates");
-					String WKT=TerritorioUtil.geojsonToWKT(coordinates.toString());
-					territorio.setHasGeometry(WKT);
+					if (geometry!=null)
+					{
+					  JSONArray coordinates=(JSONArray) geometry.get("coordinates");
+					  String WKT=TerritorioUtil.geojsonToWKT(coordinates.toString());
+					  territorio.setHasGeometry(WKT);
+					}else {
+					  System.out.println(geometry.toJSONString());
+					}
 				}
 				else 
 				{
@@ -157,4 +112,58 @@ public class TerritorioUtil {
 		}
 		return rsqlQ;
 	}
+	
+	
+	
+	/*Metodo para añadir las los poligonos a un pais*/
+	public static void addPolygon(boolean isSemantic, IGeoModelGeometry territorio) {
+		
+		if ((territorio.getGeometry()!=null) )
+		{
+			JSONObject jsonObject = Util.stringToJSONObject(territorio.getGeometry());
+		
+			if (jsonObject!=null)
+			{
+				if (isSemantic)
+				{	
+					JSONObject geometry=(JSONObject) jsonObject.get("geometry");
+					if (geometry==null)
+					{
+					  if (jsonObject.get("features")!=null)
+					  {
+						JSONArray features=(JSONArray) jsonObject.get("features");
+						JSONObject feature=(JSONObject) features.get(0);
+						geometry=(JSONObject) feature.get("geometry");
+					  }
+					}					  
+					if (geometry!=null)
+					{
+					  JSONArray coordinates=(JSONArray) geometry.get("coordinates");
+					  String WKT=geojsonToWKT(coordinates.toString());
+					  territorio.setHasGeometry(WKT);
+					}
+				}
+				else 
+				{
+					JSONObject properties=new JSONObject();
+					properties.put("id", territorio.getId());
+					properties.put("title", territorio.getTitle());
+					jsonObject.remove("properties");	
+					jsonObject.put("properties", properties);
+					territorio.setHasGeometry(jsonObject);
+				}
+				territorio.setGeometry(null);
+			}
+		
+		}
+		else 
+		{
+			log.debug("geoJson Object not initialized: "+territorio.toString());
+			territorio.setHasGeometry(new JSONObject());
+		}
+		
+		territorio.showFieldTerritorio();
+	}
+	
+	
 }

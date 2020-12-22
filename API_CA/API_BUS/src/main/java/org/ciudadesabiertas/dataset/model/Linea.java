@@ -406,6 +406,12 @@ public String toString() {
 	  + ", operating=" + operating + ", cabeceraLinea=" + cabeceraLinea + ", finalLinea=" + finalLinea + "]";
 }
 
+@Override
+public void showFieldTerritorio() {
+  // Dejamos vacio este metodo
+  
+}
+
 
 
 }

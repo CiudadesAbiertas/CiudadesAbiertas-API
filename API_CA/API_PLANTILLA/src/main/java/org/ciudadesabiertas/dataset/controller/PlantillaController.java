@@ -134,6 +134,7 @@ public class PlantillaController extends GenericController implements CiudadesAb
 			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -142,7 +143,7 @@ public class PlantillaController extends GenericController implements CiudadesAb
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Plantilla(), new PlantillaResult(), availableFields, getKey(),service);
+		return geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new Plantilla(), new PlantillaResult(), availableFields, getKey(),service);
 	}
 
 

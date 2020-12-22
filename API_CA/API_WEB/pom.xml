@@ -72,7 +72,7 @@
 			  	<dependency>
 					<groupId>API_CA</groupId>
   					<artifactId>org.ciudadesabiertas.subvencion</artifactId>
-  			 		<version>0.0.2-PRIORITY_FIELDS</version> 
+  			 		<version>2.0-Three_Tables</version> 
   				</dependency>
   				
   				<!--  Dependencia Equipamiento -->
@@ -259,6 +259,14 @@
 			  			 <version>0.0.1-SNAPSHOT</version> 
 			  	</dependency>
 			  	
+			  	
+			  	<!-- Dependencia empleo-->
+			    <dependency>
+						<groupId>API_CA</groupId>
+			  			<artifactId>org.ciudadesabiertas.empleo</artifactId>
+			  			 <version>0.0.1-SNAPSHOT</version> 
+			  	</dependency>
+			  	
 			  	<!--  Dependencia para el conjunto de datos plantilla-->
 			  	<!-- 
 			  	<dependency>
@@ -279,7 +287,7 @@
 			  	<dependency>
 					<groupId>API_CA</groupId>
   					<artifactId>org.ciudadesabiertas.subvencion</artifactId>
-  			 		<version>0.0.1-SNAPSHOT</version> 
+  			 		<version>2.0-Three_Tables</version> 
   				</dependency>
 			 </dependencies>
 		</profile>
@@ -724,12 +732,13 @@
 		      </plugin>
 		</plugins>
   </build>
-  <!-- 
+
+<!--  
   <repositories>
   		<repository>
 			<id>UPM_ALZIR</id>
-			<url>https://alzir.dia.fi.upm.es/repo</url>
+			<url>https://alzir.dia.fi.upm.es/repo/</url>
 		</repository>
   </repositories>
-   -->
+-->
 </project>

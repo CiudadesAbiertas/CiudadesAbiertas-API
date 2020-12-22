@@ -220,6 +220,8 @@ public class PuntoInteresTuristicoController extends GenericController implement
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -228,7 +230,7 @@ public class PuntoInteresTuristicoController extends GenericController implement
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new PuntoInteresTuristico(), new PuntoInteresTuristicoResult(), availableFields, getKey(),dsService);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new PuntoInteresTuristico(), new PuntoInteresTuristicoResult(), availableFields, getKey(),dsService);
 		return integraCallejero(list,request);
 		
 	}

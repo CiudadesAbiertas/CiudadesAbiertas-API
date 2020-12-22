@@ -41,6 +41,7 @@ import org.ciudadesabiertas.dataset.utils.GeometryResult;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -131,9 +132,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 		listRequestType.add(new RequestType("DISTRITO_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("DISTRITO_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("DISTRITO_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.distritoFilePath, NAME_FIELD_GEOJSON);		
-	}
+		}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(Distrito.class);
 
@@ -281,7 +280,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 			}
 			
 			for (Distrito distrito:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, distrito, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)distrito);
 			}
 			
 		
@@ -367,7 +366,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 			}
 			
 			for (Distrito distrito:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, distrito, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)distrito);
 			}
 		}
 		
@@ -436,7 +435,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 			}
 			
 			Distrito distrito=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, distrito, geojson);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)distrito);
 			
 			List listado=new ArrayList();
 			

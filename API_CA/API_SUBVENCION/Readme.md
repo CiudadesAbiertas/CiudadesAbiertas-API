@@ -1,11 +1,11 @@
 
 # API CIUDADES ABIERTAS - MÓDULO SUBVENCIÓN
 
-Esta es la documentación asociada al módulo de Subvenciones.
+Este módulo integra el vocabulario de subvención para las consultas semánticas (RDF)  y contine los siguiente (sub)módulos:
+-	Subvencion
+-	SubvencionBeneficiario
+-	SubvencionOrganization
 
-Contenido:
-   
-     - Configuración del módulo 
 
 
 
@@ -139,25 +139,49 @@ Si no se incluyen todos o algunos de estos parámetros se aplica la configuraci�
 - Auntentificación **Public** para peticiones de: Listado, Ficha, búsquedas Agrupadas y transformación de un recurso externo.
 - Auntentificación **Basic** para peticiones de: Alta, Baja y Modificación.
 
+### Módulo Subvención
+
 Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados al módulo de Subvención:
-- **SUB_LIST**: Listado de subvenciones
-- **SUB_RECORD**: Ficha de subvención
-- **SUB_SEARCHGROUP**: Búsqueda de agrupadas para subvenciones
-- **SUB_ADD**:  Alta de subvención
-- **SUB_UPDATE**: Modificación de subvención
-- **SUB_DELETE**: Baja de subvención
-- **SUB_TRANSFORM**: Transformador de una subvención externa (a través de JSON)
+- **Subvencion_LIST**: Listado de subvenciones
+- **Subvencion_RECORD**: Ficha de subvención
+- **Subvencion_SEARCHGROUP**: Búsqueda de agrupadas para subvenciones
+- **Subvencion_ADD**:  Alta de subvención
+- **Subvencion_UPDATE**: Modificación de subvención
+- **Subvencion_DELETE**: Baja de subvención
+- **Subvencion_TRANSFORM**: Transformador de una subvención externa (a través de JSON)
+
+### Módulo Subvención Beneficiario
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados al módulo de Subvención:
+- **Subvencion_Beneficiario_LIST**: Listado de subvenciones Benficiarios
+- **Subvencion_Beneficiario_RECORD**: Ficha de subvención Benficiario
+- **Subvencion_Beneficiario_SEARCHGROUP**: Búsqueda de agrupadas para subvenciones Benficiarios
+- **Subvencion_Beneficiario_ADD**:  Alta de subvención Benficiario
+- **Subvencion_Beneficiario_UPDATE**: Modificación de subvención Benficiario
+- **Subvencion_Beneficiario_DELETE**: Baja de subvención Benficiario
+- **Subvencion_Beneficiario_TRANSFORM**: Transformador de una subvención Benficiario externa (a través de JSON)
+
+### Módulo Subvención Organization
+
+Cuando se implementa esta funcionalidad se configura a nivel de etiquetas de los servicios de cada uno de los controladores asociados al módulo de Subvención:
+- **Subvencion_Organization_LIST**: Listado de Organinzaciones de las subvenciones 
+- **Subvencion_Organization_RECORD**: Ficha de Organinzacion de las subvención
+- **Subvencion_Organization_SEARCHGROUP**: Búsqueda de agrupadas para Organinzaciones de las subvenciones 
+- **Subvencion_Organization_ADD**:  Alta de Organinzacion de la subvención 
+- **Subvencion_Organization_UPDATE**: Modificación de Organinzacion de la subvención 
+- **Subvencion_Organization_DELETE**: Baja de Organinzacion de la subvención 
+- **Subvencion_Organization_TRANSFORM**: Transformador de una Organinzacion de la subvención  externa (a través de JSON)
 
 Y los parámetros configurados quedarían de la siguiente manera en el fichero (**subvencion.properties**) Como Ejemplo:
-- **peticiones.identificadas.public_auth=SUB_ADD,SUB_RECORD,SUB_LIST**
-- **peticiones.identificadas.basic_auth= SUB_UPDATE,SUB_SEARCHGROUP,SUB_TRANSFORM**
-- **peticiones.identificadas.admin_auth= SUB_DELETE**
+- **peticiones.identificadas.public_auth=Subvencion_ADD,Subvencion_RECORD,Subvencion_LIST**
+- **peticiones.identificadas.basic_auth= Subvencion_UPDATE,Subvencion_SEARCHGROUP,Subvencion_TRANSFORM**
+- **peticiones.identificadas.admin_auth= Subvencion_DELETE**
 
 
 ```sh
-peticiones.identificadas.public_auth=SUB_ADD,SUB_RECORD,SUB_LIST
-peticiones.identificadas.basic_auth= SUB_UPDATE,SUB_SEARCHGROUP,SUB_TRANSFORM
-peticiones.identificadas.admin_auth= SUB_DELETE
+peticiones.identificadas.public_auth=Subvencion_ADD,Subvencion_RECORD,Subvencion_LIST
+peticiones.identificadas.basic_auth= Subvencion_UPDATE,Subvencion_SEARCHGROUP,Subvencion_TRANSFORM
+peticiones.identificadas.admin_auth= Subvencion_DELETE
 ```
 
 **NOTA:** Si alguna etiqueta de identificación de servicio no se incluyera en los parametros se le aplicaria la configuración por defecto asociada al mismo.

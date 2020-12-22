@@ -42,6 +42,7 @@ import org.ciudadesabiertas.dataset.utils.GeometryResult;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -131,9 +132,7 @@ public class BarrioController extends GenericController implements CiudadesAbier
 		listRequestType.add(new RequestType("BARRIO_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("BARRIO_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("BARRIO_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.barrioFilePath, NAME_FIELD_GEOJSON);		
-	}
+		}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(Barrio.class);
 
@@ -284,7 +283,7 @@ public class BarrioController extends GenericController implements CiudadesAbier
 			}
 			
 			for (Barrio barrio:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, barrio, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)barrio);
 			}
 			
 		
@@ -370,7 +369,7 @@ public class BarrioController extends GenericController implements CiudadesAbier
 			}
 			
 			for (Barrio barrio:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, barrio, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)barrio);
 			}
 		}
 		
@@ -439,7 +438,7 @@ public class BarrioController extends GenericController implements CiudadesAbier
 			}
 			
 			Barrio barrio=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, barrio, geojson);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)barrio);
 			
 			List listado=new ArrayList();
 			

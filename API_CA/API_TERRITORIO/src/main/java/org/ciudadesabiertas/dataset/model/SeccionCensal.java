@@ -35,10 +35,11 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
-import org.ciudadesabiertas.utils.Territorio;
 import org.ciudadesabiertas.utils.Util;
+import org.hibernate.Hibernate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -67,7 +68,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESADM, propiedad = "SeccionCensal")
 @PathId(value="/territorio/seccion-censal")
-public class SeccionCensal  implements java.io.Serializable, RDFModel, Territorio {
+public class SeccionCensal  implements java.io.Serializable, RDFModel, IGeoModelGeometry {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	
@@ -159,6 +160,11 @@ public class SeccionCensal  implements java.io.Serializable, RDFModel, Territori
 	
 	@JsonIgnore
 	private Municipio municipioObject;
+	
+	@ApiModelProperty(hidden = true)
+	@JsonIgnore
+	private String geometry; 
+	
 	
 	public SeccionCensal()
 	{
@@ -379,6 +385,16 @@ public class SeccionCensal  implements java.io.Serializable, RDFModel, Territori
 	public void setDistritoId(String distritoId) {
 		this.distritoId = distritoId;
 	}
+	
+	
+	@Column(name = "geometry")
+	public String getGeometry() {
+	  return this.geometry;
+	}
+
+	public void setGeometry(String geometry) {
+	  this.geometry = geometry;
+	}
 
 	@Override
 	public String toString() {
@@ -423,6 +439,7 @@ public class SeccionCensal  implements java.io.Serializable, RDFModel, Territori
 
 	@Override
 	public void showFieldTerritorio() {
+
 		if (this.distritoObject!=null) {
 			this.distritoTitle = this.distritoObject.getTitle();
 			this.distritoId = this.distritoObject.getId();
@@ -440,6 +457,8 @@ public class SeccionCensal  implements java.io.Serializable, RDFModel, Territori
 				}
 			}
 		}
+	
+	
 	}
 	
 

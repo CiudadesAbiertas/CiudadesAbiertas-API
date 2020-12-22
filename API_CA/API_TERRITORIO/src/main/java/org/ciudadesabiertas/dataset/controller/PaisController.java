@@ -34,6 +34,7 @@ import org.ciudadesabiertas.dataset.utils.PaisResult;
 import org.ciudadesabiertas.dataset.utils.PaisSearch;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
@@ -98,9 +99,6 @@ public class PaisController extends GenericController implements CiudadesAbierta
 	
 	public static final String RECORD = LIST+ "/{id}";
 	
-	public static final String GEOMETRY = LIST+ "/{id}/geometry";
-	
-	
 	public static final String MODEL_VIEW_LIST = "territorio/pais/list";
 	public static final String MODEL_VIEW_ID = "territorio/pais/id";
 	
@@ -110,6 +108,7 @@ public class PaisController extends GenericController implements CiudadesAbierta
 	
 	private static final String NAME_FIELD_GEOJSON = "rotulo";
 
+	public static final String GEOMETRY = LIST+"/{id}/geometry";
 	
 	private static Map<String,JSONObject> geojson;
 	
@@ -119,11 +118,8 @@ public class PaisController extends GenericController implements CiudadesAbierta
 		//Carga por defecto de las peticiones
 		listRequestType.add(new RequestType("PAIS_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("PAIS_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("PAIS_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
 		
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.paisFilePath, NAME_FIELD_GEOJSON);		
-	}
+		}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(Pais.class);
 
@@ -261,8 +257,8 @@ public class PaisController extends GenericController implements CiudadesAbierta
 				srId=StartVariables.SRID_XY_APP;
 			}
 			
-			for (Pais pais:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, pais, geojson, true);
+			for (Pais pais:records) {				
+				TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)pais);
 			}
 			
 		
@@ -347,10 +343,10 @@ public class PaisController extends GenericController implements CiudadesAbierta
 			{
 				srId=StartVariables.SRID_XY_APP;
 			}
-			
+			/*
 			for (Pais pais:records) {	
 				TerritorioUtil.addPolygon(isSemantic, srId, pais, geojson, true);
-			}
+			}*/
 		}
 		
 		return record;
@@ -412,7 +408,7 @@ public class PaisController extends GenericController implements CiudadesAbierta
 		return LIST;
 	}
 
-	
+
 	@SuppressWarnings({ "unchecked" })
 	@ApiOperation(value = SwaggerConstants.GEOMETRIA, notes = SwaggerConstants.GEOMETRIA_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
@@ -457,7 +453,7 @@ public class PaisController extends GenericController implements CiudadesAbierta
 			}
 			
 			Pais pais=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, pais, geojson, true);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)pais);
 			
 			List listado=new ArrayList();
 			

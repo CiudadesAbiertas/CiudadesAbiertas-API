@@ -22,6 +22,7 @@ package org.ciudadesabiertas.utils;
  *
  */
 
+@Deprecated
 public interface Territorio {
 	
 	public String getId();

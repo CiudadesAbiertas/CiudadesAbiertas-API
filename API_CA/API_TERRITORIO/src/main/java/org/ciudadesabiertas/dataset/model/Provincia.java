@@ -36,6 +36,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Territorio;
@@ -68,7 +69,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESADM, propiedad = "Provincia")
 @PathId(value="/territorio/provincia")
-public class Provincia implements java.io.Serializable, RDFModel, Territorio {
+public class Provincia implements java.io.Serializable, RDFModel, IGeoModelGeometry {
 
 	
 	@JsonIgnore
@@ -128,6 +129,10 @@ public class Provincia implements java.io.Serializable, RDFModel, Territorio {
 	
 	@JsonIgnore
 	private Pais paisObject;
+	
+	@ApiModelProperty(hidden = true)
+	@JsonIgnore
+	private String geometry; 
 	
 
 	public Provincia() {
@@ -244,6 +249,16 @@ public class Provincia implements java.io.Serializable, RDFModel, Territorio {
 		this.identifier = identifier;
 	}
 
+	@Column(name = "geometry")
+	public String getGeometry() {
+	  return this.geometry;
+	}
+
+	public void setGeometry(String geometry) {
+	  this.geometry = geometry;
+	}
+	
+	
 	public Provincia(Provincia copia, List<String> attributesToSet)
 	{
 		if (attributesToSet.contains(Constants.IKEY)) {
@@ -331,7 +346,7 @@ public class Provincia implements java.io.Serializable, RDFModel, Territorio {
 				+ ", hasGeometry=" + hasGeometry + "]";
 	}
 	
-	@Override
+	
 	public void showFieldTerritorio() {
 		if (this.autonomiaObject!=null) {
 			this.autonomia = this.autonomiaObject.getTitle();

@@ -94,7 +94,10 @@ public class SwaggerConstants
 	public static final String PARAM_HAVING = "Parámetro para especificar el filtro sobre las operaciones de agrupación. Ejemplo COUNT(id) > 5";
 	public static final String PARAM_ID= "Parámetro para especificar el identificador del registro";
 	public static final String PARAM_ID_TEXT= "id del Objeto necesario para ejecutar la operación";
+	//Subvencion
 	public static final String PARAM_SUBVENCION_TEXT= "Objeto (Subvención) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_SUBVENCION_ORGANIZATION_TEXT= "Objeto (Organización Subvención) en formato json necesario para poder realizar la operación";
+	
 	public static final String PARAM_EQUIPAMIENTO_TEXT= "Objeto (Equipamiento) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_LOCALCOMERCIAL_TEXT= "Objeto (Local Comercial) en formato json necesario para poder realizar la operación";
 	public static final String PARAM_AGENDA_TEXT= "Objeto (Agenda) en formato json necesario para poder realizar la operación";
@@ -225,6 +228,7 @@ public class SwaggerConstants
 	public static final String PARAM_ID_BUS_REL_LINEA_INCIDENCIA = "Ejemplo: RELINCI01";
 	public static final String PARAM_ID_BUS_JOURNEYPATTERN = "Ejemplo: JPAT01"; 	
 	public static final String PARAM_ID_BUS_STOP_POINT_IN_JOURNEY_PATTERN = "Ejemplo: 6a2-1918";
+	public static final String PARAM_ID_SUBVENCION_ORGANIZATION = " Ejemplo: ORG0001";
 	
 	
 	//Ejemplos condicionAdicional

@@ -26,5 +26,9 @@ public class SubvencionConstants
 {
 	public static final String KEY="subvencion";
 	
-	public static final String subvencionVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/subvencion/index-en.html#Subvencion";
+	public static final String VERSION_2 = "v2/";
+	
+	public static final String subvencionVocabURL="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/subvencion/index-en.html";
+	
+
 }

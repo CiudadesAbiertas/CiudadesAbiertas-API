@@ -19,6 +19,7 @@ package org.ciudadesabiertas.subvencion;
 import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -105,29 +106,36 @@ public class SubvencionTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get(SubvencionController.LIST+".json")).andExpect(MockMvcResultMatchers.status().isOk());
     }
     
-    
+  
     @Test    
     public void test04_Add() throws Exception {
-    	String subvencionADD = "{"    			
-    		    +"\"id\": \"2Test01186\","
-    		    +"\"title\": \"subvención nominativa al ateneo 2016\","
-    		    +"\"areaId\": \"A05003340\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","    	
-				+"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
-			+"  }";
+      String subvencionADD = "{\r\n"
+  		+ "      \"id\": \"TESTSUB\",\r\n"
+  		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA\",\r\n"
+  		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+  		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+  		+ "      \"nominativa\": false,\r\n"
+  		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+  		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+  		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+  		+ "      \"importeTotalConcedido\": 2000,\r\n"
+  		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+  		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+  		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+  		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+  		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+  		+ "      \"tieneTematica\": \"deporte\",\r\n"
+  		+ "      \"gestionadoPorOrganization\": false,\r\n"
+  		+ "      \"organizationId\": \"A05003355\",\r\n"
+  		+ "      \"gestionadoPorDistrito\": true,\r\n"
+  		+ "      \"distritoId\": \"2800307\",\r\n"
+  		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+  		+ "      \"areaId\": \"A05003355\",\r\n"
+  		+ "      \"servicioId\": \"A05003355\",\r\n"
+  		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+  		+ "    }";
+  	
+  	
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.post(SubvencionController.ADD)
@@ -152,27 +160,31 @@ public class SubvencionTest {
     
     @Test    
     public void test06_Add_NO_OK_409() throws Exception {
-    	String subvencionADD = "{"    			
-    		    +"\"id\": \"2Test01186\","
-    		    +"\"title\": \"subvención nominativa al ateneo 2016\","
-    		    +"\"areaId\": \"A05003340\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-    		    +"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
-    	
-    		+"}";
+      String subvencionADD = "{\r\n"
+    		+ "      \"id\": \"TESTSUB\",\r\n"
+    		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA\",\r\n"
+    		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+    		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+    		+ "      \"nominativa\": false,\r\n"
+    		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+    		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+    		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+    		+ "      \"importeTotalConcedido\": 2000,\r\n"
+    		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+    		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+    		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+    		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+    		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+    		+ "      \"tieneTematica\": \"deporte\",\r\n"
+    		+ "      \"gestionadoPorOrganization\": false,\r\n"
+    		+ "      \"organizationId\": \"A05003355\",\r\n"
+    		+ "      \"gestionadoPorDistrito\": true,\r\n"
+    		+ "      \"distritoId\": \"2800307\",\r\n"
+    		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+    		+ "      \"areaId\": \"A05003355\",\r\n"
+    		+ "      \"servicioId\": \"A05003355\",\r\n"
+    		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+    		+ "    }";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.post(SubvencionController.ADD)
@@ -184,27 +196,32 @@ public class SubvencionTest {
     
     @Test    
     public void test07_Update() throws Exception {
-    	String id ="2Test01186";
-    	String subvencionUPDATE = "{"    			
-    		    +"\"id\": \""+id+"\","
-    		    +"\"title\": \"subvención nominativa al ateneo 2016 XXXXX\","
-    		    +"\"areaId\": \"A05003340 XXXXX\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes XXXX\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-    		    +"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
-    		+"}";
+    	String id ="TESTSUB";
+    	String subvencionUPDATE = "{\r\n"
+     		+ "      \"id\": \"TESTSUB\",\r\n"
+     		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA 2\",\r\n"
+     		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+     		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+     		+ "      \"nominativa\": false,\r\n"
+     		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+     		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+     		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+     		+ "      \"importeTotalConcedido\": 2000,\r\n"
+     		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+     		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+     		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+     		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+     		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+     		+ "      \"tieneTematica\": \"deporte\",\r\n"
+     		+ "      \"gestionadoPorOrganization\": false,\r\n"
+     		+ "      \"organizationId\": \"A05003355\",\r\n"
+     		+ "      \"gestionadoPorDistrito\": true,\r\n"
+     		+ "      \"distritoId\": \"2800307\",\r\n"
+     		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+     		+ "      \"areaId\": \"A05003355\",\r\n"
+     		+ "      \"servicioId\": \"A05003355\",\r\n"
+     		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+     		+ "    }";
     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.put(SubvencionController.ADD+"/"+id)
@@ -231,27 +248,32 @@ public class SubvencionTest {
     @Test    
     public void test09_Update_NO_OK_404() throws Exception {
     	String id ="2TestNOOK01186";
-    	String subvencionUPDATE = "{"    			
-    		    +"\"id\": \""+id+"\","
-    		    +"\"title\": \"subvención nominativa al ateneo 2016 XXXXX\","
-    		    +"\"areaId\": \"A05003340 XXXXX\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes XXXX\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-    		    +"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
-    		+"}";
-    	
+    	String subvencionUPDATE = "{\r\n"
+      		+ "      \"id\": \"2TestNOOK01186\",\r\n"
+      		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA\",\r\n"
+      		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+      		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+      		+ "      \"nominativa\": false,\r\n"
+      		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+      		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+      		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+      		+ "      \"importeTotalConcedido\": 2000,\r\n"
+      		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+      		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+      		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+      		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+      		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+      		+ "      \"tieneTematica\": \"deporte\",\r\n"
+      		+ "      \"gestionadoPorOrganization\": false,\r\n"
+      		+ "      \"organizationId\": \"A05003355\",\r\n"
+      		+ "      \"gestionadoPorDistrito\": true,\r\n"
+      		+ "      \"distritoId\": \"2800307\",\r\n"
+      		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+      		+ "      \"areaId\": \"A05003355\",\r\n"
+      		+ "      \"servicioId\": \"A05003355\",\r\n"
+      		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+      		+ "    }";
+     	
     	 
         this.mockMvc.perform(MockMvcRequestBuilders.put(SubvencionController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON)
@@ -264,7 +286,7 @@ public class SubvencionTest {
     
     @Test    
     public void test10_Record() throws Exception {
-    	String id ="2Test01186";
+    	String id ="TESTSUB";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.get(SubvencionController.ADD+"/"+id+".json")
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -274,7 +296,7 @@ public class SubvencionTest {
     
     @Test    
     public void test11_Record_HEAD() throws Exception {
-    	String id ="2Test01186";
+    	String id ="TESTSUB";
     	
         this.mockMvc.perform(MockMvcRequestBuilders.head(SubvencionController.ADD+"/"+id+".json")
         		.contentType(MediaType.APPLICATION_JSON))
@@ -293,7 +315,7 @@ public class SubvencionTest {
     
     @Test    
     public void test13_Delete() throws Exception {
-    	String id ="2Test01186";
+    	String id ="TESTSUB";
     	    	
         this.mockMvc.perform(MockMvcRequestBuilders.delete(SubvencionController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON))	
@@ -333,28 +355,31 @@ public class SubvencionTest {
     
     @Test    
     public void test18_Post_transform() throws Exception {
-    	String id ="2Test_Transform_01186";
-    	String obj = "{"    			
-    		    +"\"id\": \""+id+"\","
-    		    +"\"title\": \"subvención nominativa al ateneo 2016 XXXXX\","
-    		    +"\"areaId\": \"A05003340 XXXXX\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes XXXX\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-    		    +"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
-    		    
-    		+"}";
+    	String obj = "{\r\n"
+     		+ "      \"id\": \"TESTSUB\",\r\n"
+     		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA 2\",\r\n"
+     		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+     		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+     		+ "      \"nominativa\": false,\r\n"
+     		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+     		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+     		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+     		+ "      \"importeTotalConcedido\": 2000,\r\n"
+     		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+     		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+     		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+     		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+     		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+     		+ "      \"tieneTematica\": \"deporte\",\r\n"
+     		+ "      \"gestionadoPorOrganization\": false,\r\n"
+     		+ "      \"organizationId\": \"A05003355\",\r\n"
+     		+ "      \"gestionadoPorDistrito\": true,\r\n"
+     		+ "      \"distritoId\": \"2800307\",\r\n"
+     		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+     		+ "      \"areaId\": \"A05003355\",\r\n"
+     		+ "      \"servicioId\": \"A05003355\",\r\n"
+     		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+     		+ "    }";
     	
     	String subvencionTransform = new String (obj.getBytes(),"UTF-8");
     	 
@@ -367,28 +392,32 @@ public class SubvencionTest {
     
     @Test    
     public void test19_Post_transform_NO_OK() throws Exception {
-    	String id ="2Test_Transform_01186";
-    	String obj = "{"    			
-    		    +"\"id\": \""+id+"\","
-    		    /*+"\"title\": \"subvención nominativa al ateneo 2016 XXXXX\","*/
-    		    +"\"areaId\": \"A05003340 XXXXX\","
-    		    +"\"areaTitle\": \"área de gobierno de cultura y deportes XXXX\","
-    		    +"\"municipioId\": 28079,"
-    		    +"\"municipioTitle\": \"madrid\","
-    		    +"\"adjudicatarioId\": \"g28679801 \","
-    		    +"\"adjudicatarioTitle\": \"ateneo cientifico literario y artistico de madrid. .\","
-    		    +"\"entidadFinanciadoraId\": \"A05003340\","
-    		    +"\"entidadFinanciadoraTitle\": \"área de gobierno de cultura y deportes\","
-    		    +"\"importe\": 750000,"
-    		    +"\"fechaAdjudicacion\": \"2016-09-22T00:00:00\","
-    		    +"\"lineaFinanciacion\": \"LINEA 1\","
-    		    +"\"basesReguladoras\": \"https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf\","
-    		    +"\"tipoInstrumento\": \"subvención y entrega dineraria sin contraprestación\","
-    		    +"\"aplicacionPresupuestaria\": \"2016-G/33401/48901\","
-    		    +"\"nominativa\" : true," 
-				+"\"tipoProcedimiento\": \"subvencion-nominativa\""
+    	String obj = "{\r\n"
+     	//	+ "      \"id\": \"TESTSUB23\",\r\n"
+     		+ "      \"title\": \"CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA 2\",\r\n"
+     		+ "      \"basesReguladoras\": \"https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF\",\r\n"
+     		+ "      \"tipoInstrumento\": \"PRÉSTAMOS\",\r\n"
+     		+ "      \"nominativa\": false,\r\n"
+     		+ "      \"tipoProcedimiento\": \"subvencion-directa\",\r\n"
+     		+ "      \"name\": \"Nombre del proyecto al que está asociada la subvención SUB1\",\r\n"
+     		+ "      \"objeto\": \"Finalidad de la subvención SUB1\",\r\n"
+     		+ "      \"importeTotalConcedido\": 2000,\r\n"
+     		+ "      \"fechaAcuerdo\": \"2017-10-26T00:00:00\",\r\n"
+     		+ "      \"clasificacionPrograma\": \"926\",\r\n"
+     		+ "      \"clasificacionEconomicaGasto\": \"13002\",\r\n"
+     		+ "      \"instrumentaId\": \"CONV001\",\r\n"
+     		+ "      \"instrumentaTitle\": \"CONVENIO PRUEBAS 1\",\r\n"
+     		+ "      \"tieneTematica\": \"deporte\",\r\n"
+     		+ "      \"gestionadoPorOrganization\": false,\r\n"
+     		+ "      \"organizationId\": \"A05003355\",\r\n"
+     		+ "      \"gestionadoPorDistrito\": true,\r\n"
+     		+ "      \"distritoId\": \"2800307\",\r\n"
+     		+ "      \"distritoTitle\": \"Distrito 7\",\r\n"
+     		+ "      \"areaId\": \"A05003355\",\r\n"
+     		+ "      \"servicioId\": \"A05003355\",\r\n"
+     		+ "      \"entidadFinanciadoraId\": \"A05003355\"\r\n"
+     		+ "    }";
     	
-    		+"}";
     	
     	String subvencionTransform = new String (obj.getBytes(),"UTF-8");
     	 
@@ -406,6 +435,8 @@ public class SubvencionTest {
     	
     	boolean checkFields=true;
     	
+    	String[] ignoreFields={"organizationId","entidadFinanciadoraId","distritoId"};
+    	
     	for (Field f:declaredFields)
     	{
     		Rdf annotation=f.getAnnotation(Rdf.class);
@@ -413,8 +444,11 @@ public class SubvencionTest {
     		{        		        		
     			if (!Util.validatorFieldRDF(f.getName(), annotation.propiedad()))
     			{
-    				log.info(f.getName()+" vs. "+annotation.propiedad() );
-    				checkFields=false;
+    			  	if (Arrays.asList(ignoreFields).contains(f.getName())==false)
+    			  	{
+    			  	  log.info(f.getName()+" vs. "+annotation.propiedad() );
+    			  	  checkFields=false;
+    			  	}
     			}
     		}
     	}
@@ -454,10 +488,12 @@ public class SubvencionTest {
     	String theURI = TestUtils.checkRDFURI(this.mockMvc,SubvencionController.LIST);        
         this.mockMvc.perform(MockMvcRequestBuilders.get(theURI)).andExpect(MockMvcResultMatchers.status().is(200));    	    	
     }
+   
     
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
-    	boolean checkAllFormats=TestUtils.checkFormatURIs(SubvencionController.LIST+"/"+"S0001", mockMvc);
+    	boolean checkAllFormats=TestUtils.checkFormatURIs(SubvencionController.LIST+"/"+"SUB1", mockMvc);
     	assertTrue(checkAllFormats);    	    	
     }
+   
 }

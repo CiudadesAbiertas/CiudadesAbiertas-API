@@ -35,6 +35,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfNode;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Territorio;
@@ -68,7 +69,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESADM, propiedad = "Municipio")
 @PathId(value="/territorio/municipio")
-public class Municipio implements java.io.Serializable, RDFModel, Territorio {
+public class Municipio implements java.io.Serializable, RDFModel, IGeoModelGeometry {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 6935850887763616111L;
@@ -125,6 +126,10 @@ public class Municipio implements java.io.Serializable, RDFModel, Territorio {
 			nodoPropiedadTipo = Context.GEOSPARQL_URI+"wktLiteral")
 	private Object hasGeometry;
 	
+	
+	@ApiModelProperty(hidden = true)
+	@JsonIgnore
+	private String geometry; 
 	
 	@JsonIgnore
 	private Pais paisObject;
@@ -236,6 +241,16 @@ public class Municipio implements java.io.Serializable, RDFModel, Territorio {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+	
+	@Column(name = "geometry")
+	public String getGeometry() {
+	  return this.geometry;
+	}
+
+	public void setGeometry(String geometry) {
+	  this.geometry = geometry;
+	}
+
 
 	public Municipio(Municipio copia, List<String> attributesToSet)
 	{

@@ -36,12 +36,9 @@ public class SubvencionSearch extends Subvencion implements  Serializable,Datase
 	
 	
 	@JsonIgnore	
-	private static final long serialVersionUID = -5636750457062454627L;
+	private static final long serialVersionUID = -8736750457062454627L;
 
 	@ApiModelProperty(hidden = true)
-	private String areaIdIsolated;
+	private String instrumentaIdIsolated;
 	
-	@ApiModelProperty(hidden = true)
-	private String entidadFinanciadoraIdIsolated;
-
 }

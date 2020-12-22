@@ -148,6 +148,8 @@ public class TraficoIncidenciaController extends GenericController implements Ci
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false)
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -156,7 +158,7 @@ public class TraficoIncidenciaController extends GenericController implements Ci
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		return geoList(request, search, fields, meters, page, pageSize, sort, LIST, new TraficoIncidencia(), new TraficoIncidenciaResult(), availableFields, getKey(),service);
+		return geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new TraficoIncidencia(), new TraficoIncidenciaResult(), availableFields, getKey(),service);
 	}
 
 

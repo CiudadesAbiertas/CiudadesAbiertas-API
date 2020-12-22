@@ -473,7 +473,7 @@ public class OrganigramaDataTest
 		String paramField= "url";
 		String value = "http://www.zaragoza.es/sede/portal/organizacion/corporacion/luisa-broto";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(total == 990);
+		assertTrue(total == 979);
 	}
 	
 	@Test
@@ -492,7 +492,7 @@ public class OrganigramaDataTest
 		String paramField= "image";
 		String value = "https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/jose_luis_martinez_guijarro.jpg";
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(total == 990);
+		assertTrue(total == 980);
 	}
 	
 	@Test

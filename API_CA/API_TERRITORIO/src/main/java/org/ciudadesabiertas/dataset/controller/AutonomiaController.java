@@ -30,14 +30,17 @@ import org.ciudadesabiertas.controller.CiudadesAbiertasController;
 import org.ciudadesabiertas.controller.GenericController;
 import org.ciudadesabiertas.dataset.model.Autonomia;
 import org.ciudadesabiertas.dataset.model.Pais;
+import org.ciudadesabiertas.dataset.model.Provincia;
 import org.ciudadesabiertas.dataset.utils.AutonomiaResult;
 import org.ciudadesabiertas.dataset.utils.AutonomiaSearch;
 import org.ciudadesabiertas.dataset.utils.AutonomiaSearchQuery;
 import org.ciudadesabiertas.dataset.utils.Geometry;
 import org.ciudadesabiertas.dataset.utils.GeometryResult;
+import org.ciudadesabiertas.dataset.utils.ProvinciaResult;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -107,8 +110,7 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 	
 	public static final String RECORD = LIST+ "/{id}";
 	
-	public static final String GEOMETRY = LIST+ "/{id}/geometry";
-	
+	public static final String GEOMETRY = LIST+"/{id}/geometry";
 	
 	public static final String MODEL_VIEW_LIST = "territorio/autonomia/list";
 	public static final String MODEL_VIEW_ID = "territorio/autonomia/id";
@@ -127,9 +129,7 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 		//Carga por defecto de las peticiones
 		listRequestType.add(new RequestType("AUTONOMIA_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("AUTONOMIA_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("AUTONOMIA_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.autonomiaFilePath, NAME_FIELD_GEOJSON);		
+		listRequestType.add(new RequestType("AUTONOMIA_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));	
 	}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(Autonomia.class);
@@ -144,7 +144,82 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 	protected DatasetService<Pais> servicePais;
 	
 	
+	@SuppressWarnings({ "unchecked" })
+	@ApiOperation(value = SwaggerConstants.GEOMETRIA, notes = SwaggerConstants.GEOMETRIA_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiResponses({
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=GeometryResult.class),
+	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
+	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
+	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
+	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
+	   })
+	@RequestMapping(value= {GEOMETRY,  VERSION_1+GEOMETRY}, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<Object> geometry(HttpServletRequest request, 
+													@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_AUTONOMIA) String id,
+													@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
+	{
 
+		log.info("[record][" + GEOMETRY + "]");
+
+		log.debug("[parmam][id:" + id + "]");
+		
+		ResponseEntity geometryRecord = null;
+		
+		ResponseEntity record = recordByIndentifier(request, id, new Autonomia(), new AutonomiaResult(), srId, nameController, RECORD, service,getKey());
+		
+		HttpStatus statusCode = record.getStatusCode();
+		
+		if (statusCode.is2xxSuccessful())
+		{
+			boolean isSemantic=Util.isSemanticPetition(request);
+			
+			Object body = record.getBody();
+			
+			Result<Autonomia> result=((Result<Autonomia>)body);
+			Result<Object> resultObject=((Result<Object>)body);
+			
+			List<Autonomia> records = result.getRecords();
+			
+			if (srId.equals(""))
+			{
+				srId=StartVariables.SRID_XY_APP;
+			}
+			
+			Autonomia autonomia=records.get(0);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)autonomia);
+			
+			List listado=new ArrayList();
+			
+			if (isSemantic)
+			{
+				Geometry g=new Geometry();
+				g.setId(autonomia.getTitle());
+				g.setTypeForURI("Autonomia");
+				g.setGeometry(autonomia.getHasGeometry());
+				listado.add(g);
+			}
+			else
+			{
+				listado.add(autonomia.getHasGeometry());
+			}									
+			
+			resultObject.setRecords((List<Object>) listado);
+			
+			//MD5
+			resultObject.setContentMD5(Util.generateHash( autonomia.getHasGeometry().toString() ));
+			
+			//Cabeceras no se estaban incluyendo
+			HttpHeaders headers = Util.extractHeaders(resultObject);
+			geometryRecord = new ResponseEntity<Object>(resultObject,headers, HttpStatus.OK);
+			
+		
+			return geometryRecord;
+		}
+		
+		return record;
+				
+
+	}
 
 	
 	@SuppressWarnings("unchecked")
@@ -272,7 +347,7 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 			}
 			
 			for (Autonomia autonomia:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, autonomia, geojson);				
+				TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)autonomia);
 			}
 		}
 		
@@ -358,7 +433,7 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 			}
 			
 			for (Autonomia autonomia:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, autonomia, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)autonomia);
 			}
 		}
 		
@@ -382,84 +457,6 @@ public class AutonomiaController extends GenericController implements CiudadesAb
 		log.info("[recordHead][" + RECORD + "]");
 		return record(request, id, srId);
 		
-	}
-
-	
-	@SuppressWarnings({ "unchecked" })
-	@ApiOperation(value = SwaggerConstants.GEOMETRIA, notes = SwaggerConstants.GEOMETRIA_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
-	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=GeometryResult.class),
-	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
-	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
-	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
-	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
-	   })
-	@RequestMapping(value= {GEOMETRY,  VERSION_1+GEOMETRY}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<Object> geometry(HttpServletRequest request, 
-													@PathVariable @ApiParam(required=true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_AUTONOMIA) String id,
-													@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) @ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
-	{
-
-		log.info("[record][" + GEOMETRY + "]");
-
-		log.debug("[parmam][id:" + id + "]");
-		
-		ResponseEntity geometryRecord = null;
-		
-		ResponseEntity record = recordByIndentifier(request, id, new Autonomia(), new AutonomiaResult(), srId, nameController, RECORD, service,getKey());
-		
-		HttpStatus statusCode = record.getStatusCode();
-		
-		if (statusCode.is2xxSuccessful())
-		{
-			boolean isSemantic=Util.isSemanticPetition(request);
-			
-			Object body = record.getBody();
-			
-			Result<Autonomia> result=((Result<Autonomia>)body);
-			Result<Object> resultObject=((Result<Object>)body);
-			
-			List<Autonomia> records = result.getRecords();
-			
-			if (srId.equals(""))
-			{
-				srId=StartVariables.SRID_XY_APP;
-			}
-			
-			Autonomia autonomia=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, autonomia, geojson);
-			
-			List listado=new ArrayList();
-			
-			if (isSemantic)
-			{
-				Geometry g=new Geometry();
-				g.setId(autonomia.getTitle());
-				g.setTypeForURI("Autonomia");
-				g.setGeometry(autonomia.getHasGeometry());
-				listado.add(g);
-			}
-			else
-			{
-				listado.add(autonomia.getHasGeometry());
-			}									
-			
-			resultObject.setRecords((List<Object>) listado);
-			
-			//MD5
-			resultObject.setContentMD5(Util.generateHash( autonomia.getHasGeometry().toString() ));
-			
-			//Cabeceras no se estaban incluyendo
-			HttpHeaders headers = Util.extractHeaders(resultObject);
-			geometryRecord = new ResponseEntity<Object>(resultObject,headers, HttpStatus.OK);
-			
-		
-			return geometryRecord;
-		}
-		
-		return record;
-				
-
 	}
 
 

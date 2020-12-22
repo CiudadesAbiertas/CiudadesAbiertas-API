@@ -223,6 +223,8 @@ public class CalidadAireEstacionController extends GenericController implements 
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -231,7 +233,7 @@ public class CalidadAireEstacionController extends GenericController implements 
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new CalidadAireEstacion(), new CalidadAireEstacionResult(), availableFields, getKey(),dsService);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new CalidadAireEstacion(), new CalidadAireEstacionResult(), availableFields, getKey(),dsService);
 		
 		return integraCallejero(list,request);
 	}

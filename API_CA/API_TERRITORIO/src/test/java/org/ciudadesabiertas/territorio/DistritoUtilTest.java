@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class DistritoUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "hasGeometry", "paisObject", "autonomiaObject", "provinciaObject", "municipioObject" };
+	private static final String[] fieldsToIngore = { "ikey", "hasGeometry", "paisObject", "autonomiaObject", "provinciaObject", "municipioObject", "geometry" };
 	
 	private static final String testJSON = " {\r\n" + 
 			"      \"id\": \"281\",\r\n" + 

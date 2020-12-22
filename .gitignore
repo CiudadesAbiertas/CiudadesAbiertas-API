@@ -214,3 +214,8 @@ API_CA/API_BUS/.settings/
 API_CA/API_BUS/src/test/resources/logback.xml
 API_CA/API_BUS/src/test/resources/config.properties
 API_CA/API_WEB/src/main/resources/buildNumber.properties
+API_CA/API_EMPLEO/src/test/resources/logback.xml
+API_CA/API_EMPLEO/.settings/
+API_CA/API_EMPLEO/.project
+API_CA/API_EMPLEO/.gitignore
+API_CA/API_EMPLEO/.classpath

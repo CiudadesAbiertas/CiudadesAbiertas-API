@@ -42,6 +42,7 @@ import org.ciudadesabiertas.dataset.utils.SeccionCensalSearchQuery;
 import org.ciudadesabiertas.dataset.utils.TerritorioConstants;
 import org.ciudadesabiertas.dataset.utils.TerritorioUtil;
 import org.ciudadesabiertas.exception.BadRequestException;
+import org.ciudadesabiertas.model.IGeoModelGeometry;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
@@ -127,17 +128,12 @@ public class SeccionCensalController extends GenericController implements Ciudad
 	
 	
 
-	static {
-		
+	static {	
 		//Carga por defecto de las peticiones
 		listRequestType.add(new RequestType("SECCIONCENSAL_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("SECCIONCENSAL_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
 		listRequestType.add(new RequestType("SECCIONCENSAL_GEOMETRY", GEOMETRY, HttpMethod.GET,Constants.NO_AUTH));
-		//Carga de las diferentes secciones en geojson
-		geojson=TerritorioUtil.readGeoJSON(TerritorioConstants.seccionCensalFilePath, NAME_FIELD_GEOJSON);
-
-		
-	}
+		}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(SeccionCensal.class);
 
@@ -288,7 +284,7 @@ public class SeccionCensalController extends GenericController implements Ciudad
 			}
 			
 			for (SeccionCensal seccionCensal:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, seccionCensal, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)seccionCensal);
 			}
 			
 		
@@ -369,7 +365,7 @@ public class SeccionCensalController extends GenericController implements Ciudad
 			}
 			
 			for (SeccionCensal seccionCensal:records) {	
-				TerritorioUtil.addPolygon(isSemantic, srId, seccionCensal, geojson);
+			  TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)seccionCensal);
 			}
 		}
 		
@@ -438,7 +434,7 @@ public class SeccionCensalController extends GenericController implements Ciudad
 			}
 			
 			SeccionCensal sCensal=records.get(0);
-			TerritorioUtil.addPolygon(isSemantic, srId, sCensal, geojson);
+			TerritorioUtil.addPolygon(isSemantic, (IGeoModelGeometry)sCensal);
 			
 			List listado=new ArrayList();
 			
@@ -721,7 +717,6 @@ public class SeccionCensalController extends GenericController implements Ciudad
 				
 				
 			
-				
 				listado = dsService.query(key,(Class<SeccionCensal>) objModel.getClass(),(DatasetSearch<SeccionCensal>) searchQuery, numPage, numPageSize,fieldsQuery, orders);														
 				
 				long total=dsService.rowcount(key,(Class<SeccionCensal>) objModel.getClass(),(DatasetSearch<SeccionCensal>) searchQuery);				

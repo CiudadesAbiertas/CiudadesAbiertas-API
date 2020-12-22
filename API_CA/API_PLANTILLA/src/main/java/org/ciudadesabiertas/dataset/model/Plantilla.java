@@ -32,7 +32,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Context;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.PathId;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
-import org.ciudadesabiertas.model.GeoModel;
+import org.ciudadesabiertas.model.IGeoModelXY;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -65,7 +65,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.DUL, propiedad = "Place")
 @PathId(value="/plantilla/plantilla")
-public class Plantilla  implements java.io.Serializable, GeoModel, RDFModel {
+public class Plantilla  implements java.io.Serializable, IGeoModelXY, RDFModel {
 	
 	@JsonIgnore
 	private static final long serialVersionUID = -1504640833269124191L;	

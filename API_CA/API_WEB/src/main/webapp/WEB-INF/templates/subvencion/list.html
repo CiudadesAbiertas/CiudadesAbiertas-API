@@ -97,7 +97,7 @@
 	
 	<script>	
 	
-var fieldsName=["id","title","areaTitle","fechaAdjudicacion"];
+var fieldsName=["id","title","areaId","fechaAcuerdo"];
 var fieldsPosition=[0,1,2,3];
 	
 
@@ -202,8 +202,10 @@ $(document).ready(function() {
                 $(nTd).html("<a href='"+recordURL+"/"+oData.id+".html'>"+oData.id+"</a>");            
             }},
             { "data": "title" },
-            { "data": "areaTitle" },
-			{ "data": "fechaAdjudicacion", render:function(data){
+            { "data": "areaId","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                $(nTd).html("<a href='organization/"+oData.areaId+".html'>"+oData.areaId+"</a>");            
+            }},
+			{ "data": "fechaAcuerdo", render:function(data){
 											if (data==null){
 												return "";
 											}

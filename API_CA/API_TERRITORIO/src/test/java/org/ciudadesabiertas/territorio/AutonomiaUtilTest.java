@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AutonomiaUtilTest
 {
 
-	private static final String[] fieldsToIngore = { "ikey", "hasGeometry", "paisObject" };
+	private static final String[] fieldsToIngore = { "ikey", "hasGeometry", "paisObject", "geometry" };
 	
 	private static final String testJSON = " {\r\n" + 
 			"      \"id\": \"281\",\r\n" + 

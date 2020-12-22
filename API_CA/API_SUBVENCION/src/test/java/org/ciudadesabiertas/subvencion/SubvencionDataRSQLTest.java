@@ -1,352 +1,127 @@
 /**
- * Copyright 2019 Ayuntamiento de A Coruña, Ayuntamiento de Madrid, Ayuntamiento de Santiago de Compostela, Ayuntamiento de Zaragoza, Entidad Pública Empresarial Red.es
  * 
- * This file is part of the Open Cities API, developed within the "Ciudades Abiertas" project (https://ciudadesabiertas.es/).
- * 
- * Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence");
- * You may not use this work except in compliance with the Licence.
- * You may obtain a copy of the Licence at:
- * 
- * https://joinup.ec.europa.eu/software/page/eupl
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the Licence for the specific language governing permissions and limitations under the Licence.
  */
-
 package org.ciudadesabiertas.subvencion;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.ciudadesabiertas.config.WebConfig;
 import org.ciudadesabiertas.dataset.controller.SubvencionController;
 import org.ciudadesabiertas.utils.TestUtils;
+import org.json.simple.JSONArray;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.TestContextManager;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-
-
-@RunWith(SpringJUnit4ClassRunner.class)
+/**
+ * @author Juan Carlos Ballesteros (Localidata)
+ * @author Carlos Martínez de la Casa (Localidata)
+ * @author Hugo Lafuente Matesanz (Localidata)
+ * @author Oscar Corcho (UPM, Localidata)
+ *
+ */
+@RunWith(Parameterized.class)
 @ContextConfiguration(classes = { WebConfig.class })
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SubvencionDataRSQLTest
-{
-	
-	@Autowired
-	private WebApplicationContext wac;
+public class SubvencionDataRSQLTest {
 
-	private String listURL=SubvencionController.LIST;
+private static final Logger log = LoggerFactory.getLogger(SubvencionDataRSQLTest.class);
 
-	private MockMvc mockMvc;
 
-	@Before
-	public void setup() throws Exception
+@Autowired
+private WebApplicationContext wac;
+
+private MockMvc mockMvc;
+
+private String listURL = SubvencionController.LIST;
+
+// Manually config for spring to use Parameterised
+private TestContextManager testContextManager;
+
+@Parameter(value = 0)
+public String expression;
+
+@Parameter(value = 1)
+public Integer expected;
+
+// Posibles valores que tomaran los parámetros anteriores
+@Parameters(name = "{index}: test {0}")
+public static Collection<Object[]> data() {
+  Collection<Object[]> params = new ArrayList<>();
+  params.add(new Object[] { "id=='SUB1'", 1 });
+  params.add(new Object[] { "title=='CONVOCATORIA PREMIOS ARGANZUELA XXXII EDICION PINTURA Y X EDICIÓN FOTOGRAFÍA'", 1 });
+  params.add(new Object[] { "basesReguladoras=='https://www.bocm.es/boletin/CM_Orden_BOCM/2013/11/22/BOCM-20131122-34.PDF'", 97 });
+  params.add(new Object[] { "tipoInstrumento=='PRÉSTAMOS'", 93 });
+  params.add(new Object[] { "nominativa=='false'", 231 });  
+  params.add(new Object[] { "tipoProcedimiento=='subvencion-directa'", 95 });
+  params.add(new Object[] { "name=='Nombre del proyecto al que está asociada la subvención SUB1'", 1 });
+  params.add(new Object[] { "objeto=='Finalidad de la subvención SUB1'", 1 });
+  params.add(new Object[] { "importeTotalConcedido=='2000'", 9 });
+  params.add(new Object[] { "fechaAcuerdo=='2017-10-26T00:00:00'", 1 });
+  params.add(new Object[] { "clasificacionPrograma=='926'", 9 });
+  params.add(new Object[] { "clasificacionEconomicaGasto=='13002'", 3 });
+  params.add(new Object[] { "instrumentaId=='CONV001'", 139 });
+  params.add(new Object[] { "instrumentaTitle=='CONVENIO PRUEBAS 1'", 139 });
+  params.add(new Object[] { "tieneTematica=='deporte'", 27 });
+  params.add(new Object[] { "gestionadoPorOrganization=='false'", 129 });
+  params.add(new Object[] { "organizationId=='A05003369'", 74 });
+  params.add(new Object[] { "gestionadoPorDistrito=='true'", 129 });
+  params.add(new Object[] { "distritoId=='28079602'", 5 });  
+  params.add(new Object[] { "distritoTitle=='Arganzuela'", 5 });
+  params.add(new Object[] { "areaId=='A05003355'", 5 });
+  params.add(new Object[] { "servicioId=='A05003355'", 5 });
+  params.add(new Object[] { "entidadFinanciadoraId=='A05003355'", 5 });
+   
+
+
+  
+  return params;
+}
+
+@Before
+public void setup() throws Exception {
+  this.testContextManager = new TestContextManager(getClass());
+  this.testContextManager.prepareTestInstance(this);
+  this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+}
+
+
+
+@Test
+public void test_evaluador_RSQL() throws Exception {
+  
+  long total = TestUtils.extractTotal(listURL, "q", expression, mockMvc);
+  try
 	{
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	assertTrue(total == expected);
 	}
-
-	@Test
-	public void test_Busqueda_RSQL_importe() throws Exception
+	catch (AssertionError e)
 	{
-
-		String paramField = "q";
-
-		String value = "importe==19406";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		
-		assertTrue(total == 2);
-
+	  log.error("Assertion error");
+	  log.error("  Expression: "+expression);
+	  log.error("  Expected: "+expected);
+	  
+//	  throw new AssertionError("Incorrect value on Expresion "+expression+": "+records.size(), new Throwable("Expected: "+expected));
+	  throw new AssertionError("Incorrect value on Expresion "+expression+": "+total, new Throwable("Expected: "+expected));
 	}
-	
-	@Test
-	public void test_Busqueda_RSQL_importe_intervalo() throws Exception
-	{
-
-		String paramField = "q";
-
-		String value = "importe>10000 and importe<20000";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		
-		assertTrue(total == 325);
-
-	}
-
-	@Test
-	public void test_Busqueda_importe_adjudicatario() throws Exception
-	{
-
-		String value = "importe<10000 and adjudicatarioId=in=(08029713E,21406767T)";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 5);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_fechaAdjudicacion() throws Exception
-	{
-
-		
-		String value = "fechaAdjudicacion==2016-03-29T00:00:00";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 1);
-	}
-	
-
-	@Test
-	public void test_Busqueda_fechaAdjudicacion_intervalo() throws Exception
-	{
-
-		
-		String value = "fechaAdjudicacion>=2016-01-01T00:00:00 and fechaAdjudicacion<=2016-06-01T00:00:00";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 13);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_fechaAdjudicacion_title() throws Exception
-	{
-
-		
-		String value = "title=='subvención nominativa ucci actividades generales'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 1);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_fechaAdjudicacion_title_comodin() throws Exception
-	{
-		
-		String value = "title==*subvención*";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total > 1000);
-	}
-	
-	
-	
-	
-	@Test
-	public void test_Busqueda_entidadFinanciadoraId() throws Exception
-	{
-
-		String value = "importe<10000 and adjudicatarioId=in=(08029713E,21406767T)";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 5);
-	}
-	
-	@Test
-	public void test_Busqueda_areaId_areaTitle() throws Exception
-	{
-
-		String value = "areaId=='A05003366' or areaTitle=='madrid salud*'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 211);
-	}
-	
-	@Test
-	public void test_Busqueda_municipioId_municipioTitle() throws Exception
-	{
-
-		String value = "municipioId=='28079' and municipioTitle=='madrid'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 8298);
-	}
-	
-	@Test
-	public void test_Busqueda_adjudicatarioId_adjudicatarioTitle() throws Exception
-	{
-
-		String value = "adjudicatarioId=='Q2866001G' or adjudicatarioTitle=='cruz roja*'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 13);
-	}
-	
-	@Test
-	public void test_Busqueda_entidadFinanciadoraId_entidadFinanciadoraTitle() throws Exception
-	{
-
-		String value = "entidadFinanciadoraId=='A05003340' or entidadFinanciadoraTitle=='*ALCALDÍA*'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 4142);
-	}
-	
-	@Test
-	public void test_Busqueda_lineaFinanciacion() throws Exception
-	{
-
-		String value = "lineaFinanciacion=in=('Medio ambiente y sostenibilidad','Fomento económico y social')";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 3353);
-
-	}
-	
-	@Test
-	public void test_Busqueda_lineaFinanciacion_in_or_in() throws Exception
-	{		
-		String value = "lineaFinanciacion=in=('Medio ambiente y sostenibilidad') or lineaFinanciacion=in=('Fomento económico y social')";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 3353);
-
-	}
-	
-	@Test
-	public void test_Busqueda_lineaFinanciacion_in_and_in() throws Exception
-	{	
-		String value = "entidadFinanciadoraId=in=('A05003362') and lineaFinanciacion=in=('Fomento económico y social')";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 20);
-
-	}
-
-	
-	
-	@Test
-	public void test_Busqueda_lineaFinanciacion_out() throws Exception
-	{
-
-		String value = "lineaFinanciacion=out=('Medio ambiente y sostenibilidad','Fomento económico y social')";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 4945);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_basesReguladoras() throws Exception
-	{
-
-		String value = "basesReguladoras=='https://www.bocm.es/boletin/cm_orden_bocm/2015/12/30/bocm-20151230-29.pdf'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 95);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_tipoInstrumento() throws Exception
-	{
-
-		String value = "tipoInstrumento=='PRÉSTAMOS'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 1677);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_aplicacionPresupuestaria() throws Exception
-	{
-
-		String value = "aplicacionPresupuestaria=='2016-G/92207/48901'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 5);
-	}
-	
-	@Test
-	public void test_Busqueda_tipoProcedimiento() throws Exception
-	{
-
-		String value = "tipoProcedimiento=='subvencion-directa'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 1659);
-	}
-	
-	@Test
-	public void test_Busqueda_Nominativa() throws Exception
-	{
-
-		String value = "nominativa=='true'";
-
-		String paramField = "q";
-
-		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(total == 5205);
-	}
-
-	
+}
 
 }

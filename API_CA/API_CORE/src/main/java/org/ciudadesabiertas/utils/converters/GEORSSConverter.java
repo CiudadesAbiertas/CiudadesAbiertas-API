@@ -452,7 +452,7 @@ public class GEORSSConverter <T, L extends Result<T>> extends AbstractHttpMessag
 					JSONObject geometry=(JSONObject) hasGeometry.get("geometry");
 					if (geometry!=null)
 					{	
-						log.debug("territorioId: "+((Territorio)record).getId());		
+						log.debug("geometryId: "+((IGeoModelGeometry)record).getId());		
 						JSONArray poligons=(JSONArray) geometry.get("coordinates");
 						log.debug("poligonos: "+poligons.size());		
 						for (int i=0;i<poligons.size();i++)

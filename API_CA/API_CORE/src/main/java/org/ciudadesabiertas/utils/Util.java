@@ -38,6 +38,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -1091,14 +1092,10 @@ public class Util
 			}//fin if validValue(srId)
 			
 		} else if (isObjectGeoModelGeometry(listado)) {
+		  		  
+		  	log.info("inicio transformación");
 		  
-		  
-		  	String target = StartVariables.SRID_LAT_LON_APP;
-			//Comprobamos el srId si es para x e y o Lat y lon
-			if (validValue(srId) && CoordinateTransformer.comprobarSrIdLatLon(srId)) {
-				target = srId;
-				isTransformacionXY = false;
-			}
+		  	String target = srId;			
 			//1 obtenemos lat y lon Siempre se genera esta transformación, activamos true, para que permita la transformacion
 			CoordinateTransformer ct1 = new CoordinateTransformer(source,target);
 						
@@ -1117,7 +1114,7 @@ public class Util
 						if (features!=null)
 						{
 							JSONObject actualFeature=(JSONObject)features.get(0);
-							if ( isTransformacionXY)
+							if ( source.equals(target)==false)
 							{
     	  						if (actualFeature!=null)
     	  						{
@@ -1131,15 +1128,35 @@ public class Util
     	  							for (int k=0;k<vectorActual.size();k++)
     	  							{
     	  							  JSONArray coordinate=(JSONArray) vectorActual.get(k);
-    	  							  JSONArray coordinateTransformed=new JSONArray();
     	  							  
-    	  							  //Alternamos posición X e Y
-    	  							  double[] transformCoordinates = ct1.transformCoordinates((double)coordinate.get(1), (double)coordinate.get(0));	
-    	  							  //Alternamos la salida del vector para Lat y lon
-    	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
-    	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));	
-    	  							  
-    	  							  vectorActualTransformed.add(coordinateTransformed);
+    	  							  if (coordinate.get(0) instanceof Double)
+    	  							  {    	  							  
+        	  							  JSONArray coordinateTransformed=new JSONArray();
+        	  							  
+        	  							  //Alternamos posición X e Y
+        	  							  double[] transformCoordinates = ct1.transformCoordinates((double)coordinate.get(1), (double)coordinate.get(0));	
+        	  							  //Alternamos la salida del vector para Lat y lon
+        	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+        	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));	
+        	  							  
+        	  							  vectorActualTransformed.add(coordinateTransformed);
+    	  							  }
+    	  							  else
+    	  							  {
+    	  								for (int l=0;l<coordinate.size();l++)
+        	  							{
+    	  								   JSONArray subCoordinates=(JSONArray) coordinate.get(l);
+    	  								   JSONArray coordinateTransformed=new JSONArray();
+      	  							  
+        	  							  //Alternamos posición X e Y
+        	  							  double[] transformCoordinates = ct1.transformCoordinates((double)subCoordinates.get(1), (double)subCoordinates.get(0));	
+        	  							  //Alternamos la salida del vector para Lat y lon
+        	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[0]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));
+        	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));	
+        	  							  
+        	  							  vectorActualTransformed.add(coordinateTransformed);
+        	  							}
+    	  							  }
     	  							}							
     	  							coordinatesTransformed.add(vectorActualTransformed);							
     	  						  }
@@ -1158,7 +1175,7 @@ public class Util
 		}//fin if
 		  
 		  
-			
+		log.info("fin transformación");
 		
 		
 		if(isObjectITrafico(listado)) 
@@ -1848,35 +1865,40 @@ public class Util
 	
 	public static boolean isTraficoIntegration() {
 		String nameControler="TraficoTramoController";
-		return exitController(nameControler);
+		return existController(nameControler);
 	}
 	
 	public static boolean isCallejeroIntegration() {
 		String nameControlerTerritorio="CallejeroPortalController";
-		return exitController(nameControlerTerritorio);
+		return existController(nameControlerTerritorio);
 	}
 	
 	public static boolean isCallejeroViaIntegration() {
 		String nameControlerTerritorio="CallejeroViaController";
-		return exitController(nameControlerTerritorio);
+		return existController(nameControlerTerritorio);
 	}
 	
 	public static boolean isOrganigramaIntegration() {
 		String nameControler="OrganigramaController";
-		return exitController(nameControler);
+		return existController(nameControler);
 	}
 	
 	public static boolean isEquipamientoIntegration() {
 		String nameControler="EquipamientoController";
-		return exitController(nameControler);
+		return existController(nameControler);
 	}
 	
 	public static boolean isSubvencionIntegration() {
 		String nameControler="SubvencionController";
-		return exitController(nameControler);
+		return existController(nameControler);
 	}
 	
-	public static boolean exitController(String nameController) {
+	public static boolean isConvenioIntegration() {
+		String nameControler="ConvenioController";
+		return existController(nameControler);		
+	}
+	
+	public static boolean existController(String nameController) {
 		boolean result=false;
 		if (nameController!=null) {
 			if (StartVariables.listControllers!= null && !StartVariables.listControllers.isEmpty()) {
@@ -1954,6 +1976,24 @@ public class Util
 		}
 		
 		return result;
+	}
+	
+	//CMG 2020-11-19 Control para el filtrado de campos[fields]
+	public static List<String> controlFields(String fields) {
+		List<String> fieldsQuery=new ArrayList<String>();
+		fieldsQuery=Arrays.asList(fields.split(","));
+		if (fieldsQuery.contains(Constants.XETRS89)) {
+			//fieldsQuery.remove(Constants.XETRS89);
+			int index = fieldsQuery.indexOf(Constants.XETRS89);
+			fieldsQuery.set(index, Constants.X.toLowerCase() );
+		}
+		if (fieldsQuery.contains(Constants.YETRS89)) {
+			//fieldsQuery.remove(Constants.XETRS89);
+			int index = fieldsQuery.indexOf(Constants.YETRS89);
+			fieldsQuery.set(index, Constants.Y.toLowerCase() );
+		}
+		
+		return fieldsQuery;
 	}
 	
 	public static void main(String[] args)

@@ -208,11 +208,18 @@ public class BicicletaPublicaPuntoPasoController extends GenericController imple
 	   })
 	@RequestMapping(value= {GEO_LIST,  VERSION_1+GEO_LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> geoList(HttpServletRequest request,	BicicletaPublicaPuntoPasoGeoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields,			
-			@RequestParam(value = Constants.METERS, required = true) String meters,
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,			
+			@RequestParam(value = Constants.METERS, required = true) 
+				@ApiParam(value=SwaggerConstants.PARAM_METERS, required = true) String meters,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -221,7 +228,7 @@ public class BicicletaPublicaPuntoPasoController extends GenericController imple
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new BicicletaPublicaPuntoPaso(), new BicicletaPublicaPuntoPasoResult(), availableFields, getKey(),service);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new BicicletaPublicaPuntoPaso(), new BicicletaPublicaPuntoPasoResult(), availableFields, getKey(),service);
 		
 		return integraCallejero(list,request);
 	}

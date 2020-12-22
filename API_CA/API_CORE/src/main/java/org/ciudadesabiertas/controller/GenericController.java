@@ -79,6 +79,7 @@ public class GenericController<T> {
 	
 	public static final String VERSION_1 = "v1/";
 	
+	
 	//Sin Geolocalización
 	public static final String NO_HAY_SRID = "";
 	
@@ -105,6 +106,7 @@ public class GenericController<T> {
 	 */
 	public ModelAndView recordHTML(ModelAndView mv,HttpServletRequest request,String srId, String id, String model_view_id) {
 		
+		log.info("[recordHTML]");
 		String referer = request.getHeader(Constants.HEADER_REFERER);
 		if (referer==null)
 		{
@@ -201,7 +203,7 @@ public class GenericController<T> {
 		{
 			if (CoordinateTransformer.isValidSrId(srId))
 			{				
-				params+=Constants.SRID+"="+srId;
+				params+="&"+Constants.SRID+"="+srId;
 			}
 		}
 		
@@ -330,7 +332,7 @@ public class GenericController<T> {
 	public  ResponseEntity<?> add(T obj , String nameController,String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)
 	{
 		
-
+		
 		log.debug("[parmam][dato:" + obj + "],"
 				+"[nameController:" + nameController + "],[operacion:" + operacion +"][activeFK:"+activeFK+"]");
 		//VBLES		
@@ -368,7 +370,9 @@ public class GenericController<T> {
 			 String id, T obj, String nameController,String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)	
 	{
 		
-		log.info("[update][" + operacion + "] [nameController:" + nameController + "] [activeFK:"+activeFK+"]");
+		log.info("[update][" + operacion + "]");
+		
+		log.debug("[update][" + operacion + "] [nameController:" + nameController + "] [key:" + key + "] [activeFK:"+activeFK+"]");
 
 		if (activeFK && (erroresFK.size()>0)) {
 			log.debug("[update][" + operacion + "] [ERROR Validator:"+erroresFK+"]");
@@ -402,7 +406,7 @@ public class GenericController<T> {
 	{
 		log.info("[update][" + operacion + "]");
 
-		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] ");
+		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] [nameController:" + nameController + "] [key:" + key + "]");
 		
 		id=Util.decodeURL(id);
 		
@@ -507,7 +511,7 @@ public class GenericController<T> {
 
 		log.info("[delete][" + operacion + "]");
 
-		log.debug("[parmam][id:" + id + "] ");
+		log.debug("[parmam][id:" + id + "] [nameController:" + nameController + "] [key:" + key + "]");
 		
 		id=Util.decodeURL(id);
 		
@@ -581,9 +585,9 @@ public class GenericController<T> {
 			T obj, String nameController, String operacion, DatasetService<T> dsService, String key, List<String> erroresFK)
 	{
 
-		log.info("[delete][" + operacion + "] [nameController:" + nameController + "] [activeFK:"+activeFK+"]");
+		log.info("[delete][" + operacion + "]  [activeFK:"+activeFK+"]");
 
-		log.debug("[parmam][id:" + id + "] ");
+		log.debug("[parmam][" + operacion + "] [id:" + id + "] [nameController:" + nameController + "] [key:" + key + "] [activeFK:"+activeFK+"]");
 		
 		id=Util.decodeURL(id);		
 		ResponseEntity<?> responseEntity = new ResponseEntity<Object>(HttpStatus.OK);		
@@ -717,7 +721,7 @@ public class GenericController<T> {
 
 		log.info("[record][" + operacion + "]");
 
-		log.debug("[parmam][id:" + id + "]");
+		log.debug("[parmam][id:" + id + "][nameController:" + nameController + "] [operacion:" + operacion + "]");
 		
 		id=Util.decodeURL(id);
 		
@@ -996,7 +1000,7 @@ public class GenericController<T> {
 
 		log.info("[list][" + operacion + "]");
 
-		log.info("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [sort:" + sort + "]");
+		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [sort:" + sort + "]");
 				
 		//Verifico la negociación de contenidos
 		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
@@ -1093,7 +1097,8 @@ public class GenericController<T> {
 			List<String> fieldsError=Util.checkMultiValuedParamInList(fields,availableFields);
 			if (fieldsError.isEmpty())
 			{
-				fieldsQuery=Arrays.asList(fields.split(","));
+				//CMG 19-11-2020 Control de los campos field
+				fieldsQuery=Util.controlFields(fields);
 			}else {
 				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong field ["+fieldsError.get(0)+"] in fields param"));
 				return responseEntity;
@@ -1180,6 +1185,7 @@ public class GenericController<T> {
 			 String page, 
 			 String pageSize,
 			 String sort,
+			 String srId,
 			 String operacion,
 			 T objModel,
 			 T objResult,
@@ -1190,7 +1196,7 @@ public class GenericController<T> {
 
 		log.info("[geoList][" + operacion + "]");
 
-		log.info("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [sort:" + sort + "]");
+		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [srId:" + srId + "] [sort:" + sort + "]");
 		
 		//Verifico la negociación de contenidos
 		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
@@ -1208,6 +1214,7 @@ public class GenericController<T> {
 		allowedParams.add(Constants.XETRS89);
 		allowedParams.add(Constants.YETRS89);
 		allowedParams.add(Constants.METERS);
+		allowedParams.add(Constants.SRID);
 		
 		ResponseEntity<?> responseErrorParams = Util.validateParams(request.getParameterMap(), availableFields,allowedParams);
 		if (responseErrorParams!=null) {
@@ -1239,6 +1246,16 @@ public class GenericController<T> {
 		int numPage = getNumPage();
 		int numPageSize = getNumPageSize();
 		int numMeters= Integer.parseInt(meters);
+		
+		//CMG CONTROL PARA SRID
+		if (Util.validValue(srId))
+		{
+			if (CoordinateTransformer.isValidSrId(srId)==false)
+			{				
+				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong System reference identificator"));
+				return responseEntity;
+			}
+		}
 
 		//CMG: Incluimos el tratamiento especifico de GEO
 		List<Sort> orders = extractOrder(sort);
@@ -1249,7 +1266,8 @@ public class GenericController<T> {
 			List<String> fieldsError=Util.checkMultiValuedParamInList(fields,availableFields);
 			if (fieldsError.isEmpty())
 			{
-				fieldsQuery=Arrays.asList(fields.split(","));
+				//CMG 19-11-2020 Control de los campos field
+				fieldsQuery=Util.controlFields(fields);
 			}else {
 				responseEntity=ExceptionUtil.checkException(new BadRequestException("Wrong field ["+fieldsError.get(0)+"] in fields param"));
 				return responseEntity;
@@ -1264,7 +1282,7 @@ public class GenericController<T> {
 			
 			long total=dsService.geoRowcount(key,(Class<T>) objModel.getClass(),numMeters,(DatasetSearch<T>) search);				
 			
-			responseEntity = guardarResult(null, listado, total, objResult, request)	;				
+			responseEntity = guardarResult(srId, listado, total, objResult, request)	;				
 					
 			
 		} catch (Exception e)

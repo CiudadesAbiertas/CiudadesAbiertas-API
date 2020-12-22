@@ -214,6 +214,8 @@ public class EquipamientoController extends GenericController implements Ciudade
 				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
 			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
 				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -228,7 +230,7 @@ public class EquipamientoController extends GenericController implements Ciudade
 						+ "[sort:" + sort + "]");
 		
 		
-		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new Equipamiento(), new EquipamientoResult(), availableFields, getKey(),service);
+		ResponseEntity list= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new Equipamiento(), new EquipamientoResult(), availableFields, getKey(),service);
 		
 		return integraCallejero(list,request);
 	}

@@ -133,11 +133,18 @@ public class ContAcusticaEstacionMedidaController extends GenericController impl
 	   })
 	@RequestMapping(value= {GEO_LIST,  VERSION_1+GEO_LIST}, method = {RequestMethod.GET})	
 	public @ResponseBody ResponseEntity<?> geoList(HttpServletRequest request,	ContAcusticaEstacionMedidaGeoSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields,			
-			@RequestParam(value = Constants.METERS, required = true) String meters,			
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) String sort,
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,			
+			@RequestParam(value = Constants.METERS, required = true) 
+				@ApiParam(value=SwaggerConstants.PARAM_METERS, required = true) String meters,
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.DISTANCE, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
+			@RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+				@ApiParam(value=SwaggerConstants.PARAM_SRID, allowableValues=Constants.SUPPORTED_SRIDS) String srId,
 			@RequestHeader HttpHeaders headersRequest)
 	{
 
@@ -146,7 +153,7 @@ public class ContAcusticaEstacionMedidaController extends GenericController impl
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [sort:" + sort + "]");
 		
 		
-		ResponseEntity<ContAcusticaEstacionMedida> list= geoList(request, search, fields, meters, page, pageSize, sort, LIST, new ContAcusticaEstacionMedida(), new ContAcusticaEstacionMedidaResult(), availableFields, getKey(),service);
+		ResponseEntity<ContAcusticaEstacionMedida> list= geoList(request, search, fields, meters, page, pageSize, sort, srId, LIST, new ContAcusticaEstacionMedida(), new ContAcusticaEstacionMedidaResult(), availableFields, getKey(),service);
 	
 		//TODO esto se deberia realizar en un unico metodo y controlar todos los propeties por interfaz		
 		return integraAll(list, request);

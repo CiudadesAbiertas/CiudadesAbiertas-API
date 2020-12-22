@@ -38,6 +38,7 @@ import org.ciudadesAbiertas.rdfGeneratorZ.anotations.Rdf;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfBlankNode;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfExternalURI;
 import org.ciudadesAbiertas.rdfGeneratorZ.anotations.RdfMultiple;
+import org.ciudadesabiertas.model.IGestionadoPor;
 import org.ciudadesabiertas.model.RDFModel;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.Util;
@@ -69,7 +70,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESCONV, propiedad = "Convenio")
 @PathId(value="/convenio/convenio")
-public class Convenio implements java.io.Serializable, RDFModel {
+public class Convenio implements java.io.Serializable, RDFModel, IGestionadoPor {
 
 	@JsonIgnore
 	private static final long serialVersionUID = 7319492074359677904L;

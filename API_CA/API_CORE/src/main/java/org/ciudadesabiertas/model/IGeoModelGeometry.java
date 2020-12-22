@@ -25,6 +25,8 @@ package org.ciudadesabiertas.model;
 public interface IGeoModelGeometry {
 
   public String getId();
+  
+  public String getTitle();
 
   public String getGeometry();
   
@@ -33,5 +35,7 @@ public interface IGeoModelGeometry {
   public Object getHasGeometry();
   
   public void setHasGeometry(Object hasGeometry);
+  
+  public void showFieldTerritorio();
 
 }

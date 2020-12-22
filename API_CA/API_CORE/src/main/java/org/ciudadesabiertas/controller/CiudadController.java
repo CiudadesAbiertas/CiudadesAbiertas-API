@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,6 +71,13 @@ public class CiudadController implements CiudadesAbiertasController
 
 	private static final Logger log = LoggerFactory.getLogger(CiudadesAbiertasController.class);
 
+	private static List<String> v1Keys;
+	
+	static
+	{
+	  v1Keys=new ArrayList<String>();
+	  v1Keys.add("subvencion");
+	}
 	
 	@Autowired
 	private Environment env;
@@ -169,79 +177,110 @@ public class CiudadController implements CiudadesAbiertasController
 					map.remove("securityDefinitions");
 				}
 				
-				LinkedTreeMap paths = (LinkedTreeMap) map.get("paths");
-				
+				log.info("filter starts");
+				LinkedTreeMap paths = (LinkedTreeMap) map.get("paths");		
+				LinkedTreeMap filteredPaths = new LinkedTreeMap();
+				log.info(paths.size()+" elements");
+				Set keySetFiltered = new TreeSet();
 				for (Object key : paths.keySet())
 				{
-					// based on you key types
-					String keyStr = (String) key;
-					LinkedTreeMap localPath = (LinkedTreeMap) paths.get(keyStr);
-					
-					if (escritura==false)
-					{			
-						
-						localPath.remove("put");
-						if (keyStr.endsWith("transform")==false)
-						{
-							localPath.remove("post");
-						}
-						localPath.remove("delete");
-					}
-					if (head==false)
-					{					
-						localPath.remove("head");						
-					}
-					
-					if (autorization==false)
+				  boolean addKey=true;
+				  if (key.toString().startsWith("/v1"))
+				  {		
+					  addKey=false;
+					  for (String v1Key:v1Keys)
+				      {
+				    	if (key.toString().contains(v1Key))
+				    	{
+				    	  addKey=true;
+				    	  break;
+				    	}
+				      }
+				  }
+				  if (addKey)
+				  {
+					if (key.toString().contains("v1"))
 					{
-						Set<String> operaciones = localPath.keySet();
-						for (String keyOperaciones : operaciones)
-						{
-							((LinkedTreeMap)localPath.get(keyOperaciones)).remove("security");
-							List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
-							List parametersWithouSecurity = new ArrayList();
-							
-							for (int i=0;i<parameters.size();i++)
-							{
-								LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
-								if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals("Authorization")==false))
-								{
-									parametersWithouSecurity.add(parameters.get(i));
-								}
-							}							
-							((LinkedTreeMap)localPath.get(keyOperaciones)).put("parameters", parametersWithouSecurity);
-							
-						}
+					  System.out.println("wait");
 					}
-					
-					Set<String> operaciones = localPath.keySet();
-					for (String keyOperaciones : operaciones)
-					{
-					
-						List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
-						
-						for (int i=0;i<parameters.size();i++)
-						{
-							LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
-							if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals(Constants.SRID)))
-							{								
-								localParam.put("default", Constants.SRID_SWAGGER);
-							}
-						}							
-						
-						
-					}
-					
-					paths.put(keyStr, localPath);
-				}			
-								
-				map.put("paths", paths);
+					keySetFiltered.add(key);
+				  }
+				}
+				log.info("filter ends");
+				log.info(keySetFiltered.size()+" elements filtered");
 				
-				
-				
-				String sortedJson = gson.toJson(map);
-				
-				json = Util.jsonPrettyPrint(sortedJson.toString());
+				for (Object key : keySetFiltered)
+				{
+				  	log.info(key.toString());
+				  
+  					// based on you key types
+  					String keyStr = (String) key;
+  					LinkedTreeMap localPath = (LinkedTreeMap) paths.get(keyStr);
+  					
+  					if (escritura==false)
+  					{	
+  						localPath.remove("put");
+  						if (keyStr.endsWith("transform")==false)
+  						{
+  							localPath.remove("post");
+  						}
+  						localPath.remove("delete");
+  					}
+  					if (head==false)
+  					{					
+  						localPath.remove("head");						
+  					}
+  					
+  					if (autorization==false)
+  					{
+  						Set<String> operaciones = localPath.keySet();
+  						for (String keyOperaciones : operaciones)
+  						{
+  							((LinkedTreeMap)localPath.get(keyOperaciones)).remove("security");
+  							List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
+  							List parametersWithouSecurity = new ArrayList();
+  							
+  							for (int i=0;i<parameters.size();i++)
+  							{
+  								LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
+  								if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals("Authorization")==false))
+  								{
+  									parametersWithouSecurity.add(parameters.get(i));
+  								}
+  							}							
+  							((LinkedTreeMap)localPath.get(keyOperaciones)).put("parameters", parametersWithouSecurity);
+  							
+  						}
+  					}
+  					
+  					Set<String> operaciones = localPath.keySet();
+  					for (String keyOperaciones : operaciones)
+  					{
+  					
+  						List parameters = (List) ((LinkedTreeMap)localPath.get(keyOperaciones)).get("parameters");
+  						
+  						for (int i=0;i<parameters.size();i++)
+  						{
+  							LinkedTreeMap localParam = (LinkedTreeMap) parameters.get(i);
+  							if ((localParam.get("name")!=null)&&(((String)localParam.get("name")).equals(Constants.SRID)))
+  							{								
+  								localParam.put("default", Constants.SRID_SWAGGER);
+  							}
+  						}							
+  						
+  						
+  					}
+  					
+  					filteredPaths.put(keyStr, localPath);
+  				}			
+  								
+  				map.put("paths", filteredPaths);
+  				
+  				
+  				
+  				String sortedJson = gson.toJson(map);
+  				
+  				json = Util.jsonPrettyPrint(sortedJson.toString());
 				
 				
 			}
@@ -251,8 +290,10 @@ public class CiudadController implements CiudadesAbiertasController
 			
 			apiJsonResponse=new StringBuffer();
 			apiJsonResponse.append(json);
-			log.info("[apiJsonResponse] [api.json] [initialized]");
-		}
+			
+		}	
+		
+		log.info("[apiJsonResponse] [api.json] [initialized]");
 		return apiJsonResponse.toString();
 	}
 
@@ -262,27 +303,29 @@ public class CiudadController implements CiudadesAbiertasController
 		
 		LinkedTreeMap definitions = (LinkedTreeMap) map.get("definitions");
 		
-		
-		for (Object key : definitions.keySet())
-		{	
-			String keyStr = (String) key;
-			if (keyStr.equals("Map«string,object»")==false)
-			{
-				log.info("Cleaning "+key);
-				LinkedTreeMap localDefinition = (LinkedTreeMap) definitions.get(keyStr);
-				LinkedTreeMap properties = (LinkedTreeMap)localDefinition.get("properties");
-				for (Object propertyKey : properties.keySet())
-				{	
-					String keyP = (String) propertyKey;
-					LinkedTreeMap localProperty = (LinkedTreeMap) properties.get(keyP);
-					localProperty.remove("allowEmptyValue");
-					
-					properties.put(keyP, localProperty);
-				}
-				localDefinition.put("properties",properties);
-				definitions.put(keyStr,localDefinition);		
-			}
-		}			
+		if (definitions!=null)
+		{
+    		for (Object key : definitions.keySet())
+    		{	
+    			String keyStr = (String) key;
+    			if (keyStr.equals("Map«string,object»")==false)
+    			{
+    				log.debug("Cleaning "+key);
+    				LinkedTreeMap localDefinition = (LinkedTreeMap) definitions.get(keyStr);
+    				LinkedTreeMap properties = (LinkedTreeMap)localDefinition.get("properties");
+    				for (Object propertyKey : properties.keySet())
+    				{	
+    					String keyP = (String) propertyKey;
+    					LinkedTreeMap localProperty = (LinkedTreeMap) properties.get(keyP);
+    					localProperty.remove("allowEmptyValue");
+    					
+    					properties.put(keyP, localProperty);
+    				}
+    				localDefinition.put("properties",properties);
+    				definitions.put(keyStr,localDefinition);		
+    			}
+    		}	
+		}
 						
 		map.put("definitions", definitions);
 		

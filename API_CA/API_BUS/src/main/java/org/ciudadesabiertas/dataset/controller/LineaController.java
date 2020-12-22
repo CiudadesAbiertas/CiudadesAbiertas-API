@@ -191,11 +191,12 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD+Constants.EXT_HTML, VERSION_1+RECORD+Constants.EXT_HTML}, method = RequestMethod.GET)
-	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, HttpServletRequest request)
+	public ModelAndView recordHTML(ModelAndView mv, @PathVariable String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+	@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId, HttpServletRequest request)
 	{
 		log.info("[recordHTML][" + RECORD + Constants.EXT_HTML + "]");
 		
-		return recordHTML(mv, request, NO_HAY_SRID, id, MODEL_VIEW_ID);
+		return recordHTML(mv, request, srId, id, MODEL_VIEW_ID);
 	}
 	
 
@@ -230,7 +231,7 @@ public class LineaController extends GenericController implements CiudadesAbiert
 		
 		RSQLVisitor<CriteriaQuery<Linea>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Linea>();
 		
-		ResponseEntity<Linea> list=list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new Linea(), new LineaResult(),	availableFields, getKey(), visitor,service);
+		ResponseEntity<Linea> list=list(request, search, fields, rsqlQ, page, pageSize, sort, srId, LIST,new Linea(), new LineaResult(),	availableFields, getKey(), visitor,service);
 				
 		HttpStatus statusCode = list.getStatusCode();
 		
@@ -393,14 +394,15 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_BUS_LINEA) String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_BUS_LINEA) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+	@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
 		
-		ResponseEntity<Linea> record=record(request, id, new Linea(), new LineaResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+		ResponseEntity<Linea> record=record(request, id, new Linea(), new LineaResult(), srId, nameController, RECORD, service,getKey());
 			
 		return record;
 
@@ -415,11 +417,12 @@ public class LineaController extends GenericController implements CiudadesAbiert
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  VERSION_1+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_BUS_LINEA) String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable @ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_BUS_LINEA) String id, @RequestParam(value = Constants.SRID, defaultValue = Constants.SRID_DEFECTO, required = false) 
+	@ApiParam(value = SwaggerConstants.PARAM_SRID, allowableValues = Constants.SUPPORTED_SRIDS) String srId)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
-		return record(request, id);
+		return record(request, id, srId);
 		
 	}
 		
