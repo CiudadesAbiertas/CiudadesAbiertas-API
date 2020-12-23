@@ -1155,12 +1155,20 @@ public class Util
         	  							  coordinateTransformed.add(new BigDecimal(transformCoordinates[1]).setScale(Constants.NUM_DECIMALS_XY, BigDecimal.ROUND_HALF_UP));	
         	  							  
         	  							  vectorActualTransformed.add(coordinateTransformed);
-        	  							}
+        	  							  }
     	  							  }
     	  							}							
     	  							coordinatesTransformed.add(vectorActualTransformed);							
     	  						  }
-    	  						  geometry.put("coordinates", coordinatesTransformed);
+    	  						  String type=(String) geometry.get("type");
+    	  						  if (type!=null && type.toLowerCase().equals("multipolygon"))
+    	  						  {
+    	  							JSONArray intermedio=new JSONArray();
+    	  							intermedio.add(coordinatesTransformed);
+    	  							geometry.put("coordinates", intermedio);
+    	  						  }else {    	  						  
+    	  							geometry.put("coordinates", coordinatesTransformed);
+    	  						  }
     	  						  actualFeature.put("geometry",geometry);
     	  						  						  
     	  						  geomodel.setGeometry(actualFeature.toString());
