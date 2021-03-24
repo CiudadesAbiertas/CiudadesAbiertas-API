@@ -220,7 +220,7 @@
             <column name="ikey" value="105"/>
             <column name="id" value="60332"/>
             <column name="title" value="NEGOCIADO DE ASUNTOS GENERALES"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20300"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -370,7 +370,7 @@
             <column name="ikey" value="11"/>
             <column name="id" value="61586"/>
             <column name="title" value="COORDINACIÓN GENERAL DEL ÁREA DE ALCALDÍA"/>
-            <column name="nivel_jerarquico" valueNumeric="3"/>
+            <column name="nivel_jerarquico" valueNumeric="4"/>
             <column name="unit_of" value="2"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="ANDRES MARTINEZ,IVAN"/>
@@ -700,7 +700,7 @@
             <column name="ikey" value="12"/>
             <column name="id" value="20300"/>
             <column name="title" value="INTERVENCION GENERAL MUNICIPAL"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="10100"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="NOTIVOLI MUR,JOSE-IGNACIO"/>
@@ -2710,7 +2710,7 @@
             <column name="ikey" value="180"/>
             <column name="id" value="61383"/>
             <column name="title" value="NEGOCIADO DE ORGANIZACIÓN Y FUNCIONAMIENTO CORPORATIVO"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="7"/>
             <column name="unit_of" value="26083"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -2830,7 +2830,7 @@
             <column name="ikey" value="184"/>
             <column name="id" value="61110"/>
             <column name="title" value="SECCIÓN DE PROTOCOLO"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20104"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -3070,7 +3070,7 @@
             <column name="ikey" value="191"/>
             <column name="id" value="26050"/>
             <column name="title" value="ASESORIA JURIDICA MUNICIPAL"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="10100"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -3310,7 +3310,7 @@
             <column name="ikey" value="199"/>
             <column name="id" value="60247"/>
             <column name="title" value="NEGOCIADO DE FISCALIZACIÓN DE GASTOS DE PERSONAL"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -4090,7 +4090,7 @@
             <column name="ikey" value="221"/>
             <column name="id" value="61581"/>
             <column name="title" value="CONSEJERÍA DE SERVICIOS PÚBLICOS Y PERSONAL"/>
-            <column name="nivel_jerarquico" valueNumeric="3"/>
+            <column name="nivel_jerarquico" valueNumeric="4"/>
             <column name="unit_of" value="61577"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -5080,7 +5080,7 @@
             <column name="ikey" value="251"/>
             <column name="id" value="61648"/>
             <column name="title" value="ADJUNTÍA A LA JEFATURA DEL SERVICIO DE INTERVENCIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -5350,7 +5350,7 @@
             <column name="ikey" value="26"/>
             <column name="id" value="20200"/>
             <column name="title" value="SECRETARIA GENERAL DEL PLENO"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="10100"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="JIMENEZ ABAD,LUIS"/>
@@ -7210,7 +7210,7 @@
             <column name="ikey" value="315"/>
             <column name="id" value="61688"/>
             <column name="title" value="SECRETARÍA DE LA COORDINACIÓN DEL ÁREA"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -7330,7 +7330,7 @@
             <column name="ikey" value="319"/>
             <column name="id" value="61351"/>
             <column name="title" value="NEGOCIADO DE GESTIÓN DE IDENTIDAD CORPORATIVA"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -10000,7 +10000,7 @@
             <column name="ikey" value="4"/>
             <column name="id" value="26019"/>
             <column name="title" value="SERVICIO DE ASUNTOS GENERALES"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20200"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="SUBIAS GONZALEZ,LUIS-JAVIER"/>
@@ -10150,7 +10150,7 @@
             <column name="ikey" value="403"/>
             <column name="id" value="61671"/>
             <column name="title" value="OFICINA DE RELACIONES INTERNACIONALES"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -10660,7 +10660,7 @@
             <column name="ikey" value="419"/>
             <column name="id" value="61570"/>
             <column name="title" value="OFICINA DE INTERVENCIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20300"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -10720,7 +10720,7 @@
             <column name="ikey" value="420"/>
             <column name="id" value="61211"/>
             <column name="title" value="NEGOCIADO DEL ÓRGANO DE APOYO A LA JUNTA DE GOBIERNO LOCAL"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="7"/>
             <column name="unit_of" value="26083"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -11080,7 +11080,7 @@
             <column name="ikey" value="431"/>
             <column name="id" value="61347"/>
             <column name="title" value="NEGOCIADO DE CONTROL Y FISCALIZACIÓN (CONTRATACIÓN)"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -11980,7 +11980,7 @@
             <column name="ikey" value="459"/>
             <column name="id" value="61652"/>
             <column name="title" value="NEGOCIADO DE CONTROL FINANCIERO"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="61572"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -12010,7 +12010,7 @@
             <column name="ikey" value="46"/>
             <column name="id" value="26037"/>
             <column name="title" value="DIRECCIÓN DEL GABINETE TECNICO DE ALCALDIA"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="AZNAR ESCO,ANGEL"/>
@@ -12340,7 +12340,7 @@
             <column name="ikey" value="47"/>
             <column name="id" value="20104"/>
             <column name="title" value="PROTOCOLO DE LA CORPORACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="FERNANDEZ-GES MARCUELLO,GEMMA"/>
@@ -13360,7 +13360,7 @@
             <column name="ikey" value="50"/>
             <column name="id" value="61571"/>
             <column name="title" value="SERVICIO DE INTERVENCIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="61570"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="PIÑEIRO ANTON,M-JOSE"/>
@@ -14470,7 +14470,7 @@
             <column name="ikey" value="533"/>
             <column name="id" value="61705"/>
             <column name="title" value="OFICINA DE ESTUDIOS Y ASESORAMIENTO ECONÓMICO"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -15220,7 +15220,7 @@
             <column name="ikey" value="556"/>
             <column name="id" value="61345"/>
             <column name="title" value="SECCIÓN DE CONTROL Y FISCALIZACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -15340,7 +15340,7 @@
             <column name="ikey" value="56"/>
             <column name="id" value="61573"/>
             <column name="title" value="OFICINA DE EVALUACIÓN Y COORDINACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20300"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="PARDO PEREZ,M-ESTRELLA"/>
@@ -15550,7 +15550,7 @@
             <column name="ikey" value="566"/>
             <column name="id" value="26051"/>
             <column name="title" value="OFICINA TECNICA DE ALCALDIA"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26037"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -16000,7 +16000,7 @@
             <column name="ikey" value="58"/>
             <column name="id" value="26020"/>
             <column name="title" value="SERVICIO DE TRAMITACION DE ASUNTOS JUDICIALES"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26050"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="CERDAN FRANCES,M-ANGELA"/>
@@ -16480,7 +16480,7 @@
             <column name="ikey" value="594"/>
             <column name="id" value="61649"/>
             <column name="title" value="UNIDAD DE CONTROL Y FISCALIZACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -17140,7 +17140,7 @@
             <column name="ikey" value="613"/>
             <column name="id" value="26052"/>
             <column name="title" value="DIRECCION DE COMUNICACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -17470,7 +17470,7 @@
             <column name="ikey" value="623"/>
             <column name="id" value="61005"/>
             <column name="title" value="UNIDAD JURIDICA DE CONTROL Y FISCALIZACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -17560,7 +17560,7 @@
             <column name="ikey" value="626"/>
             <column name="id" value="61346"/>
             <column name="title" value="NEGOCIADO DE CONTROL Y FISCALIZACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -18190,7 +18190,7 @@
             <column name="ikey" value="645"/>
             <column name="id" value="26083"/>
             <column name="title" value="ÓRGANO DE APOYO AL GOBIERNO DE ZARAGOZA"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="10342"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -18250,7 +18250,7 @@
             <column name="ikey" value="647"/>
             <column name="id" value="20209"/>
             <column name="title" value="PROCURADURIA MUNICIPAL"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26050"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -18970,7 +18970,7 @@
             <column name="ikey" value="669"/>
             <column name="id" value="60329"/>
             <column name="title" value="NEGOCIADO DE ORGANIZACION Y FUNCIONAMIENTO CORPORATIVO"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20200"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -19480,7 +19480,7 @@
             <column name="ikey" value="684"/>
             <column name="id" value="60184"/>
             <column name="title" value="NEGOCIADO DE DEFENSA JUDICIAL"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="7"/>
             <column name="unit_of" value="26020"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -19660,7 +19660,7 @@
             <column name="ikey" value="69"/>
             <column name="id" value="61572"/>
             <column name="title" value="OFICINA DE CONTROL FINANCIERO"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20300"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name" value="FLORIA MURILLO,ELISA-ISABEL"/>
@@ -19810,7 +19810,7 @@
             <column name="ikey" value="694"/>
             <column name="id" value="10342"/>
             <column name="title" value="CONCEJALIA SECRETARIO GOBIERNO ZARAGOZA"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="10100"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -20290,7 +20290,7 @@
             <column name="ikey" value="708"/>
             <column name="id" value="61650"/>
             <column name="title" value="UNIDAD DE LA OFICINA DE EVALUACIÓN Y COORDINACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="61573"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -21250,7 +21250,7 @@
             <column name="ikey" value="737"/>
             <column name="id" value="61350"/>
             <column name="title" value="OFICINA DE DE DESARROLLO DE CONTENIDOS DE COMUNICACIÓN EN INTERNET Y REDES SOCIALES"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -21460,7 +21460,7 @@
             <column name="ikey" value="743"/>
             <column name="id" value="61003"/>
             <column name="title" value="UNIDAD TECNICA DE IMAGEN"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -21970,7 +21970,7 @@
             <column name="ikey" value="759"/>
             <column name="id" value="61002"/>
             <column name="title" value="NEGOCIADO ADMINISTRATIVO"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -22420,7 +22420,7 @@
             <column name="ikey" value="772"/>
             <column name="id" value="61636"/>
             <column name="title" value="SECRETARÍA DEL ALCALDE"/>
-            <column name="nivel_jerarquico" valueNumeric="4"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61586"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -22450,7 +22450,7 @@
             <column name="ikey" value="773"/>
             <column name="id" value="61651"/>
             <column name="title" value="NEGOCIADO DE LA OFICINA DE EVALUACIÓN Y COORDINACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="61573"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -23230,7 +23230,7 @@
             <column name="ikey" value="797"/>
             <column name="id" value="61006"/>
             <column name="title" value="UNIDAD ECONOMICA DE CONTROL Y FISCALIZACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="7"/>
+            <column name="nivel_jerarquico" valueNumeric="9"/>
             <column name="unit_of" value="61571"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -25060,7 +25060,7 @@
             <column name="ikey" value="851"/>
             <column name="id" value="60330"/>
             <column name="title" value="NEGOCIADO DE ACTAS"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="20200"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -25510,7 +25510,7 @@
             <column name="ikey" value="865"/>
             <column name="id" value="61339"/>
             <column name="title" value="NEGOCIADO DE ASUNTOS GENERALES"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="26019"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -25750,7 +25750,7 @@
             <column name="ikey" value="872"/>
             <column name="id" value="20204"/>
             <column name="title" value="ASESORIA JURIDICA-LETRADOS ASESORES"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26050"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -26260,7 +26260,7 @@
             <column name="ikey" value="888"/>
             <column name="id" value="60076"/>
             <column name="title" value="NEGOCIADO DE CERTIFICACIONES"/>
-            <column name="nivel_jerarquico" valueNumeric="6"/>
+            <column name="nivel_jerarquico" valueNumeric="8"/>
             <column name="unit_of" value="26019"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -28882,16 +28882,16 @@
             <column name="nivel_administracion_title" value="Administración local"/>
             <column name="tipo_entidad_id" value="AY"/>
             <column name="tipo_entidad_title" value="Ayuntamiento"/>
-            <column name="x_etrs89"/>
-            <column name="y_etrs89"/>
-            <column name="telephone"/>
-            <column name="fax_number"/>
-            <column name="street_address"/>
-            <column name="postal_code"/>
+            <column name="x_etrs89" valueNumeric="676154.00922"/>
+            <column name="y_etrs89" valueNumeric="4613078.95944"/>
+            <column name="telephone" value="976724300"/>
+            <column name="fax_number" value="976724235"/>
+            <column name="street_address" value="CALLE CASA JIMENEZ 5"/>
+            <column name="postal_code" value="50004"/>
             <column name="municipio_id" value="50297"/>
             <column name="municipio_title" value="Zaragoza"/>
-            <column name="purpose"/>
-            <column name="email"/>
+            <column name="purpose" value="Le corresponde la gestión integral del Impuesto sobre Vehículos de Tracción Mecánica así como la coordinación con el Ministerio de Interior a través de la Dirección General de Tráfico titular del Registro Nacional de Vehículos. Le corresponde asimismo la gestión tributaria del Impuesto sobre Actividades Económicas y la coordinación con la AEAT, la elaboración y mantenimiento del Padrón de grandes Contribuyentes del término municipal de Zaragoza y el control del cumplimiento de sus obligaciones tributarias."/>
+            <column name="email" value=" cjmedioambienteymovilidad@zaragoza.es"/>
             <column name="url" value="https://transparencia.castillalamancha.es/titular/223375"/>
             <column name="image" value="https://transparencia.castillalamancha.es/sites/transparencia2.castillalamancha.es/files/cargos/jose_luis_martinez_guijarro.jpg"/>
             <column name="portal_id" value="PORTAL000098"/>
@@ -29020,7 +29020,7 @@
             <column name="ikey" value="970"/>
             <column name="id" value="61001"/>
             <column name="title" value="UNIDAD TECNICA DE DIFUSION DE PRENSA Y COMUNICACION"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>
@@ -29140,7 +29140,7 @@
             <column name="ikey" value="974"/>
             <column name="id" value="61554"/>
             <column name="title" value="UNIDAD DE CONTENIDOS DE COMUNICACIÓN"/>
-            <column name="nivel_jerarquico" valueNumeric="5"/>
+            <column name="nivel_jerarquico" valueNumeric="6"/>
             <column name="unit_of" value="26052"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   
+ <!-- TABLAS PARA DEUDA COMERCIAL + ORGANIZATION -->
+ <!--  .............INICIO...................... -->
+	 <changeSet author="Localidata" id="table-deuda_c_1">
+        <createTable tableName="deuda_c_inf_morosidad_tri">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+            </column>
+            <column name="pmp_trimestral" type="DECIMAL(12, 2)"/>                
+            <column name="num_pagos_dentro_periodo" type="INT"/>                
+            <column name="imp_pagos_dentro_periodo" type="DECIMAL(12, 2)"/>                
+            <column name="num_pagos_fuera_periodo" type="INT"/>              
+            <column name="imp_pagos_fuera_periodo" type="DECIMAL(12, 2)"/>                
+            <column name="num_pagos_intereses_demora" type="INT"/>                
+            <column name="imp_pagos_intereses_demora" type="DECIMAL(12, 2)"/>               
+            <column name="periodo_medio_pago_pte" type="DECIMAL(12, 2)"/>                
+            <column name="n_facturas_pte_dtro_periodo" type="INT"/>               
+            <column name="imp_facturas_pte_dtro_periodo" type="DECIMAL(12, 2)"/>                
+            <column name="n_facturas_pte_fuera_periodo" type="INT"/>               
+            <column name="imp_facturas_pte_fuera_periodo" type="DECIMAL(12, 2)"/>               
+            <column name="tipo_contabilidad" type="VARCHAR(100)"/>
+            <column name="entidad" type="VARCHAR(50)"/>                
+            <column name="periodo" type="VARCHAR(50)"/>
+                
+        </createTable>
+		<rollback>
+            <dropTable tableName="deuda_c_inf_morosidad_tri"/>            
+       </rollback>
+    </changeSet>
+
+	<changeSet author="Localidata" id="table-deuda_c_2">
+        <createTable tableName="deuda_organization">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL" type="VARCHAR(400)"/>
+			<column name="contactPoint_email" type="VARCHAR(200)"/>
+			<column name="contactPoint_faxNumber" type="VARCHAR(200)"/>
+			<column name="contactPoint_telephone" type="VARCHAR(200)"/>
+			<column name="contactPoint_title" type="VARCHAR(400)"/>
+			<column name="municipio_id" type="VARCHAR(50)"/>
+            <column name="municipio_title" type="VARCHAR(200)"/>	
+			<column name="distrito_id" type="VARCHAR(50)"/>
+            <column name="distrito_title" type="VARCHAR(200)"/>			
+            <column name="street_address" type="VARCHAR(200)"/>
+            <column name="postal_code" type="VARCHAR(10)"/>				
+			<column name="portal_id" type="varchar(50)"/>
+			<column name="classification" type="VARCHAR(200)"/>
+        </createTable>
+		<rollback>
+            <dropTable tableName="deuda_organization"/>            
+       </rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda_c_3">
+		<createTable tableName="deuda_c_publica_interval">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="has_beginning" type="datetime(6)"/>
+            <column name="has_end" type="datetime(6)"/>
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_c_publica_interval"/>            
+       </rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda_c_4">
+		<createTable tableName="deuda_c_inf_pmp_mes_global">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pmp_mensual_global" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+            </column>
+            <column name="periodo" type="VARCHAR(50)"/>
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_c_inf_pmp_mes_global"/>            
+       </rollback>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda_c_5">
+		<createTable tableName="deuda_c_inf_pmp_mes">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pmp_mensual" type="DECIMAL(12,2)"/>				
+            <column name="ratio_opereraciones_pagadas" type="DECIMAL(12,2)"/>				
+			<column name="importe_operaciones_pagadas" type="DECIMAL(12,2)"/>				
+			<column name="ratio_operaciones_pdte_pago" type="DECIMAL(12,2)"/>				
+			<column name="imp_operaciones_pdte_pago" type="DECIMAL(12,2)"/>				
+			<column name="entidad" type="VARCHAR(50)"/>				
+			<column name="periodo" type="VARCHAR(50)"/>				
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_c_inf_pmp_mes"/>            
+       </rollback>
+    </changeSet>
+		
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-deudac-morosidad-tri">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_c_morosidad_tri" tableName="deuda_c_inf_morosidad_tri"/>
+    </changeSet>
+    <changeSet author="Localidata" id="PK-table-deuda_documentacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_org" tableName="deuda_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deudac_inter">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_c_inter" tableName="deuda_c_publica_interval"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deudac_inf_global">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_c_inf_global" tableName="deuda_c_inf_pmp_mes_global"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deudac_inf_mes">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_c_inf_mes" tableName="deuda_c_inf_pmp_mes"/>
+    </changeSet>
+	
+	<!-- UNIQUE -->
+	
+	<changeSet author="Localidata" id="unique-id-deuda_c-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deudac-morosidad-tru" tableName="deuda_c_inf_morosidad_tri"/>
+    </changeSet>
+
+	<changeSet author="Localidata" id="unique-id-deuda_c-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deuda_organization" tableName="deuda_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_c-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deudac-interval" tableName="deuda_c_publica_interval"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_c-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deudac-inf-global" tableName="deuda_c_inf_pmp_mes_global"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_c-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deudac-inf-mes" tableName="deuda_c_inf_pmp_mes"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	
+	<changeSet author="Localidata" id="INDEX-deudac-1">
+        <createIndex indexName="index_deudac_morosidad_tri1" tableName="deuda_c_inf_morosidad_tri">
+            <column name="periodo"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudac-2">
+        <createIndex indexName="index_deudac_morosidad_tri2" tableName="deuda_c_inf_morosidad_tri">
+            <column name="entidad"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudac-3">
+        <createIndex indexName="index_deudac_infglobal" tableName="deuda_c_inf_pmp_mes_global">
+            <column name="periodo"/>
+        </createIndex>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="INDEX-deudac-4">
+        <createIndex indexName="index_deudac_infmes1" tableName="deuda_c_inf_pmp_mes">
+            <column name="periodo"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudac-5">
+        <createIndex indexName="index_deudac_infmes2" tableName="deuda_c_inf_pmp_mes">
+            <column name="entidad"/>
+        </createIndex>
+    </changeSet>
+	<!--  ..................FIN........................ -->
+	<!-- FIN TABLAS PARA DEUDA COMERCIAL + ORGANIZATION -->
+	
+	<!--  TABLAS PARA DEUDA FINANCIERA -->
+	<!--  ...........INICIO........... -->
+	
+	<changeSet author="Localidata" id="table-deuda_f_1">
+        <createTable tableName="deuda_f_anual">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+            </column>
+            <column name="date" type="datetime(6)">     
+				<constraints nullable="false"/>
+            </column>	
+			<column name="endeudamientoPDE" type="DECIMAL(12, 2)">     
+				<constraints nullable="false"/>
+            </column>				
+        </createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_anual"/>            
+       </rollback>
+    </changeSet>
+
+	<changeSet author="Localidata" id="table-deuda_f_2">
+		<createTable tableName="deuda_f_inst_financiacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="description" type="VARCHAR(2000)"/>
+			<column name="importe" type="DECIMAL(12, 2)"/>
+			<column name="tipo_interes" type="VARCHAR(100)"/>
+			<column name="tasa_fija" type="DECIMAL(12, 2)"/>
+			<column name="referencia" type="VARCHAR(100)"/>
+			<column name="margen" type="DECIMAL(5, 3)"/>
+			<column name="tipo_instrumento" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="prestamo" type="VARCHAR(50)"/>
+			<column name="emision" type="VARCHAR(50)"/>
+			<column name="deuda_anual" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_inst_financiacion"/>            
+       </rollback>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-deuda_f_3">
+		<createTable tableName="deuda_f_prestamo">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="moneda" type="VARCHAR(100)"/>
+            <column name="fecha_formalizacion" type="datetime(6)"/>
+            <column name="plazo" type="VARCHAR(100)"/>
+			<column name="fecha_inicio" type="datetime(6)"/>
+			<column name="fecha_vencimiento" type="datetime(6)"/>
+			<column defaultValueNumeric="0" name="diferidas_o_parciales_cap" type="BIT"/>
+			<column name="tipo_prestamo" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_prestamo"/>            
+       </rollback>
+    </changeSet>
+
+	<changeSet author="Localidata" id="table-deuda_f_4">
+		<createTable tableName="deuda_f_rel_prestamo_entidad">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="prestamo_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="entidad_prestamista" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>            			
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_rel_prestamo_entidad"/>            
+       </rollback>
+    </changeSet>
+	
+
+	<changeSet author="Localidata" id="table-deuda_f_5">
+		<createTable tableName="deuda_f_emision">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="codISIN" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="numero_titulos" type="INT(10)"/>
+			<column name="cuantia_por_titulo" type="DECIMAL(12,2)"/>
+			<column name="importe_anual" type="DECIMAL(12,2)"/>
+			<column name="mes_dia_pago" type="VARCHAR(100)"/>			
+			<column name="precio_emision" type="DECIMAL(12,2)"/>
+			<column name="precio_reembolso" type="DECIMAL(12,2)"/>
+			<column name="duracion" type="VARCHAR(100)"/>
+            <column name="fecha_emision" type="datetime(6)"/>			
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_emision"/>            
+       </rollback>
+    </changeSet>
+
+	<changeSet author="Localidata" id="table-deuda_f_6">
+		<createTable tableName="deuda_f_amortizacion">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="date" type="datetime(6)"/>
+			<column name="importe" type="DECIMAL(12,2)"/>
+			<column name="instrumenta_financiacion" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>			
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_amortizacion"/>            
+       </rollback>
+    </changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-deuda_f_7">
+		<createTable tableName="deuda_f_capital_vivo">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="date" type="datetime(6)"/>
+			<column name="importe" type="DECIMAL(12,2)"/>
+			<column name="instrumenta_financiacion" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>			
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_capital_vivo"/>            
+       </rollback>
+    </changeSet>
+	
+		
+	<changeSet author="Localidata" id="table-deuda_f_8">
+		<createTable tableName="deuda_f_carga_financiera">
+            <column name="ikey" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="anio_fiscal" type="VARCHAR(4)"/>
+			<column name="gasto_o_pasivo" type="VARCHAR(100)"/>
+			<column name="description" type="VARCHAR(400)"/>
+			<column name="date" type="datetime(6)"/>
+			<column name="importe" type="DECIMAL(12,2)"/>
+			<column name="instrumenta_financiacion" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>				
+		</createTable>
+		<rollback>
+            <dropTable tableName="deuda_f_carga_financiera"/>            
+       </rollback>
+    </changeSet>
+	
+	
+	
+	<!-- PRIMARY KEY -->
+	<changeSet author="Localidata" id="PK-table-deuda_f_anual">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_f_anual" tableName="deuda_f_anual"/>
+    </changeSet>
+
+	<changeSet author="Localidata" id="PK-table-deuda_f_inst_financiacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_d_f_inst_financiacion" tableName="deuda_f_inst_financiacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_prestamo">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_f_prestamo" tableName="deuda_f_prestamo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_rel_prestamo_entidad">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_d_f_rel_prestamo_entidad" tableName="deuda_f_rel_prestamo_entidad"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_emision">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_f_emision" tableName="deuda_f_emision"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_amortizacion">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_f_amortizacion" tableName="deuda_f_amortizacion"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_capital_vivo">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_deuda_f_capital_vivo" tableName="deuda_f_capital_vivo"/>
+    </changeSet>
+	<changeSet author="Localidata" id="PK-table-deuda_f_carga_financiera">
+        <addPrimaryKey columnNames="ikey" constraintName="PK_d_f_carga_financiera" tableName="deuda_f_carga_financiera"/>
+    </changeSet>
+	
+	<!-- UNIQUE -->
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-01">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deuda_f_anual" tableName="deuda_f_anual"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-02">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deuda_f_inst_fin" tableName="deuda_f_inst_financiacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-03">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deuda_f_prestamo" tableName="deuda_f_prestamo"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-04">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-df_rel_pres_ent" tableName="deuda_f_rel_prestamo_entidad"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-05">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-deuda_f_emision" tableName="deuda_f_emision"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-06">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-d_f_amortizacion" tableName="deuda_f_amortizacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-07">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-d_f_capital_vivo" tableName="deuda_f_capital_vivo"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="unique-id-deuda_f-08">
+        <addUniqueConstraint columnNames="id" constraintName="unique-id-d_f_carga_financiera" tableName="deuda_f_carga_financiera"/>
+    </changeSet>
+	
+	<!-- INDEX -->
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-1">
+        <createIndex indexName="index_deuda_f_inst_financ" tableName="deuda_f_inst_financiacion">
+            <column name="tipo_instrumento"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-2">
+        <createIndex indexName="index_deuda_f_prestamo" tableName="deuda_f_prestamo">
+            <column name="tipo_prestamo"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-3">
+        <createIndex indexName="index_d_f_rel_prestamo_ent_1" tableName="deuda_f_rel_prestamo_entidad">
+            <column name="prestamo_id"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-4">
+        <createIndex indexName="index_d_f_rel_prestamo_ent_2" tableName="deuda_f_rel_prestamo_entidad">
+            <column name="entidad_prestamista"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-5">
+        <createIndex indexName="index_deuda_f_amortizacion" tableName="deuda_f_amortizacion">
+            <column name="instrumenta_financiacion"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-6">
+        <createIndex indexName="index_deuda_f_capital_vivo" tableName="deuda_f_capital_vivo">
+            <column name="instrumenta_financiacion"/>
+        </createIndex>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="INDEX-deudaf-7">
+        <createIndex indexName="index_d_f_carga_financiera" tableName="deuda_f_carga_financiera">
+            <column name="instrumenta_financiacion"/>
+        </createIndex>
+    </changeSet>
+	
+	<!--  .............FIN................ -->
+	<!-- FIN TABLAS PARA DEUDA FINANCIERA  -->
+
+</databaseChangeLog>

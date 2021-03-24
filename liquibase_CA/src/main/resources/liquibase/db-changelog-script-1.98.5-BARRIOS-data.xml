@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	<changeSet author="Localidata" id="data-contratos-change">
+		<delete tableName="territorio_barrio">
+			  <where>distrito='2800601'</where>  
+		</delete>		
+		<rollback/>
+	</changeSet>
+  
+   <changeSet author="Localidata" id="barrios-alcobendas-update">
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006011"/>
+            <column name="id" value="28006011"/>
+            <column name="title" value="Valdelasfuentes"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+            <column name="distrito" value="2800601"/>
+            <column name="geometry" valueClobFile="geo/territorio_alcobendas_barrio_28006011.geojson"/>
+		</insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006012"/>
+            <column name="id" value="28006012"/>
+            <column name="title" value="Alcobendas - Chopera"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+            <column name="distrito" value="2800601"/>
+            <column name="geometry" valueClobFile="geo/territorio_alcobendas_barrio_28006012.geojson"/>
+		</insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006013"/>
+            <column name="id" value="28006013"/>
+            <column name="title" value="La Moraleja"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+            <column name="distrito" value="2800601"/>
+			<column name="geometry" valueClobFile="geo/territorio_alcobendas_barrio_28006013.geojson"/>
+        </insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006014"/>
+            <column name="id" value="28006014"/>
+            <column name="title" value="Miraflores"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+            <column name="distrito" value="2800601"/>
+            <column name="geometry" valueClobFile="geo/territorio_alcobendas_barrio_28006014.geojson"/>
+		</insert>
+        <insert tableName="territorio_barrio">
+            <column name="ikey" value="28006015"/>
+            <column name="id" value="28006015"/>
+            <column name="title" value="Marqués de la Valdavia"/>
+            <column name="pais" value="724"/>
+            <column name="autonomia" value="13"/>
+            <column name="provincia" value="28"/>
+            <column name="municipio" value="28006"/>
+            <column name="distrito" value="2800601"/>
+			<column name="geometry" valueClobFile="geo/territorio_alcobendas_barrio_28006015.geojson"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	
+</databaseChangeLog>
+

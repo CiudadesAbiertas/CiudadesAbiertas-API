@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 
+	 <!-- DATOS PARA DEUDA COMERCIAL + ORGANIZATION  -->
+	 <!--  .............INICIO...................... -->
+    <changeSet author="localidata" id="data-morosidad-tri">
+        <insert tableName="deuda_c_inf_morosidad_tri">
+            <column name="ikey" value="infmortri000000000000000001"/>
+            <column name="id" value="2019-cuarto-12-28-079-AP-001"/>
+            <column name="pmp_trimestral" valueNumeric="55.50"/>
+            <column name="num_pagos_dentro_periodo" valueNumeric="6472"/>
+            <column name="imp_pagos_dentro_periodo" valueNumeric="51831754.13"/>
+            <column name="num_pagos_fuera_periodo" valueNumeric="1124"/>
+            <column name="imp_pagos_fuera_periodo" valueNumeric="5579630.33"/>
+            <column name="num_pagos_intereses_demora" valueNumeric="0"/>
+            <column name="imp_pagos_intereses_demora" valueNumeric="0.00"/>
+            <column name="periodo_medio_pago_pte" valueNumeric="33.87"/>
+            <column name="n_facturas_pte_dtro_periodo" valueNumeric="3020"/>
+            <column name="imp_facturas_pte_dtro_periodo" valueNumeric="34441734.41"/>
+            <column name="n_facturas_pte_fuera_periodo" valueNumeric="25"/>
+            <column name="imp_facturas_pte_fuera_periodo" valueNumeric="489769.85"/>
+            <column name="tipo_contabilidad" value="empresarial"/>
+            <column name="entidad" value="12-28-079-AP-001"/>
+            <column name="periodo" value="2019-cuarto-trimestre"/>
+        </insert>
+        <insert tableName="deuda_c_inf_morosidad_tri">
+            <column name="ikey" value="infmortri000000000000000002"/>
+            <column name="id" value="2020-cuarto-12-28-079-AP-002"/>
+            <column name="pmp_trimestral" valueNumeric="65.50"/>
+            <column name="num_pagos_dentro_periodo" valueNumeric="7472"/>
+            <column name="imp_pagos_dentro_periodo" valueNumeric="81831754.13"/>
+            <column name="num_pagos_fuera_periodo" valueNumeric="2124"/>
+            <column name="imp_pagos_fuera_periodo" valueNumeric="3579630.33"/>
+            <column name="num_pagos_intereses_demora" valueNumeric="0"/>
+            <column name="imp_pagos_intereses_demora" valueNumeric="0.00"/>
+            <column name="periodo_medio_pago_pte" valueNumeric="45.87"/>
+            <column name="n_facturas_pte_dtro_periodo" valueNumeric="4020"/>
+            <column name="imp_facturas_pte_dtro_periodo" valueNumeric="64441734.41"/>
+            <column name="n_facturas_pte_fuera_periodo" valueNumeric="54"/>
+            <column name="imp_facturas_pte_fuera_periodo" valueNumeric="689769.85"/>
+            <column name="tipo_contabilidad" value="empresarial"/>
+            <column name="entidad" value="12-28-079-AP-001"/>
+            <column name="periodo" value="2020-cuarto-trimestre"/>
+        </insert>
+		 <rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="data-pmp_mes">
+        <insert tableName="deuda_c_inf_pmp_mes">
+            <column name="ikey" value="infpmpmes000000000000000001"/>
+            <column name="id" value="02-50-297-AO-005"/>
+            <column name="pmp_mensual" valueNumeric="18.72"/>
+            <column name="ratio_opereraciones_pagadas" valueNumeric="18.51"/>
+            <column name="importe_operaciones_pagadas" valueNumeric="0.00"/>
+            <column name="ratio_operaciones_pdte_pago" valueNumeric="24.23"/>
+            <column name="imp_operaciones_pdte_pago" valueNumeric="0.00"/>
+            <column name="entidad" value="02-50-297-AO-005"/>
+            <column name="periodo" value="2020-06"/>
+        </insert>
+        <insert tableName="deuda_c_inf_pmp_mes">
+            <column name="ikey" value="infpmpmes000000000000000003"/>
+            <column name="id" value="02-50-297-AO-005-2020-07"/>
+            <column name="pmp_mensual" valueNumeric="58.72"/>
+            <column name="ratio_opereraciones_pagadas" valueNumeric="58.51"/>
+            <column name="importe_operaciones_pagadas" valueNumeric="0.00"/>
+            <column name="ratio_operaciones_pdte_pago" valueNumeric="28.23"/>
+            <column name="imp_operaciones_pdte_pago" valueNumeric="0.00"/>
+            <column name="entidad" value="02-50-297-AO-005"/>
+            <column name="periodo" value="2020-07"/>
+        </insert>
+		 <rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="data-pmp-mes-global">
+        <insert tableName="deuda_c_inf_pmp_mes_global">
+            <column name="ikey" value="deudapmpmesg0000000001"/>
+            <column name="id" value="2020-06-zaragoza"/>
+            <column name="pmp_mensual_global" value="27.04"/>
+            <column name="periodo" value="2020-06"/>
+        </insert>
+        <insert tableName="deuda_c_inf_pmp_mes_global">
+            <column name="ikey" value="deudapmpmesg0000000002"/>
+            <column name="id" value="2020-07-zaragoza"/>
+            <column name="pmp_mensual_global" value="57.04"/>
+            <column name="periodo" value="2020-07"/>
+        </insert>
+		 <rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="data-deudac-interval">
+        <insert tableName="deuda_c_publica_interval">
+            <column name="ikey" value="deudaint0000000000001"/>
+            <column name="id" value="2019-cuarto-trimestre"/>
+            <column name="has_beginning" valueDate="2019-10-01 00:00:00.0"/>
+            <column name="has_end" valueDate="2019-12-31 00:00:00.0"/>
+        </insert>
+        <insert tableName="deuda_c_publica_interval">
+            <column name="ikey" value="deudaint0000000000002"/>
+            <column name="id" value="2020-06"/>
+            <column name="has_beginning" valueDate="2020-06-01 00:00:00.0"/>
+            <column name="has_end" valueDate="2020-06-30 00:00:00.0"/>
+        </insert>
+        <insert tableName="deuda_c_publica_interval">
+            <column name="ikey" value="deudaint0000000000003"/>
+            <column name="id" value="2020-cuarto-trimestre"/>
+            <column name="has_beginning" valueDate="2020-10-01 00:00:00.0"/>
+            <column name="has_end" valueDate="2020-12-31 00:00:00.0"/>
+        </insert>
+        <insert tableName="deuda_c_publica_interval">
+            <column name="ikey" value="deudaint0000000000004"/>
+            <column name="id" value="2020-07"/>
+            <column name="has_beginning" valueDate="2020-07-01 00:00:00.0"/>
+            <column name="has_end" valueDate="2020-07-31 00:00:00.0"/>
+        </insert>
+		 <rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="data-deuda-organizacion">
+        <insert tableName="deuda_organization">
+            <column name="ikey" value="deudaorg0000000000001"/>
+            <column name="id" value="12-28-079-AP-001"/>
+            <column name="title" value="E.M.T. Madrid"/>
+            <column name="URL" value="https://www.emtmadrid.es"/>
+            <column name="contactPoint_email"/>
+            <column name="contactPoint_faxNumber"/>
+            <column name="contactPoint_telephone"/>
+            <column name="contactPoint_title"/>
+            <column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title" value="Retiro"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+            <column name="portal_id"/>
+            <column name="classification"/>
+        </insert>
+        <insert tableName="deuda_organization">
+            <column name="ikey" value="deudaorg0000000000002"/>
+            <column name="id" value="02-50-297-AO-005"/>
+            <column name="title" value="IMAFE. Instituto para la Formación y Empleo"/>
+            <column name="URL" value="https://www.imafe.org"/>
+            <column name="contactPoint_email" value="infoformacion@imafe.org"/>
+            <column name="contactPoint_faxNumber" value="917 269 807"/>
+            <column name="contactPoint_telephone" value="917 269 807"/>
+            <column name="contactPoint_title" value="Plaza mayor"/>
+            <column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="distrito_id" value="28079606"/>
+            <column name="distrito_title" value="Tetuán"/>
+            <column name="street_address" value="CALLE  SAN GERMAN,  11  PLANTA  entreplanta  derecha"/>
+            <column name="postal_code" value="28020"/>
+            <column name="portal_id" value="111111"/>
+            <column name="classification" value="tipo-clasificación2"/>
+        </insert>
+		 <rollback/>  
+    </changeSet>
+	
+	<!--  ..................FIN....................... -->
+	<!-- FIN DATOS PARA DEUDA COMERCIAL + ORGANIZATION -->
+	
+	<!--  DATOS PARA DEUDA FINANCIERA + ORGANIZATION -->
+	<!--  .................INICIO................... -->
+	<changeSet author="localidata" id="DATA-deuda_f_amortizacion">
+        <insert tableName="deuda_f_amortizacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ES1234567893-c1"/>
+            <column name="date" valueDate="2016-12-14 00:00:00.0"/>
+            <column name="importe" valueNumeric="39000000.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+        <insert tableName="deuda_f_amortizacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="ES1234567893-c2"/>
+            <column name="date" valueDate="2019-12-14 00:00:00.0"/>
+            <column name="importe" valueNumeric="39000000.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+        <insert tableName="deuda_f_amortizacion">
+            <column name="ikey" value="3"/>
+            <column name="id" value="ES1234567893-c3"/>
+            <column name="date" valueDate="2022-12-14 00:00:00.0"/>
+            <column name="importe" valueNumeric="24000000.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+        <insert tableName="deuda_f_amortizacion">
+            <column name="ikey" value="4"/>
+            <column name="id" value="ES0201001148-c1"/>
+            <column name="date" valueDate="2036-06-16 00:00:00.0"/>
+            <column name="importe" valueNumeric="300000000.00"/>
+            <column name="instrumenta_financiacion" value="ES0201001148"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_anual">
+        <insert tableName="deuda_f_anual">
+            <column name="ikey" value="1"/>
+            <column name="id" value="2019"/>
+            <column name="date" valueDate="2019-12-31 00:00:00.0"/>
+            <column name="endeudamientoPDE" valueNumeric="2232568750.00"/>
+        </insert>
+		<rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_capital_vivo">
+        <insert tableName="deuda_f_capital_vivo">
+            <column name="ikey" value="1"/>
+            <column name="id" value="2020-06-30-ES1234567893"/>
+            <column name="date" valueDate="2020-06-30 00:00:00.0"/>
+            <column name="importe" valueNumeric="24000000.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+		<rollback/>  
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_carga_financiera">
+        <insert tableName="deuda_f_carga_financiera">
+            <column name="ikey" value="1"/>
+            <column name="id" value="2017-06-21-ES1234567893"/>
+            <column name="anio_fiscal" value="2017"/>
+            <column name="gasto_o_pasivo" value="gasto financiero"/>
+            <column name="description" value="AMORT.VTO.21/06/17 PTM L/P MDEC-I.C.O.(20,77MM)'06 (2017)"/>
+            <column name="date" valueDate="2017-06-21 00:00:00.0"/>
+            <column name="importe" valueNumeric="692332.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+        <insert tableName="deuda_f_carga_financiera">
+            <column name="ikey" value="2"/>
+            <column name="id" value="2017-12-21-ES1234567893"/>
+            <column name="anio_fiscal" value="2017"/>
+            <column name="gasto_o_pasivo" value="gasto financiero"/>
+            <column name="description" value="AMORT.VTO.21/12/17 PTM L/P MDEC-I.C.O.(20,77MM)'06 (2017)"/>
+            <column name="date" valueDate="2017-12-21 00:00:00.0"/>
+            <column name="importe" valueNumeric="692332.00"/>
+            <column name="instrumenta_financiacion" value="ES1234567893"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_emision">
+        <insert tableName="deuda_f_emision">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ES0201001148"/>
+            <column name="codISIN" value="ES0201001148"/>
+            <column name="numero_titulos" valueNumeric="3000"/>
+            <column name="cuantia_por_titulo" valueNumeric="100000.00"/>
+            <column name="importe_anual" valueNumeric="4550.00"/>
+            <column name="mes_dia_pago" value="06-16"/>
+            <column name="precio_emision" valueNumeric="99.81"/>
+            <column name="precio_reembolso" valueNumeric="100.00"/>
+            <column name="duracion" value="P30Y"/>
+            <column name="fecha_emision" valueDate="2006-06-16 00:00:00.0"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_inst_financiacion">
+        <insert tableName="deuda_f_inst_financiacion">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ES1234567893"/>
+			<column name="description" value="Texto asociado a la Deuda para explicar instrumenta Financiación del prestamo"/>
+            <column name="importe" valueNumeric="102000000.00"/>
+            <column name="tipo_interes" value="variable"/>
+            <column name="tasa_fija" valueNumeric="3000.00"/>
+            <column name="referencia" value="Euribor 1/3/6 meses"/>
+            <column name="margen" valueNumeric="0.015"/>
+            <column name="tipo_instrumento" value="prestamo"/>
+            <column name="prestamo" value="ES1234567893"/>
+            <column name="emision"/>
+            <column name="deuda_anual" value="2019"/>
+        </insert>
+        <insert tableName="deuda_f_inst_financiacion">
+            <column name="ikey" value="2"/>
+            <column name="id" value="ES0201001148"/>
+			<column name="description" value="Texto asociado a la Deuda para explicar instrumenta Financiación de la Emision"/>
+            <column name="importe" valueNumeric="300000000.00"/>
+            <column name="tipo_interes" value="fijo"/>
+            <column name="tasa_fija" valueNumeric="4.55"/>
+            <column name="referencia"/>
+            <column name="margen"/>
+            <column name="tipo_instrumento" value="emision"/>
+            <column name="prestamo"/>
+            <column name="emision" value="ES0201001148"/>
+            <column name="deuda_anual" value="2019"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="1614691845805-72">
+        <insert tableName="deuda_f_prestamo">
+            <column name="ikey" value="1"/>
+            <column name="id" value="ES1234567893"/>
+            <column name="moneda" value="euro"/>
+            <column name="fecha_formalizacion" valueDate="2006-12-14 00:00:00.0"/>
+            <column name="plazo" value="P16Y"/>
+            <column name="fecha_inicio" valueDate="2007-01-01 00:00:00.0"/>
+            <column name="fecha_vencimiento" valueDate="2022-12-14 00:00:00.0"/>
+            <column name="diferidas_o_parciales_cap" valueBoolean="false"/>
+            <column name="tipo_prestamo" value="bilateral"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_f_rel_prestamo_entidad">
+        <insert tableName="deuda_f_rel_prestamo_entidad">
+            <column name="ikey" value="1"/>
+            <column name="id" value="RELPRES0001"/>
+            <column name="prestamo_id" value="ES1234567893"/>
+            <column name="entidad_prestamista" value="Q2876002C"/>
+        </insert>
+		<insert tableName="deuda_f_rel_prestamo_entidad">
+            <column name="ikey" value="2"/>
+            <column name="id" value="RELPRES0002"/>
+            <column name="prestamo_id" value="ES1234567893"/>
+            <column name="entidad_prestamista" value="ENTIDADPRUEBAS001"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+    <changeSet author="localidata" id="DATA-deuda_organization_financiera">
+        <insert tableName="deuda_organization">
+            <column name="ikey" value="deudaorg0000000000003"/>
+            <column name="id" value="Q2876002C"/>
+            <column name="title" value="Instituto de Crédito Oficial (ICO)"/>
+            <column name="URL"/>
+            <column name="contactPoint_email"/>
+            <column name="contactPoint_faxNumber"/>
+            <column name="contactPoint_telephone"/>
+            <column name="contactPoint_title"/>
+            <column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title" value="Retiro"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+            <column name="portal_id"/>
+            <column name="classification" value="suscripcion-publica"/>
+        </insert>
+		<insert tableName="deuda_organization">
+            <column name="ikey" value="deudaorg0000000000004"/>
+            <column name="id" value="ENTIDADPRUEBAS001"/>
+            <column name="title" value="ENTIDAD DE PRUEBAS 001"/>
+            <column name="URL"/>
+            <column name="contactPoint_email"/>
+            <column name="contactPoint_faxNumber"/>
+            <column name="contactPoint_telephone"/>
+            <column name="contactPoint_title"/>
+            <column name="municipio_id" value="28003"/>
+            <column name="municipio_title" value="Madrid"/>
+            <column name="distrito_id"/>
+            <column name="distrito_title" value="Retiro"/>
+            <column name="street_address" value="Calle Cerro de la Plata, 4"/>
+            <column name="postal_code" value="28007"/>
+            <column name="portal_id"/>
+            <column name="classification" value="suscripcion-publica"/>
+        </insert>
+		<rollback/>
+    </changeSet>
+	
+	<!--  ..................FIN........................ -->
+	<!-- FIN DATOS PARA DEUDA FINANCIERA + ORGANIZATION -->
+    
+    <changeSet id="DATA-DEUDA-C-tag-1.29" author="Localidata">
+    	<tagDatabase tag="1.29" />
+  	</changeSet>  
+</databaseChangeLog>

@@ -4086,7 +4086,7 @@
             <column name="ikey" value="221"/>
             <column name="id" value="61581"/>
             <column name="title" value="CONSEJERÍA DE SERVICIOS PÚBLICOS Y PERSONAL"/>
-            <column name="nivel_jerarquico" valueNumeric="3"/>
+            <column name="nivel_jerarquico" valueNumeric="5"/>
             <column name="unit_of" value="61577"/>
             <column name="unidad_raiz" value="1"/>
             <column name="head_of_name"/>

@@ -135,7 +135,6 @@
   <!-- Version 1.20 CONTRATOS -->
   <include file="liquibase/db-changelog-script-1.20-CONTRATOS-table.xml"/>
   <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data-mini.xml"/>    
-  <!-- <include file="liquibase/db-changelog-script-1.20-CONTRATOS-data.xml"/>  -->
   
   <!-- Version 1.21 BICICLETA PUBLICA -->
   <include file="liquibase/db-changelog-script-1.21-BICICLETA-PUBLICA-table.xml"/>
@@ -173,6 +172,12 @@
   <include file="liquibase/db-changelog-script-1.28-AMPLIACION-SUBVENCION-table.xml"/>
   <include file="liquibase/db-changelog-script-1.28-AMPLIACION-SUBVENCION-data.xml"/>
 
+  
+  <!-- Version 1.29 DEUDA-->
+  <include file="liquibase/db-changelog-script-1.29-DEUDA-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.29-DEUDA-data.xml"/>
+  
+
   <!-- 1.98.1 Modificación de BICICLETA PUBLICA -->
   <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-table.xml"/>
   <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-data.xml"/>
@@ -181,10 +186,17 @@
   
   <include file="liquibase/db-changelog-script-1.98.2-ORGANIGRAMA-data.xml"/>
   
-    <!-- 1.98.2 Modificación de Territorio -->
+  <!-- 1.98.3 Modificación de Territorio -->
   
   <include file="liquibase/db-changelog-script-1.98.3-TERRITORIO-table.xml"/>
   <include file="liquibase/db-changelog-script-1.98.3-TERRITORIO-data.xml"/>
+  
+  <!-- 1.98.4 Modificación de Contratos -->
+  <include file="liquibase/db-changelog-script-1.98.4-CONTRATOS-data.xml"/>    
+  
+  <!-- 1.98.5 Barrios de Alcobendas para visualización -->
+  
+  <include file="liquibase/db-changelog-script-1.98.5-BARRIOS-data.xml"/>
   
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

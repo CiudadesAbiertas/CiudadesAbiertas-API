@@ -401,27 +401,83 @@
         <addForeignKeyConstraint baseColumnNames="convocatoria_id" baseTableName="empleo_rel_oferta_convoca" constraintName="empleo_rel_ofer_conv_ibfk_2" referencedColumnNames="id" referencedTableName="empleo_convocatoria_publica"/>
     </changeSet>
 	
-	<!-- FK AMPLIACION SUBVENCIONES -->
+    <!-- FK AMPLIACION SUBVENCIONES -->
 	
 	
 	<changeSet author="Localidata" id="table-amp-subvencion-fk1">
         <addForeignKeyConstraint baseColumnNames="tiene_beneficiario" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-	<changeSet author="Localidata" id="table-amp-subvencion-fk2">
+    <changeSet author="Localidata" id="table-amp-subvencion-fk2">
         <addForeignKeyConstraint baseColumnNames="tiene_subvencion" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion"/>
     </changeSet>
-	<changeSet author="Localidata" id="table-amp-subvencion-fk3">
+    <changeSet author="Localidata" id="table-amp-subvencion-fk3">
         <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="subvencion" constraintName="subvencion_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-	<changeSet author="Localidata" id="table-amp-subvencion-fk4">
+    <changeSet author="Localidata" id="table-amp-subvencion-fk4">
         <addForeignKeyConstraint baseColumnNames="entidad_financiadora_id" baseTableName="subvencion" constraintName="subvencion_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-	<changeSet author="Localidata" id="table-amp-subvencion-fk5">
+    <changeSet author="Localidata" id="table-amp-subvencion-fk5">
         <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="subvencion" constraintName="subvencion_ibfk_3"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-	<changeSet author="Localidata" id="table-amp-subvencion-fk6">
+    <changeSet author="Localidata" id="table-amp-subvencion-fk6">
         <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="subvencion" constraintName="subvencion_ibfk_5"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
+	 
+	 
+	<!-- FK DEUDA COMERCIAL 1.29 -->
+	
+	<changeSet author="Localidata" id="table-deuda-comercial-fk1">
+        <addForeignKeyConstraint baseColumnNames="entidad" baseTableName="deuda_c_inf_morosidad_tri" constraintName="deudac_morosidad_tri_ibfk_1"  referencedColumnNames="id" referencedTableName="deuda_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-comercial-fk2">
+        <addForeignKeyConstraint baseColumnNames="periodo" baseTableName="deuda_c_inf_morosidad_tri" constraintName="deudac_morosidad_tri_ibfk_2"  referencedColumnNames="id" referencedTableName="deuda_c_publica_interval"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-comercial-fk3">
+        <addForeignKeyConstraint baseColumnNames="periodo" baseTableName="deuda_c_inf_pmp_mes_global" constraintName="deudac_inf_global_ibfk_3"  referencedColumnNames="id" referencedTableName="deuda_c_publica_interval"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-comercial-fk4">
+        <addForeignKeyConstraint baseColumnNames="entidad" baseTableName="deuda_c_inf_pmp_mes" constraintName="deudac_inf_mes_ibfk_4"  referencedColumnNames="id" referencedTableName="deuda_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-comercial-fk5">
+        <addForeignKeyConstraint baseColumnNames="periodo" baseTableName="deuda_c_inf_pmp_mes" constraintName="deudac_inf_mes_ibfk_5"  referencedColumnNames="id" referencedTableName="deuda_c_publica_interval"/>
+    </changeSet>
+	
+	<!-- FK DEUDA FINACIERA 1.29 -->
 
+	<changeSet author="Localidata" id="table-deuda-financiera-fk1">
+        <addForeignKeyConstraint baseColumnNames="deuda_anual" baseTableName="deuda_f_inst_financiacion" constraintName="deuda_f_inst_fin_ibfk_1"  referencedColumnNames="id" referencedTableName="deuda_f_anual"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk2">
+        <addForeignKeyConstraint baseColumnNames="prestamo_id" baseTableName="deuda_f_rel_prestamo_entidad" constraintName="d_f_rel_prestamo_ent_ibfk_2"  referencedColumnNames="id" referencedTableName="deuda_f_prestamo"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk3">
+        <addForeignKeyConstraint baseColumnNames="entidad_prestamista" baseTableName="deuda_f_rel_prestamo_entidad" constraintName="d_f_rel_prestamo_ent_ibfk_3"  referencedColumnNames="id" referencedTableName="deuda_organization"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk4">
+        <addForeignKeyConstraint baseColumnNames="instrumenta_financiacion" baseTableName="deuda_f_amortizacion" constraintName="deuda_f_amortizacion_ibfk_4"  referencedColumnNames="id" referencedTableName="deuda_f_inst_financiacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk5">
+        <addForeignKeyConstraint baseColumnNames="instrumenta_financiacion" baseTableName="deuda_f_capital_vivo" constraintName="deuda_f_capital_vivo_ibfk_5"  referencedColumnNames="id" referencedTableName="deuda_f_inst_financiacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk6">
+        <addForeignKeyConstraint baseColumnNames="instrumenta_financiacion" baseTableName="deuda_f_carga_financiera" constraintName="d_f_carga_financiera_ibfk_6"  referencedColumnNames="id" referencedTableName="deuda_f_inst_financiacion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk7">
+        <addForeignKeyConstraint baseColumnNames="prestamo" baseTableName="deuda_f_inst_financiacion" constraintName="d_f_inst_financiacion_ibfk_7"  referencedColumnNames="id" referencedTableName="deuda_f_prestamo"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="table-deuda-financiera-fk8">
+        <addForeignKeyConstraint baseColumnNames="emision" baseTableName="deuda_f_inst_financiacion" constraintName="d_f_inst_financiacion_ibfk_8"  referencedColumnNames="id" referencedTableName="deuda_f_emision"/>
+    </changeSet>
 	
 </databaseChangeLog>
