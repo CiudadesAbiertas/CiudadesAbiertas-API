@@ -77,8 +77,8 @@ public class LotTestFK {
 	    			"    \"id\": \""+id+"\",\n" + 
 	    			"    \"title\": \"Material diverso\",\n" + 
 	    			"    \"description\": \"1\",\n" + 
-	    			"    \"hasSupplier\": \"AW1\",\n" + 
-	    			"    \"tenderId\": \"TN1\",\n" +
+	    			"    \"hasSupplier\": \"0013496-19-AW1\",\n" + 
+	    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
 	    			"    \"valueAmount\": 199.55\n" +
 	    			"}";
 	
@@ -217,7 +217,7 @@ public class LotTestFK {
     	if (activeFK == false) {
 			assertFalse(activeFK);
 		} else {    	
-	    	String id ="LT1";	    	
+	    	String id ="0013496-19-LT1";	    	
 	    	id=Util.encodeURL(id);	    	
 	        this.mockMvc.perform(MockMvcRequestBuilders.delete(LotController.ADD+"/"+id)
 	        		.contentType(MediaType.APPLICATION_JSON))

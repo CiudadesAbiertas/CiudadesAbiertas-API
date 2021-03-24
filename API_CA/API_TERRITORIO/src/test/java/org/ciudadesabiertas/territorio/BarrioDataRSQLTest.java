@@ -76,7 +76,7 @@ public class BarrioDataRSQLTest
 
 		String paramField = "q";
 
-		String value = "title=='Barrio de prueba 1'";
+		String value = "title=='Cuatro Caminos'";
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 		
@@ -94,7 +94,7 @@ public class BarrioDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 3);
+		assertTrue(total == 6);
 	}
 	
 	@Test
@@ -107,7 +107,7 @@ public class BarrioDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 3);
+		assertTrue(total == 6);
 	}
 	
 	@Test
@@ -120,7 +120,7 @@ public class BarrioDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 3);
+		assertTrue(total == 6);
 	}
 	
 	@Test
@@ -133,7 +133,7 @@ public class BarrioDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 5);
 	}
 	
 	@Test
@@ -146,7 +146,7 @@ public class BarrioDataRSQLTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 2);
+		assertTrue(total == 5);
 	}
 	
 	

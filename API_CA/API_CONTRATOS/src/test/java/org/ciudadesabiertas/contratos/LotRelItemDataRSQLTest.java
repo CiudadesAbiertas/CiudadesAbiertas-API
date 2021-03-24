@@ -71,7 +71,7 @@ public class LotRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{		
-		String value = "id==00000000000001";
+		String value = "id==0013496-19-LRI1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -79,18 +79,18 @@ public class LotRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{		
-		String value = "item==IT1*";
+		String value = "item==0013496-19-IT1*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 7);
+		assertTrue(records.size() == 3);
 	}
 	
 	
 	@Test
 	public void test_Busqueda_Lot() throws Exception
 	{		
-		String value = "lot==LT1*";
+		String value = "lot=='0013496-19-LT1'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 1);
 	}
 	
 	

@@ -71,7 +71,7 @@ public class TenderRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{		
-		String value = "id==00000000000001";
+		String value = "id==0013496-19-TRI1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -79,7 +79,7 @@ public class TenderRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{		
-		String value = "item==IT1*";
+		String value = "item=='0013496-19-IT1'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -88,9 +88,9 @@ public class TenderRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Tender() throws Exception
 	{		
-		String value = "tender==TN1*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 3);
+		String value = "tender==*TN1";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 250);
 	}
 	
 	

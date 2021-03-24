@@ -17,6 +17,8 @@ public class Funciones {
 	
 	public static  SimpleDateFormat formateadorFechaHora= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	
+	public static  SimpleDateFormat formateadorFechaHoraSinT= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	public static  SimpleDateFormat formateadorFecha= new SimpleDateFormat("yyyy-MM-dd");
 	
 	public static  SimpleDateFormat formateadorHora= new SimpleDateFormat("HH:mm:ss");

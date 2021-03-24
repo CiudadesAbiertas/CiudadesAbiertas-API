@@ -70,7 +70,7 @@ public class LotDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "LT1";
+		String value = "0013496-19-LT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -79,18 +79,18 @@ public class LotDataTest
 	public void test_Busqueda_Title() throws Exception
 	{
 		String paramField="title";
-		String value = "Material*";
+		String value = "Actur*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 7);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test
 	public void test_Busqueda_description() throws Exception
 	{
 		String paramField="description";
-		String value = "Material*1";
+		String value = "1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 18);
 	}
 	
 	
@@ -98,7 +98,7 @@ public class LotDataTest
 	public void test_Busqueda_hasSupplier() throws Exception
 	{
 		String paramField="hasSupplier";
-		String value = "AW1";
+		String value = "0013496-19-AW1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -107,16 +107,16 @@ public class LotDataTest
 	public void test_Busqueda_tenderId() throws Exception
 	{
 		String paramField="tenderId";
-		String value = "TN1";
+		String value = "0013496-19-TN1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 7);
+		assertTrue(records.size() == 3);
 	}
 	
 	@Test
 	public void test_Busqueda_valueAmount() throws Exception
 	{
 		String paramField="valueAmount";
-		String value = "26260";
+		String value = "14743087.12";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}	
@@ -125,7 +125,7 @@ public class LotDataTest
 	public void test_Head_MD5() throws Exception
 	{
 		String paramField="id";
-		String value = "LT1";
+		String value = "0013496-19-LT1";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
 		assertTrue(md5_content.equals(md5_head));
@@ -137,7 +137,7 @@ public class LotDataTest
 		String paramField="field";		
 		String value = "title";
 		long total = TestUtils.extractTotalDistinct(LotController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 7);
+		assertTrue(total == 98);
 	}
 	
 

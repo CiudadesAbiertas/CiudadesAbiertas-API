@@ -1144,7 +1144,7 @@ public class GenericController<T> {
 				
 				long total=dsService.rowcount(key,(Class<T>) objModel.getClass(),(DatasetSearch<T>) search);				
 				
-				responseEntity = guardarResult(srId, listado, total, objResult, request)	;				
+				responseEntity = guardarResult(srId, listado, total, numPageSize, objResult, request)	;				
 						
 				
 			} catch (Exception e)
@@ -1282,7 +1282,7 @@ public class GenericController<T> {
 			
 			long total=dsService.geoRowcount(key,(Class<T>) objModel.getClass(),numMeters,(DatasetSearch<T>) search);				
 			
-			responseEntity = guardarResult(srId, listado, total, objResult, request)	;				
+			responseEntity = guardarResult(srId, listado, total,numPageSize, objResult, request)	;				
 					
 			
 		} catch (Exception e)
@@ -1372,7 +1372,7 @@ public class GenericController<T> {
 			records = (List<T>) dsService.groupBySearch(key,(Class<T>) objModel.getClass(),groupBySearch, numPage, numPageSize);			
 			long numtotalRecords=dsService.rowCountGroupBy(key,(Class<T>) objModel.getClass(),copy);
 			
-			responseEntity = guardarResult(srId, records, numtotalRecords, objResult, request);
+			responseEntity = guardarResult(srId, records, numtotalRecords, numPageSize, objResult, request);
 			
 					
 		} catch (Exception e)
@@ -1458,7 +1458,7 @@ public class GenericController<T> {
 			records = (List<T>) dsService.distinctSearch(key,(Class<T>) objModel.getClass(),search, numPage, numPageSize);
 			long numtotalRecords=dsService.rowCountDistinct(key,(Class<T>) objModel.getClass(),search);
 			
-			responseEntity = guardarResult(srId, records, numtotalRecords, objResult, request);
+			responseEntity = guardarResult(srId, records, numtotalRecords, numPageSize, objResult, request);
 			
 					
 		} catch (Exception e)
@@ -1480,11 +1480,10 @@ public class GenericController<T> {
 	 * @param request
 	 * @return
 	 * @throws Exception
-	 */
+	 */	
 	@SuppressWarnings({ "unchecked", "hiding" })
 	public <T> ResponseEntity<Object> guardarResult(Result<T> result, String srId, List<T> listado, T obj, 
 			HttpServletRequest request) throws Exception {
-
 			
 		Util.generaCoordenadasAll(StartVariables.SRID_XY_APP, srId, listado);	
 		
@@ -1540,9 +1539,9 @@ public class GenericController<T> {
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "unchecked", "hiding" })
-	public <T> ResponseEntity<Object> guardarResult(String srId, List<T> listado, long total, T obj,
+	public <T> ResponseEntity<Object> guardarResult(String srId, List<T> listado, long total, int numPageSize,  T obj,
 			HttpServletRequest request) throws Exception {
-
+		
 		//Control de coordenadas
 		Util.generaCoordenadasAll( srId, listado);		
 		
@@ -1778,7 +1777,7 @@ public class GenericController<T> {
 			records = (List<T>) dsService.cubeQuery(key,(Class<T>)objModel.getClass(),cubeQuerySearch, numPage, numPageSize);			
 			long numtotalRecords=dsService.rowCountCubeQuery(key,(Class<T>)objModel.getClass(),copy);
 			
-			responseEntity = guardarResult(NO_HAY_SRID, records, numtotalRecords,objResult, request);
+			responseEntity = guardarResult(NO_HAY_SRID, records, numtotalRecords, numPageSize, objResult, request);
 			
 					
 		} catch (Exception e)

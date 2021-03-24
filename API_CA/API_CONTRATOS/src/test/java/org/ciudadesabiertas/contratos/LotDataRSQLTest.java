@@ -71,7 +71,7 @@ public class LotDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{		
-		String value = "id==LT1";
+		String value = "id==0013496-19-LT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -79,25 +79,25 @@ public class LotDataRSQLTest
 	@Test
 	public void test_Busqueda_Title() throws Exception
 	{		
-		String value = "title==Material*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 7);
-	}
-	
-	
-	@Test
-	public void test_Busqueda_description() throws Exception
-	{		
-		String value = "description==Material*1";
+		String value = "title==Actur*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
 	
 	
 	@Test
+	public void test_Busqueda_description() throws Exception
+	{		
+		String value = "description==1";
+		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		assertTrue(records.size() == 18);
+	}
+	
+	
+	@Test
 	public void test_Busqueda_hasSupplier() throws Exception
 	{		
-		String value = "hasSupplier==AW1";
+		String value = "hasSupplier==0013496-19-AW1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -105,15 +105,15 @@ public class LotDataRSQLTest
 	@Test
 	public void test_Busqueda_tenderId() throws Exception
 	{		
-		String value = "tenderId==TN1";
+		String value = "tenderId==0013496-19-TN1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 7);
+		assertTrue(records.size() == 3);
 	}
 	
 	@Test
 	public void test_Busqueda_valueAmount() throws Exception
 	{		
-		String value = "valueAmount==26260";
+		String value = "valueAmount==14743087.12";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}

@@ -107,8 +107,8 @@ public class TenderRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"TN1\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
 
 		item = new String(item.getBytes(), "UTF-8");
@@ -140,8 +140,8 @@ public class TenderRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"TN1\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
 
     	
@@ -160,8 +160,8 @@ public class TenderRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"TN2\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0033061-20-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
 
      	
@@ -199,8 +199,8 @@ public class TenderRelItemTest {
     	String id ="REL_01_KO";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"TN1\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
 
     	
@@ -306,8 +306,8 @@ public class TenderRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"TN1\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
     	   
     	
@@ -325,8 +325,8 @@ public class TenderRelItemTest {
     public void test19_Post_Transform_NO_OK() throws Exception {
     	    	
     	String item = " {\n" +
-    			"      \"tender\": \"TN1\",\n" + 
-    			"      \"item\": \"IT1\"\n" + 
+    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\"\n" + 
     			"    }";
     	  
     	
@@ -373,7 +373,7 @@ public class TenderRelItemTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="00000000000001";
+    	String id ="0013496-19-TRI1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(TenderRelItemController.LIST+"/"+id, mockMvc);

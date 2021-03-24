@@ -119,8 +119,8 @@ public class ProcessTest {
      			"      \"id\":\"" +id+"\",\n" +
      			"      \"identifier\":\"" +identifier+"\",\n" + 
      			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-     			"      \"isBuyerFor\": \"LA0007386\",\n" + 
-     			"      \"hasTender\": \"TN1\",\n" + 
+     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
+     			"      \"hasTender\": \"0013496-19-TN1\",\n" + 
      			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
      			"    }";   	
@@ -167,8 +167,8 @@ public class ProcessTest {
      			"      \"id\":\"" +id+"\",\n" + 
      			"      \"identifier\":\"" +identifier+"\",\n" + 
      			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-     			"      \"isBuyerFor\": \"LA0007386\",\n" + 
-     			"      \"hasTender\": \"TN2\",\n" + 
+     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
+     			"      \"hasTender\": \"0033061-20-TN1\",\n" + 
      			"      \"url\": \"https://www.localidata.com\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
      			"    }";   
@@ -207,8 +207,8 @@ public class ProcessTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" + 
      			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-     			"      \"isBuyerFor\": \"LA0007386\",\n" + 
-     			"      \"hasTender\": \"TN1\",\n" + 
+     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
+     			"      \"hasTender\": \"0013496-19-TN1\",\n" + 
      			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
      			"    }";   
@@ -332,8 +332,8 @@ public class ProcessTest {
      			"      \"id\":\"" +id+"\",\n" +
      			"      \"identifier\":\"" +identifier+"\",\n" + 
      			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-     			"      \"isBuyerFor\": \"LA0007386\",\n" + 
-     			"      \"hasTender\": \"TN1\",\n" + 
+     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
+     			"      \"hasTender\": \"0013496-19-TN1\",\n" + 
      			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
      			"    }";   
@@ -353,8 +353,8 @@ public class ProcessTest {
     	
      	String item = " {\n" +
      			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-     			"      \"isBuyerFor\": \"LA0007386\",\n" + 
-     			"      \"hasTender\": \"TN1\",\n" + 
+     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
+     			"      \"hasTender\": \"0013496-19-TN1\",\n" + 
      			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
      			"    }";   
@@ -429,7 +429,7 @@ public class ProcessTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="300-2018-00524";
+    	String id ="0013496-19";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(ProcessController.LIST+"/"+id, mockMvc);
@@ -452,8 +452,8 @@ public class ProcessTest {
 	     			"      \"id\":\"" +id+"\",\n" +
 	     			"      \"identifier\":\"" +identifier+"\",\n" + 
 	     			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
-	     			"      \"isBuyerFor\": \"LA0007386_KO\",\n" + 
-	     			"      \"hasTender\": \"TN1_KO\",\n" + 
+	     			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132_KO\",\n" + 
+	     			"      \"hasTender\": \"0013496-19-TN1_KO\",\n" + 
 	     			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
 	     			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
 	     			"    }";   

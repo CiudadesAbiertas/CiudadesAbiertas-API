@@ -83,7 +83,7 @@ public class TenderTestFK {
      			"      \"numberOfTenderers\": 12,\n" + 
      			"      \"procurementMethod\": \"Simplified open\",\n" + 
      			"      \"procurementMethodDetails\": \"Ordinary\",\n" + 
-     			"      \"hasSupplier\": \"AW8\",\n" +
+     			"      \"hasSupplier\": \"532181-20-AW1\",\n" +
      			"      \"tenderStatus\": \"complete\",\n" + 
      			"      \"periodDurationInDays\": 200,\n" + 
      			"      \"periodEndDate\": \"2019-12-02T00:00:00\",\n" + 
@@ -124,7 +124,7 @@ public class TenderTestFK {
      			"      \"procurementMethodDetails\": \"Ordinary\",\n" + 
      			"      \"tenderStatus\": \"complete\",\n" + 
      			"      \"periodDurationInDays\": 200,\n" + 
-     			"      \"hasSupplier\": \"AW8_NO_EXISTE\",\n" +
+     			"      \"hasSupplier\": \"532181-20-AW1_NO_EXISTE\",\n" +
      			"      \"periodEndDate\": \"2019-12-02T00:00:00\",\n" + 
      			"      \"periodStartDate\": \"2019-06-03T00:00:00\",\n" + 
      			"      \"valueAmount\": 280000.5\n" + 
@@ -161,7 +161,7 @@ public class TenderTestFK {
 	     			"      \"procurementMethod\": \"Simplified open\",\n" + 
 	     			"      \"procurementMethodDetails\": \"Ordinary\",\n" + 
 	     			"      \"tenderStatus\": \"complete\",\n" + 
-	     			"      \"hasSupplier\": \"AW8_NO_EXISTE\",\n" +     			
+	     			"      \"hasSupplier\": \"532181-20-AW1_NO_EXISTE\",\n" +     			
 	     			"      \"periodDurationInDays\": 200,\n" + 
 	     			"      \"periodEndDate\": \"2019-12-02T00:00:00\",\n" + 
 	     			"      \"periodStartDate\": \"2019-06-03T00:00:00\",\n" + 
@@ -193,7 +193,7 @@ public class TenderTestFK {
     	}
     	else
     	{     
-	    	String id ="TN1";
+	    	String id ="0013496-19-TN1";
 	    	id=Util.encodeURL(id);
 	    	
 	        this.mockMvc.perform(MockMvcRequestBuilders.delete(TenderController.ADD+"/"+id)
@@ -211,7 +211,7 @@ public class TenderTestFK {
     	}
     	else
     	{     
-	    	String id ="TN2";
+	    	String id ="0033061-20-TN1";
 	    	id=Util.encodeURL(id);
 	    	
 	        this.mockMvc.perform(MockMvcRequestBuilders.delete(TenderController.ADD+"/"+id)

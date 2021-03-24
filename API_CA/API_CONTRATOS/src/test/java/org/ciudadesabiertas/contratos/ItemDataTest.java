@@ -70,7 +70,7 @@ public class ItemDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "IT1";
+		String value = "0013496-19-IT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -80,9 +80,9 @@ public class ItemDataTest
 	public void test_Busqueda_description() throws Exception
 	{
 		String paramField="description";
-		String value = "Artículos*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "";
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 0);
 	}
 	
 	
@@ -90,7 +90,7 @@ public class ItemDataTest
 	public void test_Busqueda_hasClassification() throws Exception
 	{
 		String paramField="hasClassification";
-		String value = "C1";
+		String value = "98000000";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -99,7 +99,7 @@ public class ItemDataTest
 	public void test_Head_MD5() throws Exception
 	{
 		String paramField="id";
-		String value = "IT1";
+		String value = "0013496-19-IT1";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
 		assertTrue(md5_content.equals(md5_head));
@@ -109,9 +109,9 @@ public class ItemDataTest
 	public void test_Busqueda_distinct() throws Exception
 	{		
 		String paramField="field";		
-		String value = "description";
+		String value = "id";
 		long total = TestUtils.extractTotalDistinct(ItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 4);
+		assertTrue(total == 177);
 	}
 	
 

@@ -76,8 +76,8 @@ public class TenderRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"tender\": \"TN1\",\n" + 
-	    			"      \"item\": \"IT1\"\n" + 
+	    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+	    			"      \"item\": \"0013496-19-IT1\"\n" + 
 	    			"    }";
 	
 			item = new String(item.getBytes(), "UTF-8");
@@ -152,8 +152,8 @@ public class TenderRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"tender\": \"TN2\",\n" + 
-	    			"      \"item\": \"IT1\"\n" + 
+	    			"      \"tender\": \"0013496-19-TN1\",\n" + 
+	    			"      \"item\": \"0067030-19-IT2\"\n" + 
 	    			"    }";
 	    	
 	    	String itemUPDATE = new String (item.getBytes(),"UTF-8");

@@ -70,7 +70,7 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="q";		
-		String value = "id==300-2018-00524";
+		String value = "id==0013496-19";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -81,7 +81,7 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_Identifier() throws Exception
 	{
 		String paramField="q";		
-		String value = "identifier==300/2018/00524";
+		String value = "identifier==0013496-19";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -90,7 +90,7 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_Title() throws Exception
 	{
 		String paramField="q";
-		String value = "title==*material*";
+		String value = "title=='Ayuda a Domicilio'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -99,16 +99,16 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_isBuyerFor() throws Exception
 	{
 		String paramField="q";
-		String value = "isBuyerFor==LA0007386";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "isBuyerFor=='L015029730baf190acd12a74aee60aa542413527f'";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 8);
 	}
 	
 	@Test
 	public void test_Busqueda_hasTender() throws Exception
 	{
 		String paramField="q";
-		String value = "hasTender==TN1";
+		String value = "hasTender=='0013496-19-TN1'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -117,9 +117,9 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_url() throws Exception
 	{
 		String paramField="q";
-		String value = "url==https://contrataciondelestado.es*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 2);
+		String value = "url=='https://contrataciondelestado.es*'";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 190);
 	}
 	
 	@Test
@@ -127,8 +127,8 @@ public class ProcessDataRSQLTest
 	{
 		String paramField="q";
 		String value = "description==*licitacion* and title=='*a*'";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 2);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 190);
 	}
 	
 

@@ -198,11 +198,7 @@ public class CiudadController implements CiudadesAbiertasController
 				      }
 				  }
 				  if (addKey)
-				  {
-					if (key.toString().contains("v1"))
-					{
-					  System.out.println("wait");
-					}
+				  {					
 					keySetFiltered.add(key);
 				  }
 				}

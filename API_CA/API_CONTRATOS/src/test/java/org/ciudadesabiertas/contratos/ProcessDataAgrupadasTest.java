@@ -67,9 +67,9 @@ public class ProcessDataAgrupadasTest
 		String params="fields=title,count(id)&group=title";
 		
 
-		JSONArray records = TestUtils.extractRecords(listURL, params, mockMvc);
+		long records = TestUtils.extractTotal(listURL, params, mockMvc);
 		
-		assertTrue(records.size() == 2);
+		assertTrue(records == 190);
 
 	}
 	

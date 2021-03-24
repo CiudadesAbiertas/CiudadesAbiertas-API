@@ -75,7 +75,7 @@ public class BarrioDataTest
 	{
 		String paramField="title";
 
-		String value = "Barrio de prueba 1";
+		String value = "Cuatro Caminos";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value.toUpperCase(), mockMvc);
 
@@ -91,7 +91,7 @@ public class BarrioDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 5);
 	}
 	
 	
@@ -104,7 +104,7 @@ public class BarrioDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 5);
 	}
 	
 	
@@ -117,7 +117,7 @@ public class BarrioDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 6);
 	}
 	
 	@Test
@@ -129,7 +129,7 @@ public class BarrioDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 6);
 	}
 	
 	@Test
@@ -141,7 +141,7 @@ public class BarrioDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 6);
 	}
 	
 	

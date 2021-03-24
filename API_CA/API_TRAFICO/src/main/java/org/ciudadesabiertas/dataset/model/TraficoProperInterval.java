@@ -191,12 +191,12 @@ public class TraficoProperInterval  implements java.io.Serializable, RDFModel {
 	@Override
 	public <T> T cloneModel(T copia, List<String> listado) 
 	{
-		return (T) cloneClass((TraficoPropiedadMedicion) copia, listado);
+		return (T) cloneClass((TraficoProperInterval) copia, listado);
 	}
 	
-	public TraficoPropiedadMedicion cloneClass(TraficoPropiedadMedicion copia, List<String> attributesToSet) {
+	public TraficoProperInterval cloneClass(TraficoProperInterval copia, List<String> attributesToSet) {
 
-		TraficoPropiedadMedicion obj = new TraficoPropiedadMedicion(copia,attributesToSet);		
+		TraficoProperInterval obj = new TraficoProperInterval(copia,attributesToSet);		
 
 		return obj;
 

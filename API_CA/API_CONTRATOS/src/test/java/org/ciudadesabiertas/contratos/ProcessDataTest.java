@@ -70,7 +70,7 @@ public class ProcessDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "300-2018-00524";
+		String value = "0013496-19";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -80,7 +80,7 @@ public class ProcessDataTest
 	public void test_Busqueda_Identifier() throws Exception
 	{
 		String paramField="identifier";		
-		String value = "300/2018/00524";
+		String value = "0013496-19";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -89,7 +89,7 @@ public class ProcessDataTest
 	public void test_Busqueda_Title() throws Exception
 	{
 		String paramField="title";
-		String value = "*material*";
+		String value = "Ayuda a Domicilio";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -98,16 +98,16 @@ public class ProcessDataTest
 	public void test_Busqueda_isBuyerFor() throws Exception
 	{
 		String paramField="isBuyerFor";
-		String value = "LA0007386";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "L015029736cfa4d7559501497497a0db85667a132";
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 30);
 	}
 	
 	@Test
 	public void test_Busqueda_hasTender() throws Exception
 	{
 		String paramField="hasTender";
-		String value = "TN1";
+		String value = "0013496-19-TN1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -117,8 +117,8 @@ public class ProcessDataTest
 	{
 		String paramField="url";
 		String value = "https://contrataciondelestado.es*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 2);
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 190);
 	}
 	
 	@Test
@@ -126,8 +126,8 @@ public class ProcessDataTest
 	{
 		String paramField="description";
 		String value = "*licitacion*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 2);
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 190);
 	}
 	
 	
@@ -136,7 +136,7 @@ public class ProcessDataTest
 	@Test
 	public void test_Head_MD5() throws Exception
 	{
-		String value = "300-2018-01097";		
+		String value = "0013496-19";		
 		String paramField="id";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
@@ -149,7 +149,7 @@ public class ProcessDataTest
 		String paramField="field";		
 		String value = "title";
 		long total = TestUtils.extractTotalDistinct(ProcessController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 2);
+		assertTrue(total == 190);
 	}
 	
 	

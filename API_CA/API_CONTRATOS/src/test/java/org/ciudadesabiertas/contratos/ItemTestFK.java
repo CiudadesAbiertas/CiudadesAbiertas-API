@@ -71,7 +71,7 @@ public class ItemTestFK {
     	if (activeFK == false) {
 			assertFalse(activeFK);
 		}else {
-    		String id ="IT4";    	
+    		String id ="01-2020-IT1";    	
 			id=Util.encodeURL(id);    	
 			this.mockMvc.perform(MockMvcRequestBuilders.delete(ItemController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON))
@@ -86,7 +86,7 @@ public class ItemTestFK {
     	if (activeFK == false) {
 			assertFalse(activeFK);
 		}else {
-			String id ="IT3";    	
+			String id ="01-2020-IT2";    	
 			id=Util.encodeURL(id);    	
 			this.mockMvc.perform(MockMvcRequestBuilders.delete(ItemController.ADD+"/"+id)
         		.contentType(MediaType.APPLICATION_JSON))

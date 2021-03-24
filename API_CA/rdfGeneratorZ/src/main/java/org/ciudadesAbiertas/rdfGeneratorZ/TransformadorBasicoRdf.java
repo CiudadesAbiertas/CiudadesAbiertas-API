@@ -672,24 +672,27 @@ public class TransformadorBasicoRdf {
 								
 								Resource blankNodeResource=mapaNodosEnBlanco.get(nodo);
 								
-								model.add(resource, model.createProperty(propiedad), blankNodeResource);
-								if (!tipo.equals(""))
+								if (blankNodeResource!=null)
 								{
-									model.add(blankNodeResource, RDF.type, model.createResource(tipo));
-								}
-								
-								if (typeURI.equals(""))
-								{
-								  if ((valor!=null)&&(valor.toString().startsWith("http")))
-								  {
-									model.add(blankNodeResource, entityProp, model.createResource(valor.toString()));
-								  }else {
-									model.add(blankNodeResource, entityProp, valor.toString());
-								  }
-								}
-								else 
-								{									
-									checkTypeURIandFormat(model, blankNodeResource, valor, typeURI, entityProp);
+									model.add(resource, model.createProperty(propiedad), blankNodeResource);
+									if (!tipo.equals(""))
+									{
+										model.add(blankNodeResource, RDF.type, model.createResource(tipo));
+									}
+									
+									if (typeURI.equals(""))
+									{
+									  if ((valor!=null)&&(valor.toString().startsWith("http")))
+									  {
+										model.add(blankNodeResource, entityProp, model.createResource(valor.toString()));
+									  }else {
+										model.add(blankNodeResource, entityProp, valor.toString());
+									  }
+									}
+									else 
+									{									
+										checkTypeURIandFormat(model, blankNodeResource, valor, typeURI, entityProp);
+									}
 								}
 							}							
 							else {
@@ -905,8 +908,24 @@ public class TransformadorBasicoRdf {
 		}
 		else if (typeURI.endsWith("datetime"))
 		{
-			String fechaFormateada=Funciones.formateadorFechaHora.format(valor);
-			model.add(resource, entityProp, model.createTypedLiteral(fechaFormateada,typeURI));
+			String fechaFormateada=null;
+			try
+			{
+				fechaFormateada=Funciones.formateadorFechaHora.format(valor);
+			}
+			catch (Exception e) {}
+			if (fechaFormateada ==null)
+			{
+				try
+				{
+					fechaFormateada=Funciones.formateadorFechaHoraSinT.format(valor);
+				}
+				catch (Exception e) {}
+			}
+			if (fechaFormateada!=null)
+			{
+				model.add(resource, entityProp, model.createTypedLiteral(fechaFormateada,typeURI));
+			}
 		}										
 		else if (typeURI.endsWith("time"))
 		{
@@ -1293,27 +1312,34 @@ public class TransformadorBasicoRdf {
 	
 	private String getComplexId(String id, String raiz, String prefijo){
 		String output = "";
-		String subString = id.substring(id.indexOf("[")+1, id.indexOf("]"));
-		StringTokenizer st = new StringTokenizer(subString, ",");
-		String token = st.nextToken().trim();
-		if (token.contains("=")){
-			token = token.substring(token.indexOf("=")+1);
-		}
-		output = token;
-		if (raiz.endsWith("/"+output)){
-			token = st.nextToken().trim();
+		if (id.contains("[") && id.contains("]"))
+		{
+			String subString = id.substring(id.indexOf("[")+1, id.indexOf("]"));
+			StringTokenizer st = new StringTokenizer(subString, ",");
+			String token = st.nextToken().trim();
 			if (token.contains("=")){
 				token = token.substring(token.indexOf("=")+1);
 			}
-			output = "/" + prefijo + "/" +token;
-		}
-		while (st.hasMoreElements()){
-			token = st.nextToken().trim();
-			if (token.contains("=")){
-				token = token.substring(token.indexOf("=")+1);
+			output = token;
+			if (raiz.endsWith("/"+output)){
+				token = st.nextToken().trim();
+				if (token.contains("=")){
+					token = token.substring(token.indexOf("=")+1);
+				}
+				output = "/" + prefijo + "/" +token;
 			}
-			output = output + "-" + token;
+			while (st.hasMoreElements()){
+				token = st.nextToken().trim();
+				if (token.contains("=")){
+					token = token.substring(token.indexOf("=")+1);
+				}
+				output = output + "-" + token;
+			}
+			return output;
+		}else {
+			output=output.replace(" ", "");
 		}
+			
 		return output;
 	}
 	

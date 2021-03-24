@@ -60,7 +60,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonPropertyOrder(alphabetic = false)
 @JsonIgnoreProperties({ Constants.IKEY })
 @JacksonXmlRootElement(localName = Constants.RECORD)
-@PathId(value = "/empleo/boletin-convocatoria")
+@PathId(value = "/empleo/relacion-boletin-convocatoria")
 public class RelBoletinConvoca implements java.io.Serializable, RDFModel {
 
 	@JsonIgnore

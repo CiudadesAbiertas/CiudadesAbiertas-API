@@ -156,7 +156,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 		
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -671,7 +671,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 						searchQuery.setMunicipioObject(objMunicipio);	
 						searchQuery.setMunicipioId(null);
 					}else {
-						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, objResult, request)	;
+						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, numPageSize, objResult, request)	;
 					}					
 				}
 				
@@ -681,7 +681,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 						searchQuery.setProvinciaObject(objProvincia);	
 						searchQuery.setProvincia(null);
 					}else {
-						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, objResult, request)	;
+						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, numPageSize, objResult, request)	;
 					}					
 				}
 					
@@ -692,7 +692,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 						searchQuery.setAutonomiaObject(objAutonomia);	
 						searchQuery.setAutonomia(null);
 					}else {
-						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, objResult, request)	;
+						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, numPageSize, objResult, request)	;
 					}					
 				}
 				
@@ -704,7 +704,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 						searchQuery.setPais(null);
 						
 					}else {
-						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, objResult, request)	;
+						return responseEntity = guardarResult(srId, new ArrayList<Distrito>(), 0, numPageSize, objResult, request)	;
 					}
 				}
 				
@@ -715,7 +715,7 @@ public class DistritoController extends GenericController implements CiudadesAbi
 				
 				long total=dsService.rowcount(key,(Class<Distrito>) objModel.getClass(),(DatasetSearch<Distrito>) searchQuery);				
 				
-				responseEntity = guardarResult(srId, listado, total, objResult, request)	;				
+				responseEntity = guardarResult(srId, listado, total, numPageSize, objResult, request)	;				
 						
 				
 			} catch (Exception e)

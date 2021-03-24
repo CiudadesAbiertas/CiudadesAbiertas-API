@@ -73,8 +73,8 @@ public class LotRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"item\": \"IT1\",\n" + 
-	    			"      \"lot\": \"LT1\"\n" + 
+	    			"      \"item\": \"0013496-19-IT1\",\n" + 
+	    			"      \"lot\": \"0013496-19-LT1\"\n" + 
 	    			"    }";	
 			item = new String(item.getBytes(), "UTF-8");
 			this.mockMvc.perform(
@@ -138,9 +138,9 @@ public class LotRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"item\": \"IT1\",\n" + 
-	    			"      \"lot\": \"LT2\"\n" + 
-	    			"    }";
+	    			"      \"item\": \"0013496-19-IT1\",\n" + 
+	    			"      \"lot\": \"0013496-19-LT2\"\n" + 
+	    			"    }";	
 	    	
 	    	String itemUPDATE = new String (item.getBytes(),"UTF-8");	
 	    	

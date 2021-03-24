@@ -112,8 +112,8 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"IT1\",\n" + 
-    			"      \"lot\": \"LT1\"\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"lot\": \"0013496-19-LT1\"\n" + 
     			"    }";
 
 		item = new String(item.getBytes(), "UTF-8");
@@ -145,8 +145,8 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"IT1\",\n" + 
-    			"      \"lot\": \"LT1\"\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"lot\": \"0013496-19-LT1\"\n" + 
     			"    }";
 
     	
@@ -165,8 +165,8 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"IT1\",\n" + 
-    			"      \"lot\": \"LT2\"\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"lot\": \"0085874-18-LT6\"\n" + 
     			"    }";
 
      	
@@ -204,8 +204,8 @@ public class LotRelItemTest {
     	String id ="REL_01_KO";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"IT1\",\n" + 
-    			"      \"lot\": \"LT2\"\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"lot\": \"0085874-18-LT6\"\n" + 
     			"    }";
 
     	
@@ -311,7 +311,7 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"IT1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
     			"      \"lot\": \"LT2\"\n" + 
     			"    }";
     	   
@@ -332,7 +332,7 @@ public class LotRelItemTest {
     	    	
     	    	
     	String item = " {\n" +
-    			"      \"item\": \"IT1\",\n" + 
+    			"      \"item\": \"0013496-19-IT1\",\n" + 
     			"      \"lot\": \"LT2\"\n" + 
     			"    }";
     	  
@@ -402,7 +402,7 @@ public class LotRelItemTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="00000000000001";
+    	String id ="0013496-19-LRI1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(LotRelItemController.LIST+"/"+id, mockMvc);

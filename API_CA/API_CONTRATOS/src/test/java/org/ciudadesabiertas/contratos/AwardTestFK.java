@@ -70,7 +70,7 @@ public class AwardTestFK {
 		} else {
 
 			String id = "AW_TEST01";
-			String item = " {\n" + "    \"id\": \"" + id + "\",\n" + "    \"isSupplierFor\": \"A78608940\",\n"
+			String item = " {\n" + "    \"id\": \"" + id + "\",\n" + "    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n"
 					+ "    \"awardDate\": \"2018-11-29T00:00:00\",\n" + "    \"valueAmount\": \"63032.6\",\n"
 					+ "    \"description\": \"Descripcion\"\n" + "}";
 
@@ -112,7 +112,7 @@ public class AwardTestFK {
 		} else {
 
 			String id = "AW_TEST01";
-			String item = " {\n" + "    \"id\": \"" + id + "\",\n" + "    \"isSupplierFor\": \"A78608940\",\n"
+			String item = " {\n" + "    \"id\": \"" + id + "\",\n" + "    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n"
 					+ "    \"awardDate\": \"2018-11-29T00:00:00\",\n" + "    \"valueAmount\": \"163032.6\",\n"
 					+ "    \"description\": \"XXXDescripcion\"\n" + "}";
 
@@ -160,7 +160,7 @@ public class AwardTestFK {
 			assertFalse(activeFK);
 		} else {
 
-			String id = "AW1";
+			String id = "0798175-19-AW1";
 
 			id = Util.encodeURL(id);
 
@@ -180,7 +180,7 @@ public class AwardTestFK {
 			assertFalse(activeFK);
 		} else {
 
-			String id = "AW8";
+			String id = "532181-20-AW1";
 
 			id = Util.encodeURL(id);
 

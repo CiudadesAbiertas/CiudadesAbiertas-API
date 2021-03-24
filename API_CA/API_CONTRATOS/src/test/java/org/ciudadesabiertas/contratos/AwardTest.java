@@ -113,7 +113,7 @@ public class AwardTest {
     	String id ="AW_TEST01";    	
     	String item = " {\n" + 
     			"    \"id\": \""+id+"\",\n" +  
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"63032.6\",\n" + 
     			"    \"description\": \"Descripcion\"\n" +
@@ -148,7 +148,7 @@ public class AwardTest {
     	String id ="AW_TEST01";    	
     	String item = " {\n" + 
     			"    \"id\": \""+id+"\",\n" + 
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"63032.6\",\n" + 
     			"    \"description\": \"Descripcion\"\n" +
@@ -170,7 +170,7 @@ public class AwardTest {
     	String id ="AW_TEST01";    	
     	String item = " {\n" + 
     			"    \"id\": \""+id+"\",\n" + 
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"163032.6\",\n" + 
     			"    \"description\": \"XXXDescripcion\"\n" +
@@ -211,7 +211,7 @@ public class AwardTest {
     	String id ="AW_TEST01_KO";    	
     	String item = " {\n" + 
     			"    \"id\": \""+id+"\",\n" + 
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"163032.6\",\n" + 
     			"    \"description\": \"XXXDescripcion\"\n" +
@@ -320,7 +320,7 @@ public class AwardTest {
     	String id ="LT_TEST01";    	
     	String item = " {\n" + 
     			"    \"id\": \""+id+"\",\n" + 
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"163032.6\",\n" + 
     			"    \"description\": \"XXXDescripcion\"\n" +
@@ -343,7 +343,7 @@ public class AwardTest {
     	    	
     	    	
     	String item = " {\n" +
-    			"    \"isSupplierFor\": \"A78608940\",\n" + 
+    			"    \"isSupplierFor\": \"B22183370ed9d87b8613de80ce19de8bfeba9ca3d\",\n" + 
     			"    \"awardDate\": \"2018-11-29T00:00:00\",\n" + 
     			"    \"valueAmount\": \"163032.6\",\n" + 
     			"    \"description\": \"XXXDescripcion\"\n" +
@@ -421,7 +421,7 @@ public class AwardTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="AW1";
+    	String id ="0013496-19-AW1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(AwardController.LIST+"/"+id, mockMvc);

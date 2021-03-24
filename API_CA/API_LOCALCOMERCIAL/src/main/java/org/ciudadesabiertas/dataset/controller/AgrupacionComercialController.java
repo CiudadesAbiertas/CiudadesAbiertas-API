@@ -123,7 +123,7 @@ public class AgrupacionComercialController extends GenericController implements 
 	private DatasetService<LocalComercial> localComercialService;
 
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value = Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value = Constants.APIKEY) })
 	@ApiResponses({ @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT, response = ObjectResult.class), @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA, response = ResultError.class),
 			@ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO, response = ResultError.class), @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE, response = ResultError.class), @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO, response = ResultError.class) })
 	@RequestMapping(value = { SEARCH_DISTINCT, VERSION_1 + SEARCH_DISTINCT }, method = RequestMethod.GET)

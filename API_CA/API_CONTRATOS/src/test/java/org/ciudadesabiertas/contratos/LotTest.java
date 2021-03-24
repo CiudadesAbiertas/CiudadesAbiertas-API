@@ -114,8 +114,8 @@ public class LotTest {
     			"    \"id\": \""+id+"\",\n" + 
     			"    \"title\": \"Material diverso\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
 
@@ -150,8 +150,8 @@ public class LotTest {
     			"    \"id\": \""+id+"\",\n" + 
     			"    \"title\": \"Material diverso\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
 
@@ -173,8 +173,8 @@ public class LotTest {
     			"    \"id\": \""+id+"\",\n" + 
     			"    \"title\": \"Material diverso 22\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
 
@@ -215,8 +215,8 @@ public class LotTest {
     			"    \"id\": \""+id+"\",\n" + 
     			"    \"title\": \"Material diverso\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
 
@@ -325,8 +325,8 @@ public class LotTest {
     			"    \"id\": \""+id+"\",\n" + 
     			"    \"title\": \"Material diverso\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
     	   
@@ -349,8 +349,8 @@ public class LotTest {
     	String item = " {\n" +
     			"    \"title\": \"Material diverso\",\n" + 
     			"    \"description\": \"1\",\n" + 
-    			"    \"hasSupplier\": \"AW1\",\n" + 
-    			"    \"tenderId\": \"TN1\",\n" +
+    			"    \"hasSupplier\": \"0013496-19-AW3\",\n" + 
+    			"    \"tenderId\": \"0013496-19-TN1\",\n" +
     			"    \"valueAmount\": 199.55\n" +
     			"}";
 
@@ -426,7 +426,7 @@ public class LotTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="LT1";
+    	String id ="0013496-19-LT1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(LotController.LIST+"/"+id, mockMvc);

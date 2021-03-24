@@ -424,7 +424,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 			
 			
 			
-			responseEntity = guardarResult(NO_HAY_SRID, listado, total, new CubeDsdResult(), request);	
+			responseEntity = guardarResult(NO_HAY_SRID, listado, total, getNumPageSize(),  new CubeDsdResult(), request);	
 		} catch (Exception e)
 		{
 			log.error("internal error",e);
@@ -578,7 +578,7 @@ public class CubeDsdController extends GenericController implements CiudadesAbie
 			
 			long total=cubeDsdMeasureService.rowCountCubeDsdByMeasure(getKey(), measure);			
 			
-			responseEntity = guardarResult(NO_HAY_SRID, listado, total, new CubeDsdResult(), request);	
+			responseEntity = guardarResult(NO_HAY_SRID, listado, total, getNumPageSize(), new CubeDsdResult(), request);	
 		} catch (Exception e)
 		{
 			log.error("internal error",e);

@@ -70,27 +70,27 @@ public class TenderRelItemDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "00000000000001";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "0013496-19-TRI1";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 1);
 	}
 
 	@Test
 	public void test_Busqueda_Tender() throws Exception
 	{
 		String paramField="tender";
-		String value = "TN1*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 3);
+		String value = "*TN1";
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 250);
 	}
 	
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{
 		String paramField="item";
-		String value = "IT1*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "*IT1";
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 180);
 	}
 	
 	
@@ -100,7 +100,7 @@ public class TenderRelItemDataTest
 	public void test_Head_MD5() throws Exception
 	{
 		String paramField="id";
-		String value = "00000000000001";
+		String value = "0013496-19-TRI1";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
 		assertTrue(md5_content.equals(md5_head));
@@ -112,7 +112,7 @@ public class TenderRelItemDataTest
 		String paramField="field";		
 		String value = "item";
 		long total = TestUtils.extractTotalDistinct(TenderRelItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 4);
+		assertTrue(total == 170);
 	}
 	
 

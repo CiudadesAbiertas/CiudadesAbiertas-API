@@ -70,7 +70,7 @@ public class LotRelItemDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "00000000000001";
+		String value = "0013496-19-LRI1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -79,25 +79,25 @@ public class LotRelItemDataTest
 	public void test_Busqueda_Lot() throws Exception
 	{
 		String paramField="lot";
-		String value = "LT1*";
+		String value = "0013496-19-LT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 1);
 	}
 	
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{
 		String paramField="item";
-		String value = "IT1*";
+		String value = "0013496-19-IT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 7);
+		assertTrue(records.size() == 3);
 	}
 	
 	@Test
 	public void test_Head_MD5() throws Exception
 	{
 		String paramField="id";
-		String value = "00000000000001";
+		String value = "0013496-19-LRI1";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
 		assertTrue(md5_content.equals(md5_head));
@@ -109,7 +109,7 @@ public class LotRelItemDataTest
 		String paramField="field";		
 		String value = "id";
 		long total = TestUtils.extractTotalDistinct(LotRelItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 21);
+		assertTrue(total == 120);
 	}
 	
 }

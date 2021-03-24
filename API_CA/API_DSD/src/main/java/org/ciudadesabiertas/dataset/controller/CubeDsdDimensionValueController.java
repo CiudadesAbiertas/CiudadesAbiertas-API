@@ -163,7 +163,7 @@ public class CubeDsdDimensionValueController extends GenericController implement
 			long total=service.rowCountByDimension(getKey(), cubeDsdDimension);
 		
 			
-			responseEntity = guardarResult(NO_HAY_SRID, listado, total, new CubeDsdDimensionValueResult(), request)	;	
+			responseEntity = guardarResult(NO_HAY_SRID, listado, total, getNumPageSize(), new CubeDsdDimensionValueResult(), request)	;	
 		} catch (Exception e)
 		{
 			log.error("internal error",e);

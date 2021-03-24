@@ -70,7 +70,7 @@ public class AwardDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "AW1";
+		String value = "0013496-19-AW1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -81,9 +81,9 @@ public class AwardDataTest
 	public void test_Busqueda_description() throws Exception
 	{
 		String paramField="description";
-		String value = "Ser el empresario que ha presentado la mejor*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 4);
+		String value = "Por ser*";
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 118);
 	}
 	
 	
@@ -91,7 +91,7 @@ public class AwardDataTest
 	public void test_Busqueda_isSupplierFor() throws Exception
 	{
 		String paramField="isSupplierFor";
-		String value = "A28021350";
+		String value = "B22183370ed9d87b8613de80ce19de8bfeba9ca3d";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -100,7 +100,7 @@ public class AwardDataTest
 	public void test_Busqueda_valueAmount() throws Exception
 	{
 		String paramField="valueAmount";
-		String value = "26260.0";
+		String value = "14743087.12";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -109,7 +109,7 @@ public class AwardDataTest
 	public void test_Busqueda_awardDate() throws Exception
 	{
 		String paramField="awardDate";
-		String value = "2018-12-11";
+		String value = "2020-09-11";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 3);
 	}
@@ -120,7 +120,7 @@ public class AwardDataTest
 	public void test_Head_MD5() throws Exception
 	{
 		String paramField="id";
-		String value = "LT1";
+		String value = "0013496-19-AW1";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
 		assertTrue(md5_content.equals(md5_head));
@@ -132,7 +132,7 @@ public class AwardDataTest
 		String paramField="field";		
 		String value = "isSupplierFor";
 		long total = TestUtils.extractTotalDistinct(AwardController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 5);
+		assertTrue(total == 146);
 	}
 	
 

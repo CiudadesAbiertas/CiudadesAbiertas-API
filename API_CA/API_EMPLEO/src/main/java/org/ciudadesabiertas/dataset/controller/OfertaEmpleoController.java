@@ -77,7 +77,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Api(value="Empleo - Oferta Publica",description = "Conjunto de operaciones relacionadas con el conjunto de datos Oferta de Empleo Pública en Empleo"+SwaggerConstants.VOCABULARIO_A_HREF+EmpleoConstants.vocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END , tags= {"Empleo - Oferta de Empleo Público"})
 public class OfertaEmpleoController extends GenericController implements CiudadesAbiertasController 
 {
-	public static final String LIST = "/empleo/oferta-empleo-publica";
+	public static final String LIST = "/empleo/oferta-empleo-publico";
 		
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
@@ -120,7 +120,7 @@ public class OfertaEmpleoController extends GenericController implements Ciudade
 
 	
 	@SuppressWarnings("unchecked")
-	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_DISTINCT,  response=ObjectResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),

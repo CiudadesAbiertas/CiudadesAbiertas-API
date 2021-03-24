@@ -54,8 +54,8 @@ public class Context {
 	public static final String ESAUTOB_URI = "http://vocab.ciudadesabiertas.es/def/transporte/autobus#";
 	public static final String ESEMPLEO_URI = "http://vocab.ciudadesabiertas.es/def/sector-publico/empleo#";
 	public static final String ELI_URI = "http://data.europa.eu/eli/ontology#";
-
-	
+	public static final String ESDEUCOM_URI = "http://vocab.ciudadesabiertas.es/def/hacienda/deuda-publica-comercial#";
+	public static final String ESDEUFINA_URI = "http://vocab.ciudadesabiertas.es/def/economia/deuda-publica-financiera#";
 	
 	
 	public static final String RDF = "rdf";
@@ -127,11 +127,15 @@ public class Context {
 	public static final String ESAUTOB = "esautob";
 	public static final String ESEMPLEO = "esempleo";
 	public static final String ELI = "eli";
+	public static final String ESDEUCOM = "esdeucom";
+	public static final String ESDEUFINA = "esdeufin";
 
 	
 	
 	
 	public static final Map<String, Context> listado = new HashMap<String, Context>();
+	
+	
 	
     static { 
     	listado.put(RDF, new Context(RDF_URI, RDF));
@@ -204,6 +208,8 @@ public class Context {
         listado.put(ESAUTOB, new Context(ESAUTOB_URI,ESAUTOB));
         listado.put(ESEMPLEO, new Context(ESEMPLEO_URI,ESEMPLEO));
         listado.put(ELI, new Context(ELI_URI,ELI));
+        listado.put(ESDEUCOM, new Context(ESDEUCOM_URI, ESDEUCOM));
+        listado.put(ESDEUFINA, new Context(ESDEUFINA_URI, ESDEUFINA));
     }
 	
 	private String uri;

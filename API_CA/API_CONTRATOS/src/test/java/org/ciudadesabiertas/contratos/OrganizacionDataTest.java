@@ -74,7 +74,7 @@ public class OrganizacionDataTest
 
 		String paramField="id";
 		
-		String value = "A78608940";
+		String value = "B83649632068733d54cea9d97cf56deecc0adc009";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -87,7 +87,7 @@ public class OrganizacionDataTest
 	{
 		String paramField="title";
 
-		String value = "Roal Guarnicionería S.A.*";
+		String value = "SANIVIDA";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 
@@ -102,8 +102,9 @@ public class OrganizacionDataTest
 	{
 		String [] paramField= {"municipioId","id"};
 
-		String [] value = {"28006","A78608940"};
+		String [] value = {"50071","L015029730baf190acd12a74aee60aa542413527f"};
 
+	
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
 		assertTrue(records.size() == 1);
@@ -115,13 +116,13 @@ public class OrganizacionDataTest
 	public void test_Busqueda_municipioNombre() throws Exception
 	{		
 		
-		String [] paramField= {"municipioTitle","id"};
+		String [] paramField= {"municipioTitle"};
 
-		String [] value = {"Alcobendas","A78608940"};
+		String [] value = {"Zaragoza"};
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records == 20);
 	}
 	
 	
@@ -156,7 +157,7 @@ public class OrganizacionDataTest
 	public void test_Busqueda_url() throws Exception
 	{		
 		
-		String value = "https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png";
+		String value = "http://www.zaragozaturismo.es";
 		
 		value = Util.encodeURL(value);
 		
@@ -164,7 +165,7 @@ public class OrganizacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 1);
 	}
 	
 		
@@ -173,46 +174,46 @@ public class OrganizacionDataTest
 	public void test_Busqueda_contactPoint_email() throws Exception
 	{
 
-		String value = "datos@info.com"; 
+		String value = "serviciocontratacion@zaragoza.es"; 
 		
 		String paramField = "contactPointEmail";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 17);
 	}
 	
 	@Test
 	public void test_Busqueda_contactPoint_faxNumber() throws Exception
 	{
 
-		String value = "333313333"; 
+		String value = ""; 
 		
 		String paramField = "contactPointFaxNumber";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records == 167);
 	}
 	
 	@Test
 	public void test_Busqueda_contactPoint_telephone() throws Exception
 	{
 
-		String value = "333313332"; 
+		String value = ""; 
 		
 		String paramField = "contactPointTelephone";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records == 167);
 	}
 	
 	@Test
 	public void test_Busqueda_contactPoint_title() throws Exception
 	{
 
-		String value = "Ayuntamiento de YYYYYY"; 
+		String value = "Consejería de Presidencia, Hacienda e Interior del Ayuntamiento de Zaragoza"; 
 		
 		String paramField = "contactPointTitle";
 
@@ -227,39 +228,39 @@ public class OrganizacionDataTest
 	public void test_Busqueda_street_address() throws Exception
 	{
 
-		String value = "CL BLAS DE OTERO 4"; 
+		String value = "*Hispanidad*"; 
 		
 		String paramField = "streetAddress";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 18);
 	}
 	
 	@Test
 	public void test_Busqueda_postalCode() throws Exception
 	{
 
-		String value = "28100"; 
+		String value = "50071"; 
 		
 		String paramField = "postalCode";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 18);
 	}
 	
 	@Test
 	public void test_Busqueda_lugar_portal_id() throws Exception
 	{
 
-		String value = "PORTAL000105"; 
+		String value = "PORTAL000101"; 
 		
 		String paramField = "portalId";
 
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 1);
+		assertTrue(records == 167);
 	}
 	
 	
@@ -274,11 +275,11 @@ public class OrganizacionDataTest
 		String [] paramField= {"portalId"};
 
 		
-		String [] value = {"PORTAL000019"};
+		String [] value = {"PORTAL000101"};
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 3);
+		assertTrue(total == 167);
 	}
 	
 	
@@ -310,7 +311,7 @@ public class OrganizacionDataTest
 
 		long total = TestUtils.extractTotalDistinct(OrganizationController.SEARCH_DISTINCT, paramField, value, mockMvc);
 
-		assertTrue(total == 5);
+		assertTrue(total == 1);
 	}
 	
 

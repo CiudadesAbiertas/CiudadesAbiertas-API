@@ -71,7 +71,7 @@ public class ItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{		
-		String value = "id==IT1";
+		String value = "id==0013496-19-IT1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -80,16 +80,16 @@ public class ItemDataRSQLTest
 	@Test
 	public void test_Busqueda_description() throws Exception
 	{		
-		String value = "description==Artículos*";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 1);
+		String value = "description==''";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 0);
 	}
 	
 	
 	@Test
 	public void test_Busqueda_hasClassification() throws Exception
 	{
-		String value="hasClassification==C1";		
+		String value="hasClassification==98000000";		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}

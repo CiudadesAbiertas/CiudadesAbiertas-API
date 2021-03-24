@@ -266,7 +266,7 @@ public class OrganizationTest {
     
     @Test    
     public void test10_Record() throws Exception {
-    	String id ="B83234799";
+    	String id ="L015029736cfa4d7559501497497a0db85667a132";
 
     	id=Util.encodeURL(id);
     	    	
@@ -278,7 +278,7 @@ public class OrganizationTest {
     
     @Test    
     public void test11_Record_HEAD() throws Exception {
-    	String id ="B83234799";
+    	String id ="L015029736cfa4d7559501497497a0db85667a132";
     	
     	id=Util.encodeURL(id);
     	
@@ -468,7 +468,7 @@ public class OrganizationTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="B83234799";
+    	String id ="L015029736cfa4d7559501497497a0db85667a132";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(OrganizationController.LIST+"/"+id, mockMvc);

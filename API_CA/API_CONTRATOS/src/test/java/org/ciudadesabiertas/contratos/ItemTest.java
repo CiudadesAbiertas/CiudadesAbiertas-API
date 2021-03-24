@@ -406,7 +406,7 @@ public class ItemTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="IT1";
+    	String id ="01-2020-IT1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(ItemController.LIST+"/"+id, mockMvc);

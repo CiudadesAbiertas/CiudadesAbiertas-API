@@ -66,7 +66,7 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonIgnoreProperties({ Constants.IKEY })
 @JacksonXmlRootElement(localName = Constants.RECORD)
 @Rdf(contexto = Context.ESEMPLEO, propiedad = "OfertaEmpleoPublico")
-@PathId(value = "/empleo/oferta-empleo-publica")
+@PathId(value = "/empleo/oferta-empleo-publico")
 public class OfertaEmpleoPublico implements java.io.Serializable, RDFModel {
 
 	@JsonIgnore

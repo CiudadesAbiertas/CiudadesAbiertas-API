@@ -67,9 +67,9 @@ public class AwardDataAgrupadasTest
 		String params="fields=isSupplierFor,sum(valueAmount)&group=isSupplierFor&sort=-sum(valueAmount)";
 		
 
-		JSONArray records = TestUtils.extractRecords(listURL, params, mockMvc);
+		long records = TestUtils.extractTotal(listURL, params, mockMvc);
 		
-		assertTrue(records.size() == 6);
+		assertTrue(records == 147);
 
 	}
 	

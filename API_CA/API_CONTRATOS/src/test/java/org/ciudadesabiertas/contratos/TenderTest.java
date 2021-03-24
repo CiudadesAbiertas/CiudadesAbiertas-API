@@ -457,7 +457,7 @@ public class TenderTest {
     @Test
     public void test27_Record_Formatos_200() throws Exception {    	    	
     	
-    	String id ="TN1";
+    	String id ="ZT03005-2020-TN1";
     	id=Util.encodeURL(id);
     	
     	boolean checkAllFormats=TestUtils.checkFormatURIs(TenderController.LIST+"/"+id, mockMvc);

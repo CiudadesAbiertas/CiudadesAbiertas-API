@@ -70,7 +70,7 @@ public class AwardDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{	
-		String value = "id==AW1";
+		String value = "id==0013496-19-AW1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -80,9 +80,9 @@ public class AwardDataRSQLTest
 	@Test
 	public void test_Busqueda_description() throws Exception
 	{
-		String value = "description=='Ser el empresario que ha presentado la mejor*'";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 4);
+		String value = "description=='Por ser*'";
+		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+		assertTrue(records == 118);
 	}
 	
 	
@@ -90,7 +90,7 @@ public class AwardDataRSQLTest
 	public void test_Busqueda_isSupplierFor() throws Exception
 	{
 
-		String value = "isSupplierFor==A28021350";
+		String value = "isSupplierFor==B22183370ed9d87b8613de80ce19de8bfeba9ca3d";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -98,7 +98,7 @@ public class AwardDataRSQLTest
 	@Test
 	public void test_Busqueda_valueAmount() throws Exception
 	{
-		String value = "valueAmount==26260.0";
+		String value = "valueAmount==14743087.12";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -107,7 +107,7 @@ public class AwardDataRSQLTest
 	public void test_Busqueda_awardDate() throws Exception
 	{
 	
-		String value = "awardDate==2018-12-11";
+		String value = "awardDate==2020-09-11";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 3);
 	}

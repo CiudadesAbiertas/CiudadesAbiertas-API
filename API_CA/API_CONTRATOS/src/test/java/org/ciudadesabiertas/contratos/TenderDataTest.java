@@ -70,7 +70,7 @@ public class TenderDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "TN1";
+		String value = "ZT03005-2020-TN1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -80,7 +80,7 @@ public class TenderDataTest
 	public void test_Busqueda_hasSupplier() throws Exception
 	{
 		String paramField="hasSupplier";		
-		String value = "AW8";
+		String value = "532181-20-AW1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -89,9 +89,9 @@ public class TenderDataTest
 	public void test_Busqueda_Title() throws Exception
 	{
 		String paramField="title";
-		String value = "*Suministro*";
+		String value = "*Contratación*";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 18);
 	}
 	
 
@@ -100,36 +100,36 @@ public class TenderDataTest
 	public void test_Busqueda_mainProcurementCategory() throws Exception
 	{
 		String paramField="mainProcurementCategory";
-		String value = "Goods";
+		String value = "Services";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 83);
 	}
 	
 	@Test
 	public void test_Busqueda_additionalProcurementCategory() throws Exception
 	{
 		String paramField="additionalProcurementCategory";
-		String value = "2233";
+		String value = "";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 0);
 	}
 	
 	@Test
 	public void test_Busqueda_numberOfTenderers() throws Exception
 	{
 		String paramField="numberOfTenderers";
-		String value = "9";
+		String value = "3";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 11);
 	}
 	
 	@Test
 	public void test_Busqueda_procurementMethod() throws Exception
 	{
 		String paramField="procurementMethod";
-		String value = "Open";
+		String value = "Minor contract";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 14);
 	}
 	
 	@Test
@@ -137,8 +137,8 @@ public class TenderDataTest
 	{
 		String paramField="procurementMethodDetails";
 		String value = "Ordinary";
-		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 2);
+		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
+		assertTrue(records == 156);
 	}
 	
 	@Test
@@ -147,23 +147,23 @@ public class TenderDataTest
 		String paramField="tenderStatus";
 		String value = "complete";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 2);
+		assertTrue(records.size() == 94);
 	}
 	
 	@Test
 	public void test_Busqueda_periodDurationInDays() throws Exception
 	{
 		String paramField="periodDurationInDays";
-		String value = "119";
+		String value = "1095";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 28);
 	}
 	
 	@Test
 	public void test_Busqueda_periodEndDate() throws Exception
 	{
 		String paramField="periodEndDate";
-		String value = "2018-10-01";
+		String value = "2021-12-31";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -173,7 +173,7 @@ public class TenderDataTest
 	public void test_Busqueda_periodStartDate() throws Exception
 	{
 		String paramField="periodStartDate";
-		String value = "2019-12-15";
+		String value = "2021-03-15";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -183,7 +183,7 @@ public class TenderDataTest
 	public void test_Busqueda_valueAmount() throws Exception
 	{
 		String paramField="valueAmount";
-		String value = "283162.40";
+		String value = "39792.00";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -194,7 +194,7 @@ public class TenderDataTest
 	@Test
 	public void test_Head_MD5() throws Exception
 	{
-		String value = "TN1";		
+		String value = "ZT03005-2020-TN1";		
 		String paramField="id";
 		String md5_content = TestUtils.extractContentMD5(listURL, paramField, value, mockMvc);		
 		String md5_head = TestUtils.extractHeadMD5(listURL, paramField, value, mockMvc);
@@ -207,7 +207,7 @@ public class TenderDataTest
 		String paramField="field";		
 		String value = "title";
 		long total = TestUtils.extractTotalDistinct(TenderController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 2);
+		assertTrue(total == 190);
 	}
 	
 	

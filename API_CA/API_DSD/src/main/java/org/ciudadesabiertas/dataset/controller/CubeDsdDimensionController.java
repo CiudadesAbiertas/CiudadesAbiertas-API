@@ -198,7 +198,7 @@ public class CubeDsdDimensionController extends GenericController implements Ciu
 			}
 			
 			
-			responseEntity = guardarResult(NO_HAY_SRID, listado, total, new CubeDsdDimensionResult(), request)	;	
+			responseEntity = guardarResult(NO_HAY_SRID, listado, total, getNumPageSize(),  new CubeDsdDimensionResult(), request)	;	
 		} catch (Exception e)
 		{
 			log.error("internal error",e);

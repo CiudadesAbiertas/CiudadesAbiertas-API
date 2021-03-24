@@ -134,8 +134,11 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
     		      strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));
     		      
     		      beanToCsv = beanToCSVGenerator(strategy, outputStream);
-    		     	  
-		     
+      		  }else if (next instanceof String){
+      			strategy = new DynamicMappingStrategy<T>();
+      			strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));
+  		      
+      			beanToCsv = beanToCSVGenerator(strategy, outputStream);
       		  }
 			  recordsTranslated.add(next);
 			}

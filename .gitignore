@@ -220,3 +220,8 @@ API_CA/API_EMPLEO/.project
 API_CA/API_EMPLEO/.gitignore
 API_CA/API_EMPLEO/.classpath
 API_CA/API_EMPLEO/target/
+API_CA/API_DEUDA/src/test/resources/logback.xml
+API_CA/API_DEUDA/.settings/
+API_CA/API_DEUDA/.project
+API_CA/API_DEUDA/.gitignore
+API_CA/API_DEUDA/.classpath

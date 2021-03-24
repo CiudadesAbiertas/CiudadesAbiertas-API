@@ -21,13 +21,13 @@
   <head>   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title th:text="${T(org.ciudadesabiertas.utils.StartVariables).HTML_TITLE} + ' - Listado de tramos - Tráfico'"></title>
+    <title th:text="${T(org.ciudadesabiertas.utils.StartVariables).HTML_TITLE} + ' - Listado de intervalos - Tráfico'"></title>
   </head>
   <body>
   
   <div class="container-fluid">
 	  <div class="row">
-	  	<h1>Tráfico - Listado de una relación observación dispositivo</h1>
+	  	<h1>Tráfico - Listado de intervalos</h1>
 	  </div>
 	  <div class="row">
 	  	<div class="table-responsive table-no-overflow">
@@ -35,8 +35,8 @@
 	        	<thead>
 	        	 <tr>
 	                <th>Id.</th>
-	                <th>traficoObservacionId</th>	
-	                <th>madeBySensor</th>            
+	                <th>hasBeginning</th>	
+	                <th>hasEnd</th>            
 	             </tr>        	
 	        	</thead>
 	        	<tbody>		    
@@ -59,7 +59,7 @@
     <script th:src="@{/resources/js/numeral/numeral.min.js}"></script>
     
     <link rel="stylesheet" type="text/css" th:href="@{/resources/css/ciudadesAbiertas.css}"/>
-    <a id="dataTablesLangLink" th:href="@{/resources/js/datatables/spanish.js}"></a>
+    <a id="dataTablesLangLink" th:href="@{/resources/js/datatables/spanish.json}"></a>
     
     <script th:src="@{/resources/js/common.js}"></script>   
     
@@ -95,8 +95,8 @@
 	
 	<script>	
 	
-var fieldsName=["id","unidadMedida"];
-var fieldsPosition=[0,1,2,3,4];
+var fieldsName=["id","hasBeginning", "hasEnd"];
+var fieldsPosition=[0,1,2];
 var enableCoordenadas=false;	
 
 $(document).ready(function() {
@@ -117,8 +117,8 @@ $(document).ready(function() {
 		"sDom": '<"wrapper"lfptip>',
 		 "columns": [
 	        { "type": "html" },
-	        { "type": "html" },
-	        { "type": "html" }
+	        { "type": "date" },
+	        { "type": "date" }
 	        ],
         "ajax": {
             "url": urlSearch,
@@ -197,12 +197,24 @@ $(document).ready(function() {
             { "data": "id","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 $(nTd).html("<a href='"+recordURL+"/"+oData.id+".html'>"+oData.id+"</a>");            
             }},
-            { "data": "traficoObservacionId","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<a href='"+contextRoot+"trafico/observacion"+"/"+oData.traficoObservacionId+".html'>"+oData.traficoObservacionId+"</a>");            
-            }},
-            { "data": "madeBySensor","fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<a href='"+contextRoot+"trafico/dispositivo-medicion"+"/"+oData.madeBySensor+".html'>"+oData.madeBySensor+"</a>");            
-            }}
+            { "data": "hasBeginning", render:function(data){
+				if (data==null){
+					return "";
+				}
+					theDate=Date.parse(data);
+					
+					return theDate.toString('dd-MM-yyyy');
+				}
+			} ,
+            { "data": "hasEnd", render:function(data){
+				if (data==null){
+					return "";
+				}
+					theDate=Date.parse(data);
+					
+					return theDate.toString('dd-MM-yyyy');
+				}
+			} 
 			
         ]    
     } );

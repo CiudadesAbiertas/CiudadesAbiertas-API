@@ -59,7 +59,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
  */
 public class DynamicMappingStrategy<T> extends ColumnPositionMappingStrategy<T> {
     
-    
+	private static final String HEAD_NAME_DISTINCT = "value";
 
     @Override
     public String[] generateHeader(T bean) throws CsvRequiredFieldEmptyException {
@@ -67,7 +67,16 @@ public class DynamicMappingStrategy<T> extends ColumnPositionMappingStrategy<T> 
 	// Este array es para tener en cuenta los campos que pueden o no existir (x e y)
 	// Siempre en último lugar
 
-	LinkedHashMap<String, Object> beanMap = (LinkedHashMap) bean;
+	LinkedHashMap<String, Object> beanMap = new LinkedHashMap<String, Object>();
+    if (bean instanceof String)
+    {
+      beanMap.put(HEAD_NAME_DISTINCT, bean);
+    }
+    else
+    {
+      beanMap = (LinkedHashMap) bean;
+    }
+	
 
 	String[] header = new String[beanMap.size()];
 
@@ -89,7 +98,15 @@ public class DynamicMappingStrategy<T> extends ColumnPositionMappingStrategy<T> 
 
 	List<String> transmutedBean = new ArrayList<String>();
 
-	LinkedHashMap<String, Object> beanMap = (LinkedHashMap) bean;
+	LinkedHashMap<String, Object> beanMap = new LinkedHashMap<String, Object>();
+    if (bean instanceof String)
+    {
+      beanMap.put(HEAD_NAME_DISTINCT, bean);
+    }
+    else
+    {
+      beanMap = (LinkedHashMap) bean;
+    }
 
 	Set<Entry<String, Object>> entrySet = beanMap.entrySet();
 	Iterator<Entry<String, Object>> iterator = entrySet.iterator();

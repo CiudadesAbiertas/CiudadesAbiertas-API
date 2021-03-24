@@ -153,6 +153,22 @@ public class SwaggerConstants
 	
 	public static final String PARAM_BUS_STOP_POINT_IN_JOURNEY_PATTERN_TEXT = "Objeto (StopPointInJourneyPattern) en formato json necesario para poder realizar la operación";
 	
+	//Deuda Comercial
+	public static final String PARAM_DEUDAORGANIZATION_TEXT= "Objeto (Organización Deuda) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_C_INFORME_MOROSIDAD_TRI_TEXT= "Objeto (DeudaComercialInformeMorosidadTrimestral) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_C_INFORME_PMP_MENSUAL_TEXT= "Objeto (DeudaComercialInformePMPMensual) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_C_INFORME_PMP_MENSUAL_GLOBAL_TEXT= "Objeto (DeudaComercialInformePMPMensualGlobal) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_C_PROPER_INTERVAL_TEXT= "Objeto (DeudaComercialProperInterval) en formato json necesario para poder realizar la operación";
+	//Deuda Financiera
+	public static final String PARAM_DEUDA_F_AMORTIZACION_TEXT= "Objeto (DeudaFinancieraAmortizacion) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_ANUAL_TEXT= "Objeto (DeudaFinancieraAnual) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_CAPITAL_VIVO_TEXT= "Objeto (DeudaFinancieraCapitalVivo) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_CARGA_TEXT= "Objeto (DeudaFinancieraCarga) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_EMISION_TEXT= "Objeto (DeudaFinancieraEmision) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_INSTRUMENTO_FINANCIACION_TEXT= "Objeto (DeudaFinancieraInstrumentoFinanciacion) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_PRESTAMO_TEXT= "Objeto (DeudaFinancieraPrestamo) en formato json necesario para poder realizar la operación";
+	public static final String PARAM_DEUDA_F_REL_PRESTAMO_ENT_TEXT= "Objeto (DeudaFinancieraRelPrestamoEntidad) en formato json necesario para poder realizar la operación";
+	
 
 	//Ejemplos id
 	public static final String PARAM_ID_SECCION_CENSAL = " Ejemplo: 2800601001";
@@ -230,6 +246,23 @@ public class SwaggerConstants
 	public static final String PARAM_ID_BUS_STOP_POINT_IN_JOURNEY_PATTERN = "Ejemplo: 6a2-1918";
 	public static final String PARAM_ID_SUBVENCION_ORGANIZATION = " Ejemplo: ORG0001";
 	
+	
+	//Deuda Comercial	
+	public static final String PARAM_ID_DEUDA_ORGANIZATION = " Ejemplo: 12-28-079-AP-001";
+	public static final String PARAM_ID_DEUDA_C_INFORME_MOROSIDAD_TRI = " Ejemplo: 2019-cuarto-12-28-079-AP-001";
+	public static final String PARAM_ID_DEUDA_C_PMP_MENSUAL = " Ejemplo: 02-50-297-AO-005";
+	public static final String PARAM_ID_DEUDA_C_PMP_MENSUAL_GLOBAL = " Ejemplo: 2020-06-zaragoza";
+	public static final String PARAM_ID_DEUDA_C_PROPER_INTERVAL = " Ejemplo: 2019-cuarto-trimestre";
+	
+	//DEuda Financiera
+	public static final String PARAM_ID_DEUDA_F_AMORTIZACION = " Ejemplo: ES1234567893-c1";
+	public static final String PARAM_ID_DEUDA_F_ANUAL = " Ejemplo: 2019";
+	public static final String PARAM_ID_DEUDA_F_CAPITAL_VIVO = " Ejemplo: 2020-06-30-ES1234567893";
+	public static final String PARAM_ID_DEUDA_F_CARGA = " Ejemplo: 2017-06-21-ES1234567893";
+	public static final String PARAM_ID_DEUDA_F_EMISION = " Ejemplo: ES0201001148";
+	public static final String PARAM_ID_DEUDA_F_INSTRUMENTO_FINANCIACION = " Ejemplo: ES1234567893";
+	public static final String PARAM_ID_DEUDA_F_PRESTAMO = " Ejemplo: ES1234567893";
+	public static final String PARAM_ID_DEUDA_F_REL_PRESTAMO_ENT = " Ejemplo: RELPRES0001";
 	
 	//Ejemplos condicionAdicional
 	public static final String PARAM_COND_ADI_BARRIO = " Ejemplo: distrito = 2800601";

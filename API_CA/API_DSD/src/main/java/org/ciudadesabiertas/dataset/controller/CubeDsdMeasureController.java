@@ -221,7 +221,7 @@ public class CubeDsdMeasureController extends GenericController implements Ciuda
 			
 			long total=cubeDsdMeasureService.rowCountByCubeDsd(getKey(), cubeDsd);			
 			
-			responseEntity = guardarResult(NO_HAY_SRID, listado, total, new CubeDsdMeasureResult(), request)	;	
+			responseEntity = guardarResult(NO_HAY_SRID, listado, total, getNumPageSize(), new CubeDsdMeasureResult(), request)	;	
 		} catch (Exception e)
 		{
 			log.error("internal error",e);
