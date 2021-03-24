@@ -217,7 +217,7 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date", length = 19)
+	@Column(name = "date_carga", length = 19)
 	public Date getDate() {
 		return this.date;
 	}

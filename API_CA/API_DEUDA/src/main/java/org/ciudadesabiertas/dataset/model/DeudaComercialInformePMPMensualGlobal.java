@@ -144,7 +144,7 @@ public class DeudaComercialInformePMPMensualGlobal  implements java.io.Serializa
 	}
 		
 	
-	@Column(name = "pmp_mensual_global", nullable = false, length = 50)
+	@Column(name = "pmp_mensual_global", nullable = false, precision = 12)
 	public BigDecimal getPeriodoMedioPagoMensualGlobal() {
 		return periodoMedioPagoMensualGlobal;
 	}

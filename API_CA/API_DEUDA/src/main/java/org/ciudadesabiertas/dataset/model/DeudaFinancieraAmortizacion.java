@@ -183,7 +183,7 @@ public class DeudaFinancieraAmortizacion implements java.io.Serializable, RDFMod
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date", length = 19)
+	@Column(name = "date_amortizacion", length = 19)
 	public Date getDate() {
 		return this.date;
 	}

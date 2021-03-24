@@ -180,7 +180,7 @@ public class DeudaFinancieraCapitalVivo implements java.io.Serializable, RDFMode
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date", length = 19)
+	@Column(name = "date_capital", length = 19)
 	public Date getDate() {
 		return this.date;
 	}

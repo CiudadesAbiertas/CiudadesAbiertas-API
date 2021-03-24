@@ -73,13 +73,13 @@
         <insert tableName="deuda_c_inf_pmp_mes_global">
             <column name="ikey" value="deudapmpmesg0000000001"/>
             <column name="id" value="2020-06-zaragoza"/>
-            <column name="pmp_mensual_global" value="27.04"/>
+            <column name="pmp_mensual_global" valueNumeric="27.04"/>
             <column name="periodo" value="2020-06"/>
         </insert>
         <insert tableName="deuda_c_inf_pmp_mes_global">
             <column name="ikey" value="deudapmpmesg0000000002"/>
             <column name="id" value="2020-07-zaragoza"/>
-            <column name="pmp_mensual_global" value="57.04"/>
+            <column name="pmp_mensual_global" valueNumeric="57.04"/>
             <column name="periodo" value="2020-07"/>
         </insert>
 		 <rollback/>  
@@ -160,28 +160,28 @@
         <insert tableName="deuda_f_amortizacion">
             <column name="ikey" value="1"/>
             <column name="id" value="ES1234567893-c1"/>
-            <column name="date" valueDate="2016-12-14 00:00:00.0"/>
+            <column name="date_amortizacion" valueDate="2016-12-14 00:00:00.0"/>
             <column name="importe" valueNumeric="39000000.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
         <insert tableName="deuda_f_amortizacion">
             <column name="ikey" value="2"/>
             <column name="id" value="ES1234567893-c2"/>
-            <column name="date" valueDate="2019-12-14 00:00:00.0"/>
+            <column name="date_amortizacion" valueDate="2019-12-14 00:00:00.0"/>
             <column name="importe" valueNumeric="39000000.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
         <insert tableName="deuda_f_amortizacion">
             <column name="ikey" value="3"/>
             <column name="id" value="ES1234567893-c3"/>
-            <column name="date" valueDate="2022-12-14 00:00:00.0"/>
+            <column name="date_amortizacion" valueDate="2022-12-14 00:00:00.0"/>
             <column name="importe" valueNumeric="24000000.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
         <insert tableName="deuda_f_amortizacion">
             <column name="ikey" value="4"/>
             <column name="id" value="ES0201001148-c1"/>
-            <column name="date" valueDate="2036-06-16 00:00:00.0"/>
+            <column name="date_amortizacion" valueDate="2036-06-16 00:00:00.0"/>
             <column name="importe" valueNumeric="300000000.00"/>
             <column name="instrumenta_financiacion" value="ES0201001148"/>
         </insert>
@@ -191,7 +191,7 @@
         <insert tableName="deuda_f_anual">
             <column name="ikey" value="1"/>
             <column name="id" value="2019"/>
-            <column name="date" valueDate="2019-12-31 00:00:00.0"/>
+            <column name="date_anual" valueDate="2019-12-31 00:00:00.0"/>
             <column name="endeudamientoPDE" valueNumeric="2232568750.00"/>
         </insert>
 		<rollback/>  
@@ -200,7 +200,7 @@
         <insert tableName="deuda_f_capital_vivo">
             <column name="ikey" value="1"/>
             <column name="id" value="2020-06-30-ES1234567893"/>
-            <column name="date" valueDate="2020-06-30 00:00:00.0"/>
+            <column name="date_capital" valueDate="2020-06-30 00:00:00.0"/>
             <column name="importe" valueNumeric="24000000.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
@@ -213,7 +213,7 @@
             <column name="anio_fiscal" value="2017"/>
             <column name="gasto_o_pasivo" value="gasto financiero"/>
             <column name="description" value="AMORT.VTO.21/06/17 PTM L/P MDEC-I.C.O.(20,77MM)'06 (2017)"/>
-            <column name="date" valueDate="2017-06-21 00:00:00.0"/>
+            <column name="date_carga" valueDate="2017-06-21 00:00:00.0"/>
             <column name="importe" valueNumeric="692332.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
@@ -223,7 +223,7 @@
             <column name="anio_fiscal" value="2017"/>
             <column name="gasto_o_pasivo" value="gasto financiero"/>
             <column name="description" value="AMORT.VTO.21/12/17 PTM L/P MDEC-I.C.O.(20,77MM)'06 (2017)"/>
-            <column name="date" valueDate="2017-12-21 00:00:00.0"/>
+            <column name="date_carga" valueDate="2017-12-21 00:00:00.0"/>
             <column name="importe" valueNumeric="692332.00"/>
             <column name="instrumenta_financiacion" value="ES1234567893"/>
         </insert>
