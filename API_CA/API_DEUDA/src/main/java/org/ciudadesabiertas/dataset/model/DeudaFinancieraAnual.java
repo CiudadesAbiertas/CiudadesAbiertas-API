@@ -159,7 +159,7 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date", nullable = false, length = 19)
+	@Column(name = "date_anual", nullable = false, length = 19)
 	public Date getDate() {
 		return this.date;
 	}

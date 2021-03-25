@@ -159,31 +159,31 @@ public class OrganizacionDataRSQLTest
 		assertTrue(records.size() == 17);
 	}
 	
-	@Test
-	public void test_Busqueda_contactPoint_faxNumber() throws Exception
-	{
-		
-		String value = "contactPointFaxNumber==''";
-
-		String paramField = "q";
-
-		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(records == 167);
-	}
+//	@Test
+//	public void test_Busqueda_contactPoint_faxNumber() throws Exception
+//	{
+//		
+//		String value = "contactPointFaxNumber==''";
+//
+//		String paramField = "q";
+//
+//		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+//
+//		assertTrue(records == 167);
+//	}
 	
-	@Test
-	public void test_Busqueda_contactPoint_telephone() throws Exception
-	{
-		
-		String value = "contactPointTelephone==''";
-
-		String paramField = "q";
-
-		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-
-		assertTrue(records == 167);
-	}
+//	@Test
+//	public void test_Busqueda_contactPoint_telephone() throws Exception
+//	{
+//		
+//		String value = "contactPointTelephone==''";
+//
+//		String paramField = "q";
+//
+//		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
+//
+//		assertTrue(records == 167);
+//	}
 	
 	@Test
 	public void test_Busqueda_contactPoint_title() throws Exception
