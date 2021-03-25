@@ -80,7 +80,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Concensión de Subvención",description = "Conjunto de operaciones relacionadas con el conjunto de datos concensión de Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención - Concesión"})
+@Api(value="Subvención",description = "Conjunto de operaciones relacionadas con el conjunto de datos Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención"})
 public class SubvencionControllerV1 extends GenericController implements CiudadesAbiertasController
 {
 	public static final String LIST = "/v1/subvencion/subvencion";
