@@ -56,7 +56,7 @@ public class LotRelItem implements java.io.Serializable,  RDFModel {
 	private String id;
 	
 	@ApiModelProperty(value = "Identificador de la Clasificación. Ejemplo: IT1")
-	@CsvBindByPosition(position=21)
+	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="item", format=Constants.STRING_FORMAT)
 	private String item;
 	
