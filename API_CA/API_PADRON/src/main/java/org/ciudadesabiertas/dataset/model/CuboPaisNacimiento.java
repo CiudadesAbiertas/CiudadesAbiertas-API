@@ -166,7 +166,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	@CsvBindByPosition(position=14)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")
-	private int numeroPersonas;
+	private Integer numeroPersonas;
 	
 	public void asignaCubo()
 	{
@@ -180,7 +180,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	
 	public CuboPaisNacimiento()
 	{
-		numeroPersonas=Constants.defaultNumberValue;
+//		numeroPersonas=Constants.defaultNumberValue;
 	}
 
 	public CuboPaisNacimiento(CuboPaisNacimiento copia)
@@ -309,7 +309,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 		this.edadGruposQuinquenales = edadGruposQuinquenales;
 	}
 
-	@Column(name = "distrito_id", nullable = false, length = 50)
+	@Column(name = "distrito_id", length = 50)
 	public String getDistritoId() {
 		return this.distritoId;
 	}
@@ -319,7 +319,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	}
 
 	
-	@Column(name = "distrito_title", nullable = false, length = 400)
+	@Column(name = "distrito_title", length = 400)
 	public String getDistritoTitle() {
 		return this.distritoTitle;
 	}
@@ -328,7 +328,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 		this.distritoTitle = distritoTitle;
 	}
 	
-	@Column(name = "barrio_id", nullable = false, length = 50)
+	@Column(name = "barrio_id", length = 50)
 	public String getBarrioId() {
 		return this.barrioId;
 	}
@@ -337,7 +337,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 		this.barrioId = barrioId;
 	}
 
-	@Column(name = "barrio_title", nullable = false, length = 400)
+	@Column(name = "barrio_title", length = 400)
 	public String getBarrioTitle() {
 		return this.barrioTitle;
 	}
@@ -356,11 +356,11 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	}
 	
 	@Column(name = "numero_personas", nullable = false)
-	public int getNumeroPersonas() {
+	public Integer getNumeroPersonas() {
 		return this.numeroPersonas;
 	}
 
-	public void setNumeroPersonas(int numeroPersonas) {
+	public void setNumeroPersonas(Integer numeroPersonas) {
 		this.numeroPersonas = numeroPersonas;
 	}
 
@@ -384,7 +384,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	}
 	
 	
-	@Column(name = "seccion_censal_id", nullable = false, length = 50)
+	@Column(name = "seccion_censal_id", length = 50)
 	public String getSeccionCensalId() {
 		return this.seccionCensalId;
 	}
@@ -393,7 +393,7 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 		this.seccionCensalId = seccionCensalId;
 	}
 
-	@Column(name = "seccion_censal_title", nullable = false, length = 400)
+	@Column(name = "seccion_censal_title", length = 400)
 	public String getSeccionCensalTitle() {
 		return this.seccionCensalTitle;
 	}

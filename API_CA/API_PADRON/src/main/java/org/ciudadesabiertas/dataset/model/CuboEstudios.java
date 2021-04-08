@@ -110,7 +110,7 @@ public class CuboEstudios implements java.io.Serializable, RDFModel, DataCubeMod
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")
-	private int numeroPersonas;
+	private Integer numeroPersonas;
 	
 	public void asignaCubo()
 	{
@@ -124,7 +124,7 @@ public class CuboEstudios implements java.io.Serializable, RDFModel, DataCubeMod
 	
 	public CuboEstudios()
 	{
-		numeroPersonas=Constants.defaultNumberValue;
+//		numeroPersonas=Constants.defaultNumberValue;
 	}
 
 	public CuboEstudios(CuboEstudios copia)
@@ -206,11 +206,11 @@ public class CuboEstudios implements java.io.Serializable, RDFModel, DataCubeMod
 	}
 	
 	@Column(name = "numero_personas", nullable = false)
-	public int getNumeroPersonas() {
+	public Integer getNumeroPersonas() {
 		return this.numeroPersonas;
 	}
 
-	public void setNumeroPersonas(int numeroPersonas) {
+	public void setNumeroPersonas(Integer numeroPersonas) {
 		this.numeroPersonas = numeroPersonas;
 	}
 

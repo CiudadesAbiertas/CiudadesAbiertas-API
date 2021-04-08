@@ -1871,6 +1871,47 @@ public class Util
 		return semantic;
 	}
 	
+	public static boolean isCsvPetition(HttpServletRequest request)
+	{	
+		boolean isCSV=false;
+		String red=Util.getFullURL(request);
+		
+		URL aURL = null;
+		try
+		{
+			aURL = new URL(red);
+		} 
+		catch (MalformedURLException e1)
+		{
+			log.error("Error generating URL from request",e1);
+			return isCSV;
+		}
+		
+		String acceptHeader=request.getHeader("ACCEPT");		
+		if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==false))
+		{	
+			return isCSV;
+		}
+		else if ((aURL.getPath().contains(".")==false)&&(Util.validValue(acceptHeader)==true)&&(acceptHeader.equals("*/*")==false))
+		{					
+			
+			if (acceptHeader.contains(Constants.MEDIA_TYPE_CSV))
+			{
+				isCSV=true;
+			}								
+		}
+		else if (aURL.getPath().contains("."))
+		{
+			String ext=getExtensionUri(aURL.getPath());
+			if (ext.contains("csv"))
+			{
+				isCSV=true;
+			}					
+		}
+		
+		return isCSV;
+	}
+	
 	public static boolean isTraficoIntegration() {
 		String nameControler="TraficoTramoController";
 		return existController(nameControler);

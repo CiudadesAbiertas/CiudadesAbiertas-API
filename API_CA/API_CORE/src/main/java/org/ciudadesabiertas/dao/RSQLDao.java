@@ -77,6 +77,14 @@ public class RSQLDao  {
 	
 	@Autowired
 	protected Environment env;	
+	
+	private static Map<String,String>  arraysFieldExpression=new HashMap<String, String>();
+	
+	static
+	{
+		arraysFieldExpression.put("clasificacionEconomicaGastoSimple in","generatedAlias0.clasificacionEconomicaGastoSimple");
+		arraysFieldExpression.put("clasificacionProgramaSimple in","generatedAlias0.clasificacionProgramaSimple");
+	}
 
 	/*
 	public EntityManager getEntityManager(String key)
@@ -171,8 +179,8 @@ public class RSQLDao  {
     		Set<ComparisonOperator> operators = RSQLOperators.defaultOperators();  
     		
     		rootNode = new RSQLParser(operators).parse(queryString);
-    		    		  		
-    		query = rootNode.accept(visitor, entityManager);
+    		    	
+  		  	query = rootNode.accept(visitor, entityManager);
     		
     		 if (query.getRoots().size()>0)
 	         {
@@ -233,10 +241,10 @@ public class RSQLDao  {
 	    			log.info("translated SQL: "+sqlString);
 	    		}
     		}
-    		javax.persistence.Query createQuery = entityManagerPersistence.createQuery(sqlString);
     		
-    		Map<String,Object> parameterMap=new HashMap<String,Object>();
     		Set<Parameter<?>> namedParameters = unwrapQuery.getParameters();
+    		Map<String,Object> parameterMap=new HashMap<String,Object>();
+    		
     		for (Parameter<?> p:namedParameters)
     		{
     			
@@ -254,11 +262,59 @@ public class RSQLDao  {
     			
     			log.info("param "+p.getName()+":"+parameterValue);
     			parameterMap.put(p.getName(), parameterValue);
-    		}    
+    		}   
+    		
+    		//Tratamiento para campos que son arrays de String
+    		for (String arrayFieldKey:arraysFieldExpression.keySet())
+    		{
+	    		if (sqlString.contains(arrayFieldKey))
+	    		{
+	    			String[] split = sqlString.split(arrayFieldKey);
+	    			String columnName=arraysFieldExpression.get(arrayFieldKey);
+	    			String queryTranslated="";
+	    			for (int i=1;i<split.length;i++)
+	    			{
+	    				String condition=split[i];  
+	    				String params=condition.substring(condition.indexOf("(")+1);
+	    				params=params.substring(0,params.indexOf(")"));	
+	    				String[] paramsSplitted =params.split(",");
+	    				
+	    				String toReplace=columnName+" in ("+params+")";
+	    				for (String param:paramsSplitted)
+	    				{    					
+	    					param=param.replace(":", "");
+	    					param=param.trim();
+	    					String sqlRestriction="";
+	    					String paramValue=(String) parameterMap.get(param);
+	    					
+	    					sqlRestriction="( "+columnName+" like '"+paramValue+"' or ";
+							sqlRestriction+=columnName+" like '"+paramValue+",%' or ";
+							sqlRestriction+=columnName+" like '%,"+paramValue+",%' or ";
+							sqlRestriction+=columnName+" like '%,"+paramValue+"' )";		
+							if (queryTranslated.equals(""))
+							{
+								queryTranslated+=sqlRestriction;
+							}else {
+								queryTranslated+=" and "+sqlRestriction;
+							}
+	    				}  				
+	    				sqlString=sqlString.replace(toReplace, queryTranslated);
+	    			}
+	    		}
+    		}
+    		
+    		
+    		javax.persistence.Query createQuery = entityManagerPersistence.createQuery(sqlString);
+    		
+    		 
     	       		
     		for (Map.Entry<String, Object> entry : parameterMap.entrySet()) {
     		    //System.out.println(entry.getKey() + "/" + entry.getValue());
-    		    createQuery.setParameter(entry.getKey(), entry.getValue());
+    			
+    			if (sqlString.contains(":"+entry.getKey()))
+    			{
+    				createQuery.setParameter(entry.getKey(), entry.getValue());
+    			}
     		}
     		
     		total = createQuery.getResultList().size();

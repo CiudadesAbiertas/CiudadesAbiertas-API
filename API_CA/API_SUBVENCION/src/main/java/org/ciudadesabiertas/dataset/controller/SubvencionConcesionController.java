@@ -17,6 +17,7 @@
 package org.ciudadesabiertas.dataset.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -26,22 +27,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ciudadesabiertas.controller.CiudadesAbiertasController;
 import org.ciudadesabiertas.controller.GenericController;
-import org.ciudadesabiertas.dataset.model.SubvencionConvocatoria;
 import org.ciudadesabiertas.dataset.model.SubvencionConcesion;
+import org.ciudadesabiertas.dataset.model.SubvencionConvocatoria;
 import org.ciudadesabiertas.dataset.model.SubvencionOrganization;
+import org.ciudadesabiertas.dataset.utils.SubvencionConcesionResult;
 import org.ciudadesabiertas.dataset.utils.SubvencionConcesionSearch;
 import org.ciudadesabiertas.dataset.utils.SubvencionConstants;
-import org.ciudadesabiertas.dataset.utils.SubvencionOrganizationResult;
-import org.ciudadesabiertas.dataset.utils.SubvencionOrganizationSearch;
-import org.ciudadesabiertas.dataset.utils.SubvencionConvocatoriaSearch;
-import org.ciudadesabiertas.exception.DAOException;
 import org.ciudadesabiertas.service.DatasetService;
 import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.DistinctSearch;
+import org.ciudadesabiertas.utils.GroupBySearch;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.RequestType;
+import org.ciudadesabiertas.utils.Result;
 import org.ciudadesabiertas.utils.ResultError;
 import org.ciudadesabiertas.utils.SecurityURL;
+import org.ciudadesabiertas.utils.StartVariables;
 import org.ciudadesabiertas.utils.SwaggerConstants;
 import org.ciudadesabiertas.utils.Util;
 import org.slf4j.Logger;
@@ -49,6 +50,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -80,53 +82,86 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Organización de Subvenciones",description = "Conjunto de operaciones relacionadas con el conjunto de datos Organización de Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención - Organización"})
-public class SubvencionOrganizationController extends GenericController implements CiudadesAbiertasController 
+@Api(value="Concensión de Subvención",description = "Conjunto de operaciones relacionadas con el conjunto de datos concensión de Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención - Concesión"})
+public class SubvencionConcesionController extends GenericController implements CiudadesAbiertasController 
 {
-	public static final String LIST = "/subvencion/organization";
+	public static final String LIST = "/subvencion/concesion";
 	
 	public static final String SEARCH_DISTINCT = LIST+"/distinct";
 	
-	public static final String RECORD = LIST+"/{id}";
+	public static final String RECORD = LIST+ "/{id}";
 	
 	public static final String TRANSFORM = LIST+"/transform";
 	
-	public static final String ADD = LIST;
-	public static final String UPDATE = LIST+"/{id}";
-	public static final String DELETE = LIST+"/{id}";
+	public static final String SEARCHGROUP = LIST+"/groupBy";
 	
-	public static final String MODEL_VIEW_LIST = "subvencion/organization/list";
-	public static final String MODEL_VIEW_ID = "subvencion/organization/id";
+	public static final String ADD = LIST;
+	public static final String UPDATE = RECORD;
+	public static final String DELETE = RECORD;
+	
+	public static final String MODEL_VIEW_LIST = "subvencion/concesion/list";
+	public static final String MODEL_VIEW_ID = "subvencion/concesion/id";
 	
 	private static List<RequestType> listRequestType = new ArrayList<RequestType>();
 	
-	private static String nameController = SubvencionOrganizationController.class.getName();
+	private static String nameController = SubvencionConcesionController.class.getName();
 	
 	//Carga por defecto de las peticiones
 	static {
-		listRequestType.add(new RequestType("Subvencion_Organization_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("Subvencion_Organization_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
-		listRequestType.add(new RequestType("Subvencion_Organization_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_LIST", LIST, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_RECORD", RECORD, HttpMethod.GET,Constants.NO_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
 		
-		listRequestType.add(new RequestType("Subvencion_Organization_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("Subvencion_Organization_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
-		listRequestType.add(new RequestType("Subvencion_Organization_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_ADD", ADD, HttpMethod.POST,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
+		listRequestType.add(new RequestType("Subvencion_Concension_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
 		
 	}
 	
-	public static List<String> availableFields=Util.extractPropertiesFromBean(SubvencionOrganization.class);
+	public static List<String> availableFields=Util.extractPropertiesFromBean(SubvencionConcesion.class);
 
-	private static final Logger log = LoggerFactory.getLogger(SubvencionOrganizationController.class);
+	private static final Logger log = LoggerFactory.getLogger(SubvencionConcesionController.class);
 		
-
-	@Autowired
-	protected DatasetService<SubvencionOrganization> service;
+	public static boolean activeFK = StartVariables.activeFK;
 	
 	@Autowired
-	protected DatasetService<SubvencionConvocatoria> subvencionService;	
-
+	protected DatasetService<SubvencionConcesion> service;
+	
 	@Autowired
-	protected DatasetService<SubvencionConcesion> beneficiarioService;
+	protected DatasetService<SubvencionOrganization> organizacionService;
+	
+	@Autowired
+	protected DatasetService<SubvencionConvocatoria> subvencionService;
+	
+	@SuppressWarnings("unchecked")
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA_AGRUPADA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_AGRUPADA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiResponses({
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO_AGRUPADA,  response=SubvencionConcesionResult.class),
+	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
+	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
+	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
+	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
+	   })
+	@RequestMapping(value= {SEARCHGROUP, SubvencionConstants.VERSION_2+SEARCHGROUP}, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> groupBySearch(HttpServletRequest request, 
+															GroupBySearch groupBySearch,
+				@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
+				@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
+					@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
+	{
+
+		log.info("[search][" + SEARCHGROUP + "]");
+
+		log.debug("[parmam][search:" + groupBySearch + "] ");
+
+
+		return groupBySearch(request, groupBySearch, page, pageSize,getKey(),NO_HAY_SRID, SEARCHGROUP, new SubvencionConcesion(), new ObjectResult(),  service);
+
+	}
+	
+
+
 	
 	@SuppressWarnings("unchecked")
 	@ApiOperation(value = SwaggerConstants.BUSQUEDA_DISTINCT, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_DISTINCT, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_GROUPBY, authorizations = { @Authorization(value=Constants.APIKEY) })
@@ -139,10 +174,8 @@ public class SubvencionOrganizationController extends GenericController implemen
 	   })
 	@RequestMapping(value= {SEARCH_DISTINCT, SubvencionConstants.VERSION_2+SEARCH_DISTINCT}, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> distinctSearch(HttpServletRequest request, DistinctSearch search,															
-			@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) 
-	    		@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize)
+															@RequestParam(value = Constants.PAGE, defaultValue = Constants.defaultPage+"", required = false) String page,
+															@RequestParam(value = Constants.PAGESIZE, defaultValue = Constants.defaultGroupByPageSize+"", required = false) String pageSize)
 	{
 
 		log.info("[distinctSearch][" + SEARCH_DISTINCT + "]");
@@ -150,7 +183,7 @@ public class SubvencionOrganizationController extends GenericController implemen
 		log.debug("[parmam][field:" + search.getField() + "] ");
 		
 
-		return distinctSearch(request, search, availableFields, page, pageSize,getKey(),NO_HAY_SRID, SEARCH_DISTINCT, new SubvencionOrganization(), new ObjectResult(),  service);
+		return distinctSearch(request, search, availableFields, page, pageSize,getKey(),NO_HAY_SRID, SEARCH_DISTINCT, new SubvencionConcesion(), new ObjectResult(),  service);
 
 	}
 	
@@ -164,7 +197,7 @@ public class SubvencionOrganizationController extends GenericController implemen
 	   })
 	@RequestMapping(value= {LIST+Constants.EXT_HTML, SubvencionConstants.VERSION_2+LIST+Constants.EXT_HTML}, method = RequestMethod.GET)	
 	public ModelAndView listHTML(
-			ModelAndView mv, HttpServletRequest request,SubvencionOrganizationSearch search, 
+			ModelAndView mv, HttpServletRequest request,SubvencionConcesionSearch search, 
 			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ,
 			@RequestParam(value = Constants.PAGE, defaultValue = "", required = false) String page, 
 			@RequestParam(value = Constants.PAGESIZE, defaultValue ="", required = false) String pageSize, 
@@ -202,43 +235,44 @@ public class SubvencionOrganizationController extends GenericController implemen
 	
 	
 	@SuppressWarnings({ "unchecked"})
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {LIST,  SubvencionConstants.VERSION_2+LIST}, method = {RequestMethod.GET})	
-	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, SubvencionOrganizationSearch search, 
-		@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,
-		@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false)
-			@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ,
-		@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page, 
-		@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
-		@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
-			@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-		@RequestHeader HttpHeaders headersRequest)
+	public @ResponseBody ResponseEntity<?> list(HttpServletRequest request, SubvencionConcesionSearch search, 
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+						
+			@RequestHeader HttpHeaders headersRequest)
 	{
 
 		log.info("[list][" + LIST + "]");
 
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [fields:" + fields + "] [rsqlQ:" + rsqlQ + "] [sort:" + sort + "]");
 		
-		RSQLVisitor<CriteriaQuery<SubvencionOrganization>, EntityManager> visitor = new JpaCriteriaQueryVisitor<SubvencionOrganization>();
-		ResponseEntity<SubvencionOrganization> list= list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new SubvencionOrganization(), new SubvencionOrganizationResult(), 
-					 availableFields, getKey(), visitor,service);
-		return integraCallejero(list, request);
+		RSQLVisitor<CriteriaQuery<SubvencionConcesion>, EntityManager> visitor = new JpaCriteriaQueryVisitor<SubvencionConcesion>();
+		
+		ResponseEntity<SubvencionConcesion> list =list(request, search, fields, rsqlQ, page, pageSize, sort, NO_HAY_SRID, LIST,new SubvencionConcesion(), new SubvencionConcesionResult(), 
+			 availableFields, getKey(), visitor,service);
+		
+		list=configureDataArrays(list, request);
+		
+		return list;
+		
 	}
 
 
 	
 	
 
-	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.LISTADO_Y_BUSQUEDA, notes = SwaggerConstants.DESCRIPCION_BUSQUEDA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
 	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_BUSQUEDA_O_LISTADO),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
@@ -246,18 +280,14 @@ public class SubvencionOrganizationController extends GenericController implemen
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {LIST,  SubvencionConstants.VERSION_2+LIST}, method = {RequestMethod.HEAD})	
-	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, SubvencionOrganizationSearch search, 
-			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_FIELDS) String fields,
-			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_Q) String rsqlQ, 
-			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_PAGE) String page,
-			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_PAGESIZE) String pageSize,
-			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) 
-				@ApiParam(value=SwaggerConstants.PARAM_SORT) String sort,
-			@RequestHeader HttpHeaders headersRequest) {
+	public @ResponseBody ResponseEntity<?> listHead(HttpServletRequest request, SubvencionConcesionSearch search, 
+			@RequestParam(value = Constants.FIELDS, defaultValue = "", required = false) String fields, 
+			@RequestParam(value = Constants.RSQL_Q, defaultValue = "", required = false) String rsqlQ, 
+			@RequestParam(value = Constants.PAGE, defaultValue = "1", required = false) String page, 
+			@RequestParam(value = Constants.PAGESIZE, defaultValue = "", required = false) String pageSize,
+			@RequestParam(value = Constants.SORT, defaultValue = Constants.IDENTIFICADOR, required = false) String sort,
+			@RequestHeader HttpHeaders headersRequest)
+	{
 
 		log.info("[listHead][" + LIST + "]");		
 		return list(request, search, fields, rsqlQ, page, pageSize, sort, headersRequest);
@@ -268,30 +298,29 @@ public class SubvencionOrganizationController extends GenericController implemen
 	@RequestMapping(value={ADD,  SubvencionConstants.VERSION_2+ADD}, method = RequestMethod.POST, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST)
 	@ApiOperation(value = SwaggerConstants.INSERCION, notes = SwaggerConstants.DESCRIPCION_INSERCION, produces = SwaggerConstants.FORMATOS_ADD_RESPONSE, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 201, message = SwaggerConstants.RESULTADO_DE_INSERCION,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 201, message = SwaggerConstants.RESULTADO_DE_INSERCION,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> add(			
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_ORGANIZATION_TEXT) 			
-			@RequestBody SubvencionOrganization obj 
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_TEXT) 			
+			@RequestBody SubvencionConcesion obj 
 			)
 	{
-
 		log.info("[add][" + ADD + "]");
-
 		log.debug("[parmam][dato:" + obj + "] ");		
 		
-		return add(obj, nameController, ADD, service,getKey());
-
+		List<String> errores = checkClavesExternas(obj);	
+		
+		return add(obj, nameController, ADD, service,getKey(), errores);
 	}
 	
 	@SuppressWarnings({ "unchecked" })
 	@ApiOperation(value = SwaggerConstants.MODIFICACION, notes = SwaggerConstants.DESCRIPCION_MODIFICACION, produces = SwaggerConstants.FORMATOS_ADD_RESPONSE, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 201, message = SwaggerConstants.RESULTADO_DE_MODIFICACION,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 201, message = SwaggerConstants.RESULTADO_DE_MODIFICACION,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
@@ -299,23 +328,23 @@ public class SubvencionOrganizationController extends GenericController implemen
 	   })
 	@RequestMapping(value={UPDATE,  SubvencionConstants.VERSION_2+UPDATE}, method = RequestMethod.PUT, consumes="application/json;charset=UTF-8")
 	public @ResponseBody ResponseEntity<?> update(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_SUBVENCION_ORGANIZATION) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
 			@PathVariable(Constants.IDENTIFICADOR) String id, 
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_ORGANIZATION_TEXT) 
-			@RequestBody SubvencionOrganization obj)
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_TEXT) 
+			@RequestBody SubvencionConcesion obj)
 	{
-
 		log.info("[update][" + UPDATE + "]");
-
-		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] ");		
-					
-		return update(id, obj, nameController, UPDATE, service,getKey());
+		log.debug("[parmam][id:" + id + "] [dato:" + obj + "] ");	
+		
+		List<String> errores = checkClavesExternas(obj);	
+		
+		return update(id, obj, nameController, UPDATE, service,getKey(), errores);
 	}
 	
 	@SuppressWarnings({ "unchecked" })
 	@ApiOperation(value = SwaggerConstants.DELETE, notes = SwaggerConstants.DESCRIPCION_DELETE, produces = SwaggerConstants.FORMATOS_ADD_RESPONSE, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_DELETE,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_DELETE,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
@@ -323,57 +352,53 @@ public class SubvencionOrganizationController extends GenericController implemen
 	   })
 	@RequestMapping(value={DELETE,  SubvencionConstants.VERSION_2+DELETE}, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<?> delete(
-			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_SUBVENCION_ORGANIZATION) 
+			@ApiParam(required = true, name = Constants.IDENTIFICADOR, value = SwaggerConstants.PARAM_ID_TEXT) 
 			@PathVariable(Constants.IDENTIFICADOR) String id)
 	{
 
 		log.info("[delete][" + DELETE + "]");
 
-		log.debug("[parmam][id:" + id + "] ");
+		log.debug("[parmam][id:" + id + "] ");			
 		
-		
-		List<String> erroresFK = checkClavesExternas(id);
-		
-		return delete(id, new SubvencionOrganization(), nameController, DELETE, service,getKey(),erroresFK);
+		return delete(id, new SubvencionConcesion(), nameController, DELETE, service,getKey());
 	}
 		
 
 	@SuppressWarnings({ "unchecked" })
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_FULL, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  SubvencionConstants.VERSION_2+RECORD}, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, 
-			@PathVariable 
-			@ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_SUBVENCION_ORGANIZATION) String id)
+	public @ResponseBody ResponseEntity<?> record(HttpServletRequest request, @PathVariable String id)
 	{
 
 		log.info("[record][" + RECORD + "]");
 
 		log.debug("[parmam][id:" + id + "]");
-				
-		ResponseEntity<SubvencionOrganization> record = record(request, id, new SubvencionOrganization(),new SubvencionOrganizationResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
 		
-		return integraCallejero(record, request);
+		ResponseEntity<SubvencionConcesion> record = record(request, id, new SubvencionConcesion(),new SubvencionConcesionResult(), NO_HAY_SRID, nameController, RECORD, service,getKey());
+	
+		record=configureDataArrays(record, request);
+		
+		return record;
+
 	}
 	
-	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.FICHA, notes = SwaggerConstants.DESCRIPCION_FICHA_HEAD, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 401, message = SwaggerConstants.NO_AUTORIZADO,  response=ResultError.class),
 	            @ApiResponse(code = 409, message = SwaggerConstants.EL_RECURSO_YA_EXISTE,  response=ResultError.class),
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	@RequestMapping(value= {RECORD,  SubvencionConstants.VERSION_2+RECORD}, method =  RequestMethod.HEAD)
-	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, 
-			@PathVariable 
-			@ApiParam(required = true, value=SwaggerConstants.PARAM_ID+SwaggerConstants.PARAM_ID_SUBVENCION_ORGANIZATION) String id)
+	public @ResponseBody ResponseEntity<?> recordHead(HttpServletRequest request, @PathVariable String id)
 	{
 
 		log.info("[recordHead][" + RECORD + "]");
@@ -383,14 +408,14 @@ public class SubvencionOrganizationController extends GenericController implemen
 
 	@SuppressWarnings({ "unchecked" })
 	@RequestMapping(value={TRANSFORM,  SubvencionConstants.VERSION_2+TRANSFORM}, method = RequestMethod.POST, consumes=SwaggerConstants.FORMATOS_ADD_REQUEST)
-	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML_WITHOUT_GEO, authorizations = { @Authorization(value=Constants.APIKEY) })
+	@ApiOperation(value = SwaggerConstants.TRANSFORMACION, notes = SwaggerConstants.DESCRIPCION_TRANSFORMACION, produces = SwaggerConstants.FORMATOS_CONSULTA_RESPONSE_NO_HTML, authorizations = { @Authorization(value=Constants.APIKEY) })
 	@ApiResponses({
-	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionOrganizationResult.class),
+	            @ApiResponse(code = 200, message = SwaggerConstants.RESULTADO_DE_FICHA,  response=SubvencionConcesionResult.class),
 	            @ApiResponse(code = 400, message = SwaggerConstants.PETICION_INCORRECTA,  response=ResultError.class),
 	            @ApiResponse(code = 500, message = SwaggerConstants.ERROR_INTERNO,  response=ResultError.class)
 	   })
 	public @ResponseBody ResponseEntity<?> transform(
-			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_ORGANIZATION_TEXT) @RequestBody SubvencionOrganization obj) {
+			@ApiParam(required = true, name = Constants.OBJETO, value = SwaggerConstants.PARAM_SUBVENCION_TEXT) @RequestBody SubvencionConcesion obj) {
 
 		log.info("[transform]");
 
@@ -435,42 +460,79 @@ public class SubvencionOrganizationController extends GenericController implemen
 	}
 
 	
-	private List<String> checkClavesExternas(String id) {
-		
-		List<String> errors=new ArrayList<String>();
-		
-		if (activeFK==false)
-		{
-			return errors;
-		}
-		
-		try
-		{		
-			//1 FK Subvencion
-			SubvencionConvocatoriaSearch subvencionSearch=new SubvencionConvocatoriaSearch();
-			subvencionSearch.setOrganizationId(id);
-			long rowcount = subvencionService.rowcount(getKey(), SubvencionConvocatoria.class, subvencionSearch);
-			if (rowcount>0)			
-			{
-				errors.add("The organization '"+id+"' is used in "+rowcount+" Subvencion");		
-			}
-			
-			//2 FK Beneficiario
-			SubvencionConcesionSearch beneficiarioSearch=new SubvencionConcesionSearch();
-			beneficiarioSearch.setConvocatoria(id);
-			rowcount = beneficiarioService.rowcount(getKey(), SubvencionConcesion.class, beneficiarioSearch);
-			if (rowcount>0)			
-			{
-				errors.add("The organization '"+id+"' is used in "+ rowcount+" Beneficiario");		
-			}	
 	
 
-		}
-		catch (DAOException e)
-		{
-			errors.add("Internal Error");		
-		}
-		
-		return errors;
+private List<String> checkClavesExternas(SubvencionConcesion objCheck) {
+	List<String> errores = new ArrayList<String>();
+	
+	String organizationId=objCheck.getBeneficiario();
+	String subvencionId=objCheck.getConvocatoria();
+				
+	if (activeFK && Util.validValue(organizationId)) {	  	
+	  	  SubvencionOrganization findById = organizacionService.findById(getKey(), SubvencionOrganization.class, organizationId);
+	  	  if (findById == null) {
+			errores.add("Organization in tieneBeneficiario not exists in entity: " + organizationId);
+	  	  }	  	
 	}
+	
+	if (activeFK && Util.validValue(subvencionId)) {	  	
+  	  	SubvencionConvocatoria findById = subvencionService.findById(getKey(), SubvencionConvocatoria.class, subvencionId);
+  	  	if (findById == null) {
+  	  	  errores.add("Subvencion in tieneSubvencion not exists in entity: " + subvencionId);
+  	  	}  	
+	}
+	
+	return errores;
+}
+
+
+@SuppressWarnings("unchecked")
+private ResponseEntity<SubvencionConcesion> configureDataArrays(ResponseEntity<SubvencionConcesion> list, HttpServletRequest request) {
+
+	if (list != null) {		
+		
+		HttpStatus statusCode = list.getStatusCode();
+
+		if (statusCode.is2xxSuccessful()) {
+			
+				boolean isCSV = Util.isCsvPetition(request);
+
+				Object body = list.getBody();
+
+				Result<SubvencionConcesion> result = ((Result<SubvencionConcesion>) body);
+
+				List<SubvencionConcesion> records = result.getRecords();
+				
+				if (isCSV)
+				{
+					for (SubvencionConcesion subvencion : records) {							
+						if ( Util.validValue(subvencion.getClasificacionEconomicaGastoSimple())) {
+							subvencion.setClasificacionEconomicaGasto(Arrays.asList(subvencion.getClasificacionEconomicaGastoSimple()));
+						}							
+						if ( Util.validValue(subvencion.getClasificacionProgramaSimple())) {
+							subvencion.setClasificacionPrograma(Arrays.asList(subvencion.getClasificacionProgramaSimple()));
+						}
+					}
+				}
+				else
+				{
+					for (SubvencionConcesion subvencion : records) {							
+						if ( Util.validValue(subvencion.getClasificacionEconomicaGastoSimple())) {
+							String[] split = subvencion.getClasificacionEconomicaGastoSimple().split(",");
+							subvencion.setClasificacionEconomicaGasto(Arrays.asList(split));
+						}							
+						if ( Util.validValue(subvencion.getClasificacionProgramaSimple()) ) {
+							String[] split = subvencion.getClasificacionProgramaSimple().split(",");
+							subvencion.setClasificacionPrograma(Arrays.asList(split));
+						}
+					}
+				}
+			}
+		}
+
+		
+
+	return list;
+}
+	
 }

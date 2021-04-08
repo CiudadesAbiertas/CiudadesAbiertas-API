@@ -94,6 +94,14 @@ public class GenericController<T> {
 	
 	public static boolean activeFK = StartVariables.activeFK;
 	
+	private static List<String> classesWithArrayfields=new ArrayList<String>();
+	
+	static
+	{
+		classesWithArrayfields.add("SubvencionConcesion");
+		classesWithArrayfields.add("SubvencionConvocatoria");
+	}
+	
 	
 	/**
 	 * Para generar el registro HTML
@@ -1001,6 +1009,8 @@ public class GenericController<T> {
 		log.info("[list][" + operacion + "]");
 
 		log.debug("[parmam] [page:" + page + "] [pageSize:" + pageSize + "] [sort:" + sort + "]");
+		
+		String className=objModel.getClass().getSimpleName();
 				
 		//Verifico la negociación de contenidos
 		ResponseEntity<?> negotiationResponseEntity=Util.negotiationContent(request);
@@ -1113,6 +1123,15 @@ public class GenericController<T> {
 				if (rsqlQ.contains(Constants.FIELD_URL)) {										
 					rsqlQ = Util.decodeURL(rsqlQ);	
 				}
+				
+				
+				if (classesWithArrayfields.contains(className))
+				{
+					//Control de campos que son Arrays
+					rsqlQ=rsqlQ.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+					rsqlQ=rsqlQ.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");
+				}
+				
 				
 				
 				Result<T> result =dsService.searchByRSQLQuery(visitor,key, rsqlQ, numPage, numPageSize, orders);				
@@ -1670,8 +1689,8 @@ public class GenericController<T> {
 			for (String obj : listado) {
 				if (obj.startsWith(Constants.SORT_DESC)) {
 					result.add(new Sort(obj.substring(1, obj.length()), true));
-
-				} else if (obj.startsWith(Constants.SORT_ASC)) {
+				//Spring deja el + como ' '	
+				} else if (obj.startsWith(Constants.SORT_ASC) || obj.startsWith(" ")) {
 					result.add(new Sort(obj.substring(1, obj.length()), false));
 				} else {
 					result.add(new Sort(obj, false));

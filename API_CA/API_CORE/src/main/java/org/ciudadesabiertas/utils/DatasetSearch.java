@@ -18,7 +18,9 @@ package org.ciudadesabiertas.utils;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -39,7 +41,7 @@ public interface DatasetSearch<T>  {
 
 	static List<String> numbers=new ArrayList<String>(); 
 	
-	
+	static Map<String,String>  arraysFieldColumnNameMap=new HashMap<String, String>();
 	
 	default List<Criterion> obtenerCriterios (String driver, String key) {
 		
@@ -55,6 +57,11 @@ public interface DatasetSearch<T>  {
 			numbers.add("float");	
 		}
 		
+		if (arraysFieldColumnNameMap.size()==0 )
+		{
+			arraysFieldColumnNameMap.put("clasificacionPrograma","clasificacion_programa");
+			arraysFieldColumnNameMap.put("clasificacionEconomicaGasto","clasificacion_eco_gasto");
+		}
 		
 		if (listData!=null && !listData.isEmpty()) {
 			
@@ -80,7 +87,32 @@ public interface DatasetSearch<T>  {
 						{
 							Criterion c1 = Restrictions.eq(obj.getFieldName(),obj.getValue());
 							condiciones.add(c1);
-						}						
+						}	
+					}else if (Constants.TYPE_LIST_CLASS.equals(obj.getTypeName())) {
+						
+										
+						if (arraysFieldColumnNameMap.containsKey(obj.getFieldName()))
+						{
+							String columnName=arraysFieldColumnNameMap.get(obj.getFieldName());
+							List<String> values=(List<String>) obj.getValue();	
+							
+							for (String value:values)
+							{
+								String sqlRestriction="( "+columnName+" like '"+value+"' or ";
+								sqlRestriction+=columnName+" like '"+value+",%' or ";
+								sqlRestriction+=columnName+" like '%,"+value+",%' or ";
+								sqlRestriction+=columnName+" like '%,"+value+"' )";								
+								
+								Criterion c1 =Restrictions.sqlRestriction(sqlRestriction);
+								condiciones.add(c1);
+							}
+						}
+						else
+						{
+							Criterion c1 =Restrictions.in (obj.getFieldName(), obj.getValue());
+							condiciones.add(c1);
+						}
+						
 					}else {						
 						Criterion c1 = Restrictions.eq(obj.getFieldName(),obj.getValue());
 						condiciones.add(c1);

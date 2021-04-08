@@ -61,7 +61,9 @@ public class CuboIndicadoresUtilTest
 			"      \"porcentajePoblacionJoven\": 21,\n" + 
 			"      \"porcentajePoblacionAdulta\": 40,\n" + 
 			"      \"porcentajePoblacionEnvejecida\": 73,\n" + 
-			"      \"porcentajePoblacionExtranjeraInfantil\": 63\n" + 
+			"      \"porcentajePoblacionExtranjeraInfantil\": 63,\n" +
+			"      \"porcentajePoblacionExtranjera\": 74,\n" +
+			"      \"porcentajePoblacionNacidaExtranjero\": 85\n" +
 			"    }";
 
 	@Test

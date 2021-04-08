@@ -397,24 +397,24 @@ public class TransformadorBasicoRdf {
 						for (Object object : listado) {
 							Resource newRes = model.createResource(getPathResource(object,resource.getURI()));
 							
-							boolean auxOutput = transformarObjeto(respuesta, object, peticion, prefijo, newRes);
-							if (auxOutput && !output)
-								output = true;
-							if (auxOutput){
-								if (object.getClass().getAnnotation(Rdf.class)!=null){
-									String rdf = obtenerValorAnotacionRDF(object.getClass().getAnnotation(Rdf.class)).replaceAll("\"", "");;
-									if (rdf.endsWith("/"))
-										rdf = rdf.substring(0,rdf.lastIndexOf("/"));
-					
-									Property initResProp;
-									if (startsWithHttp(rdf))
-										initResProp = model.createProperty(rdf);
-									else
-										initResProp = model.createProperty(uriBase+ rdf);
-									model.add(newRes, RDF.type, initResProp);
-								} else if (object.getClass().getAnnotation(RdfMultiple.class)!=null){
-									for (Rdf anot:object.getClass().getAnnotation(RdfMultiple.class).value()){
-										String rdf = obtenerValorAnotacionRDF(anot).replaceAll("\"", "");
+							if (field.isAnnotationPresent(RdfExternalURI.class))
+							{
+								RdfExternalURI externalURIannotation = field.getAnnotation(RdfExternalURI.class);								
+								Rdf rdfAnnotation = field.getAnnotation(Rdf.class);	
+								String anot = obtenerValorAnotacionRDF(rdfAnnotation).replaceAll("\"", "");
+								String inicioURI=obtenerInicioURIAnotacionExternalRDF(externalURIannotation);
+								
+								model.add(resource, model.createProperty(anot), model.createResource(inicioURI+object));
+								
+							}
+							else
+							{							
+								boolean auxOutput = transformarObjeto(respuesta, object, peticion, prefijo, newRes);
+								if (auxOutput && !output)
+									output = true;
+								if (auxOutput){
+									if (object.getClass().getAnnotation(Rdf.class)!=null){
+										String rdf = obtenerValorAnotacionRDF(object.getClass().getAnnotation(Rdf.class)).replaceAll("\"", "");;
 										if (rdf.endsWith("/"))
 											rdf = rdf.substring(0,rdf.lastIndexOf("/"));
 						
@@ -424,9 +424,22 @@ public class TransformadorBasicoRdf {
 										else
 											initResProp = model.createProperty(uriBase+ rdf);
 										model.add(newRes, RDF.type, initResProp);
+									} else if (object.getClass().getAnnotation(RdfMultiple.class)!=null){
+										for (Rdf anot:object.getClass().getAnnotation(RdfMultiple.class).value()){
+											String rdf = obtenerValorAnotacionRDF(anot).replaceAll("\"", "");
+											if (rdf.endsWith("/"))
+												rdf = rdf.substring(0,rdf.lastIndexOf("/"));
+							
+											Property initResProp;
+											if (startsWithHttp(rdf))
+												initResProp = model.createProperty(rdf);
+											else
+												initResProp = model.createProperty(uriBase+ rdf);
+											model.add(newRes, RDF.type, initResProp);
+										}
 									}
+									addResource(resource, newRes, field, object);
 								}
-								addResource(resource, newRes, field, object);
 							}
 						}
 					}
@@ -739,6 +752,7 @@ public class TransformadorBasicoRdf {
 						} 
 
 				}
+			
 			}else if (transformarCampo && field.isAnnotationPresent(RdfDinamico.class)) {							
 								
 				String inicioURI=obtenerInicioURIAnotacionDinamicRDF(field.getAnnotation(RdfDinamico.class));

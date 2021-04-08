@@ -19,7 +19,7 @@ package org.ciudadesabiertas.subvencion;
 import static org.junit.Assert.assertFalse;
 
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.SubvencionOrganizationController;
+import org.ciudadesabiertas.dataset.controller.SubvencionConcesionController;
 import org.ciudadesabiertas.utils.StartVariables;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -49,7 +49,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(classes = { WebConfig.class })
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SubvencionOrganizationTestFK {
+public class SubvencionConcesionTestFK {
 	
 	private static boolean activeFK = StartVariables.activeFK;
 	
@@ -63,22 +63,75 @@ public class SubvencionOrganizationTestFK {
     	this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();    	
     }
         
-    @Test    
-    public void test01_Delete_FK() throws Exception {
+    @Test
+    public void test_01_add() throws Exception {
     	
     	if (activeFK==false)
     	{
     		assertFalse(activeFK);    		
     	}
     	else
-    	{   
-	    	String id ="A05003369";
-	    	    	
-	        this.mockMvc.perform(MockMvcRequestBuilders.delete(SubvencionOrganizationController.ADD+"/"+id)
-	        		.contentType(MediaType.APPLICATION_JSON))	            
-		        .andExpect(MockMvcResultMatchers.status().isConflict());
+    	{    	
+    	  String jsonItem = "{\r\n"
+    	  		+ "      \"id\": \"SUBBENTEST1\",\r\n"
+    	  		+ "      \"title\": \"Proyecto para xxx por importe de 2000.00\",\r\n"
+    	  		+ "      \"importeSolicitado\": 2000,\r\n"
+    	  		+ "      \"importeConcedido\": 1600,\r\n"
+    	  		+ "      \"fechaSolicitud\": \"2017-10-26T00:00:00\",\r\n"
+    	  		+ "      \"fechaConcesion\": \"2018-10-26T00:00:00\",\r\n"
+    	  		+ "      \"convocatoria\": \"SUB1\",\r\n"
+    	  		+ "      \"beneficiario\": \"034KOL\",\r\n"
+    	  		+ "      \"clasificacionPrograma\": [\"334\"],\r\n"
+    	  		+ "      \"clasificacionEconomicaGasto\": [\"48\"],\r\n"
+    	  		+ "      \"programaAsText\": \"926\",\r\n"
+    	  		+ "      \"gastoAsText\": \"13002\"\r\n"
+    	  		+ "    }";  	    	    	
+    	  jsonItem = new String (jsonItem.getBytes(),"UTF-8");
+	     	 
+	         this.mockMvc.perform(MockMvcRequestBuilders.post(SubvencionConcesionController.ADD)
+	         		.contentType(MediaType.APPLICATION_JSON)
+	     	        .content(jsonItem)).andExpect(MockMvcResultMatchers.status().isConflict());
     	}
+    	    	    	
+    	
     }
+    
+    @Test
+    public void test_02_update() throws Exception {
+    	
+    	if (activeFK==false)
+    	{
+    		assertFalse(activeFK);    		
+    	}
+    	else
+    	{    	
+    	  String jsonItem = "{\r\n"
+    	  		+ "      \"id\": \"SUBBEN1\",\r\n"
+    	  		+ "      \"title\": \"Proyecto para xxx por importe de 2000.00\",\r\n"
+    	  		+ "      \"importeSolicitado\": 2000,\r\n"
+    	  		+ "      \"importeConcedido\": 1600,\r\n"
+    	  		+ "      \"fechaSolicitud\": \"2017-10-26T00:00:00\",\r\n"
+    	  		+ "      \"fechaConcesion\": \"2018-10-26T00:00:00\",\r\n"
+    	  		+ "      \"convocatoria\": \"SUB1\",\r\n"
+    	  		+ "      \"beneficiario\": \"034KO\",\r\n"
+    	  		+ "      \"clasificacionPrograma\": [\"334\"],\r\n"
+    	  		+ "      \"clasificacionEconomicaGasto\": [\"48\"],\r\n"
+    	  		+ "      \"programaAsText\": \"926\",\r\n"
+    	  		+ "      \"gastoAsText\": \"13002\"\r\n"
+    	  		+ "    }";  	    	    	  	    	    	
+      	  jsonItem = new String (jsonItem.getBytes(),"UTF-8");	    	
+	   
+	     	 
+	     	 this.mockMvc.perform(MockMvcRequestBuilders.put(SubvencionConcesionController.ADD+"/"+"SUBBEN1")
+	         		.contentType(MediaType.APPLICATION_JSON)
+	     	        .content(jsonItem)).andExpect(MockMvcResultMatchers.status().isConflict());
+    	}
+    	    	    	
+    	
+    }
+    
+    
+     
     
     
     

@@ -209,6 +209,7 @@ public class Constants
 	public static final String TYPE_STRING_CLASS = "java.lang.String";
 	public static final String TYPE_CLASS_CLASS = "java.lang.Class";
 	public static final String TYPE_DATE_CLASS = "java.util.Date";
+	public static final String TYPE_LIST_CLASS = "java.util.List";
 
 	//Authorities
 	public static final String AUTORITHY_CONSULTA = "consulta";

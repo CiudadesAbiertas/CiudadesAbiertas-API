@@ -73,7 +73,7 @@ public class CuboEdadGrupoQuinquenalDataTest
 	{
 
 		String [] paramField= {"sex","numeroPersonas"};
-		String [] value = {"sex-F","37498"};		
+		String [] value = {"sex-F","55"};		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -82,36 +82,36 @@ public class CuboEdadGrupoQuinquenalDataTest
 	public void test_Busqueda_MunicipioId() throws Exception
 	{		
 		String [] paramField= {"municipioId","numeroPersonas"};
-		String [] value = {"28006","37498"};		
+		String [] value = {"28006","55"};		
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 	
 	@Test
 	public void test_Busqueda_MunicipioTitle() throws Exception
 	{
 		String [] paramField= {"municipioTitle","numeroPersonas"};
-		String [] value = {"Alcobendas","37498"};
+		String [] value = {"Alcobendas","55"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 		
 	@Test
 	public void test_Busqueda_distritoId() throws Exception
 	{
 		String [] paramField= {"distritoId","numeroPersonas"};
-		String [] value = {"2800601","37498"};
+		String [] value = {"2800601","55"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 	
 	@Test
 	public void test_Busqueda_distritoTitle() throws Exception
 	{
 		String [] paramField= {"distritoTitle","numeroPersonas"};
-		String [] value = {"Distrito 1","37498"};
+		String [] value = {"Distrito 1","55"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 	
 	
@@ -119,43 +119,43 @@ public class CuboEdadGrupoQuinquenalDataTest
 	public void test_Busqueda_barrioId() throws Exception
 	{
 		String [] paramField= {"barrioId","numeroPersonas"};
-		String [] value = {"28006011","37498"};
+		String [] value = {"28006011","639"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 	
 	@Test
 	public void test_Busqueda_barrioTitle() throws Exception
 	{
 		String [] paramField= {"barrioTitle","numeroPersonas"};
-		String [] value = {"Barrio 1","37498"};
+		String [] value = {"Valdelasfuentes","639"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 	
-	@Test
-	public void test_Busqueda_seccionCensalId() throws Exception
-	{
-		String [] paramField= {"seccionCensalId","numeroPersonas"};
-		String [] value = {"2800601009","90073"};
-		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
-	}
-	
-	@Test
-	public void test_Busqueda_seccionCensalTitle() throws Exception
-	{
-		String [] paramField= {"seccionCensalTitle","numeroPersonas"};
-		String [] value = {"Sección Censal 9","90073"};
-		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 1);
-	}
+//	@Test
+//	public void test_Busqueda_seccionCensalId() throws Exception
+//	{
+//		String [] paramField= {"seccionCensalId","numeroPersonas"};
+//		String [] value = {"2800601009","55"};
+//		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+//		assertTrue(records.size() == 1);
+//	}
+//	
+//	@Test
+//	public void test_Busqueda_seccionCensalTitle() throws Exception
+//	{
+//		String [] paramField= {"seccionCensalTitle","numeroPersonas"};
+//		String [] value = {"Sección Censal 9","55"};
+//		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+//		assertTrue(records.size() == 1);
+//	}
 	
 	@Test
 	public void test_Busqueda_refPeriod() throws Exception
 	{
 		String [] paramField= {"refPeriod","numeroPersonas"};
-		String [] value = {"2016","37498"};
+		String [] value = {"2016","55"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -164,7 +164,7 @@ public class CuboEdadGrupoQuinquenalDataTest
 	public void test_Busqueda_edadGruposQuinquenales() throws Exception
 	{
 		String [] paramField= {"edadGruposQuinquenales","numeroPersonas"};
-		String [] value = {"05-a-09","90073"};
+		String [] value = {"95-y-mas","55"};
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -173,9 +173,9 @@ public class CuboEdadGrupoQuinquenalDataTest
 	public void test_Busqueda_numeroPersonas() throws Exception
 	{
 		String paramField="numeroPersonas";
-		String value = "37498";
+		String value = "55";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 1);
+		assertTrue(records.size() == 2);
 	}
 
 	
@@ -186,7 +186,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure"};
 		String [] value = {"refPeriod","AVG","numeroPersonas"};           
         JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 4);               
+		assertTrue(records.size() == 10);               
     }
 	    
 	    
@@ -196,7 +196,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure"};
 		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 84);
+		assertTrue(records.size() == 100);
     }
 	    
 	    
@@ -206,7 +206,7 @@ public class CuboEdadGrupoQuinquenalDataTest
     	String [] paramField= {"dimension","group","measure","where"};
 		String [] value = {"refPeriod,edadGruposQuinquenales","AVG","numeroPersonas","refPeriod=2016"};   
 		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
-		assertTrue(records.size() == 21);
+		assertTrue(records.size() == 20);
     }
     
 	

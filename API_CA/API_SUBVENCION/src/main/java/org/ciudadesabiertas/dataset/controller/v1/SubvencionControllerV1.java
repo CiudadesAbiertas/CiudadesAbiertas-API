@@ -80,7 +80,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Subvención",description = "Conjunto de operaciones relacionadas con el conjunto de datos Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención"})
+@Api(value="Convocatoria de Subvención",description = "Conjunto de operaciones relacionadas con el conjunto de datos convocatoria de Subvención"+SwaggerConstants.VOCABULARIO_A_HREF+SubvencionConstants.subvencionVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Subvención - Convocatoria"})
 public class SubvencionControllerV1 extends GenericController implements CiudadesAbiertasController
 {
 	public static final String LIST = "/v1/subvencion/subvencion";
@@ -109,7 +109,6 @@ public class SubvencionControllerV1 extends GenericController implements Ciudade
 		listRequestType.add(new RequestType("SUB_UPDATE", UPDATE, HttpMethod.PUT,Constants.BASIC_AUTH));
 		listRequestType.add(new RequestType("SUB_DELETE", DELETE, HttpMethod.DELETE,Constants.BASIC_AUTH));
 		listRequestType.add(new RequestType("SUB_TRANSFORM", TRANSFORM, HttpMethod.POST,Constants.NO_AUTH));
-		
 	}
 	
 	public static List<String> availableFields=Util.extractPropertiesFromBean(SubvencionV1.class);

@@ -59,7 +59,7 @@ public class CubeQuerySearch {
 		this.where = "";
 		this.measure = "";
 		this.group = "";	
-		this.sort = DESC;
+		this.sort = "";
 	}
 	
 
@@ -188,6 +188,20 @@ public class CubeQuerySearch {
 			}
 			
 			result="select "+dimensionClause+" , "+group+" ("+measure+")  as "+group+" from "+tabla+" "+whereClause+" group by  "+groupByClause ;
+			
+			if (Util.validValue(sort))
+			{
+				if (sort.startsWith(Constants.SORT_DESC)) {				
+					result+=" order by "+sort.substring(1)+" desc";
+				//Spring deja el + como ' '		
+				} else if (sort.startsWith(Constants.SORT_ASC)||sort.startsWith(" ")) {
+					result+=" order by "+sort.substring(1)+" asc";
+				} else {
+					result+=" order by "+sort+" desc";
+				}
+			}	
+			
+			
 		}
 		return result;
 	}

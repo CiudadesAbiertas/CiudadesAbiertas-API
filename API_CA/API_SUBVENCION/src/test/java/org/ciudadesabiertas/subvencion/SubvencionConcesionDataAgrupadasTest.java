@@ -16,72 +16,65 @@
 
 package org.ciudadesabiertas.subvencion;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.SubvencionOrganizationController;
-import org.ciudadesabiertas.utils.StartVariables;
+import org.ciudadesabiertas.dataset.controller.SubvencionConcesionController;
+import org.ciudadesabiertas.utils.TestUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 
 
-/**
- * @author Juan Carlos Ballesteros (Localidata)
- * @author Carlos Martínez de la Casa (Localidata)
- * @author Oscar Corcho (UPM, Localidata)
- *
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { WebConfig.class })
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SubvencionOrganizationTestFK {
-	
-	private static boolean activeFK = StartVariables.activeFK;
-	
+public class SubvencionConcesionDataAgrupadasTest
+{	
 	@Autowired
 	private WebApplicationContext wac;
-        
-    private MockMvc mockMvc;
-    
-    @Before
-    public void setup() throws Exception {    	
-    	this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();    	
-    }
-        
-    @Test    
-    public void test01_Delete_FK() throws Exception {
-    	
-    	if (activeFK==false)
-    	{
-    		assertFalse(activeFK);    		
-    	}
-    	else
-    	{   
-	    	String id ="A05003369";
-	    	    	
-	        this.mockMvc.perform(MockMvcRequestBuilders.delete(SubvencionOrganizationController.ADD+"/"+id)
-	        		.contentType(MediaType.APPLICATION_JSON))	            
-		        .andExpect(MockMvcResultMatchers.status().isConflict());
-    	}
-    }
-    
-    
-    
-   
-    
+
+	JSONParser parser = new JSONParser();
+	
+	private String listURL=SubvencionConcesionController.SEARCHGROUP;
+
+	private MockMvc mockMvc;
+
+	@Before
+	public void setup() throws Exception
+	{
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	}
+
+
+	@Test
+	public void test_Busqueda_Agrupada_01() throws Exception
+	{
+		
+		String params="fields=convocatoria,sum(importeConcedido)&group=convocatoria&sort=-sum(importeConcedido)";
+		
+		JSONArray records = TestUtils.extractRecords(listURL, params, mockMvc);
+		
+		assertTrue(records.size() == 100);
+
+	}
+	
+	
+	
+	
+	
+	
 }
