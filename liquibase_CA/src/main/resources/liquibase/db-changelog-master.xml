@@ -177,6 +177,13 @@
   <include file="liquibase/db-changelog-script-1.29-DEUDA-table.xml"/>
   <include file="liquibase/db-changelog-script-1.29-DEUDA-data.xml"/>
   
+  <!-- Version 1.30 AMPLIACION SUBVENCION-->
+  <include file="liquibase/db-changelog-script-1.30-AMPLIACION-SUBVENCION-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.30-AMPLIACION-SUBVENCION-data.xml"/>
+  
+  <!-- Version 1.31 ACTUALIZACION DE PADRON-->
+  <include file="liquibase/db-changelog-script-1.31-PADRON-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.31-PADRON-data.xml"/>
 
   <!-- 1.98.1 Modificación de BICICLETA PUBLICA -->
   <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-table.xml"/>

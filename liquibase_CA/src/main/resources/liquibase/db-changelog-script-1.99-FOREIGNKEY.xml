@@ -401,26 +401,47 @@
         <addForeignKeyConstraint baseColumnNames="convocatoria_id" baseTableName="empleo_rel_oferta_convoca" constraintName="empleo_rel_ofer_conv_ibfk_2" referencedColumnNames="id" referencedTableName="empleo_convocatoria_publica"/>
     </changeSet>
 	
-    <!-- FK AMPLIACION SUBVENCIONES -->
-	
-	
+	<!-- FK AMPLIACION SUBVENCIONES-->
+	<!--
 	<changeSet author="Localidata" id="table-amp-subvencion-fk1">
         <addForeignKeyConstraint baseColumnNames="tiene_beneficiario" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-    <changeSet author="Localidata" id="table-amp-subvencion-fk2">
+	<changeSet author="Localidata" id="table-amp-subvencion-fk2">
         <addForeignKeyConstraint baseColumnNames="tiene_subvencion" baseTableName="subvencion_beneficiario" constraintName="subvencion_beneficiario_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion"/>
     </changeSet>
-    <changeSet author="Localidata" id="table-amp-subvencion-fk3">
+	<changeSet author="Localidata" id="table-amp-subvencion-fk3">
         <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="subvencion" constraintName="subvencion_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-    <changeSet author="Localidata" id="table-amp-subvencion-fk4">
+	<changeSet author="Localidata" id="table-amp-subvencion-fk4">
         <addForeignKeyConstraint baseColumnNames="entidad_financiadora_id" baseTableName="subvencion" constraintName="subvencion_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-    <changeSet author="Localidata" id="table-amp-subvencion-fk5">
+	<changeSet author="Localidata" id="table-amp-subvencion-fk5">
         <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="subvencion" constraintName="subvencion_ibfk_3"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
-    <changeSet author="Localidata" id="table-amp-subvencion-fk6">
+	<changeSet author="Localidata" id="table-amp-subvencion-fk6">
         <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="subvencion" constraintName="subvencion_ibfk_5"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	-->
+	<!-- FK AMPLIACION SUBVENCIONES 28.01 -->
+	
+	
+	<changeSet author="Localidata" id="table-amp-subvencion-fk1">
+        <addForeignKeyConstraint baseColumnNames="beneficiario" baseTableName="subvencion_concesion" constraintName="subvencion_beneficiario_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk2">
+        <addForeignKeyConstraint baseColumnNames="convocatoria" baseTableName="subvencion_concesion" constraintName="subvencion_beneficiario_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion_convocatoria"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk3">
+        <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="subvencion_convocatoria" constraintName="subvencion_ibfk_1"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk4">
+        <addForeignKeyConstraint baseColumnNames="entidad_financiadora_id" baseTableName="subvencion_convocatoria" constraintName="subvencion_ibfk_2"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk5">
+        <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="subvencion_convocatoria" constraintName="subvencion_ibfk_3"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
+    </changeSet>
+	<changeSet author="Localidata" id="table-amp-subvencion-fk6">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="subvencion_convocatoria" constraintName="subvencion_ibfk_5"  referencedColumnNames="id" referencedTableName="subvencion_organization"/>
     </changeSet>
 	 
 	 
@@ -446,7 +467,7 @@
         <addForeignKeyConstraint baseColumnNames="periodo" baseTableName="deuda_c_inf_pmp_mes" constraintName="deudac_inf_mes_ibfk_5"  referencedColumnNames="id" referencedTableName="deuda_c_publica_interval"/>
     </changeSet>
 	
-	<!-- FK DEUDA FINACIERA 1.29 -->
+	<!-- FK DEUDA FINACIERA 1.30 -->
 
 	<changeSet author="Localidata" id="table-deuda-financiera-fk1">
         <addForeignKeyConstraint baseColumnNames="deuda_anual" baseTableName="deuda_f_inst_financiacion" constraintName="deuda_f_inst_fin_ibfk_1"  referencedColumnNames="id" referencedTableName="deuda_f_anual"/>
