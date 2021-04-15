@@ -73,7 +73,7 @@ public class LotRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"item\": \"0013496-19-IT1\",\n" + 
+	    			"      \"item\": \"85310000\",\n" + 
 	    			"      \"lot\": \"0013496-19-LT1\"\n" + 
 	    			"    }";	
 			item = new String(item.getBytes(), "UTF-8");
@@ -138,7 +138,7 @@ public class LotRelItemTestFK {
 	    	String id ="REL_01";    	
 	    	String item = " {\n" + 
 	    			"      \"id\": \""+id+"\",\n" + 
-	    			"      \"item\": \"0013496-19-IT1\",\n" + 
+	    			"      \"item\": \"85310000\",\n" + 
 	    			"      \"lot\": \"0013496-19-LT2\"\n" + 
 	    			"    }";	
 	    	

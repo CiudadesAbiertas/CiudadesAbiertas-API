@@ -83,7 +83,7 @@ public class AwardDataTest
 		String paramField="description";
 		String value = "Por ser*";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 118);
+		assertTrue(records == 33);
 	}
 	
 	
@@ -91,7 +91,7 @@ public class AwardDataTest
 	public void test_Busqueda_isSupplierFor() throws Exception
 	{
 		String paramField="isSupplierFor";
-		String value = "B22183370ed9d87b8613de80ce19de8bfeba9ca3d";
+		String value = "B22183370";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -111,7 +111,7 @@ public class AwardDataTest
 		String paramField="awardDate";
 		String value = "2020-09-11";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 5);
 	}
 	
 	
@@ -132,7 +132,7 @@ public class AwardDataTest
 		String paramField="field";		
 		String value = "isSupplierFor";
 		long total = TestUtils.extractTotalDistinct(AwardController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 146);
+		assertTrue(total == 29);
 	}
 	
 

@@ -69,7 +69,7 @@ public class LotDataAgrupadasTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, params, mockMvc);
 		
-		assertTrue(records.size() == 98);
+		assertTrue(records.size() == 27);
 
 	}
 	

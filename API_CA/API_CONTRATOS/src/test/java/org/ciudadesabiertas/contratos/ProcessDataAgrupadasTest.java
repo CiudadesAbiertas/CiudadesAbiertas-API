@@ -69,7 +69,7 @@ public class ProcessDataAgrupadasTest
 
 		long records = TestUtils.extractTotal(listURL, params, mockMvc);
 		
-		assertTrue(records == 190);
+		assertTrue(records == 40);
 
 	}
 	

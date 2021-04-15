@@ -48,13 +48,13 @@ public class TenderRelItem implements java.io.Serializable, RDFModel {
 	@JsonIgnore
 	private String ikey;
 
-	@ApiModelProperty(value = "Identificador de la relacióm clasificación - pliego. Ejemplo: 00000000000001")
+	@ApiModelProperty(value = "Identificador de la relacióm clasificación - licitación. Ejemplo: 00000000000001")
 	@CsvBindByPosition(position = 1)
 	@CsvBindByName(column = Constants.IDENTIFICADOR, format = Constants.STRING_FORMAT)
 	@CustomId(id = "item")
 	private String id;
 	
-	@ApiModelProperty(value = "Identificador del pliego. Ejemplo: TN1")
+	@ApiModelProperty(value = "Identificador de la licitación. Ejemplo: TN1")
 	@CsvBindByPosition(position = 2)
 	@CsvBindByName(column = "tender", format = Constants.STRING_FORMAT)
 	private String tender;

@@ -69,7 +69,7 @@ public class AwardDataAgrupadasTest
 
 		long records = TestUtils.extractTotal(listURL, params, mockMvc);
 		
-		assertTrue(records == 147);
+		assertTrue(records == 29);
 
 	}
 	

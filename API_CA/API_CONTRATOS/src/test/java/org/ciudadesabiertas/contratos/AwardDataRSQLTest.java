@@ -82,7 +82,7 @@ public class AwardDataRSQLTest
 	{
 		String value = "description=='Por ser*'";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 118);
+		assertTrue(records == 33);
 	}
 	
 	
@@ -90,7 +90,7 @@ public class AwardDataRSQLTest
 	public void test_Busqueda_isSupplierFor() throws Exception
 	{
 
-		String value = "isSupplierFor==B22183370ed9d87b8613de80ce19de8bfeba9ca3d";
+		String value = "isSupplierFor==B22183370";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -109,7 +109,7 @@ public class AwardDataRSQLTest
 	
 		String value = "awardDate==2020-09-11";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 3);
+		assertTrue(records.size() == 5);
 	}
 	
 	

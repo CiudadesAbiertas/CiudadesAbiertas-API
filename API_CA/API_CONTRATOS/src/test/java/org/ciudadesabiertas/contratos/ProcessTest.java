@@ -164,14 +164,14 @@ public class ProcessTest {
     	String id ="300-2018-000000524";
     	String identifier ="300/2018/000000524";
      	String item = " {\n" + 
-     			"      \"id\":\"" +id+"\",\n" + 
+     			"      \"id\":\"" +id+"\",\n" +
      			"      \"identifier\":\"" +identifier+"\",\n" + 
-     			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.\",\n" + 
+     			"      \"title\": \"Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Policia del Ayuntamiento de Madrid.\",\n" + 
      			"      \"isBuyerFor\": \"L015029736cfa4d7559501497497a0db85667a132\",\n" + 
-     			"      \"hasTender\": \"0033061-20-TN1\",\n" + 
-     			"      \"url\": \"https://www.localidata.com\",\n" + 
+     			"      \"hasTender\": \"0013496-19-TN1\",\n" + 
+     			"      \"url\": \"https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Nc%2F3KT0AQFwBPRBxZ4nJ%2Fg%3D%3D\",\n" + 
      			"      \"description\": \"Id licitación: 300/2018/00524 ; Órgano de Contratación: Área de Gobierno de Salud, Seguridad y Emergencias; Importe: 283162.4 EUR; Estado: ADJ\"\n" + 
-     			"    }";   
+     			"    }";   	
     	
     	String itemUPDATE = new String (item.getBytes(),"UTF-8");	
     	

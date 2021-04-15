@@ -71,7 +71,7 @@ public class OrganizacionDataRSQLTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		
-		String value = "id=='B83649632068733d54cea9d97cf56deecc0adc009'";
+		String value = "id=='25429480J'";
 
 		String paramField = "q";
 
@@ -122,7 +122,7 @@ public class OrganizacionDataRSQLTest
 
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records == 20);
+		assertTrue(records == 14);
 	}
 	
 	
@@ -156,7 +156,7 @@ public class OrganizacionDataRSQLTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 17);
+		assertTrue(records.size() == 12);
 	}
 	
 //	@Test
@@ -210,7 +210,7 @@ public class OrganizacionDataRSQLTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 12);
 	}
 	
 	@Test
@@ -223,7 +223,7 @@ public class OrganizacionDataRSQLTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 12);
 	}
 	
 	@Test
@@ -236,7 +236,7 @@ public class OrganizacionDataRSQLTest
 
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records == 167);
+		assertTrue(records == 43);
 	}
 
 	

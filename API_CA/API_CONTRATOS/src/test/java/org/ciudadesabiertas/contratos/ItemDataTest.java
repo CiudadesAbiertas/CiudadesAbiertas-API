@@ -70,7 +70,7 @@ public class ItemDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "0013496-19-IT1";
+		String value = "03000000";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -111,7 +111,7 @@ public class ItemDataTest
 		String paramField="field";		
 		String value = "id";
 		long total = TestUtils.extractTotalDistinct(ItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 177);
+		assertTrue(total == 9454);
 	}
 	
 

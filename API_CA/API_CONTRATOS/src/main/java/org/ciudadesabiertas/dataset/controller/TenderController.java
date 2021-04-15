@@ -85,7 +85,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Pliego de Contratación",description = "Conjunto de operaciones relacionadas con el conjunto de datos pliegos de contratación en Contratos"+SwaggerConstants.VOCABULARIO_A_HREF+ContratosConstants.tenderVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Contratos - Pliego"})
+@Api(value="Licitación de Contratación",description = "Conjunto de operaciones relacionadas con el conjunto de datos Licitación de contratación en Contratos"+SwaggerConstants.VOCABULARIO_A_HREF+ContratosConstants.tenderVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Contratos - Licitación"})
 public class TenderController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/contract/tender";

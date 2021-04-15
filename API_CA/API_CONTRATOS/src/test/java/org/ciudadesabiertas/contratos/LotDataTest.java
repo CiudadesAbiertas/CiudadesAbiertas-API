@@ -90,7 +90,7 @@ public class LotDataTest
 		String paramField="description";
 		String value = "1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 6);
 	}
 	
 	
@@ -137,7 +137,7 @@ public class LotDataTest
 		String paramField="field";		
 		String value = "title";
 		long total = TestUtils.extractTotalDistinct(LotController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 98);
+		assertTrue(total == 27);
 	}
 	
 

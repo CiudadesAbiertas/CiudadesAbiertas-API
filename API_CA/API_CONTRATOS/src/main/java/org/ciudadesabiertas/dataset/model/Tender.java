@@ -56,69 +56,69 @@ public class Tender implements java.io.Serializable,  RDFModel {
 	@JsonIgnore
 	private String ikey;
 
-	@ApiModelProperty(value = "Identificador del pliego. Ejemplo: TN1")
+	@ApiModelProperty(value = "Identificador de la licitación. Ejemplo: TN1")
 	@CsvBindByPosition(position=1)
 	@CsvBindByName(column=Constants.IDENTIFICADOR, format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = Constants.IDENTIFIER)
 	private String id;
 	
-	@ApiModelProperty(value = "Nombre del pliego. Ejemplo: Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.")
+	@ApiModelProperty(value = "Nombre de la licitación. Ejemplo: Suministro de diverso material de ferretería para la Jefatura del Cuerpo de Bomberos del Ayuntamiento de Madrid.")
 	@CsvBindByPosition(position=2)
 	@CsvBindByName(column="title", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.DCT, propiedad = "title")
 	private String title;
 	
-	@ApiModelProperty(value = "Adjudicatario del pliego. Ejemplo: AW8")
+	@ApiModelProperty(value = "Adjudicatario de la licitación. Ejemplo: AW8")
 	@CsvBindByPosition(position=3)
 	@CsvBindByName(column="hasSupplier", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "hasSupplier")
 	@RdfExternalURI(inicioURI="/contratos/award/", finURI="hasSupplier", urifyLevel=2)
 	private String hasSupplier;	
 	
-	@ApiModelProperty(value = "Categoría del pliego. Ejemplo: Services")
+	@ApiModelProperty(value = "Categoría de la licitación. Ejemplo: Services")
 	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="mainProcurementCategory", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "mainProcurementCategory")	
 	private String mainProcurementCategory;
 	
-	@ApiModelProperty(value = "Categoría adicional del pliego. Ejemplo: 1111")
+	@ApiModelProperty(value = "Categoría adicional de la licitación. Ejemplo: 1111")
 	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="additionalProcurementCategory", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "additionalProcurementCategory")
 	private String additionalProcurementCategory;
 	
-	@ApiModelProperty(value = "Número de presentados del pliego. Ejemplo: 9")
+	@ApiModelProperty(value = "Número de presentados de la licitación. Ejemplo: 9")
 	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="numberOfTenderers", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "numberOfTenderers")
 	private Integer numberOfTenderers;
 		
-	@ApiModelProperty(value = "Método de adquisición del pliego. Ejemplo: Open")
+	@ApiModelProperty(value = "Método de adquisición de la licitación. Ejemplo: Open")
 	@CsvBindByPosition(position=7)
 	@CsvBindByName(column="procurementMethod", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "procurementMethod")
 	private String procurementMethod;
 	
-	@ApiModelProperty(value = "Detalles del método de adquisición del pliego. Ejemplo: Ordinary")
+	@ApiModelProperty(value = "Detalles del método de adquisición de la licitación. Ejemplo: Ordinary")
 	@CsvBindByPosition(position=8)
 	@CsvBindByName(column="procurementMethodDetails", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "procurementMethodDetails")
 	private String procurementMethodDetails;
 	
-	@ApiModelProperty(value = "Estado del pliego. Ejemplo: complete")
+	@ApiModelProperty(value = "Estado de la licitación. Ejemplo: complete")
 	@CsvBindByPosition(position=9)
 	@CsvBindByName(column="tenderStatus", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "tenderStatus")
 	private String tenderStatus;
 	
-	@ApiModelProperty(value = "Duración del pliego en dias. Ejemplo: 119")
+	@ApiModelProperty(value = "Duración de la licitación en dias. Ejemplo: 119")
 	@CsvBindByPosition(position=10)
 	@CsvBindByName(column="periodDurationInDays", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "periodDurationInDays", typeURI=Context.XSD_URI+"integer")
 	@RdfBlankNode(tipo=Context.OCDS_URI+"Period", propiedad=Context.OCDS_URI+"hasTenderPeriod", nodoId="tenderPeriod")
 	private Integer periodDurationInDays;
 	
-	@ApiModelProperty(value = "Fecha de finalización del pliego. Ejemplo: 2019-01-10T00:00:00")
+	@ApiModelProperty(value = "Fecha de finalización de la licitación. Ejemplo: 2019-01-10T00:00:00")
 	@CsvBindByPosition(position=11)
 	@CsvBindByName(column="periodEndDate")
 	@CsvDate(Constants.DATE_TIME_FORMAT)
@@ -126,7 +126,7 @@ public class Tender implements java.io.Serializable,  RDFModel {
 	@RdfBlankNode(tipo=Context.OCDS_URI+"Period", propiedad=Context.OCDS_URI+"hasTenderPeriod", nodoId="tenderPeriod")
 	private Date periodEndDate;
 	
-	@ApiModelProperty(value = "Fecha de comienzo del pliego. Ejemplo: 2019-04-30T00:00:00")
+	@ApiModelProperty(value = "Fecha de comienzo de la licitación. Ejemplo: 2019-04-30T00:00:00")
 	@CsvBindByPosition(position=12)
 	@CsvBindByName(column="periodStartDate")
 	@CsvDate(Constants.DATE_TIME_FORMAT)
@@ -134,7 +134,7 @@ public class Tender implements java.io.Serializable,  RDFModel {
 	@RdfBlankNode(tipo=Context.OCDS_URI+"Period", propiedad=Context.OCDS_URI+"hasTenderPeriod", nodoId="tenderPeriod")
 	private Date periodStartDate;
 	
-	@ApiModelProperty(value = "Valor del pliego. Ejemplo: 283162.4")
+	@ApiModelProperty(value = "Valor de la licitación. Ejemplo: 283162.4")
 	@CsvBindByPosition(position=13)
 	@CsvBindByName(column="valueAmount", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.OCDS, propiedad = "valueAmount",typeURI=Context.XSD_URI+"double")

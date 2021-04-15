@@ -99,9 +99,9 @@ public class ProcessDataRSQLTest
 	public void test_Busqueda_isBuyerFor() throws Exception
 	{
 		String paramField="q";
-		String value = "isBuyerFor=='L015029730baf190acd12a74aee60aa542413527f'";
+		String value = "isBuyerFor=='L015029736cfa4d7559501497497a0db85667a132'";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 8);
+		assertTrue(records == 9);
 	}
 	
 	@Test
@@ -119,16 +119,16 @@ public class ProcessDataRSQLTest
 		String paramField="q";
 		String value = "url=='https://contrataciondelestado.es*'";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 190);
+		assertTrue(records == 40);
 	}
 	
 	@Test
 	public void test_Busqueda_description() throws Exception
 	{
 		String paramField="q";
-		String value = "description==*licitacion* and title=='*a*'";
+		String value = "description==*Zaragoza*";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 190);
+		assertTrue(records == 40);
 	}
 	
 

@@ -69,7 +69,7 @@ public class TenderDataAgrupadasTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, params, mockMvc);
 		
-		assertTrue(records.size() == 5);
+		assertTrue(records.size() == 3);
 
 	}
 	

@@ -79,7 +79,7 @@ public class LotRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{		
-		String value = "item==0013496-19-IT1*";
+		String value = "item==85310000";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 3);
 	}

@@ -79,7 +79,7 @@ public class TenderRelItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{		
-		String value = "item=='0013496-19-IT1'";
+		String value = "item=='85310000'";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}
@@ -90,7 +90,7 @@ public class TenderRelItemDataRSQLTest
 	{		
 		String value = "tender==*TN1";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 250);
+		assertTrue(records == 57);
 	}
 	
 	

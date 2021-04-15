@@ -90,7 +90,7 @@ public class LotDataRSQLTest
 	{		
 		String value = "description==1";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 6);
 	}
 	
 	

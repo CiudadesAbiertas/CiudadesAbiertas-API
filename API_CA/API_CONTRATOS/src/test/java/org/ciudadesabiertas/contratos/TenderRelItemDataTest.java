@@ -70,27 +70,27 @@ public class TenderRelItemDataTest
 	public void test_Busqueda_Id() throws Exception
 	{
 		String paramField="id";		
-		String value = "0013496-19-TRI1";
+		String value = "ZT03005*";
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
-		assertTrue(records == 1);
+		assertTrue(records == 2);
 	}
 
 	@Test
 	public void test_Busqueda_Tender() throws Exception
 	{
 		String paramField="tender";
-		String value = "*TN1";
+		String value = "ZT03005*";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 250);
+		assertTrue(records == 2);
 	}
 	
 	@Test
 	public void test_Busqueda_Item() throws Exception
 	{
 		String paramField="item";
-		String value = "*IT1";
+		String value = "92300000";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 180);
+		assertTrue(records == 1);
 	}
 	
 	
@@ -112,7 +112,7 @@ public class TenderRelItemDataTest
 		String paramField="field";		
 		String value = "item";
 		long total = TestUtils.extractTotalDistinct(TenderRelItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 170);
+		assertTrue(total == 52);
 	}
 	
 

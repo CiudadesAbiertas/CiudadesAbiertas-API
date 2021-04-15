@@ -100,7 +100,7 @@ public class ProcessDataTest
 		String paramField="isBuyerFor";
 		String value = "L015029736cfa4d7559501497497a0db85667a132";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 30);
+		assertTrue(records == 9);
 	}
 	
 	@Test
@@ -118,16 +118,16 @@ public class ProcessDataTest
 		String paramField="url";
 		String value = "https://contrataciondelestado.es*";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 190);
+		assertTrue(records == 40);
 	}
 	
 	@Test
 	public void test_Busqueda_description() throws Exception
 	{
 		String paramField="description";
-		String value = "*licitacion*";
+		String value = "*Zaragoza*";
 		long records = TestUtils.extractTotal(listURL, paramField, value.toUpperCase(), mockMvc);
-		assertTrue(records == 190);
+		assertTrue(records == 40);
 	}
 	
 	
@@ -149,7 +149,7 @@ public class ProcessDataTest
 		String paramField="field";		
 		String value = "title";
 		long total = TestUtils.extractTotalDistinct(ProcessController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 190);
+		assertTrue(total == 40);
 	}
 	
 	

@@ -88,7 +88,7 @@ public class LotRelItemDataTest
 	public void test_Busqueda_Item() throws Exception
 	{
 		String paramField="item";
-		String value = "0013496-19-IT1";
+		String value = "85310000";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value.toUpperCase(), mockMvc);
 		assertTrue(records.size() == 3);
 	}
@@ -109,7 +109,7 @@ public class LotRelItemDataTest
 		String paramField="field";		
 		String value = "id";
 		long total = TestUtils.extractTotalDistinct(LotRelItemController.SEARCH_DISTINCT, paramField, value, mockMvc);
-		assertTrue(total == 120);
+		assertTrue(total == 39);
 	}
 	
 }

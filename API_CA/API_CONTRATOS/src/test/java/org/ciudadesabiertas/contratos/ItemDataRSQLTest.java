@@ -71,7 +71,7 @@ public class ItemDataRSQLTest
 	@Test
 	public void test_Busqueda_Id() throws Exception
 	{		
-		String value = "id==0013496-19-IT1";
+		String value = "id==03000000";
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 		assertTrue(records.size() == 1);
 	}

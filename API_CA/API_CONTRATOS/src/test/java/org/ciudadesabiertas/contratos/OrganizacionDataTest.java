@@ -74,7 +74,7 @@ public class OrganizacionDataTest
 
 		String paramField="id";
 		
-		String value = "B83649632068733d54cea9d97cf56deecc0adc009";
+		String value = "25429480J";
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
@@ -122,7 +122,7 @@ public class OrganizacionDataTest
 
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records == 20);
+		assertTrue(records == 14);
 	}
 	
 	
@@ -180,7 +180,7 @@ public class OrganizacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 17);
+		assertTrue(records.size() == 12);
 	}
 	
 //	@Test
@@ -234,7 +234,7 @@ public class OrganizacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 12);
 	}
 	
 	@Test
@@ -247,7 +247,7 @@ public class OrganizacionDataTest
 
 		JSONArray records = TestUtils.extractRecords(listURL, paramField, value, mockMvc);
 
-		assertTrue(records.size() == 18);
+		assertTrue(records.size() == 12);
 	}
 	
 	@Test
@@ -260,7 +260,7 @@ public class OrganizacionDataTest
 
 		long records = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(records == 167);
+		assertTrue(records == 43);
 	}
 	
 	
@@ -279,7 +279,7 @@ public class OrganizacionDataTest
 
 		long total = TestUtils.extractTotal(listURL, paramField, value, mockMvc);
 
-		assertTrue(total == 167);
+		assertTrue(total == 43);
 	}
 	
 	

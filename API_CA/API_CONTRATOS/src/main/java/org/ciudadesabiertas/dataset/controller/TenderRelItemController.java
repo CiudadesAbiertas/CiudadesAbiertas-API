@@ -80,7 +80,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="TenderRelItem",description = "Conjunto de operaciones relacionadas con el conjunto de la relación entre Pliego y Clasificación en Contratos"+SwaggerConstants.VOCABULARIO_A_HREF+ContratosConstants.itemVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Contratos - Pliego y Clasificación"})
+@Api(value="TenderRelItem",description = "Conjunto de operaciones relacionadas con el conjunto de la relación entre Licitación y Clasificación en Contratos"+SwaggerConstants.VOCABULARIO_A_HREF+ContratosConstants.itemVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Contratos - Licitación y Clasificación"})
 public class TenderRelItemController extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String LIST = "/contract/tender-rel-item";

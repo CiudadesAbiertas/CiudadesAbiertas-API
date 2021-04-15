@@ -112,7 +112,7 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"item\": \"85310000\",\n" + 
     			"      \"lot\": \"0013496-19-LT1\"\n" + 
     			"    }";
 
@@ -145,7 +145,7 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"item\": \"85310000\",\n" + 
     			"      \"lot\": \"0013496-19-LT1\"\n" + 
     			"    }";
 
@@ -165,8 +165,8 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
-    			"      \"lot\": \"0085874-18-LT6\"\n" + 
+    			"      \"item\": \"85310000\",\n" + 
+    			"      \"lot\": \"0013496-19-LT2\"\n" + 
     			"    }";
 
      	
@@ -204,8 +204,8 @@ public class LotRelItemTest {
     	String id ="REL_01_KO";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
-    			"      \"lot\": \"0085874-18-LT6\"\n" + 
+    			"      \"item\": \"85310000\",\n" + 
+    			"      \"lot\": \"0013496-19-LT2\"\n" + 
     			"    }";
 
     	
@@ -311,7 +311,7 @@ public class LotRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"item\": \"85310000\",\n" + 
     			"      \"lot\": \"LT2\"\n" + 
     			"    }";
     	   
@@ -332,7 +332,7 @@ public class LotRelItemTest {
     	    	
     	    	
     	String item = " {\n" +
-    			"      \"item\": \"0013496-19-IT1\",\n" + 
+    			"      \"item\": \"85310000\",\n" + 
     			"      \"lot\": \"LT2\"\n" + 
     			"    }";
     	  

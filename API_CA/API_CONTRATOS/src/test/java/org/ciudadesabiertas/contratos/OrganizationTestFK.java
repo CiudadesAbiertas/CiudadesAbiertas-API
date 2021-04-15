@@ -91,7 +91,7 @@ public class OrganizationTestFK {
     	}
     	else
     	{     
-	    	String id ="B22183370ed9d87b8613de80ce19de8bfeba9ca3d";
+	    	String id ="B22183370";
 	    	id=Util.encodeURL(id);
 	    	
 	        this.mockMvc.perform(MockMvcRequestBuilders.delete(OrganizationController.ADD+"/"+id)

@@ -108,7 +108,7 @@ public class TenderRelItemTest {
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
     			"      \"tender\": \"0013496-19-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"item\": \"85310000\"\n" + 
     			"    }";
 
 		item = new String(item.getBytes(), "UTF-8");
@@ -141,7 +141,7 @@ public class TenderRelItemTest {
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
     			"      \"tender\": \"0013496-19-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"item\": \"85310000\"\n" + 
     			"    }";
 
     	
@@ -160,8 +160,8 @@ public class TenderRelItemTest {
     	String id ="REL_01";    	
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
-    			"      \"tender\": \"0033061-20-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"tender\": \"0085526-19-TN1\",\n" + 
+    			"      \"item\": \"80540000\"\n" + 
     			"    }";
 
      	
@@ -200,7 +200,7 @@ public class TenderRelItemTest {
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
     			"      \"tender\": \"0013496-19-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"item\": \"85310000\"\n" + 
     			"    }";
 
     	
@@ -307,7 +307,7 @@ public class TenderRelItemTest {
     	String item = " {\n" + 
     			"      \"id\": \""+id+"\",\n" + 
     			"      \"tender\": \"0013496-19-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"item\": \"85310000\"\n" + 
     			"    }";
     	   
     	
@@ -326,7 +326,7 @@ public class TenderRelItemTest {
     	    	
     	String item = " {\n" +
     			"      \"tender\": \"0013496-19-TN1\",\n" + 
-    			"      \"item\": \"0013496-19-IT1\"\n" + 
+    			"      \"item\": \"85310000\"\n" + 
     			"    }";
     	  
     	

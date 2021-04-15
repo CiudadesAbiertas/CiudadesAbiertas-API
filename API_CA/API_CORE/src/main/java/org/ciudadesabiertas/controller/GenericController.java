@@ -1331,6 +1331,9 @@ public class GenericController<T> {
 
 		log.debug("[parmam][page:" + page + "] [pageSize:" + pageSize + "] [key:" + key + "] [srId:" + srId + "] [groupBySearch:" + groupBySearch + "] ");
 		
+		String className=objModel.getClass().getSimpleName();
+		
+		
 		//CMG: Control para las peticiones semanticas en las Groupby no esta permitidas
 		if (Util.isSemanticPetition(request)) {
 			return ExceptionUtil.checkException(new BadRequestException("Format not Support"));
@@ -1362,6 +1365,37 @@ public class GenericController<T> {
 		}	
 		
 		ResponseEntity<?> responseEntity= null;	
+		
+		if (classesWithArrayfields.contains(className))
+		{
+			//Control de campos que son Arrays
+			
+			String fields=groupBySearch.getFields();			
+			fields=fields.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+			fields=fields.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");			
+			groupBySearch.setFields(fields);
+			
+			String group=groupBySearch.getGroup();			
+			group=group.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+			group=group.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");			
+			groupBySearch.setGroup(group);
+			
+			String having = groupBySearch.getHaving();			
+			having=having.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+			having=having.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");			
+			groupBySearch.setHaving(having);
+			
+			String where = groupBySearch.getWhere();
+			where=where.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+			where=where.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");			
+			groupBySearch.setWhere(where);
+			
+			String sort = groupBySearch.getSort();
+			sort=sort.replace("clasificacionPrograma", "clasificacionProgramaSimple");
+			sort=sort.replace("clasificacionEconomicaGasto", "clasificacionEconomicaGastoSimple");			
+			groupBySearch.setSort(sort);
+		}
+		
 			
 		setPaginaGroupBy(page,pageSize);
 		
