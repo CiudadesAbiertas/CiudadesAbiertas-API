@@ -391,12 +391,12 @@ public class Tender implements java.io.Serializable,  RDFModel {
 	@Override
 	public <T> T cloneModel(T copia, List<String> listado) 
 	{
-		return (T) cloneClass((Process) copia, listado);
+		return (T) cloneClass((Tender) copia, listado);
 	}
 	
-	public Process cloneClass(Process copia, List<String> attributesToSet) {
+	public Tender cloneClass(Tender copia, List<String> attributesToSet) {
 
-		Process obj = new Process(copia,attributesToSet);		
+		Tender obj = new Tender(copia,attributesToSet);		
 
 		return obj;
 

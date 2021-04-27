@@ -75,7 +75,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @SuppressWarnings("rawtypes")
 @RestController
-@Api(value="Cubo Pais Nacimiento",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón"+SwaggerConstants.VOCABULARIO_A_HREF+CuboPadronConstants.observationVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Padrón - Cubo de datos de Pais Nacimiento"})
+@Api(value="Cubo Pais Nacimiento",description = "Conjunto de operaciones relacionadas con sobre el Cubo de Datos Nacionalidad de Padrón"+SwaggerConstants.VOCABULARIO_A_HREF+CuboPadronConstants.observationVocabURL+SwaggerConstants.VOCABULARIO_A_HREF_END, tags= {"Padrón - Cubo de datos Pais Nacimiento"})
 public class CuboPaisNacimientoController<T> extends GenericController implements CiudadesAbiertasController 
 {
 	public static final String QUERY = "/padron/datacube/pais-nacimiento/query";	

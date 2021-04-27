@@ -123,6 +123,8 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	@ApiModelProperty(value = "Identificador del municipio de la observación. Ejemplo: 28006")
 	@CsvBindByPosition(position=6)	
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
+	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
+	@RdfExternalURI(inicioURI="/territorio/municipio/", finURI="municipioId", urifyLevel=1)
 	private String municipioId;
 	
 	@ApiModelProperty(value = "Nombre del municipio de la observación. Ejemplo: Alcobendas")
@@ -133,6 +135,8 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	@ApiModelProperty(value = "Identificador del distrito de la observación. Ejemplo: 2800601")
 	@CsvBindByPosition(position=8)	
 	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
+	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
+	@RdfExternalURI(inicioURI="/territorio/distrito/", finURI="distritoId", urifyLevel=1)
 	private String distritoId;
 	
 	@ApiModelProperty(value = "Nombre del distrito de la observación. Ejemplo: Distrito 1")
@@ -143,6 +147,8 @@ public class CuboPaisNacimiento implements java.io.Serializable, RDFModel, DataC
 	@ApiModelProperty(value = "Identificador del barrio de la observación. Ejemplo: 28006011")
 	@CsvBindByPosition(position=10)	
 	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
+	@RdfExternalURI(inicioURI="/territorio/barrio/", finURI="barrioId", urifyLevel=1)
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Nombre del barrio de la observación. Ejemplo: Barrio 1")
