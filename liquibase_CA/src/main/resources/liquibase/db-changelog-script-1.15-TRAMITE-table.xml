@@ -11,21 +11,21 @@
             <column name="title" type="VARCHAR(400)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="VARCHAR(4000)"/>
+            <column name="description" type="LONGTEXT"/>
             <column name="url" type="VARCHAR(400)"/>
             <column name="impreso" type="VARCHAR(400)"/>
-            <column name="detalle_telefono" type="VARCHAR(4000)"/>
-            <column name="detalle_presencial" type="VARCHAR(4000)"/>
-            <column name="detalle_en_linea" type="VARCHAR(4000)"/>
-            <column name="detalle_correo_postal" type="VARCHAR(4000)"/>
+            <column name="detalle_telefono" type="LONGTEXT"/>
+            <column name="detalle_presencial" type="LONGTEXT"/>
+            <column name="detalle_en_linea" type="LONGTEXT"/>
+            <column name="detalle_correo_postal" type="LONGTEXT"/>
             <column name="permite_en_linea" type="BIT"/>
             <column name="permite_presencial" type="BIT"/>
             <column name="permite_telefono" type="BIT"/>
             <column name="permite_correo_postal" type="BIT"/>
             <column name="normativa" type="VARCHAR(400)"/>
             <column name="organo" type="VARCHAR(400)"/>
-            <column name="pago" type="VARCHAR(4000)"/>
-            <column name="requisitos" type="VARCHAR(4000)"/>
+            <column name="pago" type="LONGTEXT"/>
+            <column name="requisitos" type="LONGTEXT"/>
             <column name="same_as" type="VARCHAR(400)"/>
             <column name="materia" type="VARCHAR(400)"/>
             <column name="fecha_plazo_inicio" type="datetime(6)"/>
