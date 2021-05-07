@@ -205,6 +205,10 @@
   
   <include file="liquibase/db-changelog-script-1.98.5-BARRIOS-data.xml"/>
   
+  <!-- 1.98.6 Correccion trafico -->
+  
+  <include file="liquibase/db-changelog-script-1.98.6-TRAFICO-table.xml"/>
+  
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  
 	

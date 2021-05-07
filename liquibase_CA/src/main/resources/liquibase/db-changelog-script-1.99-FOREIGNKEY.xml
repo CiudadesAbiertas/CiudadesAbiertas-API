@@ -501,4 +501,14 @@
         <addForeignKeyConstraint baseColumnNames="emision" baseTableName="deuda_f_inst_financiacion" constraintName="d_f_inst_financiacion_ibfk_8"  referencedColumnNames="id" referencedTableName="deuda_f_emision"/>
     </changeSet>
 	
+	
+	 <!-- FK TRAFICO -->
+	<changeSet author="Localidata" id="fk-trafico-7">
+        <addForeignKeyConstraint baseColumnNames="observes" baseTableName="trafico_dispositivo_medicion" constraintName="traf_disp_medicion_ibfk_2" referencedColumnNames="id" referencedTableName="trafico_propiedad_medicion"/>
+    </changeSet>
+	
+	<changeSet author="Localidata" id="fk-trafico-8">
+        <addForeignKeyConstraint baseColumnNames="phenomenon_time" baseTableName="trafico_observacion" constraintName="trafico_observacion_ibfk_2" referencedColumnNames="id" referencedTableName="trafico_proper_interval"/>
+    </changeSet>
+	
 </databaseChangeLog>
