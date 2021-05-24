@@ -23,7 +23,6 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import org.ciudadesabiertas.config.WebConfig;
-import org.ciudadesabiertas.dataset.controller.CuboIndicadoresController;
 import org.ciudadesabiertas.dataset.controller.CuboNacionalidadController;
 import org.ciudadesabiertas.dataset.model.CuboNacionalidad;
 import org.ciudadesabiertas.dataset.utils.CuboPadronConstants;

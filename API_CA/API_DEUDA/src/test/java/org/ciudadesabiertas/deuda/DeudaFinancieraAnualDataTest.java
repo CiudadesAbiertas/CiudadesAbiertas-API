@@ -70,7 +70,7 @@ public static Collection<Object[]> data() {
   Collection<Object[]> params = new ArrayList<>();
   params.add(new Object[] { "id", "2019", 1 });
   params.add(new Object[] { "date","2019-12-31", 1 });
-  params.add(new Object[] { "endeudamientoPde","2232568750", 1 });
+  params.add(new Object[] { "endeudamiento","2232568750", 1 });
   
 
   return params;

@@ -39,7 +39,7 @@ public class DeudaFinancieraCargaUtilTest
 		+ "      \"instrumentoFinanciacion\": \"ES0201001148\",\n"
 		+ "      \"date\": \"2036-06-16T00:00:00\",\n"
 		+ "      \"importe\": 300000000,\n"
-		+ "      \"anioFiscal\": \"2017\",\n"
+		+ "      \"anio\": \"2017\",\n"
 		+ "      \"gastoOPasivoFinanciero\": \"gasto financiero\",\n"
 		+ "      \"description\": \"Description de la Carga\"\n"
 		+ "    }";

@@ -174,7 +174,10 @@ public class DifferentSQLforDatabases {
 		{
 			if (split.contains("'"))
 			{
-				if ((split.startsWith("'"))&&(split.endsWith("'")))
+				if ((split.contains("<")||split.contains(">")||split.contains("="))){
+					firstLoop.add(split);	
+				}
+				else if ((split.startsWith("'"))&&(split.endsWith("'")))
 				{
 					firstLoop.add(split);	
 				}

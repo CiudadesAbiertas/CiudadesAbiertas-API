@@ -37,6 +37,10 @@ public class CuboPaisNacimientoUtilTest
 	private static final String testJSON = " {\n" + 
 			"      \"id\": \"obs1\",\n" + 
 			"      \"sex\": \"sex-F\",\n" + 
+			"      \"paisId\": \"123\",\n" + 
+			"      \"paisTitle\": \"España\",\n" + 
+			"      \"autonomiaId\": \"343\",\n" + 
+			"      \"autonomiaTitle\": \"Comunidad de Madrid\",\n" + 
 			"      \"municipioId\": \"28006\",\n" + 
 			"      \"municipioTitle\": \"Alcobendas\",\n" + 
 			"      \"distritoId\": \"2800601\",\n" + 

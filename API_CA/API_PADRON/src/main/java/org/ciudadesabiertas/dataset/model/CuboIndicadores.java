@@ -100,164 +100,191 @@ public class CuboIndicadores implements java.io.Serializable, RDFModel, DataCube
 	@RdfExternalURI(inicioURI="http://reference.data.gov.uk/id/year/", finURI="refPeriod", urifyLevel=1)
 	private String refPeriod;
 	
+	
+	@ApiModelProperty(value = "Identificador del país de la observación. Ejemplo: 724")
+	@CsvBindByPosition(position=3)
+	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "pais")
+	@RdfExternalURI(inicioURI="/territorio/pais/", finURI="pais", urifyLevel=1)
+	private String paisId;
+	
+	@ApiModelProperty(value = "Nombre del páis de la observación. Ejemplo: España")
+	@CsvBindByPosition(position=4)	
+	@CsvBindByName(column="paisTitle", format=Constants.STRING_FORMAT)	
+	private String paisTitle;
+	
+	@ApiModelProperty(value = "Identificador de la autonomía de la observación. Ejemplo: 13")
+	@CsvBindByPosition(position=5)
+	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
+	@RdfExternalURI(inicioURI="/territorio/autonomia/", finURI="autonomia", urifyLevel=1)
+	private String autonomiaId;
+	
+	@ApiModelProperty(value = "Nombre de la autonomía de la observación. Ejemplo: Comunidad de Madrid")
+	@CsvBindByPosition(position=6)	
+	@CsvBindByName(column="autonomiaTitle", format=Constants.STRING_FORMAT)	
+	private String autonomiaTitle;
+	
+	
+	
 	@ApiModelProperty(value = "Identificador del municipio de la observación. Ejemplo: 28006")
-	@CsvBindByPosition(position=3)	
+	@CsvBindByPosition(position=7)	
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)	
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/municipio/", finURI="municipioId", urifyLevel=1)
 	private String municipioId;
 	
 	@ApiModelProperty(value = "Nombre del municipio de la observación. Ejemplo: Alcobendas")
-	@CsvBindByPosition(position=4)	
+	@CsvBindByPosition(position=8)	
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
 	private String municipioTitle;
 	
 	@ApiModelProperty(value = "Identificador del distrito de la observación. Ejemplo: 2800601")
-	@CsvBindByPosition(position=5)	
+	@CsvBindByPosition(position=9)	
 	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/distrito/", finURI="distritoId", urifyLevel=1)
 	private String distritoId;
 	
 	@ApiModelProperty(value = "Nombre del distrito de la observación. Ejemplo: Distrito 1")
-	@CsvBindByPosition(position=6)	
+	@CsvBindByPosition(position=10)	
 	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
 	private String distritoTitle;
 	
 	@ApiModelProperty(value = "Identificador del barrio de la observación. Ejemplo: 28006011")
-	@CsvBindByPosition(position=7)	
+	@CsvBindByPosition(position=11)	
 	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/barrio/", finURI="barrioId", urifyLevel=1)
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Nombre del barrio de la observación. Ejemplo: Barrio 1")
-	@CsvBindByPosition(position=8)	
+	@CsvBindByPosition(position=12)	
 	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
 	private String barrioTitle;
 	
 	@ApiModelProperty(value = "Identificador de la sección censal de la observación. Ejemplo: 2800601020")
-	@CsvBindByPosition(position=9)	
+	@CsvBindByPosition(position=13)	
 	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/seccion-censal/", finURI="seccionCensalId", urifyLevel=1)
 	private String seccionCensalId;
 	
 	@ApiModelProperty(value = "Nombre de la sección censal de la observación. Ejemplo: Sección Censal 20")
-	@CsvBindByPosition(position=10)	
+	@CsvBindByPosition(position=14)	
 	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
 	private String seccionCensalTitle;	
 	
 	@ApiModelProperty(value = "Numero de personas de la observación. Ejemplo: 20623")
-	@CsvBindByPosition(position=11)
+	@CsvBindByPosition(position=15)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")
 	private Integer numeroPersonas;	
 	
 	@ApiModelProperty(value = "Indice de dependencia de la observación. Ejemplo: 80")
-	@CsvBindByPosition(position=12)
+	@CsvBindByPosition(position=16)
 	@CsvBindByName(column="indiceDependencia")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-dependencia", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indiceDependencia;
 	
 	@ApiModelProperty(value = "Indice de feminidad de la observación. Ejemplo: 119")
-	@CsvBindByPosition(position=13)
+	@CsvBindByPosition(position=17)
 	@CsvBindByName(column="indiceFeminidad")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-feminidad", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal indiceFeminidad;
 	
 	@ApiModelProperty(value = "Indice de infancia de la observación. Ejemplo: 35")
-	@CsvBindByPosition(position=14)
+	@CsvBindByPosition(position=18)
 	@CsvBindByName(column="indiceInfancia")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-infancia", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indiceInfancia;
 	
 	@ApiModelProperty(value = "Indice de juventud de la observación. Ejemplo: 97")
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=19)
 	@CsvBindByName(column="indiceJuventud")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-juventud", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indiceJuventud;
 	
 	@ApiModelProperty(value = "Indice de maternidad de la observación. Ejemplo: 9")
-	@CsvBindByPosition(position=16)
+	@CsvBindByPosition(position=20)
 	@CsvBindByName(column="indiceMaternidad")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-maternidad", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indiceMaternidad;
 	
 	@ApiModelProperty(value = "Indice de población activa de la observación. Ejemplo: 91")
-	@CsvBindByPosition(position=17)
+	@CsvBindByPosition(position=21)
 	@CsvBindByName(column="indicePoblacionActiva")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-poblacion-activa", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indicePoblacionActiva;
 	
 	@ApiModelProperty(value = "Indice de reemplazo de la observación. Ejemplo: 13")
-	@CsvBindByPosition(position=18)
+	@CsvBindByPosition(position=22)
 	@CsvBindByName(column="indiceReemplazo")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-reemplazo", typeURI=Context.XSD_URI+"double")
 	private BigDecimal indiceReemplazo;
 	
 	@ApiModelProperty(value = "Indice de sobreemvejecimiento de la observación. Ejemplo: 20")
-	@CsvBindByPosition(position=19)
+	@CsvBindByPosition(position=23)
 	@CsvBindByName(column="indiceSobreenvejecimiento")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-sobreenvejecimiento", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal indiceSobreenvejecimiento;
 	
 	@ApiModelProperty(value = "Indice de tendencia de la observación. Ejemplo: 97")
-	@CsvBindByPosition(position=20)
+	@CsvBindByPosition(position=24)
 	@CsvBindByName(column="indiceTendencia")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="indice-de-tendencia", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal indiceTendencia;
 	
 	@ApiModelProperty(value = "Indice de mortalidad de la observación. Ejemplo: 991")
-	@CsvBindByPosition(position=21)
+	@CsvBindByPosition(position=25)
 	@CsvBindByName(column="tasaMortalidad")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="tasa-de-mortalidad", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal tasaMortalidad;
 	
 	@ApiModelProperty(value = "Indice de natalidad de la observación. Ejemplo: 378")
-	@CsvBindByPosition(position=22)
+	@CsvBindByPosition(position=26)
 	@CsvBindByName(column="tasaNatalidad")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="tasa-de-natalidad", typeURI=Context.XSD_URI+"double")
 	private BigDecimal tasaNatalidad;
 	
 	@ApiModelProperty(value = "Edad media de la población de la observación. Ejemplo: 75")
-	@CsvBindByPosition(position=23)
+	@CsvBindByPosition(position=27)
 	@CsvBindByName(column="edadMediaPoblacion")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="edad-media-de-la-poblacion", typeURI=Context.XSD_URI+"double")
 	private BigDecimal edadMediaPoblacion;
 	
 	@ApiModelProperty(value = "Porcentaje de población joven de la observación. Ejemplo: 17")
-	@CsvBindByPosition(position=24)
+	@CsvBindByPosition(position=28)
 	@CsvBindByName(column="porcentajePoblacionJoven")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-joven", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal porcentajePoblacionJoven;
 	
 	@ApiModelProperty(value = "Porcentaje de población adulta de la observación. Ejemplo: 17")
-	@CsvBindByPosition(position=25)
+	@CsvBindByPosition(position=29)
 	@CsvBindByName(column="porcentajePoblacionAdulta")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-adulta", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal porcentajePoblacionAdulta;
 	
 	@ApiModelProperty(value = "Porcentaje de población envejecida de la observación. Ejemplo: 8")
-	@CsvBindByPosition(position=26)
+	@CsvBindByPosition(position=30)
 	@CsvBindByName(column="porcentajePoblacionEnvejecida")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-envejecida", typeURI=Context.XSD_URI+"double")
 	private BigDecimal porcentajePoblacionEnvejecida;
 	
 	@ApiModelProperty(value = "Porcentaje de población extranjera infantil de la observación. Ejemplo: 10")
-	@CsvBindByPosition(position=27)
+	@CsvBindByPosition(position=31)
 	@CsvBindByName(column="porcentajePoblacionExtranjeraInfantil")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-infantil-extranjera", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal porcentajePoblacionExtranjeraInfantil;
 	
 	@ApiModelProperty(value = "Porcentaje de población extranjera infantil de la observación. Ejemplo: 10")
-	@CsvBindByPosition(position=28)
+	@CsvBindByPosition(position=32)
 	@CsvBindByName(column="porcentajePoblacionExtranjeraInfantil")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-infantil-extranjera", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal porcentajePoblacionExtranjera;
 	
 	@ApiModelProperty(value = "Porcentaje de población extranjera infantil de la observación. Ejemplo: 10")
-	@CsvBindByPosition(position=29)
+	@CsvBindByPosition(position=33)
 	@CsvBindByName(column="porcentajePoblacionExtranjeraInfantil")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="porcentaje-de-poblacion-infantil-extranjera", typeURI=Context.XSD_URI+"double")	
 	private BigDecimal porcentajePoblacionNacidaExtranjero;
@@ -275,29 +302,17 @@ public class CuboIndicadores implements java.io.Serializable, RDFModel, DataCube
 	
 	public CuboIndicadores()
 	{
-//		numeroPersonas=Constants.defaultNumberValue;
-//		indiceDependencia=Constants.defaultNumberValue;
-//		indiceFeminidad=Constants.defaultNumberValue;
-//		indiceInfancia=Constants.defaultNumberValue;
-//		indiceJuventud=Constants.defaultNumberValue;
-//		indiceMaternidad=Constants.defaultNumberValue;
-//		indicePoblacionActiva=Constants.defaultNumberValue;
-//		indiceReemplazo=Constants.defaultNumberValue;
-//		indiceSobreenvejecimiento=Constants.defaultNumberValue;
-//		indiceTendencia=Constants.defaultNumberValue;
-//		tasaMortalidad=Constants.defaultNumberValue;
-//		tasaNatalidad=Constants.defaultNumberValue;
-//		edadMediaPoblacion=Constants.defaultNumberValue;
-//		porcentajePoblacionJoven=Constants.defaultNumberValue;
-//		porcentajePoblacionAdulta=Constants.defaultNumberValue;
-//		porcentajePoblacionEnvejecida=Constants.defaultNumberValue;
-//		porcentajePoblacionExtranjeraInfantil=Constants.defaultNumberValue;
+
 	}
 
 	public CuboIndicadores(CuboIndicadores copia)
 	{		
 		this.ikey = copia.ikey;
 		this.id = copia.id;		
+		this.paisId = copia.paisId;
+		this.paisTitle = copia.paisTitle;
+		this.autonomiaId = copia.autonomiaId;
+		this.autonomiaTitle = copia.autonomiaTitle;
 		this.municipioId = copia.municipioId;
 		this.municipioTitle= copia.municipioTitle;
 		this.distritoId= copia.distritoId;
@@ -339,6 +354,22 @@ public class CuboIndicadores implements java.io.Serializable, RDFModel, DataCube
 		}	
 		if (attributesToSet.contains(Constants.IDENTIFICADOR)) {
 			this.id = copia.id;
+		}
+		
+		if (attributesToSet.contains("paisId")) {
+			this.paisId = copia.paisId;
+		}
+		
+		if (attributesToSet.contains("paisTitle")) {
+			this.paisTitle = copia.paisTitle;
+		}
+		
+		if (attributesToSet.contains("autonomiaId")) {
+			this.autonomiaId = copia.autonomiaId;
+		}
+		
+		if (attributesToSet.contains("autonomiaTitle")) {
+			this.autonomiaTitle = copia.autonomiaTitle;
 		}
 		
 		if (attributesToSet.contains("distritoId")) {
@@ -532,7 +563,41 @@ public class CuboIndicadores implements java.io.Serializable, RDFModel, DataCube
 	}
 
 	
+	@Column(name = "pais_id", length = 50)
+	public String getPaisId() {
+		return paisId;
+	}
+
+	public void setPaisId(String paisId) {
+		this.paisId = paisId;
+	}
+
+	@Column(name = "pais_title", length = 400)
+	public String getPaisTitle() {
+		return paisTitle;
+	}
+
+	public void setPaisTitle(String paisTitle) {
+		this.paisTitle = paisTitle;
+	}
+
+	@Column(name = "autonomia_id", length = 50)
+	public String getAutonomiaId() {
+		return autonomiaId;
+	}
+
+	public void setAutonomiaId(String autonomiaId) {
+		this.autonomiaId = autonomiaId;
+	}
 	
+	@Column(name = "autonomia_title", length = 400)
+	public String getAutonomiaTitle() {
+		return autonomiaTitle;
+	}
+
+	public void setAutonomiaTitle(String autonomiaTitle) {
+		this.autonomiaTitle = autonomiaTitle;
+	}
 	
 	@Column(name = "seccion_censal_id", length = 50)
 	public String getSeccionCensalId() {

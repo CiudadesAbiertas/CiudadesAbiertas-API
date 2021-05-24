@@ -90,9 +90,9 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 	
 	@ApiModelProperty(value = "Tasa Fija para Instrumento Financiación. Ejemplo: 3000.00")
 	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="tasaFija")
-	@Rdf(contexto = Context.ESDEUFINA, propiedad = "tasaFija", typeURI=Context.XSD_URI+"float" )
-	private BigDecimal tasaFija;
+	@CsvBindByName(column="tipoFijo")
+	@Rdf(contexto = Context.ESDEUFINA, propiedad = "tipoFijo", typeURI=Context.XSD_URI+"float" )
+	private BigDecimal tipoFijo;
 	
 	@ApiModelProperty(value = "Referencia para Instrumento Financiación. Ejemplo: Euribor 1/3/6 meses")
 	@CsvBindByPosition(position=5)
@@ -144,13 +144,13 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 	}
 
 	public DeudaFinancieraInstrumentoFinanciacion(String id, BigDecimal importe, String tipoInteres,
-			BigDecimal tasaFija, String referencia, BigDecimal margen, String tipoInstrumento, String prestamo,
+			BigDecimal tipoFijo, String referencia, BigDecimal margen, String tipoInstrumento, String prestamo,
 			String emision, String deudaAnual, String description) {
 		super();
 		this.id = id;
 		this.importe = importe;
 		this.tipoInteres = tipoInteres;
-		this.tasaFija = tasaFija;
+		this.tipoFijo = tipoFijo;
 		this.referencia = referencia;
 		this.margen = margen;
 		this.tipoInstrumento = tipoInstrumento;
@@ -165,7 +165,7 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 		this.id = copia.id;
 		this.importe = copia.importe;
 		this.tipoInteres = copia.tipoInteres;
-		this.tasaFija = copia.tasaFija;
+		this.tipoFijo = copia.tipoFijo;
 		this.referencia = copia.referencia;
 		this.margen = copia.margen;
 		this.tipoInstrumento = copia.tipoInstrumento;
@@ -193,8 +193,8 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 			this.tipoInteres = copia.tipoInteres;
 		}
 		
-		if (attributesToSet.contains("tasaFija")) {
-			this.tasaFija = copia.tasaFija;
+		if (attributesToSet.contains("tipoFijo")) {
+			this.tipoFijo = copia.tipoFijo;
 		}
 		
 		if (attributesToSet.contains("referencia")) {
@@ -268,13 +268,13 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 		this.tipoInteres = tipoInteres;
 	}
 
-	@Column(name = "tasa_fija", precision = 12)
-	public BigDecimal getTasaFija() {
-		return this.tasaFija;
+	@Column(name = "tipo_fijo", precision = 12)
+	public BigDecimal getTipoFijo() {
+		return this.tipoFijo;
 	}
 
-	public void setTasaFija(BigDecimal tasaFija) {
-		this.tasaFija = tasaFija;
+	public void setTipoFijo(BigDecimal tipoFijo) {
+		this.tipoFijo = tipoFijo;
 	}
 
 	@Column(name = "referencia", length = 100)
@@ -393,7 +393,7 @@ public class DeudaFinancieraInstrumentoFinanciacion implements java.io.Serializa
 	@Override
 	public String toString() {
 		return "DeudaFinancieraInstrumentoFinanciacion [id=" + id + ", importe=" + importe + ", tipoInteres="
-				+ tipoInteres + ", tasaFija=" + tasaFija + ", referencia=" + referencia + ", margen=" + margen
+				+ tipoInteres + ", tipoFijo=" + tipoFijo + ", referencia=" + referencia + ", margen=" + margen
 				+ ", tipoInstrumento=" + tipoInstrumento + ", prestamo=" + prestamo + ", emision=" + emision
 				+ ", deudaAnual=" + deudaAnual + ", description=" + description + "]";
 	}

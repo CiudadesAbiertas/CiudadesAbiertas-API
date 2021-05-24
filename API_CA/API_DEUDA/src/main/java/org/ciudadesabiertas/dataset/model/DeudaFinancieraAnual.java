@@ -89,20 +89,20 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 	
 	@ApiModelProperty(value = "Endeudamiento pendiente de la deuda Anual. Ejemplo: 2232568750.00")
 	@CsvBindByPosition(position=3)
-	@CsvBindByName(column="endeudamientoPde")
-	@Rdf(contexto = Context.ESDEUFINA, propiedad = "endeudamientoPDE", typeURI=Context.XSD_URI+"double" )
-	private BigDecimal endeudamientoPde;
+	@CsvBindByName(column="endeudamiento")
+	@Rdf(contexto = Context.ESDEUFINA, propiedad = "endeudamiento", typeURI=Context.XSD_URI+"double" )
+	private BigDecimal endeudamiento;
 	
 	
 
 	public DeudaFinancieraAnual() {
 	}
 
-	public DeudaFinancieraAnual(String ikey, String id, Date date, BigDecimal endeudamientoPde) {
+	public DeudaFinancieraAnual(String ikey, String id, Date date, BigDecimal endeudamiento) {
 		this.ikey = ikey;
 		this.id = id;
 		this.date = date;
-		this.endeudamientoPde = endeudamientoPde;
+		this.endeudamiento = endeudamiento;
 	}
 	
 	public DeudaFinancieraAnual(DeudaFinancieraAnual copia) {
@@ -110,7 +110,7 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 		this.ikey = copia.ikey;
 		this.id = copia.id;
 		this.date = copia.date;
-		this.endeudamientoPde = copia.endeudamientoPde;
+		this.endeudamiento = copia.endeudamiento;
 	}
 
 	public DeudaFinancieraAnual(DeudaFinancieraAnual copia, List<String> attributesToSet)
@@ -131,8 +131,8 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 			this.date = copia.date;
 		}
 		
-		if (attributesToSet.contains("endeudamientoPde")) {
-			this.endeudamientoPde = copia.endeudamientoPde;
+		if (attributesToSet.contains("endeudamiento")) {
+			this.endeudamiento = copia.endeudamiento;
 		}
 		
 
@@ -168,13 +168,13 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 		this.date = date;
 	}
 
-	@Column(name = "endeudamientoPDE", nullable = false, precision = 12)
-	public BigDecimal getEndeudamientoPde() {
-		return this.endeudamientoPde;
+	@Column(name = "endeudamiento", nullable = false, precision = 12)
+	public BigDecimal getEndeudamiento() {
+		return this.endeudamiento;
 	}
 
-	public void setEndeudamientoPde(BigDecimal endeudamientoPde) {
-		this.endeudamientoPde = endeudamientoPde;
+	public void setEndeudamiento(BigDecimal endeudamiento) {
+		this.endeudamiento = endeudamiento;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -202,8 +202,8 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 			result.add("Id is not valid [Id:"+this.getId()+"]");
 		}
 								
-		if (!Util.validValue(this.getEndeudamientoPde())) {
-			result.add("EndeudamientoPde is not valid [Title:"+this.getEndeudamientoPde()+"]");
+		if (!Util.validValue(this.getEndeudamiento())) {
+			result.add("endeudamiento is not valid [Title:"+this.getEndeudamiento()+"]");
 		}
 				
 		
@@ -224,7 +224,7 @@ public class DeudaFinancieraAnual implements java.io.Serializable, RDFModel {
 
 	@Override
 	public String toString() {
-		return "DeudaFinancieraAnual [id=" + id + ", date=" + date + ", endeudamientoPde=" + endeudamientoPde + "]";
+		return "DeudaFinancieraAnual [id=" + id + ", date=" + date + ", endeudamiento=" + endeudamiento + "]";
 	}
 
 	

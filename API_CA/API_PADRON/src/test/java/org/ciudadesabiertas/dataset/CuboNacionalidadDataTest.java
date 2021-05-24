@@ -218,6 +218,36 @@ public class CuboNacionalidadDataTest
 		assertTrue(records.size() == 2);
     }
     
+    @Test
+   	public void test_Busqueda_AutonomiaPaisId() throws Exception
+   	{		
+   		String [] paramField= {"autonomiaId","paisId","numeroPersonas"};
+   		String [] value = {"13","724","1232"};		
+   		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+   		assertTrue(records.size() == 1);
+   		
+   	
+   	}
+   	
+   	@Test
+   	public void test_Busqueda_AutonomiaPaisTitle() throws Exception
+   	{
+   		String [] paramField= {"autonomiaTitle","paisTitle","numeroPersonas"};
+   		String [] value = {"Comunidad de Madrid","España","1232"};
+   		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+   		assertTrue(records.size() == 1);
+   	}
+   	
+   	
+   	@Test    
+    public void test_Query3DimensionsPais() throws Exception 
+    {	
+    	String [] paramField= {"dimension","group","measure","where"};
+		String [] value = {"nacionalidad,refPeriod,paisTitle","AVG","numeroPersonas","refPeriod=2016"};   
+		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
+		assertTrue(records.size() == 2);
+    }
+    
 	
 
 }

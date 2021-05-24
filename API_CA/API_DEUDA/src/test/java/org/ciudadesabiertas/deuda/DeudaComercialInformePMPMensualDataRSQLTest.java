@@ -70,9 +70,7 @@ public static Collection<Object[]> data() {
   params.add(new Object[] { "id=='02-50-297-AO-005'", 1 });
   params.add(new Object[] { "periodoMedioPagoMensual=='18.72'", 1 });
   params.add(new Object[] { "ratioOperacionesPagadas=='18.51'", 1 });
-  params.add(new Object[] { "importeOperacionesPagada=='0.00'", 2 });
   params.add(new Object[] { "ratioOperacionesPendientesPago=='24.23'", 1 });
-  params.add(new Object[] { "importeOperacionesPendientesPago=='0.00'", 2 });
   params.add(new Object[] { "entidad=='02-50-297-AO-005'", 2 });
   params.add(new Object[] { "periodo=='2020-06'", 1 });
   

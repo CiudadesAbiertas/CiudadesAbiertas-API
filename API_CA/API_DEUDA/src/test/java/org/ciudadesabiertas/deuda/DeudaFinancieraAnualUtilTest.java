@@ -37,7 +37,7 @@ public class DeudaFinancieraAnualUtilTest
 	private static final String testJSON = " {\n"
 		+ "      \"id\": \"2019\",\n"
 		+ "      \"date\": \"2019-12-31T00:00:00\",\n"
-		+ "      \"endeudamientoPde\": 2232568750\n"
+		+ "      \"endeudamiento\": 2232568750\n"
 		+ "    }";
 
 	

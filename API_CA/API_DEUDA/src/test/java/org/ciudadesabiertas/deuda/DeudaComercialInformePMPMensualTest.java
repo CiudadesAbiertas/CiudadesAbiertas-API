@@ -121,9 +121,7 @@ public class DeudaComercialInformePMPMensualTest {
     			+ "      \"id\": \""+id+"\",\r\n"
     			+ "      \"periodoMedioPagoMensual\": 18.72,\n"
     			+ "      \"ratioOperacionesPagadas\": 18.51,\n"
-    			+ "      \"importeOperacionesPagada\": 0,\n"
     			+ "      \"ratioOperacionesPendientesPago\": 24.23,\n"
-    			+ "      \"importeOperacionesPendientesPago\": 0,\n"
     			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
     			+ "      \"periodo\": \"2020-06\" \n"
     			+ "    }";
@@ -182,9 +180,7 @@ public class DeudaComercialInformePMPMensualTest {
     			+ "      \"id\": \""+id+"\",\r\n"
     			+ "      \"periodoMedioPagoMensual\": 11.72,\n"
     			+ "      \"ratioOperacionesPagadas\": 11.51,\n"
-    			+ "      \"importeOperacionesPagada\": 1,\n"
     			+ "      \"ratioOperacionesPendientesPago\": 21.23,\n"
-    			+ "      \"importeOperacionesPendientesPago\": 1,\n"
     			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
     			+ "      \"periodo\": \"2020-06\" \n"
     			+ "    }";
@@ -220,9 +216,7 @@ public class DeudaComercialInformePMPMensualTest {
     			+ "      \"id\": \""+id+"\",\r\n"
     			+ "      \"periodoMedioPagoMensual\": 11.72,\n"
     			+ "      \"ratioOperacionesPagadas\": 11.51,\n"
-    			+ "      \"importeOperacionesPagada\": 1,\n"
     			+ "      \"ratioOperacionesPendientesPago\": 21.23,\n"
-    			+ "      \"importeOperacionesPendientesPago\": 1,\n"
     			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
     			+ "      \"periodo\": \"2020-06\" \n"
     			+ "    }";
@@ -316,9 +310,7 @@ public class DeudaComercialInformePMPMensualTest {
     			+ "      \"id\": \""+id+"\",\r\n"
     			+ "      \"periodoMedioPagoMensual\": 11.72,\n"
     			+ "      \"ratioOperacionesPagadas\": 11.51,\n"
-    			+ "      \"importeOperacionesPagada\": 1,\n"
     			+ "      \"ratioOperacionesPendientesPago\": 21.23,\n"
-    			+ "      \"importeOperacionesPendientesPago\": 1,\n"
     			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
     			+ "      \"periodo\": \"2020-06\" \n"
     			+ "    }";
@@ -340,9 +332,7 @@ public class DeudaComercialInformePMPMensualTest {
     			//+ "      \"id\": \""+id+"\",\r\n"
     			+ "      \"periodoMedioPagoMensual\": 11.72,\n"
     			+ "      \"ratioOperacionesPagadas\": 11.51,\n"
-    			+ "      \"importeOperacionesPagada\": 1,\n"
     			+ "      \"ratioOperacionesPendientesPago\": 21.23,\n"
-    			+ "      \"importeOperacionesPendientesPago\": 1,\n"
     			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
     			+ "      \"periodo\": \"2020-06\" \n"
     			+ "    }";

@@ -113,7 +113,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2019-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2232568750\n" +
+     			"      \"endeudamiento\": 2232568750\n" +
     			"    }"; 	
      	
 	    	    	
@@ -149,7 +149,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2019-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2232568750\n" +
+     			"      \"endeudamiento\": 2232568750\n" +
     			"    }";  	 
     	
     	item = new String (item.getBytes(),"UTF-8");	
@@ -168,7 +168,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2022-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2222568750\n" +
+     			"      \"endeudamiento\": 2222568750\n" +
     			"    }";    	 
     	
     	String itemUPDATE = new String (item.getBytes(),"UTF-8");	
@@ -205,7 +205,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2019-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2232568750\n" +
+     			"      \"endeudamiento\": 2232568750\n" +
     			"    }";   	  
     	
     	String agendaUPDATE = new String (item.getBytes(),"UTF-8");	
@@ -323,7 +323,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      			"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2019-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2232568750\n" +
+     			"      \"endeudamiento\": 2232568750\n" +
     			"    }"; 
     	
     	String agendaTransform = new String (item.getBytes(),"UTF-8");	
@@ -343,7 +343,7 @@ public class DeudaFinancieraAnualTest {
      	String item = " {\n" + 
      		//	"      \"id\":\"" +id+"\",\n" +
      		    "      \"date\": \"2019-12-31T00:00:00\",\n" +
-     			"      \"endeudamientoPde\": 2232568750\n" +
+     			"      \"endeudamiento\": 2232568750\n" +
     			"    }"; 
     	
     	String agendaTransform = new String (item.getBytes(),"UTF-8");	
@@ -382,7 +382,7 @@ public class DeudaFinancieraAnualTest {
     
     @Test    
     public void test21_List_Sort_200() throws Exception {
-    	String sort="?sort=-id,endeudamientoPde";
+    	String sort="?sort=-id,endeudamiento";
         this.mockMvc.perform(MockMvcRequestBuilders.get(DeudaFinancieraAnualController.LIST+".json"+sort)).andExpect(MockMvcResultMatchers.status().is(200));
     }
     

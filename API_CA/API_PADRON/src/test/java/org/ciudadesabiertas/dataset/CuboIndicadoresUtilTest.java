@@ -36,6 +36,10 @@ public class CuboIndicadoresUtilTest
 	
 	private static final String testJSON = "  {\n" + 
 			"      \"id\": \"obs1\",\n" + 
+			"      \"paisId\": \"123\",\n" + 
+			"      \"paisTitle\": \"España\",\n" + 
+			"      \"autonomiaId\": \"343\",\n" + 
+			"      \"autonomiaTitle\": \"Comunidad de Madrid\",\n" + 
 			"      \"municipioId\": \"28006\",\n" + 
 			"      \"municipioTitle\": \"Alcobendas\",\n" + 
 			"      \"distritoId\": \"2800601\",\n" + 
@@ -70,6 +74,10 @@ public class CuboIndicadoresUtilTest
 	public void constructorCopia() throws JsonParseException, JsonMappingException, IOException, IllegalArgumentException, IllegalAccessException
 	{
 		ObjectMapper mapper = new ObjectMapper();
+		
+		CuboIndicadores c=new CuboIndicadores();
+		System.out.println(c.getPaisId());
+		
 		// JSON file to Java object
 		CuboIndicadores mappedObj = mapper.readValue(testJSON, CuboIndicadores.class);
 		CuboIndicadores item = new CuboIndicadores(mappedObj);

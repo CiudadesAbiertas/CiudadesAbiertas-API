@@ -102,9 +102,9 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 	
 	@ApiModelProperty(value = "Año Fiscal de la Carga Finaciera. Ejemplo: 2017")
 	@CsvBindByPosition(position=5)
-	@CsvBindByName(column="anioFiscal")
-	@Rdf(contexto = Context.ESDEUFINA, propiedad = "anioFiscal" )
-	private String anioFiscal;
+	@CsvBindByName(column="anio")
+	@Rdf(contexto = Context.ESDEUFINA, propiedad = "anio" )
+	private String anio;
 	
 	@ApiModelProperty(value = "Gasto o Pasio de la Carga Finaciera. Ejemplo: gasto financiero")
 	@CsvBindByPosition(position=6)
@@ -124,13 +124,13 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 	
 	
 	public DeudaFinancieraCarga(String id, String instrumentoFinanciacion, Date date, BigDecimal importe,
-			String anioFiscal, String gastoOPasivoFinanciero, String description) {
+			String anio, String gastoOPasivoFinanciero, String description) {
 		super();
 		this.id = id;
 		this.instrumentoFinanciacion = instrumentoFinanciacion;
 		this.date = date;
 		this.importe = importe;
-		this.anioFiscal = anioFiscal;
+		this.anio = anio;
 		this.gastoOPasivoFinanciero = gastoOPasivoFinanciero;
 		this.description = description;
 	}
@@ -142,7 +142,7 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 		this.id = copia.id;
 		this.date = copia.date;
 		this.importe = copia.importe;
-		this.anioFiscal = copia.anioFiscal;
+		this.anio = copia.anio;
 		this.gastoOPasivoFinanciero = copia.gastoOPasivoFinanciero;
 		this.description = copia.description;
 	}
@@ -173,8 +173,8 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 			this.importe = copia.importe;
 		}
 		
-		if (attributesToSet.contains("anioFiscal")) {
-			this.anioFiscal = copia.anioFiscal;
+		if (attributesToSet.contains("anio")) {
+			this.anio = copia.anio;
 		}
 		
 		if (attributesToSet.contains("gastoOPasivoFinanciero")) {
@@ -235,13 +235,13 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 		this.importe = importe;
 	}
 	
-	@Column(name = "anio_fiscal", length = 4)
-	public String getAnioFiscal() {
-		return this.anioFiscal;
+	@Column(name = "anio", length = 4)
+	public String getAnio() {
+		return this.anio;
 	}
 
-	public void setAnioFiscal(String anioFiscal) {
-		this.anioFiscal = anioFiscal;
+	public void setAnio(String anio) {
+		this.anio = anio;
 	}
 
 	@Column(name = "gasto_o_pasivo", length = 100)
@@ -314,7 +314,7 @@ public class DeudaFinancieraCarga implements java.io.Serializable, RDFModel {
 	@Override
 	public String toString() {
 		return "DeudaFinancieraCarga [id=" + id + ", instrumentoFinanciacion=" + instrumentoFinanciacion + ", date="
-				+ date + ", importe=" + importe + ", anioFiscal=" + anioFiscal + ", gastoOPasivoFinanciero="
+				+ date + ", importe=" + importe + ", anio=" + anio + ", gastoOPasivoFinanciero="
 				+ gastoOPasivoFinanciero + ", description=" + description + "]";
 	}
 

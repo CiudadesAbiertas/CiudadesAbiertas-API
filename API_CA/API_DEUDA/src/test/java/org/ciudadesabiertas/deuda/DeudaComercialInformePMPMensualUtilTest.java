@@ -38,9 +38,7 @@ public class DeudaComercialInformePMPMensualUtilTest
 			+ "      \"id\": \"02-50-297-AO-005\",\n"
 			+ "      \"periodoMedioPagoMensual\": 18.72,\n"
 			+ "      \"ratioOperacionesPagadas\": 18.51,\n"
-			+ "      \"importeOperacionesPagada\": 0,\n"
 			+ "      \"ratioOperacionesPendientesPago\": 24.23,\n"
-			+ "      \"importeOperacionesPendientesPago\": 0,\n"
 			+ "      \"entidad\": \"02-50-297-AO-005\",\n"
 			+ "      \"periodo\": \"2020-06\" \n"
 			+ "    }";

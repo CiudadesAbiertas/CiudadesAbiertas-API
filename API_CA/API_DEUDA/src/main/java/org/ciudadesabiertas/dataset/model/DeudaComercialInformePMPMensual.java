@@ -87,34 +87,24 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 	@CsvBindByName(column="ratioOperacionesPagadas")
 	@Rdf(contexto = Context.ESDEUCOM, propiedad = "ratioOperacionesPagadas" ,typeURI=Context.XSD_URI+"double")
 	private BigDecimal ratioOperacionesPagadas;
-	
-	@ApiModelProperty(value = "Importe total de operaciones pagadas durante el período. Ejemplo: 5579630.33")
-	@CsvBindByPosition(position=4)
-	@CsvBindByName(column="importeOperacionesPagada")
-	@Rdf(contexto = Context.ESDEUCOM, propiedad = "importeOperacionesPagada", typeURI=Context.XSD_URI+"double" )
-	private BigDecimal importeOperacionesPagada;
-	
+		
 	@ApiModelProperty(value = "indicador del número de días promedio de antigüedad de las operaciones pendientes de pago al final del período. Ejemplo: 18.51")
-	@CsvBindByPosition(position=5)
+	@CsvBindByPosition(position=4)
 	@CsvBindByName(column="ratioOperacionesPendientesPago")
 	@Rdf(contexto = Context.ESDEUCOM, propiedad = "ratioOperacionesPendientesPago" ,typeURI=Context.XSD_URI+"double")
 	private BigDecimal ratioOperacionesPendientesPago;
 	
-	@ApiModelProperty(value = "Importe total de operaciones pendientes de pago en el período. Ejemplo: 5579630.33")
-	@CsvBindByPosition(position=6)
-	@CsvBindByName(column="importeOperacionesPendientesPago")
-	@Rdf(contexto = Context.ESDEUCOM, propiedad = "importeOperacionesPendientesPago", typeURI=Context.XSD_URI+"double" )
-	private BigDecimal importeOperacionesPendientesPago;
+
 	
 	@ApiModelProperty(value = "Entidad que se está reportando. Ejemplo: 12-28-079-AP-001")
-	@CsvBindByPosition(position=7)
+	@CsvBindByPosition(position=5)
 	@CsvBindByName(column="entidad")
 	@Rdf(contexto = Context.ESDEUCOM, propiedad = "entidad")
 	@RdfExternalURI(inicioURI= "/deuda-publica-comercial/organizacion/", finURI="entidad", urifyLevel=2)
 	private String entidad;
 	
 	@ApiModelProperty(value = "Período que se está reportando. Ejemplo: 2020-06")
-	@CsvBindByPosition(position=8)
+	@CsvBindByPosition(position=6)
 	@CsvBindByName(column="periodo")
 	@Rdf(contexto = Context.ESDEUCOM, propiedad = "periodo")
 	@RdfExternalURI(inicioURI= "/deuda-publica-comercial/proper-interval/", finURI="periodo")
@@ -133,9 +123,7 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 		this.id = id;
 		this.periodoMedioPagoMensual = periodoMedioPagoMensual;
 		this.ratioOperacionesPagadas = ratioOperacionesPagadas;
-		this.importeOperacionesPagada = importeOperacionesPagada;
 		this.ratioOperacionesPendientesPago = ratioOperacionesPendientesPago;
-		this.importeOperacionesPendientesPago = importeOperacionesPendientesPago;
 		this.entidad = entidad;
 		this.periodo = periodo;
 	}
@@ -147,9 +135,7 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 		this.id = copia.id;
 		this.periodoMedioPagoMensual = copia.periodoMedioPagoMensual;
 		this.ratioOperacionesPagadas = copia.ratioOperacionesPagadas;
-		this.importeOperacionesPagada = copia.importeOperacionesPagada;
 		this.ratioOperacionesPendientesPago = copia.ratioOperacionesPendientesPago;
-		this.importeOperacionesPendientesPago = copia.importeOperacionesPendientesPago;
 		this.entidad = copia.entidad;
 		this.periodo = copia.periodo;
 	}
@@ -170,17 +156,9 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 		if (attributesToSet.contains("ratioOperacionesPagadas")) {
 			this.ratioOperacionesPagadas = copia.ratioOperacionesPagadas;		
 		}
-		
-		if (attributesToSet.contains("importeOperacionesPagada")) {
-			this.importeOperacionesPagada = copia.importeOperacionesPagada;		
-		}
-		
+				
 		if (attributesToSet.contains("ratioOperacionesPendientesPago")) {
 			this.ratioOperacionesPendientesPago = copia.ratioOperacionesPendientesPago;		
-		}
-		
-		if (attributesToSet.contains("importeOperacionesPendientesPago")) {
-			this.importeOperacionesPendientesPago = copia.importeOperacionesPendientesPago;		
 		}
 		
 		if (attributesToSet.contains("entidad")) {
@@ -240,41 +218,22 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 		this.ratioOperacionesPagadas = ratioOperacionesPagadas;
 	}
 
-	@Column(name = "importe_operaciones_pagadas", precision = 12)
-	public BigDecimal getImporteOperacionesPagada() {
-		return importeOperacionesPagada;
-	}
 
-
-	public void setImporteOperacionesPagada(BigDecimal importeOperacionesPagada) {
-		this.importeOperacionesPagada = importeOperacionesPagada;
-	}
 
 	@Column(name = "ratio_operaciones_pdte_pago", precision = 12)
 	public BigDecimal getRatioOperacionesPendientesPago() {
 		return ratioOperacionesPendientesPago;
 	}
 
-
 	public void setRatioOperacionesPendientesPago(BigDecimal ratioOperacionesPendientesPago) {
 		this.ratioOperacionesPendientesPago = ratioOperacionesPendientesPago;
 	}
 
-	@Column(name = "imp_operaciones_pdte_pago", precision = 12)
-	public BigDecimal getImporteOperacionesPendientesPago() {
-		return importeOperacionesPendientesPago;
-	}
-
-
-	public void setImporteOperacionesPendientesPago(BigDecimal importeOperacionesPendientesPago) {
-		this.importeOperacionesPendientesPago = importeOperacionesPendientesPago;
-	}
 
 	@Column(name = "entidad", nullable = false, length = 50)
 	public String getEntidad() {
 		return entidad;
 	}
-
 
 	public void setEntidad(String entidad) {
 		this.entidad = entidad;
@@ -296,9 +255,8 @@ public class DeudaComercialInformePMPMensual  implements java.io.Serializable, R
 	@Override
 	public String toString() {
 		return "DeudaComercialInformePMPMensual [id=" + id + ", periodoMedioPagoMensual=" + periodoMedioPagoMensual
-				+ ", ratioOperacionesPagadas=" + ratioOperacionesPagadas + ", importeOperacionesPagada="
-				+ importeOperacionesPagada + ", ratioOperacionesPendientesPago=" + ratioOperacionesPendientesPago
-				+ ", importeOperacionesPendientesPago=" + importeOperacionesPendientesPago + ", entidad=" + entidad
+				+ ", ratioOperacionesPagadas=" + ratioOperacionesPagadas  + ", ratioOperacionesPendientesPago=" + ratioOperacionesPendientesPago
+				+ ", entidad=" + entidad
 				+ ", periodo=" + periodo + "]";
 	}
 

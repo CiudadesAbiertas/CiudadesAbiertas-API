@@ -124,57 +124,81 @@ public class CuboProcedencia implements java.io.Serializable, RDFModel, DataCube
 	@CsvBindByName(column="provincia_procedencia", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.ESPAD , propiedad = "provincia-procedencia")
 	private String provinciaProcedencia;
+	
+	@ApiModelProperty(value = "Identificador del país de la observación. Ejemplo: 724")
+	@CsvBindByPosition(position=7)
+	@CsvBindByName(column="pais", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "pais")
+	@RdfExternalURI(inicioURI="/territorio/pais/", finURI="pais", urifyLevel=1)
+	private String paisId;
+	
+	@ApiModelProperty(value = "Nombre del páis de la observación. Ejemplo: España")
+	@CsvBindByPosition(position=8)	
+	@CsvBindByName(column="paisTitle", format=Constants.STRING_FORMAT)	
+	private String paisTitle;
+	
+	@ApiModelProperty(value = "Identificador de la autonomía de la observación. Ejemplo: 13")
+	@CsvBindByPosition(position=9)
+	@CsvBindByName(column="autonomia", format=Constants.STRING_FORMAT)
+	@Rdf(contexto = Context.ESADM, propiedad = "autonomia")
+	@RdfExternalURI(inicioURI="/territorio/autonomia/", finURI="autonomia", urifyLevel=1)
+	private String autonomiaId;
+	
+	@ApiModelProperty(value = "Nombre de la autonomía de la observación. Ejemplo: Comunidad de Madrid")
+	@CsvBindByPosition(position=10)	
+	@CsvBindByName(column="autonomiaTitle", format=Constants.STRING_FORMAT)	
+	private String autonomiaTitle;
 
 	@ApiModelProperty(value = "Identificador del municipio de la observación. Ejemplo: 28006")
-	@CsvBindByPosition(position=7)	
+	@CsvBindByPosition(position=11)	
 	@CsvBindByName(column="municipioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/municipio/", finURI="municipioId", urifyLevel=1)
 	private String municipioId;
 	
 	@ApiModelProperty(value = "Nombre del municipio de la observación. Ejemplo: Alcobendas")
-	@CsvBindByPosition(position=8)	
+	@CsvBindByPosition(position=12)	
 	@CsvBindByName(column="municipioTitle", format=Constants.STRING_FORMAT)	
 	private String municipioTitle;
 
 	@ApiModelProperty(value = "Identificador del distrito de la observación. Ejemplo: 2800601")
-	@CsvBindByPosition(position=9)	
+	@CsvBindByPosition(position=13)	
 	@CsvBindByName(column="distritoId", format=Constants.STRING_FORMAT)	
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/distrito/", finURI="distritoId", urifyLevel=1)
 	private String distritoId;
 	
 	@ApiModelProperty(value = "Nombre del distrito de la observación. Ejemplo: Distrito 1")
-	@CsvBindByPosition(position=10)	
+	@CsvBindByPosition(position=14)	
 	@CsvBindByName(column="distritoTitle", format=Constants.STRING_FORMAT)
 	private String distritoTitle;
 	
 	@ApiModelProperty(value = "Identificador del barrio de la observación. Ejemplo: 28006011")
-	@CsvBindByPosition(position=11)	
+	@CsvBindByPosition(position=15)	
 	@CsvBindByName(column="barrioId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/barrio/", finURI="barrioId", urifyLevel=1)
 	private String barrioId;
 	
 	@ApiModelProperty(value = "Nombre del barrio de la observación. Ejemplo: Barrio 1")
-	@CsvBindByPosition(position=12)	
+	@CsvBindByPosition(position=16)	
 	@CsvBindByName(column="barrioTitle", format=Constants.STRING_FORMAT)
 	private String barrioTitle;
 	
 	@ApiModelProperty(value = "Identificador de la sección censal de la observación. Ejemplo: 2800601020")
-	@CsvBindByPosition(position=13)	
+	@CsvBindByPosition(position=17)	
 	@CsvBindByName(column="seccionCensalId", format=Constants.STRING_FORMAT)
 	@Rdf(contexto = Context.SDMXTDIMENSION, propiedad = "refArea")
 	@RdfExternalURI(inicioURI="/territorio/seccion-censal/", finURI="seccionCensalId", urifyLevel=1)
 	private String seccionCensalId;
 	
 	@ApiModelProperty(value = "Nombre de la sección censal de la observación. Ejemplo: Sección Censal 20")
-	@CsvBindByPosition(position=14)	
+	@CsvBindByPosition(position=18)	
 	@CsvBindByName(column="seccionCensalTitle", format=Constants.STRING_FORMAT)	
 	private String seccionCensalTitle;	
 	
 	@ApiModelProperty(value = "Numero de personas de la observación. Ejemplo: 19076")
-	@CsvBindByPosition(position=15)
+	@CsvBindByPosition(position=19)
 	@CsvBindByName(column="numeroPersonas")
 	@Rdf(contexto = Context.ESPADMEDIDA, propiedad="numero-personas", typeURI=Context.XSD_URI+"int")
 	private Integer numeroPersonas;
@@ -198,6 +222,10 @@ public class CuboProcedencia implements java.io.Serializable, RDFModel, DataCube
 	{		
 		this.ikey = copia.ikey;
 		this.id = copia.id;
+		this.paisId = copia.paisId;
+		this.paisTitle = copia.paisTitle;
+		this.autonomiaId = copia.autonomiaId;
+		this.autonomiaTitle = copia.autonomiaTitle;
 		this.municipioId = copia.municipioId;
 		this.municipioTitle= copia.municipioTitle;
 		this.distritoId= copia.distritoId;
@@ -228,6 +256,23 @@ public class CuboProcedencia implements java.io.Serializable, RDFModel, DataCube
 		if (attributesToSet.contains("edadGruposQuinquenales")) {
 			this.edadGruposQuinquenales = copia.edadGruposQuinquenales;
 		}
+		
+		if (attributesToSet.contains("paisId")) {
+			this.paisId = copia.paisId;
+		}
+		
+		if (attributesToSet.contains("paisTitle")) {
+			this.paisTitle = copia.paisTitle;
+		}
+		
+		if (attributesToSet.contains("autonomiaId")) {
+			this.autonomiaId = copia.autonomiaId;
+		}
+		
+		if (attributesToSet.contains("autonomiaTitle")) {
+			this.autonomiaTitle = copia.autonomiaTitle;
+		}
+		
 		if (attributesToSet.contains("distritoId")) {
 			this.distritoId = copia.distritoId;
 		}
@@ -334,6 +379,43 @@ public class CuboProcedencia implements java.io.Serializable, RDFModel, DataCube
 		this.edadGruposQuinquenales = edadGruposQuinquenales;
 	}
 
+	
+	@Column(name = "pais_id", length = 50)
+	public String getPaisId() {
+		return paisId;
+	}
+
+	public void setPaisId(String paisId) {
+		this.paisId = paisId;
+	}
+
+	@Column(name = "pais_title", length = 400)
+	public String getPaisTitle() {
+		return paisTitle;
+	}
+
+	public void setPaisTitle(String paisTitle) {
+		this.paisTitle = paisTitle;
+	}
+
+	@Column(name = "autonomia_id", length = 50)
+	public String getAutonomiaId() {
+		return autonomiaId;
+	}
+
+	public void setAutonomiaId(String autonomiaId) {
+		this.autonomiaId = autonomiaId;
+	}
+	
+	@Column(name = "autonomia_title", length = 400)
+	public String getAutonomiaTitle() {
+		return autonomiaTitle;
+	}
+
+	public void setAutonomiaTitle(String autonomiaTitle) {
+		this.autonomiaTitle = autonomiaTitle;
+	}
+	
 	@Column(name = "distrito_id", length = 50)
 	public String getDistritoId() {
 		return this.distritoId;

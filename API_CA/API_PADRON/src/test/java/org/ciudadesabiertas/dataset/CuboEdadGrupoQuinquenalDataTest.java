@@ -209,6 +209,37 @@ public class CuboEdadGrupoQuinquenalDataTest
 		assertTrue(records.size() == 20);
     }
     
+    
+    @Test
+	public void test_Busqueda_AutonomiaPaisId() throws Exception
+	{		
+		String [] paramField= {"autonomiaId","paisId","numeroPersonas"};
+		String [] value = {"13","724","430"};		
+		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+		assertTrue(records.size() == 6);
+		
+	
+	}
+	
+	@Test
+	public void test_Busqueda_AutonomiaPaisTitle() throws Exception
+	{
+		String [] paramField= {"autonomiaTitle","paisTitle","numeroPersonas"};
+		String [] value = {"Comunidad de Madrid","España","430"};
+		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+		assertTrue(records.size() == 6);
+	}
+	
+	@Test    
+    public void test_Query3DimensionsPais() throws Exception 
+    {	
+		String [] paramField= {"dimension","group","measure","where"};
+		String [] value = {"refPeriod,edadGruposQuinquenales,paisTitle","AVG","numeroPersonas","refPeriod=2016"};   
+		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
+		assertTrue(records.size() == 20);
+    }
+
+    
 	
 
 }

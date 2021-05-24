@@ -71,7 +71,7 @@ public static Collection<Object[]> data() {
   params.add(new Object[] { "date=='2017-06-21'", 1 });
   params.add(new Object[] { "importe==692332.00", 2 });
   params.add(new Object[] { "instrumentoFinanciacion=='ES1234567893'", 2 });
-  params.add(new Object[] { "anioFiscal=='2017'", 2 });
+  params.add(new Object[] { "anio=='2017'", 2 });
   params.add(new Object[] { "gastoOPasivoFinanciero=='gasto financiero'", 2 });
   params.add(new Object[] { "description=='AMORT.VTO.21/12/17 PTM L/P MDEC-I.C.O.(20,77MM)%'", 1 });
 

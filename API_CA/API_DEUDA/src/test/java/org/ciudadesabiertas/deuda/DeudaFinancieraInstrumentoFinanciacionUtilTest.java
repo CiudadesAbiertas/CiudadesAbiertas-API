@@ -38,7 +38,7 @@ public class DeudaFinancieraInstrumentoFinanciacionUtilTest
 			+"	    \"id\" : \"ES0201001148\",\n"
 			+"      \"importe\": 300000000,\n"
 			+"      \"tipoInteres\": \"fijo\",\n"
-			+"      \"tasaFija\": 4.55,\n"
+			+"      \"tipoFijo\": 4.55,\n"
 			+"	    \"referencia\": \"Euribor 1/3/6 meses\",\n"
 			+"	    \"margen\": 0.015,\n"
 			+"      \"tipoInstrumento\": \"emision\",\n"

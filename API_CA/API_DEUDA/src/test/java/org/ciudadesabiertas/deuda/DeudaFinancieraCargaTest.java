@@ -116,7 +116,7 @@ public class DeudaFinancieraCargaTest {
      			"      \"instrumentoFinanciacion\": \"ES0201001148\",\n" + 
      			"      \"date\": \"2036-06-16T00:00:00\",\n" +  
      		    "  	   \"importe\": 300000000, \n" +  
-     			"      \"anioFiscal\": \"2017\",\n" +
+     			"      \"anio\": \"2017\",\n" +
      		    "      \"gastoOPasivoFinanciero\": \"gasto financiero\",\n" +
      			"      \"description\": \"Description de la Carga\"\n" +
     			"    }"; 	
@@ -156,7 +156,7 @@ public class DeudaFinancieraCargaTest {
      			"      \"instrumentoFinanciacion\": \"ES0201001148\",\n" + 
      			"      \"date\": \"2036-06-16T00:00:00\",\n" +  
      		    "  	   \"importe\": 300000000, \n" +  
-     			"      \"anioFiscal\": \"2017\",\n" +
+     			"      \"anio\": \"2017\",\n" +
      		    "      \"gastoOPasivoFinanciero\": \"gasto financiero\",\n" +
      			"      \"description\": \"Description de la Carga\"\n" +
     			"    }";	 
@@ -179,7 +179,7 @@ public class DeudaFinancieraCargaTest {
      			"      \"instrumentoFinanciacion\": \"ES0201001148\",\n" + 
      			"      \"date\": \"2026-06-16T00:00:00\",\n" +  
      		    "  	   \"importe\": 250000000, \n" +  
-     			"      \"anioFiscal\": \"2018\",\n" +
+     			"      \"anio\": \"2018\",\n" +
      		    "      \"gastoOPasivoFinanciero\": \"pasivo financiero\",\n" +
      			"      \"description\": \"Description de la Carga xxx\"\n" +
     			"    }";  	 
@@ -220,7 +220,7 @@ public class DeudaFinancieraCargaTest {
      			"      \"instrumentoFinanciacion\": \"ES0201001148\",\n" + 
      			"      \"date\": \"2036-06-16T00:00:00\",\n" +  
      		    "  	   \"importe\": 300000000, \n" +  
-     			"      \"anioFiscal\": \"2017\",\n" +
+     			"      \"anio\": \"2017\",\n" +
      		    "      \"gastoOPasivoFinanciero\": \"gasto financiero\",\n" +
      			"      \"description\": \"Description de la Carga\"\n" +
     			"    }"; 	  
@@ -342,7 +342,7 @@ public class DeudaFinancieraCargaTest {
      			"      \"instrumentoFinanciacion\": \"ES0201001148\",\n" + 
      			"      \"date\": \"2036-06-16T00:00:00\",\n" +  
      		    "  	   \"importe\": 300000000, \n" +  
-     			"      \"anioFiscal\": \"2017\",\n" +
+     			"      \"anio\": \"2017\",\n" +
      		    "      \"gastoOPasivoFinanciero\": \"gasto financiero\",\n" +
      			"      \"description\": \"Description de la Carga\"\n" +
     			"    }"; 	

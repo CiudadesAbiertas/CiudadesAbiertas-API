@@ -343,6 +343,36 @@ public class CuboIndicadoresDataTest
 		assertTrue(records.size() == 1);
     }
     
+    
+    @Test
+   	public void test_Busqueda_AutonomiaPaisId() throws Exception
+   	{		
+   		String [] paramField= {"autonomiaId","paisId","indiceSobreenvejecimiento"};
+   		String [] value = {"13","724","138.05"};		
+   		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+   		assertTrue(records.size() == 1);
+   		
+   	
+   	}
+   	
+   	@Test
+   	public void test_Busqueda_AutonomiaPaisTitle() throws Exception
+   	{
+   		String [] paramField= {"autonomiaTitle","paisTitle","indiceSobreenvejecimiento"};
+   		String [] value = {"Comunidad de Madrid","España","138.05"};
+   		JSONArray records = TestUtils.extractRecords(listURL, paramField,  value, mockMvc);
+   		assertTrue(records.size() == 1);
+   	}
+   	
+   	
+   	@Test    
+    public void test_Query3DimensionsPais() throws Exception 
+    {			
+		String [] paramField= {"dimension","group","measure","where"};
+		String [] value = {"refPeriod,distritoId,paisTitle","AVG","indiceJuventud","refPeriod=2011"};   
+		JSONArray records = TestUtils.extractRecords(queryURL, paramField,  value, mockMvc);
+		assertTrue(records.size() == 1);
+    }
 	
 
 }

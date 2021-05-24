@@ -70,7 +70,7 @@ public static Collection<Object[]> data() {
   params.add(new Object[] { "id=='ES0201001148'", 1 });
   params.add(new Object[] { "importe==300000000", 1 });
   params.add(new Object[] { "tipoInteres=='fijo'", 1 });
-  params.add(new Object[] { "tasaFija==4.55", 1 });
+  params.add(new Object[] { "tipoFijo==4.55", 1 });
   params.add(new Object[] { "referencia=='Euribor 1/3/6 meses'", 1 });
   params.add(new Object[] { "margen==0.015", 1 });
   params.add(new Object[] { "tipoInstrumento=='emision'", 1 });
