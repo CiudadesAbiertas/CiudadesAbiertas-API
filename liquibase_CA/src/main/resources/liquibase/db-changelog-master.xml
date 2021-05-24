@@ -186,28 +186,37 @@
   <include file="liquibase/db-changelog-script-1.31-PADRON-data.xml"/>
 
   <!-- 1.98.1 Modificación de BICICLETA PUBLICA -->
-  <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-table.xml"/>
-  <include file="liquibase/db-changelog-script-1.98.1-BICICLETA-PUBLICA-data.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.01-BICICLETA-PUBLICA-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.01-BICICLETA-PUBLICA-data.xml"/>
   
   <!-- 1.98.2 Modificación de Organigrama -->
   
-  <include file="liquibase/db-changelog-script-1.98.2-ORGANIGRAMA-data.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.02-ORGANIGRAMA-data.xml"/>
   
   <!-- 1.98.3 Modificación de Territorio -->
   
-  <include file="liquibase/db-changelog-script-1.98.3-TERRITORIO-table.xml"/>
-  <include file="liquibase/db-changelog-script-1.98.3-TERRITORIO-data.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.03-TERRITORIO-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.03-TERRITORIO-data.xml"/>
   
   <!-- 1.98.4 Modificación de Contratos -->
-  <include file="liquibase/db-changelog-script-1.98.4-CONTRATOS-data.xml"/>    
+  <include file="liquibase/db-changelog-script-1.98.04-CONTRATOS-data.xml"/>    
   
   <!-- 1.98.5 Barrios de Alcobendas para visualización -->
   
-  <include file="liquibase/db-changelog-script-1.98.5-BARRIOS-data.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.05-BARRIOS-data.xml"/>
   
   <!-- 1.98.6 Correccion trafico -->
   
-  <include file="liquibase/db-changelog-script-1.98.6-TRAFICO-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.06-TRAFICO-table.xml"/>
+  
+  <!-- 1.98.7 Correccion deuda -->
+  
+  <include file="liquibase/db-changelog-script-1.98.07-DEUDA-table.xml"/>
+  
+  <!-- 1.98.8 Correccion Padrón -->
+  
+  <include file="liquibase/db-changelog-script-1.98.08-PADRON-table.xml"/>
+  <include file="liquibase/db-changelog-script-1.98.08-PADRON-data.xml"/>
   
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  

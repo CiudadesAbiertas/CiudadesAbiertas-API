@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	<changeSet author="Localidata" id="data-deuda-com-change1">
+		<dropColumn 
+            columnName="importe_operaciones_pagadas"              
+            tableName="deuda_c_inf_pmp_mes">
+		</dropColumn>  
+		<rollback>
+			<addColumn
+				tableName="deuda_c_inf_pmp_mes" >
+				<column name="importe_operaciones_pagadas" 
+					type="DECIMAL(12,2)"/>  
+			</addColumn>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="data-deuda-com-change2">
+		<dropColumn 
+            columnName="imp_operaciones_pdte_pago"              
+            tableName="deuda_c_inf_pmp_mes">  
+			
+		</dropColumn> 
+		<rollback>
+			<addColumn
+				tableName="deuda_c_inf_pmp_mes" >
+					<column name="imp_operaciones_pdte_pago" 
+						type="DECIMAL(12,2)"/>  
+			</addColumn>  
+		</rollback>		
+	</changeSet>
+  
+   <changeSet author="Localidata" id="data-deuda-fin-change1">
+		<renameColumn 
+            columnDataType="DECIMAL(12, 2)"  
+            newColumnName="endeudamiento"  
+            oldColumnName="endeudamientoPDE"  
+            tableName="deuda_f_anual"/>   
+		<rollback>
+			<renameColumn 
+            columnDataType="DECIMAL(12, 2)"  
+            newColumnName="endeudamientoPDE"  
+            oldColumnName="endeudamiento"  
+            tableName="deuda_f_anual"/>   
+		</rollback>		
+	</changeSet>
+	
+	<changeSet author="Localidata" id="data-deuda-fin-change2">
+		<renameColumn 
+            columnDataType="DECIMAL(12, 2)"  
+            newColumnName="tipo_fijo"  
+            oldColumnName="tasa_fija"  
+            tableName="deuda_f_inst_financiacion"/>   
+		<rollback>
+			<renameColumn 
+            columnDataType="DECIMAL(12, 2)"  
+            newColumnName="tasa_fija"  
+            oldColumnName="tipo_fijo"  
+            tableName="deuda_f_inst_financiacion"/>   
+		</rollback>		
+	</changeSet>
+	
+	<changeSet author="Localidata" id="data-deuda-fin-change3">
+		<renameColumn 
+            columnDataType="VARCHAR(4)"  
+            newColumnName="anio"  
+            oldColumnName="anio_fiscal"  
+            tableName="deuda_f_carga_financiera"/>   
+		<rollback>
+			<renameColumn 
+            columnDataType="VARCHAR(4)"  
+            newColumnName="anio_fiscal"  
+            oldColumnName="anio"  
+            tableName="deuda_f_carga_financiera"/>   
+		</rollback>		
+	</changeSet>
+   
+	
+</databaseChangeLog>
+

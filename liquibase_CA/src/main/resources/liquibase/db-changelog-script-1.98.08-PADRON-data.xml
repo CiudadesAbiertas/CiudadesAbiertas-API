@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	
+      <changeSet author="liquibase-docs" id="data-padron-change1">
+		  <update tableName="padron_edad_g_quiquenal">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+	  
+	  <changeSet author="liquibase-docs" id="data-padron-change2">
+		  <update tableName="padron_edad">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+	  
+	  <changeSet author="liquibase-docs" id="data-padron-change3">
+		  <update tableName="padron_indicadores">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+	  
+	  <changeSet author="liquibase-docs" id="data-padron-change4">
+		  <update tableName="padron_nacionalidad">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+	  
+	  <changeSet author="liquibase-docs" id="data-padron-change5">
+		  <update tableName="padron_pais_nacimiento">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+	  
+	  <changeSet author="liquibase-docs" id="data-padron-change6">
+		  <update tableName="padron_procedencia">
+			<column name="pais_id" value="724"/>
+			<column name="pais_title" value="España"/>			
+			<column name="autonomia_id" value="13"/>	
+			<column name="autonomia_title" value="Comunidad de Madrid"/>				
+		  </update>
+		  <rollback/>
+	  </changeSet>
+
+
+
+	
+</databaseChangeLog>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	<changeSet author="Localidata" id="table-padron-change1">
+		
+		<addColumn tableName="padron_edad_g_quiquenal" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+		<dropColumn tableName="padron_edad_g_quiquenal">
+			<column  name="pais_id"/>
+			<column  name="pais_title"/>  
+			<column  name="autonomia_id"/>  
+			<column  name="autonomia_title"/>  
+		</dropColumn>  
+		</rollback>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table-padron-change2">
+		
+		<addColumn tableName="padron_edad" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="padron_edad">
+				<column  name="pais_id"/>
+				<column  name="pais_title"/>  
+				<column  name="autonomia_id"/>  
+				<column  name="autonomia_title"/>  
+			</dropColumn>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-padron-change3">
+		
+		<addColumn tableName="padron_indicadores" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="padron_indicadores">
+				<column  name="pais_id"/>
+				<column  name="pais_title"/>  
+				<column  name="autonomia_id"/>  
+				<column  name="autonomia_title"/>  
+			</dropColumn>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-padron-change4">
+		
+		<addColumn tableName="padron_nacionalidad" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="padron_nacionalidad">
+				<column  name="pais_id"/>
+				<column  name="pais_title"/>  
+				<column  name="autonomia_id"/>  
+				<column  name="autonomia_title"/>  
+			</dropColumn>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-padron-change5">
+		
+		<addColumn tableName="padron_pais_nacimiento" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="padron_pais_nacimiento">
+				<column  name="pais_id"/>
+				<column  name="pais_title"/>  
+				<column  name="autonomia_id"/>  
+				<column  name="autonomia_title"/>  
+			</dropColumn>  
+		</rollback>
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-padron-change6">
+		
+		<addColumn tableName="padron_procedencia" >
+				<column name="pais_id" type="varchar(50)"/>  
+				<column name="pais_title" type="varchar(400)"/>  
+				<column name="autonomia_id" type="varchar(50)"/>  
+				<column name="autonomia_title" type="varchar(400)"/>  
+		</addColumn>  
+		<rollback>
+			<dropColumn tableName="padron_procedencia">
+				<column  name="pais_id"/>
+				<column  name="pais_title"/>  
+				<column  name="autonomia_id"/>  
+				<column  name="autonomia_title"/>  
+			</dropColumn>  
+		</rollback>
+	</changeSet>	
+	
+	
+	
+   
+	
+</databaseChangeLog>
+

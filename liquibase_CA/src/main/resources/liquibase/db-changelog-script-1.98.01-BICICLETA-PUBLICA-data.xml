@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet author="Localidata" id="bici_estacion_data_1">
+		<delete tableName="bici_estacion" />
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="bici_estacion_data_2">
+		<insert tableName="bici_estacion">
+			<column name="ikey" value="1"/>
+			<column name="id" value="EST01"/>
+			<column name="title" value="Estación Raimunro Férnandez Villaverde"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="estado_estacion" value="operativa"/>
+			<column name="tipo_equipamiento" value="estacion-de-bicicletas"/>
+			<column name="fecha_alta" valueDate="2020-01-01"/>
+			<column name="fecha_baja"/>
+			<column name="observes_id" value="anclajesLibres"/>
+			<column name="observes_title" value="Anclajes libres"/>
+			<column name="x_etrs89" valueNumeric="440124.33000"/>
+			<column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+		</insert>
+		<insert tableName="bici_estacion">
+			<column name="ikey" value="2"/>
+			<column name="id" value="EST02"/>
+			<column name="title" value="Estación calle atocha"/>
+			<column name="portal_id"/>
+			<column name="street_address" value="calle atocha"/>
+			<column name="postal_code" value="28021"/>
+			<column name="estado_estacion" value="operativa"/>
+			<column name="tipo_equipamiento" value="estacion-de-bicicletas"/>
+			<column name="fecha_alta" valueDate="2020-01-01"/>
+			<column name="fecha_baja"/>
+			<column name="observes_id" value="anclajesLibres"/>
+			<column name="observes_title" value="Anclajes libres"/>
+			<column name="x_etrs89" valueNumeric="440944.44800"/>
+			<column name="y_etrs89" valueNumeric="4474468.32900"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+		</insert>
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="bici_punto_paso_data_1">
+		<delete tableName="bici_punto_paso" />
+		<rollback/>
+	</changeSet>
+	
+	<changeSet author="Localidata" id="bici_punto_paso_data_2">
+		<insert tableName="bici_punto_paso">
+			<column name="ikey" value="1"/>
+            <column name="id" value="PPASO01"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:00:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="2"/>
+            <column name="id" value="PPASO02"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:15:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="439247.03900"/>
+            <column name="y_etrs89" valueNumeric="4475788.14600"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="3"/>
+            <column name="id" value="PPASO03"/>
+            <column name="fecha_paso" valueDate="2020-01-09 07:30:00.0"/>
+            <column name="trayecto_id" value="TRA04"/>
+            <column name="orden" valueNumeric="3"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="4"/>
+            <column name="id" value="PPASO04"/>
+            <column name="fecha_paso" valueDate="2020-01-09 08:00:00.0"/>
+            <column name="trayecto_id" value="TRA01"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="5"/>
+            <column name="id" value="PPASO05"/>
+            <column name="fecha_paso" valueDate="2020-01-09 08:15:00.0"/>
+            <column name="trayecto_id" value="TRA01"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440944.44800"/>
+            <column name="y_etrs89" valueNumeric="4474468.32900"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="6"/>
+            <column name="id" value="PPASO06"/>
+            <column name="fecha_paso" valueDate="2020-01-09 09:00:00.0"/>
+            <column name="trayecto_id" value="TRA02"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="7"/>
+            <column name="id" value="PPASO07"/>
+            <column name="fecha_paso" valueDate="2020-01-09 09:15:00.0"/>
+            <column name="trayecto_id" value="TRA02"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440678.92700"/>
+            <column name="y_etrs89" valueNumeric="4475099.73100"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="8"/>
+            <column name="id" value="PPASO08"/>
+            <column name="fecha_paso" valueDate="2020-01-09 10:00:00.0"/>
+            <column name="trayecto_id" value="TRA03"/>
+            <column name="orden" valueNumeric="1"/>
+            <column name="x_etrs89" valueNumeric="440124.33000"/>
+            <column name="y_etrs89" valueNumeric="4474637.17000"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+        </insert>
+        <insert tableName="bici_punto_paso">
+            <column name="ikey" value="9"/>
+            <column name="id" value="PPASO09"/>
+            <column name="fecha_paso" valueDate="2020-01-09 10:15:00.0"/>
+            <column name="trayecto_id" value="TRA03"/>
+            <column name="orden" valueNumeric="2"/>
+            <column name="x_etrs89" valueNumeric="440176.19400"/>
+            <column name="y_etrs89" valueNumeric="4473788.50900"/>
+			<column name="portal_id" value="PORTAL000101"/>
+			<column name="street_address" value="CALLE DE RAIMUNDO FERNÁNDEZ VILLAVERDE NUMERO 43"/>
+			<column name="postal_code" value="28003"/>
+			<column name="municipio_id" value="madrid"/>
+			<column name="municipio_title" value="Madrid"/>
+			<column name="distrito_id" value="tetuan"/>
+			<column name="distrito_title" value="Tetuán"/>
+			<column name="barrio_id" value="bellas-vistas"/>
+			<column name="barrio_title" value="Bellas Vistas"/> 
+		</insert>
+		<rollback/>
+	</changeSet>
+	
+	<changeSet id="DATA-ORGANIGRAMA-tag-1.98.1" author="Localidata">
+    	<tagDatabase tag="1.98.1" />
+  	</changeSet>
+</databaseChangeLog>
