@@ -218,6 +218,9 @@
   <include file="liquibase/db-changelog-script-1.98.08-PADRON-table.xml"/>
   <include file="liquibase/db-changelog-script-1.98.08-PADRON-data.xml"/>
   
+  <!-- 1.98.09 Modificación de Contratos -->
+  <include file="liquibase/db-changelog-script-1.98.09-CONTRATOS-table.xml"/>    
+  
   <!-- 1.99 ForeginKeys -->
   <include file="liquibase/db-changelog-script-1.99-FOREIGNKEY.xml"/>  
 	

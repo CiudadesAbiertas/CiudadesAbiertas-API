@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+	
+	<changeSet author="Localidata" id="table-tender-changes">
+		<modifyDataType
+			columnName="title"
+			newDataType="varchar(2000) NOT NULL"
+			tableName="contratos_tender"/>
+		<rollback/>
+		
+	</changeSet>
+	
+	
+	<changeSet author="Localidata" id="table-process-changes">
+		<modifyDataType
+			columnName="title"
+			newDataType="varchar(2000)  NOT NULL"
+			tableName="contratos_process"/>
+		<rollback/>
+		
+	</changeSet>
+	
+	<changeSet author="Localidata" id="table-lot-changes">
+		<modifyDataType
+			columnName="title"
+			newDataType="varchar(2000)  NOT NULL"
+			tableName="contratos_lot"/>
+		<rollback/>
+		
+	</changeSet>
+
+
+	
+	
+
+	
+	
+	
+   
+	
+</databaseChangeLog>
+
