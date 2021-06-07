@@ -42,6 +42,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -1977,6 +1978,20 @@ public class Util
 		return petitionSrId;
 	}
 	
+	public static String extractParamFromURL(String stringURL, String paramName) {
+		String paramValue="";
+		if (stringURL.contains(paramName))
+		{
+			paramValue=stringURL.substring(stringURL.indexOf(paramName)+paramName.length()+1);
+			if (paramValue.contains("&"))
+			{
+				paramValue=paramValue.substring(0,paramValue.indexOf("&"));					
+			}			
+			log.info(paramName+" extraido de la URL: "+paramValue);
+		}
+		return paramValue;
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	/*
@@ -2043,6 +2058,17 @@ public class Util
 		}
 		
 		return fieldsQuery;
+	}
+	
+	public static Map<String,Object> objectToMap(Object obj)
+	{
+		Map<String,Object> objectMap=new LinkedHashMap<String,Object>();
+		for (Field field : obj.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try { objectMap.put(field.getName(), field.get(obj)); } catch (Exception e) { }
+        }
+		return objectMap;
+  		  
 	}
 	
 	public static void main(String[] args)

@@ -113,7 +113,7 @@ public class DynamicMappingStrategy<T> extends ColumnPositionMappingStrategy<T> 
 
 	while (iterator.hasNext()) {
 	    Entry<String, Object> next = iterator.next();
-	    transmutedBean.add(checkTypesAndReturnString(next.getValue()));
+	    transmutedBean.add(CSVConverter.checkTypesAndReturnString(next.getValue()));
 	}
 
 	return transmutedBean.toArray(new String[0]);
@@ -240,32 +240,5 @@ public class DynamicMappingStrategy<T> extends ColumnPositionMappingStrategy<T> 
 	return StringUtils.EMPTY;
     }
 
-    private String checkTypesAndReturnString(Object campo) {
-	if (campo == null) {
-	    return "";
-	}
-	if (campo instanceof Long) {
-	    return (((Long) campo).intValue() + "");
-	} else if (campo instanceof Integer) {
-	    return (((Integer) campo).intValue() + "");
-	} else if (campo instanceof Double) {
-	    return (Util.decimalFormatterCSV(((Double) campo).floatValue()));
-	} else if (campo instanceof Float) {	    
-	    return (Util.decimalFormatterCSV(((Float) campo).floatValue()));
-	} else if (campo instanceof BigDecimal) {	    
-	    return (Util.decimalFormatterCSV(((BigDecimal) campo).floatValue()));
-	}  else if (campo instanceof BigInteger) {	    
-	  return (((BigInteger) campo).intValue() + "");
-	}else if (campo instanceof Timestamp) {
-	    Date dateTemp=new Date(((Timestamp) campo).getTime());
-	    String dateString=Util.dateTimeFormatterWithoutT.format(dateTemp);	    
-	    dateString=dateString.replace(" 00:00:00","");    
-	    return  dateString;
-	} else if (campo instanceof Date) {
-	    String dateString=Util.dateFormatter.format((Date) campo);
-	    return dateString;
-	} else {
-	    return (CSVWriter.DEFAULT_QUOTE_CHARACTER + campo.toString() + CSVWriter.DEFAULT_QUOTE_CHARACTER);
-	}
-    }
+	
 }

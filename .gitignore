@@ -228,3 +228,4 @@ API_CA/API_DEUDA/.classpath
 API_CA/Doc/er/
 API_CA/API_EMPLEO/src/test/resources/config.properties
 API_CA/API_DEUDA/src/test/resources/config.properties
+API_CA/utils/configFile/

@@ -105,13 +105,13 @@ public class ObjectMappingStrategy<T> extends ColumnPositionMappingStrategy<T> {
  	        int numColumns = campos.length;        
  	        for (int i=0;i<numColumns;i++)
  	        { 	        
- 	        	transmutedBean.add(checkTypesAndReturnString(campos[i]));
+ 	        	transmutedBean.add(CSVConverter.checkTypesAndReturnString(campos[i]));
  	        } 
         }
         //un solo objecto
         else if (bean instanceof Object)
         {
-        	transmutedBean.add(checkTypesAndReturnString(bean));
+        	transmutedBean.add(CSVConverter.checkTypesAndReturnString(bean));
 
         }
         return transmutedBean.toArray(new String[0]);
@@ -254,26 +254,6 @@ public class ObjectMappingStrategy<T> extends ColumnPositionMappingStrategy<T> {
 		return StringUtils.EMPTY;
 	}
     
-	private String checkTypesAndReturnString(Object campo)
-	{
-		if (campo  instanceof Long)
-     	{
-     		return (((Long)campo ).intValue()+"");
-     	} 
-     	else if (campo  instanceof Integer)
-     	{
-     		return (((Integer)campo ).intValue()+"");
-     	}
-     	else if (campo  instanceof Double)
-     	{
-     		return (((Double)campo ).floatValue()+"");
-     	}
-     	else if (campo  instanceof Float)
-     	{
-     		return (((Float)campo ).floatValue()+"");
-     	}       
-     	else {
-     		return (CSVWriter.DEFAULT_QUOTE_CHARACTER+campo.toString()+CSVWriter.DEFAULT_QUOTE_CHARACTER);
-     	}
-	}
+	
+	
 }

@@ -21,16 +21,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
+import org.ciudadesabiertas.utils.Constants;
 import org.ciudadesabiertas.utils.ObjectResult;
 import org.ciudadesabiertas.utils.Result;
+import org.ciudadesabiertas.utils.Util;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -39,6 +48,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
@@ -46,6 +56,8 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
+
+import jdk.internal.net.http.common.Utils;
 
 
 
@@ -103,16 +115,28 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
         
     	
     	ColumnPositionMappingStrategy<T> strategy = new ColumnPositionMappingStrategy<T>();    	
+    	String fieldsParam = Util.extractParamFromURL(l.getSelf(),Constants.FIELDS);
         if (l instanceof ObjectResult)
         {        		
         	strategy = new ObjectMappingStrategy<T>();
         	strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));
         } else {
-        	strategy = new CustomerMappingStrategy<T>();
-        	strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));	
-        }
-    	   
+        	
+        	//Si viene el parametro fields se hace un tratamiento especial
+        	if (Util.validValue(fieldsParam))
+        	{
+        		strategy = new FieldsObjectMappingStrategy<T>(fieldsParam);
+        		strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));
+        	}else {
+        		strategy = new CustomerMappingStrategy<T>();
+            	strategy.setType(toBeanType(l.getClass().getGenericSuperclass()));	
+            	
+        	}
         
+        }
+        
+       
+       
 		byte[] bomBytes = new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF };
 		
 		OutputStreamWriter outputStream = new OutputStreamWriter(outputMessage.getBody(),Charset.forName("UTF8"));       
@@ -140,8 +164,37 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
   		      
       			beanToCsv = beanToCSVGenerator(strategy, outputStream);
       		  }
-			  recordsTranslated.add(next);
-			}
+      		  
+      		  if (Util.validValue(fieldsParam))
+      		  {      		  
+	      		  Map<String, Object> objectToMap = Util.objectToMap(next);
+	      		  
+	      		  String rowData="";
+	      		  for (String field:fieldsParam.split(","))
+	      		  {
+	      			  if (objectToMap.containsKey(field.trim()))
+	      			  {
+	      				Object value=objectToMap.get(field.trim());
+	      				if (Util.validValue(value))
+	      				{
+	      					rowData+=checkTypesAndReturnString(value)+",";
+	      				}else {
+	      					rowData+=",";
+	      				}
+	      			  }
+	      		  }
+	      		  if (rowData.length()>0)
+	      		  {
+	      			rowData=StringUtils.chop(rowData);
+	      		  }
+	      		  recordsTranslated.add(rowData);
+      		  }
+      		  else
+      		  {      	
+      			  recordsTranslated.add(next);
+      		  }
+      		}
+			
       		beanToCsv.write(recordsTranslated);
             outputStream.close();
         } catch (Exception e) {
@@ -157,7 +210,7 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
 	                      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
 	                      .withMappingStrategy(strategy)
 	                      .withEscapechar(CSVWriter.NO_ESCAPE_CHARACTER)
-	                      .withLineEnd(CSVWriter.RFC4180_LINE_END)                            
+	                      .withLineEnd(CSVWriter.RFC4180_LINE_END)   
 	                      .build();
 	  return beanToCsv;
 	}
@@ -166,5 +219,35 @@ public class CSVConverter <T, L extends Result<T>> extends AbstractHttpMessageCo
     private Class<T> toBeanType (Type type) {
         return (Class<T>) ((ParameterizedType) type).getActualTypeArguments()[0];
     }
+    
+    
+    public static  String checkTypesAndReturnString(Object campo) {
+		if (campo == null) {
+			return "";
+		}
+		if (campo instanceof Long) {
+			return (((Long) campo).intValue() + "");
+		} else if (campo instanceof Integer) {
+			return (((Integer) campo).intValue() + "");
+		} else if (campo instanceof Double) {
+			return (Util.decimalFormatterCSV(((Double) campo).floatValue()));
+		} else if (campo instanceof Float) {
+			return (Util.decimalFormatterCSV(((Float) campo).floatValue()));
+		} else if (campo instanceof BigDecimal) {
+			return (Util.decimalFormatterCSV(((BigDecimal) campo).floatValue()));
+		} else if (campo instanceof BigInteger) {
+			return (((BigInteger) campo).intValue() + "");
+		} else if (campo instanceof Timestamp) {
+			Date dateTemp = new Date(((Timestamp) campo).getTime());
+			String dateString = Util.dateTimeFormatterWithoutT.format(dateTemp);
+			dateString = dateString.replace(" 00:00:00", "");
+			return dateString;
+		} else if (campo instanceof Date) {
+			String dateString = Util.dateFormatter.format((Date) campo);
+			return dateString;
+		} else {
+			return (CSVWriter.DEFAULT_QUOTE_CHARACTER + campo.toString() + CSVWriter.DEFAULT_QUOTE_CHARACTER);
+		}
+	}
 
 }
