@@ -2274,6 +2274,9 @@
         <rollback/> 
     </changeSet>
 	
+	<changeSet id="TERRITORIO-tag-1.98.03" author="Localidata">
+    	<tagDatabase tag="1.98.03" />
+  	</changeSet>  
 	
 </databaseChangeLog>
 

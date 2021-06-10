@@ -59666,5 +59666,12 @@
 		<rollback/>
     </changeSet>
 	
+	
+	<changeSet id="CONTRATOS-tag-1.98.04" author="Localidata">
+    	<tagDatabase tag="1.98.04" />
+  	</changeSet>  
+	
+	
+	
 </databaseChangeLog>
 

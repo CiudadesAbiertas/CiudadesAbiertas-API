@@ -30,7 +30,9 @@
 		
 	</changeSet>
 
-
+	<changeSet id="Contratos-tag-1.98.09" author="Localidata">
+    	<tagDatabase tag="1.98.09" />
+  	</changeSet> 
 	
 	
 

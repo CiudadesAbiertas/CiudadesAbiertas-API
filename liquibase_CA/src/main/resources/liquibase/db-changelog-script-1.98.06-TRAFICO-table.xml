@@ -27,7 +27,10 @@
 		</rollback>
 	</changeSet>
   
-   
+   	
+	<changeSet id="TRAFICO-tag-1.98.06" author="Localidata">
+    	<tagDatabase tag="1.98.06" />
+  	</changeSet>  
    
 	
 </databaseChangeLog>

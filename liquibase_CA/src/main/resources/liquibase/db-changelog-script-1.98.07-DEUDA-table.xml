@@ -74,6 +74,10 @@
             tableName="deuda_f_carga_financiera"/>   
 		</rollback>		
 	</changeSet>
+	
+	<changeSet id="Deuda-tag-1.98.07" author="Localidata">
+    	<tagDatabase tag="1.98.07" />
+  	</changeSet> 
    
 	
 </databaseChangeLog>
